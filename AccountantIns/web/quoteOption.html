@@ -1,0 +1,2063 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Quote Option</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/account.js"></script>
+<script language="javascript" src="script/lawyers.js"></script>
+<script type="text/javascript" src="script/tabber.js"></script>
+<script type="text/javascript" src="script/test_new.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+
+<script type="text/javascript">
+	function checks() {
+		document.getElementById("EffectiveDate").disabled = true;
+	}
+	function setClaimExpenseType() {
+		//alert('T1');
+		if (document.getElementById('StateCode').value == 'NM') {
+			//alert("test1"+value);
+			//alert('T2');
+			//document.getElementById('IsClaimExpensesType').checked = true;
+			//document.getElementById('IsClaimExpensesType').disabled = true;
+
+		} else {
+			//document.getElementById("IsClaimExpensesType").checked = false;
+			//document.getElementById("IsClaimExpensesType").disabled = false;
+		}
+	}
+	function showSpecialIssuanceDiv() {
+
+		if (document.getElementById("IsSpecialIssuance") != null) {
+			if (getRadioValue(document.forms[0].IsSpecialIssuance) == 'Y') {
+				document.getElementById("SpecialIssuanceCommentsDiv").style.display = "block";
+			} else {
+				document.getElementById("SpecialIssuanceCommentsDiv").style.display = "none";
+			}
+		}
+
+	}
+</script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+<body onload="setClaimExpenseType();showSpecialIssuanceDiv();setSelectionOfQuotes();makeDefenseExpenseOutsideOnQuoteOption();loadQuoteOption();setEffectiveDate();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Bootstrap Core JavaScript -->
+<div id="cover"></div>
+
+<!-- Modal -->
+<div id="noneISMIEStateShowQuotePage" class="modal">
+  <div class="modal-dialog" style="width: 700px">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+		<a class="close" href="#" onclick="{closePopUp('noneISMIEStateShowQuotePage'); window.location.href = 'javascript:managesubmitform(document.forms[0],\'submit\',\'|object_name|approveSubjective|\',\'|FirmNewApp|$|\',\'tabsNewApp\');'}"><i class="fa fa-close">&nbsp;</i></a>
+        <h4 class="modal-title">Info</h4>
+	</div>
+      <div class="modal-body" style="height: 100px">
+		<span id="noneISMIEStateShowQuotePageFlag" >Quote Page is not available for Non ISMIE states.</span>
+      </div>
+      <div class="modal-footer">
+		<div class="buttonwrapper">
+			<!-- //<a class="ovalbutton">Save</a> -->
+			<a class="ovalbutton" onclick="{closePopUp('noneISMIEStateShowQuotePage'); window.location.href = 'javascript:managesubmitform(document.forms[0],\'submit\',\'|object_name|approveSubjective|\',\'|FirmNewApp|$|\',\'tabsNewApp\');'}">Ok</a>
+		</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+	
+	<form>
+
+		<DIV class="popup" id="policystart">Review effective date for: 6
+			months future date, within 5 days of current date, or backdated.</DIV>
+		<DIV class="popup" id="limits">Do Not Quote - Max limit for
+			Annual revenue is beyond guidelines - refer to UW Guidelines for
+			acceptable limit</DIV>
+		<DIV class="popup" id="deductible">Do Not Quote - Deductible
+			requested is outside of underwriting guidelines refer to UW
+			Guidelines for acceptable deductible</DIV>
+		<DIV class="popup" id="grossrevenue">Review to determine if this
+			is a part-time acct. If it is - refer to management</DIV>
+		<DIV class="popup" id="grossrevenue1">Do Not Quote - Max revenue
+			exceeds underwriting guidelines - Refer to Management</DIV>
+		<DIV class="popup" id="AOP_E">Do Not Quote - Any Public Audit is
+			a declination - review supp - If audit is of employee benefit plan
+			this is not a concern. Percentage should be in Other Assurance
+			Services</DIV>
+		<DIV class="popup" id="Q9">An annual tax preparation booklet
+			qualifies as and engagement letter.</DIV>
+
+		<DIV class="popup" id="AOP_F">Do Not Quote - Review percentage
+			of audit and industries</DIV>
+		<div class="popup" id="annual">A per claim deductible is
+			included in the basic policy. An annual aggregate deductible will
+			incur an additional charge.</div>
+		<div class="popup" id="defense">Defense expenses paid as part of
+			the limit of liability are included with the policy. Defense expenses
+			paid in addition will incur an additional charge.</div>
+		<DIV class="popup" id="AOP_J">Review Description</DIV>
+		<DIV class="popup" id="AOP_L">Review Description</DIV>
+		<DIV class="popup" id="AOP_M">Do Not Quote - Review Supplement</DIV>
+		<DIV class="popup" id="AOP_N">Review Services provided - review
+			with management</DIV>
+		<DIV class="popup" id="AOP_O">Do Not Quick Quote. Quick Quote
+			needs full app.</DIV>
+		<DIV class="popup" id="AOP_P">Do Not Quick Quote. Quick Quote
+			needs full app.</DIV>
+		<DIV class="popup" id="AOP_Q">Do Not Quick Quote. Quick Quote
+			needs full app.</DIV>
+		<DIV class="popup" id="AOP_R">Do Not Quote - Review Supplement</DIV>
+		<DIV class="popup" id="AOP_S">Review Description - Refer to
+			management</DIV>
+		<DIV class="popup" id="AOP_T">Do Not Quote - Review Supplement</DIV>
+		<DIV class="popup" id="AOP_U">Do Not Quick Quote. Quick Quote
+			needs full app.</DIV>
+		<DIV class="popup" id="annualrevenue">Do Not Quote - Client
+			represents more than 39% of firms Annual Gross revenue - Refer to
+			Management</DIV>
+
+		<DIV class="popup" id="firmCarrying">Full prior acts requires at
+			least 5 years of continuous insurance coverage</DIV>
+		<DIV class="popup" id="limitA">Review with client - refer to
+			management</DIV>
+		<DIV class="popup" id="policyExpDate">Review requested effective
+			date</DIV>
+		<DIV class="popup" id="isPublicTrade">Do Not Quote - Any Public
+			Audit is a declination; review supp - refer to management</DIV>
+		<DIV class="popup" id="isPublicPrivate">Do Not Quote - Document
+			details and Refer to Management</DIV>
+		<DIV class="popup" id="isCommission">Do Not Quote - Review
+			information and Refer to Management</DIV>
+		<DIV class="popup" id="isAnyRegulatory">Do Not Quote - Document
+			details and Refer to Management</DIV>
+		<DIV class="popup" id="isAwareness">Do Not Quote - Claim in past
+			12 months with total > $0 - Review details and Refer to Management</DIV>
+		<DIV class="popup" id="isAwareness1">Do Not Quote - Claims
+			underwriting threshold exceeded - Refer to Management</DIV>
+		<DIV class="popup" id="isAwarenessProfLiability">Review
+			description of the incidents.</DIV>
+		<DIV class="popup" id="isFirmDeclined">Review explanation</DIV>
+		<div class="popup" id="prioractyear">
+			<table width="680" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>Review your current declarations page. You will either
+						have a prior acts or it is sometimes called a retroactive date.</td>
+				</tr>
+				<tr>
+					<td>Your declarations page may not have a date but could say
+						Full, No or None - in which case you can choose Full.</td>
+				</tr>
+			</table>
+		</div>
+		<div class="popup" id="prioractyear1">
+			<table width="680" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td>Review your current declarations page. You will either
+						have a prior acts or it is sometimes called a retroactive date.</td>
+				</tr>
+				<tr>
+					<td>Your declarations page may not have a date but could say
+						Full, No or None - in which case you can choose Full.</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="cover" style="width: 100%; height: 1000px"></div>
+
+		<div id="contextLinks"></div>
+		<table width="100%" border="0" align="center" cellspacing="0"
+			cellpadding="0">
+			<tr>
+				<td>
+					<table width="98%" border="0" align="center" cellspacing="0"
+						cellpadding="0">
+						<tr>
+							<td>
+								<div id="topheader" style="float: left;">
+									<table width="100%" border="0" align="center" cellpadding="0"
+										cellspacing="0">
+										<tr id="OldAppFlow">
+											<td height="50">
+												<table width="98%" border="0" align="center" cellpadding="0"
+													cellspacing="0">
+													<tr>
+														<td valign="bottom"><img
+															src="image/logo_protexureaccountants1.png" border="0"
+															width="325" height="50" /></td>
+														<td align="right" valign="bottom">
+															<table border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td colspan="5" align="center"><img
+																		src="img/space.gif" width="1" height="5" /></td>
+																</tr>
+																<tr>
+																	<td align="center"
+																		id="eval:AccountantRule.isAgentState">
+																		<table width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr>
+																				<td align="center"><img
+																					src="img/backPortal1.jpg" width="20" height="22" />
+																				</td>
+																			</tr>
+																			<tr>
+																				<td class="topLink"><a
+																					href="javascript:submitform('indexagent.html','quoteOption.homepage','','');"
+																					class="topLink">Back to Portal</a></td>
+																			</tr>
+																		</table>
+																	</td>
+																	<td width="10" align="center" valign="bottom">
+																		&nbsp;</td>
+																	<td align="center"
+																		id="eval:AccountantRule.isAgentState">
+																		<table width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr>
+																				<td align="center"><img src="img/backList1.jpg"
+																					width="20" height="22" /></td>
+																			</tr>
+																			<tr>
+																				<td class="topLink"><a
+																					href="javascript:submitform('list.html','quoteOption.backtolist','','');"
+																					class="topLink">Back to List </a></td>
+																			</tr>
+																		</table>
+																	</td>
+																	<td width="10" align="center" valign="bottom">
+																		&nbsp;</td>
+																	<td align="center"
+																		id="eval:AccountantRule.isAgentState">
+																		<table width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr>
+																				<td align="center"><img
+																					src="img/backWorkq1.jpg" width="20" height="22" />
+																				</td>
+																			</tr>
+																			<tr>
+																				<td class="topLink"><a
+																					href="javascript:submitform('workq.html','quoteOption.backtowrokq','','');"
+																					class="topLink">Back to workq</a></td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+
+																<tr>
+																	<td colspan="5" align="center" class="topLink"><img
+																		src="img/space.gif" width="1" height="5" /></td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr id="OldAppFlow">
+											<td>
+												<table width="100%" border="0" cellspacing="0"
+													cellpadding="0">
+													<tr>
+														<td class="topt1"></td>
+														<td align="right" class="topt2">
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tr>
+																	<td align="left"><img
+																		src="img/getting_coverage.jpg" width="597" height="33" />
+																	</td>
+																	<td align="right"><img src="img/call.jpg"
+																		width="289" height="24" /></td>
+																</tr>
+															</table>
+														</td>
+														<td class="topt3"></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr id="OldAppFlow">
+											<td>
+												<table width="100%" border="0" cellspacing="0"
+													cellpadding="0">
+													<tr>
+														<td class="topt4"></td>
+														<td class="topt5">
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tr>
+																	<td align="right">
+																		<table border="0" cellspacing="2" cellpadding="2"
+																			id="labels_freeform_contextdata_99">
+																			<tr>
+																				<td align="right" nowrap="nowrap"
+																					class="txtBold11Maroon"
+																					id="eval:AccountantRule.isContextAccountNameNotEmpty">
+																					Firm:</td>
+																				<td align="left" nowrap="nowrap"
+																					class="txt11BoldBlack"
+																					id="eval:AccountantRule.isContextAccountNameNotEmpty">
+																					<label name="AccountName" id="AccountName"
+																					class="txt11BoldBlack"></label>
+																				</td>
+																				<td id="eval:AccountantRule.isQuoteNumberNotEmpty"
+																					align="right" nowrap="nowrap"
+																					class="txtBold11Maroon">Quote #:</td>
+																				<td align="left" nowrap="nowrap"
+																					class="txt11BoldBlack"
+																					id="eval:AccountantRule.isQuoteNumberNotEmpty">
+																					<label name="QuoteNumber" id="QuoteNumber"
+																					class="txt11BoldBlack"></label>
+																				</td>
+																				<td id="eval:AccountantRule.isStatusNotEmpty"
+																					align="right" nowrap="nowrap"
+																					class="txtBold11Maroon">Status:</td>
+																				<td align="left" nowrap="nowrap"
+																					class="txt11BoldBlack"
+																					id="eval:AccountantRule.isStatusNotEmpty"><label
+																					id="StatusDesc" name="StatusDesc"
+																					class="txt11BoldBlack"></label> <span
+																					id="eval:AccountantRule.ShowRenew">(R)</span></td>
+																				<td align="right"
+																					id="eval:AccountantRule.showPolicyNumber"
+																					class="txtBold11Maroon">Policy #:</td>
+																				<td align="left" nowrap="nowrap"
+																					class="txt11BoldBlack"
+																					id="eval:AccountantRule.showPolicyNumber"><label
+																					id="PolicyNumber" name="PolicyNumber"
+																					class="txt11BoldBlack"></label></td>
+																				<td align="right" nowrap="nowrap"
+																					id="eval:AccountantRule.isEffectiveDateNotEmpty"
+																					class="txtBold11Maroon">Effective Date:</td>
+																				<td align="left" nowrap="nowrap"
+																					class="txt11BoldBlack"
+																					id="eval:AccountantRule.isEffectiveDateNotEmpty">
+																					<label name="PolicyEffectiveDate"
+																					id="PolicyEffectiveDate" class="txt11BoldBlack"></label>
+																				</td>
+																				<td id="eval:AccountantRule.isStateCodeNotEmpty"
+																					align="right" nowrap="nowrap"
+																					class="txtBold11Maroon">State:</td>
+																				<td align="left" nowrap="nowrap"
+																					class="txt11BoldBlack"
+																					id="eval:AccountantRule.isStateCodeNotEmpty">
+																					<label id="StateDesc" name="StateDesc"
+																					class="txt11BoldBlack"></label>
+																				</td>
+																				<td align="right" nowrap="nowrap"
+																					class="txtBold11Maroon"><span
+																					id="eval:AccountantRule.Issued_Status"><span
+																						id="eval:AccountantRule.isContextPremiumNotEmpty">Premium
+																							:</span> </span></td>
+																				<td align="left" nowrap="nowrap"
+																					class="txt11BoldBlack"><span
+																					id="eval:AccountantRule.Issued_Status"><span
+																						id="eval:AccountantRule.isContextPremiumNotEmpty"><label
+																							id="ContextPremium" name="ContextPremium"
+																							class="txt11BoldBlack"></label> </span> </span></td>
+																				<td align="right" nowrap="nowrap"
+																					class="txtBold11Maroon"
+																					id="eval:AccountantRule.isClaimsMadeYearDescNotEmpty">
+																					CM Year:</td>
+																				<td align="left" nowrap="nowrap"
+																					class="txt11BoldBlack"
+																					id="eval:AccountantRule.isClaimsMadeYearDescNotEmpty">
+																					<label name="ClaimsMadeYearDesc"
+																					id="ClaimsMadeYearDesc" class="txt11BoldBlack"></label>
+																				</td>
+
+
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+														</td>
+														<td class="topt6"></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr id="OldAppFlow">
+											<td>
+												<table width="100%" border="0" cellspacing="0"
+													cellpadding="0">
+													<tr>
+														<td class="topt7"></td>
+														<td align="right" class="topt8"><span class="topt9">&nbsp;</span>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr id="OldAppFlow">
+											<td>
+												<table width="100%" border="0" align="center"
+													cellpadding="0" cellspacing="0">
+													<tr>
+														<td valign="top">
+															<table width="98%" border="0" align="center"
+																cellpadding="0" cellspacing="0">
+																<tr>
+																	<td>
+																		<table border="0" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td>
+																					<table border="0" cellspacing="0" cellpadding="0">
+																						<tr>
+																							<td align="right">&nbsp;</td>
+																							<td align="center">&nbsp;</td>
+																							<td>&nbsp;</td>
+																						</tr>
+																						<tr>
+																							<td align="right"><img src="img/arrow.gif"
+																								width="16" height="16" /></td>
+																							<td id="eval:AccountantRule.IsNotRenewalPolicy"
+																								align="center"><span class="txtgreen"
+																								id="eval:AccountantRule.isFullQuote"><span
+																									class="txtgreen"
+																									id="eval:AccountantRule.showSupplementTab"><span
+																										class="txtgreen">Step#4/4</span> </span> <span
+																									class="txtgreen"
+																									id="eval:AccountantRule.hideSupplementTab"><span
+																										class="txtgreen">Step#3/3</span> </span> </span></td>
+																							<td id="eval:AccountantRule.IsRenewalPolicy"
+																								align="center"><span class="txtgreen"
+																								id="eval:AccountantRule.isFullQuote"><span
+																									class="txtgreen"
+																									id="eval:AccountantRule.showSupplementTab"><span
+																										class="txtgreen">Step#3/3</span> </span> <span
+																									class="txtgreen"
+																									id="eval:AccountantRule.hideSupplementTab"><span
+																										class="txtgreen">Step#2/2</span> </span> </span></td>
+																							<td><img src="img/line.jpg" width="5"
+																								height="16" /></td>
+																						</tr>
+																					</table>
+																				</td>
+																				<td id="eval:AccountantRule.IsNotRenewalPolicy">
+																					<table border="0" cellspacing="0" cellpadding="0">
+																						<tr>
+																							<td valign="top">&nbsp;</td>
+																							<td class="nav">&nbsp;</td>
+																							<td>&nbsp;</td>
+																							<td class="nav">&nbsp;</td>
+																							<td class="nav">&nbsp;</td>
+
+																							<td id="eval:AccountantRule.showSupplementTab">
+																								&nbsp;</td>
+																							<td id="eval:AccountantRule.showSupplementTab">
+																								&nbsp;</td>
+																							<td id="eval:AccountantRule.showSupplementTab"
+																								class="nav">&nbsp;</td>
+
+																							<td id="eval:AccountantRule.showQuoteOptionTab">
+																								&nbsp;</td>
+																							<td id="eval:AccountantRule.showQuoteOptionTab"
+																								valign="top" class="nav"><span
+																								id="eval:AccountantRule.showSupplementTab"><img
+																									src="img/redarrow.jpg" width="13" height="7" />
+																							</span></td>
+																							<td id="eval:AccountantRule.showQuoteOptionTab">
+																								<span id="eval:AccountantRule.hideSupplementTab"><img
+																									src="img/redarrow.jpg" width="13" height="7" />
+																							</span>
+																							</td>
+
+																						</tr>
+																						<tr>
+																							<td><img src="img/1inactive.jpg" width="16"
+																								height="16" /></td>
+																							<td nowrap="nowrap" class="nav"><a
+																								href="javascript:submitform('BasicInfo.html','quoteOption.tabBasicInfo','','');">Basic
+																									Information</a></td>
+																							<td><img src="img/bgline.jpg" /></td>
+																							<td><img src="img/2inactive.jpg" width="16"
+																								height="16" /></td>
+																							<td class="nav"><a
+																								href="javascript:submitform('general.html','quoteOption.tabGeneralInfo','','');">General</a>
+																							</td>
+
+																							<td id="eval:AccountantRule.showSupplementTab">
+																								<img src="img/bgline.jpg" />
+																							</td>
+																							<td id="eval:AccountantRule.showSupplementTab">
+																								<img src="img/3inactive.jpg" width="16"
+																								height="16" />
+																							</td>
+																							<td class="nav"><span
+																								id="eval:AccountantRule.showSupplementTab"><a
+																									href="javascript:submitform('Business-funds-control.html|computer-services.html|attestation.html|invest-finan-planing.html|Practice-Management.html|general.html','quoteOption.tabSupplementInfo','forwardeval','AccountantRule.isAuditAOP18|AccountantRule.isAuditAOP14|AccountantRule.isAuditAOP56|AccountantRule.isAuditAOP19|AccountantRule.isAuditAOPPM|AccountantRule.IsGeneralPageSaved');">Supplement</a>
+																							</span></td>
+
+																							<td id="eval:AccountantRule.showQuoteOptionTab">
+																								<img src="img/bgline.jpg" />
+																							</td>
+																							<td id="eval:AccountantRule.showQuoteOptionTab">
+																								<span id="eval:AccountantRule.showSupplementTab"><img
+																									src="img/4active.jpg" width="16" height="16" />
+																							</span><span id="eval:AccountantRule.hideSupplementTab"><img
+																									src="img/3active.jpg" width="16" height="16" />
+																							</span>
+																							</td>
+																							<td class="nav"><span
+																								id="eval:AccountantRule.showQuoteOptionTab">Quote
+																									Option</span></td>
+
+																						</tr>
+																					</table>
+																				</td>
+
+
+																				<td id="eval:AccountantRule.IsRenewalPolicy">
+																					<table border="0" cellspacing="0" cellpadding="0">
+																						<tr>
+																							<td valign="top">&nbsp;</td>
+																							<td class="nav">&nbsp;</td>
+																							<td id="eval:AccountantRule.showSupplementTab">
+																								&nbsp;</td>
+																							<td id="eval:AccountantRule.showSupplementTab">
+																								&nbsp;</td>
+																							<td id="eval:AccountantRule.showSupplementTab"
+																								class="nav">&nbsp;</td>
+
+																							<td id="eval:AccountantRule.showQuoteOptionTab">
+																								&nbsp;</td>
+																							<td id="eval:AccountantRule.showQuoteOptionTab"
+																								valign="top" class="nav"><span
+																								id="eval:AccountantRule.showSupplementTab"><img
+																									src="img/redarrow.jpg" width="13" height="7" />
+																							</span></td>
+																							<td id="eval:AccountantRule.showQuoteOptionTab">
+																								<span id="eval:AccountantRule.hideSupplementTab"><img
+																									src="img/redarrow.jpg" width="13" height="7" />
+																							</span>
+																							</td>
+
+																						</tr>
+																						<tr>
+																							<td><img src="img/1inactive.jpg" width="16"
+																								height="16" /></td>
+																							<td nowrap="nowrap" class="nav"><a
+																								href="javascript:submitform('RenewBasicInfo.html','quoteOption.tabRenewBasicInfo','','');">Basic
+																									Information</a></td>
+																							<td id="eval:AccountantRule.showSupplementTab">
+																								<img src="img/bgline.jpg" />
+																							</td>
+																							<td id="eval:AccountantRule.showSupplementTab">
+																								<img src="img/2inactive.jpg" width="16"
+																								height="16" />
+																							</td>
+																							<td class="nav"><span
+																								id="eval:AccountantRule.showSupplementTab"><a
+																									href="javascript:submitform('Business-funds-control.html|computer-services.html|attestation.html|invest-finan-planing.html|Practice-Management.html|general.html','quoteOption.tabSupplementInfo','forwardeval','AccountantRule.isAuditAOP18|AccountantRule.isAuditAOP14|AccountantRule.isAuditAOP56|AccountantRule.isAuditAOP19|AccountantRule.isAuditAOPPM|AccountantRule.IsGeneralPageSaved');">Supplement</a>
+																							</span></td>
+
+																							<td id="eval:AccountantRule.showQuoteOptionTab">
+																								<img src="img/bgline.jpg" />
+																							</td>
+																							<td id="eval:AccountantRule.showQuoteOptionTab">
+																								<span id="eval:AccountantRule.showSupplementTab"><img
+																									src="img/3active.jpg" width="16" height="16" />
+																							</span><span id="eval:AccountantRule.hideSupplementTab"><img
+																									src="img/2active.jpg" width="16" height="16" />
+																							</span>
+																							</td>
+																							<td class="nav"><span
+																								id="eval:AccountantRule.showQuoteOptionTab">Quote
+																									Option</span></td>
+
+																						</tr>
+																					</table>
+																				</td>
+
+
+
+
+																			</tr>
+																			<tr>
+																				<td>&nbsp;</td>
+																				<td id="eval:AccountantRule.IsNotRenewalPolicy">
+																					<span id="eval:AccountantRule.showSupplementTab"><img
+																						src="img/arrow4.jpg" /> </span> <span
+																					id="eval:AccountantRule.hideSupplementTab"><img
+																						src="img/arrow3.jpg" /> </span>
+																				</td>
+
+																				<td id="eval:AccountantRule.IsRenewalPolicy"><span>
+																						<span id="eval:AccountantRule.showSupplementTab"><img
+																							src="img/arrow3.jpg" /> </span> <span
+																						id="eval:AccountantRule.hideSupplementTab"><img
+																							src="img/arrow2.jpg" /> </span>
+																				</span></td>
+																			</tr>
+																		</table>
+																	</td>
+																	<td height="30" align="right" class="txtBlack12">
+																		<table width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr id="eval:AccountantRule.isAgent">
+																				<td align="right" nowrap="nowrap" class="txtBlack12">
+																					<a
+																					href="javascript:submitform('quoteOption.html','quoteOption.downloadpdf','','');"
+																					class="txtBlack12">Download PDF&nbsp;</a>| <a
+																					href="javascript:submitform('quoteOption.html','quoteOption.downloadexcel','','');"
+																					class="txtBlack12"> Download Excel&nbsp;</a>| <a
+																					href="javascript:submitform('uploadexcelpopup.html','quoteOption.uploadexcel','','');"
+																					class="txtBlack12"> Documents&nbsp;</a>|<a
+																					href="javascript:submitform('comment.html','quoteOption.comment','','');"
+																					class="txtBlack12"> Comments&nbsp;</a>|&nbsp;<a
+																					href="javascript:submitform('UWReview.html','list.underwriter',' ','');"
+																					class="txtBlack12">UnderWriter</a>
+
+																				</td>
+																			</tr>
+																		</table>
+																	</td>
+																</tr>
+															</table>
+
+														</td>
+													</tr>
+
+
+
+												</table>
+											</td>
+										</tr>
+										<tr id="NewAppFlow">
+											<td>
+												<div id="header">
+													<span id="#Include:headerNewApp.html#"></span>
+												</div>
+												<div class="menuTab">
+													<span id="#Include:tabsNewApp.html#"></span>
+												</div>
+											</td>
+											
+										</tr>
+										<tr id="NewAppFlow">
+											<td>
+												<div class="row">
+													<div id="error_TransactionError" class="defult_tr_errors"></div>
+													<div id="error_isQuoteLetterSentView" class="defult_tr_errors"></div>
+													<div id="error_isQuoteExpired" class="defult_tr_errors"></div>
+													<div id="error_isQuote" class="defult_tr_errors"></div>
+													
+								
+													<span id="eval:AccountantRule.isQuoteLetterAuto"
+														class="error11">Quote letter is sent successfully.</span> <span
+														id="eval:AccountantRule.isQuoteLetterNotSent" class="error11">Quote
+														letter could not be sent.</span> <span
+														id="eval:AccountantRule.isQuote" class="error11">Quote
+														could not be quoted.</span>
+												</div>
+												<table width="100%" border="0" cellspacing="0" cellpadding="0">
+													<tr class="defult_tr_errors" id="tr_error_indication_div">
+														<td align="left">
+															<div id="error_indication_div" class="error11Bold"></div>
+														</td>
+													</tr>
+												</table>
+												<div id="error_PolicyEffectiveDateError" class="error11" />
+											</td>
+										</tr>
+										<tr>
+												<td  align="center">
+												<span id="eval:AccountantRule.isShowQuoteEffectiveDateError">
+													<span id="eval:AccountantRule.isQuoteEffectiveDatevalid" class="error11Bold">Can't send the quote for more than 90 days out.</span>
+													<span id="eval:AccountantRule.isQuoteEffectiveDatevalidRB" class="error11Bold">Can't send the quote for more than 90 days out.</span>
+													
+												
+												</span>
+													
+												</td>
+											</tr>
+
+									</table>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="row">
+									<div id="error_TransactionError" class="defult_tr_errors"></div>
+									<div id="error_isQuoteLetterSentView" class="defult_tr_errors"></div>
+									<div id="error_isQuoteExpired" class="defult_tr_errors"></div>
+									<div id="error_isQuote" class="defult_tr_errors"></div>
+									
+
+									<span id="eval:AccountantRule.isQuoteLetterAuto"
+										class="error11">Quote letter is sent successfully.</span> <span
+										id="eval:AccountantRule.isQuoteLetterNotSent" class="error11">Quote
+										letter could not be sent.</span> <span
+										id="eval:AccountantRule.isQuote" class="error11">Quote
+										could not be quoted.</span>
+								</div>
+								<!-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr class="defult_tr_errors" id="tr_error_indication_div">
+										<td align="left">
+											<div id="error_indication_div" class="error11Bold"></div>
+										</td>
+									</tr>
+								</table> -->
+								<div id="error_PolicyEffectiveDateError" class="error11" />
+								
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table cellpadding="0" cellspacing="0" width="100%" class="">
+									<tr>
+										<td>
+
+											<div id="content"
+												style="margin-top: 190px; padding-left: left;">
+												<h2 class="questionHeading">Quote</h2>
+												<div id="eval:AccountantRule.isInsured"
+													style="float: left; width: 99.7%; padding-top: 30px">
+													<table width="95%" border="0" align="center"
+														cellpadding="4" cellspacing="0"
+														class="box_confirmation">
+														<tr>
+															<td><!-- <div>Congratulations You are now approved for
+																	professional liability insurance through your
+																	successful completion of our on-line application. If
+																	you would like to explore other pricing options, please
+																	use the drop down boxes below. If there are any
+																	additional pricing limits you would like to explore
+																	that are not available in the drop down boxes, please
+																	contact us at <b>1-888-803-9898</b>. Thank you for your
+																	business. </div>
+																	 -->
+																<div>
+																Congratulations You are now approved for professional liability insurance through your successful
+																 completion of our on-line application. If you would like to explore other pricing options, please contact us at 1-888-803-9898. 
+																 Thank you for your business.
+																
+																</div>
+																	</td>
+														</tr>
+													</table>
+													<div style="float: left;">&nbsp;</div>
+												</div>
+
+
+
+												<div style="float: left; width: 99.7%;" class="paddingTop20">
+													<table width="100%" border="0" align="center"
+														cellpadding="0" cellspacing="0">
+
+														<tr>
+															<td>
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tr id="">
+																		<td>
+																			<table width="100%" border="0" cellspacing="0"
+																				cellpadding="0">
+																				<tr id="PremiumVisibility_security">
+																					<td>
+																						<table width="96%" border="0" align="center"
+																							cellpadding="0" cellspacing="0">
+
+																							<tr id="eval:AccountantRule.isAgent">
+																								<td colspan="3" valign="top" align="center"
+																									style="padding: 0px 10px;">
+																									<div id="eval:AccountantRule.showQuoteAddDiv"
+																										class="bgLight">
+
+																										<table id="QuoteOption_freeform_01"
+																											width="100%" border="0" align="center"
+																											cellpadding="0" cellspacing="3">
+																											<tr>
+																												<td colspan="2" align="left"></td>
+																												<td align="left">
+																													<div id="error_LimitSequence"
+																														class="defult_tr_errors"></div>
+																														<div id="error_duplicateQuoteError" class="error11"/>
+																														<div id="error_limitIncreaseFlagError"	class="error11"/>
+																												</td>
+																												<td colspan="2" align="left"></td>
+																												<td align="left">
+																													<div id="error_DeductibleSequence"
+																														class="defult_tr_errors"></div>
+																														
+																												</td>
+																											</tr>
+																											<tr>
+																												<td width="20%" align="right"
+																													nowrap="nowrap">Limits of Liability</td>
+																												<td align="right">$:</td>
+																												<td align="left"><select
+																													name="LimitSequence" id="LimitSequence"
+																													tabindex="95"
+																													onchange="showHideRatingLink();makeDefenseOutsideRule(this.value);">
+																														<option value="">Select</option>
+																												</select></td>
+																												<td width="15%" align="right">
+																													Deductible</td>
+																												<td align="right">$:</td>
+																												<td align="left"><select
+																													name="DeductibleSequence"
+																													id="DeductibleSequence" tabindex="98"
+																													onchange="showHideRatingLink();">
+																														<option value="">Select</option>
+																												</select></td>
+																											</tr>
+																											<tr>
+																												<td colspan="2" align="right"></td>
+																												<td nowrap="nowrap" align="left">
+																													<div id="expenseTypeOption">
+																														<input type="checkbox"
+																															name="IsClaimExpensesType"
+																															id="IsClaimExpensesType" tabindex="96"
+																															value="Y" /> Defense expenses paid in
+																														addition to the limits of liability
+																													</div>
+																												</td>
+																												<td colspan="2" align="right">&nbsp;</td>
+																												<td align="left"><input type="checkbox"
+																													name="IsClaimOptionType"
+																													id="IsClaimOptionType" tabindex="99"
+																													value="Y" /> Annual Aggregate</td>
+																											</tr>
+																											<tr>
+																												<td colspan="5" align="right"></td>
+																												<td nowrap="nowrap" align="left"
+																													id="IsDollarDefense"></td>
+																											</tr>
+																											<tr>
+
+																												<td colspan="6" height="50" align="center"
+																													valign="bottom">
+																													<table width="200" border="0"
+																														cellpadding="0" cellspacing="0">
+																														<tr>
+																															<td>
+																																<div id="getLink" style="display: none">
+																																	<a
+																																		href="javascript:submitform('quoteOption.html','quoteOption.saveQuote','','');"
+																																		tabindex="210" class="btn button1">Get
+																																		Another Quote Option</a>
+																																</div>
+																																<div id="saveLink" style="display: none">
+																																	<a
+																																		href="javascript:submitform('quoteOption.html','quoteOption.saveQuote','','');"
+																																		tabindex="210" class="btn button1">Save
+																																		Quote</a>
+																																</div>
+																															</td>
+																														</tr>
+																														<tr>
+																															<td>&nbsp;</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																										</table>
+																									</div>
+																								</td>
+																							</tr>
+
+																							<tr>
+																								<td id="Modifiers_freeform_01" valign="top"
+																									colspan="3" style="padding: 0px 10px;">
+																									<div
+																										id="eval:AccountantRule.isNotShowModifiersAndAdditionalQuotes">
+																										<table cellpadding="0" cellspacing="2"
+																											width="100%">
+																											<tr id="QuoteModsVisbility_security">
+																												<td valign="top"
+																													id="eval:AccountantRule.isAgent"
+																													class="cell" style="width: 46%;">
+																													<table cellpadding="0" cellspacing="0"
+																														width="100%">
+																														<!--   id="eval:AccountantRule.QuotedIssuedAcceptNot_Status" -->
+																														<tr>
+																															<td id="eval:AccountantRule.showModifier">
+																																<table width="100%" border="0"
+																																	align="center" cellpadding="0"
+																																	cellspacing="3">
+																																	<tr>
+																																		<td></td>
+																																		<td>
+																																			<div
+																																				id="error_SchduleRatingModifier1"
+																																				class="defult_tr_errors"></div>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td align="right" class="txt1"
+																																			width="200px">Claims:</td>
+																																		<td align="left"><span
+																																			id="eval:AccountantRule.disableModifiers">
+																																				<input name="SchduleRatingModifier1"
+																																				id="SchduleRatingModifier1"
+																																				type="text" disabled="disabled"
+																																				class="width254" size="3"
+																																				maxlength="3" />
+																																		</span> <span
+																																			id="eval:AccountantRule.enableModifiers">
+																																				<input name="SchduleRatingModifier1"
+																																				id="SchduleRatingModifier1"
+																																				type="text" class="width254"
+																																				size="3" maxlength="3" />
+																																		</span></td>
+																																		<td align="left"
+																																			id="eval:AccountantRule.showRenewalModifiers">
+																																			<span
+																																			id="eval:AccountantRule.disableRenewalModifiers">
+																																				<input
+																																				name="SchduleRatingModifierR1"
+																																				id="SchduleRatingModifierR1"
+																																				type="text" disabled="disabled"
+																																				class="width254" size="3"
+																																				maxlength="3" />
+																																		</span> <span
+																																			id="eval:AccountantRule.enableRenewalModifiers">
+																																				<input
+																																				name="SchduleRatingModifierR1"
+																																				id="SchduleRatingModifierR1"
+																																				type="text" class="width254"
+																																				size="3" maxlength="3" />
+																																		</span>
+
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td></td>
+																																		<td>
+																																			<div
+																																				id="error_SchduleRatingModifier2"
+																																				class="defult_tr_errors"></div>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td align="right" class="txt1">
+																																			Firm Practice:</td>
+																																		<td align="left"><span
+																																			id="eval:AccountantRule.disableModifiers">
+																																				<input name="SchduleRatingModifier2"
+																																				id="SchduleRatingModifier2"
+																																				type="text" disabled="disabled"
+																																				class="width254" size="3"
+																																				maxlength="3" />
+																																		</span> <span
+																																			id="eval:AccountantRule.enableModifiers">
+																																				<input name="SchduleRatingModifier2"
+																																				id="SchduleRatingModifier2"
+																																				type="text" class="width254"
+																																				size="3" maxlength="3" />
+																																		</span></td>
+
+																																		<td align="left"
+																																			id="eval:AccountantRule.showRenewalModifiers">
+																																			<span
+																																			id="eval:AccountantRule.disableRenewalModifiers">
+																																				<input
+																																				name="SchduleRatingModifierR2"
+																																				id="SchduleRatingModifierR2"
+																																				type="text" disabled="disabled"
+																																				class="width254" size="3"
+																																				maxlength="3" />
+																																		</span> <span
+																																			id="eval:AccountantRule.enableRenewalModifiers">
+																																				<input
+																																				name="SchduleRatingModifierR2"
+																																				id="SchduleRatingModifierR2"
+																																				type="text" class="width254"
+																																				size="3" maxlength="3" />
+																																		</span>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td></td>
+																																		<td>
+																																			<div
+																																				id="error_SchduleRatingModifier3"
+																																				class="defult_tr_errors"></div>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td align="right" class="txt1"
+																																			nowrap="nowrap">Firm Ed. and
+																																			Training:</td>
+																																		<td align="left"><span
+																																			id="eval:AccountantRule.disableModifiers">
+																																				<input name="SchduleRatingModifier3"
+																																				id="SchduleRatingModifier3"
+																																				type="text" disabled="disabled"
+																																				class="width254" size="3"
+																																				maxlength="3" />
+																																		</span> <span
+																																			id="eval:AccountantRule.enableModifiers">
+																																				<input name="SchduleRatingModifier3"
+																																				id="SchduleRatingModifier3"
+																																				type="text" class="width254"
+																																				size="3" maxlength="3" />
+																																		</span></td>
+
+																																		<td align="left"
+																																			id="eval:AccountantRule.showRenewalModifiers">
+																																			<span
+																																			id="eval:AccountantRule.disableRenewalModifiers">
+																																				<input
+																																				name="SchduleRatingModifierR3"
+																																				id="SchduleRatingModifierR3"
+																																				type="text" disabled="disabled"
+																																				size="3" maxlength="3" />
+																																		</span> <span
+																																			id="eval:AccountantRule.enableRenewalModifiers">
+																																				<input
+																																				name="SchduleRatingModifierR3"
+																																				id="SchduleRatingModifierR3"
+																																				type="text" size="3" maxlength="3" />
+																																		</span>
+																																		</td>
+																																	</tr>
+<tr>
+																																		<td></td>
+																																		<td>
+																																			<div id="error_totalModifier" class="defult_tr_errors"></div>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td></td>
+																																		<td>
+																																			<div id="error_ModifierComment"
+																																				class="defult_tr_errors"></div>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td align="right">Underwriting
+																																			Justification:</td>
+																																		<td align="left"><span
+																																			id="eval:AccountantRule.disableModifiers">
+																																				<textarea name="ModifierComment"
+																																					id="ModifierComment"
+																																					disabled="disabled" cols="35"
+																																					rows="3"
+																																					onKeyUp="limitText(this,1,8000);" />
+																																		</span> <span
+																																			id="eval:AccountantRule.enableModifiers">
+																																				<textarea name="ModifierComment"
+																																					id="ModifierComment" cols="35"
+																																					rows="3"
+																																					onKeyUp="limitText(this,1,8000);" />
+																																		</span></td>
+																																	</tr>
+
+
+																																</table>
+																															</td>
+																														</tr>
+
+
+
+																														<tr>
+																															<td id="eval:AccountantRule.hideModifier">
+																																<table width="100%" border="0"
+																																	align="center" cellpadding="0"
+																																	cellspacing="3">
+																																	<tr>
+																																		<td colspan="2">&nbsp;</td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2">&nbsp;</td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2" class="error11"
+																																			align="center">Note: Schedule
+																																			modifiers are not allowed for this
+																																			state.</td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2">&nbsp;</td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2">&nbsp;</td>
+																																	</tr>
+																																</table>
+																															</td>
+																														</tr>
+
+
+																														<tr
+																															id="TaxCalculation_freeform_contextdata_01">
+																															<td>
+
+																																<table class="tableGrid">
+																																	<tr>
+																																		<td nowrap="nowrap" align="right"
+																																			width="205px">Skip KY Municipal
+																																			Tax Calculation:</td>
+																																		<td align="left"><span
+																																			id="eval:AccountantRule.disableModifiers"><input
+																																				type="radio" name="IsTaxCalculation"
+																																				disabled="disabled"
+																																				id="IsTaxCalculation" value="Y"
+																																				tabindex="103" /> </span> <span
+																																			id="eval:AccountantRule.enableModifiers"><input
+																																				type="radio" name="IsTaxCalculation"
+																																				id="IsTaxCalculation" value="Y"
+																																				tabindex="104" /> </span> Yes <span
+																																			id="eval:AccountantRule.disableModifiers"><input
+																																				type="radio" name="IsTaxCalculation"
+																																				disabled="disabled"
+																																				id="IsTaxCalculation" value="N"
+																																				tabindex="105" /> </span> <span
+																																			id="eval:AccountantRule.enableModifiers"><input
+																																				type="radio" name="IsTaxCalculation"
+																																				id="IsTaxCalculation" value="N"
+																																				tabindex="106" /> </span> No</td>
+																																	</tr>
+																																</table>
+																															</td>
+																														</tr>
+
+																														<!-- Special Issuance -->
+																														<tr
+																															id="SpecialIssuance_freeform_contextdata_01">
+																															<td>
+
+																																<table class="tableGrid"
+																																	id="eval:AccountantRule.isNotCFOrInsured">
+																																	<tr>
+																																		<td nowrap="nowrap" align="right"
+																																			width="205px">Special Issuance:</td>
+																																		<td align="left"><span
+																																			id="eval:AccountantRule.disableModifiers"><input
+																																				type="radio"
+																																				name="IsSpecialIssuance"
+																																				disabled="disabled"
+																																				id="IsSpecialIssuance" value="Y"
+																																				tabindex="103" /> </span> <span
+																																			id="eval:AccountantRule.enableModifiers"><input
+																																				type="radio"
+																																				name="IsSpecialIssuance"
+																																				id="IsSpecialIssuance" value="Y"
+																																				tabindex="104"
+																																				onclick="showSpecialIssuanceDiv();" />
+																																		</span> Yes <span
+																																			id="eval:AccountantRule.disableModifiers"><input
+																																				type="radio"
+																																				name="IsSpecialIssuance"
+																																				disabled="disabled"
+																																				id="IsSpecialIssuance" value="N"
+																																				tabindex="105" /> </span> <span
+																																			id="eval:AccountantRule.enableModifiers"><input
+																																				type="radio"
+																																				name="IsSpecialIssuance"
+																																				id="IsSpecialIssuance" value="N"
+																																				tabindex="106"
+																																				onclick="showSpecialIssuanceDiv();" />
+																																		</span> No</td>
+																																	</tr>
+																																</table> <!-- </div> -->
+																															</td>
+																														</tr>
+																														<tr>
+																															<td
+																																id="specialissuancecomments_freeform_contextdata_01">
+																																<div id="SpecialIssuanceCommentsDiv" Style="display:none;">
+																																	<table border="0" align="center"
+																																		cellpadding="0" cellspacing="0"
+																																		id="eval:AccountantRule.isNotCFOrInsured">
+																																		<tr>
+																																			<td nowrap="nowrap" align="right"
+																																				width="200px">Comments:&nbsp;</td>
+																																			<td align="left"><span
+																																				id="eval:AccountantRule.enableModifiers">
+																																					<textarea
+																																						name="SpecialIssuanceComments"
+																																						id="SpecialIssuanceComments"
+																																						cols="40" rows="3"
+																																						onKeyUp="limitText(this,1,8000);" />
+																																			</span> <span
+																																				id="eval:AccountantRule.disableModifiers">
+																																					<textarea
+																																						name="SpecialIssuanceComments"
+																																						id="SpecialIssuanceComments"
+																																						cols="40" rows="3"
+																																						readonly="readonly" />
+																																			</span></td>
+																																		</tr>
+																																	</table>
+																																</div>
+																															</td>
+																														</tr>
+
+																														<!--    -->
+
+																														<tr>
+																															<td align="left" valign="bottom">
+																																<table border="0" cellpadding="0"
+																																	cellspacing="0">
+																																	<tr
+																																		id="eval:AccountantRule.enableModifiers">
+																																		<td width="345px">&nbsp;</td>
+																																		<td nowrap="nowrap" class=""
+																																			style="width: 120px">
+																																			<div>
+																																				<a class="btn button1"
+																																					href="javascript:submitform('quoteOption.html','quoteOption.saveModifier','','');"
+																																					tabindex="205">Update </a>
+																																			</div>
+																																		</td>
+																																	</tr>
+																																	<tr
+																																		id="eval:AccountantRule.showRenewalModifiers">
+																																		<td width="210px">&nbsp;</td>
+																																		<td nowrap="nowrap"
+																																			style="width: 220px"
+																																			id="eval:AccountantRule.showUpdateRenewalModifierButton">
+																																			<div>
+																																				<a class="btn button1"
+																																					href="javascript:submitform('quoteOption.html','quoteOption.saveRenewModifier','','');"
+																																					tabindex="205">Update Renew
+																																					Modifiers </a>
+																																			</div>
+																																		</td>
+																																	</tr>
+																																</table>
+																															</td>
+																														</tr>
+																														<tr>
+																															<td align="center">
+																																<table>
+																																	<tr>
+																																		<td align="right" class="txt1">
+																																			&nbsp;</td>
+																																		<td align="left" valign="bottom">
+																																			<table width="60" border="0"
+																																				cellpadding="0" cellspacing="0">
+																																				<tr>
+																																					<td
+																																						id="eval:AccountantRule.isShowEditModifiers">
+																																						<div>
+																																							<a class="btn button1"
+																																								href="javascript:submitform('quoteOption.html','quoteOption.editModifiers','','');"
+																																								tabindex="7">Edit Modifiers
+																																							</a>
+																																						</div>
+																																					</td>
+																																				</tr>
+																																			</table>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2"></td>
+																																	</tr>
+																																</table>
+																															</td>
+																														</tr>
+																														<tr>
+																															<td>&nbsp;</td>
+																														</tr>
+
+
+
+																													</table>
+																												</td>
+
+																												<td valign="top"
+																													id="eval:AccountantRule.isAgent"
+																													class="cell" style="width: 53%;">
+																													<!--  "eval:AccountantRule.QuotedIssuedAcceptNot_Status"-->
+																													<table
+																														id="eval:AccountantRule.isShowGenerateAdditionalQuoteSection"
+																														cellpadding="0" cellspacing="0"
+																														width="100%">
+																														<tr>
+																															<td>
+																																<table id="QuoteOption_freeform_01"
+																																	width="100%" border="0" align="center"
+																																	cellpadding="0" cellspacing="3">
+																																	<tr>
+																																		<td colspan="2" align="left"></td>
+																																		<td align="left">
+																																			<div id="error_LimitSequence"
+																																				class="defult_tr_errors"></div>
+																																				<div id="error_duplicateQuoteError" class="error11"/>
+																																					<div id="error_limitIncreaseFlagError"	class="defult_tr_errors"/>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td width="30%" align="right"
+																																			nowrap="nowrap">Limits of
+																																			Liability</td>
+																																		<td align="right">$:</td>
+																																		<td align="left"><select
+																																			name="LimitSequence"
+																																			id="LimitSequence" class="width254"
+																																			tabindex="95"
+																																			onchange="showHideRatingLink();makeDefenseOutsideRule(this.value);">
+																																				<option value="">Select</option>
+																																		</select></td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2" align="right"></td>
+																																		<td nowrap="nowrap">
+																																			<div id="expenseTypeOption">
+
+																																				<input type="checkbox"
+																																					name="IsClaimExpensesType"
+																																					id="IsClaimExpensesType"
+																																					tabindex="96" value="Y"
+																																					onclick="checkExpenses();" />Defense
+																																				expenses paid in addition to the
+																																				limits of liability
+																																			</div>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2" align="right"></td>
+																																		<td nowrap="nowrap"><input
+																																			type="checkbox"
+																																			name="IsDollarDefense"
+																																			id="IsDollarDefense" tabindex="97"
+																																			value="Y"
+																																			onClick="showDivAreaManualPremium('IsDollarDefense','ManualPremium');" />
+																																			Calculate manual premium</td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2" align="left"></td>
+																																		<td align="left">
+																																			<div id="error_DeductibleSequence"
+																																				class="defult_tr_errors"></div>
+																																		</td>
+																																	</tr>
+																																	<tr>
+																																		<td align="right">Deductible</td>
+																																		<td align="right">$:</td>
+																																		<td align="left"><select
+																																			name="DeductibleSequence"
+																																			id="DeductibleSequence"
+																																			class="width254" tabindex="98"
+																																			onchange="showHideRatingLink();">
+																																				<option value="">Select</option>
+																																		</select></td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="2" align="right">
+																																			&nbsp;</td>
+																																		<td align="left"><input
+																																			type="checkbox"
+																																			name="IsClaimOptionType"
+																																			id="IsClaimOptionType" tabindex="99"
+																																			value="Y" /> Annual Aggregate</td>
+																																	</tr>
+																																	<tr>
+																																		<td colspan="3" align="left">
+																																			<div id="ManualPremium"
+																																				style="display: none">
+																																				<table cellpadding="0"
+																																					cellspacing="3" width="100%">
+																																					<tr>
+																																						<td width="21.5%" align="right">
+																																							Step</td>
+																																						<td width="8px">1:</td>
+																																						<td style="padding-left: 5px;">
+																																							<div id="downloadLink"
+																																								style="display: none">
+																																								<a
+																																									href="javascript:submitform('quoteOption.html','quoteOption.downloadexcelPremium','','');"
+																																									tabindex="150">Click here
+																																									to download Excel</a>
+																																							</div>
+																																							<div id="downloadLinkText"
+																																								style="display: none">
+																																								Click here to download Excel</div>
+																																						</td>
+																																					</tr>
+																																					<!-- <tr>
+																																					<td colspan="2"></td>
+																																					<td>
+																																						<div id="downloadLink"
+																																							style="display: none">
+																																							<a href="javascript:submitform('quoteOption.html','quoteOption.downloadexcelPremium','','');"
+																																								tabindex="150">Click here to
+																																								download Excel</a>
+																																						</div>
+																																						<div id="downloadLinkText"
+																																							style="display: none">
+																																							Click here to download Excel</div>
+																																					</td>
+																																				</tr> -->
+																																					<tr>
+																																						<td align="right">Step</td>
+																																						<td>2:</td>
+																																						<td style="padding-left: 5px;">Enter
+																																							Premium</td>
+																																					</tr>
+																																					<!-- <tr>
+																																					<td colspan="2"></td>
+																																					<td>Enter Premium</td>
+																																				</tr> -->
+																																					<tr>
+																																						<td colspan="2"></td>
+																																						<td>
+																																							<div id="error_ManualPremium"
+																																								class="defult_tr_errors"></div>
+																																						</td>
+																																					</tr>
+																																					<tr>
+																																						<td colspan="2"></td>
+																																						<td><input type="text"
+																																							name="ManualPremium"
+																																							id="ManualPremium" size="11"
+																																							maxlength="11" tabindex="155"
+																																							onclick="javascript:attachAmountFormat(this);"
+																																							onkeyup="limitAmountText(this,8);" />
+																																						</td>
+																																					</tr>
+																																				</table>
+																																			</div>
+																																		</td>
+																																	</tr>
+
+
+																																	<tr>
+																																		<td colspan="2" align="right">
+																																			&nbsp;</td>
+																																		<td height="50" align="left"
+																																			valign="bottom">
+																																			<table width="200" border="0"
+																																				cellpadding="0" cellspacing="5">
+																																				<tr>
+																																					<td style="width: 200px">
+																																						<div id="getLink"
+																																							style="display: none">
+																																							<a class="btn button1"
+																																								href="javascript:submitform('quoteOption.html','quoteOption.saveQuote','','');"
+																																								tabindex="210">Get Another
+																																								Quote Option</a>
+																																						</div>
+																																						<div id="saveLink"
+																																							style="display: none">
+																																							<a class="btn save"
+																																								href="javascript:submitform('quoteOption.html','quoteOption.saveQuote','','');"
+																																								tabindex="210">Save Quote</a>
+																																						</div>
+																																					</td>
+																																				</tr>
+																																			</table>
+																																		</td>
+																																	</tr>
+																																</table>
+																															</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																										</table>
+
+																									</div>
+																								</td>
+																							</tr>
+
+																						</table>
+																					</td>
+
+																				</tr>
+																				<tr id="">
+																					<td>
+																						<div id="divAy">
+																							<table width="100%" border="0" align="center"
+																								cellpadding="0" cellspacing="0">
+																								<tr>
+																									<td>
+																										<table width="100%" border="0" cellspacing="5"
+																											cellpadding="5">
+																											<tr>
+																												<td>
+																													<div id="error_FinalisedQuote"
+																														class="defult_tr_errors"></div>
+																												</td>
+																											</tr>
+																											<tr >
+																												<td>
+																													<div id="FinalDiv">
+																														<table id="QuoteOption_list_01_0"
+																															width="100%" border="0" cellpadding="0"
+																															cellspacing="0" class="gridTable">
+																															<tr id="QuoteOption_list_header_01_0">
+																																<th width="60px" align="left"><span
+																																	id="block_field_IsThisOptionFinalised">Select
+																																		a Quote</span></th>
+
+																																<th width="65px"
+																																	id="eval:AccountantRule.isAgent">
+																																	<span id="block_field_IsQuoteSelected">Is
+																																		Quote Selected</span>
+																																</th>
+																																<th width="85px"
+																																	id="block_field_InvoicedPremium">
+																																	Total Due</th>
+																																<th width="150px"
+																																	id="block_field_LimitAmount">
+																																	Limits</th>
+
+																																<th width="100px"><span
+																																	id="block_field_IsClaimExpensesType" />
+																																	<span
+																																	id="block_field_ClaimExpensesTypeText" />
+																																	Defense expenses paid</th>
+																																<th width="90px"
+																																	id="block_field_DeductibleAmount">
+																																	Deductibles</th>
+																																<th width="85px"
+																																	id="block_field_IsClaimOptionType">
+																																</th>
+																																<th width="80px"
+																																	id="eval:AccountantRule.isAgent">
+																																	<span
+																																	id="block_field_TotalPolicyModifierPercentage">Total
+																																		Modifiers</span>
+																																</th>
+																																<th width="70px"
+																																	id="eval:AccountantRule.isAgent">
+																																	<span
+																																	id="block_field_TotalPolicyTaxAmount"></span>
+																																	Tax amount
+																																</th>
+
+																																<th width="90px"
+																																	id="eval:AccountantRule.isAgent">
+																																	<span id="block_field_TotalPremium" />
+																																	Total Premium
+																																</th>
+
+																																<th width="65px"
+																																	id="eval:AccountantRule.isAgent">
+																																	<span
+																																	id="block_field_IsDollarDefenseText">Type</span>
+																																</th>
+																																<th width="21px" align="left"
+																																	id="eval:AccountantRule.isAgent">
+																																	<span id="block_field_delete_row_link">
+																																		&nbsp;</span>
+																																</th>
+																																<th width="21px" align="left"
+																																	id="eval:AccountantRule.isAgent">
+																																	<span
+																																	id="block_field_downloadrating_row_link">
+																																		&nbsp;</span>
+																																</th>
+																															</tr>
+																															<tbody id="QuoteOption_list_mom_data_01_0">
+																																<tr id="mom_child_data">
+
+
+																																	<td width="60px"><span
+																																		id="eval:AccountantRule.enableIsThisOptionFinalised">
+																																			<span
+																																			id="block_field_IsThisOptionFinalised"><input
+																																				type="radio"
+																																				name="IsThisOptionFinalised"
+																																				id="IsThisOptionFinalised" value="Y"
+																																				onclick="javascript:submitform('quoteOption.html','quoteOption.finaliseQuote','','');"></input>
+																																		</span>
+																																	</span> <span
+																																		id="eval:AccountantRule.disableIsThisOptionFinalised">
+																																			<span
+																																			id="block_field_IsThisOptionFinalised"><input
+																																				type="radio"
+																																				name="IsThisOptionFinalised"
+																																				id="IsThisOptionFinalised" value="Y"
+																																				disabled="disabled" /> </span>
+																																	</span></td>
+																																	<td width="65px"
+																																		id="eval:AccountantRule.isAgent">
+																																		<span
+																																		id="eval:AccountantRule.enableIsQuoteSelected">
+																																			<span
+																																			id="block_field_IsQuoteSelected"><input
+																																				name="IsQuoteSelected"
+																																				type="checkbox" id="IsQuoteSelected"
+																																				size="10" maxlength="3" tabindex="1"
+																																				onclick="javascript:submitform('quoteOption.html','quoteOption.selectQuote','','');" />
+																																		</span>
+																																	</span> <span
+																																		id="eval:AccountantRule.disableIsQuoteSelected">
+																																			<span
+																																			id="block_field_IsQuoteSelected"><input
+																																				name="IsQuoteSelected"
+																																				type="checkbox" id="IsQuoteSelected"
+																																				disabled="disabled" size="10"
+																																				maxlength="3" tabindex="1" />
+																																		</span>
+																																	</span>
+
+																																	</td>
+																																	<td width="85px"
+																																		id="block_field_InvoicedPremium"></td>
+																																	<td id="block_field_LimitAmount"></td>
+																																	<td width="90px">
+																																		<!-- <span id="block_field_IsClaimExpensesType"/>
+																																				<span>&nbsp;</span> -->
+																																		<span
+																																		id="block_field_ClaimExpensesTypeText" />
+																																	</td>
+																																	<td width="80px"
+																																		id="block_field_DeductibleAmount"></td>
+																																	<td width="75px"
+																																		id="block_field_IsClaimOptionType"></td>
+																																	<td width="70px"
+																																		id="eval:AccountantRule.isAgent">
+																																		<span
+																																		id="block_field_TotalPolicyModifierPercentage"></span>
+																																	</td>
+																																	<td width="60px"
+																																		id="eval:AccountantRule.isAgent">
+																																		<span
+																																		id="block_field_TotalPolicyTaxAmount" />
+																																	</td>
+
+																																	<td width="80px"
+																																		id="eval:AccountantRule.isAgent">
+																																		<span id="block_field_TotalPremium" />
+																																	</td>
+
+																																	<td width="55px"
+																																		id="eval:AccountantRule.isAgent">
+																																		<span
+																																		id="block_field_IsDollarDefenseText"></span>
+																																	</td>
+																																	<td width="21px" align="center"
+																																		id="eval:AccountantRule.isAgent">
+																																		<span
+																																		id="eval:AccountantRule.DeclineNotAcceptCancelled_StatusNot">
+																																			<span
+																																			id="eval:AccountantRule.showOptionOptionDeleteLink">
+																																				<span
+																																				id="block_field_delete_row_link"><a
+																																					href="javascript:submitform('quoteOption.html','quoteOption.deleteQuote','','');"
+																																					class="Link_blue"><img
+																																						src="img/cross.gif" width="16"
+																																						height="17" border="0"
+																																						title="Delete" /> </a> </span>
+																																		</span>
+																																	</span>
+																																	</td>
+																																	<td width="21px" align="center"
+																																		id="eval:AccountantRule.isAgent">
+																																		<span
+																																		id="eval:AccountantRule.DeclineNotAcceptCancelled_StatusNot">
+																																			<span
+																																			id="eval:AccountantRule.showRatingDownload">
+																																				<span
+																																				id="block_field_downloadrating_row_link"><a
+																																					href="javascript:submitform('quoteOption.html','quoteOption.downloadpdfrating','','');"
+																																					class="Link_blue"><img
+																																						src="img/icon_location.gif"
+																																						title="Download Rating"
+																																						alt="Download Rating" width="15"
+																																						height="17" border="0" /> </a> </span>
+																																		</span>
+																																	</span>
+																																	</td>
+																																</tr>
+																															</tbody>
+
+																														</table>
+																													</div>
+																												</td>
+																											</tr>
+																										</table>
+
+																									</td>
+																								</tr>
+																							</table>
+																						</div>
+																						<div id="divAn" class="hide"></div>
+																						
+																						<div id="endorsementTransactionVisbility_security">
+																						<br/>
+																						<div style="font-weight:bold;">Endorsement Transactions :<br/></div>
+																						<table id="QuoteOption_list_01_1"
+																								width="100%" border="0" cellpadding="0"
+																								cellspacing="0" class="border1">
+											
+																								<tr id="QuoteOption_list_header_01_1">
+																									<td>
+																										<div  class="table-responsive">
+																										<table width="100%" border="0"
+																											align="left" class="gridTable" cellpadding="0"
+																											cellspacing="0">
+																											<tr>
+																												
+																												<th width="60"
+																													id="">
+																													<span
+																													id="block_field_TransactionTypeDesc">Transaction Type</span>
+																													
+																												</th>
+																												<th width="60"
+																													id="">
+																													<span
+																													id="block_field_EndorsementEffectiveDate">Endorsement Effective Date</span>
+																													
+																												</th>
+																												<th width="60"
+																													id="">
+																													<span
+																													id="block_field_EndorsementIssuedDate">Endorsement Issued Date</span>
+																													
+																												</th>
+																												<th width="90"
+																													id="block_field_InvoicedPremium">
+																													Total Due</th>
+																												<th width="220"
+																													id="block_field_LimitAmount">
+																													Limits</th>
+																												<th width="100"
+																													id="block_field_ClaimExpensesTypeText_row_link" >
+																													Defense expenses </th>
+																												<th width="90"
+																													id="block_field_DeductibleAmount">
+																													Deductibles</th>
+																												<th width="90" id="block_field_IsClaimOptionType">
+																													</th>
+																												<th width="90"
+																													id="block_field_IsDollarDefenseText">
+																													Loss Only Deductible</th>
+																												<th width="90"
+																													id="eval:AccountantRule.isAgent">
+																													<span id="totalModifiersSubproducer_security">
+																													<span
+																													id="block_field_TotalPolicyModifierPercentage">Total
+																														Modifiers</span>
+																														</span>
+																												</th>
+																												<th width="90" id="eval:AccountantRule.isAgent">
+																												<span id="block_field_TotalPolicyTaxAmount">
+																													Tax amount</span></th>
+																												<th width="90"
+																													id="block_field_TotalPremium">
+																													Premium</th>
+											
+											
+																												
+																												<th width="90"
+																													id="eval:AccountantRule.isAgent">
+																													<span
+																													id="block_field_IsManualPremiumText">Type</span>
+																												</th>
+																												
+											
+											
+																											</tr>
+																											<tbody
+																												id="QuoteOption_list_mom_data_01_1">
+																												<tr id="mom_child_data">
+																													
+																													<td id="block_field_TransactionTypeDesc">
+																													
+																													</td>
+																													<td id="block_field_EndorsementEffectiveDate">
+																													
+																													</td>
+																													<td id="block_field_EndorsementIssuedDate">
+																													
+																													</td>
+																													<td width="90"
+																														id="block_field_InvoicedPremium"></td>
+																													<td width="210"
+																														id="block_field_LimitAmount"></td>
+											
+																													<td width="100" id="block_field_ClaimExpensesTypeText">
+																													
+																														</span>
+																														</td>
+																													<td width="90"
+																														id="block_field_DeductibleAmount"></td>
+																													<td width="90"
+																														id="block_field_IsClaimOptionType"></td>
+																													<td width="90"
+																														id="block_field_IsDollarDefenseText"></td>
+																													<td width="90"
+																														id="eval:AccountantRule.isAgent">
+																														<span id="totalModifiersSubproducer_security">
+																														<span
+																														id="block_field_TotalPolicyModifierPercentage"></span>
+																														</span>
+																													</td>
+																													<td width="90" id="eval:AccountantRule.isAgent">
+																														<span id="block_field_TotalPolicyTaxAmount"></span>
+																														</td>
+																													<td width="90"
+																														id="block_field_TotalPremium"></td>
+																													<!-- <td width="90"
+																														style="border-right: 1px solid #cccccc; padding-left: 2px"
+																														id="block_field_InvoicedPremium"></td> -->
+																													<td width="90"
+																														id="eval:AccountantRule.isAgent">
+																														<span
+																														id="block_field_IsManualPremiumText"></span>
+																													</td>
+																											
+											
+											
+											
+											
+																												</tr>
+																											</tbody>
+																										</table>
+																										</div>
+																									</td>
+																								</tr>
+																							</table>
+																						</div>
+																					</td>
+																				</tr>
+																				<tr>
+																					<td align="center"><span class="Confirmation"
+																						id="UWReview_freeform_contextdata_1000"> <label
+																							style="padding-left: 5px; font-weight: bold; line-height: 20px; color: green;"
+																							name="pageMsgComment" id="pageMsgComment" />
+																					</span></td>
+
+																				</tr>
+																				<tr>
+																					<td>
+																						<div id="eval:AccountantRule.isAgent">
+																							<table border="0" align="center" cellpadding="0"
+																								cellspacing="0"
+																								id="QuoteComment_freeform_contextdata_99">
+																								<tr>
+																									<td nowrap>This quotation is subject to
+																										the following conditions:&nbsp;</td>
+																									<td id="eval:AccountantRule.enableQuoteComment">
+																										<textarea name="QuoteComment"
+																											id="QuoteComment" cols="90" rows="3"
+																											onKeyUp="limitText(this,1,8000);" />
+																									</td>
+																									<td
+																										id="eval:AccountantRule.disableQuoteComment">
+																										<textarea name="QuoteComment"
+																											id="QuoteComment" cols="90" rows="3"
+																											readonly="readonly" />
+																									</td>
+																									<td>&nbsp;&nbsp;</td>
+																									<!-- new save button -->
+																									<td id="eval:AccountantRule.showCommentButton">
+																										<div>
+																											<div style="width: 98px">
+																												<a class="btn save"
+																													href="javascript:submitform('quoteOption.html','quoteOption.saveComment','','');"
+																													tabindex="43">Save</a>
+																											</div>
+																										</div>
+																									</td>
+																								</tr>
+																							</table>
+																						</div>
+																					</td>
+																				</tr>
+																				<tr>
+																					<td height="50">
+																						<table border="0" width="100%" cellpadding="0"
+																							cellspacing="0">
+																							<tr>
+																								<td>&nbsp;</td>
+																								<td>&nbsp;</td>
+																							</tr>
+																							<tr>
+
+																								<td colspan="2">
+
+																									<div id="QuoteDiv"></div>
+																									<div class="buttons borderTop row"
+																										style="display: block;">
+																										<div align="center">
+																											<table>
+																												<tr>
+																													<td id="eval:AccountantRule.isAgent">
+																														<table>
+																															<tr>
+																																<!-- <td id="eval:AccountantRule.DeclineNotAcceptCancelled_StatusNot"> -->
+																																<td id="PremiumVisibility_security">
+						 																											<span id="">
+																																	<span id="eval:AccountantRule.showViewQuoteLetterButton">
+																																	<span id="eval:AccountantRule.isQuoteEffectiveDateCheck"> 
+																																		<a class="btn button1" href="javascript:submitform('quoteOption.html','quoteOption.downloadViewQuoteLetterPDF','','');"
+																																		tabindex="210">View Quote Letter</a>
+																																	</span>
+																																	</span>
+																																	</span>
+																																</td>
+																																<td id="PremiumVisibility_security">
+					 																											<div id="eval:AccountantRule.isPolicySendQuoteOrIssueForCompany">
+																																<div id="eval:AccountantRule.showSendQuoteLetterButton">
+																																	<div id="eval:AccountantRule.isNotFollowUWFlow">
+																																		<div id="eval:AccountantRule.isRatingsApproved">
+																																			<span id="eval:AccountantRule.isQuoteEffectiveDateCheck"> <a class="btn button1"
+																																				href="javascript:submitform('quoteOption.html','quoteOption.sendquoteletter','','');"
+																																				tabindex="211">Send Quote Letter</a>
+																																			</span>
+																																		</div>
+																																	</div>
+																																</div>
+																																</div>
+																																</td>
+																																<td id="PremiumVisibility_security">
+																																	<span	id="eval:AccountantRule.isNotFollowUWFlow">
+																																	<span
+																																	id="eval:AccountantRule.IsManagementAndNotQuoted">
+																																		<!-- eval:AccountantRule.IssuedAcceptNot_Status -->
+																																		<span
+																																		id="eval:AccountantRule.DeclineNotAcceptCancelled_StatusNot">
+																																			<span
+																																			id="eval:AccountantRule.isNotShowChangeToQuoted">
+																																				<a class="btn button1"
+																																				href="javascript:submitform('quoteOption.html','quoteOption.changestatustoquoted','','');"
+																																				tabindex="211">Change to Quoted</a>
+																																		</span></span>
+																																	</span>
+																																</span>
+																																</td>
+
+																																<!-- <td
+																													id="eval:AccountantRule.isUnderreviewNot">
+																													<span
+																													id="eval:AccountantRule.DeclineNotAcceptCancelled_StatusNot">
+																														<span class="button4"><a
+																															href="javascript:submitform('registration.html|BasicInfo.html|quoteOption.html|confirmation.html','quoteOption.continue','forwardeval','AccountantRule.showRegistrationPage|AccountantRule.isQuotationExpiredAndInsured|AccountantRule.isQuotationExpiredAndAgentOrUnderreview|AccountantRule.isQuotationNotExpired');"
+																															tabindex="212" class="button4"
+																															style="width: 150px">Continue</a> </span>
+																												</span>
+																												</td> -->
+																																<td
+																																	id="eval:AccountantRule.isChangeStatusVisibile">
+																																	<div
+																																		id="eval:AccountantRule.ShowWanttoChangeButton">
+																																		<div
+																																			id="eval:AccountantRule.isManagementOrAccountRepOrUnderwriter">
+																																			<div>
+																																				<a class="btn button1"
+																																					href="javascript:submitform('quoteOption.html','quoteOption.changeapplication','','');">Want
+																																					to Change Application?</a>
+																																			</div>
+																																		</div>
+																																	</div>
+																																</td>
+																																<td
+																																	id="eval:AccountantRule.isFollowUWFlow">
+																																	<span id="eval:AccountantRule.isInternalOrPartenerUser">
+																																	<a class="btn button1"
+																																	href="javascript:submitform('quoteOption.html','quoteOption.toUWReview','','');"
+																																	tabindex="46">Change to UW Review</a>
+																																	</span>
+																																</td>
+
+																															</tr>
+																														</table>
+																													</td>
+																													<td
+																														id="eval:AccountantRule.showContinueButton">
+																														<div id="eval:AccountantRule.isStateAllowToIssuePolicy">
+																														<div id="1eval:AccountantRule.isIssueNYPolicy">
+																															<a class="btn save"
+																															href="javascript:submitform('indexThanksPayment.html|confirmation.html|quoteOption.html|BasicInfo.html','quoteOption.continueFurther','forwardeval','AccountantRule.isNotEmptyPaymentDetailListData|AccountantRule.showConfirmationPage29Days|AccountantRule.isQuotationExpiredAndInsured|AccountantRule.isQuotationExpiredAndAgent');"
+																															tabindex="212">Continue</a>
+																														</div></div>
+																													</td>
+																												</tr>
+																											</table>
+																										</div>
+																									</div>
+																								</td>
+
+																							</tr>
+																						</table>
+
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+
+																</table>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tr>
+																		<td width="16"><img src="img/bottombg.jpg"
+																			width="16" height="59" /></td>
+																		<td align="center" background="img/bottombg.jpg"
+																			class="topLink">Copyright 2026, Protexure. All rights reserved.</td>
+																		<td width="16"><img src="img/bottombg.jpg"
+																			width="16" height="59" /></td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+
+					</table>
+				</td>
+			</tr>
+		</table>
+
+		<table id="QuoteOption_freeform_contextdata_17">
+			<tr>
+				<td>
+					<input type="hidden" name="jsessionid" id="jsessionid" />
+						<!-- This is for javascript --> 
+					<input type="hidden" name="StateCode" id="StateCode" />
+					<input type="hidden" name="NoneISMIEStateShowQuotePage" id="NoneISMIEStateShowQuotePage" />
+					
+				</td>
+			</tr>
+			<tr><td><input type="hidden" name="expenseType" id="expenseType" /> </td></tr>
+		</table>
+		<input type="hidden" name="divHideShow" value="" /> <input
+			type="hidden" name="ctxmenuparam" value="" />
+
+
+	</form>
+	<div class="calendar_widget" id="calendar_widget">
+		<iframe id="calendar_widget_iframe" name="calendar_widget_iframe"
+			src="calendar_widget.html" frameborder="0" />
+	</div>
+
+</body>
+<script>
+	var noneISMIEStateShowQuotePage = $("#NoneISMIEStateShowQuotePage").val();
+	if(noneISMIEStateShowQuotePage == "Y"){
+		showPopUpOverloaded('noneISMIEStateShowQuotePage','500','400');
+	}
+</script>
+</html>

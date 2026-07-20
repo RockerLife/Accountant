@@ -1,0 +1,555 @@
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Untitled Document</title>
+<script src="js/jquery.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+	<body>
+		<form>
+
+			
+				<div id="eval:AccountantRule.IsNotRenewalPolicy">
+				<div id="servedastrustee_freeform">
+					<table width="94%" border="0" align="center" cellpadding="2"
+						cellspacing="0" id="servedastrustee_freeform_contextdata_01">
+
+						<!-- <tr>
+                                                <td colspan="3" ><div id="ajax_errors_list"></div></td>
+                                              </tr>-->
+						<tr>
+							<td width="350" align="right">
+								&nbsp;
+							</td>
+							<td align="left" colspan="2">
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_NameOfTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Name of Trust or Estate:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="NameOfTrust" type="text" disabled="disabled"
+										class="inputbox" size="50" id="ajax_field_NameOfTrust" />
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox" name="NameOfTrust"
+										size="50" maxlength="100" id="ajax_field_NameOfTrust"
+										tabindex="105"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_StartEngagemenTrusttDate"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Start Date of Engagement :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="StartEngagemenTrusttDate" type="text" size="10"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_StartEngagemenTrusttDate" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox" maxlength="8"
+										name="StartEngagemenTrusttDate" size="10"
+										id="ajax_field_StartEngagemenTrusttDate" tabindex="106"
+										onkeyup="applyDateFormat(this,event);" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" /> </a>(MM/DD/YYYY)
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_TypeofTrustKey"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right" nowrap="nowrap">
+								Type :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<select disabled="disabled" name="TypeofTrustKey"
+										id="ajax_field_TypeofTrustKey" class="inputbox">
+										<option value="">
+											Select
+										</option>
+									</select>
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<select name="TypeofTrustKey" id="ajax_field_TypeofTrustKey"
+										class="inputbox" tabindex="107">
+										<option value="">
+											Select
+										</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_ValueOfAssetsTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Value of Assets :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="ValueOfAssetsTrust" type="text"
+										disabled="disabled" class="inputbox"
+										onClick="javascript:attachAmountFormat(this);"
+										id="ajax_field_ValueOfAssetsTrust" size="20" maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox" name="ValueOfAssetsTrust"
+										id="ajax_field_ValueOfAssetsTrust" size="20" maxlength="20"
+										onClick="javascript:attachAmountFormat(this);"
+										onKeyUp="limitAmountText(this,15);" tabindex="108" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_AnnualIncomeofAssetsTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Annual Income of Assets :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="AnnualIncomeofAssetsTrust" type="text"
+										disabled="disabled" class="inputbox"										
+										id="ajax_field_AnnualIncomeofAssetsTrust" size="20"
+										maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox"
+										name="AnnualIncomeofAssetsTrust"									
+										id="ajax_field_AnnualIncomeofAssetsTrust" size="20"
+										maxlength="20" onKeyUp="limitAmountText(this,15);"
+										tabindex="109" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_NumberOfBeneficiariesTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Number of Beneficiaries :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="NumberOfBeneficiariesTrust" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_NumberOfBeneficiariesTrust" size="9"
+										maxlength="9" />
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox"
+										name="NumberOfBeneficiariesTrust"
+										id="ajax_field_NumberOfBeneficiariesTrust" size="9"
+										maxlength="9" tabindex="110" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_IsBeneficiaryInterestTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Beneficiary Interest :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input type="radio" disabled="disabled"
+										name="IsBeneficiaryInterestTrust"
+										id="ajax_field_IsBeneficiaryInterestTrust" value="Y" />
+									Yes
+									<input type="radio" disabled="disabled"
+										name="IsBeneficiaryInterestTrust"
+										id="ajax_field_IsBeneficiaryInterestTrust" value="N" />
+									No
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="radio" name="IsBeneficiaryInterestTrust"
+										id="ajax_field_IsBeneficiaryInterestTrust" value="Y"
+										tabindex="111" />
+									Yes
+									<input type="radio" name="IsBeneficiaryInterestTrust"
+										id="ajax_field_IsBeneficiaryInterestTrust" value="N"
+										tabindex="112" />
+									No
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td align="left" colspan="2">
+								<table border="0" cellspacing="0" cellpadding="1">
+									<tr>
+										<td align="left" id="eval:events.saveEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isGeneralPageNotReadOnly">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('general.html','servedastrustee_freeform.save','','','divFy');"
+															class="button4"
+															onClick="closeErrorDiv('IsServedAsTrustee'); showDivArea(['editN'], ['editY']); setFocus('IsServedAsTrustee');"
+															tabindex="115">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left" id="eval:events.editEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isGeneralPageNotReadOnly">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('general.html','servedastrustee_freeform.update','','','divFy');"
+															onClick="setFocus('IsServedAsTrustee');" class="button4"
+															tabindex="116">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left">
+											<table border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('general.html','servedastrustee_freeform.close','','','divFy');"
+															onClick="setFocus('IsServedAsTrustee');" class="button4"
+															tabindex="117">Cancel</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+
+
+			
+				<div id="eval:AccountantRule.IsRenewalPolicy">
+					<div id="servedastrustee_freeform">
+					<table width="94%" border="0" align="center" cellpadding="2"
+						cellspacing="0" id="servedastrustee_freeform_contextdata_02">
+
+						<!-- <tr>
+                                                <td colspan="3" ><div id="ajax_errors_list"></div></td>
+                                              </tr>-->
+						<tr>
+							<td width="350" align="right">
+								&nbsp;
+							</td>
+							<td align="left" colspan="2">
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_NameOfTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Name of Trust or Estate:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="NameOfTrust" type="text" disabled="disabled"
+										class="inputbox" size="50" id="ajax_field_NameOfTrust" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="NameOfTrust"
+										size="50" maxlength="100" id="ajax_field_NameOfTrust"
+										tabindex="105"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_StartEngagemenTrusttDate"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Start Date of Engagement :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="StartEngagemenTrusttDate" type="text" size="10"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_StartEngagemenTrusttDate" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" maxlength="8"
+										name="StartEngagemenTrusttDate" size="10"
+										id="ajax_field_StartEngagemenTrusttDate" tabindex="106"
+										onkeyup="applyDateFormat(this,event);" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" /> </a>(MM/DD/YYYY)
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_TypeofTrustKey"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right" nowrap="nowrap">
+								Type :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<select disabled="disabled" name="TypeofTrustKey"
+										id="ajax_field_TypeofTrustKey" class="inputbox">
+										<option value="">
+											Select
+										</option>
+									</select>
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<select name="TypeofTrustKey" id="ajax_field_TypeofTrustKey"
+										class="inputbox" tabindex="107">
+										<option value="">
+											Select
+										</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_ValueOfAssetsTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Value of Assets :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="ValueOfAssetsTrust" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_ValueOfAssetsTrust" size="20" maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ValueOfAssetsTrust"
+										id="ajax_field_ValueOfAssetsTrust" size="20" maxlength="20"
+										onKeyUp="limitAmountText(this,15);" tabindex="108" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_AnnualIncomeofAssetsTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Annual Income of Assets :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="AnnualIncomeofAssetsTrust" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_AnnualIncomeofAssetsTrust" size="20"
+										maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox"
+										name="AnnualIncomeofAssetsTrust"
+										id="ajax_field_AnnualIncomeofAssetsTrust" size="20"
+										maxlength="20" onKeyUp="limitAmountText(this,15);"
+										tabindex="109" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_NumberOfBeneficiariesTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Number of Beneficiaries :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="NumberOfBeneficiariesTrust" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_NumberOfBeneficiariesTrust" size="9"
+										maxlength="9" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox"
+										name="NumberOfBeneficiariesTrust"
+										id="ajax_field_NumberOfBeneficiariesTrust" size="9"
+										maxlength="9" tabindex="110" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_IsBeneficiaryInterestTrust"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Beneficiary Interest :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input type="radio" disabled="disabled"
+										name="IsBeneficiaryInterestTrust"
+										id="ajax_field_IsBeneficiaryInterestTrust" value="Y" />
+									Yes
+									<input type="radio" disabled="disabled"
+										name="IsBeneficiaryInterestTrust"
+										id="ajax_field_IsBeneficiaryInterestTrust" value="N" />
+									No
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="radio" name="IsBeneficiaryInterestTrust"
+										id="ajax_field_IsBeneficiaryInterestTrust" value="Y"
+										tabindex="111" />
+									Yes
+									<input type="radio" name="IsBeneficiaryInterestTrust"
+										id="ajax_field_IsBeneficiaryInterestTrust" value="N"
+										tabindex="112" />
+									No
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+							<td align="left" colspan="2">
+								<table border="0" cellspacing="0" cellpadding="1">
+									<tr>
+										<td align="left" id="eval:events.saveEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('RenewBasicInfo.html','servedastrustee_freeform.renewSave','','','divFy');"
+															class="button4"
+															onClick="closeErrorDiv('IsServedAsTrustee'); showDivArea(['editN'], ['editY']); setFocus('IsServedAsTrustee');"
+															tabindex="115">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left" id="eval:events.editEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('RenewBasicInfo.html','servedastrustee_freeform.renewUpdate','','','divFy');"
+															onClick="setFocus('IsServedAsTrustee');" class="button4"
+															tabindex="116">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left">
+											<table border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('RenewBasicInfo.html','servedastrustee_freeform.renewClose','','','divFy');"
+															onClick="setFocus('IsServedAsTrustee');" class="button4"
+															tabindex="117">Cancel</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+
+
+
+			<table id="servedastrustee_freeform_contextdata_15">
+				<tr>
+					<td>
+						<input type="hidden" name="jsessionid" id="jsessionid" />
+						
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

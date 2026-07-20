@@ -1,0 +1,61 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ServerTrusteeSupp">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from ServerTrusteeSupp</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from ServerTrusteeSupp</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into ServerTrusteeSupp(
+          <dynamic prepend=" ">
+               <isNotEmpty property="NameOfTrust" prepend=",">NameOfTrust</isNotEmpty>
+               <isNotEmpty property="StartEngagemenTrusttDate" prepend=",">StartEngagemenTrusttDate</isNotEmpty>
+               <isNotEmpty property="ValueOfAssetsTrust" prepend=",">ValueOfAssetsTrust</isNotEmpty>
+               <isNotEmpty property="AnnualIncomeofAssetsTrust" prepend=",">AnnualIncomeofAssetsTrust</isNotEmpty>
+               <isNotEmpty property="NumberOfBeneficiariesTrust" prepend=",">NumberOfBeneficiariesTrust</isNotEmpty>
+               <isNotEmpty property="IsBeneficiaryInterestTrust" prepend=",">IsBeneficiaryInterestTrust</isNotEmpty>
+               <isNotEmpty property="TypeofTrustKey" prepend=",">TypeofTrustKey</isNotEmpty>
+               <isNotEmpty property="TypeofTrustDesc" prepend=",">TypeofTrustDesc</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="NameOfTrust" prepend=",">#NameOfTrust#</isNotEmpty>
+               <isNotEmpty property="StartEngagemenTrusttDate" prepend=",">#StartEngagemenTrusttDate#</isNotEmpty>
+               <isNotEmpty property="ValueOfAssetsTrust" prepend=",">#ValueOfAssetsTrust#</isNotEmpty>
+               <isNotEmpty property="AnnualIncomeofAssetsTrust" prepend=",">#AnnualIncomeofAssetsTrust#</isNotEmpty>
+               <isNotEmpty property="NumberOfBeneficiariesTrust" prepend=",">#NumberOfBeneficiariesTrust#</isNotEmpty>
+               <isNotEmpty property="IsBeneficiaryInterestTrust" prepend=",">#IsBeneficiaryInterestTrust#</isNotEmpty>
+               <isNotEmpty property="TypeofTrustKey" prepend=",">#TypeofTrustKey#</isNotEmpty>
+               <isNotEmpty property="TypeofTrustDesc" prepend=",">#TypeofTrustDesc#</isNotEmpty>
+          </dynamic>
+          )
+          <selectKey resultClass="int" keyProperty="TrusteeOrEstateSuppKey">SELECT IDENT_CURRENT('ServerTrusteeSupp') as last_insert_id</selectKey>
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select TrusteeOrEstateSuppKey, NameOfTrust, StartEngagemenTrusttDate, ValueOfAssetsTrust, AnnualIncomeofAssetsTrust, NumberOfBeneficiariesTrust, IsBeneficiaryInterestTrust, TypeofTrustKey, TypeofTrustDesc from ServerTrusteeSupp where TrusteeOrEstateSuppKey = #TrusteeOrEstateSuppKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update ServerTrusteeSupp set
+          <dynamic prepend=" ">
+               <isNotEmpty property="NameOfTrust" prepend=",">NameOfTrust = #NameOfTrust#</isNotEmpty>
+               <isEmpty property="NameOfTrust" prepend=",">NameOfTrust = null</isEmpty>
+               <isNotEmpty property="StartEngagemenTrusttDate" prepend=",">StartEngagemenTrusttDate = #StartEngagemenTrusttDate#</isNotEmpty>
+               <isEmpty property="StartEngagemenTrusttDate" prepend=",">StartEngagemenTrusttDate = null</isEmpty>
+               <isNotEmpty property="ValueOfAssetsTrust" prepend=",">ValueOfAssetsTrust = #ValueOfAssetsTrust#</isNotEmpty>
+               <isEmpty property="ValueOfAssetsTrust" prepend=",">ValueOfAssetsTrust = null</isEmpty>
+               <isNotEmpty property="AnnualIncomeofAssetsTrust" prepend=",">AnnualIncomeofAssetsTrust = #AnnualIncomeofAssetsTrust#</isNotEmpty>
+               <isEmpty property="AnnualIncomeofAssetsTrust" prepend=",">AnnualIncomeofAssetsTrust = null</isEmpty>
+               <isNotEmpty property="NumberOfBeneficiariesTrust" prepend=",">NumberOfBeneficiariesTrust = #NumberOfBeneficiariesTrust#</isNotEmpty>
+               <isEmpty property="NumberOfBeneficiariesTrust" prepend=",">NumberOfBeneficiariesTrust = null</isEmpty>
+               <isNotEmpty property="IsBeneficiaryInterestTrust" prepend=",">IsBeneficiaryInterestTrust = #IsBeneficiaryInterestTrust#</isNotEmpty>
+               <isEmpty property="IsBeneficiaryInterestTrust" prepend=",">IsBeneficiaryInterestTrust = null</isEmpty>
+               <isNotEmpty property="TypeofTrustKey" prepend=",">TypeofTrustKey = #TypeofTrustKey#</isNotEmpty>
+               <isEmpty property="TypeofTrustKey" prepend=",">TypeofTrustKey = null</isEmpty>
+               <isNotEmpty property="TypeofTrustDesc" prepend=",">TypeofTrustDesc = #TypeofTrustDesc#</isNotEmpty>
+               <isEmpty property="TypeofTrustDesc" prepend=",">TypeofTrustDesc = null</isEmpty>
+          </dynamic>
+          where TrusteeOrEstateSuppKey = #TrusteeOrEstateSuppKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from ServerTrusteeSupp where TrusteeOrEstateSuppKey = #TrusteeOrEstateSuppKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from ServerTrusteeSupp</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from ServerTrusteeSupp</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select TrusteeOrEstateSuppKey, NameOfTrust, StartEngagemenTrusttDate, ValueOfAssetsTrust, AnnualIncomeofAssetsTrust, NumberOfBeneficiariesTrust, IsBeneficiaryInterestTrust, TypeofTrustKey, TypeofTrustDesc from ServerTrusteeSupp where TrusteeOrEstateSuppKey = #TrusteeOrEstateSuppKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select TrusteeOrEstateSuppKey, NameOfTrust, StartEngagemenTrusttDate, ValueOfAssetsTrust, AnnualIncomeofAssetsTrust, NumberOfBeneficiariesTrust, IsBeneficiaryInterestTrust, TypeofTrustKey, TypeofTrustDesc from ServerTrusteeSupp</select>
+</sqlMap>
+

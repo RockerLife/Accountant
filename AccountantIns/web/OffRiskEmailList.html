@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>OffRiskEmailList</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/account.js"></script>
+<script src="js/bootstrap_3-3-6.js"></script>
+<script language="javascript" src="script/lawyers.js"></script>
+<script type="text/javascript" src="script/tabber.js"></script>
+<script type="text/javascript" src="script/test_new.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script src="js/producerOne.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+<body>
+	<form>
+<div id="contextLinks"></div>
+<div class="container-fluid bootstrap-node-1">
+	<div class="tableWidth">
+		<div id="header">
+			<span id="#Include:headerNewApp.html#"></span>
+		</div>
+		<div id="contentSection">
+			<h2 class="questionHeading">
+				Off Risk
+			</h2>
+			<div class="form">
+				<div class="block-form">
+					<div class="freeFormDiv form-inline" id="searchoffrisk_freeform_contextdata_01">
+						<ul class="inlineBlock">
+							<li class="inlineBlock_2">
+								<div class="freeFormList form-group">
+									<div class="freeFormListTr">
+										<div class="freeFormListTdError">
+											<h6>&nbsp;</h6>
+										</div>
+										<div class="freeFormListTdError paddingLeft3">
+											<span id="" class="error"></span>
+										</div>
+									</div>
+									<div class="freeFormListTr">
+										<div class="freeFormListTd labelAlign freeFormLabelWidth">From Policy Expiration Date :</div>
+										<div class="freeFormListTd tdInput iconsStyle2">
+											<span class="input-group-addon "><i
+												class="fa fa-calendar">&nbsp;</i></span> 
+											<input
+												name="PolicyExpirationDate_From" type="text"
+												class="form-control datepicker" id="PolicyExpirationDate"
+												size="13" maxlength="10"
+												onkeyup="applyDateFormat(this,event);"
+												placeholder="(MM/DD/YYYY)" />
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="inlineBlock_2">
+								<div class="freeFormList form-group">
+									<div class="freeFormListTr">
+										<div class="freeFormListTdError">
+											<h6>&nbsp;</h6>
+										</div>
+										<div class="freeFormListTdError paddingLeft3">
+											<span id="" class="error"></span>
+										</div>
+									</div>
+									<div class="freeFormListTr">
+										<div class="freeFormListTd labelAlign freeFormLabelWidth">To Policy Expiration Date :</div>
+										<div class="freeFormListTd tdInput iconsStyle2">
+											<span class="input-group-addon "><i
+												class="fa fa-calendar">&nbsp;</i></span> 
+											<input
+												name="PolicyExpirationDate_To" type="text"
+												class="form-control datepicker" id="PolicyExpirationDate_To"
+												size="13" maxlength="10"
+												onkeyup="applyDateFormat(this,event);"
+												placeholder="(MM/DD/YYYY)" />
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="inlineBlock_2">
+								<div class="freeFormList form-group">
+									<div class="freeFormListTr">
+										<div class="freeFormListTdError">
+											<h6>&nbsp;</h6>
+										</div>
+										<div class="freeFormListTdError paddingLeft3">
+											<span id="" class="error"></span>
+										</div>
+									</div>
+									<div class="freeFormListTr">
+										<div class="freeFormListTd labelAlign freeFormLabelWidth">Status :</div>
+										<div class="freeFormListTd tdInput">
+											<select name="SubProducerStatus" id="SubProducerStatus"  class="form-control">
+												<option value="">
+													Select
+												</option>
+												<option value="1">
+													With ProducerCode
+												</option>
+												<option value="2">
+													Without ProducerCode
+												</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="row">
+						<a class="btn button1 pull-right" href="javascript:submitform('OffRiskEmailList.html','OffRiskEmailList.search','','');">Search</a>
+					</div>
+					<div class="row paddingTop20">
+						<table id="OffRiskLetter_list_01" width="100%" border="0"
+							cellpadding="0" cellspacing="0">
+							<tr>
+								<td>
+									<input style="border-right: 1px solid #cccccc; padding-left: 2px" 
+									 type="checkbox" id="selectall" name="selectall" 
+									 onclick="selectallcheckbox();" /> Select All
+									</td>
+							</tr>
+							<tr>
+								<td>
+									&nbsp;
+									</td>
+							</tr>
+							<tr id="OffRiskLetter_list_header_01">
+								<td>
+									<table width="100%" border="0" align="left" class="gridTable
+										cellpadding="0" cellspacing="2">
+										<tr>
+								
+											<td colspan="7" style="padding: 0px;">
+												<div id="error_noSelecion" class="defult_tr_errors"></div>
+											</td>
+										</tr>
+										<tr>
+											<th width="5%" 
+												id="block_field_PolicyKey">Select</th>
+											<th width="30%"
+												id="block_field_AccountName">Account Name</th>
+											<th width="15%" 
+												id="block_field_QuoteNumber">Quote Number</th>
+											<th width="15%"
+												id="block_field_PolicyEffectiveDate">Policy Effective Date</th>
+											<th width="15%" 
+												id="block_field_PolicyExpirationDate">Policy Expiration Date</th>
+											<th width="10%" 
+												id="block_field_StatusDesc">Status</th>
+											<th width="10%" 
+												id="block_field_IsOffRiskLetterUploaded">Is Letter
+												Uploaded</th>
+											<!-- <td width="25" class="tableheading1"
+												style="border-right: 1px solid #ffffff; padding-left: 2px"
+												id="block_field_IsOffRiskMailSent">Is Mail Sent</td> -->
+
+										</tr>
+										<tbody id="QuoteOption_list_mom_data_01">
+											<tr id="mom_child_data">
+												<td id="block_field_PolicyKey"><input
+													name="PolicyKey" type="checkbox" 
+													id="PolicyKey" size="10" maxlength="3" onchange="getSelectedPolicyKey()"
+													tabindex="36" /></td>
+												<td id="block_field_AccountName"></td>
+												<td id="block_field_QuoteNumber"></td>
+												<td id="block_field_PolicyEffectiveDate"></td>
+												<td id="block_field_PolicyExpirationDate"></td>
+												<td id="block_field_StatusDesc"></td>
+												<td id="block_field_IsOffRiskLetterUploaded">
+													<span id="eval:AccountantRule.IsOffRiskLetterUploaded">
+														 <img
+														src="img/icon_select.png" title="View" border="0" />
+													</span>
+												</td>
+											<!-- 	<td width="25"
+													style="border-right: 1px solid #cccccc; padding-left: 2px"
+													id="block_field_IsOffRiskMailSent"></td>  -->
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="buttons borderTop row">
+						<div class="floatLeft">
+							<a class="btn back"
+							href="javascript:submitform('workq.html','OffRiskEmailList.back','','');"
+							>Back</a>
+						</div>
+						<div class="floatRight">
+							<a 
+								href="javascript:submitform('OffRiskEmailList.html','OffRiskEmailList.downloadPrint','','');"
+								class="btn button1">Download &amp; Print</a>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>				
+	</div>
+	<!---------Footer Start---------->
+	<div id="footer" class="footer">
+		<span id="#Include:footerNewApp.html#"></span>
+	</div>
+	<!---------Footer End---------->
+</div>
+
+		<div class="calendar_widget" id="calendar_widget">
+			<iframe id='calendar_widget_iframe' name='calendar_widget_iframe'
+				src="calendar_widget.html" frameborder="0" />
+		</div>
+		<table id="offriskletter_freeform_contextdata_999">
+			<tr>
+				<td><input type="hidden" name="jsessionid" id="jsessionid" />
+				<input type="hidden" name="strPolicyKey" id="strPolicyKey" />
+			<input type="hidden" name="offrsikListSize" id="offrsikListSize" />
+						
+				</td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+
+
+</html>

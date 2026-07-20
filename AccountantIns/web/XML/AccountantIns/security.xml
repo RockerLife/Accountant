@@ -1,0 +1,606 @@
+<security project="AccountantIns">
+
+	<protectedresource uniquename="role_reportnew_Security"
+		description="Disable fields">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.showReportNew">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.hideReportNew">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="role_report_Security"
+		description="Disable fields">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.showReportOld">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.hideReportOld">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="showAgentOnly" description="Disable fields">
+	    <userdefined ruleid="AccountantRule.isAgent">
+	     	<userdefinedaccesslevel accesstype="1" />
+	    </userdefined>
+	    <userdefined ruleid="AccountantRule.isNotAgent">
+	     	<userdefinedaccesslevel accesstype="0" />
+	    </userdefined>
+  	</protectedresource>
+	<protectedresource uniquename="off_risk_Security"
+		description="Disable fields">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.showOffRisk">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.hideOffRisk">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+
+	<protectedresource uniquename="visibleForCancellation">
+		<userdefined ruleid="AccountantRule.Issued_Status">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.Cancelled_Status">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+
+	<protectedresource uniquename="visibleForReinstatement">
+		<userdefined ruleid="AccountantRule.Cancelled_Status">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.Issued_Status">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+
+	<protectedresource uniquename="showPageSave"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isInsuredAndAppNotCompleted">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isInsuredAndAppCompleted">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="showContinue"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isInsuredAndAppNotCompleted">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isInsuredAndAppCompleted">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="NewBusiness"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isRenewedPolicy">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotRenewedPolicy">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="RenewBusiness"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isRenewedPolicy">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotRenewedPolicy">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="AppCompleted"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isInsuredAndAppCompleted">
+			<userdefinedaccesslevel accesstype="2" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="NewAppFlow"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.newAppFlow">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.oldAppFlow">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="OldAppFlow"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.oldAppFlow">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.newAppFlow">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+
+	<protectedresource uniquename="showHideQuotePageForInsured"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.showQuoteOptionTab">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.showNotQuoteOptionTab">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<!-- <userdefined executionsequence="1" ruleid="AccountantRule.isShowQuoteForSubproducer" 
+			> <userdefinedaccesslevel accesstype="0" /> </userdefined> -->
+
+	</protectedresource>
+	<protectedresource uniquename="revenueAboveLimit_Security"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isRevenueAbove100000">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isRevenueNotAbove100000">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="revenueBelowLimit_Security"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isRevenueNotAbove100000">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isRevenueAbove100000">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+
+	</protectedresource>
+	<protectedresource uniquename="showextraheaders_security"
+		defaultaccesstype="1" description="hide fields">
+		<userdefined ruleid="AccountantRule.isNotShowHeaderForProfile"
+			executionsequence="1">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotShowHeaderForOffRisk"
+			executionsequence="2">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotShowHeaderForReport"
+			executionsequence="3">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotShowHeaderForQQ"
+			executionsequence="4">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isIndicationPage"
+			executionsequence="5">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isListPage"
+			executionsequence="6">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isWorkQPage"
+			executionsequence="7">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isAccountManagementPage"
+			executionsequence="8">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isqqThanksPage"
+			executionsequence="9">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isUploadexcelpopup"
+			executionsequence="10">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+
+	</protectedresource>
+	<protectedresource uniquename="Agent_Security"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isAgent">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isInsured">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+
+	</protectedresource>
+
+	<protectedresource uniquename="ShowClaimSuppOnPastClaim_Security"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.isShowClaimSuppOnPastClaim">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotShowClaimSuppOnPastClaim">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+
+	</protectedresource>
+
+	<protectedresource uniquename="accountManagementVisibility_security"
+		description="Disable fields">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.showAccountManagementFacility">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.hideAccountManagementFacility">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="backToList_Security"
+		description="Disable fields">
+
+		<userdefined executionsequence="0" ruleid="AccountantRule.isInsured">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="1" ruleid="AccountantRule.isAgent">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="2"
+			ruleid="AccountantRule.isAccountManagementPage">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="3" ruleid="AccountantRule.isListPage">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="4"
+			ruleid="AccountantRule.isWorkQPage">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="QuoteTabVisiblity_security"
+		description="Disable fields">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.showQuotePageForStates">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.HideQuotePageForStates">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+
+	<protectedresource uniquename="BackToListForLisTPage_security"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.hideListButtonForHistory">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+
+		<userdefined ruleid="AccountantRule.showListButtonForHistory">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+	</protectedresource>
+
+	<protectedresource uniquename="showHideForNYState"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.stopCompletePolicyForStates">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.allowCompletePolicyForStates">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="insuredFlow_Statewise_sequrity"
+		description="Disable fields">
+		<userdefined ruleid="AccountantRule.stopCompletePolicyForStatesForInsured">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.allowCompletePolicyForStatesForInsured">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="requotePolicy_security"
+		description="Disable fields" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.showRequotePolicy">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.showRequotePolicyNot">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+
+	</protectedresource>
+	<protectedresource uniquename="headersOptions_security"
+		defaultaccesstype="1" description="hide fields">
+		<userdefined ruleid="AccountantRule.isNotShowHeaderForProfile">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotShowHeaderForOffRisk">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotShowHeaderForReport">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isNotShowHeaderForQQ">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined ruleid="AccountantRule.isIndicationPage">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+
+	<protectedresource uniquename="ManualPolicyIssuance_security" defaultaccesstype="1" description="hide fields">
+		<userdefined executionsequence="0" ruleid="AccountantRule.isInsured">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.isNotManualIssuancePrivillage">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="2"
+			ruleid="AccountantRule.manualIssuancePrivillage">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="endorsementTransactionVisbility_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.isNotInternalUser">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.isInternalUser">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="2"
+			ruleid="AccountantRule.isEmptyEndorsementTransactionDetails">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="QuoteModsVisbility_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.isSubproducerUser">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.isInsuredUser">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="2"
+			ruleid="AccountantRule.isAgentUser">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="PremiumVisibility_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.isStateNotAllowToIssuePolicy">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.isStateAllowToIssuePolicy">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+	</protectedresource>
+
+	<protectedresource uniquename="UpdatePolicyStatusLinkListPage_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.roleEditOnly">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.ShowChangeStatus">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="2"
+			ruleid="AccountantRule.isChangeStatusVisibile">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+
+	</protectedresource>
+
+	<protectedresource uniquename="LostWorkqLinkListPage_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.isNotShowLostWorkqLinkVisible">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.isShowLostWorkqLinkVisible">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+
+	</protectedresource>
+
+	<protectedresource uniquename="resetPasswordLinkListPage_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.isNotCFOrInsured">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+
+	</protectedresource>
+
+	<protectedresource uniquename="downloadExcelLinkListPage_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.showDocumentDownload">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+
+	</protectedresource>
+	<protectedresource uniquename="actionLinkListPage_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="3"
+			ruleid="AccountantRule.isInternalOrPartenerUser">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="4"
+			ruleid="AccountantRule.isNotInternalOrPartenerUser">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+
+	</protectedresource>
+
+	<protectedresource uniquename="MeasurementReportRights_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.isMeasurementAccessUser">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.isNotMeasurementAccessUser">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+	</protectedresource>
+
+<protectedresource uniquename="changeFirstReviewerLinkListPage_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="3"
+			ruleid="AccountantRule.isInternalOrPartenerUser">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		<userdefined executionsequence="4"
+			ruleid="AccountantRule.isNotInternalOrPartenerUser">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+
+	</protectedresource>
+	<protectedresource uniquename="moreDropDownWorkqPage_security" 	description="show fileds" defaultaccesstype="0">
+			<userdefined executionsequence="0" 	ruleid="AccountantRule.isInternalUser"> 
+					<userdefinedaccesslevel accesstype="1" />
+			</userdefined>
+			<userdefined executionsequence="1" 		ruleid="AccountantRule.isNotInternalUser">
+				<userdefinedaccesslevel accesstype="0" />
+			</userdefined>
+			<userdefined executionsequence="2" 	ruleid="AccountantRule.showRequotePolicy">
+				<userdefinedaccesslevel accesstype="1" />
+			</userdefined>
+	</protectedresource>
+	<protectedresource uniquename="renewalReviewLinkListPage_security" 	description="show fileds" defaultaccesstype="0">
+		
+			<userdefined executionsequence="0" 	ruleid="AccountantRule.showRenewalReviewLink">
+				<userdefinedaccesslevel accesstype="1" />
+			</userdefined>
+				
+	</protectedresource>
+	<protectedresource uniquename="internalUsers_security"
+		description="show fileds" defaultaccesstype="0">
+		<userdefined executionsequence="0"
+			ruleid="AccountantRule.isNotInternalUser">
+			<userdefinedaccesslevel accesstype="0" />
+		</userdefined>
+		<userdefined executionsequence="1"
+			ruleid="AccountantRule.isInternalUser">
+			<userdefinedaccesslevel accesstype="1" />
+		</userdefined>
+		</protectedresource>
+		<protectedresource uniquename="BrokerAppIssued_Security" description="Disable fields">
+		    <userdefined ruleid="AccountantRule.isBrokeragePolicyIssued">
+		     	<userdefinedaccesslevel accesstype="2" />
+		    </userdefined>
+  		</protectedresource>
+		<protectedresource uniquename="NewBrokerageLinkListPage_security" description="Disable fields" defaultaccesstype="0"  >
+		   
+		   
+	    	<userdefined executionsequence="0" ruleid="AccountantRule.isShowNewBrokerageLink">
+		     	<userdefinedaccesslevel accesstype="1" />
+		    </userdefined>
+		    
+		     <userdefined executionsequence="1" ruleid="AccountantRule.isNotShowNewBrokerageLink">
+		     	<userdefinedaccesslevel accesstype="0" />
+		    </userdefined>
+	</protectedresource>
+	<protectedresource uniquename="RenewBrokerageLinkListPage_security" description="Disable fields" defaultaccesstype="0"  >
+		   
+		   
+	    	<userdefined executionsequence="0" ruleid="AccountantRule.isShowRenewAsBrokerage">
+		     	<userdefinedaccesslevel accesstype="1" />
+		    </userdefined>
+		     <userdefined executionsequence="1" ruleid="AccountantRule.isNotShowRenewAsBrokerage">
+		     	<userdefinedaccesslevel accesstype="0" />
+		    </userdefined>
+	</protectedresource>
+    <protectedresource uniquename="CompanyCodeEdit_Security" description="Disable fields">
+	    <userdefined ruleid="AccountantRule.isCompanyKeyEditable">
+	     	<userdefinedaccesslevel accesstype="2" />
+	    </userdefined>
+  </protectedresource>
+   <protectedresource uniquename="CompanyCodeVisibility_Security" description="Disable fields">
+	    <userdefined ruleid="AccountantRule.isVisibileComponent">
+	     	<userdefinedaccesslevel accesstype="1" />
+	    </userdefined>
+	    <userdefined ruleid="AccountantRule.isNotVisibileComponent">
+	     	<userdefinedaccesslevel accesstype="0" />
+	    </userdefined>
+  </protectedresource>
+  <protectedresource uniquename="ManualPolicyIssuance_SecurityISMIE" description="Disable fields">
+	    <userdefined ruleid="AccountantRule.isManualPolicyIssuance">
+	     	<userdefinedaccesslevel accesstype="1" />
+	    </userdefined>
+	    <userdefined ruleid="AccountantRule.isManualNotPolicyIssuance">
+	     	<userdefinedaccesslevel accesstype="0" />
+	    </userdefined>
+  </protectedresource>
+  <protectedresource uniquename="CFPolicyIssuance_Security" description="Disable fields">
+  
+  		 <userdefined executionsequence="0" ruleid="AccountantRule.isCFNotAllowedToIssuePolicy">
+	     	<userdefinedaccesslevel accesstype="0" />
+	    </userdefined>
+	     <userdefined executionsequence="1" ruleid="AccountantRule.isCFAllowedToIssuePolicy">
+	     	<userdefinedaccesslevel accesstype="1" />
+	    </userdefined>
+	     
+  </protectedresource>
+  <protectedresource uniquename="copyPolicyData_security" description="Disable fields" defaultaccesstype="0"  >
+		  	
+		    <userdefined executionsequence="0" ruleid="AccountantRule.isNotInternalUser">
+		     	<userdefinedaccesslevel accesstype="0" />
+		    </userdefined>
+		    <userdefined executionsequence="1" ruleid="AccountantRule.showRequotePolicyNot">
+		     	<userdefinedaccesslevel accesstype="0" />
+		    </userdefined>
+	    	<userdefined executionsequence="2" ruleid="AccountantRule.showRequotePolicy">
+		     	<userdefinedaccesslevel accesstype="1" />
+		    </userdefined>
+		     <userdefined executionsequence="3" ruleid="AccountantRule.ShowlostWorkqButton">
+		     	<userdefinedaccesslevel accesstype="1" />
+		    </userdefined>
+		    <userdefined executionsequence="4" ruleid="AccountantRule.isShowCopyLinkForListPage">
+		     	<userdefinedaccesslevel accesstype="1" />
+		    </userdefined>
+		     <userdefined executionsequence="5" ruleid="AccountantRule.isNotShowCopyLinkForListPage">
+		     	<userdefinedaccesslevel accesstype="0" />
+		    </userdefined>
+		    <userdefined executionsequence="6" ruleid="AccountantRule.isBrokeragePolicy">
+		     	<userdefinedaccesslevel accesstype="0" />
+		    </userdefined>
+	</protectedresource>
+	<protectedresource uniquename="WQCompany_Security" description="Disable fields">
+	    <userdefined executionsequence="0" ruleid="AccountantRule.isNotInternalUser">
+	     	<userdefinedaccesslevel accesstype="0" />
+	    </userdefined>
+	    <userdefined executionsequence="1" ruleid="AccountantRule.isPartnerUser">
+	     	<userdefinedaccesslevel accesstype="0" />
+	    </userdefined>
+	     <userdefined executionsequence="2" ruleid="AccountantRule.isInternalUser">
+	     	<userdefinedaccesslevel accesstype="1" />
+	    </userdefined>
+  </protectedresource>
+  <protectedresource uniquename="PricingCompany_Security" description="Disable fields">
+  
+  		 <userdefined executionsequence="0" ruleid="AccountantRule.isNotPricingCompany">
+	     	<userdefinedaccesslevel accesstype="0" />
+	    </userdefined>
+	     <userdefined executionsequence="1" ruleid="AccountantRule.isPricingCompany">
+	     	<userdefinedaccesslevel accesstype="1" />
+	    </userdefined>
+	     
+  </protectedresource>
+    <protectedresource uniquename="CyberRenewal_Security" description="Disable fields">
+  
+  		 <userdefined executionsequence="0" ruleid="AccountantRule.isHideCyberQuestion_Renewal">
+	     	<userdefinedaccesslevel accesstype="0" />
+	    </userdefined>
+	     <userdefined executionsequence="1" ruleid="AccountantRule.isShowCyberQuestion_Renewal">
+	     	<userdefinedaccesslevel accesstype="1" />
+	    </userdefined>
+	     
+  </protectedresource>
+</security>
+

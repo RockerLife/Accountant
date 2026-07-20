@@ -1,0 +1,307 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Account">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from Account</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from Account</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into Account(
+          <dynamic prepend=" ">
+               <isNotEmpty property="AccountID" prepend=",">AccountID</isNotEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID</isNotEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp</isNotEmpty>
+               <isNotEmpty property="AccountName" prepend=",">AccountName</isNotEmpty>
+               <isNotEmpty property="Website" prepend=",">Website</isNotEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">AccountEmail</isNotEmpty>
+               <isNotEmpty property="AccountVersion" prepend=",">AccountVersion</isNotEmpty>
+               <isNotEmpty property="LoginID" prepend=",">LoginID</isNotEmpty>
+               <isNotEmpty property="CreatedDate" prepend=",">CreatedDate</isNotEmpty>
+               <isNotEmpty property="CreatedBy" prepend=",">CreatedBy</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="AccountID" prepend=",">#AccountID#</isNotEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">#LastUpdateUserID#</isNotEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">#LastUpdateTimeStamp#</isNotEmpty>
+               <isNotEmpty property="AccountName" prepend=",">#AccountName#</isNotEmpty>
+               <isNotEmpty property="Website" prepend=",">#Website#</isNotEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">#AccountEmail#</isNotEmpty>
+               <isNotEmpty property="AccountVersion" prepend=",">#AccountVersion#</isNotEmpty>
+               <isNotEmpty property="LoginID" prepend=",">#LoginID#</isNotEmpty>
+               <isNotEmpty property="CreatedDate" prepend=",">#CreatedDate#</isNotEmpty>
+               <isNotEmpty property="CreatedBy" prepend=",">#CreatedBy#</isNotEmpty>
+          </dynamic>
+          )
+          <selectKey resultClass="int" keyProperty="AccountKey">SELECT IDENT_CURRENT('Account') as last_insert_id</selectKey>
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select AccountKey, AccountID, LastUpdateUserID, LastUpdateTimeStamp, AccountName, Website, AccountEmail, AccountVersion, LoginID, CreatedDate, CreatedBy from Account where AccountKey = #AccountKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update Account set
+          <dynamic prepend=" ">
+               <isNotEmpty property="AccountID" prepend=",">AccountID = #AccountID#</isNotEmpty>
+               <isEmpty property="AccountID" prepend=",">AccountID = null</isEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = #LastUpdateUserID#</isNotEmpty>
+               <isEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = null</isEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = #LastUpdateTimeStamp#</isNotEmpty>
+               <isEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = null</isEmpty>
+               <isNotEmpty property="AccountName" prepend=",">AccountName = #AccountName#</isNotEmpty>
+               <isEmpty property="AccountName" prepend=",">AccountName = null</isEmpty>
+               <isNotEmpty property="Website" prepend=",">Website = #Website#</isNotEmpty>
+               <isEmpty property="Website" prepend=",">Website = null</isEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">AccountEmail = #AccountEmail#</isNotEmpty>
+               <isEmpty property="AccountEmail" prepend=",">AccountEmail = null</isEmpty>
+               <isNotEmpty property="AccountVersion" prepend=",">AccountVersion = #AccountVersion#</isNotEmpty>
+               <isEmpty property="AccountVersion" prepend=",">AccountVersion = null</isEmpty>
+               <isNotEmpty property="LoginID" prepend=",">LoginID = #LoginID#</isNotEmpty>
+               <isEmpty property="LoginID" prepend=",">LoginID = null</isEmpty>
+               <isNotEmpty property="CreatedDate" prepend=",">CreatedDate = #CreatedDate#</isNotEmpty>
+               <isEmpty property="CreatedDate" prepend=",">CreatedDate = null</isEmpty>
+               <isNotEmpty property="CreatedBy" prepend=",">CreatedBy = #CreatedBy#</isNotEmpty>
+               <isEmpty property="CreatedBy" prepend=",">CreatedBy = null</isEmpty>
+          </dynamic>
+          where AccountKey = #AccountKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from Account where AccountKey = #AccountKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from Account</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from Account</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select AccountKey, AccountID, LastUpdateUserID, LastUpdateTimeStamp, AccountName, Website, AccountEmail, AccountVersion, LoginID, CreatedDate, CreatedBy from Account where AccountKey = #AccountKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select AccountKey, AccountID, LastUpdateUserID, LastUpdateTimeStamp, AccountName, Website, AccountEmail, AccountVersion, LoginID, CreatedDate, CreatedBy from Account</select>
+     <parameterMap id="SearchAccount_ProcMap" class="java.util.HashMap">
+          <parameter property="AccountNamesearch" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="StateCode_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="StatusKey_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyEffectiveDate_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="QuoteNumber_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsQuickQuote_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsFullQuote_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyNumber_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsRenewed_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="DueForRenewal_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="NumberOfDays_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyEffectiveDate_searchTo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProducerCodefilter" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="EligibleFirstReviewerfilter" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProducerCode1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="UserNo" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="newAppImplementationDate" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="SearchAppCreatedDateFrom" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SearchAppCreatedDateTo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="CompanyKey_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="role_id" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="SearchAccount_Proc" parameterMap="SearchAccount_ProcMap" resultClass="java.util.HashMap">{ call SearchAccount_Proc(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="SearchAccountHistory_ProcMap" class="java.util.HashMap">
+          <parameter property="AccountID_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="role_id" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="SearchAccountHistory_Proc" parameterMap="SearchAccountHistory_ProcMap" resultClass="java.util.HashMap">{ call SearchAccountHistory_Proc(?,?)}</procedure>
+     <parameterMap id="SearchAccount_Proc_LostWorkqListMap" class="java.util.HashMap">
+          <parameter property="LostWQPolicyEffectiveDate_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsQuickQuote_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="StatusKey_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsFullQuote_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LostWQPolicyEffectiveDate_searchTo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="UserNo" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="newAppImplementationDate" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="searchListAction" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="SearchAccount_Proc_LostWorkqList" parameterMap="SearchAccount_Proc_LostWorkqListMap" resultClass="java.util.HashMap">{ call SearchAccount_Proc_LostWorkqList(?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="WorkqSearchAccountForAccountant_ProcMap" class="java.util.HashMap">
+          <parameter property="AccountNamesearch" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQStateCode_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQStatusKey_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQPolicyEffectiveDate_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQQuoteNumberSearch" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQPolicyNumberSearch" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQIsRenewed_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQNumberOfDays_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQPolicyEffectiveDate_searchTo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="newAppImplementationDate" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WQAccountEmailSearch" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="role_id" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQCompany_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQIsBrokered_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WQIsLostWorkQPolicy_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="WorkqSearchAccountForAccountant_Proc" parameterMap="WorkqSearchAccountForAccountant_ProcMap" resultClass="java.util.HashMap">{ call WorkqSearchAccountForAccountant_Proc(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="WorkqSearchAccountForAccountantLostWorkq_ProcMap" class="java.util.HashMap">
+          <parameter property="LostWQPolicyEffectiveDate_search" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LostWQPolicyEffectiveDate_searchTo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="newAppImplementationDate" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+     </parameterMap>
+     <procedure id="WorkqSearchAccountForAccountantLostWorkq_Proc" parameterMap="WorkqSearchAccountForAccountantLostWorkq_ProcMap" resultClass="java.util.HashMap">{ call WorkqSearchAccountForAccountantLostWorkq_Proc(?,?,?)}</procedure>
+     <parameterMap id="RenewPolicyMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="AccountKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="AddressKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="VersionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UserNo" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="newAppImplementationDate" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="RenewalSource" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="RenewPolicy" parameterMap="RenewPolicyMap" resultClass="java.util.HashMap">{ call RenewPolicy_New(?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="CopyPolicyDataACC_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="AccountKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="AddressKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="VersionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="requotePolicyEffectiveDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="newAppImplementationDate" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="moduleName" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="CopyPolicyDataACC_p" parameterMap="CopyPolicyDataACC_pMap" resultClass="java.util.HashMap">{ call CopyPolicyDataACC_p(?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="getAllRenewedPolicyMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="getAllRenewedPolicy" parameterMap="getAllRenewedPolicyMap" resultClass="java.util.HashMap">{ call getAllRenewedPolicy(?)}</procedure>
+     <parameterMap id="SearchAccountWithSameEmail_AccMap" class="java.util.HashMap">
+          <parameter property="AccountKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="SearchAccountWithSameEmail_Acc" parameterMap="SearchAccountWithSameEmail_AccMap" resultClass="java.util.HashMap">{ call SearchAccountWithSameEmail_Acc(?)}</procedure>
+     <parameterMap id="ResetPasswordSecureOne_procMap" class="java.util.HashMap">
+          <parameter property="AccountKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="LoginID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="ResetPasswordSecureOne_proc" parameterMap="ResetPasswordSecureOne_procMap" resultClass="java.util.HashMap">{ call ResetPasswordSecureOne_proc(?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_by_stateMap" class="java.util.HashMap">
+          <parameter property="WeekFromDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekToDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+     </parameterMap>
+     <procedure id="weeklyreport_by_state" parameterMap="weeklyreport_by_stateMap" resultClass="java.util.HashMap">{ call weeklyreport_by_state(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_creationdate_LastWeekMap" class="java.util.HashMap">
+          <parameter property="WeekFromDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekToDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_creationdate_LastWeek" parameterMap="weeklyreport_creationdate_LastWeekMap" resultClass="java.util.HashMap">{ call weeklyreport_creationdate_LastWeek(?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_creationdateMap" class="java.util.HashMap">
+          <parameter property="WeekFromDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekToDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="TTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="NewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+     </parameterMap>
+     <procedure id="weeklyreport_creationdate" parameterMap="weeklyreport_creationdateMap" resultClass="java.util.HashMap">{ call weeklyreport_creationdate(?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_effectivedateMap" class="java.util.HashMap">
+          <parameter property="WeekFromDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekToDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+     </parameterMap>
+     <procedure id="weeklyreport_effectivedate" parameterMap="weeklyreport_effectivedateMap" resultClass="java.util.HashMap">{ call weeklyreport_effectivedate(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="AccountantFormAttachment_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey_form" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="StateCode_form" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyEffectiveDate_form" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsFinalisedOption_form" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="isNewFormChanges" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="AccountantFormAttachment_p" parameterMap="AccountantFormAttachment_pMap" resultClass="java.util.HashMap">{ call AccountantFormAttachment_p(?,?,?,?,?)}</procedure>
+     <parameterMap id="StateSpecificRulesAccountant_procMap" class="java.util.HashMap">
+          <parameter property="RuleRequestType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyKey_rule" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="StateCode_rule" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="StateSpecificRulesAccountant_proc" parameterMap="StateSpecificRulesAccountant_procMap" resultClass="java.util.HashMap">{ call StateSpecificRulesAccountant_proc(?,?,?)}</procedure>
+     <parameterMap id="getExistingPolicyMap" class="java.util.HashMap">
+          <parameter property="AccountEmail" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="getExistingPolicy" parameterMap="getExistingPolicyMap" resultClass="java.util.HashMap">{ call getExistingPolicy(?)}</procedure>
+     <parameterMap id="weeklyreport_effectivedate_renewalMap" class="java.util.HashMap">
+          <parameter property="WeekFromDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekToDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+     </parameterMap>
+     <procedure id="weeklyreport_effectivedate_renewal" parameterMap="weeklyreport_effectivedate_renewalMap" resultClass="java.util.HashMap">{ call weeklyreport_effectivedate_renewal(?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_effectivedate_newbusinessMap" class="java.util.HashMap">
+          <parameter property="WeekFromDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekToDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+     </parameterMap>
+     <procedure id="weeklyreport_effectivedate_newbusiness" parameterMap="weeklyreport_effectivedate_newbusinessMap" resultClass="java.util.HashMap">{ call weeklyreport_effectivedate_newbusiness(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonthMap" class="java.util.HashMap">
+          <parameter property="WeekFromDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekToDate" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth" parameterMap="weeklyreport_statemonthMap" resultClass="java.util.HashMap">{ call weeklyreport_statemonth(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="getInvoicedDataMap" class="java.util.HashMap">
+          <parameter property="PolicyKey_Invoice" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="getInvoicedData" parameterMap="getInvoicedDataMap" resultClass="java.util.HashMap">{ call InvoicedData_proc(?)}</procedure>
+     <parameterMap id="FetchAllAccountantDataMap" class="java.util.HashMap">
+          <parameter property="AccountID" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="FetchAllAccountantData" parameterMap="FetchAllAccountantDataMap" resultClass="java.util.HashMap">{ call FetchAllAccountantData(?)}</procedure>
+     <parameterMap id="FetchAllLawyersDataMap" class="java.util.HashMap">
+          <parameter property="AccountID" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="FetchAllLawyersData" parameterMap="FetchAllLawyersDataMap" resultClass="java.util.HashMap">{ call FetchAllLawyersData(?)}</procedure>
+     <parameterMap id="OffRiskAccountant_procMap" class="java.util.HashMap">
+          <parameter property="PolicyExpirationDate_From" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyExpirationDate_To" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SubProducerStatus" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="OffRiskAccountant_proc" parameterMap="OffRiskAccountant_procMap" resultClass="java.util.HashMap">{ call OffRiskAccountant_proc(?,?,?)}</procedure>
+</sqlMap>
+

@@ -1,0 +1,155 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PracticeManagementSupplement">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from PracticeManagementSupplement</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from PracticeManagementSupplement</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into PracticeManagementSupplement(
+          <dynamic prepend=" ">
+               <isNotEmpty property="TotalAmountOfClientFundsFc" prepend=",">TotalAmountOfClientFundsFc</isNotEmpty>
+               <isNotEmpty property="IsCountersignatureRequiredFc" prepend=",">IsCountersignatureRequiredFc</isNotEmpty>
+               <isNotEmpty property="IsBankAccountReconciledFc" prepend=",">IsBankAccountReconciledFc</isNotEmpty>
+               <isNotEmpty property="IsFirmPersonnelBusinessManagerFc" prepend=",">IsFirmPersonnelBusinessManagerFc</isNotEmpty>
+               <isNotEmpty property="NumberOfFirmEmployeesFc" prepend=",">NumberOfFirmEmployeesFc</isNotEmpty>
+               <isNotEmpty property="IsEmployeeDishonestyCoverageFc" prepend=",">IsEmployeeDishonestyCoverageFc</isNotEmpty>
+               <isNotEmpty property="TotlaNumberOfClientsFc" prepend=",">TotlaNumberOfClientsFc</isNotEmpty>
+               <isNotEmpty property="ClientIndustryFc" prepend=",">ClientIndustryFc</isNotEmpty>
+               <isNotEmpty property="IsControlFundsForBusinessAndEntimentFc" prepend=",">IsControlFundsForBusinessAndEntimentFc</isNotEmpty>
+               <isNotEmpty property="ProvideNumberOfClientFc" prepend=",">ProvideNumberOfClientFc</isNotEmpty>
+               <isNotEmpty property="HaveInvestmentAuthorityFC" prepend=",">HaveInvestmentAuthorityFC</isNotEmpty>
+               <isNotEmpty property="IsManagementServiceProvided" prepend=",">IsManagementServiceProvided</isNotEmpty>
+               <isNotEmpty property="IsFirmRenderingServices" prepend=",">IsFirmRenderingServices</isNotEmpty>
+               <isNotEmpty property="IsSignedEngagement" prepend=",">IsSignedEngagement</isNotEmpty>
+               <isNotEmpty property="IsControlClientFunds" prepend=",">IsControlClientFunds</isNotEmpty>
+               <isNotEmpty property="IsOrganisationInvestmentVentures" prepend=",">IsOrganisationInvestmentVentures</isNotEmpty>
+               <isNotEmpty property="IsArrangedDebtorEquity" prepend=",">IsArrangedDebtorEquity</isNotEmpty>
+               <isNotEmpty property="IsReferralsInvestmentVentures" prepend=",">IsReferralsInvestmentVentures</isNotEmpty>
+               <isNotEmpty property="IsFirmsRevenueMorethan25Percent" prepend=",">IsFirmsRevenueMorethan25Percent</isNotEmpty>
+               <isNotEmpty property="EntityNameSe" prepend=",">EntityNameSe</isNotEmpty>
+               <isNotEmpty property="EstablisedSeDate" prepend=",">EstablisedSeDate</isNotEmpty>
+               <isNotEmpty property="PercentOfOwnershipSe" prepend=",">PercentOfOwnershipSe</isNotEmpty>
+               <isNotEmpty property="TotalProfessionalStaffSe" prepend=",">TotalProfessionalStaffSe</isNotEmpty>
+               <isNotEmpty property="TotalSupportStaffSe" prepend=",">TotalSupportStaffSe</isNotEmpty>
+               <isNotEmpty property="IsStaffIncludedInMain" prepend=",">IsStaffIncludedInMain</isNotEmpty>
+               <isNotEmpty property="PercentOfRevenueFromLargestClient" prepend=",">PercentOfRevenueFromLargestClient</isNotEmpty>
+               <isNotEmpty property="IsAnyFirmMeargedOrAcquired" prepend=",">IsAnyFirmMeargedOrAcquired</isNotEmpty>
+               <isNotEmpty property="DetailedDescSe" prepend=",">DetailedDescSe</isNotEmpty>
+               <isNotEmpty property="LastFiscalYearGrossRevenueSe" prepend=",">LastFiscalYearGrossRevenueSe</isNotEmpty>
+               <isNotEmpty property="EstimateCurrentYearGrossRevenueSe" prepend=",">EstimateCurrentYearGrossRevenueSe</isNotEmpty>
+               <isNotEmpty property="LastFiscalYearSeEndDate" prepend=",">LastFiscalYearSeEndDate</isNotEmpty>
+               <isNotEmpty property="EstimateCurrentYearSeEndDate" prepend=",">EstimateCurrentYearSeEndDate</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="TotalAmountOfClientFundsFc" prepend=",">#TotalAmountOfClientFundsFc#</isNotEmpty>
+               <isNotEmpty property="IsCountersignatureRequiredFc" prepend=",">#IsCountersignatureRequiredFc#</isNotEmpty>
+               <isNotEmpty property="IsBankAccountReconciledFc" prepend=",">#IsBankAccountReconciledFc#</isNotEmpty>
+               <isNotEmpty property="IsFirmPersonnelBusinessManagerFc" prepend=",">#IsFirmPersonnelBusinessManagerFc#</isNotEmpty>
+               <isNotEmpty property="NumberOfFirmEmployeesFc" prepend=",">#NumberOfFirmEmployeesFc#</isNotEmpty>
+               <isNotEmpty property="IsEmployeeDishonestyCoverageFc" prepend=",">#IsEmployeeDishonestyCoverageFc#</isNotEmpty>
+               <isNotEmpty property="TotlaNumberOfClientsFc" prepend=",">#TotlaNumberOfClientsFc#</isNotEmpty>
+               <isNotEmpty property="ClientIndustryFc" prepend=",">#ClientIndustryFc#</isNotEmpty>
+               <isNotEmpty property="IsControlFundsForBusinessAndEntimentFc" prepend=",">#IsControlFundsForBusinessAndEntimentFc#</isNotEmpty>
+               <isNotEmpty property="ProvideNumberOfClientFc" prepend=",">#ProvideNumberOfClientFc#</isNotEmpty>
+               <isNotEmpty property="HaveInvestmentAuthorityFC" prepend=",">#HaveInvestmentAuthorityFC#</isNotEmpty>
+               <isNotEmpty property="IsManagementServiceProvided" prepend=",">#IsManagementServiceProvided#</isNotEmpty>
+               <isNotEmpty property="IsFirmRenderingServices" prepend=",">#IsFirmRenderingServices#</isNotEmpty>
+               <isNotEmpty property="IsSignedEngagement" prepend=",">#IsSignedEngagement#</isNotEmpty>
+               <isNotEmpty property="IsControlClientFunds" prepend=",">#IsControlClientFunds#</isNotEmpty>
+               <isNotEmpty property="IsOrganisationInvestmentVentures" prepend=",">#IsOrganisationInvestmentVentures#</isNotEmpty>
+               <isNotEmpty property="IsArrangedDebtorEquity" prepend=",">#IsArrangedDebtorEquity#</isNotEmpty>
+               <isNotEmpty property="IsReferralsInvestmentVentures" prepend=",">#IsReferralsInvestmentVentures#</isNotEmpty>
+               <isNotEmpty property="IsFirmsRevenueMorethan25Percent" prepend=",">#IsFirmsRevenueMorethan25Percent#</isNotEmpty>
+               <isNotEmpty property="EntityNameSe" prepend=",">#EntityNameSe#</isNotEmpty>
+               <isNotEmpty property="EstablisedSeDate" prepend=",">#EstablisedSeDate#</isNotEmpty>
+               <isNotEmpty property="PercentOfOwnershipSe" prepend=",">#PercentOfOwnershipSe#</isNotEmpty>
+               <isNotEmpty property="TotalProfessionalStaffSe" prepend=",">#TotalProfessionalStaffSe#</isNotEmpty>
+               <isNotEmpty property="TotalSupportStaffSe" prepend=",">#TotalSupportStaffSe#</isNotEmpty>
+               <isNotEmpty property="IsStaffIncludedInMain" prepend=",">#IsStaffIncludedInMain#</isNotEmpty>
+               <isNotEmpty property="PercentOfRevenueFromLargestClient" prepend=",">#PercentOfRevenueFromLargestClient#</isNotEmpty>
+               <isNotEmpty property="IsAnyFirmMeargedOrAcquired" prepend=",">#IsAnyFirmMeargedOrAcquired#</isNotEmpty>
+               <isNotEmpty property="DetailedDescSe" prepend=",">#DetailedDescSe#</isNotEmpty>
+               <isNotEmpty property="LastFiscalYearGrossRevenueSe" prepend=",">#LastFiscalYearGrossRevenueSe#</isNotEmpty>
+               <isNotEmpty property="EstimateCurrentYearGrossRevenueSe" prepend=",">#EstimateCurrentYearGrossRevenueSe#</isNotEmpty>
+               <isNotEmpty property="LastFiscalYearSeEndDate" prepend=",">#LastFiscalYearSeEndDate#</isNotEmpty>
+               <isNotEmpty property="EstimateCurrentYearSeEndDate" prepend=",">#EstimateCurrentYearSeEndDate#</isNotEmpty>
+          </dynamic>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select TotalAmountOfClientFundsFc, IsCountersignatureRequiredFc, IsBankAccountReconciledFc, IsFirmPersonnelBusinessManagerFc, NumberOfFirmEmployeesFc, IsEmployeeDishonestyCoverageFc, TotlaNumberOfClientsFc, ClientIndustryFc, IsControlFundsForBusinessAndEntimentFc, ProvideNumberOfClientFc, HaveInvestmentAuthorityFC, IsManagementServiceProvided, IsFirmRenderingServices, IsSignedEngagement, IsControlClientFunds, IsOrganisationInvestmentVentures, IsArrangedDebtorEquity, IsReferralsInvestmentVentures, IsFirmsRevenueMorethan25Percent, EntityNameSe, EstablisedSeDate, PercentOfOwnershipSe, TotalProfessionalStaffSe, TotalSupportStaffSe, IsStaffIncludedInMain, PercentOfRevenueFromLargestClient, IsAnyFirmMeargedOrAcquired, DetailedDescSe, LastFiscalYearGrossRevenueSe, EstimateCurrentYearGrossRevenueSe, LastFiscalYearSeEndDate, EstimateCurrentYearSeEndDate from PracticeManagementSupplement</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update PracticeManagementSupplement set
+          <dynamic prepend=" ">
+               <isNotEmpty property="TotalAmountOfClientFundsFc" prepend=",">TotalAmountOfClientFundsFc = #TotalAmountOfClientFundsFc#</isNotEmpty>
+               <isEmpty property="TotalAmountOfClientFundsFc" prepend=",">TotalAmountOfClientFundsFc = null</isEmpty>
+               <isNotEmpty property="IsCountersignatureRequiredFc" prepend=",">IsCountersignatureRequiredFc = #IsCountersignatureRequiredFc#</isNotEmpty>
+               <isEmpty property="IsCountersignatureRequiredFc" prepend=",">IsCountersignatureRequiredFc = null</isEmpty>
+               <isNotEmpty property="IsBankAccountReconciledFc" prepend=",">IsBankAccountReconciledFc = #IsBankAccountReconciledFc#</isNotEmpty>
+               <isEmpty property="IsBankAccountReconciledFc" prepend=",">IsBankAccountReconciledFc = null</isEmpty>
+               <isNotEmpty property="IsFirmPersonnelBusinessManagerFc" prepend=",">IsFirmPersonnelBusinessManagerFc = #IsFirmPersonnelBusinessManagerFc#</isNotEmpty>
+               <isEmpty property="IsFirmPersonnelBusinessManagerFc" prepend=",">IsFirmPersonnelBusinessManagerFc = null</isEmpty>
+               <isNotEmpty property="NumberOfFirmEmployeesFc" prepend=",">NumberOfFirmEmployeesFc = #NumberOfFirmEmployeesFc#</isNotEmpty>
+               <isEmpty property="NumberOfFirmEmployeesFc" prepend=",">NumberOfFirmEmployeesFc = null</isEmpty>
+               <isNotEmpty property="IsEmployeeDishonestyCoverageFc" prepend=",">IsEmployeeDishonestyCoverageFc = #IsEmployeeDishonestyCoverageFc#</isNotEmpty>
+               <isEmpty property="IsEmployeeDishonestyCoverageFc" prepend=",">IsEmployeeDishonestyCoverageFc = null</isEmpty>
+               <isNotEmpty property="TotlaNumberOfClientsFc" prepend=",">TotlaNumberOfClientsFc = #TotlaNumberOfClientsFc#</isNotEmpty>
+               <isEmpty property="TotlaNumberOfClientsFc" prepend=",">TotlaNumberOfClientsFc = null</isEmpty>
+               <isNotEmpty property="ClientIndustryFc" prepend=",">ClientIndustryFc = #ClientIndustryFc#</isNotEmpty>
+               <isEmpty property="ClientIndustryFc" prepend=",">ClientIndustryFc = null</isEmpty>
+               <isNotEmpty property="IsControlFundsForBusinessAndEntimentFc" prepend=",">IsControlFundsForBusinessAndEntimentFc = #IsControlFundsForBusinessAndEntimentFc#</isNotEmpty>
+               <isEmpty property="IsControlFundsForBusinessAndEntimentFc" prepend=",">IsControlFundsForBusinessAndEntimentFc = null</isEmpty>
+               <isNotEmpty property="ProvideNumberOfClientFc" prepend=",">ProvideNumberOfClientFc = #ProvideNumberOfClientFc#</isNotEmpty>
+               <isEmpty property="ProvideNumberOfClientFc" prepend=",">ProvideNumberOfClientFc = null</isEmpty>
+               <isNotEmpty property="HaveInvestmentAuthorityFC" prepend=",">HaveInvestmentAuthorityFC = #HaveInvestmentAuthorityFC#</isNotEmpty>
+               <isEmpty property="HaveInvestmentAuthorityFC" prepend=",">HaveInvestmentAuthorityFC = null</isEmpty>
+               <isNotEmpty property="IsManagementServiceProvided" prepend=",">IsManagementServiceProvided = #IsManagementServiceProvided#</isNotEmpty>
+               <isEmpty property="IsManagementServiceProvided" prepend=",">IsManagementServiceProvided = null</isEmpty>
+               <isNotEmpty property="IsFirmRenderingServices" prepend=",">IsFirmRenderingServices = #IsFirmRenderingServices#</isNotEmpty>
+               <isEmpty property="IsFirmRenderingServices" prepend=",">IsFirmRenderingServices = null</isEmpty>
+               <isNotEmpty property="IsSignedEngagement" prepend=",">IsSignedEngagement = #IsSignedEngagement#</isNotEmpty>
+               <isEmpty property="IsSignedEngagement" prepend=",">IsSignedEngagement = null</isEmpty>
+               <isNotEmpty property="IsControlClientFunds" prepend=",">IsControlClientFunds = #IsControlClientFunds#</isNotEmpty>
+               <isEmpty property="IsControlClientFunds" prepend=",">IsControlClientFunds = null</isEmpty>
+               <isNotEmpty property="IsOrganisationInvestmentVentures" prepend=",">IsOrganisationInvestmentVentures = #IsOrganisationInvestmentVentures#</isNotEmpty>
+               <isEmpty property="IsOrganisationInvestmentVentures" prepend=",">IsOrganisationInvestmentVentures = null</isEmpty>
+               <isNotEmpty property="IsArrangedDebtorEquity" prepend=",">IsArrangedDebtorEquity = #IsArrangedDebtorEquity#</isNotEmpty>
+               <isEmpty property="IsArrangedDebtorEquity" prepend=",">IsArrangedDebtorEquity = null</isEmpty>
+               <isNotEmpty property="IsReferralsInvestmentVentures" prepend=",">IsReferralsInvestmentVentures = #IsReferralsInvestmentVentures#</isNotEmpty>
+               <isEmpty property="IsReferralsInvestmentVentures" prepend=",">IsReferralsInvestmentVentures = null</isEmpty>
+               <isNotEmpty property="IsFirmsRevenueMorethan25Percent" prepend=",">IsFirmsRevenueMorethan25Percent = #IsFirmsRevenueMorethan25Percent#</isNotEmpty>
+               <isEmpty property="IsFirmsRevenueMorethan25Percent" prepend=",">IsFirmsRevenueMorethan25Percent = null</isEmpty>
+               <isNotEmpty property="EntityNameSe" prepend=",">EntityNameSe = #EntityNameSe#</isNotEmpty>
+               <isEmpty property="EntityNameSe" prepend=",">EntityNameSe = null</isEmpty>
+               <isNotEmpty property="EstablisedSeDate" prepend=",">EstablisedSeDate = #EstablisedSeDate#</isNotEmpty>
+               <isEmpty property="EstablisedSeDate" prepend=",">EstablisedSeDate = null</isEmpty>
+               <isNotEmpty property="PercentOfOwnershipSe" prepend=",">PercentOfOwnershipSe = #PercentOfOwnershipSe#</isNotEmpty>
+               <isEmpty property="PercentOfOwnershipSe" prepend=",">PercentOfOwnershipSe = null</isEmpty>
+               <isNotEmpty property="TotalProfessionalStaffSe" prepend=",">TotalProfessionalStaffSe = #TotalProfessionalStaffSe#</isNotEmpty>
+               <isEmpty property="TotalProfessionalStaffSe" prepend=",">TotalProfessionalStaffSe = null</isEmpty>
+               <isNotEmpty property="TotalSupportStaffSe" prepend=",">TotalSupportStaffSe = #TotalSupportStaffSe#</isNotEmpty>
+               <isEmpty property="TotalSupportStaffSe" prepend=",">TotalSupportStaffSe = null</isEmpty>
+               <isNotEmpty property="IsStaffIncludedInMain" prepend=",">IsStaffIncludedInMain = #IsStaffIncludedInMain#</isNotEmpty>
+               <isEmpty property="IsStaffIncludedInMain" prepend=",">IsStaffIncludedInMain = null</isEmpty>
+               <isNotEmpty property="PercentOfRevenueFromLargestClient" prepend=",">PercentOfRevenueFromLargestClient = #PercentOfRevenueFromLargestClient#</isNotEmpty>
+               <isEmpty property="PercentOfRevenueFromLargestClient" prepend=",">PercentOfRevenueFromLargestClient = null</isEmpty>
+               <isNotEmpty property="IsAnyFirmMeargedOrAcquired" prepend=",">IsAnyFirmMeargedOrAcquired = #IsAnyFirmMeargedOrAcquired#</isNotEmpty>
+               <isEmpty property="IsAnyFirmMeargedOrAcquired" prepend=",">IsAnyFirmMeargedOrAcquired = null</isEmpty>
+               <isNotEmpty property="DetailedDescSe" prepend=",">DetailedDescSe = #DetailedDescSe#</isNotEmpty>
+               <isEmpty property="DetailedDescSe" prepend=",">DetailedDescSe = null</isEmpty>
+               <isNotEmpty property="LastFiscalYearGrossRevenueSe" prepend=",">LastFiscalYearGrossRevenueSe = #LastFiscalYearGrossRevenueSe#</isNotEmpty>
+               <isEmpty property="LastFiscalYearGrossRevenueSe" prepend=",">LastFiscalYearGrossRevenueSe = null</isEmpty>
+               <isNotEmpty property="EstimateCurrentYearGrossRevenueSe" prepend=",">EstimateCurrentYearGrossRevenueSe = #EstimateCurrentYearGrossRevenueSe#</isNotEmpty>
+               <isEmpty property="EstimateCurrentYearGrossRevenueSe" prepend=",">EstimateCurrentYearGrossRevenueSe = null</isEmpty>
+               <isNotEmpty property="LastFiscalYearSeEndDate" prepend=",">LastFiscalYearSeEndDate = #LastFiscalYearSeEndDate#</isNotEmpty>
+               <isEmpty property="LastFiscalYearSeEndDate" prepend=",">LastFiscalYearSeEndDate = null</isEmpty>
+               <isNotEmpty property="EstimateCurrentYearSeEndDate" prepend=",">EstimateCurrentYearSeEndDate = #EstimateCurrentYearSeEndDate#</isNotEmpty>
+               <isEmpty property="EstimateCurrentYearSeEndDate" prepend=",">EstimateCurrentYearSeEndDate = null</isEmpty>
+          </dynamic>
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from PracticeManagementSupplement</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from PracticeManagementSupplement</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from PracticeManagementSupplement</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select TotalAmountOfClientFundsFc, IsCountersignatureRequiredFc, IsBankAccountReconciledFc, IsFirmPersonnelBusinessManagerFc, NumberOfFirmEmployeesFc, IsEmployeeDishonestyCoverageFc, TotlaNumberOfClientsFc, ClientIndustryFc, IsControlFundsForBusinessAndEntimentFc, ProvideNumberOfClientFc, HaveInvestmentAuthorityFC, IsManagementServiceProvided, IsFirmRenderingServices, IsSignedEngagement, IsControlClientFunds, IsOrganisationInvestmentVentures, IsArrangedDebtorEquity, IsReferralsInvestmentVentures, IsFirmsRevenueMorethan25Percent, EntityNameSe, EstablisedSeDate, PercentOfOwnershipSe, TotalProfessionalStaffSe, TotalSupportStaffSe, IsStaffIncludedInMain, PercentOfRevenueFromLargestClient, IsAnyFirmMeargedOrAcquired, DetailedDescSe, LastFiscalYearGrossRevenueSe, EstimateCurrentYearGrossRevenueSe, LastFiscalYearSeEndDate, EstimateCurrentYearSeEndDate from PracticeManagementSupplement</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select TotalAmountOfClientFundsFc, IsCountersignatureRequiredFc, IsBankAccountReconciledFc, IsFirmPersonnelBusinessManagerFc, NumberOfFirmEmployeesFc, IsEmployeeDishonestyCoverageFc, TotlaNumberOfClientsFc, ClientIndustryFc, IsControlFundsForBusinessAndEntimentFc, ProvideNumberOfClientFc, HaveInvestmentAuthorityFC, IsManagementServiceProvided, IsFirmRenderingServices, IsSignedEngagement, IsControlClientFunds, IsOrganisationInvestmentVentures, IsArrangedDebtorEquity, IsReferralsInvestmentVentures, IsFirmsRevenueMorethan25Percent, EntityNameSe, EstablisedSeDate, PercentOfOwnershipSe, TotalProfessionalStaffSe, TotalSupportStaffSe, IsStaffIncludedInMain, PercentOfRevenueFromLargestClient, IsAnyFirmMeargedOrAcquired, DetailedDescSe, LastFiscalYearGrossRevenueSe, EstimateCurrentYearGrossRevenueSe, LastFiscalYearSeEndDate, EstimateCurrentYearSeEndDate from PracticeManagementSupplement</select>
+</sqlMap>
+

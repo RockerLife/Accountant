@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.1"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:fo="http://www.w3.org/1999/XSL/Format"
+	exclude-result-prefixes="fo"
+	xmlns:fn="http://www.w3.org/2005/02/xpath-functions"
+	xmlns:java="java">
+
+	<xsl:template match="/" name="AAA04F037" >
+	
+				     <fo:block>
+				<xsl:call-template name="CommonHeader" />
+			</fo:block>
+				   
+				      <fo:block margin-top="12mm"/>
+				     <fo:block text-align="center" font-weight="bold" font-size="10px" >MARYLAND AMENDATORY ENDORSEMENT</fo:block>
+				     <fo:block margin-top="4mm"/>
+				    
+				
+				     <fo:block text-align="left" font-size="10px" >1. Section VI., General Conditions, D. Cancellation and Nonrenewal, paragraphs #2 and #3 are deleted and replaced with the following paragraphs #2 and #3:
+				    </fo:block>
+				     <fo:block margin-top="4mm"/>
+
+
+				     <fo:block text-align="left" font-size="10px" start-indent="2cm">2. The<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>may only cancel this policy for nonpayment of premium or Deductible. This policy may be</fo:block>
+                  	 <fo:block text-align="left" font-size="10px" start-indent="2.5cm">canceled by or on behalf of the<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>by mailing to the<fo:inline font-weight="bold" font-style="italic"> Named Insured </fo:inline> at the address shown in Item 1. of the Declarations, written notice of cancellation at least 10 days before the effective date of cancellation if the reason is for nonpayment of premium, and at least 45 days before the effective date of cancellation if the reason is for non payment of a Deductible. The certificate of mailing of such notice shall be sufficient proof of notice and the effective date of cancellation stated in such notice shall become the expiration date of the <fo:inline font-weight="bold" font-style="italic"> Policy Period</fo:inline>. If the<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>cancels this policy for nonpayment of premium, the<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>shall credit the<fo:inline font-weight="bold" font-style="italic"> Insured </fo:inline>the unearned portion of the premium. Payment or tender of any unearned premium by the<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>shall not be a condition precedent to the effectiveness of cancellation, but such payment shall be made as soon as practicable.</fo:block>
+
+
+				     <fo:block margin-top="4mm"/>
+
+				     <fo:block text-align="left" font-size="10px" start-indent="2cm" >3. This policy may be non-renewed by the<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>by mailing to the<fo:inline font-weight="bold" font-style="italic"> Named Insured </fo:inline>at its last known</fo:block>
+                      <fo:block text-align="left" font-size="10px" start-indent="2.5cm">address, written notice of such nonrenewal at least forty five days prior to the expiration of the<fo:inline font-weight="bold" font-style="italic"> Policy Period</fo:inline>. The certificate of mailing such notice shall be sufficient proof of notice. Failure of the<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>to send notice of non renewal in conformance with the applicable Maryland Regulations will result in the<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>being subject to penalties. If the<fo:inline font-weight="bold" font-style="italic"> Insurer </fo:inline>fails to comply with the above paragraph, this policy will expire at the end of the<fo:inline font-weight="bold" font-style="italic"> Policy Period </fo:inline> if:</fo:block>
+                         
+                          <fo:block text-align="left" font-size="10px" start-indent="4cm">a) the <fo:inline font-weight="bold" font-style="italic"> Named Insured</fo:inline> fails to pay the premium for the policy after a reasonable demand for the</fo:block>
+                          <fo:block text-align="left" font-size="10px" start-indent="4.3cm">premium has been made</fo:block>
+                          
+                          <fo:block text-align="left" font-size="10px" start-indent="4cm">b) the <fo:inline font-weight="bold" font-style="italic"> Named Insured</fo:inline> no longer wishes the coverage; or</fo:block>
+                          <fo:block text-align="left" font-size="10px" start-indent="4cm">c) the <fo:inline font-weight="bold" font-style="italic"> Named Insured</fo:inline> has obtained other substantially equivalent.</fo:block>
+                          
+                          <fo:block margin-top="4mm"/>
+
+				     <fo:block text-align="left" font-size="10px" >2. Section VI., General Conditions, paragraph C. Action against the<fo:inline font-weight="bold" font-style="italic"> Insurer</fo:inline>,is amended by addition of the following sentence:</fo:block>
+				     <fo:block margin-top="4mm"/>
+					 <fo:block text-align="left" font-size="10px" start-indent="4cm">A civil action at law shall be filed within three years from the date it accrues unless another provision of the Code provides a different period of time within which an action shall be commenced.</fo:block>
+					  <fo:block margin-top="4mm"/>
+			 		<fo:block text-align="left" font-size="10px" >3. Item 7. of the Declarations, Optional Extended Reporting Period: </fo:block>
+			    	<fo:block text-align="left" font-size="10px" start-indent="4cm">- (a) shall read: “unlimited”</fo:block>			 
+			 		<fo:block text-align="left" font-size="10px" start-indent="4cm">- (b) shall read:  “no more than 225% “</fo:block>
+				   
+				 
+				       <fo:block margin-top="33mm"/>
+				    
+				      <fo:block text-align="left" font-size="10px" >All other terms, conditions and limitations of the policy remain unaltered.</fo:block>
+				      <fo:block margin-top="15mm"/>
+				       <fo:block>
+				       <fo:table  text-align="center">
+					    <fo:table-column column-width = "80mm" />
+				        <fo:table-column column-width = "80mm" />
+				       
+				        <fo:table-body>
+					    		  <fo:table-row>
+					                    <fo:table-cell padding-left="4pt"><fo:block  font-size="10px"  text-align="center"><xsl:value-of select="response/freeform/data/authorized_signature"/></fo:block></fo:table-cell>
+					                    <fo:table-cell  padding-left="4pt"><fo:block   font-size="10px"  text-align="center"><xsl:value-of select="response/freeform/data/date"/></fo:block></fo:table-cell>
+					    		  </fo:table-row>
+					    		  <fo:table-row>
+					    		  		<fo:table-cell padding-left="4pt" padding-top="4pt">
+					               			<fo:block  font-size="10px"  text-align="center">________________________</fo:block>
+					               		</fo:table-cell>
+					               		<fo:table-cell padding-left="4pt"  padding-top="4pt">
+					               			 <fo:block  font-size="10px"  text-align="center">________________________</fo:block>
+					               		</fo:table-cell>
+					             </fo:table-row>
+					    		  <fo:table-row>
+					               		<fo:table-cell padding-left="4pt" padding-top="4pt"><fo:block  font-size="10px"  text-align="center">Authorized Representative</fo:block></fo:table-cell>
+					               		<fo:table-cell padding-left="4pt"  padding-top="4pt">
+					               			 <fo:block  font-size="10px"  text-align="center">Date</fo:block>
+					               		</fo:table-cell>
+					    		  </fo:table-row>
+					     </fo:table-body>
+				     </fo:table>	   
+				</fo:block>
+			  <fo:block margin-top="8mm"/>
+                   <fo:block  font-size="10px" color="grey" text-align="left">ISMIE AAA-04-F037 (04012022)
+			       	 <fo:block margin-top="-0.5cm" font-size="10px" color="grey" text-align="right">Page 1 of 1</fo:block>
+			       	 </fo:block>
+			
+     </xsl:template>
+</xsl:stylesheet>

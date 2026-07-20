@@ -1,0 +1,567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Workq</title>
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" type="text/javascript" src="calendar/rich_calendar.js"></script>
+<script type="text/javascript" src="script/managetestharness.js"></script>
+<script language="JavaScript" type="text/javascript" src="calendar/rc_lang_en.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/account.js"></script>
+<script language="javascript" src="script/lawyers.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap_3-3-6.js"></script>
+<script type="text/javascript" src="script/tabber.js"></script>
+<script type="text/javascript" src="script/test_new.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script src="js/producerOne.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript">
+	function checks() {
+		document.getElementById("EffectiveDate").disabled = true;
+	}
+</script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+<body onclick="toggleDivDisplay('ajaxxmlAccountNamesearch_AccountNamesearch');toggleDivDisplay('ajaxxmlWQAccountEmailSearch_WQAccountEmailSearch');toggleDivDisplay('ajaxxmlWQQuoteNumberSearch_WQQuoteNumberSearch');toggleDivDisplay('ajaxxmlWQPolicyNumberSearch_WQPolicyNumberSearch');">
+	<form name="myForm">
+		<div class="container-fluid bootstrap-node-1">
+			<div class="tableWidth">
+			
+				<div id="header">
+					<span id="#Include:headerNewApp.html#"></span>
+				</div>
+				<div id="contentSection">
+					<h2 class="questionHeading">
+						Workq
+					</h2>
+					<div class="form">
+						<div class="block-form">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="panel panel-primary" style="height: 500px;">
+									  <div class="panel-heading">Search</div>
+									  <div class="panel-sub_heading row">
+										<ul class="warqLinks">
+										<li id="actionLinkListPage_security">
+											<a href="javascript:submitform('filter.html','workq.filter','','');" class="txtBold13Maroon">Profile</a>
+										</li>
+										<li id="actionLinkListPage_security">
+											<a href="javascript:submitform('lostWorkq.html','workq.lostWorkq','','');" class="txtBold13Maroon">Lost Workq</a>
+										</li>
+										<li id="eval:AccountantRule.roleEditOnly">
+											<a href="javascript:submitform('FirmNewApp.html|BasicInfo.html','workq.newApp','forwardeval','AccountantRule.showFullQuoteNewFlow|AccountantRule.showFullQuoteOldFlow');" class="txtBold13Maroon">Create New Application</a>
+										</li>
+										<li id="eval:AccountantRule.roleEditOnly">
+											<a href="javascript:submitform('indicationinjack.html','workq.indicationinjack','','');" class="txtBold13Maroon">Indication In Jack</a>
+										</li>
+										<li id="eval:AccountantRule.showQuickQuoteLink">
+											<a href="javascript:submitform('quickquoteinsured.html','workq.quickquote','','');" class="txtBold13Maroon">Quick Quote</a>
+										</li>
+										<li id="eval:AccountantRule.isShowBlankSpaceWorkqPage">
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										</li>
+										<li class="dropdown" id="moreDropDownWorkqPage_security">
+											<a class="txtBold13Maroon">More<i class="fa fa-fw fa-caret-down">&nbsp;</i>
+											</a>
+											<ul class="dropdown-content">
+												<li id="eval:AccountantRule.roleEditOnly">
+													<a href="javascript:submitform('quickquoteinsured.html','workq.riskmanagement','','');" class="txtBold13Maroon">Risk Management</a>
+												</li>
+												<li id="role_reportnew_Security">
+													<a href="javascript:submitform('report_new.html','workq.reportNew','','');" class="txtBold13Maroon">Report New</a>
+												</li>
+												<li id="role_report_Security">
+													<a href="javascript:submitform('report.html','workq.report','','');" class="txtBold13Maroon">Report</a>
+												</li>
+												<li id="off_risk_Security">
+													<a href="javascript:submitform('OffRiskEmailList.html','workq.goToOffRisk','','');" class="txtBold13Maroon">Off Risk </a>
+												</li>
+												<li id="accountManagementVisibility_security">
+													<a href="javascript:submitform('ManageAccounts.html','workq.accountManagement','','');" class="txtBold13Maroon">Accounts Management</a>
+												</li>
+												<li id="requotePolicy_security">
+													<a href="javascript:submitform('requote.html','workq.requote','','');" class="txtBold13Maroon">Requote</a>
+												</li>
+												<li id="requotePolicy_security">
+													<a href="javascript:submitform('claimsSummary.html','workq.claims','','');" class="txtBold13Maroon">Claim Summary</a>
+												</li>
+												<li id="accountManagementVisibility_security">
+														<a	href="javascript:submitform('EstimateForm.html','workq.EstimateForm','','');"	class="txtBold13Maroon">Protexure Estimate Form</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+									  </div>
+									  <div class="panel-body">
+										<div class="freeFormDiv form-inline" id="workq_freeform_contextdata_01">
+											<ul class="inlineBlock">
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="error_SearchCriteria_error" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Firm Name :</div>
+															<div class="freeFormListTd tdInput">
+																<input
+																name="AccountNamesearch" style="width: 156px" id="AccountNamesearch"
+																type="text" autocomplete="OFF" class="form-control"
+																onkeyup="javascript:ajaxpageblocklink('workq.html','workq.getAccountNameList','','','ajaxxmlAccountNamesearch_AccountNamesearch');"
+																onclick="nottoggleDivDisplay(this,'AccountNamesearch','ajaxxmlAccountNamesearch_AccountNamesearch');" />
+																<div id="ajaxxmlAccountNamesearch_AccountNamesearch"
+																	class="transparent fixcolumnHeaderSearch"
+																	style="display: none; border: solid 1px #cccccc; width: auto; max-height: 300px; overflow-y: auto;" />
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Email :</div>
+															<div class="freeFormListTd tdInput">
+																<input
+																name="WQAccountEmailSearch" style="width: 156px" id="WQAccountEmailSearch"
+																type="text" autocomplete="OFF" class="form-control"
+																onkeyup="javascript:ajaxpageblocklink('workq.html','workq.getAccountEmailList','','','ajaxxmlWQAccountEmailSearch_WQAccountEmailSearch');"
+																onclick="nottoggleDivDisplay(this,'WQAccountEmailSearch','ajaxxmlWQAccountEmailSearch_WQAccountEmailSearch');" />
+																<div id="ajaxxmlWQAccountEmailSearch_WQAccountEmailSearch"
+																	class="transparent fixcolumnHeaderSearch"
+																	style="display: none; border: solid 1px #cccccc; width: auto; max-height: 300px; overflow-y: auto;" />
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="error_WQPolicyEffectiveDate_search" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Effective Date From :</div>
+															<div class="freeFormListTd tdInput iconsStyle2">
+																<span class="input-group-addon "><i
+																	class="fa fa-calendar">&nbsp;</i></span> 
+																<input
+																	name="WQPolicyEffectiveDate_search" type="text"
+																	class="form-control datepicker " id="WQPolicyEffectiveDate_search"
+																	size="13" maxlength="10" style="width: 127px !important;"
+																	onkeyup="applyDateFormat(this,event);"
+																	placeholder="(MM/DD/YYYY)" />
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="error_WQPolicyEffectiveDate_searchTo" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Effective Date To :</div>
+															<div class="freeFormListTd tdInput iconsStyle2">
+																<span class="input-group-addon "><i
+																	class="fa fa-calendar">&nbsp;</i></span> 
+																<input
+																	name="WQPolicyEffectiveDate_searchTo" type="text"
+																	class="form-control datepicker " id="WQPolicyEffectiveDate_searchTo"
+																	size="13" maxlength="10" style="width: 127px !important;"
+																	onkeyup="applyDateFormat(this,event);"
+																	placeholder="(MM/DD/YYYY)" />
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">State :</div>
+															<div class="freeFormListTd tdInput">
+																<select name="WQStateCode_search" class="form-control"
+																	style="width: 167px" id="WQStateCode_search">
+																		<option value="">Select</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1" id="WQCompany_Security">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Company :</div>
+															<div class="freeFormListTd tdInput">
+																<select name="WQCompany_search" class="form-control"
+																	style="width: 167px" id="WQCompany_search">
+																		<option value="">Select</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Status :</div>
+															<div class="freeFormListTd tdInput">
+																<select name="WQStatusKey_search" class="form-control"
+																	style="width: 167px" id="WQStatusKey_search">
+																		<option value="">Select</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Quote Number :</div>
+															<div class="freeFormListTd tdInput">
+																<input name="WQQuoteNumberSearch" style="width: 156px" id="WQQuoteNumberSearch"
+																type="text" autocomplete="OFF" class="form-control"
+																onkeyup="javascript:ajaxpageblocklink('workq.html','workq.getQuoteNumberList','','','ajaxxmlWQQuoteNumberSearch_WQQuoteNumberSearch');"
+																onclick="nottoggleDivDisplay(this,'WQQuoteNumberSearch','ajaxxmlWQQuoteNumberSearch_WQQuoteNumberSearch');" />
+																<div id="ajaxxmlWQQuoteNumberSearch_WQQuoteNumberSearch"
+																	class="transparent fixcolumnHeaderSearch"
+																	style="display: none; border: solid 1px #cccccc; width: auto; max-height: 300px; overflow-y: auto;" />
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Policy Number :</div>
+															<div class="freeFormListTd tdInput">
+																<input name="WQPolicyNumberSearch" style="width: 156px" id="WQPolicyNumberSearch"
+																type="text" autocomplete="OFF" class="form-control"
+																onkeyup="javascript:ajaxpageblocklink('workq.html','workq.getPolicyNumberList','','','ajaxxmlWQPolicyNumberSearch_WQPolicyNumberSearch');"
+																onclick="nottoggleDivDisplay(this,'WQPolicyNumberSearch','ajaxxmlWQPolicyNumberSearch_WQPolicyNumberSearch');" />
+																<div id="ajaxxmlWQPolicyNumberSearch_WQPolicyNumberSearch"
+																	class="transparent fixcolumnHeaderSearch"
+																	style="display: none; border: solid 1px #cccccc; width: auto; max-height: 300px; overflow-y: auto;" />
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">Due For Renewal :</div>
+															<div class="freeFormListTd tdInput">
+																<select name="WQNumberOfDays_search" class="form-control"
+																	style="width: 167px" id="WQNumberOfDays_search">
+																		<option value="">Select</option>
+																</select>
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">&nbsp;</div>
+															<div class="freeFormListTd tdInput">
+																<input name="WQIsRenewed_search" type="checkbox" 
+																	id="WQIsRenewed_search" /> Already Renewed
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">&nbsp;</div>
+															<div class="freeFormListTd tdInput">
+																<input name="setBrokerSearch" type="checkbox" 
+																	id="setBrokerSearch"  onchange="setworkq();"/> Include Brokered
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="inlineBlock_1">
+													<div class="freeFormList form-group">
+														<div class="freeFormListTr">
+															<div class="freeFormListTdError">
+																<h6>&nbsp;</h6>
+															</div>
+															<div class="freeFormListTdError paddingLeft3">
+																<span id="" class="error"></span>
+															</div>
+														</div>
+														<div class="freeFormListTr">
+															<div class="freeFormListTd labelAlign freeFormLabelWidth">&nbsp;</div>
+															<div class="freeFormListTd tdInput">
+																<input name="WQIsLostWorkQPolicy_search" type="checkbox" checked="checked"
+																	id="WQIsLostWorkQPolicy_search" />Include Lost WorkQ
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="row" style="margin-top: 10px;">
+											<div class="freeFormList form-group">
+												<div class="freeFormListTr">
+													<div class="freeFormListTd labelAlign freeFormLabelWidth">&nbsp;</div>
+													<div class="freeFormListTd tdInput">
+														<a id="submitForm" class="btn button1"
+															href="javascript:submitform('list.html','workq.search','','');">Search</a>
+														<a href="#" class="btn button1" onClick="resetSerachFormWorkQ();">Reset</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									  </div>
+									</div>
+								</div>
+								<div class="col-sm-6" id="workq_freeform_contextdata_02">
+									<div class="panel panel-primary left-padding" style="height: 500px;">
+									  <div class="panel-heading">Total Submissions ( <label name="totalsubmissions" id="totalsubmissions" />)</div>
+									  <div class="panel-sub_heading row">
+										<ul class="inlineBlock">
+											<li class="inlineBlock_2">
+												<span class="text12_workq">New Business / Renewal :</span>  <label name="ProfilePolicyStatus" id="ProfilePolicyStatus"></label></li>
+											<li class="inlineBlock_2">
+												<span class="text12_workq">State :</span> <label name="ProfileStates" id="ProfileStates"></label></li>
+											<li class="inlineBlock_2">
+												<span class="text12_workq">Direct / Sub-produced : </span><label name="SubProducedOrDirect" id="SubProducedOrDirect"> </label></li>
+											<li class="inlineBlock_2">
+												<span class="text12_workq">First Reviewer :</span> <label name="ProfileFirstReviewer" id="ProfileFirstReviewer"></label></li>
+										</ul>
+									  </div>
+														
+									  <div class="panel-body">
+										<ul class="workq_ul">
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.indicationList','','');">Indication ( <label
+														name="indicationCount" id="indicationCount"
+														class="txtBlack13Bold" /> )
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.quickquotelist','','');">QuickQuote ( <label
+														name="quickquote" id="quickquote"
+														class="txtBlack13Bold" /> )
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.pendinglist','','');">New ( <label name="pending"
+														id="pending" class="txtBlack13Bold" /> )
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.bookedlist','','');">UnderReview ( <label
+														name="booked" id="booked" class="txtBlack13Bold" /> )
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.uwreview','','');">UW Review ( <label
+														name="uwreview" id="uwreview" class="txtBlack13Bold" /> )
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.uwcompleted','','');"
+													class="txtBold13Maroon">UW Completed ( <label
+														name="uwcompleted" id="uwcompleted" class="txtBlack13Bold" /> )
+														
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.abandonedlist','','');"
+													class="txtBold13Maroon">Quoted ( <label
+														name="abandoned" id="abandoned" class="txtBlack13Bold" />
+														)
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.acceptedlist','','');"
+													class="txtBold13Maroon">Accepted ( <label
+														name="accepted" id="accepted" class="txtBlack13Bold" />
+														)
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.declinedlist','','');"
+													class="txtBold13Maroon">Declined ( <label
+														name="declined" id="declined" class="txtBlack13Bold" />
+														)
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.rejectlist','','');"
+													class="txtBold13Maroon">Not Accepted ( <label
+														name="reject" id="reject" class="txtBlack13Bold" /> )
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.issuedlist','','');"
+													class="txtBold13Maroon">Issued ( <label
+														name="issued" id="issued" class="txtBlack13Bold" /> )
+												</a>
+											</li>
+											<li>
+												<a
+													href="javascript:submitform('list.html','workq.cancelledlist','','');"
+													class="txtBold13Maroon">Cancelled ( <label
+														name="cancelled" id="cancelled" class="txtBlack13Bold" />
+														)
+												</a>
+											</li>
+										</ul>
+									  </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<!---------Footer Start---------->
+			<div id="footer" class="footer">
+				<span id="#Include:footerNewApp.html#"></span>
+			</div>
+			<!---------Footer End---------->
+		</div>
+	<table id="firm_freeform_contextdata_999">
+				<tr>
+					<td>
+					<input type="hidden" name="StateCode_search" id="StateCode_search" />
+					<input type="hidden" name="EffectiveDateFrom" id="EffectiveDateFrom" />
+					<input type="hidden" name="EffectiveDateTo" id="EffectiveDateTo" />
+					<input type="hidden" name="EligibleFirstReviewer_search" id="EligibleFirstReviewer_search" />
+					<input type="hidden" name="ProducerCode_search" id="ProducerCode_search" />
+					<input type="hidden" name="WQIsBrokered_search" id="WQIsBrokered_search" />
+					<input type="hidden" name="role_id" id="role_id" />
+					<input type="hidden" name="CompanyKeyfilter" id="CompanyKeyfilter" />
+					
+					
+					<!-- <input type="text" name="IsRenewed_search" id="IsRenewed_search" /> -->
+					<!-- <input type="text" name="ProducerCodefilter" id="ProducerCodefilter" />
+					<input type="text" name="FirstReviewerfilter" id="PolicyStatusDesc" /> -->
+					</td>
+				</tr>
+			</table>
+		
+		<input type="hidden" name="divHideShow" value="" /> <input
+			type="hidden" name="ctxmenuparam" value="" />
+		<table id="BasicInfo_freeform_contextdata_17">
+			<tr>
+				<td><input type="hidden" name="jsessionid" id="jsessionid" />
+				
+				</td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+<script type="text/javascript">
+	//rearrange();
+	loadList();
+</script>
+</html>

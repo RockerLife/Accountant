@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<title>UnderWriter</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script language="javascript" src="script/lawyers.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/capitalizeSentences.js"></script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+<body
+	onload="showPopUpList('popupNew','eval:AccountantRule.isShowSublist');"
+	onclick="toggleDivDisplay('ajaxxmlCountyDesc_CountyDesc');">
+<form>
+<div id="UWReview">
+	<div class="container-fluid bootstrap-node-1">
+		<div class="tableWidth">
+			<div id="header">
+				<span id="#Include:headerNewApp.html#"></span>
+			</div>
+			<div id="contentSection">
+				<h2 class="questionHeading">
+					UnderWriter
+				</h2>
+				<div class="form">
+					<div class="block-form">
+						<table width="100%">
+							<tr>
+								<td align="center">
+									<span id="eval:AccountantRule.isAllFlagsNotCleared" >
+										<span style="font-weight:bold;" id="error_flagsNotCleard" class="error11Bold"></span>
+									</span>
+									<span style="font-weight:bold;" id="error_StatusKey" class="error11Bold">
+										</span>
+									<span class="Confirmation" id="UWReview_freeform_contextdata_100">
+											<label style="font-weight:bold;color:green;" name="pageMsg" id="pageMsg" />
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table width="100%" border="0" align="center" cellpadding="0"
+							cellspacing="0">
+
+							<tr>
+
+								<td bgcolor="#e7e7e7" style="padding:5px 10px;">
+									<table cellpadding="0" cellspacing="0" width="100%">
+										<tr>
+											<td align="left" valign="middle">
+												<table cellpadding="0" cellspacing="1">
+													<tr>
+														<td><img src="img/drilldown_down_aproved.png" /></td>
+														<td>Approved</td>
+														<td width="15px">&nbsp;</td>
+														<td><img src="img/drilldown_down.png" /></td>
+														<td>Approval Pending</td>
+														<td width="15px">&nbsp;</td>
+														<td><img src="img/drilldown_down_subjective.png" /></td>
+														<td>Subjective Approval</td>
+														<td width="15px">&nbsp;</td>
+														<td><img src="images/drilldown_down_AI.png" /></td>
+														<td>Additional Information</td>
+													</tr>
+												</table>
+											</td>
+											<td align="right" valign="top">
+												<table align="right">
+													<tr>
+														<td><div id="divshow">
+																<a class="btn button1" href="javascript:submitform('UWReview.html','UWReview.expandAll','','');">Expand All</a>
+															</div>
+														</td>
+														<td>
+															<div id="divshow">
+																<a class="btn button1" href="javascript:submitform('UWReview.html','UWReview.collapseAll','','');">Collaspe All</a>
+															</div>
+														</td>
+														<td id="eval:AccountantRule.isShowUW">
+															<div id="divshow">
+																<a class="btn button1" href="javascript:submitform('ViewAll.html','UWReview.viewAll','','');">View All</a>
+															</div>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td><table width="100%" border="0" align="center"
+										cellpadding="0" cellspacing="5">
+										<tr>
+											<td><div id="underReviewListDiv">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="2">
+														<tr id="">
+															<td colspan="2"><table width="100%" border="0"
+																	align="left" cellpadding="0" cellspacing="0"
+																	id="UWReview_list_01" class="refferals">
+																	<tr id="UWReview_list_header_01">
+																		<td colspan="3"><table width="100%" border="0"
+																				align="left" cellpadding="5" cellspacing="0">
+																				<tr>
+																					<td id="block_field_edit_row_link" width="1%"><span
+																						id="displaydiv"> </span></td>
+																					<!-- <td valign="top" align="left" width="1%"><span
+																						style="font-weight:bold;" id="block_field_rownum"></span>
+
+																					</td> -->
+																					<td valign="top" align="left" class="fixcolumnTd"><span
+																						style="font-weight:bold;"
+																						id="block_field_Description"></span></td>
+																					<td id="block_field_ToolTipDescription_row_link"></td>
+																				</tr>
+																			</table></td>
+																	</tr>
+																	<tbody id="UWReview_list_data_01">
+																		<tr>
+																			<td id="displaydiv" align="left" width="1%"
+																				valign="top" class="reviewIcon"><div
+																					id="block_field_edit_row_link">
+																					<a
+																						href="javascript:rightclickmenu('addNewUWReview.html','addNewUWReview.edit','','','div_ajaxpostionpremium_freeform:RulePolicyId');"
+																						name="displaydiv"> 
+																						<span id="eval:AccountantRule.isShowDrillDownIcon">
+																							<img id="displaydiv" border="0" title="Approval pending." src="img/drilldown_down.png" />
+																						</span>
+																						 <span id="eval:AccountantRule.isShowApproveIcon">
+																							<img id="displaydiv" border="0" title="Approved." src="img/drilldown_down_aproved.png" />
+																						</span> 
+																						<span id="eval:AccountantRule.isShowApproveSubjectiveIcon">
+																							<img id="displaydiv" title="Subjective Approval." border="0" src="img/drilldown_down_subjective.png" />
+																						</span>
+																						<span id="eval:AccountantRule.isShowAIIcon">
+																							<img id="displaydiv" title="Additional Information" border="0" src="images/drilldown_down_AI.png" />
+																						</span>
+																					</a>
+																				</div></td>
+
+																			<!-- <td align="left" width="1%"><span
+																					style="font-weight:bold;" id="block_field_rownum"></span><span
+																					style="font-weight:bold;">.</span></td> -->
+																			<td colspan="2" valign="top" class="reviewTitle">
+																				<span id="block_field_Description"></span> 
+																				<span id="block_field_ToolTipDescription_row_link">
+																					<a title="context_ToolTipDescription" href="#"><img border="0" src="img/HelpIcon.jpg" /> </a>
+																				</span>
+																			 </td>
+																		</tr>
+																		<tr id="search_ajaxpostion_list_01">
+																			<td colspan="3" align="left"
+																				style="border-bottom:solid 1px #dedede;"><div
+																					id="div_ajaxpostionpremium_freeform:RulePolicyId">
+																				</div></td>
+																		</tr>
+																	</tbody>
+																</table></td>
+														</tr>
+													</table>
+												</div>
+												<div id="pricingCommentListDiv">
+
+													<table width="100%" border="0" cellspacing="0"
+															cellpadding="2">
+															<tr id="">
+																<td colspan="2">
+																	<table id="eval:AccountantRule.isNotNameClearanceQQIndicationPopupFlag" width="99%" border="0" align="left"
+																		cellpadding="3" cellspacing="0">
+																		<tr>
+																			<td id="displayPricingdiv" style="padding-left:2px;"
+																				align="left" width="1.5%" class="reviewIcon">
+																				<span id="eval:AccountantRule.isNotShowPricingApproveIcon">
+																				<span id="eval:AccountantRule.isNotShowAIIconForPricing">
+																					<a href="javascript:rightclickmenu('addNewPricingComment.html','addNewPricingComment.edit','','','div_ajaxpostion_addNewPricingComment:Pricing');"
+																						name="displayPricingdiv"> 
+																						<span>
+																							<img id="displaydiv" border="0" title="Approval pending." src="img/drilldown_down.png" />
+																						</span>
+																						<!-- <span id="eval:AccountantRule.isShowAIIconNew">
+																							<img id="displaydiv" border="0" title="Approval pending." src="images/drilldown_down_AI.png" />
+																						</span> -->
+																					</a>
+																				</span >
+																				</span>
+																				
+																				<span id="eval:AccountantRule.isShowAIIconForPricing">
+																					<a href="javascript:rightclickmenu('addNewPricingComment.html','addNewPricingComment.edit','','','div_ajaxpostion_addNewPricingComment:Pricing');"
+																						name="displayPricingdiv"> 
+																						
+																						<span>
+																							<img id="displaydiv" border="0" title="Approval pending."  src="images/drilldown_down_AI.png" />
+																						</span>
+																					</a>
+																				</span >
+																				
+																				
+																				
+																				
+																				
+																				
+																				
+																				<span id="eval:AccountantRule.isShowPricingApproveIcon">
+																					<a 
+																						href="javascript:rightclickmenu('addNewPricingComment.html','addNewPricingComment.edit','','','div_ajaxpostion_addNewPricingComment:Pricing');"
+																						name="displayPricingdiv"> 
+																						<span >
+																							<img id="displaydiv" border="0" title="Approved." src="img/drilldown_down_aproved.png" />
+																						</span> 
+																					</a>
+																				</span>
+																				
+																				</td>
+																			<td id="UWReview_freeform_contextdata_101"
+																				class="reviewTitle"><span>Ratings</span>
+																				<!-- <label id="PricingJustification" name="PricingJustification"></label> -->
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr class="border0"
+																id="UWReview_freeform_contextdata_112">
+																<td align="left" border="0">
+																	<div
+																		id="div_ajaxpostion_addNewPricingComment:Pricing">
+																	</div>
+																</td>
+															</tr>
+														</table>
+
+													
+												</div></td>
+										</tr>
+										<!-- new comment box starts -->
+										<tr>
+													<td align="center">
+													<span class="Confirmation"	id="UWReview_freeform_contextdata_1000">
+																<label style="padding-left:5px;font-weight:bold;line-height:20px;color:green;"  name="pageMsgCommentUW" id="pageMsgCommentUW" />
+													</span>
+													
+													</td>
+													
+										</tr>
+										<tr>
+													<td>
+																<div id="eval:AccountantRule.isAgent">
+																	<table border="0" align="center" cellpadding="0"
+																		cellspacing="0"
+																		id="UWReview_freeform_contextdata_999">
+																		<tr id="eval:AccountantRule.isNotNameClearanceQQIndicationPopupFlag">
+																			<td nowrap>Comment :&nbsp;</td>
+																			<td id="eval:AccountantRule.enableCommentUW">
+																				<textarea name="UnderwriterComment"
+																					id="UnderwriterComment" class="" cols="90"
+																					rows="3" onKeyUp="limitText(this,1,8000);" />
+																			</td>
+																			<td id="eval:AccountantRule.disableShowCommentUW">
+																				<textarea name="UnderwriterComment"
+																					id="UnderwriterComment" class="" cols="90"
+																					rows="3" readonly="readonly" />
+																			</td>
+																			<td>&nbsp;&nbsp;</td>
+																			<!-- new save button -->
+																			<td id="eval:AccountantRule.enableCommentUW">
+																				<a class="btn button1" href="javascript:submitform('UWReview.html','UWReview.saveComment','','');">Save</a>
+																			</td>
+																		</tr>
+																		<tr id="eval:AccountantRule.isdeclinedstatus">
+																				<td nowrap>Declined Reason :&nbsp;</td>
+																				<td>
+																					<textarea name="DeclinedComment"
+																						id="DeclinedComment" class="inputbox" cols="90"
+																						rows="3" readonly="readonly" style="font-weight: bold !important; color: #000000 !important;"/>
+																				</td>
+																		</tr>
+																	</table>
+																</div>
+															</td>
+										</tr>
+										<!-- New comment box ends -->
+										<tr id="UWReview_freeform_contextdata_333">
+											<td id="eval:AccountantRule.HideShowZohoNameClearanceQuestion" align="left" width="90%" colspan="2">
+											<div class="freeFormListTr">
+												<div class="freeFormListTdError"><h6>&nbsp;</h6></div>
+												<div class="freeFormListTdError paddingLeft3">
+													<span id="error_isNameClearanceRequired" class="tr_errors"></span> 
+												</div>
+											</div>
+											<div class="error paddingLeft40"></div>
+											<div class="freeFormListTd valignTop">
+												<!-- <div style="float: left;">
+													Name Clearance Required?  
+													<span class="mendatory">*</span>
+												</div> -->
+												<div style="float: left;">
+													<span class="radio-inline"><input type="radio" name="isNameClearanceRequired" id="ajax_field_isNameClearanceRequired" value="Y" />Zoho Automatic</span>
+													<span class="radio-inline"><input type="radio" name="isNameClearanceRequired" id="ajax_field_isNameClearanceRequired" value="N" />Zoho Manual</span>
+												</div>
+											</div>
+											</td>
+										</tr>
+										<tr>
+											<td align="center" class="paddingTop20 paddingBottom10">
+												<div class="buttons borderTop">
+													<div align="center">
+														<span id="eval:AccountantRule.isInternalOrPartenerUser">
+															<a id="eval:AccountantRule.isShowUWCompletedButton" class="btn button1" href="javascript:submitform('UWReview.html','UWReview.uwcomplete','','');">UW&nbsp;Complete</a>
+															<a id="eval:AccountantRule.isShowUWReviewButton" class="btn button1" href="javascript:submitform('UWReview.html','UWReview.ureview','','');">UW&nbsp;Review</a>
+															<span id="eval:AccountantRule.isShowUnderreview">
+																<a id="eval:AccountantRule.isChangeStatusVisibile" class="btn button1" href="javascript:submitform('UWReview.html','UWReview.underreview','','');">UnderReview</a>
+															</span>
+															<a id="eval:AccountantRule.isShowDecline" class="btn button1" href="javascript:rightclickmenu('DeclineStatusOnUW.html','DeclineStatusOnUW.edit','','','div_ajaxpostion_DeclineStatusOnUW:DeclineStatus');">Decline</a>
+														</span>
+														<span id="eval:AccountantRule.isNameClearanceQQIndicationPopupFlag">
+															<a class="btn button1" href="javascript:submitform('quickquoteinsured.html|indicationinjack.html','UWReview.nameClearanceIndicationFlag','forwardeval','AccountantRule.isquickquoteinsured|AccountantRule.isIndicationPage');" >Save</a>
+														</span>
+														<a class="btn button1" href="javascript:submitform('quickquoteinsured.html|indicationinjack.html|list.html|BasicInfo.html|general.html|Practice-Management.html|attestation.html|computer-services.html|invest-finan-planing.html|indexThanks.html|quoteOption.html|confirmation.html|paymentmethod.html|RenewBasicInfo.html|Business-funds-control.html|FirmNewApp.html|insuranceHistoryNewApp.html|aboutFirm.html|AOPNewApp.html|practiceManagementSupp.html|investmentFinancialPlanningSupp.html|computerRelatedServices.html|mainBusinessManagementSupplement.html|auditSupplement.html|practiceManagement.html|morePracticeManagement.html|trustsAndOfficer.html|pastClaims.html','UWReview.back','forwardeval','AccountantRule.isquickquoteinsured|AccountantRule.isIndicationPage|AccountantRule.isListPage|AccountantRule.isBasicInfoPage|AccountantRule.isGeneralPage|AccountantRule.isPracticeManagementPage|AccountantRule.isAttestationPage|AccountantRule.isComputerServicesPage|AccountantRule.isInvestFinanPlaningPage|AccountantRule.isIndexThanksPage|AccountantRule.isQuoteOptionPage|AccountantRule.isConfirmationPage|AccountantRule.isPaymentmethodPage|AccountantRule.isRenewBasicPage|AccountantRule.isBusinessFundsControlPage|AccountantRule.isFirmNewAppPage|AccountantRule.isInsuranceHistoryPage|AccountantRule.isAboutFirm|AccountantRule.isAopPage|AccountantRule.isPracticeManagementSuppPage|AccountantRule.isInvestmentFinancialPlanningSuppPage|AccountantRule.isComputerRelatedServicesPage|AccountantRule.isMainBusinessManagementSupplementPage|AccountantRule.isAuditSupplementPage|AccountantRule.isPracticeManagementPageNew|AccountantRule.isMorePracticeManagementPage|AccountantRule.isTrustsAndOfficerPage|AccountantRule.isPastClaimsPage');"
+															tabindex="110">Back</a>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr class="border0" id="UWReview_freeform_contextdata_112">
+											<td align="left" border="0" style="border-bottom:solid 1px #dedede;">
+												<div
+													id="div_ajaxpostion_DeclineStatusOnUW:DeclineStatus">
+												</div>
+											</td>
+										</tr>
+										
+										<tr>
+											<td><table id="UWReview_list_freeform_contextdata_333">
+													<tr>
+														<!-- <td> <input type="text" id="PolicyKey" name="PolicyKey"/> </td> -->
+													</tr>
+												</table></td>
+										</tr>
+									</table></td>
+							</tr>
+
+						</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>				
+		</div>
+		<!---------Footer Start---------->
+		<div id="footer" class="footer">
+			<span id="#Include:footerNewApp.html#"></span>
+		</div>
+		<!---------Footer End---------->
+	</div>
+		<table id="firm_freeform_contextdata_999">
+			<tr>
+				<td>
+					<input type="hidden" name="jsessionid" id="jsessionid" />
+					<input type="hidden" name="divHideShow" id="divHideShow" />
+					<input type="hidden" name="headerStatusDescUpdated" id="headerStatusDescUpdated" />
+					<input type="hidden" name="ClearStatusFlag" id="ClearStatusFlag" />
+					<input type="hidden" name="StatusDesc" id="StatusDesc" />
+				</td>
+			</tr>
+		</table>
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<projectcomponents project="AccountantIns">
+
+	<component name="sqlStatements">
+		<action name="view">
+			<workflow name="view" seq="0">
+				<databaseoperation name="getPoneBatchReportsListByReportId" operation="3" executionsequence="56" metaobject="report_search_columns"
+					sqlstmt="select pbr.batchreport_id, pbr.module_name, pbr.search_xml, pbr.request_date, pbr.search_xml_desc,
+						pbr.archive_date, (case when isnull(isarchived,'')='Y' then 'Y' else 'N' end) as isdownloadlink,
+						pbr.report_file_name,
+						(select agentname from userdetails where [agentemail]=pbr.last_updated_by) as user_id, 
+						(select agentname from userdetails where [agentemail]=pbr.last_updated_by) last_updated_by, 
+						isarchived,search_name from pone_batch_reports pbr where report_name=#reportID#"></databaseoperation>
+				<storedprocedureoperation id="insert_pone_batch_reports_p_java" name="insert_pone_batch_reports_p_java" 
+						dbspname="insert_pone_batch_reports_p_java" executionsequence="127" metaobject="report_search_columns" operation="1">
+		 				<parameteroperation indexno="0" seq="1" 
+		 					property="module_name" mode="IN"></parameteroperation>
+		 				<parameteroperation indexno="1" seq="2" 
+		 					property="reportID" mode="IN"></parameteroperation>
+		 				<parameteroperation indexno="2" seq="3" 
+		 					property="search_xml" mode="IN"></parameteroperation>
+		 				<parameteroperation indexno="3" seq="4" 
+		 					property="user_id" mode="IN"></parameteroperation>
+		 				<parameteroperation indexno="4" seq="5" 
+		 					property="roles" mode="IN"></parameteroperation>
+		 				<parameteroperation indexno="5" seq="6" 
+		 					property="isemailnotificationrequired" mode="IN"></parameteroperation>
+		 				<parameteroperation indexno="6" seq="7" 
+		 					property="last_updated_by" mode="IN"></parameteroperation>
+		 				<parameteroperation indexno="7" seq="8" 
+		 					property="search_xml_desc" mode="IN"></parameteroperation>
+		 				<parameteroperation indexno="8" seq="9" 
+		 					property="project_name" mode="IN"></parameteroperation>	
+		 				<parameteroperation indexno="9" seq="10" 
+		 					property="Type" mode="IN"></parameteroperation>		
+		 				<parameteroperation indexno="10" seq="11" 
+		 					property="search_name" mode="IN"></parameteroperation>			
+		 				<resultsetoperation indexno="1" 
+		 					mappingclass="java.util.HashMap" seq="1"></resultsetoperation>
+		 		</storedprocedureoperation>
+				<storedprocedureoperation name="getPoneBatchReports_p_java" id="getPoneBatchReports_p_java"
+					dbspname="getPoneBatchReports_p_java" executionsequence="131" metaobject="report_search_columns" operation="5">
+					<parameteroperation indexno="0" seq="1"
+						property="reportID" mode="IN"></parameteroperation>
+					<parameteroperation indexno="1" seq="2"
+						property="PAGE_SIZE" mode="IN"></parameteroperation>
+					<parameteroperation indexno="2" seq="3"
+						property="PAGE_NUMBER" mode="IN"></parameteroperation>
+					<parameteroperation indexno="3" seq="4"
+						property="ispaginationrequired" mode="IN"></parameteroperation>			
+					<resultsetoperation indexno="0"
+						mappingclass="java.util.HashMap"></resultsetoperation>		
+				</storedprocedureoperation>
+				<databaseoperation name="getSavedSearchListByReportId" operation="3" executionsequence="56" metaobject="report_search_columns"
+					sqlstmt="select rss.search_id, rss.search_name, rss.search_xml, rss.search_xml_desc,
+						(select agentname from userdetails where [agentemail]=rss.last_updated_by) last_updated_by, last_updated_ts,
+						created_by, isglobal, (select top 1 agentname from userdetails up where up.userno=created_by) as created_by_desc 
+						from reportsavedsearch rss where report_id = #reportID#"></databaseoperation>
+			</workflow>
+        </action>
+	</component>
+</projectcomponents>	

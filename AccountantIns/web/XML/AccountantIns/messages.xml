@@ -1,0 +1,15 @@
+<messages project="AccountantIns">
+	<message msglevel="W" msgkey="AlreadyExistsAcocuntName" message="AccountName and State Code Already Exists." />
+	<message msglevel="W" msgkey="searchSavedSuccessFully" 	message="Search has been saved successfully"></message>
+	<message msglevel="W" msgkey="searchUpdatedSuccessFully" message="Search has been updated successfully"></message>
+	<message msglevel="W" msgkey="searchDeletedSuccessFully" message="Search has been deleted successfully"></message>
+	<message msglevel="W" msgkey="reportScheduleSuccessfullyMsg" message="Report has been scheduled successfully"></message>
+	<message msglevel="W" msgkey="StatusSuccessFullyUpdateMsg" message="Policy Status has been updated successfully"/>
+		<message msglevel="W" msgkey="StatusSuccessCommentMsg" message="Conditions have been saved successfully"/>
+		<message msglevel="W" msgkey="StatusSuccessCommentMsgUnderwriter" message="Comment have been saved successfully"/>
+		<message msglevel="W" msgkey="showPageDataSavedSuccessfuly" message="Data has been saved successfully"></message>
+	<message msglevel="W" msgkey="QuotelimitMsgRB" message="C &amp; F is not allowing any increase in limit."/>
+	<message msglevel="W" msgkey="PageSaveMessage" message="Policy data has been updated successfully"/>
+	
+
+</messages>

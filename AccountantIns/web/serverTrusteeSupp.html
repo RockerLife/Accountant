@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Served As Trustee</title>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"/>
+		<script src="js/jquery.treeview.js"/>
+		<script src="js/bootstrap_3-3-6.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script language="javascript" src="script/lawyers.js" />
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/capitalizeSentences.js"/>
+		<script src="js/producerOne.js"/>
+		<script src="js/bootstrap-datepicker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body onload="loadTrustOfficers();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form autocomplete="off">
+			<!-- Bootstrap Core JavaScript -->
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted">
+					<div id="feeTrusteeDiv">
+						<!-- <div>
+							<h2 class="questionHeading">
+							Served As Trustee
+							</h2>
+						</div> -->
+						<div class="form" style="min-height: 250px;width:90%;	" >
+							<div class="block-form" style="margin-left: 27px;">
+								<div id="serverTrusteeSupp">
+									<div class="freeFormDiv form-inline" id="serverTrusteeSupp_freeform_contextdata_001">
+										<div class="Confirmation" id="serverTrusteeSupp_freeform_contextdata_002" align="center">
+											<label name="pageMsg" id="pageMsg" />
+										</div>
+										<ul class="inlineBlock">
+											<li class="inlineBlock_1_fix">
+												<div class="freeFormList form-group">
+													<div class="freeFormListTr">
+														<div class="freeFormListTdError">
+															<h6>&nbsp;</h6>
+														</div>
+														<div class="freeFormListTdError paddingLeft3">
+	
+														</div>
+													</div>
+													<div class="freeFormListTr">
+														<div class="freeFormListTd">
+															<div class="txtbold">How many trust or estates?</div>
+														</div>
+														<div class="freeFormListTd tdInput">
+															<input type="text" name="addTrustsOREstates" id="ajax_field_addTrustsOREstates" maxlength="1" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;"
+															onchange="javascript:ajaxsubmitform('trustsAndOfficer.html|practiceManagement.html','serverTrusteeSupp.refreshGrid','forwardeval','AccountantRule.isNotRenewedPolicy|AccountantRule.isRenewedPolicy','feeTrusteeDiv');"/>
+															<div id="error_IsServerTrusteeSupp" class="error"> </div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="questionBlock">
+										<table cellpadding="0" cellspacing="0" width="100%">
+											<tr>
+												<td colspan="2" style="padding: 0px;">
+													<table cellspacing="0" cellpadding="2" border="0" class="gridTable" width="80%" align="center" id="ServerTrusteeSupp_list_01">
+														<tbody>
+															<tr>
+																<td class="paddingTop20">
+																	<span id="ajax_error_needFirstRow" class="error"/>
+																	<span id="error_completeRow" class="errors"/>
+																</td>
+															</tr>
+															<tr class="listRow2CSS">
+																<th>Name of Trust or Estate</th>
+																<th>Type</th>
+																<th>Value of Assets</th>
+																<th>Beneficiary Interest</th>
+																<th/>
+															</tr>
+															<tr id="ServerTrusteeSupp_list_header_01" class="no-padding">
+																<td id="block_field_NameOfTrust"/>
+																<td id="block_field_TypeofTrustKey"/>
+																<td id="block_field_ValueOfAssetsTrust"/>
+																<td id="block_field_IsBeneficiaryInterestTrust"/>
+																<td  id="showPageSave">
+																	<span id="block_field_deletelink_row_link"/>
+																</td>
+															</tr>
+															<tr class="listRow2CSS" id="ServerTrusteeSupp_list_mom_data_01">
+																<td id="block_field_NameOfTrust">
+																	<input name="NameOfTrust" id="ajax_field_NameOfTrust" type="text" maxlength="100"/>
+																</td>
+																<td>
+																	<span id="block_field_TypeofTrustKey">
+																		<select name="TypeofTrustKey" id="ajax_field_TypeofTrustKey" class="inputbox">
+																			<option value="">- Select -</option>
+																		</select>
+																	</span>
+																</td>
+																<td nowrap class="iconsStyle2">
+																	<span id="block_field_ValueOfAssetsTrust">
+																		<input name="ValueOfAssetsTrust" id="ajax_field_ValueOfAssetsTrust" type="text"  maxlength="15" onkeypress="loadTrustOfficers();" ondrop="return false;" onpaste="return false;" />
+																	</span>
+																</td>
+																<td id="">
+																	<table cellpadding="2" cellspacing="2">
+																		<tr>
+																			<td class="padding0" nowrap id="block_field_IsBeneficiaryInterestTrust">
+																				<input name="IsBeneficiaryInterestTrust"  id="ajax_field_IsBeneficiaryInterestTrust_FixedValue" type="radio" value="Y"/>
+																			</td>
+																			<td class="padding0">&nbsp;Yes
+																			</td>
+																			<td>&nbsp;&nbsp;&nbsp;</td>
+																			<td class="padding0" nowrap id="block_field_IsBeneficiaryInterestTrust">
+																				<input name="IsBeneficiaryInterestTrust"  id="ajax_field_IsBeneficiaryInterestTrust_FixedValue" type="radio"  value="N"/>
+																			</td>
+																			<td class="padding0">&nbsp;No
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+																<td  id="showPageSave">
+																	<div id="block_field_deletelink_row_link">
+																		<a href="javascript:ajaxpageblocklink('trustsAndOfficer.html|practiceManagement.html','serverTrusteeSupp.delete','forwardeval','AccountantRule.isNotRenewedPolicy|AccountantRule.isRenewedPolicy','feeTrusteeDiv');" class="Link_blue">
+																			<i class="fa fa-times delete_icon">&nbsp;</i>
+																		</a>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div class="paddingTop10 row">
+									<div  id="showPageSave">
+										<div class="floatRight">
+											<a class="btn next" href="javascript:ajaxsubmitform('trustsAndOfficer.html|practiceManagement.html','serverTrusteeSupp.save','forwardeval','AccountantRule.isNotRenewedPolicy|AccountantRule.isRenewedPolicy','feeTrusteeDiv');" >Save</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<table id="serverTrusteeSupp_freeform_contextdata_999">
+						<tr>
+							<td>
+								<input type="hidden" name="jsessionid" id="jsessionid" />
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

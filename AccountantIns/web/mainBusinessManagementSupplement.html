@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Business Management Supplement</title>
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.treeview.js"></script>
+<script src="js/bootstrap_3-3-6.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script language="javascript" src="script/lawyers.js" />
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/htmlMassking.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/capitalizeSentences.js"></script>
+<script src="js/producerOne.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body onload="loadUnderwritingInfo();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form autocomplete="off">
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted">
+		
+					<div id="header">
+							<span id="#Include:headerNewApp.html#"></span>
+						</div>
+					<div class="menuTab">
+							<span id="#Include:tabsNewApp.html#"></span>
+						</div>
+		
+					<div id="busMngSuppDiv">
+						<div id="contentSection">
+							<div class="confirmationMsgAlign" id="businessManagementSupplement_freeform_contextdata_100">
+								<label class="Confirmation" name="pageMsg" id="pageMsg" />
+								<!-- <div id="error_ApplicationNotCompleted" class="error11Bold"> </div> -->
+							</div>
+							<div>
+								<h2 class="questionHeading">Business Management Supplement</h2>
+							</div>
+							<div class="form" id="businessManagementSupplement_freeform_contextdata_01">
+								<table class="question underwriting2_width" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td valign="bottom">1.</td>
+											<td width="90%">
+												<div id="error_HaveInvestmentAuthorityFC" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 90%">Do you have discretionary investment authority of client funds?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="HaveInvestmentAuthorityFC" id="ajax_field_HaveInvestmentAuthorityFC" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="HaveInvestmentAuthorityFC" id="ajax_field_HaveInvestmentAuthorityFC" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td valign="bottom">2.</td>
+											<td width="90%">
+												<div id="error_TotlaNumberOfClientsFc" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 90%">What is the total number of clients for which you or disburses funds?</span>
+											</td>
+											<td nowrap>
+												<input type="text" class="inputbox" name="TotlaNumberOfClientsFc" id="ajax_field_TotlaNumberOfClientsFc" size="9" maxlength="9" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;"/>
+											</td>
+										</tr>
+										<tr>
+											<td valign="bottom">3.</td>
+											<td width="90%">
+												<div id="error_TotalAmountOfClientFundsFc" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 90%">List total amount of client funds your Firm disburses annually:</span>
+											</td>
+											<td nowrap>
+												<input type="text" class="inputbox" name="TotalAmountOfClientFundsFc" id="ajax_field_TotalAmountOfClientFundsFc" size="9" maxlength="9" onkeypress="setAmountFormatting('ajax_field_TotalAmountOfClientFundsFc');" ondrop="return false;" onpaste="return false;"/>
+											</td>
+										</tr>
+										<tr>
+											<td valign="top">4.</td>
+											<td width="90%">
+												<div id="error_IsControlFundsForBusinessAndEntimentFc" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 98%">Other than for the preparation and filing of federal, state or local tax returns, do you provide business/personal management or family office services or control funds for clients in the entertainment or sports industry?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsControlFundsForBusinessAndEntimentFc" id="ajax_field_IsControlFundsForBusinessAndEntimentFc" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsControlFundsForBusinessAndEntimentFc" id="ajax_field_IsControlFundsForBusinessAndEntimentFc" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td valign="bottom">5.</td>
+											<td width="90%">
+												<div id="error_IsCountersignatureRequiredFc" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 90%">Is a client countersignature required on all client checks issued by personnel of the Firm?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsCountersignatureRequiredFc" id="ajax_field_IsCountersignatureRequiredFc" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsCountersignatureRequiredFc" id="ajax_field_IsCountersignatureRequiredFc" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td valign="bottom">6.</td>
+											<td width="90%">
+												<div id="error_IsBankAccountReconciledFc" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 90%">Are all client bank accounts reconciled by someone other than Firm personnel authorized to deposit or withdraw therefrom?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsBankAccountReconciledFc" id="ajax_field_IsBankAccountReconciledFc" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsBankAccountReconciledFc" id="ajax_field_IsBankAccountReconciledFc" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td valign="bottom">7.</td>
+											<td width="90%">
+												<div id="error_IsManagementServiceProvided" class="error"/>
+												<span class="mendatory">*</span>
+												<span id="NewBusiness" class="floatLeft" style="width: 90%">Within the past five years have you provided management services for investment ventures?</span>
+												<span id="RenewBusiness" class="floatLeft" style="width: 90%">Have you, within the past year provided management services for investment ventures?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsManagementServiceProvided" id="ajax_field_IsManagementServiceProvided" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsManagementServiceProvided" id="ajax_field_IsManagementServiceProvided" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td valign="bottom">8.</td>
+											<td width="90%">
+												<div id="error_IsFirmPersonnelBusinessManagerFc" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 90%">Do you act as a manager or CFO for clients?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsFirmPersonnelBusinessManagerFc" id="ajax_field_IsFirmPersonnelBusinessManagerFc" value="Y" onchange="loadUnderwritingInfo();"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsFirmPersonnelBusinessManagerFc" id="ajax_field_IsFirmPersonnelBusinessManagerFc" value="N" onchange="loadUnderwritingInfo();"/>No</span>
+											</td>
+										</tr>
+										<tr id="rowsm" class="default paddingNone">
+											<td/>
+											<td colspan="2">
+												<table width="100%">
+													<tr>
+														<td>
+															<div id="error_ProvideNumberOfClientFc" class="error"/>
+														</td>
+													</tr>
+													<tr>
+														<td>
+														If Yes, Provide the number of such clients:&nbsp;&nbsp;
+														<input type="text" class="inputbox" name="ProvideNumberOfClientFc" id="ajax_field_ProvideNumberOfClientFc" size="9" maxlength="9" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;" />
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<div id="error_ClientIndustryFc" class="error"/>
+														</td>
+													</tr>
+													<tr>
+														<td> 
+														<span style="float:left;display:block;width:273px;">Client Industry:</span>
+														<span style="float:left;display:block;padding-top:3px"><input type="text" class="inputbox" name="ClientIndustryFc" id="ajax_field_ClientIndustryFc" size="9" maxlength="35" /></span>
+														</td>
+													</tr>
+												</table>
+			
+											</td>
+										</tr>
+										<tr>
+											<td valign="bottom">9.</td>
+											<td width="90%">
+												<div id="error_NumberOfFirmEmployeesFc" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 90%">Provide the number of your employees who control or disburse funds for the Firm or clients:</span>
+											</td>
+											<td nowrap>
+												<input type="text" class="inputbox" name="NumberOfFirmEmployeesFc" id="ajax_field_NumberOfFirmEmployeesFc" size="9" maxlength="9" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;"/> 
+											</td>
+										</tr>
+										<tr>
+											<td valign="bottom">10.</td>
+											<td width="90%">
+												<div id="error_IsEmployeeDishonestyCoverageFc" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft" style="width: 90%">Do you carry Employee Dishonesty Coverage?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsEmployeeDishonestyCoverageFc" id="ajax_field_IsEmployeeDishonestyCoverageFc" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsEmployeeDishonestyCoverageFc" id="ajax_field_IsEmployeeDishonestyCoverageFc" value="N"/>No</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="buttons borderTop row">
+						<div class="floatLeft">
+							<a class="btn back" 
+							href="javascript:submitform('computerRelatedServices.html|investmentFinancialPlanningSupp.html|practiceManagementSupp.html|AOPNewApp.html','mainBusinessManagementSupplement.back','forwardeval','AccountantRule.isComputerServicesSupplement|AccountantRule.isInvestmentSupplement|AccountantRule.isPracticeManagementSupplement|AccountantRule.isThereNoPracticeInvestmentCompSupp');" >Back
+							</a>
+						</div>
+							<div class="paddingTop10 row" >
+								<div  >
+									<div class="floatRight" id="showPageSave">
+										<a class="btn next"  
+										href="javascript:submitform('auditSupplement.html|practiceManagement.html','mainBusinessManagementSupplement.save','forwardeval','AccountantRule.isAuditSupplement|AccountantRule.isNoAuditSupplement');" 
+										
+										>Save&nbsp;&&nbsp;Continue</a>
+									</div>
+									<div class="floatRight" id="showContinue">
+										<a class="btn next"  
+										href="javascript:submitform('auditSupplement.html|practiceManagement.html','mainBusinessManagementSupplement.continue','forwardeval','AccountantRule.isAuditSupplement|AccountantRule.isNoAuditSupplement');" 
+										
+										>Continue</a>
+									</div>
+								</div>
+							</div>
+							<!---------Footer Start---------->
+							<!-- <div id="footer" class="footer">
+								<span id="#Include:footerNewApp.html#"></span>
+							</div> -->
+							<!---------Footer End---------->
+						</div>
+					</div>
+					<table id="businessManagementSupplement_freeform_contextdata_999">
+						<tr>
+							<td>
+								<input type="hidden" name="jsessionid" id="jsessionid" />
+								<input type="hidden" name="divHideShow" id="divHideShow" />
+								<input type="hidden" name="AppCreatedDate" id="AppCreatedDate" />
+								<input type="hidden" name="ProducerCode" id="ProducerCode2" />
+								<input type="hidden" name="approveSubjective" id="approveSubjective" />
+								<!-- <input type="text" name="page" id="page"/> -->
+		
+								<input type="hidden" name="firmNewAppPage" id="firmNewAppPage"/>
+								<input type="hidden" name="insuranceHistoryPage" id="insuranceHistoryPage" />						
+		
+								<script type="text/javascript" src="script/manageTab.js"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
+				

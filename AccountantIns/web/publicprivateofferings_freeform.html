@@ -1,0 +1,218 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+<body>
+<form> <div id="publicprivateofferings_freeform">
+<table width="94%" border="0" align="center" cellpadding="2" cellspacing="0" id="publicprivateofferings_freeform_02">
+<tr>
+                                                <td width="34%">&nbsp;</td>
+                                                <td colspan="2">&nbsp;</td>
+                                              </tr>
+                                              <!--<tr>
+                                                <td colspan="3" ><div id="ajax_errors_list"></div></td>
+                                              </tr>-->
+                                              
+                                              <tr >
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div class="defult_tr_errors" id="ajax_error_ClientNamePpo" ></div></td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"><span class="red">*</span>Client Name : </td>
+                                                <td align="left" colspan="2">
+                                                		<div id="eval:AccountantRule.isBasicInfoPageReadOnly"><input name="ClientNamePpo" type="text" disabled="disabled" class="inputbox" id="ajax_field_ClientNamePpo" size="50" maxlength="50"/> </div>
+                                                		<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly"><input type="text" class="inputbox" name="ClientNamePpo" id="ajax_field_ClientNamePpo" size="50" maxlength="100"  tabindex="430" onblur ="javascript:capitalizeSentences(this,1);" /></div>                                                		</td>
+                                               </tr>
+                                              <tr >
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div id="ajax_error_ClientIndustryPpoKey" class="defult_tr_errors"></div></td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right">Client Industry:</td>
+                                                <td align="left" colspan="2">
+                                                				<span id="eval:AccountantRule.isBasicInfoPageReadOnly">
+                                                					<select name="ClientIndustryPpoKey" disabled="disabled" id="ajax_field_ClientIndustryPpoKey" class="inputbox">
+                                                					  <option value="" >Select</option>
+                                   							       </select>
+                                        						 </span>
+                                        						 <span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+		                                        					<select name="ClientIndustryPpoKey" id="ajax_field_ClientIndustryPpoKey" class="inputbox" onChange="showDivAreaClientAjax(this.value,'ClientIndustryPpoKeyOthers');" tabindex="435">
+		                                        					  <option value="" >Select</option> 
+	                                                    		    </select>
+		                                                    	</span>                                                    </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div id="ajax_error_ClientIndustryPpoKeyOthers" class="defult_tr_errors"></div></td>
+                                              </tr>
+                                              
+                                              <tr>                                                                                              
+                                                <td align="right">                                                                              
+	                                                <div style="display:none" id="div_header_ClientIndustryPpoKeyOthers">Specify Others:</div>
+                                                	<div id="eval:AccountantRule.div_header_title_ClientIndustryPpoKeyOthers">Specify Others:</div>                                                </td>
+                                                <td align="left" colspan="2">
+                                                	<div style="display:none" id="div_data_ClientIndustryPpoKeyOthers">                                               
+	                                                	<div id="eval:AccountantRule.isBasicInfoPageReadOnly"><textarea rows="2" name="ClientIndustryPpoKeyOthers" readonly="readonly" id="ajax_field_ClientIndustryPpoKeyOthers" cols="20"></textarea></div>
+	                                              		<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly"><textarea rows="2" name="ClientIndustryPpoKeyOthers" id="ajax_field_ClientIndustryPpoKeyOthers" cols="20" onKeyUp="limitText(this,1,5000);" class="inputbox" tabindex="440"></textarea></div> 
+	                                              	</div>
+	                                                <div id="eval:AccountantRule.div_header_data_ClientIndustryPpoKeyOthers">                                               
+	                                                	<div id="eval:AccountantRule.isBasicInfoPageReadOnly"><textarea rows="2" name="ClientIndustryPpoKeyOthers" readonly="readonly" id="ajax_field_ClientIndustryPpoKeyOthers" cols="20" class="inputbox"></textarea></div>
+	                                              		<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly"><textarea rows="2" name="ClientIndustryPpoKeyOthers" id="ajax_field_ClientIndustryPpoKeyOthers" class="inputbox" cols="20"  onKeyUp="limitText(this,1,5000);" tabindex="445" ></textarea></div> 
+	                                              	</div>                                              	</td>                                 
+                                              </tr>
+                                              
+                                              <tr>
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div id="ajax_error_ServiceIndustryPpoKey" class="defult_tr_errors"></div></td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right">Primary Services Rendered :</td>
+                                                <td align="left" colspan="2">
+                                                
+                                                				<span id="eval:AccountantRule.isBasicInfoPageReadOnly">
+                                                					<select name="ServiceIndustryPpoKey" disabled="disabled" id="ajax_field_ServiceIndustryPpoKey" class="inputbox" >
+                                                					  <option value="" >Select</option>
+                                   							       </select>
+                                        						 </span>
+                                        						 <span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+		                                        					<select name="ServiceIndustryPpoKey" id="ajax_field_ServiceIndustryPpoKey" class="inputbox" onChange="showDivAreaPrimaryServiceAjax(this.value,'ServiceIndustryPpoKeyOthers');" tabindex="450">
+		                                        					  <option value="" >Select</option> 
+	                                                    		    </select>
+		                                                    	</span>                                               </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div id="ajax_error_ServiceIndustryPpoKeyOthers" class="defult_tr_errors"></div></td>
+                                              </tr>
+                                              <tr>                                                                                              
+                                                <td align="right">                                                                              
+	                                                <div style="display:none" id="div_header_ServiceIndustryPpoKeyOthers">Specify Others:</div>
+                                                	<div id="eval:AccountantRule.div_header_title_ServiceIndustryPpoKeyOthers">Specify Others:</div>                                                </td>
+                                                <td align="left" colspan="2">
+                                                	<div style="display:none" id="div_data_ServiceIndustryPpoKeyOthers">                                               
+	                                                	<div id="eval:AccountantRule.isBasicInfoPageReadOnly"><textarea rows="2" name="ServiceIndustryPpoKeyOthers" readonly="readonly" id="ajax_field_ServiceIndustryPpoKeyOthers" cols="20"></textarea></div>
+	                                              		<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly"><textarea rows="2" name="ServiceIndustryPpoKeyOthers" id="ajax_field_ServiceIndustryPpoKeyOthers" cols="20" onKeyUp="limitText(this,1,5000);" tabindex="460" class="inputbox"></textarea></div> 
+	                                              	</div>
+	                                                <div id="eval:AccountantRule.div_header_data_ServiceIndustryPpoKeyOthers">                                               
+	                                                	<div id="eval:AccountantRule.isBasicInfoPageReadOnly"><textarea rows="2" name="ServiceIndustryPpoKeyOthers" readonly="readonly" id="ajax_field_ServiceIndustryPpoKeyOthers" cols="20" class="inputbox"></textarea></div>
+	                                              		<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+	                                              		  <textarea rows="2" name="ServiceIndustryPpoKeyOthers" id="ServiceIndustryPpoKeyOthers" class="inputbox" cols="20"  onkeyup="limitText(this,1,5000);" tabindex="470"></textarea>
+	                                              		</div>
+                                                  </div>                                              	</td>                                 
+                                              </tr>
+                                              <tr>
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div id="ajax_error_YearServiceRenderedPpo" class="defult_tr_errors"></div></td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"><span class="red">*</span>Year Services Rendered : </td>
+                                                <td align="left" colspan="2">
+                                                		<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+                                                			<input name="YearServiceRenderedPpo" type="text" disabled="disabled" class="inputbox" id="ajax_field_YearServiceRenderedPpo" size="4" maxlength="4"/>(YYYY)                                                		</div>
+                                                		<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+		                                                	<input type="text" class="inputbox" name="YearServiceRenderedPpo" id="ajax_field_YearServiceRenderedPpo" size="4" maxlength="4" onClick="javascript:attachPercentageFormat(this);" tabindex="475" />&nbsp;(YYYY)                                                		</div>                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div id="ajax_error_SizeOfOfferingPpo" class="defult_tr_errors"></div></td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"><span class="red">*</span>Size of Offering :</td>
+                                                <td align="left" colspan="2">
+                                                		<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+                                                			<input name="SizeOfOfferingPpo" type="text" disabled="disabled" class="inputbox" id="ajax_field_SizeOfOfferingPpo" size="9" maxlength="9"/> 
+                                                		</div>
+                                                		<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+                                                			<input type="text" class="inputbox" name="SizeOfOfferingPpo" id="ajax_field_SizeOfOfferingPpo" size="9" maxlength="9" onClick="javascript:attachPercentageFormat(this);" tabindex="480"/>
+                                                		</div>                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div id="ajax_error_FeesChargedPpo" class="defult_tr_errors"></div></td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"><span class="red">*</span>Fees Charged : </td>
+                                                <td align="left" colspan="2">
+                                                		<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+                                                			<input name="FeesChargedPpo" type="text" disabled="disabled" class="inputbox" id="ajax_field_FeesChargedPpo" size="20" maxlength="20"/> 
+                                                		</div>
+                                                		<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+                                                			<input type="text" class="inputbox" name="FeesChargedPpo" id="ajax_field_FeesChargedPpo" size="20" maxlength="20" onClick="javascript:attachAmountFormat(this);" onKeyUp="limitAmountText(this,15);" tabindex="485"/>
+                                                		</div>                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right"></td>
+                                                <td align="left" colspan="2"><div id="ajax_error_TypeOfOfferingPpo" class="defult_tr_errors"></div></td>
+                                              </tr>
+                                              <tr>
+                                                <td align="right">Type of Offering : </td>
+                                                <td align="left" colspan="2">
+                                                				<span id="eval:AccountantRule.isBasicInfoPageReadOnly">
+                                                					<select name="TypeOfOfferingPpo" disabled="disabled" id="ajax_field_TypeOfOfferingPpo" class="inputbox" >
+                                                					  <option value="" >Select</option>
+                                   							       </select>
+                                        						 </span>
+                                        						 <span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+		                                        					<select name="TypeOfOfferingPpo" id="ajax_field_TypeOfOfferingPpo" class="inputbox" tabindex="490">
+		                                        					  <option value="" >Select</option> 
+	                                                    		    </select>
+		                                                    	</span>                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td>&nbsp;</td>
+                                                <td colspan="2"><table border="0" cellspacing="0" cellpadding="1">
+                                                  <tr>
+                                                    <td align="left" id="eval:events.saveEvent" ><table border="0" cellspacing="0" cellpadding="0" id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+                                                                          <tr >
+                                                                            <td background="images/button-bg.jpg"  class="button4"><span><a href="javascript:ajaxsubmitform('BasicInfo.html','publicprivateofferings_freeform.save','','','divGy');" class="button4" onClick="closeErrorDiv('IsCommissionRecieved');showDivArea(['editN'], ['editY']); setFocus('IsCommissionRecieved');" tabindex="495">Save</a></td>
+                                                                          </tr>
+                                                    </table></td>
+                                <td align="left" id="eval:events.editEvent"><table border="0" cellspacing="0" cellpadding="0" id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+                                                                          <tr>
+                                                                            <td background="images/button-bg.jpg"  class="button4"><a href="javascript:ajaxsubmitform('BasicInfo.html','publicprivateofferings_freeform.update','','','divGy');" onClick="setFocus('IsCommissionRecieved');" class="button4" tabindex="500" >Save</a></td>
+                                                                          </tr>
+                                                    </table></td>
+                                <td align="left" ><table border="0" cellspacing="0" cellpadding="0" >
+                                                                          <tr>
+                                                                            <td background="images/button-bg.jpg"  class="button4"><a href="javascript:ajaxsubmitform('BasicInfo.html','publicprivateofferings_freeform.close','','','divGy');" onClick="setFocus('IsCommissionRecieved');" class="button4" tabindex="505">Cancel</a></td>
+                                                                          </tr>
+                                                    </table></td>
+                                                  </tr>
+                                                </table></td>
+                                              </tr>
+                                                                    <tr >
+                                                                      <td>&nbsp;</td>
+                                                                    </tr>
+                                                                    <!--<tr>
+                                                                      <td colspan="3"><strong>If public, indicate primary or secondary. If private, indicate partnership,   trust or stock sale.</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                      <td colspan="3">Specify the years of experience of firm personnel involved in the offerings of   securities, real estate, or other investments described   above. </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                      <td colspan="3"><table width="90%" border="0" align="center" cellpadding="5" cellspacing="0" >
+                                                                          <tr>
+                                                                            <td width="100" align="right"><span class="red">*</span>Firm Name : </td>
+                                                                            <td align="left"><input type="text" class="inputbox" name="PublicPrivateFirmName" id="ajax_field_PublicPrivateFirmName" size="30"/></td>
+                                                                            <td width="150" nowrap="nowrap" align="right"><span class="red">*</span>Years of Experience : </td>
+                                                                            <td  align="left"><input type="text" class="inputbox" name="PublicPrivateYearsOfExperience" id="ajax_field_PublicPrivateYearsOfExperience" size="10"/></td>
+                                                                          </tr>
+                                                                      </table></td>
+                                                                    </tr>
+                                                                  --></table>
+</div>
+	<table id="publicprivateofferings_freeform_contextdata_17">
+		<tr>
+			<td>
+				<input type="hidden" name="jsessionid" id="jsessionid" />
+			</td>
+		</tr>
+	</table>
+
+</form>
+</body>
+</html>

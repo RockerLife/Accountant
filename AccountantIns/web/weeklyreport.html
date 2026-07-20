@@ -1,0 +1,904 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Reports Section</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/account.js"></script>
+<script language="javascript" src="script/lawyers.js">
+	
+</script>
+<script type="text/javascript" src="script/tabber.js"></script>
+<script type="text/javascript" src="script/test_new.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" />
+<script type="text/javascript" id="hs-script-loader" async defer
+	src="//js.hs-scripts.com/3334505.js"></script>
+</head>
+<script src="js/producerOne.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<body>
+	<div id="cover" style="width: 100%; height: 100%;"></div>
+	<div id="popup" style="width: 430px;">
+		<table width="75%" border="0" align="center" cellpadding="10"
+			cellspacing="0" height="120px">
+			<tr>
+				<td align="center"><b>Reports are being downloaded. We
+						appreciate your patience. </b> <!-- <br/><label id="minutes">00</label>:<label id="seconds">00</label> --></td>
+			</tr>
+		</table>
+	</div>
+	<form name="myForm">
+
+		<div id="contextLinks"></div>
+		<table width="100%" border="0" align="center" cellspacing="0"
+			cellpadding="0">
+			<tr>
+				<td><table width="98%" border="0" align="center"
+						cellspacing="0" cellpadding="0">
+						<tr>
+							<td><div id="topheader">
+									<table width="100%" border="0" align="center" cellpadding="0"
+										cellspacing="0">
+										<tr>
+											<td height="50" bgcolor="#FFFFFF"><table width="98%"
+													border="0" align="center" cellpadding="0" cellspacing="0">
+													<tr>
+														<td valign="bottom"><span
+															id="eval:AccountantRule.isQAEnvironment"> <a
+																href="https://www.protexureaccountants.com"><img
+																	src="image/logo_protexureaccountants1.png" border="0"
+																	width="325" height="50" /> </a>
+														</span> <span id="eval:AccountantRule.isUATEnvironment"> <a
+																href="https://www.protexureaccountants.com"><img
+																	src="image/logo_protexureaccountants1.png" border="0"
+																	width="325" height="50" /> </a>
+														</span> <span id="eval:AccountantRule.isProdEnvironment">
+																<a href="https://www.protexureaccountants.com"><img
+																	src="image/logo_protexureaccountants1.png" border="0"
+																	width="325" height="50" /> </a>
+														</span></td>
+														<td align="right" valign="bottom"><table border="0"
+																cellspacing="0" cellpadding="0">
+																<tr>
+																	<td colspan="5" align="center"><img
+																		src="img/space.gif" width="1" height="5" /></td>
+																</tr>
+																<tr>
+																	<td align="center" id="eval:AccountantRule.isInsured"><table
+																			width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr>
+																				<td align="center"><img src="img/space.gif"
+																					width="1" height="5" /></td>
+																			</tr>
+																			<tr>
+																				<td class="topLink"><a
+																					href="javascript:submitform('changepassword.html','report.changepassword','','');"
+																					class="topLink">Change Password</a></td>
+																			</tr>
+																		</table></td>
+																	<td align="center"
+																		id="eval:AccountantRule.isAgentState"><table
+																			width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr>
+																				<td align="center"><img
+																					src="img/backPortal1.jpg" width="20" height="22" />
+																				</td>
+																			</tr>
+																			<tr>
+																				<td class="topLink"><a
+																					href="javascript:submitform('indexinsured.html|indexagent.html','report.homepage','forwardeval','AccountantRule.isInsured|AccountantRule.isAgent');"
+																					class="topLink">Back to Portal</a></td>
+																			</tr>
+																		</table></td>
+																	<td width="10" align="center" valign="bottom">&nbsp;</td>
+																	<td align="center"
+																		id="eval:AccountantRule.isAgentState"><table
+																			width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr>
+																				<td align="center"><img src="img/backList1.jpg"
+																					width="20" height="22" /></td>
+																			</tr>
+																			<tr>
+																				<td class="topLink"><a
+																					href="javascript:submitform('list.html','report.backtolist','','');"
+																					class="topLink">Back to List </a></td>
+																			</tr>
+																		</table></td>
+																	<td width="10" align="center" valign="bottom">&nbsp;</td>
+																	<td align="center"
+																		id="eval:AccountantRule.isAgentState"><table
+																			width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr>
+																				<td align="center"><img
+																					src="img/backWorkq1.jpg" width="20" height="22" />
+																				</td>
+																			</tr>
+																			<tr>
+																				<td class="topLink"><a
+																					href="javascript:submitform('workq.html','report.backtowrokq','','');"
+																					class="topLink">Back to workq</a></td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td colspan="5" align="center" class="topLink"><img
+																		src="img/space.gif" width="1" height="5" /></td>
+																</tr>
+															</table></td>
+													</tr>
+												</table></td>
+										</tr>
+										<tr>
+											<td><table width="100%" border="0" cellspacing="0"
+													cellpadding="0">
+													<tr>
+														<td class="topt1"></td>
+														<td align="right" class="topt2">
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tr>
+																	<td align="left"><img
+																		src="img/getting_coverage.jpg" width="597" height="33" />
+																	</td>
+																	<td align="right"><img src="img/call.jpg"
+																		width="289" height="24" /></td>
+																</tr>
+															</table>
+
+														</td>
+														<td class="topt3"></td>
+													</tr>
+												</table></td>
+										</tr>
+										<tr>
+											<td><table width="100%" border="0" cellspacing="0"
+													cellpadding="0">
+													<tr>
+														<td class="topt4">&nbsp;</td>
+														<td class="topt5">&nbsp;</td>
+														<td class="topt6">&nbsp;</td>
+													</tr>
+												</table></td>
+										</tr>
+										<tr>
+											<td><table width="100%" border="0" cellspacing="0"
+													cellpadding="0">
+													<tr>
+														<td class="topt7"></td>
+														<td align="right" class="topt8"><span class="topt9">&nbsp;</span></td>
+													</tr>
+												</table></td>
+										</tr>
+										<tr>
+											<td bgcolor="#FFFFFF">&nbsp;</td>
+										</tr>
+										<tr>
+											<td><table width="100%" border="0" cellspacing="0"
+													cellpadding="0" class="border1">
+													<tr>
+														<td class="heading1">Reports</td>
+													</tr>
+													<tr>
+														<td class="bglightGray"><table width="100%"
+																border="0" cellspacing="0" cellpadding="2">
+																<tr>
+																	<td><table width="100%" border="0" cellspacing="0"
+																			cellpadding="0">
+																			<tr class="defult_tr_errors"
+																				id="tr_error_indication_div">
+																				<td align="left"><div id="error_indication_div"
+																						class="error11Bold"></div></td>
+																			</tr>
+																		</table></td>
+																	<td width="200" align="right"><span
+																		class="error11Bold">Note :</span> <span
+																		class="error11">All fields are required</span></td>
+																</tr>
+															</table></td>
+													</tr>
+												</table></td>
+										</tr>
+									</table>
+								</div></td>
+						</tr>
+					</table></td>
+			</tr>
+			<tr>
+				<td><div id="content">
+						<table width="100%" border="0" align="center" cellpadding="0"
+							cellspacing="0" class="border1">
+							<tr>
+								<td><table width="100%" border="0" cellpadding="5"
+										cellspacing="0" bordercolor="#CCCCCC">
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<td><table width="100%" border="0" cellspacing="5"
+													cellpadding="5">
+													<tr align="center">
+														<td valign="top"><table width="100%" border="0"
+																align="center" cellpadding="0" cellspacing="0">
+																<!-- monika for report link-->
+																<!-- end monika -->
+																<tr>
+																	<td><table cellpadding="0" cellspacing="0">
+																			<tr>
+																				<td class="tabInactive"><a
+																					href="javascript:submitform('report.html','report.crusterreport','','');"
+																					class="txtBold13Maroon"> Crum & Foster Report</a></td>
+																				<td class="tabInactive"><a
+																					href="javascript:submitform('report.html','report.qbreport','','');"
+																					class="txtBold13Maroon"> Quick Book Report</a></td>
+																				<td class="tabActive">Weekly Report</td>
+																				<td id="BrokerageReport" class="tabInactive"><a
+																					href="javascript:submitform('report.html','report.brokerageReport','','');"
+																					class="txtBold13Maroon"> Brokerage Report</a></td>
+																			</tr>
+																		</table></td>
+																</tr>
+																<tr>
+																	<td valign="top" align="center" class="border1"
+																		height="200px">
+																		<table cellpadding="3" cellspacing="3"
+																			id="weekdate_freeform_contextdata_0176" width="750px">
+																			<tr>
+																				<td colspan="2">&nbsp;</td>
+																			</tr>
+																			<tr>
+																				<td align="right" width="180" class="label"
+																					valign="top">Select :</td>
+																				<td align="left" valign="top" colspan="2"><input
+																					type="radio" name="ProjectType" value="Acc"
+																					id="ProjectType" checked="checked" />
+																					AccountantIns <input type="radio"
+																					name="ProjectType" value="Lwy" id="ProjectType" />
+																					LawyersIns</td>
+																			</tr>
+																			<tr>
+																				<td align="left"></td>
+																				<td align="left">
+																					<div id="error_WeekFromDate"
+																						class="defult_tr_errors"></div>
+																				</td>
+																			</tr>
+
+																			<tr>
+																				<td align="right" class="label">From :</td>
+																				<td align="left">
+																					<!-- <input name="WeekFromDate"
+																					type="text" class="form-control datepicker "
+																					id="WeekFromDate" size="13" maxlength="10"
+																					style="width: 127px !important;"
+																					onkeyup="applyDateFormat(this,event);"
+																					placeholder="(MM/DD/YYYY)" /> <a
+																					onclick="javascript:show_calendar_widget(this);"
+																					id="date_link" class="calendar-link"
+																					title="Select Date" tabindex="2"><img
+																						src="img/calander.jpg" alt="calendar" hspace="4"
+																						vspace="0" /> </a> (MM/DD/YYYY) -->
+
+																					<div class="iconsStyle3">
+																						<span class="input-group-addon"><i
+																							class="fa fa-calendar">&nbsp;</i></span> <input
+																							type="text" class="datepicker"
+																							id="WeekFromDate" name="WeekFromDate"
+																							placeholder="MM/DD/YYYY"
+																							onkeyup="applyDateFormat(this,event);" />
+																				</td>
+																				<td rowspan="2" valign="middle">
+																					<table cellpadding="0" cellspacing="2">
+																						<tr>
+																							<td>
+																								<div class="button4"
+																									style="width: 130px; float: left;">
+																									<a id="ExportReport"
+																										href="javascript:submitform('weeklyreport.html','weeklyreport.downloadWeeklyExportReport','','');">Export
+																										Report</a>
+																								</div>
+																							</td>
+																							<td>
+																								<div class="button4"
+																									style="width: 180px; float: left;">
+																									<a id="ExportReport1"
+																										href="javascript:submitform('weeklyreport.html','weeklyreport.downloadStateMonthReport','','');">Export
+																										State Report</a>
+																								</div>
+																							</td>
+																						</tr>
+																					</table>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td align="left"></td>
+																				<td align="left">
+																					<div id="error_WeekToDate" class="defult_tr_errors"></div>
+																				</td>
+																			</tr>
+
+																			<tr>
+																				<td align="right" class="label">To Date :</td>
+																				<td align="left">
+																					<!-- <input name="WeekToDate"
+																					type="text" class="form-control datepicker "
+																					id="WeekToDate" size="13" maxlength="10"
+																					style="width: 127px !important;"
+																					onkeyup="applyDateFormat(this,event);"
+																					placeholder="(MM/DD/YYYY)" /> <a
+																					onclick="javascript:show_calendar_widget(this);"
+																					id="date_link" class="calendar-link"
+																					title="Select Date" tabindex="2"><img
+																						src="img/calander.jpg" alt="calendar" hspace="4"
+																						vspace="0" /> </a> (MM/DD/YYYY) -->
+
+
+																					<div class="iconsStyle3">
+																						<span class="input-group-addon"><i
+																							class="fa fa-calendar">&nbsp;</i></span> <input
+																							type="text" class="datepicker"
+																							id="WeekToDate" name="WeekToDate"
+																							placeholder="MM/DD/YYYY"
+																							onkeyup="applyDateFormat(this,event);" />
+																				</td>
+																			</tr>
+																			<tr>
+																				<td align="right" width="180" class="label"
+																					valign="top">Select :</td>
+																				<td align="left" valign="top" colspan="">
+																					<div style="float: left;">
+
+																						<input type="radio" name="SearchType"
+																							value="createDate" id="SearchType"
+																							checked="checked" /> Created <input type="radio"
+																							name="SearchType" value="createWeek"
+																							id="SearchType" /> Created by Week <br/> <input
+																							type="radio" name="SearchType"
+																							value="createEffectiveDate" id="SearchType" />
+																						Effective <input type="radio" name="SearchType"
+																							value="createState" id="SearchType" /> State
+																					</div>
+																					
+																				</td>
+																				<td rowspan="2" valign="middle">
+																				<div class="button4"
+																						style="width: 130px; float: left; margin-left: 5px">
+																						<a
+																							href="javascript:submitform('weeklyreport.html','weeklyreport.report','','');"
+																							tabindex="43">Create Report</a>
+																					</div>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td align="right" width="180" class="label"
+																					valign="top"></td>
+																				<td id="AccountantRule.IsManagementRole" colspan="2"
+																					align="center">
+																					<div class="button4"
+																						style="width: 160px; float: left; margin-left: 5px">
+																						<a
+																							href="javascript:submitform('weeklyreport.html','weeklyreport.downloadAllDataReport','','');"
+																							tabindex="43">Fetch All Data</a>
+																					</div>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td colspan="2">&nbsp;</td>
+																			</tr>
+
+																		</table>
+																	</td>
+																</tr>
+															</table></td>
+													</tr>
+
+													<tr>
+														<td colspan="2" align="left"><table width="100%"
+																border="0" cellspacing="0" cellpadding="0">
+																<tr>
+																	<td><table cellpadding="0" cellspacing="0"
+																			width="100%">
+																			<tr>
+																				<td class="border1"><table cellpadding="0"
+																						cellspacing="0" width="100%">
+																						<tr>
+																							<td><div
+																									id="eval:AccountantRule.isInetErrorListEmpty">
+																									<div
+																										id="eval:WeeklyReport.showReportbycreateddate">
+																										<table width="100%" border="0" align="center"
+																											cellpadding="2" cellspacing="1"
+																											id="weeklyreport_creationdate_list_1">
+																											<tr
+																												id="weeklyreport_creationdate_list_header_1"
+																												class="tableheading">
+																												<td width="40%"
+																													id="block_field_MonthofAppcrtDate"
+																													style="border-right: 1px solid #ffffff;"
+																													value="block_field_MonthofAppcrtDate">
+																													Month of App. Created</td>
+																												<td width="30%" id="block_field_TotalApps"
+																													style="border-right: 1px solid #ffffff;"
+																													value="block_field_TotalApps">Total
+																													Apps</td>
+																												<td width="30%" id="block_field_NewQQ"
+																													style="border-right: 1px solid #ffffff;"
+																													value="block_field_NewQQ">New (Quick
+																													Quote)</td>
+																											</tr>
+																											<tr class="bglightGray"
+																												id="weeklyreport_creationdate_list_data_1">
+																												<td class="borderBtm"
+																													id="block_field_MonthofAppcrtDate"
+																													style="border-right: 1px solid #ffffff;"
+																													value="block_field_MonthofAppcrtDate"></td>
+																												<td class="borderBtm"
+																													id="block_field_TotalApps"
+																													style="border-right: 1px solid #ffffff;"
+																													value="block_field_TotalApps"></td>
+																												<td class="borderBtm" id="block_field_NewQQ"
+																													style="border-right: 1px solid #ffffff;"
+																													value="block_field_NewQQ"></td>
+																											</tr>
+																										</table>
+																										<table id="total_freeform_contextdata_1"
+																											width="100%" border="0" cellpadding="0"
+																											cellspacing="0">
+																											<tr class="Link_blue_bold">
+																												<td width="40%"
+																													style="border-right: 1px solid #ffffff;">
+																													Total&nbsp;&nbsp;</td>
+																												<td width="30%"><label id="TTotal"
+																													name="TTotal" align="center"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="30%"><label id="NewTotal"
+																													name="NewTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																											</tr>
+																										</table>
+																										<table>
+																											<!--  <tr>
+                                                    <td><div style="width: 70px;"> 
+                                                    <a id="ExportReport"
+																		href="javascript:submitform('weeklyreport.html','weeklyreport.uploadexcel','','');">Export
+                                                        to excel</a> </div></td>
+                                                  </tr>
+                                                  -->
+																										</table>
+																									</div>
+																									<div
+																										id="eval:WeeklyReport.showReportbyeffectivedate">
+																										<table width="100%" border="0" align="center"
+																											cellpadding="2" cellspacing="0"
+																											id="weeklyreport_effectivedate_list_1">
+																											<tr
+																												id="weeklyreport_effectivedate_list_header_1"
+																												class="tableheading">
+																												<td width="10%"
+																													id="block_field_MonthOfPolicyEff"
+																													style="border-right: 1px solid #ffffff;">
+																													Month of Policy Effective</td>
+																												<td width="7%"
+																													id="block_field_ExDatesAvaialble"
+																													style="border-right: 1px solid #ffffff;">
+																													Ex Dates Available</td>
+																												<td width="10%"
+																													id="block_field_BudgetForecastforApps "
+																													style="border-right: 1px solid #ffffff;">
+																													Budget Forecast for Apps</td>
+																												<td width="7%" id="block_field_TotalApps"
+																													style="border-right: 1px solid #ffffff;">
+																													Total Apps</td>
+																												<td width="7%"
+																													id="block_field_UnderReviewNew"
+																													style="border-right: 1px solid #ffffff;">
+																													Under Review</td>
+																												<td width="7%" id="block_field_Declined"
+																													style="border-right: 1px solid #ffffff;">
+																													Declined</td>
+																												<td width="7%" id="block_field_QuotedNew"
+																													style="border-right: 1px solid #ffffff;">
+																													Quoted</td>
+																												<td width="7%" id="block_field_Issued"
+																													style="border-right: 1px solid #ffffff;">
+																													Issued</td>
+																												<td width="7%" id="block_field_HitRatio"
+																													style="border-right: 1px solid #ffffff;">
+																													Hit Ratio</td>
+																												<td width="7%" id="block_field_Pending"
+																													style="border-right: 1px solid #ffffff;">
+																													Pending</td>
+																												<td width="7%" id="block_field_Rejected"
+																													style="border-right: 1px solid #ffffff;">
+																													Not Accepted</td>
+																												<td width="10%"
+																													id="block_field_TotalPremiumFromIssued"
+																													style="border-right: 1px solid #ffffff;">
+																													Total Premium from Issued</td>
+																												<td width="7%"
+																													id="block_field_PremiumForecast"
+																													style="border-right: 1px solid #ffffff;">
+																													Premium Forecast</td>
+																											</tr>
+																											<tr class="bglightGray"
+																												id="weeklyreport_effectivedate_list_data_1">
+																												<td class="borderBtm"
+																													id="block_field_MonthOfPolicyEff"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_ExDatesAvaialble"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_BudgetForecastforApps "
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_TotalApps"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_UnderReviewNew"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_Declined"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_QuotedNew"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_Issued"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_HitRatio"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_Pending"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_Rejected"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_TotalPremiumFromIssued"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_PremiumForecast"
+																													style="border-right: 1px solid #ffffff;"></td>
+																											</tr>
+																										</table>
+																										<table
+																											id="effectivetotal_freeform_contextdata_1"
+																											width="100%" border="0" cellpadding="1"
+																											cellspacing="0">
+																											<tr class="Link_blue_bold">
+																												<td width="10%" class="Link_blue_bold"
+																													style="border-right: 1px solid #ffffff;">
+																													Total</td>
+																												<td width="7%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																												</td>
+																												<td width="10%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																												</td>
+																												<td width="7%"><label id="SumTotal"
+																													name="SumTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="7%"><label
+																													id="UnderReviewTotal"
+																													name="UnderReviewTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="7%"><label
+																													id="DeclinedTotal" name="DeclinedTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="7%"><label
+																													id="QuotedNewTotal" name="QuotedNewTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="7%"><label id="IssuedTotal"
+																													name="IssuedTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="7%"><label id="HitRatioSum"
+																													name="HitRatioSum"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="7%"><label id="PendingTotal"
+																													name="PendingTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="7%"><label
+																													id="RejectedTotal" name="RejectedTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label
+																													id="Totalofsumpremium"
+																													name="Totalofsumpremium"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="7%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																												</td>
+																											</tr>
+																										</table>
+
+																									</div>
+																									<div id="eval:WeeklyReport.showReportbystate">
+																										<table width="100%" border="0" align="center"
+																											cellpadding="2" cellspacing="0"
+																											id="weeklyreport_by_state_list_1">
+																											<tr id="weeklyreport_by_state_list_header_1"
+																												class="tableheading">
+																												<td id="block_field_StateName"
+																													style="border-right: 1px solid #ffffff;">
+																													State</td>
+																												<td id="block_field_TotalApps"
+																													style="border-right: 1px solid #ffffff;">
+																													Total Apps</td>
+																												<td id="block_field_UnderReviewNew"
+																													style="border-right: 1px solid #ffffff;">
+																													Under Review</td>
+																												<td id="block_field_Declined"
+																													style="border-right: 1px solid #ffffff;">
+																													Declined</td>
+																												<td id="block_field_QuotedNew"
+																													style="border-right: 1px solid #ffffff;">
+																													Quoted</td>
+																												<td id="block_field_Issued"
+																													style="border-right: 1px solid #ffffff;">
+																													Issued</td>
+																												<td id="block_field_HitRatio"
+																													style="border-right: 1px solid #ffffff;">
+																													Hit Ratio</td>
+																												<td id="block_field_Pending"
+																													style="border-right: 1px solid #ffffff;">
+																													Pending</td>
+																												<td id="block_field_Rejected"
+																													style="border-right: 1px solid #ffffff;">
+																													Not Accepted</td>
+																												<td id="block_field_TotalPremiumFromIssued"
+																													style="border-right: 1px solid #ffffff;">
+																													Total Premium from Issued</td>
+																											</tr>
+																											<tr class="bglightGray"
+																												id="weeklyreport_by_state_list_data_1">
+																												<td class="borderBtm" width="10%"
+																													id="block_field_StateName"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_TotalApps"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_UnderReviewNew"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_Declined"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_QuotedNew"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_Issued"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_HitRatio"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_Pending"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_Rejected"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" width="10%"
+																													id="block_field_TotalPremiumFromIssued"
+																													style="border-right: 1px solid #ffffff;"></td>
+																											</tr>
+																										</table>
+																										<table id="statetotal_freeform_contextdata_1"
+																											width="100%" border="0" cellpadding="1"
+																											cellspacing="0">
+																											<tr class="Link_blue_bold">
+																												<td width="10%"
+																													style="border-right: 1px solid #ffffff;">
+																													Total</td>
+																												<td width="10%"><label id="SumTotal"
+																													name="SumTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label
+																													id="UnderReviewTotal"
+																													name="UnderReviewTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label
+																													id="DeclinedTotal" name="DeclinedTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label
+																													id="QuotedNewTotal" name="QuotedNewTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label id="IssuedTotal"
+																													name="IssuedTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label id="HitRatioSum"
+																													name="HitRatioSum"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label
+																													id="PendingTotal" name="PendingTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label
+																													id="RejectedTotal" name="RejectedTotal"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																												<td width="10%"><label
+																													id="Totalofsumpremium"
+																													name="Totalofsumpremium"
+																													style="border-right: 1px solid #ffffff;"></label>
+																												</td>
+																											</tr>
+																										</table>
+																										<table>
+
+																										</table>
+																									</div>
+																									<div id="divD" style="display: none;">
+																										<table width="100%" border="0" cellspacing="0"
+																											cellpadding="2"
+																											id="weekdate_freeform_contextdata_01">
+																											<tr>
+																												<td align="right">From Date :</td>
+																												<td><input name="From_Date" type="text"
+																													class="inputbox" id="From_Date" /></td>
+																												<td align="right">To Date :</td>
+																												<td><input name="To_Date" type="text"
+																													class="inputbox" id="To_Date" /></td>
+																											</tr>
+																											<tr>
+																												<td><div style="width: 70px;">
+																														<a id="ReportByWeek"
+																															href="javascript:submitform('weeklyreport.html','weeklyreport.reportbyweek','','');">Submit</a>
+																													</div></td>
+																											</tr>
+																										</table>
+																									</div>
+																									<div id="eval:WeeklyReport.showReportbyweek">
+																										<table width="100%" border="0" align="center"
+																											cellpadding="2" cellspacing="0"
+																											id="weeklyreport_creationdate_LastWeek_list_1">
+																											<tr
+																												id="weeklyreport_creationdate_LastWeek_list_header_1"
+																												class="tableheading">
+																												<td id="block_field_MonthofAppcrtDate"
+																													style="border-right: 1px solid #ffffff;">
+																													Week of App. Created</td>
+																												<td id="block_field_TotalApps"
+																													style="border-right: 1px solid #ffffff;">
+																													Total Apps</td>
+																												<td id="block_field_NewQQ"
+																													style="border-right: 1px solid #ffffff;">
+																													New (Quick Quote)</td>
+																											</tr>
+																											<tr class="bglightGray"
+																												id="weeklyreport_creationdate_LastWeek_list_data_1">
+																												<td class="borderBtm"
+																													id="block_field_MonthofAppcrtDate"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm"
+																													id="block_field_TotalApps"
+																													style="border-right: 1px solid #ffffff;"></td>
+																												<td class="borderBtm" id="block_field_NewQQ"
+																													style="border-right: 1px solid #ffffff;"></td>
+																											</tr>
+																										</table>
+
+																									</div>
+																								</div></td>
+																						</tr>
+																					</table></td>
+																			</tr>
+																		</table></td>
+																</tr>
+															</table></td>
+													</tr>
+													<tr>
+														<td><table style="display: none">
+																<tr>
+																	<td><div style="width: 70px;">
+																			<a id="CreatedForm"
+																				href="javascript:submitform('weeklyreport.html','weeklyreport.reportbycreateddate','','');">Created</a>
+																		</div></td>
+																	<td><div style="width: 70px;">
+																			<a id="CreatedbyWeekForm"
+																				href="javascript:submitform('weeklyreport.html','weeklyreport.reportbycreateddatebyweek','','');">Created
+																				By Week</a>
+																		</div></td>
+																	<td><div style="width: 70px;">
+																			<a id="EffectiveForm"
+																				href="javascript:submitform('weeklyreport.html','weeklyreport.reportbyeffectivedate','','');">Effective</a>
+																		</div></td>
+																	<td><div style="width: 70px;">
+																			<a id="StateForm"
+																				href="javascript:submitform('weeklyreport.html','weeklyreport.reportbystate','','');">State</a>
+																		</div></td>
+																	<td>
+																		<td><div style="width: 70px;">
+																				<a id="ExportAllReport"
+																					href="javascript:submitform('weeklyreport.html','weeklyreport.downloadWeeklyExportReport','','');">Export
+																					all Report to excel</a>
+																			</div></td>
+																</tr>
+															</table></td>
+													</tr>
+													<!--  <tr>
+                          <td><table id="report_freeform_contextdata_1">
+                              <tr>
+                                <td><input type="hidden" id="SearchType" name="SearchType" />
+                                </td>
+                              </tr>
+                            </table></td>
+                        </tr> -->
+													<tr>
+														<td align="center"><table border="0" cellspacing="2"
+																cellpadding="0">
+																<tr>
+
+																	<td><div class="button4"
+																			style="width: 100px; float: left;">
+																			<a
+																				href="javascript:submitform('workq.html','report.back','','');"
+																				tabindex="43">Back</a>
+																		</div></td>
+																</tr>
+															</table></td>
+													</tr>
+												</table></td>
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+									</table></td>
+							</tr>
+							<tr>
+								<td><table width="100%" border="0" cellspacing="0"
+										cellpadding="0">
+										<tr>
+											<td width="16"><img src="img/bottombg.jpg" width="16"
+												height="59" /></td>
+											<td align="center" background="img/bottombg.jpg"
+												class="topLink">Copyright 2026, Protexure. All rights reserved.</td>
+											<td width="16"><img src="img/bottombg.jpg" width="16"
+												height="59" /></td>
+										</tr>
+									</table></td>
+							</tr>
+						</table>
+					</div></td>
+			</tr>
+		</table>
+		<div class="calendar_widget" id="calendar_widget">
+			<iframe id="calendar_widget_iframe" name="calendar_widget_iframe"
+				src="calendar_widget.html" frameborder="0" />
+		</div>
+	</form>
+</body>
+<!--  <script type="text/javascript">
+		showReportDiv();
+	</script>
+	-->
+</html>

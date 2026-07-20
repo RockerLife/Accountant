@@ -1,0 +1,44 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="InsuranceHistoryNewApp">
+     <parameterMap id="UpdatePolicyCoverageAC_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="LimitSequence" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsClaimExpensesType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="DeductibleSequence" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsClaimOptionType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="TransactionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="CoverageSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IsFirmCarryingProfLiabilityIns" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="VersionKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="UpdatePolicyCoverageAC_p" parameterMap="UpdatePolicyCoverageAC_pMap">{ call UpdatePolicyCoverageAC_p(?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="InsertInsuranceHistoryAndCoverageACMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IsFirmCarryingProfLiabilityIns" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyExpirationDatePross" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="ProInsPremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsClaimExpLiability" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PriorActDatePross" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="IsPerClaim" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="VersionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="FirmYear" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="InsuranceCompanyNamePross" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LimitSequencePross" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeductibleSequencePross" jdbcType="NUMERIC" javaType="java.lang.Double" mode="IN" />
+          <parameter property="TransactionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="CoverageSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="LimitSequence" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsClaimExpensesType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="DeductibleSequence" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsClaimOptionType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsPriorActDateFull" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="VersionKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="InsertInsuranceHistoryAndCoverageAC" parameterMap="InsertInsuranceHistoryAndCoverageACMap">{ call InsertInsuranceHistoryAndCoverageAC(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+</sqlMap>
+

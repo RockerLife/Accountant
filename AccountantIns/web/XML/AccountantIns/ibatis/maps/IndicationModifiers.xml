@@ -1,0 +1,52 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="IndicationModifiers">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from IndicationModifiers</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from IndicationModifiers where ModifierKey = #ModifierKey# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey#</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into IndicationModifiers(TransactionSequence, PolicyKey, ModifierKey
+          <isNotEmpty property="Percentage" prepend=",">Percentage</isNotEmpty>
+          <isNotEmpty property="Comment" prepend=",">Comment</isNotEmpty>
+          <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID</isNotEmpty>
+          <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp</isNotEmpty>
+          ) values (#TransactionSequence:NUMERIC#, #PolicyKey:NUMERIC#, #ModifierKey:NUMERIC#
+          <isNotEmpty property="Percentage" prepend=",">#Percentage#</isNotEmpty>
+          <isNotEmpty property="Comment" prepend=",">#Comment#</isNotEmpty>
+          <isNotEmpty property="LastUpdateUserID" prepend=",">#LastUpdateUserID#</isNotEmpty>
+          <isNotEmpty property="LastUpdateTimeStamp" prepend=",">#LastUpdateTimeStamp#</isNotEmpty>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select Percentage, Comment, LastUpdateUserID, LastUpdateTimeStamp, TransactionSequence, PolicyKey, ModifierKey from IndicationModifiers where TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update IndicationModifiers set
+          <dynamic prepend=" ">
+               <isNotEmpty property="Percentage" prepend=",">Percentage = #Percentage#</isNotEmpty>
+               <isEmpty property="Percentage" prepend=",">Percentage = null</isEmpty>
+               <isNotEmpty property="Comment" prepend=",">Comment = #Comment#</isNotEmpty>
+               <isEmpty property="Comment" prepend=",">Comment = null</isEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = #LastUpdateUserID#</isNotEmpty>
+               <isEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = null</isEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = #LastUpdateTimeStamp#</isNotEmpty>
+               <isEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = null</isEmpty>
+          </dynamic>
+          where TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from IndicationModifiers where TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from IndicationModifiers</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from IndicationModifiers where ModifierKey = #ModifierKey# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey#</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select Percentage, Comment, LastUpdateUserID, LastUpdateTimeStamp, TransactionSequence, PolicyKey, ModifierKey from IndicationModifiers where TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select TransactionSequence, PolicyKey, ModifierKey, Percentage, Comment, LastUpdateUserID, LastUpdateTimeStamp from IndicationModifiers where ModifierKey = #ModifierKey# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey#</select>
+     <parameterMap id="InsertUpdateIndicationModifierAcc_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="SchduleRatingModifier1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SchduleRatingModifier2" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="SchduleRatingModifier3" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="SchduleRatingModifier4" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="SchduleRatingModifier5" jdbcType="NUMERIC" javaType="java.lang.Double" mode="IN" />
+          <parameter property="SchduleRatingModifier6" jdbcType="NUMERIC" javaType="java.lang.Double" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="InsertUpdateIndicationModifierAcc_p" parameterMap="InsertUpdateIndicationModifierAcc_pMap">{ call InsertUpdateIndicationModifierAcc_p(?,?,?,?,?,?,?,?,?)}</procedure>
+</sqlMap>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FirmEstimationACC">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from FirmEstimationACC</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from FirmEstimationACC</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into FirmEstimationACC(
+          <dynamic prepend=" ">
+               <isNotEmpty property="PolicyKey" prepend=",">PolicyKey</isNotEmpty>
+               <isNotEmpty property="VersionSequence" prepend=",">VersionSequence</isNotEmpty>
+               <isNotEmpty property="AccountName" prepend=",">AccountName</isNotEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">AccountEmail</isNotEmpty>
+               <isNotEmpty property="WorkPhone" prepend=",">WorkPhone</isNotEmpty>
+               <isNotEmpty property="ProducerCode" prepend=",">ProducerCode</isNotEmpty>
+               <isNotEmpty property="StateCode" prepend=",">StateCode</isNotEmpty>
+               <isNotEmpty property="CountyDesc" prepend=",">CountyDesc</isNotEmpty>
+               <isNotEmpty property="City" prepend=",">City</isNotEmpty>
+               <isNotEmpty property="PolicyEffectiveDate" prepend=",">PolicyEffectiveDate</isNotEmpty>
+               <isNotEmpty property="PolicyExpirationDate" prepend=",">PolicyExpirationDate</isNotEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID</isNotEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp</isNotEmpty>
+               <isNotEmpty property="CreatedDate" prepend=",">CreatedDate</isNotEmpty>
+               <isNotEmpty property="CreatedBy" prepend=",">CreatedBy</isNotEmpty>
+               <isNotEmpty property="VersionKey" prepend=",">VersionKey</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="PolicyKey" prepend=",">#PolicyKey#</isNotEmpty>
+               <isNotEmpty property="VersionSequence" prepend=",">#VersionSequence#</isNotEmpty>
+               <isNotEmpty property="AccountName" prepend=",">#AccountName#</isNotEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">#AccountEmail#</isNotEmpty>
+               <isNotEmpty property="WorkPhone" prepend=",">#WorkPhone#</isNotEmpty>
+               <isNotEmpty property="ProducerCode" prepend=",">#ProducerCode#</isNotEmpty>
+               <isNotEmpty property="StateCode" prepend=",">#StateCode#</isNotEmpty>
+               <isNotEmpty property="CountyDesc" prepend=",">#CountyDesc#</isNotEmpty>
+               <isNotEmpty property="City" prepend=",">#City#</isNotEmpty>
+               <isNotEmpty property="PolicyEffectiveDate" prepend=",">#PolicyEffectiveDate#</isNotEmpty>
+               <isNotEmpty property="PolicyExpirationDate" prepend=",">#PolicyExpirationDate#</isNotEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">#LastUpdateUserID#</isNotEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">#LastUpdateTimeStamp#</isNotEmpty>
+               <isNotEmpty property="CreatedDate" prepend=",">#CreatedDate#</isNotEmpty>
+               <isNotEmpty property="CreatedBy" prepend=",">#CreatedBy#</isNotEmpty>
+               <isNotEmpty property="VersionKey" prepend=",">#VersionKey#</isNotEmpty>
+          </dynamic>
+          )
+          <selectKey resultClass="int" keyProperty="FirmEstimationKey">SELECT IDENT_CURRENT('FirmEstimationACC') as last_insert_id</selectKey>
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FirmEstimationKey, PolicyKey, VersionSequence, AccountName, AccountEmail, WorkPhone, ProducerCode, StateCode, CountyDesc, City, PolicyEffectiveDate, PolicyExpirationDate, LastUpdateUserID, LastUpdateTimeStamp, CreatedDate, CreatedBy, VersionKey from FirmEstimationACC where FirmEstimationKey = #FirmEstimationKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update FirmEstimationACC set
+          <dynamic prepend=" ">
+               <isNotEmpty property="PolicyKey" prepend=",">PolicyKey = #PolicyKey#</isNotEmpty>
+               <isEmpty property="PolicyKey" prepend=",">PolicyKey = null</isEmpty>
+               <isNotEmpty property="VersionSequence" prepend=",">VersionSequence = #VersionSequence#</isNotEmpty>
+               <isEmpty property="VersionSequence" prepend=",">VersionSequence = null</isEmpty>
+               <isNotEmpty property="AccountName" prepend=",">AccountName = #AccountName#</isNotEmpty>
+               <isEmpty property="AccountName" prepend=",">AccountName = null</isEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">AccountEmail = #AccountEmail#</isNotEmpty>
+               <isEmpty property="AccountEmail" prepend=",">AccountEmail = null</isEmpty>
+               <isNotEmpty property="WorkPhone" prepend=",">WorkPhone = #WorkPhone#</isNotEmpty>
+               <isEmpty property="WorkPhone" prepend=",">WorkPhone = null</isEmpty>
+               <isNotEmpty property="ProducerCode" prepend=",">ProducerCode = #ProducerCode#</isNotEmpty>
+               <isEmpty property="ProducerCode" prepend=",">ProducerCode = null</isEmpty>
+               <isNotEmpty property="StateCode" prepend=",">StateCode = #StateCode#</isNotEmpty>
+               <isEmpty property="StateCode" prepend=",">StateCode = null</isEmpty>
+               <isNotEmpty property="CountyDesc" prepend=",">CountyDesc = #CountyDesc#</isNotEmpty>
+               <isEmpty property="CountyDesc" prepend=",">CountyDesc = null</isEmpty>
+               <isNotEmpty property="City" prepend=",">City = #City#</isNotEmpty>
+               <isEmpty property="City" prepend=",">City = null</isEmpty>
+               <isNotEmpty property="PolicyEffectiveDate" prepend=",">PolicyEffectiveDate = #PolicyEffectiveDate#</isNotEmpty>
+               <isEmpty property="PolicyEffectiveDate" prepend=",">PolicyEffectiveDate = null</isEmpty>
+               <isNotEmpty property="PolicyExpirationDate" prepend=",">PolicyExpirationDate = #PolicyExpirationDate#</isNotEmpty>
+               <isEmpty property="PolicyExpirationDate" prepend=",">PolicyExpirationDate = null</isEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = #LastUpdateUserID#</isNotEmpty>
+               <isEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = null</isEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = #LastUpdateTimeStamp#</isNotEmpty>
+               <isEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = null</isEmpty>
+               <isNotEmpty property="CreatedDate" prepend=",">CreatedDate = #CreatedDate#</isNotEmpty>
+               <isEmpty property="CreatedDate" prepend=",">CreatedDate = null</isEmpty>
+               <isNotEmpty property="CreatedBy" prepend=",">CreatedBy = #CreatedBy#</isNotEmpty>
+               <isEmpty property="CreatedBy" prepend=",">CreatedBy = null</isEmpty>
+               <isNotEmpty property="VersionKey" prepend=",">VersionKey = #VersionKey#</isNotEmpty>
+               <isEmpty property="VersionKey" prepend=",">VersionKey = null</isEmpty>
+          </dynamic>
+          where FirmEstimationKey = #FirmEstimationKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from FirmEstimationACC where FirmEstimationKey = #FirmEstimationKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from FirmEstimationACC</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from FirmEstimationACC</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FirmEstimationKey, PolicyKey, VersionSequence, AccountName, AccountEmail, WorkPhone, ProducerCode, StateCode, CountyDesc, City, PolicyEffectiveDate, PolicyExpirationDate, LastUpdateUserID, LastUpdateTimeStamp, CreatedDate, CreatedBy, VersionKey from FirmEstimationACC where FirmEstimationKey = #FirmEstimationKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FirmEstimationKey, PolicyKey, VersionSequence, AccountName, AccountEmail, WorkPhone, ProducerCode, StateCode, CountyDesc, City, PolicyEffectiveDate, PolicyExpirationDate, LastUpdateUserID, LastUpdateTimeStamp, CreatedDate, CreatedBy, VersionKey from FirmEstimationACC</select>
+</sqlMap>
+

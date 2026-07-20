@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Practice Management Supplement</title>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"/>
+		<script src="js/bootstrap_3-3-6.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script language="javascript" src="script/lawyers.js"/>
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/htmlMassking.js"></script>
+		<script type="text/javascript" src="script/capitalizeSentences.js"/>
+		<script src="js/producerOne.js"/>
+		<script src="js/bootstrap-datepicker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body onload="loadPracticeManagementSupp();loadNonMonetaryCompRec();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form autocomplete="off">
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted"> 
+					<div id="practiceManagementDiv">
+						<div id="header">
+							<span id="#Include:headerNewApp.html#"/>
+						</div>
+					<div class="menuTab">
+							<span id="#Include:tabsNewApp.html#"></span>
+						</div>
+						<div id="contentSection">
+							<div class="confirmationMsgAlign" id="practiceManagementSupp_freeform_contextdata_1100">
+								<!-- <div id="error_ApplicationNotCompleted" class="error11Bold"> </div> -->
+							</div>
+							<div>
+								<div>
+									<h2 class="questionHeading">Practice Management Supplement</h2>
+								</div>
+								<div class="form" id="practiceManagementSupp_freeform_contextdata_010">
+									<table class="question practiceManagement" width="80%" cellpadding="0" cellspacing="0">
+										<tr>
+											<td>1.</td>
+											<td width="90%">
+												<div id="error_IsClientTerminated" class="error"/>
+												<span class="mendatory">*</span>Does your Firm have dis-engagement procedures for terminating client relationships?
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsClientTerminated" id="IsClientTerminated" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsClientTerminated" id="IsClientTerminated" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td valign="top">2.</td>
+											<td>
+												<div id="error_IsAnyDeclination" class="error"/>
+												<span class="mendatory">*</span> Are declination / non-engagement letters used on all matters declined by the Firm?
+											</td>
+											<td>
+												<span class="radio-inline">
+													<input type="radio" name="IsAnyDeclination" id="IsAnyDeclination" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsAnyDeclination" id="IsAnyDeclination" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td>3.</td>
+											<td>
+												<div id="error_IsPolicyProhibiting" class="error"/>
+												<span class="mendatory">*</span>Does your Firm have a written policy prohibiting business ventures with clients of the Firm?
+
+											</td>
+											<td>
+												<span class="radio-inline">
+													<input type="radio" name="IsPolicyProhibiting" id="IsPolicyProhibiting" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsPolicyProhibiting" id="IsPolicyProhibiting" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td>4.</td>
+											<td>
+												<div id="error_IsWrittenAnyQualityControlDocument" class="error"/>
+												<span class="mendatory">*</span> Does your Firm have a written internal quality control document?
+											</td>
+											<td>
+												<span class="radio-inline">
+													<input type="radio" name="IsWrittenAnyQualityControlDocument" id="IsWrittenAnyQualityControlDocument" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsWrittenAnyQualityControlDocument" id="IsWrittenAnyQualityControlDocument" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="valignTop">5.</td>
+											<td>
+												<div id="error_IsNonMonetaryCompensationRecieved" class="error"/>
+												<span class="mendatory">*</span>
+												<div class="freeFormListTd valignTop" style="font-family: arial;">
+												Within the past five years has your Firm or its personnel received non-monetary compensation for professional services performed for a client or its related entities?
+												</div>
+											</td>
+											<td>
+												<span class="radio-inline">
+													<input type="radio" name="IsNonMonetaryCompensationRecieved" id="IsNonMonetaryCompensationRecieved" value="Y" onchange="loadPracticeManagementSupp();"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsNonMonetaryCompensationRecieved" id="IsNonMonetaryCompensationRecieved" value="N" onchange="loadPracticeManagementSupp();"/>No</span>
+											</td>
+										</tr>
+										<tr id="NonMonetaryCompRec" class="default">
+											<td colspan="3" class="width100">
+												<div id="practiceManagementSupp_freeform_contextdata_0">
+													<div class="paddingTop10 row">
+														<table cellpadding="0" cellspacing="0" width="50%">
+															<tr>
+																<td>
+																	<div id="error_CurrentValueNmc" class="error"> </div>
+																</td>
+															</tr>
+															<tr>
+																<td colspan="3">If Yes, current value of such non-monetary compensation from client (include related entities):</td>
+																<td colspan="3">
+																	<input tabindex="3" class="inputbox" name="CurrentValueNmc" type="text" id="ajax_field_CurrentValueNmc"  onkeypress="setAmountFormatting('ajax_field_CurrentValueNmc');" size="9" ondrop="return false;" onpaste="return false;" maxlength="9" />
+																</td>
+															</tr>
+															<tr>
+																<th height="30">
+																	<b>&nbsp;Client Industry</b>
+																</th>
+																<th width="25%">
+																	<b>&nbsp;Client Name</b>
+																</th>
+																<th width="25%">
+																	<b>&nbsp;Services rendered:</b>
+																</th>
+															</tr>
+															<tbody id="rowMake">
+																<tr>
+																	<td class="valignBottom">
+																		<div id="error_ClientIndustryNmcKey" class="error"> </div>
+																		<!-- <input name="ClientIndustryNmcKey" type="text" class="form-control-200" id="ClientIndustryNmcKey"  onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;" maxlength="9" /> -->
+																	
+																		 <select name="ClientIndustryNmcKey"	id="ClientIndustryNmcKey" class="inputbox">
+																						<option value="">
+																							Select
+																						</option>
+																					</select>
+																	</td>
+																	<td class="valignBottom">
+																		<div id="error_ClientNameNmc" class="error"> </div>
+																		<input name="ClientNameNmc" type="text" class="form-control-200" id="ClientNameNmc"  maxlength="30"   />
+																	</td>
+																	<td class="valignBottom">
+																		<div id="error_ServiceIndustryNmcKey" class="error"> </div>
+																		<input name="ServiceIndustryNmcKey" type="text" class="form-control-200" placeholder="%" id="ServiceIndustryNmcKey" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;" maxlength="9"/>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>6.</td>
+											<td>
+												<div id="error_IsReducedNumberOfOwners" class="error"/>
+												<span class="mendatory">*</span>Within the past five years, has your Firm reduced the number of its owners, partners or officers by 50% or more?
+											</td>
+											<td>
+												<span class="radio-inline">
+													<input type="radio" name="IsReducedNumberOfOwners" id="IsReducedNumberOfOwners" value="Y" onchange="loadPracticeManagementSupp();"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsReducedNumberOfOwners" id="IsReducedNumberOfOwners" value="N" onchange="loadPracticeManagementSupp();"/>No</span>
+											</td>
+										</tr>
+										<tr id="ReducedNumOwners" class="default">
+											<td colspan="3" class="width100">
+												<div id="practiceManagementSupp_freeform_contextdata_0">
+													<div class="paddingTop10 row">
+														<table width="100%">
+															<tr>
+																<td>
+																	<div id="error_MergedOrNumberComment" class="error"/>
+																</td>
+															</tr>
+															<tr>
+																<td nowrap>
+																	&nbsp;<span>If Yes, please provide explanation:</span>
+																</td>
+															</tr>
+															<tr>
+																<td align="left" class="width100">
+																	<textarea rows="3" cols="45" class="form-control" maxlength="500" onkeyup="limitText(this,1,1000);" name="MergedOrNumberComment" id="MergedOrNumberComment" style="height: 50px; width: 79%;"/>
+																</td>
+															</tr>
+														</table>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="buttons borderTop row marginsBtn">
+							<div class="floatLeft">
+								<a class="btn back" href="javascript:submitform('AOPNewApp.html','practiceManagementSupp.back','','');" >Back</a>
+							</div>
+							<div class="floatRight">
+								<span id="showPageSave">
+									<a class="btn save" href="javascript:submitform('investmentFinancialPlanningSupp.html|computerRelatedServices.html|mainBusinessManagementSupplement.html|auditSupplement.html|practiceManagement.html','practiceManagementSupp.save','forwardeval','AccountantRule.isInvestmentSupplement|AccountantRule.isComputerServicesSupplement|AccountantRule.isBusinessManagementSupplement|AccountantRule.isAuditSupplement|AccountantRule.isNoInvestCompBusinessAuditSupplement');" >Save&nbsp;&&nbsp;Continue</a>
+								</span>
+								<span id="showContinue">
+									 <a  href="javascript:submitform('investmentFinancialPlanningSupp.html|computerRelatedServices.html|mainBusinessManagementSupplement.html|auditSupplement.html|practiceManagement.html','practiceManagementSupp.continue','forwardeval','AccountantRule.isInvestmentSupplement|AccountantRule.isComputerServicesSupplement|AccountantRule.isBusinessManagementSupplement|AccountantRule.isAuditSupplement|AccountantRule.isNoInvestCompBusinessAuditSupplement');" class="btn next">Continue</a>
+	                  	 		</span>
+							</div>
+						</div>
+					</div>
+					<!---------Footer Start---------->
+					<div id="footer" class="footer">
+						<span id="#Include:footerNewApp.html#"/>
+					</div>
+					<!---------Footer End---------->
+				</div>
+				<table id="practiceManagementSupp_freeform_contextdata_999">
+					<tr>
+						<td>
+							<input type="hidden" name="jsessionid" id="jsessionid" />
+							<input type="hidden" name="divHideShow" id="divHideShow" />
+
+							<input type="hidden" name="firmNewAppPage" id="firmNewAppPage"/>
+							<input type="hidden" name="insuranceHistoryPage" id="insuranceHistoryPage" />						
+
+							<input type="hidden" name="bankruptcySuppPage" id="bankruptcySuppPage" />
+							<input type="hidden" name="collectionSuppPage" id="collectionSuppPage" />
+							<input type="hidden" name="copyrightSuppPage" id="copyrightSuppPage" />
+							<input type="hidden" name="familyLawSuppPage" id="familyLawSuppPage" />
+							<input type="hidden" name="financialSuppPage" id="financialSuppPage" />
+							<input type="hidden" name="governmentSuppPage" id="governmentSuppPage" />
+							<input type="hidden" name="litigationSuppPage" id="litigationSuppPage" />
+							<input type="hidden" name="realEstateSuppPage" id="realEstateSuppPage" />
+							<input type="hidden" name="willStateSuppTrustPage" id="willStateSuppTrustPage"/>
+							<input type="hidden" name="taxSuppPage" id="taxSuppPage" />
+
+							<input type="hidden" name="aboutFirmPage" id="aboutFirmPage" />
+							<input type="hidden" name="aboutFirmRenewalPage" id="aboutFirmRenewalPage" />
+							<input type="hidden" name="PolicyStatusKey" id="PolicyStatusKey" />
+							<input type="hidden" name="practiceManagementPage" id="practiceManagementPage" />
+							<input type="hidden" name="morePracticeManagementPage" id="morePracticeManagementPage"/>
+							<input type="hidden" name="underWritingInfoPage" id="underWritingInfoPage" />
+							<input type="hidden" name="pastClaimsPage" id="pastClaimsPage" />
+
+							<script type="text/javascript" src="script/manageTab.js"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

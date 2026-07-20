@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>About your Firm</title>
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.treeview.js"></script>
+<script src="js/bootstrap_3-3-6.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script language="javascript" src="script/lawyers.js" />
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/htmlMassking.js"/>
+<script type="text/javascript" src="script/capitalizeSentences.js"></script>
+<script src="js/producerOne.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+<body onload="loadPracticeManagement();loadUnderwritingInfo();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	<form class="form-horizontal row" autocomplete="off">
+		<div class="container-fluid bootstrap-node-1">
+			<div class="tableWidth" id="AppCompleted">
+				<div id="header">
+					<span id="#Include:headerNewApp.html#"></span>
+				</div>
+				<div class="menuTab">
+					<span id="#Include:tabsNewApp.html#"></span>
+				</div>
+				<div id="contentSection">
+					<h2 class="questionHeading">
+						Tell us a little more about your firm?
+					</h2>
+					<div class="form" style="min-height: 250px;" >
+						<div class="block-form">
+							<div class="freeFormDiv form-inline" style="margin-left: 11px;" id="aboutFirm_freeform_contextdata_01">
+								<ul class="inlineBlock">
+									<li class="inlineBlock_2_fix">
+										<div class="freeFormList form-group">
+											<div class="freeFormListTr">
+												<div class="freeFormListTdError">
+													<h6>&nbsp;</h6>
+												</div>
+												<div class="freeFormListTdError paddingLeft3">
+													<div id="error_TotalFirmPersonnel" class="error"> </div>
+												</div>
+											</div>
+											<div class="freeFormListTr">
+												<div class="freeFormListTd" style="width: 277px;">
+													<span>1.</span> What is the total personnel in the Firm?<span class="asterisk">&nbsp;</span>
+												</div>
+												<div class="freeFormListTd tdInput">
+													<input type="text"
+													name="TotalFirmPersonnel" class="" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;" maxlength="9"
+													id="ajax_field_TotalFirmPersonnel"/>
+													
+												</div>
+											</div>
+										</div>
+									</li>
+									<li class="inlineBlock_2_fix paddingTop5">
+										<div class="freeFormList form-group">
+											<div class="freeFormListTr">
+												<div class="freeFormListTdError">
+													<h6>&nbsp;</h6>
+												</div>
+												<div class="freeFormListTdError paddingLeft3">
+													<div id="error_CPAPersonnel" class="error"> </div>
+												</div>
+											</div>
+											<div class="freeFormListTr">
+												<div class="freeFormListTd" style="width: 175px;">
+													<div>How many are CPA's :</div>
+												</div>
+												<div class="freeFormListTd tdInput">
+													<input type="text" class=""
+													name="CPAPersonnel" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;" maxlength="9"
+													id="ajax_field_CPAPersonnel"/>
+													
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div id="NewBusiness" class="paddingTop20" style="padding-left: 11px;">
+								<div class="questionBlock" id="">
+									<table cellpadding="0" cellspacing="0" width="100%">
+										<tr>
+											<td id="aboutFirm_newApp_freeform_contextdata_010">
+												<div id="error_estimate_year" class="error"> </div>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<div><span>2.</span>  Please provide your revenue for the last 3 years, starting with the last completed business year.</div>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="paddingTop10">
+												<table width="100%" style="width: 71.5%;" border="0" class="gridTable" align="left" cellpadding="0" cellspacing="0" id="AboutFirm_list_01">
+													
+													<tr id="AboutFirm_list_header_01">
+														<th align="left" nowrap="nowrap"
+															id="block_field_GrossRevenueDesc"></th>
+														<th id="block_field_YearEndDate">
+															Year
+														</th>
+														<th id="block_field_Amount">
+															Gross Annual Revenue($)
+														</th>
+														<th id="block_field_GrossRevenueKey"></th>
+													</tr>
+													<tbody id="AboutFirm_list_mom_data_01">
+														<tr id="mom_child_data">
+															<td nowrap="nowrap" id="block_field_GrossRevenueDesc" align="left"></td>
+															<td nowrap="nowrap" id="block_field_YearEndDate">
+																<input style="width: 100px;" name="YearEndDate" type="text" class="inputbox" id="YearEndDate" size="10" onblur="populateYearEndDate(this);" maxlength="7" onkeyup="applyDateFormatMMYYYY(this);" />
+																<span> &nbsp;(MM/YYYY)</span>
+															</td>
+															<td id="block_field_Amount">
+																<input name="Amount" type="text" class="inputbox" id="Amount" size="20" maxlength="15" onkeyup="limitAmountText(this,15);"/>
+															</td>
+															<td id="block_field_GrossRevenueKey">
+																<input type="hidden" name="GrossRevenueKey" value="" />
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div id="RenewBusiness" class="paddingTop20">
+								<div id="aboutFirm_freeform_contextdata_02" >
+									<div class="row" style="padding-left: 11px;">
+										<div><span>2.</span> Please provide your revenue for the last completed business year.</div> 
+									</div>
+									<div class="row paddingTop10" style="padding-left: 11px;">
+										<ul class="inlineBlock">
+											<li class="inlineBlock_2_fix">
+												<div class="freeFormList form-group">
+													<div class="freeFormListTr">
+														<div class="freeFormListTdError">
+															<h6>&nbsp;</h6>
+														</div>
+														<div class="freeFormListTdError paddingLeft3">
+															<div id="error_YearEndDate" class="error"> </div>
+														</div>
+													</div>
+													<div class="freeFormListTr">
+														<div class="freeFormListTd" style="width: 277px;">
+															<div style="padding-left: 16px;">Last Completed Year :<span class="asterisk">&nbsp;</span></div>
+														</div>
+														<div class="freeFormListTd tdInput">
+															<input name="YearEndDate" class="zipcode" type="text" id="YearEndDate" maxlength="7" readonly="readonly" />															
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="inlineBlock_2_fix">
+												<div class="freeFormList form-group">
+													<div class="freeFormListTr">
+														<div class="freeFormListTdError">
+															<h6>&nbsp;</h6>
+														</div>
+														<div class="freeFormListTdError paddingLeft3">
+															<div id="error_Amount" class="error"> </div>
+														</div>
+													</div>
+													<div class="freeFormListTr">
+														<div class="freeFormListTd" style="width: 175px;">
+															<div>Gross Annual Revenue($) :</div>
+														</div>
+														<div class="freeFormListTd tdInput">
+															<input name="Amount" type="text" class="inputbox" id="Amount" size="20" maxlength="15" onkeyup="limitAmountText(this,15);"/>															
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<table class="question underwriting2_width" cellpadding="0" cellspacing="0">
+											<tr>
+												<td valign="bottom">3.</td>
+												<td width="90%" style="width: 81%;">
+													<div id="error_IsAnyFirmMeargedOrAcquired" class="error"/>
+													<span class="mendatory">*</span>
+													<span class="floatLeft">Within the last year, have you merged with or acquired the business of any sole practitioner, accounting firm or other business entity?</span>
+												</td>
+												<td nowrap>
+													<span>
+														<input type="radio" class="inputMargin" id="IsAnyFirmMeargedOrAcquired" name="IsAnyFirmMeargedOrAcquired" value="Y" /> Yes</span>
+													<span>
+														<input type="radio" class="inputMargin" id="IsAnyFirmMeargedOrAcquired" name="IsAnyFirmMeargedOrAcquired" value="N" /> No</span>
+												</td>
+											</tr>
+											<tr>
+												<td valign="bottom">4.</td>
+												<td>
+													<div id="error_IsControlClientFunds" class="error"/>
+													<span class="mendatory">*</span>
+													<span class="floatLeft">Within the past year have you entered into any new engagement requiring you to control or disburse client funds other than for payroll or bookkeeping services?</span>
+												</td>
+												<td nowrap>
+													<input type="radio" class="inputMargin" id="IsControlClientFunds" name="IsControlClientFunds" value="Y" onclick="loadPracticeManagement();"/> Yes
+													<input type="radio" class="inputMargin" id="IsControlClientFunds" name="IsControlClientFunds" value="N" onclick="loadPracticeManagement();"/> No 
+												</td>
+											</tr>
+											<tbody id="businessmanagesupp" class="default">
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+
+
+														<div id="error_HaveInvestmentAuthorityFC" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">a.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">Does your Firm or any
+															owners, partners or officers have discretionary investment authority
+															of client funds?</div>
+													</td>
+													<td nowrap><span> <input type="radio"
+															name="HaveInvestmentAuthorityFC" id="HaveInvestmentAuthorityFC"
+															value="Y" /> Yes
+													</span> <span> <input
+															type="radio" name="HaveInvestmentAuthorityFC"
+															id="HaveInvestmentAuthorityFC" value="N" /> No
+													</span></td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_TotlaNumberOfClientsFc" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">b.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">What is the total number
+															of clients for which your Firm controls or disburses funds?</div>
+													</td>
+													<td nowrap ><input
+														style="width: 68px;" type="text" class="inputbox"
+														name="TotlaNumberOfClientsFc" id="TotlaNumberOfClientsFc" size="9"
+														maxlength="9" tabindex="2"
+														onkeypress="return IsNumeric(this, event, true, true, '');"
+														ondrop="return false;" onpaste="return false;" /></td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_TotalAmountOfClientFundsFc" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">c.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">List total amount of
+															client funds your Firm disburses annually:</div>
+													</td>
+													<td nowrap><input type="text"
+														class="inputbox" name="TotalAmountOfClientFundsFc"
+														id="ajax_field_TotalAmountOfClientFundsFc" size="9" maxlength="9"
+														tabindex="3" style="width: 68px;"
+														onkeypress="setAmountFormatting('ajax_field_TotalAmountOfClientFundsFc');"
+														ondrop="return false;" onpaste="return false;" /></td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_IsControlFundsForBusinessAndEntimentFc" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">d.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">Other than for the
+															preparation and filing of federal, state or local tax returns, do
+															you provide business/personal management or family office services
+															or control funds for clients in the entertainment or sports
+															industry?</div>
+													</td>
+													<td nowrap><span> <input type="radio"
+															name="IsControlFundsForBusinessAndEntimentFc"
+															id="IsControlFundsForBusinessAndEntimentFc" value="Y" /> Yes
+													</span> <span> <input
+															type="radio" name="IsControlFundsForBusinessAndEntimentFc"
+															id="IsControlFundsForBusinessAndEntimentFc" value="N" /> No
+													</span></td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_IsCountersignatureRequiredFc" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">e.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">Is a client
+															countersignature required on all client checks issued by personnel
+															of the Firm?</div>
+													</td>
+													<td nowrap><span> <input type="radio"
+															name="IsCountersignatureRequiredFc"
+															id="IsCountersignatureRequiredFc" value="Y" /> Yes
+													</span> <span> <input
+															type="radio" name="IsCountersignatureRequiredFc"
+															id="IsCountersignatureRequiredFc" value="N" /> No
+													</span></td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_IsBankAccountReconciledFc" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">f.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">Are all client bank
+															accounts reconciled by someone other than Firm personnel authorized
+															to deposit or withdraw therefrom?</div>
+													</td>
+													<td nowrap><span> <input type="radio"
+															name="IsBankAccountReconciledFc" id="IsBankAccountReconciledFc"
+															value="Y" /> Yes
+													</span> <span> <input
+															type="radio" name="IsBankAccountReconciledFc"
+															id="IsBankAccountReconciledFc" value="N" /> No
+													</span></td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_IsManagementServiceProvided" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">g.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">Has the Firm or its
+															predecessors within the past five years provide(d) management
+															services for investment ventures?</div>
+													</td>
+													<td nowrap><span> <input type="radio"
+															name="IsManagementServiceProvided" id="IsManagementServiceProvided"
+															value="Y" /> Yes
+													</span> <span> <input
+															type="radio" name="IsManagementServiceProvided"
+															id="IsManagementServiceProvided" value="N" /> No
+													</span></td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_IsFirmPersonnelBusinessManagerFc" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">h.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">Do any Firm personnel act
+															as a manager or CFO for clients?</div>
+													</td>
+													<td nowrap><span> <input type="radio"
+															name="IsFirmPersonnelBusinessManagerFc"
+															id="IsFirmPersonnelBusinessManagerFc" value="Y"
+															onchange="loadUnderwritingInfo();" /> Yes
+													</span> <span> <input
+															type="radio" name="IsFirmPersonnelBusinessManagerFc"
+															id="IsFirmPersonnelBusinessManagerFc" value="N"
+															onchange="loadUnderwritingInfo();" /> No
+													</span></td>
+												</tr>
+												<tr id="rowsm" class="default paddingNone">
+													<td />
+													<td colspan="2">
+														<table width="100%">
+															<tr>
+																<td>
+																	<div style="padding-left: 34px;"
+																		id="error_ProvideNumberOfClientFc" class="error" />
+																</td>
+															</tr>
+															<tr>
+																<td style="padding-left: 41px;">If Yes, Provide the number of
+																	such clients:&nbsp;&nbsp; <input type="text" class="inputbox"
+																	name="ProvideNumberOfClientFc" id="ProvideNumberOfClientFc"
+																	size="9" maxlength="9"
+																	onkeypress="return IsNumeric(this, event, true, true, '');"
+																	ondrop="return false;" onpaste="return false;" />
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div style="padding-left: 34px;" id="error_ClientIndustryFc"
+																		class="error" />
+																</td>
+															</tr>
+															<tr>
+																<td style="padding-left: 41px; padding-top: 5px !important;">
+																	Client Industry:&nbsp;&nbsp; <input type="text"
+																	style="margin-left: 171px;" class="inputbox"
+																	name="ClientIndustryFc" id="ClientIndustryFc" size="9"
+																	maxlength="35" />
+																</td>
+															</tr>
+														</table>
+
+													</td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_NumberOfFirmEmployeesFc" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">i.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">Provide the number of
+															Firm employees who control or disburse funds for the Firm or
+															clients:</div>
+													</td>
+													<td nowrap><input type="text"
+														class="inputbox" name="NumberOfFirmEmployeesFc"
+														id="NumberOfFirmEmployeesFc" size="9" maxlength="9" tabindex="30"
+														onkeypress="return IsNumeric(this, event, true, true, '');"
+														ondrop="return false;" onpaste="return false;" style="width: 68px;" />
+													</td>
+												</tr>
+												<tr>
+													<td valign="bottom"></td>
+													<td width="90%">
+														<div id="error_IsEmployeeDishonestyCoverageFc" class="error" />
+														<div class="freeFormListTd valignTop">
+															<span class="subheading_alpha">j.</span>
+														</div>
+														<div class="freeFormListTd valignTop">
+															<span class="mendatory">*</span>
+														</div>
+														<div class="freeFormListTd valignTop">Does the Firm carry
+															Employee Dishonesty Coverage?</div>
+													</td>
+													<td nowrap><span> <input type="radio"
+															name="IsEmployeeDishonestyCoverageFc"
+															id="IsEmployeeDishonestyCoverageFc" value="Y" /> Yes
+													</span> <span> <input
+															type="radio" name="IsEmployeeDishonestyCoverageFc"
+															id="IsEmployeeDishonestyCoverageFc" value="N" /> No
+													</span></td>
+												</tr>
+											</tbody>
+											<tr>
+												<td valign="bottom">5.</td>
+												<td>
+													<div id="error_IsFirmsRevenueMorethan25Percent" class="error"/>
+													<span class="mendatory">*</span>
+													<span class="floatLeft">Has any client of yours during the last year represented 40% or more of the your revenue?</span>
+												</td>
+												<td nowrap>
+													<input type="radio" class="inputMargin" id="IsFirmsRevenueMorethan25Percent" name="IsFirmsRevenueMorethan25Percent" onchange="loadPracticeManagement();" value="Y" /> Yes
+													<input type="radio" class="inputMargin" id="IsFirmsRevenueMorethan25Percent" name="IsFirmsRevenueMorethan25Percent" onchange="loadPracticeManagement();" value="N" /> No  
+												</td>
+											</tr>
+										</table>
+									
+									<table id="aboutFirm_freeform_contextdata_101" style="padding-left: 40px;">
+										<tr id="rowsm1" class="default paddingNone">
+											<td/>
+											<td colspan="2">
+												<table width="100%">
+													<tr>
+														<td>
+															<div id="error_PercentOfRevenueFromLargestClient" class="error"/>
+														</td>
+													</tr>
+													<tr>
+														<td nowrap>If Yes, Please indicate the percentage of revenue from largest revenue client (include client's affiliated entities): 
+														<input type="text" class="inputbox" name="PercentOfRevenueFromLargestClient" id="PercentOfRevenueFromLargestClient" size="9" maxlength="3" placeholder="%" onkeyup="validatePercentage(this.id);" /></td>
+													</tr>
+													<tr>
+														<td>
+															<div id="error_ClientIndustryFc" class="error"/>
+														</td>
+													</tr>
+													<tr>
+														<td> Services Rendered:&nbsp;&nbsp;<input name="ServiceIndustryofLargestClient" type="text" class="inputbox" id="ServiceIndustryofLargestClient" maxlength="50" tabindex="306" value="">
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									
+									</table>
+									</div>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="buttons borderTop row marginsBtn">
+						<div class="floatLeft">
+							<a class="btn back" href="javascript:submitform('FirmNewApp.html|insuranceHistoryNewApp.html','aboutFirm.back','forwardeval','AccountantRule.isRenewedPolicy|AccountantRule.isNotRenewedPolicy');" >Back
+							</a>
+						</div>
+						<div class="floatRight">
+							<span id="showPageSave">
+								<a class="btn save" href="javascript:submitform('AOPNewApp.html','aboutFirm.save','','');"
+									>Save&nbsp;&&nbsp;Continue</a>
+							</span>
+							<span id="showContinue">
+								 <a  href="javascript:submitform('AOPNewApp.html','aboutFirm.continue','','');" 
+                  	 				class="btn next">Continue</a>
+                  	 		</span>
+						</div>
+					</div>
+				</div>
+				<!---------Footer Start---------->
+				<div id="footer" class="footer">
+					<span id="#Include:footerNewApp.html#"></span>
+				</div>
+				<!---------Footer End---------->
+			</div>
+			<table id="firm_freeform_contextdata_999">
+				<tr>
+					<td><input type="hidden" name="jsessionid" id="jsessionid" />
+						<input type="hidden" name="divHideShow" id="divHideShow" />
+						<input type="hidden" name="PolicyEffectiveDate" id="PolicyEffectiveDate" />
+						
+						<script type="text/javascript" src="script/manageTab.js"></script>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</body>
+<script type="text/javascript">
+	loadQuickQuoteInsured();
+</script>
+</html>

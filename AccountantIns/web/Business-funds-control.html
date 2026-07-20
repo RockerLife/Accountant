@@ -1,0 +1,1456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Supplement (Business Management / Funds Control)</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+		<script type="text/javascript" src="script/account.js"></script>
+		<script language="javascript" src="script/lawyers.js"> </script>
+		<script type="text/javascript" src="script/tabber.js"></script>
+		<script type="text/javascript" src="script/test_new.js"></script>
+		<script type="text/javascript" src="script/date-picker.js"></script>
+		<script type="text/javascript" src="script/manage.js"></script>
+		<script type="text/javascript" src="script/masks.js"></script>
+		<script type="text/javascript" src="script/popup.js"></script>
+		<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+		<script type="text/javascript">
+
+function checks(){
+ document.getElementById("EffectiveDate").disabled=true;
+}
+</script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+	<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form name="myForm">
+			<DIV class=popup id="isControlFunds">
+				Do Not Quote - Refer to Management
+			</DIV>
+			<DIV class=popup id="isCountersignature">
+				Refer to Management
+			</DIV>
+			<DIV class=popup id="isBankAccount">
+				Refer to Management
+			</DIV>
+			<div id="contextLinks"></div>
+			<table width="100%" border="0" align="center" cellspacing="0"
+				cellpadding="0">
+				<tr>
+					<td>
+						<table width="98%" border="0" align="center" cellspacing="0"
+							cellpadding="0">
+							<tr>
+								<td>
+									<div id="topheader">
+										<table width="100%" border="0" align="center" cellpadding="0"
+											cellspacing="0">
+											<tr>
+												<td height="50">
+													<table width="98%" border="0" align="center"
+														cellpadding="0" cellspacing="0">
+														<tr>
+															<td valign="bottom">
+																<span id="eval:AccountantRule.isQAEnvironment"> <a
+																	href="https://www.protexureaccountants.com"><img
+																			src="image/logo_protexureaccountants1.png" border="0"
+																			width="325" height="50" /> </a> </span>
+																<span id="eval:AccountantRule.isUATEnvironment">
+																	<a href="https://www.protexureaccountants.com"><img
+																			src="image/logo_protexureaccountants1.png" border="0"
+																			width="325" height="50" /> </a> </span>
+																<span id="eval:AccountantRule.isProdEnvironment">
+																	<a href="https://www.protexureaccountants.com"><img
+																			src="image/logo_protexureaccountants1.png" border="0"
+																			width="325" height="50" /> </a> </span>
+															</td>
+															<td align="right" valign="bottom">
+																<table border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td colspan="5" align="center">
+																			<img src="img/space.gif" width="1" height="5" />
+																		</td>
+																	</tr>
+																	<tr>
+																		<td align="center" id="eval:AccountantRule.isInsured">
+																			<table width="100%" border="0" cellspacing="0"
+																				cellpadding="0">
+																				<tr>
+																					<td align="center">
+																						<img src="img/space.gif" width="1" height="5" />
+																					</td>
+																				</tr>
+																				<tr>
+																					<td class="topLink">
+																						<a
+																							href="javascript:submitform('changepassword.html','Business-funds-control.changepassword','','');"
+																							class="topLink">Change Password</a>
+																						<span
+																							id="eval:AccountantRule.IsInsuredAndShowPortal">
+																							| <a
+																							href="javascript:submitform('dashboard.html','Business-funds-control.riskHome','','');"
+																							class="topLink">Back to Insured Only Portal</a> </span>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																		<td align="center"
+																			id="eval:AccountantRule.isAgentState">
+																			<table width="100%" border="0" cellspacing="0"
+																				cellpadding="0">
+																				<tr>
+																					<td align="center">
+																						<img src="img/backPortal1.jpg" width="20"
+																							height="22" />
+																					</td>
+																				</tr>
+																				<tr>
+																					<td class="topLink">
+																						<a
+																							href="javascript:submitform('indexinsured.html|indexagent.html','Business-funds-control.homepage','forwardeval','AccountantRule.isInsured|AccountantRule.isAgent');"
+																							class="topLink">Back to Portal</a>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																		<td width="10" align="center" valign="bottom">
+																			&nbsp;
+																		</td>
+																		<td align="center"
+																			id="eval:AccountantRule.isAgentState">
+																			<table width="100%" border="0" cellspacing="0"
+																				cellpadding="0">
+																				<tr>
+																					<td align="center">
+																						<img src="img/backList1.jpg" width="20"
+																							height="22" />
+																					</td>
+																				</tr>
+																				<tr>
+																					<td class="topLink">
+																						<a
+																							href="javascript:submitform('list.html','Business-funds-control.backtolist','','');"
+																							class="topLink">Back to List </a>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																		<td width="10" align="center" valign="bottom">
+																			&nbsp;
+																		</td>
+																		<td align="center"
+																			id="eval:AccountantRule.isAgentState">
+																			<table width="100%" border="0" cellspacing="0"
+																				cellpadding="0">
+																				<tr>
+																					<td align="center">
+																						<img src="img/backWorkq1.jpg" width="20"
+																							height="22" />
+																					</td>
+																				</tr>
+																				<tr>
+																					<td class="topLink">
+																						<a
+																							href="javascript:submitform('workq.html','Business-funds-control.backtowrokq','','');"
+																							class="topLink">Back to workq</a>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+
+																	<tr>
+																		<td colspan="5" align="center" class="topLink">
+																			<img src="img/space.gif" width="1" height="5" />
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="0">
+														<tr>
+															<td class="topt1"></td>
+															<td align="right" class="topt2">
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tr>
+																		<td align="left">
+																			<img src="img/getting_coverage.jpg" width="597"
+																				height="33" />
+																		</td>
+																		<td align="right">
+																			<img src="img/call.jpg" width="289" height="24" />
+																		</td>
+																	</tr>
+																</table>
+															</td>
+															<td class="topt3"></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="0">
+														<tr>
+															<td class="topt4">
+																&nbsp;
+															</td>
+															<td class="topt5">
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tr>
+																		<td align="right">
+																			<table border="0" cellspacing="2" cellpadding="2"
+																				id="labels_freeform_contextdata_99">
+																				<tr>
+																					<td align="right" nowrap="nowrap"
+																						class="txtBold11Maroon"
+																						id="eval:AccountantRule.isContextAccountNameNotEmpty">
+																						Firm:
+																					</td>
+																					<td align="left" nowrap="nowrap"
+																						class="txt11BoldBlack"
+																						id="eval:AccountantRule.isContextAccountNameNotEmpty">
+																						<label name="ContextAccountName"
+																							id="ContextAccountName" class="txt11BoldBlack"></label>
+																					</td>
+																					<td id="eval:AccountantRule.isQuoteNumberNotEmpty"
+																						align="right" nowrap="nowrap"
+																						class="txtBold11Maroon">
+																						Quote #:
+																					</td>
+																					<td align="left" nowrap="nowrap"
+																						class="txt11BoldBlack"
+																						id="eval:AccountantRule.isQuoteNumberNotEmpty">
+																						<label name="QuoteNumber" id="QuoteNumber"
+																							class="txt11BoldBlack"></label>
+																					</td>
+																					<td id="eval:AccountantRule.isStatusNotEmpty"
+																						align="right" nowrap="nowrap"
+																						class="txtBold11Maroon">
+																						Status:
+																					</td>
+																					<td align="left" nowrap="nowrap"
+																						class="txt11BoldBlack"
+																						id="eval:AccountantRule.isStatusNotEmpty">
+																						<label id="StatusDesc" name="StatusDesc"
+																							class="txt11BoldBlack"></label>
+																						<span id="eval:AccountantRule.ShowRenew">(R)</span>
+																					</td>
+
+																					<td align="right"
+																						id="eval:AccountantRule.showPolicyNumber"
+																						class="txtBold11Maroon">
+																						Policy #:
+																					</td>
+																					<td align="left" nowrap="nowrap"
+																						class="txt11BoldBlack"
+																						id="eval:AccountantRule.showPolicyNumber">
+																						<label id="PolicyNumber" name="PolicyNumber"
+																							class="txt11BoldBlack"></label>
+																					</td>
+																					<td align="right" nowrap
+																						id="eval:AccountantRule.isEffectiveDateNotEmpty"
+																						class="txtBold11Maroon">
+																						Effective Date:
+																					</td>
+																					<td align="left" nowrap="nowrap"
+																						class="txt11BoldBlack"
+																						id="eval:AccountantRule.isEffectiveDateNotEmpty">
+																						<label name="PolicyEffectiveDate"
+																							id="PolicyEffectiveDate" class="txt11BoldBlack"></label>
+																					</td>
+																					<td id="eval:AccountantRule.isStateCodeNotEmpty"
+																						align="right" nowrap="nowrap"
+																						class="txtBold11Maroon">
+																						State:
+																					</td>
+																					<td align="left" nowrap="nowrap"
+																						class="txt11BoldBlack"
+																						id="eval:AccountantRule.isStateCodeNotEmpty">
+																						<label id="StateDesc" name="StateDesc"
+																							class="txt11BoldBlack"></label>
+																					</td>
+																					<td align="right" nowrap="nowrap"
+																						class="txtBold11Maroon">
+																						<span
+																							id="eval:AccountantRule.isContextPremiumNotEmpty">Premium:</span>
+																					</td>
+																					<td align="left" nowrap="nowrap"
+																						class="txt11BoldBlack">
+																						<span
+																							id="eval:AccountantRule.isContextPremiumNotEmpty"><label
+																								id="ContextPremium" name="ContextPremium"
+																								class="txt11BoldBlack"></label> </span>
+																					</td>
+
+																				</tr>
+																			</table>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+															<td class="topt6">
+																&nbsp;
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="0">
+														<tr>
+															<td class="topt7"></td>
+															<td align="right" class="topt8">
+																<span class="topt9">&nbsp;</span>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="98%" border="0" align="center"
+														cellpadding="0" cellspacing="0">
+														<tr>
+															<td valign="top">
+																<table border="0" cellspacing="0" cellpadding="0">
+
+																	<tr>
+																		<td align="left">
+																			<table border="0" cellspacing="0" cellpadding="0">
+																				<tr>
+																					<td align="right">
+																						&nbsp;
+																					</td>
+																					<td align="center">
+																						&nbsp;
+																					</td>
+																					<td>
+																						&nbsp;
+																					</td>
+																				</tr>
+																				<tr>
+																					<td align="right">
+																						<img src="img/arrow.gif" width="16" height="16" />
+																					</td>
+																					<td align="center"
+																						id="eval:AccountantRule.IsNotRenewalPolicy">
+																						<span class="txtgreen"><span
+																							class="txtgreen"
+																							id="eval:AccountantRule.isInsured">Step#3/3</span><span
+																							class="txtgreen" id="eval:AccountantRule.isAgent">Step#3/4</span>
+																						</span>
+																					</td>
+
+																					<td align="center"
+																						id="eval:AccountantRule.IsRenewalPolicy">
+																						<span class="txtgreen"><span
+																							class="txtgreen"
+																							id="eval:AccountantRule.isInsured">Step#2/2</span><span
+																							class="txtgreen" id="eval:AccountantRule.isAgent">Step#2/3</span>
+																						</span>
+																					</td>
+
+																					<td>
+																						<img src="img/line.jpg" width="5" height="16" />
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																		<td align="left"
+																			id="eval:AccountantRule.IsNotRenewalPolicy">
+																			<table width="100" border="0" cellpadding="0"
+																				cellspacing="0">
+																				<tr>
+																					<td>
+																						&nbsp;
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						&nbsp;
+																					</td>
+																					<td>
+																						&nbsp;
+																					</td>
+																					<td>
+																						&nbsp;
+																					</td>
+																					<td class="nav">
+																						&nbsp;
+																					</td>
+																					<td>
+																						&nbsp;
+																					</td>
+																					<td valign="top">
+																						<img src="img/redarrow.jpg" alt="" width="13"
+																							height="7" />
+																					</td>
+																					<td class="nav">
+																						&nbsp;
+																					</td>
+
+																					<td id="eval:AccountantRule.showQuoteOptionTab">
+																						&nbsp;
+																					</td>
+																					<td id="eval:AccountantRule.showQuoteOptionTab">
+																						&nbsp;
+																					</td>
+																					<td class="nav">
+																						&nbsp;
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>
+																						<img src="img/1inactive.jpg" width="16"
+																							height="16" />
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						<span
+																							id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																							href="#"
+																							onClick="javascript:submitform('BasicInfo.html','Business-funds-control.tabBasicInfo','','');">Basic
+																								Information</a> </span><span
+																							id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																							href="#"
+																							onClick="javascript:submitform('BasicInfo.html','Business-funds-control.tabBasicInfoContinue','','');">Basic
+																								Information</a> </span>
+																					</td>
+																					<td>
+																						<img src="img/bgline.jpg" />
+																					</td>
+																					<td>
+																						<img src="img/2inactive.jpg" width="16"
+																							height="16" />
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						<span
+																							id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																							href="#"
+																							onClick="javascript:submitform('general.html','Business-funds-control.tabGeneralInfo','','');">General</a>
+																						</span><span
+																							id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																							href="#"
+																							onClick="javascript:submitform('general.html','Business-funds-control.tabGeneralInfoContinue','','');">General</a>
+																						</span>
+																					</td>
+																					<td>
+																						<img src="img/bgline.jpg" />
+																					</td>
+																					<td>
+																						<img src="img/3active.jpg" width="16" height="16" />
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						Supplement
+																					</td>
+
+																					<td id="eval:AccountantRule.showQuoteOptionTab">
+																						<img src="img/bgline.jpg" />
+																					</td>
+																					<td id="eval:AccountantRule.showQuoteOptionTab">
+																						<span id="eval:AccountantRule.showSupplementTab"><img
+																								src="img/4inactive.jpg" width="16" height="16" />
+																						</span><span id="eval:AccountantRule.hideSupplementTab"><img
+																								src="img/3active.jpg" width="16" height="16" />
+																						</span>
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						<span id="eval:AccountantRule.showQuoteOptionTab"><span
+																							id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																								href="javascript:submitform('quoteOption.html','Business-funds-control.tabQuoteOption','','');">Quote
+																									Option</a> </span><span
+																							id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																								href="javascript:submitform('quoteOption.html','Business-funds-control.tabQuoteOptionContinue','','');">Quote
+																									Option</a> </span> </span>
+																					</td>
+
+																				</tr>
+																			</table>
+																		</td>
+
+
+
+																		<td align="left"
+																			id="eval:AccountantRule.IsRenewalPolicy">
+																			<table width="100" border="0" cellpadding="0"
+																				cellspacing="0">
+																				<tr>
+																					<td>
+																						&nbsp;
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						&nbsp;
+																					</td>
+
+																					<td>
+																						&nbsp;
+																					</td>
+
+																					<td valign="top">
+																						<img src="img/redarrow.jpg" alt="" width="13"
+																							height="7" />
+																					</td>
+																					<td class="nav">
+																						&nbsp;
+																					</td>
+
+																					<td id="eval:AccountantRule.showQuoteOptionTab">
+																						&nbsp;
+																					</td>
+																					<td id="eval:AccountantRule.showQuoteOptionTab">
+																						&nbsp;
+																					</td>
+																					<td class="nav">
+																						&nbsp;
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>
+																						<img src="img/1inactive.jpg" width="16"
+																							height="16" />
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						<span
+																							id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																							href="javascript:submitform('RenewBasicInfo.html','Business-funds-control.tabRenewBasicInfo','','');">Basic
+																								Information</a> </span><span
+																							id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																							href="javascript:submitform('RenewBasicInfo.html','Business-funds-control.tabRenewBasicInfoContinue','','');">Basic
+																								Information</a> </span>
+																					</td>
+																					<td>
+																						<img src="img/bgline.jpg" />
+																					</td>
+																					<td>
+																						<img src="img/2active.jpg" width="16" height="16" />
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						Supplement
+																					</td>
+
+																					<td id="eval:AccountantRule.showQuoteOptionTab">
+																						<img src="img/bgline.jpg" />
+																					</td>
+																					<td id="eval:AccountantRule.showQuoteOptionTab">
+																						<span id="eval:AccountantRule.showSupplementTab"><img
+																								src="img/3inactive.jpg" width="16" height="16" />
+																						</span><span id="eval:AccountantRule.hideSupplementTab"><img
+																								src="img/2active.jpg" width="16" height="16" />
+																						</span>
+																					</td>
+																					<td nowrap="nowrap" class="nav">
+																						<span id="eval:AccountantRule.showQuoteOptionTab"><span
+																							id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																								href="javascript:submitform('quoteOption.html','Business-funds-control.tabQuoteOption','','');">Quote
+																									Option</a> </span><span
+																							id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																								href="javascript:submitform('quoteOption.html','Business-funds-control.tabQuoteOptionContinue','','');">Quote
+																									Option</a> </span> </span>
+																					</td>
+
+																				</tr>
+																			</table>
+																		</td>
+
+																	</tr>
+																	<tr>
+																		<td>
+																			&nbsp;
+																		</td>
+																		<td id="eval:AccountantRule.IsNotRenewalPolicy">
+																			<span><img src="img/arrow3.jpg" /> </span>
+																		</td>
+																		<td id="eval:AccountantRule.IsRenewalPolicy">
+																			<span><img src="img/arrow2.jpg" /> </span>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+															<td height="30" align="right" class="txtBlack12">
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="0">
+																	<tr id="eval:AccountantRule.isAgent">
+																		<td align="right" nowrap="nowrap" class="txtBlack12">
+																			<a
+																				href="javascript:submitform('Business-funds-control.html','Business-funds-control.downloadpdf','','');"
+																				class="txtBlack12">Download PDF</a> |
+																			<a
+																				href="javascript:submitform('Business-funds-control.html','Business-funds-control.downloadexcel','','');"
+																				class="txtBlack12"> Download Excel</a><span
+																				id="eval:AccountantRule.roleEditOnly"> |<a
+																				href="javascript:submitform('uploadexcelpopup.html','Business-funds-control.uploadexcel','','');"
+																				class="txtBlack12"> Documents&nbsp;</a>|<a
+																							href="javascript:submitform('comment.html','Business-funds-control.comment','','');"
+																							class="txtBlack12"> Comments&nbsp;</a>|&nbsp;<a
+																					href="javascript:submitform('UWReview.html','list.underwriter',' ','');" 
+																					class="txtBlack12">UnderWriter</a> </span>  
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="100%" border="0" cellpadding="0"
+														cellspacing="0" class="border1">
+														<tr>
+															<td align="right" class="heading3">
+																<table border="0" cellspacing="2" cellpadding="2">
+																	<tr>
+																		<td id="eval:AccountantRule.isAuditAOPPM"
+																			class="link_tab">
+																			<span
+																				id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																				href="#"
+																				onClick="javascript:submitform('Practice-Management.html','Business-funds-control.tabPractice','','');"
+																				class="link_tab">Practice Management</a> </span><span
+																				id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																				href="#"
+																				onClick="javascript:submitform('Practice-Management.html','Business-funds-control.tabPracticeContinue','','');"
+																				class="link_tab">Practice Management</a> </span>
+																		</td>
+																		<td id="eval:AccountantRule.isAuditAOP19">
+																			|
+																		</td>
+																		<td nowrap="nowrap"
+																			id="eval:AccountantRule.isAuditAOP19"
+																			class="link_tab">
+																			<span
+																				id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																				href="#"
+																				onClick="javascript:submitform('invest-finan-planing.html','Business-funds-control.tabInvestment','','');"
+																				class="link_tab">Investment / Financial Planning
+																			</a> </span><span
+																				id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																				href="#"
+																				onClick="javascript:submitform('invest-finan-planing.html','Business-funds-control.tabInvestmentContinue','','');"
+																				class="link_tab">Investment / Financial Planning
+																			</a> </span>
+																		</td>
+																		<td id="eval:AccountantRule.isAuditAOP56">
+																			|
+																		</td>
+																		<td id="eval:AccountantRule.isAuditAOP56"
+																			class="link_tab">
+																			<span
+																				id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																				href="#"
+																				onClick="javascript:submitform('attestation.html','Business-funds-control.tabAttestation','','');"
+																				class="link_tab">Audit</a> </span><span
+																				id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																				href="#"
+																				onClick="javascript:submitform('attestation.html','Business-funds-control.tabAttestationContinue','','');"
+																				class="link_tab">Audit</a> </span>
+																		</td>
+																		<td id="eval:AccountantRule.isAuditAOP14">
+																			|
+																		</td>
+																		<td id="eval:AccountantRule.isAuditAOP14"
+																			class="link_tab">
+																			<span
+																				id="eval:AccountantRule.isBusinessPageNotReadOnly"><a
+																				href="#"
+																				onClick="javascript:submitform('computer-services.html','Business-funds-control.tabComputer','','');"
+																				class="link_tab">Computer Related Services </a> </span><span
+																				id="eval:AccountantRule.isBusinessPageReadOnly"><a
+																				href="#"
+																				onClick="javascript:submitform('computer-services.html','Business-funds-control.tabComputerContinue','','');"
+																				class="link_tab">Computer Related Services </a> </span>
+																		</td>
+																		<td id="eval:AccountantRule.isAuditAOP18">
+																			|
+																		</td>
+																		<td id="eval:AccountantRule.isAuditAOP18"
+																			class="link_tab">
+																			Business Management / Funds Control
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+														<tr>
+															<td class="heading1">
+																Business Management / Funds Control
+																<div id="error_TransactionError"
+																	class="defult_tr_errors" style="float: right;"></div>
+																<div id="error_PracriceMangPage"
+																	class="defult_tr_errors" style="float: right;"></div>
+															</td>
+														</tr>
+														<tr>
+															<td class="bglightGray">
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="2">
+																	<tr>
+																		<td>
+																			<table width="100%" border="0" cellspacing="0"
+																				cellpadding="0">
+																				<tr class="defult_tr_errors"
+																					id="tr_error_indication_div">
+																					<td align="left">
+																						<div id="error_indication_div" class="error11Bold"></div>
+																					</td>
+																				</tr>
+																			</table>
+																		</td>
+																		<td width="200" align="right">
+																			<span class="error11Bold">* = </span><span
+																				class="error11"> All fields are required</span>
+																		</td>
+																	</tr>
+																	
+																		<tr>
+																			<td colspan="2">
+																				<div id="error_incompleteApp"
+																									class="error11Bold"></div>
+																			</td>
+																			</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="contentSup">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0"
+								class="border1">
+
+								<tr>
+									<td height="25">
+										&nbsp;
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table width="100%" border="0" align="center" cellpadding="10"
+											cellspacing="0"
+											id="Businessfundscontrol_freeform_contextdata_01">
+
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="2">
+
+
+														<tr>
+															<td class="tdBullet">
+																&nbsp;
+															</td>
+															<td align="left" class="txt11BoldGray">
+																&nbsp;
+															</td>
+															<td align="left">
+																&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td class="tdBullet">
+																&nbsp;
+															</td>
+															<td align="left" class="txt11BoldGray">
+																&nbsp;
+															</td>
+															<td align="left">
+																&nbsp;
+															</td>
+														</tr>
+														<tr>
+															<td colspan="3" align="left">
+																<div id="error_HaveInvestmentAuthorityFC"
+																	class="defult_tr_errors"></div>
+															</td>
+														</tr>
+														<tr>
+															<td class="tdBullet">
+																<span class="red">*</span>1.
+															</td>
+															<td align="left" class="txt11BoldGray">
+																Does your Firm or any owners, partners or officers have
+																discretionary investment authority over client funds?
+															</td>
+															<td width="147px" align="left" style="padding-left: 6px"
+																id="eval:AccountantRule.isBusinessPageReadOnly">
+																<input type="radio" class="inputbox" disabled="disabled"
+																	name="HaveInvestmentAuthorityFC"
+																	id="HaveInvestmentAuthorityFC" value="Y" />
+																Yes&nbsp;
+																<input type="radio" class="inputbox" disabled="disabled"
+																	name="HaveInvestmentAuthorityFC"
+																	id="HaveInvestmentAuthorityFC" value="N" />
+																No
+															</td>
+															<td width="147px" align="left" style="padding-left: 6px"
+																id="eval:AccountantRule.isBusinessPageNotReadOnly">
+																<input type="radio" class="inputbox"
+																	name="HaveInvestmentAuthorityFC"
+																	id="HaveInvestmentAuthorityFC" value="Y" />
+																Yes&nbsp;
+																<input type="radio" class="inputbox"
+																	name="HaveInvestmentAuthorityFC"
+																	id="HaveInvestmentAuthorityFC" value="N" />
+																No
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="2">
+
+
+														<tr>
+															<td colspan="3" align="left">
+																<div id="error_TotlaNumberOfClientsFc"
+																	class="defult_tr_errors"></div>
+															</td>
+														</tr>
+														<tr>
+															<td class="tdBullet">
+																<span class="red">*</span>2.
+															</td>
+															<td align="left" class="txt11BoldGray">
+																What is the total number of clients for which your Firm
+																controls or disburses funds?
+															</td>
+															<td width="147px" align="left">
+																<span id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																		type="text" class="inputbox" disabled="disabled"
+																		name="TotlaNumberOfClientsFc"
+																		id="TotlaNumberOfClientsFc" size="9" maxlength="9" />
+																</span><span id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="text" class="inputbox"
+																		name="TotlaNumberOfClientsFc"
+																		id="TotlaNumberOfClientsFc" size="9" maxlength="9"
+																		tabindex="2" /> </span>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="2">
+
+														<tr>
+															<td colspan="3" align="left">
+																<div id="error_TotalAmountOfClientFundsFc"
+																	class="defult_tr_errors"></div>
+															</td>
+														</tr>
+														<tr>
+															<td class="tdBullet">
+																<span class="red">*</span>3.
+															</td>
+															<td align="left" class="txt11BoldGray">
+																List total amount of client funds your Firm disburses
+																annually:
+															</td>
+															<td width="147px" align="left">
+																<span id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																		type="text" class="inputbox" disabled="disabled"
+																		name="TotalAmountOfClientFundsFc"
+																		id="TotalAmountOfClientFundsFc" size="18"
+																		maxlength="20" /> </span><span
+																	id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="text" class="inputbox"
+																		name="TotalAmountOfClientFundsFc"
+																		id="TotalAmountOfClientFundsFc" size="18"
+																		maxlength="20"
+																		onclick="javascript:attachAmountFormat(this);"
+																		onkeyup="limitAmountText(this,15);" tabindex="3" /> </span>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="2">
+
+														<tr>
+															<td colspan="3" align="left">
+																<div id="error_IsControlFundsForBusinessAndEntimentFc"
+																	class="defult_tr_errors"></div>
+															</td>
+														</tr>
+														<tr>
+															<td class="tdBullet">
+																<span class="red">*</span>4.
+															</td>
+															<td align="left" class="txt11BoldGray">
+																<table border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="txt11BoldGray">
+																			Other than for the preparation and filing of federal,
+																			state or local tax returns, do you provide
+																			business/personal management or family office
+																			services or control funds for clients in the
+																			entertainment or sports industry?
+																		</td>
+																		<td>
+																			<span
+																				id="eval:AccountantRule.isControlFundsForBusinessAndEntimentFcRefer"><a
+																				onmouseout="popUp(event,'isControlFunds')"
+																				onmouseover="popUp(event,'isControlFunds')"
+																				onclick="return false"><img
+																						src="img/HelpIcon.jpg" border="0" /> </a> </span>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+															<td width="150px" align="left" valign="top">
+																<span id="eval:AccountantRule.isBusinessPageReadOnly">
+																	<input type="radio" disabled="disabled"
+																		name="IsControlFundsForBusinessAndEntimentFc"
+																		id="IsControlFundsForBusinessAndEntimentFc" value="Y"
+																		onClick="showDivArea(['divifyes'], ['divifno']);" />
+																</span><span id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="radio"
+																		name="IsControlFundsForBusinessAndEntimentFc"
+																		id="IsControlFundsForBusinessAndEntimentFc" value="Y"
+																		onClick="showDivArea(['divifyes'], ['divifno']);"
+																		tabindex="4" /> </span> Yes
+																<span id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																		type="radio" disabled="disabled"
+																		name="IsControlFundsForBusinessAndEntimentFc"
+																		id="IsControlFundsForBusinessAndEntimentFc" value="N"
+																		onClick="showDivArea(['divifno'], ['divifyes']);" />
+																</span><span id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="radio"
+																		name="IsControlFundsForBusinessAndEntimentFc"
+																		id="IsControlFundsForBusinessAndEntimentFc" value="N"
+																		onClick="showDivArea(['divifno'], ['divifyes']);"
+																		tabindex="5" /> </span> No
+															</td>
+														</tr>
+
+														<tr>
+															<td colspan="3" align="left"
+																style="padding-left: 30px; padding-right: 30px;">
+																<div id="divifyes" style="display: none">
+																	<table border="0" width="100%" cellpadding="2"
+																		cellspacing="0" class="bgrowyellow">
+																		<tr>
+																			<td></td>
+																			<td>
+																				<div id="error_NumberOfClientsFc"
+																					class="defult_tr_errors"></div>
+																			</td>
+																			<td></td>
+																		</tr>
+																		<tr>
+																			<td align="right" width="300">
+																				Provide the number of such clients :
+																			</td>
+																			<td>
+																				<span
+																					id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																						type="text" class="inputbox"
+																						name="NumberOfClientsFc" disabled="disabled"
+																						id="NumberOfClientsFc" size="9" maxlength="9" />
+																				</span>
+																				<span
+																					id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																						type="text" class="inputbox"
+																						name="NumberOfClientsFc" id="NumberOfClientsFc"
+																						size="9" maxlength="9" tabindex="6" /> </span>
+																			</td>
+																			<td align="left">
+																				&nbsp;
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+																<div id="divifno" style="display: none"></div>
+															</td>
+														</tr>
+
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="2">
+
+														<tr>
+															<td colspan="3" align="left">
+																<div id="error_IsCountersignatureRequiredFc"
+																	class="defult_tr_errors"></div>
+															</td>
+														</tr>
+														<tr>
+															<td class="tdBullet">
+																<span class="red">*</span>5.
+															</td>
+															<td align="left" class="txt11BoldGray">
+																<table border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="txt11BoldGray"
+																			id="eval:AccountantRule.IsNotRenewalPolicy">
+																			Is a client countersignature required on all client
+																			checks issued by personnel of Firm and Firm
+																			affiliates?
+																		</td>
+																		<td class="txt11BoldGray"
+																			id="eval:AccountantRule.IsRenewalPolicy">
+																			Is a client countersignature required on all client
+																			checks issued by personnel of the Firm?
+																		</td>
+																		<td>
+																			<span
+																				id="eval:AccountantRule.IsCountersignatureRequiredFcRefer"><a
+																				onmouseout="popUp(event,'isCountersignature')"
+																				onmouseover="popUp(event,'isCountersignature')"
+																				onclick="return false"><img
+																						src="img/HelpIcon.jpg" border="0" /> </a> </span>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+															<td width="150px" align="left" valign="top">
+																<span id="eval:AccountantRule.isBusinessPageReadOnly">
+																	<input type="radio" disabled="disabled"
+																		name="IsCountersignatureRequiredFc"
+																		id="IsCountersignatureRequiredFc" value="Y" /> </span><span
+																	id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="radio" name="IsCountersignatureRequiredFc"
+																		id="IsCountersignatureRequiredFc" value="Y"
+																		tabindex="11" /> </span> Yes
+																<span id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																		type="radio" disabled="disabled"
+																		name="IsCountersignatureRequiredFc"
+																		id="IsCountersignatureRequiredFc" value="N" /> </span><span
+																	id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="radio" name="IsCountersignatureRequiredFc"
+																		id="IsCountersignatureRequiredFc" value="N"
+																		tabindex="12" /> </span> No
+															</td>
+														</tr>
+
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="2">
+
+														<tr>
+															<td colspan="3" align="left">
+																<div id="error_IsBankAccountReconciledFc"
+																	class="defult_tr_errors"></div>
+															</td>
+														</tr>
+														<tr>
+															<td class="tdBullet">
+																<span class="red">*</span>6.
+															</td>
+															<td align="left" class="txt11BoldGray">
+																<table border="0" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td class="txt11BoldGray">
+																			Are all client bank accounts reconciled by someone
+																			other than Firm personnel authorized to deposit or
+																			withdraw there from?
+																		</td>
+																		<td>
+																			<span
+																				id="eval:AccountantRule.IsBankAccountReconciledFcRefer"><a
+																				onmouseout="popUp(event,'isBankAccount')"
+																				onmouseover="popUp(event,'isBankAccount')"
+																				onclick="return false"><img
+																						src="img/HelpIcon.jpg" border="0" /> </a> </span>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+															<td width="150px" align="left" valign="top">
+																<span id="eval:AccountantRule.isBusinessPageReadOnly">
+																	<input type="radio" name="IsBankAccountReconciledFc"
+																		disabled="disabled" id="IsBankAccountReconciledFc"
+																		value="Y" /> </span><span
+																	id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="radio" name="IsBankAccountReconciledFc"
+																		id="IsBankAccountReconciledFc" value="Y" tabindex="15" />
+																</span> Yes
+																<span id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																		type="radio" name="IsBankAccountReconciledFc"
+																		disabled="disabled" id="IsBankAccountReconciledFc"
+																		value="N" /> </span><span
+																	id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="radio" name="IsBankAccountReconciledFc"
+																		id="IsBankAccountReconciledFc" value="N" tabindex="16" />
+																</span> No
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="0">
+														<tr>
+															<td>
+																<table width="100%" border="0" cellspacing="0"
+																	cellpadding="2">
+
+																	<tr>
+																		<td colspan="3" align="left">
+																			<div id="error_IsFirmPersonnelBusinessManagerFc"
+																				class="defult_tr_errors"></div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td nowrap class="tdBullet">
+																			<span class="red">*</span>7.
+																		</td>
+																		<td align="left" class="txt11BoldGray">
+																			Do any Firm personnel act as a manager or CFO for
+																			clients?
+																		</td>
+																		<td width="150" align="left">
+																			<span id="eval:AccountantRule.isBusinessPageReadOnly">
+																				<input type="radio"
+																					name="IsFirmPersonnelBusinessManagerFc"
+																					id="IsFirmPersonnelBusinessManagerFc"
+																					disabled="disabled" value="Y"
+																					onClick="showDivAreaFundControl(['divBy'], ['divBn']);" />
+																			</span><span
+																				id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																					type="radio"
+																					name="IsFirmPersonnelBusinessManagerFc"
+																					id="IsFirmPersonnelBusinessManagerFc" value="Y"
+																					onClick="showDivAreaFundControl(['divBy'], ['divBn']);"
+																					tabindex="21" /> </span> Yes
+																			<span id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																					type="radio"
+																					name="IsFirmPersonnelBusinessManagerFc"
+																					disabled="disabled"
+																					id="IsFirmPersonnelBusinessManagerFc" value="N"
+																					onClick="showDivAreaFundControl(['divBn'], ['divBy']);" />
+																			</span><span
+																				id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																					type="radio"
+																					name="IsFirmPersonnelBusinessManagerFc"
+																					id="IsFirmPersonnelBusinessManagerFc" value="N"
+																					onClick="showDivAreaFundControl(['divBn'], ['divBy']);"
+																					tabindex="22" /> </span> No
+																		</td>
+																	</tr>
+
+
+
+																</table>
+															</td>
+														</tr>
+														<tr>
+															<td style="padding-left: 30px; padding-right: 30px;">
+																<div id="divBy" style="display: none">
+																	<table width="100%" border="0" cellpadding="2"
+																		cellspacing="0" class="bgrowyellow">
+
+																		<tr>
+																			<td></td>
+																			<td>
+																				<div id="error_ProvideNumberOfClientFc"
+																					class="defult_tr_errors"></div>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td width="400" align="right" nowrap="nowrap">
+																				Provide the number of such clients :
+																			</td>
+																			<td align="left">
+																				<span
+																					id="eval:AccountantRule.isBusinessPageReadOnly">
+																					<input type="text" class="inputbox"
+																						disabled="disabled" name="ProvideNumberOfClientFc"
+																						id="ProvideNumberOfClientFc" size="9"
+																						maxlength="9" /> </span><span
+																					id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																						type="text" class="inputbox"
+																						name="ProvideNumberOfClientFc"
+																						id="ProvideNumberOfClientFc" size="9"
+																						maxlength="9" tabindex="25" /> </span>
+																			</td>
+																		</tr>
+
+																		<tr>
+																			<td></td>
+																			<td>
+																				<div id="error_ClientIndustryFc"
+																					class="defult_tr_errors"></div>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td align="right">
+																				Client Industry:
+																			</td>
+																			<td align="left">
+																				<span
+																					id="eval:AccountantRule.isBusinessPageReadOnly">
+																					<select name="ClientIndustryFc" disabled="disabled"
+																						id="ClientIndustryFc">
+																						<option value="">
+																							Select
+																						</option>
+																					</select> </span>
+																				<span
+																					id="eval:AccountantRule.isBusinessPageNotReadOnly">
+																					<select name="ClientIndustryFc"
+																						id="ClientIndustryFc" class="inputbox"
+																						onChange="showDivAreaPMClient(this.value,'ClientIndustryFcOthers');"
+																						tabindex="26">
+																						<option value=""></option>
+																					</select> </span>
+																				<!--<span id="eval:AccountantRule.isBusinessPageReadOnly"><input type="text" class="inputbox" disabled="disabled" name="ClientIndustryFc" id="ClientIndustryFc" size="26px" /></span><span id="eval:AccountantRule.isBusinessPageNotReadOnly"><input type="text" class="inputbox"  name="ClientIndustryFc" id="ClientIndustryFc" size="26px" /></span>  -->
+																			</td>
+																		</tr>
+
+																		<tr>
+																			<td></td>
+																			<td align="left" colspan="2">
+																				<div id="error_ClientIndustryFcOthers"
+																					class="defult_tr_errors"></div>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td colspan="3">
+																				<div style="display: none"
+																					id="tr_ClientIndustryFcOthers">
+																					<table width="100%" border="0" cellspacing="0"
+																						cellpadding="1">
+																						<tr>
+																							<td width="400" align="right" nowrap>
+																								Specify Others:
+																							</td>
+																							<td align="left" colspan="2">
+																								<div
+																									id="eval:AccountantRule.isBusinessPageReadOnly">
+																									<textarea rows="2"
+																										name="ClientIndustryFcOthers"
+																										readonly="readonly" class="textarea"
+																										id="ClientIndustryFcOthers" cols="20"></textarea>
+																								</div>
+																								<div
+																									id="eval:AccountantRule.isBusinessPageNotReadOnly">
+																									<textarea rows="2"
+																										name="ClientIndustryFcOthers"
+																										id="ClientIndustryFcOthers" cols="20"
+																										onKeyUp="limitText(this,1,5000);"></textarea>
+																								</div>
+																							</td>
+																						</tr>
+																					</table>
+																				</div>
+																			</td>
+																		</tr>
+																		<tr>
+																		</tr>
+																	</table>
+																</div>
+																<div id="divBn" style="display: none"></div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" cellspacing="0"
+														cellpadding="2">
+
+														<tr>
+															<td colspan="3" align="left">
+																<div id="error_NumberOfFirmEmployeesFc"
+																	class="defult_tr_errors"></div>
+															</td>
+														</tr>
+														<tr>
+															<td nowrap class="tdBullet">
+																<span class="red">*</span>8.
+															</td>
+															<td align="left" class="txt11BoldGray">
+																Provide the number of Firm employees who control or
+																disburse funds for the Firm or clients :
+															</td>
+															<td width="147px" align="left">
+																<span id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																		type="text" class="inputbox" disabled="disabled"
+																		name="NumberOfFirmEmployeesFc"
+																		id="NumberOfFirmEmployeesFc" size="9" maxlength="9" />
+																</span><span id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="text" class="inputbox"
+																		name="NumberOfFirmEmployeesFc"
+																		id="NumberOfFirmEmployeesFc" size="9" maxlength="9"
+																		tabindex="30" /> </span>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td class="borderbottom">
+													<table width="100%" border="0" align="center"
+														cellpadding="2" cellspacing="0">
+
+														<tr>
+															<td colspan="3" align="left">
+																<div id="error_IsEmployeeDishonestyCoverageFc"
+																	class="defult_tr_errors"></div>
+															</td>
+														</tr>
+														<tr>
+															<td class="tdBullet">
+																<span class="red">*</span>9.
+															</td>
+															<td align="left" class="txt11BoldGray"
+																id="eval:AccountantRule.IsNotRenewalPolicy">
+																Does the Firm or Firm affiliates carry Employee
+																Dishonesty Coverage :
+															</td>
+															<td align="left" class="txt11BoldGray"
+																id="eval:AccountantRule.IsRenewalPolicy">
+																Does the Firm carry Employee Dishonesty Coverage?
+															</td>
+															<td width="150px" align="left" valign="top">
+																<span id="eval:AccountantRule.isBusinessPageReadOnly">
+																	<input type="radio"
+																		name="IsEmployeeDishonestyCoverageFc"
+																		disabled="disabled"
+																		id="IsEmployeeDishonestyCoverageFc" value="Y" /> </span><span
+																	id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="radio" name="IsEmployeeDishonestyCoverageFc"
+																		id="IsEmployeeDishonestyCoverageFc" value="Y"
+																		tabindex="31" /> </span> Yes
+																<span id="eval:AccountantRule.isBusinessPageReadOnly"><input
+																		type="radio" name="IsEmployeeDishonestyCoverageFc"
+																		disabled="disabled"
+																		id="IsEmployeeDishonestyCoverageFc" value="N" /> </span><span
+																	id="eval:AccountantRule.isBusinessPageNotReadOnly"><input
+																		type="radio" name="IsEmployeeDishonestyCoverageFc"
+																		id="IsEmployeeDishonestyCoverageFc" value="N"
+																		tabindex="32" /> </span> No
+															</td>
+														</tr>
+
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td align="center" class="bglightGray">
+													<table border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															<td>
+																<div
+																	style="text-align: center; width: 100%; display: inline;">
+																	<div id="eval:AccountantRule.isBusinessPageNotReadOnly"
+																		class="button4" style="width: 150px; float: left;">
+																		<a
+																			href="javascript:submitform('quoteOption.html|registration.html|referThanks.html|indexThanks.html','Business-funds-control.saveContinue','forwardeval','AccountantRule.showQuoteOptionTabNewApp|AccountantRule.isRegistrationPageSavedThanks|AccountantRule.isReferRuleTriggered|AccountantRule.isAuditAOP18Thanks');"
+																			class="link_tab" tabindex="41">Save</a>
+																	</div>
+																	<div id="eval:AccountantRule.isBusinessPageReadOnly"
+																		class="button4" style="width: 150px; float: left;">
+																		<a
+																			href="javascript:submitform('quoteOption.html|registration.html|referThanks.html|indexThanks.html','Business-funds-control.continue','forwardeval','AccountantRule.showQuoteOptionTabNewApp|AccountantRule.isRegistrationPageSavedThanks|AccountantRule.isReferRuleTriggered|AccountantRule.isAuditAOP18Thanks');"
+																			class="link_tab" tabindex="42">Continue</a>
+																	</div>
+																	<div class="button4" style="width: 150px; float: left;">
+																		<span id="eval:AccountantRule.IsNotRenewalPolicy">
+																			<a
+																			href="javascript:submitform('computer-services.html|attestation.html|invest-finan-planing.html|Practice-Management.html|general.html','Business-funds-control.cancel','forwardeval','AccountantRule.isAuditAOP14|AccountantRule.isAuditAOP56|AccountantRule.isAuditAOP19|AccountantRule.isAuditAOPPM|AccountantRule.isTrue');"
+																			class="link_tab" tabindex="43">Back</a> </span>
+																		<span id="eval:AccountantRule.IsRenewalPolicy">
+																			<a
+																			href="javascript:submitform('computer-services.html|attestation.html|invest-finan-planing.html|Practice-Management.html|RenewBasicInfo.html','Business-funds-control.previousPage','forwardeval','AccountantRule.isAuditAOP14|AccountantRule.isAuditAOP56|AccountantRule.isAuditAOP19|AccountantRule.isAuditAOPPM|AccountantRule.IsRenewBasicInfoPageSaved');"
+																			class="link_tab" tabindex="43">Back</a> </span>
+																	</div>
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td height="7"></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td width="16">
+													<img src="img/bottombg.jpg" width="16" height="59" />
+												</td>
+												<td align="center" background="img/bottombg.jpg"
+													class="topLink">
+													Copyright 2026, Protexure. All
+													rights reserved.
+												</td>
+												<td width="16">
+													<img src="img/bottombg.jpg" width="16" height="59" />
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+					</td>
+				</tr>
+
+			</table>
+			<div class="calendar_widget" id="calendar_widget">
+				<iframe id="calendar_widget_iframe" name="calendar_widget_iframe"
+					src="calendar_widget.html" frameborder="0" />
+			</div>
+		</form>
+	</body>
+	<script type="text/javascript">
+	
+	loadBMFC();
+	
+</script>
+</html>

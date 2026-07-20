@@ -1,0 +1,929 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Workq</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<link rel="STYLESHEET" type="text/css" href="calendar/rich_calendar.css" />
+<script type="text/javascript" src="script/manageperformance.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+		<script type="text/javascript" src="script/producerOnePerformance.js"></script>
+		<script type="text/javascript" src="script/tabber.js"></script>
+<script type="text/javascript" src="script/test_new.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" src="script/lawyers.js"></script>
+
+
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+<body  onload="loadManageReportTemplate();loadFilterHierarchy();" 
+		onclick="toggleDivDisplay('ajaxxmlname_popupsearch');">
+<div id="cover"></div>
+			<div id="contextLinks"></div>
+			<div id="deleteConfirmation" style="position: absolute; width: 400px">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td valign="top" class="popupBg">
+							<table cellpadding="0" cellspacing="0" width="100%" border="0">
+								<tr>
+									<td class="popupHeader">
+										Delete Saved Search
+									</td>
+								</tr>
+								<tr>
+									<td valign="top">
+										<div class="popupDivSmall">
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tr>
+													<td>
+														<img src="images/icons/delete_icon.gif" width="16"
+															height="16" alt="" />
+													</td>
+													<td>
+														Are you sure you want to delete this item?
+													</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="popupFooter">
+										<table cellpadding="0" cellspacing="0" align="right">
+											<tr>
+												<td colspan="2">
+													<div class="buttonwrapper">
+														<a onclick="closePopUp('deleteConfirmation');"
+															href="javascript:document.forms[0].submit();"
+															class="btn button1"><span>Yes</span> </a>
+														<a href="#" onclick="closePopUp('deleteConfirmation');"
+															class="btn button1"><span>No</span> </a>
+													</div>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="27px" valign="top" style="background-color: none;">
+							<a href="#" onclick="closePopUp('deleteConfirmation')"><img
+									src="images/close.png" /> </a>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="#REPORTING_SEARCH_POPUP#" class="popupDivResult">
+				<div id="popupAprooved" style="width: 550px;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" class="popupBg">
+								<table cellpadding="0" cellspacing="0" width="100%" border="0">
+									<tr>
+										<td class="popupHeader">
+											Search
+										</td>
+									</tr>
+									<tr>
+										<td valign="top" style="padding: 8px 35px 0px;">
+											<table cellpadding="1" cellspacing="0" align="center"
+												border="0">
+												<tr id="norecordfoundrow" style="display: none;">
+													<td class="paddingLeftError error" colspan="2">
+														No record found
+													</td>
+												</tr>
+												<tr>
+													<td colspan="2" class="paddingLeftError">
+														Please enter the first few letters to your search below
+														<!-- and click filter  -->:
+													</td>
+												</tr>
+												<tr>
+													<td id="managereporttemplate_freeform_contextdata_2"
+														width="1%">
+														<input type="text" name="popupsearch_data"
+															id="popupsearch_data" style="width: 99%" 
+															autocomplete="OFF" onkeyup="javascript:managereportajaxpageblocklink('reports/managereporttemplate.html','managereporttemplate.getAgencyList','','','ajaxxmlname_popupsearch');"
+                                                            onclick="nottoggleDivDisplay(this,'popupsearch_data','ajaxxmlname_popupsearch');"/>
+													</td>
+													
+												</tr>
+												<tr>
+                                                    <td>
+                                                        <div id="ajaxxmlname_popupsearch" class="transparent fixcolumnInput" style="display: none;
+                                                            border: solid 1px #cccccc; width: 1374px;" />
+                                                    </td>
+                                                </tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>&nbsp;
+											
+										</td>
+									</tr>
+									<tr>
+										<td align="left" style="padding: 8px 35px 0px;">
+											<table width="100%"
+												id="managereporttemplate_freeform_contextdata_3" border="0">
+												
+												<tr>
+													<td>
+														<select name="to_select_filter_data"
+															id="to_select_filter_data" multiple="multiple"
+															style="height: 200px; width: 100%">
+														</select>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									
+									<tr>
+										<td>
+											<table align="right">
+												<tr>
+													<td>
+														<div class="buttonwrapper" style="float: right">
+															<a
+																 class="btn button1"
+																onclick="javascript:resetSelectedToSelectFilterData();"><span>RESET</span>
+															</a>
+														</div>
+													</td>
+													<td>
+														<div class="buttonwrapper" style="float: right">
+															<a id="#REPORTING_POPUPSEARCH_SUBMIT_LINK#"
+																 class="btn button1"
+																onclick="javascript:getSelectedToSelectFilterData('to_filter_data','Y');"><span>SUBMIT</span>
+															</a>
+														</div>
+													</td>
+													<td>
+														<div class="buttonwrapper" style="float: right">
+															<a id="#REPORTING_POPUPSEARCH_CLOSE_LINK#"
+																 class="btn button1" onclick="closePopUp('popupAprooved')"><span>CANCEL
+															</span> </a>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>&nbsp;
+											
+
+
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td width="27px" valign="top" style="background-color: none;">
+								<a id="#REPORTING_POPUPSEARCH_CLOSE_LINK#"
+									onclick="closePopUp('popupAprooved')"><span><img
+											src="images/close.png" /> </span> </a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			</div>
+	<form name="myForm">
+<div class="container-fluid bootstrap-node-1">
+	<div class="tableWidth">
+		<div id="header">
+			<span id="#Include:../headerNewApp.html#"></span>
+		</div>
+		<div id="contentSection">
+			<h2 class="questionHeading" id="#REPORTING_NAME#">
+				Report Name
+			</h2>
+			<div class="form">
+				<div class="block-form paddingBottom20">
+					<table width="100%">
+						<tr>
+							<td>
+								<div id="managereporttemplate_freeform_contextdata_1" align="center">
+									<label name="pageMsg" id="pageMsg" class="Confirmation"></label>
+								</div>
+								<div class="error" align="center" id="#REPORTING_PAGE_ERROR#"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="buttonwrapper">
+									<a class="btn button1" id="#REPORTING_SHOW_BACK_LINK#"
+										href="javascript:managesubmitform(document.forms[0],'getCommissionReportPage','','','reportTabs');">
+										<span>Back</span> 
+									</a>
+									<span id="isShowResetButtonTrue">
+										<a id="#REPORTING_SHOW_RESET_LINK#"
+										class="btn button1"
+											href="javascript:managereport('','','INET_RESET_REPORT','MANAGE_REPORTING');"><span>Reset</span>
+										</a>
+									</span>
+									<a id="#REPORTING_SHOW_REPORT_LINK#"
+										class="btn button1"
+										onclick="javascript:getSelectedFilterDataDescription();"
+										href="javascript:managereport('','','INET_SHOW_REPORT','MANAGE_REPORTING');"><span>Report</span>
+									</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table cellpadding="0" cellspacing="0"
+																							width="100%" border="0">
+																							<tr id="isShowSavedSearchTrue">
+																								<td>
+			
+																									<table width="100%" cellpadding="0"
+																										cellspacing="0">
+			
+			
+																										<tr>
+																											<td>
+																												<table cellpadding="0" cellspacing="0"
+																													width="100%">
+																													<tr>
+																														<td width="2%" class="tdBorder reportRoundBg">
+																															<div id="#SAVESEARCHBLOCKNUMBER#">
+																															
+																															</div>
+																														</td>
+																														<td class="tdBorder"
+																															style="font-size: 12px;">
+																															<strong>&nbsp;Search</strong>
+																														</td>
+																													</tr>
+																												</table>
+																											</td>
+																										</tr>
+																										<tr>
+																											<td class="spacerTd">&nbsp;
+																												
+																											</td>
+																										</tr>
+																										<!-- <tr>
+																											<td>
+																												<table width="100%" border="0"
+																													id="#REPORTING_SAVESEARCH_BLOCK#">
+																													<tr>
+																														<td width="10%">
+																															Search Name :
+																														</td>
+																														<td width="20%">
+																															<input type="text" name="search_name"
+																																id="search_name" size="30" />
+																														</td>
+																														<td align="left" style="float: left;">
+																															<div class="buttonwrapper">
+																																<a class="ovalbutton"
+																																	id="#REPORTING_SAVESEARCH_LINK#"
+																																	onclick="getSelectedFilterDataDescription();"
+																																	href="javascript:managereport('','','INET_SAVE_SEARCH','MANAGE_REPORTING');">
+																																	<span>Save</span> </a>
+																															</div>
+																														</td>
+																													</tr>
+																												</table>
+																											</td>
+																										</tr> -->
+																										<tr>
+																											<td>
+			
+																												<table cellpadding="0" cellspacing="0"
+																													class="gridTable" width="100%" border="0"
+																													id="#REPORTING_SAVED_SEARCH_LIST_BLOCK#">
+																													
+																												</table>
+			
+																											</td>
+																										</tr>
+																									</table>
+			
+																								</td>
+																							</tr>
+			
+																							<tr id="isShowFiltersSearchTrue">
+																								<td >
+			
+																									<table cellpadding="0" cellspacing="0"
+																										width="100%">
+																										<!--<tr class="spacerTd">
+																												<td class="error"
+																													id="#REPORTING_PAGE_ERROR#" align="center">
+																													&nbsp;
+																												</td>
+																											</tr>
+																											-->
+																										<tr>
+																											<td>&nbsp;
+																												
+																											</td>
+																										</tr>
+																										<tr>
+																											<td>
+																												<table cellpadding="0" cellspacing="0"
+																													width="100%">
+																													<tr>
+																														<td width="2%" class="tdBorder reportRoundBg">
+																															<div id="#FILTERBLOCKNUMBER#">
+																															
+																															</div>
+																														</td>
+																														<td class="tdBorder"
+																															style="font-size: 12px;">
+																															<strong>&nbsp;Filters</strong>
+																														</td>
+																													</tr>
+																												</table>
+																											</td>
+																										</tr>
+																										<tr>
+																											<td class="spacerTd">&nbsp;
+																												
+																											</td>
+																										</tr>
+																										<tr id="#REPORTING_FILTER_AREA#">
+																											<td align="left" style="padding-left: 14px;">
+																												<div id="refreshFilter" class="valignfilter">
+																													<table cellpadding="0" cellspacing="0"
+																														border="0" id="#FILTER_BLOCK#">
+																														<tr id="#FILTER_ROW#">
+																														</tr>
+																													</table>
+																												</div>
+																											</td>
+																										</tr>
+																									</table>
+																									 
+																									<table cellpadding="1" cellspacing="0"
+																										width="100%">
+																										<tr id="#REPORTING_FILTER_AREA#">
+																											<td align="center">
+																												<table cellpadding="1" cellspacing="0">
+																													<tr id="#REPORTING_FILTER_FILED_LIST#">
+																														<td align="left">
+																															<select name="FieldList" id="FieldList">
+																																<option value="">
+																																	Select Field
+																																</option>
+																															</select>
+																														</td>
+																														<td align="right">
+																															<div class="buttonwrapper">
+																																<a class="ovalbutton"
+																																	href="javascript:managereport('','','INET_REPORT_ADD_FILTER','MANAGE_REPORTING');"><span>ADD</span>
+																																</a>
+																															</div>
+																														</td>
+																													</tr>
+																												</table>
+																											</td>
+																										</tr>
+																									</table>
+																									
+																								</td>
+																							</tr>
+			
+																							<tr id="#REPORTING_SORT_ORDER_BLOCK#">
+																								<td style="padding-left: 10px;">
+																									<fieldset style="height: 80px;">
+																										<legend>
+																											Sort Report Columns
+																										</legend>
+																										<table cellpadding="3" cellspacing="2">
+																											<tr>
+																												<td>
+																													Sort Order :
+																												</td>
+																												<td id="#REPORTING_SORT_ORDER#">
+																													<select name="SortOrder" id="SortOrder"
+																														style="width: 220px">
+																														<option value="">
+																															None
+																														</option>
+																													</select>
+																												</td>
+			
+																											</tr>
+																										</table>
+																									</fieldset>
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>&nbsp;
+																									
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>
+																									<table cellpadding="0" cellspacing="0"
+																										width="100%">
+																										<tr>
+																											<td width="50%" valign="top">
+																												<table cellpadding="0" cellspacing="0"
+																													width="100%">
+																													<tr>
+																														<td id="isShowOutputColumnsTrue">
+																															<table cellpadding="0" cellspacing="0"
+																																width="100%">
+																																<tr>
+																																	<td>
+																																		<table cellpadding="0" cellspacing="0"
+																																			width="100%">
+																																			<tr>
+																																				<td width="2%" class="tdBorder reportRoundBg">
+																																					<div id="#OUTPUTCOLUMNSBLOCKNUMBER#">
+																															
+																																					</div>
+																																				</td>
+																																				<td class="tdBorder" style="font-size: 12px;">
+																																					<strong> <span class="mendatoryInput">&nbsp;</span><span class="reportAsterisk">*</span>Report Parameter</strong> </td>
+																																				<td class="tdBorder" style="text-align: right;">
+																																					<input type="checkbox" onclick="checkall(this)" checked="checked"  />Check all?
+																																				</td>
+																																			</tr>
+																																		</table>
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td class="spacerTd5">&nbsp;
+																																		
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td style="padding-left: 15px;">
+																																		<div class="popupDivM_4"
+																																			style="margin-top: 4px;">
+		<fieldset style="border: none !important">																																	<table width="100%" cellspacing="0"
+																																				cellpadding="0">
+																																				<tr>
+																																					<td
+																																						id="#REPORTING_OUTPUTCOLUMNS_BLOCK#">
+			
+																																					</td>
+																																				</tr>
+																																			</table>
+		</fieldset>																																</div>
+																																	</td>
+			
+																																</tr>
+																															</table>
+																														</td>
+																													</tr>
+																												</table>
+			
+																											</td>
+			
+			
+																										</tr>
+																									</table>
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>&nbsp;
+																									
+																								</td>
+																							</tr>
+																							<tr>
+																								<td>
+																									<table cellpadding="0" cellspacing="0"
+																										width="100%">
+																										<tr>
+																											<td valign="top">
+																												<table cellpadding="0" cellspacing="0"
+																													width="100%">
+																													<tr>
+																														<td id="isShowGroupBySearchTrue">
+																															<table cellpadding="0" cellspacing="0"
+																																width="100%">
+																																<tr>
+																																	<td>
+																																		<table cellpadding="0" cellspacing="0"
+																																			width="100%">
+																																			<tr>
+																																				<td width="2%" class="tdBorder reportRoundBg">
+																																					<div id="#GROUPBYBLOCKNUMBER#">
+																															
+																																					</div>
+																																				</td>
+																																				<td class="tdBorder"
+																																					style="font-size: 12px;">
+																																					<strong>&nbsp;Group By </strong>
+																																				</td>
+																																			</tr>
+																																		</table>
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td class="spacerTd5">&nbsp;
+																																		
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td style="padding-left: 15px;">
+																																		<div class="popupDivM_4">
+																																		<table width="100%" cellspacing="0"
+																																			cellpadding="0">
+																																			<tr>
+																																				<td id="#REPORTING_GROUPBY_LIST#">
+			
+																																				</td>
+																																			</tr>
+																																		</table>
+																																		</div>
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td>&nbsp;
+																																		
+																																	</td>
+																																</tr>
+																															</table>
+																														</td>
+																													</tr>
+																													<tr>
+																														<td>
+																															<table cellpadding="0" cellspacing="0"
+																																width="100%">
+																																<tr>
+																																	<td>
+																																		<table cellpadding="0" cellspacing="0"
+																																			width="100%">
+																																			<tr>
+																																				<td width="2%" class="tdBorder reportRoundBg" style="height: 19px">
+																																					<div id="#OUTPUTTYPEBLOCKNUMBER#">
+																															
+																																					</div>
+																																				</td>
+																																				<td class="tdBorder"
+																																					style="font-size: 12px; height: 19px;">
+																																					<strong>&nbsp;Output Type
+																																					</strong>
+																																				</td>
+																																			</tr>
+																																		</table>
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td class="spacerTd5">&nbsp;
+																																		
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td style="padding-left: 15px;">
+																																		<table cellpadding="2" cellspacing="0" id="#REPORTING_OUTPUTYPE#">
+																																			<tr>
+																																				<td>
+																																					<table>
+																																						<tr>
+																																							<td>
+																																								<input type="radio"
+																																									name="outputtype"
+																																									id="outputtype_0" value="S"
+																																									checked="checked"></input>
+																																							</td>
+																																							<td>
+																																								<img border="0"
+																																									src="images/icons/IE_icon.jpg" />
+																																							</td>
+																																						</tr>	
+																																					</table>
+																																				</td>
+																																				<td id="#SCHEDULE#">
+																																					<table>
+																																						<tr>
+																																							<td>
+																																								<input type="radio"
+																																									name="outputtype"
+																																									id="outputtype_1" value="E"></input>
+																																							</td>
+																																							<td>
+																																								<img border="0"
+																																									src="images/icons/icon_excel1.jpg" />
+																																							</td>
+																																							<td id="#SCHEDULEPDF#">
+																																								<input type="radio"
+																																									name="outputtype"
+																																									id="outputtype_2" value="P"></input>
+																																							</td>
+																																							<td id="#SCHEDULEPDF#">
+																																								<img border="0"
+																																									src="images/icons/icon_pdf1.jpg" />
+																																							</td>
+																																						</tr>	
+																																					</table>
+																																				</td>
+																																			</tr>
+																																		</table>
+																																	</td>
+																																</tr>
+																																<tr>
+																																	<td>&nbsp;
+																																		
+																																	</td>
+																																</tr>
+																															</table>
+																														</td>
+																													</tr>
+																													<tr id="isShowSavedSearchTrue">
+																														<td>
+																															<table cellpadding="0" cellspacing="0"
+																																width="100%">
+																																<tr>
+																																	<td width="2%" class="tdBorder reportRoundBg">
+																																		<div id="#SAVESEARCHNAMEBLOCKNUMBER#">
+																															
+																																		</div>
+																																	</td>
+																																	<td class="tdBorder"
+																																		style="font-size: 12px;">
+																																		<strong>&nbsp;Search Name </strong>
+																																	</td>
+																																</tr>
+																															</table>
+																														</td>
+																													</tr>
+																													<tr>
+																														<td class="spacerTd5">&nbsp;
+																															
+																														</td>
+																													</tr>
+																													<tr id="isShowSavedSearchTrue">
+																														<td style="padding-left: 16px;">
+																															<table border="0"
+																																id="#REPORTING_SAVESEARCH_BLOCK#" cellpadding="0" cellspacing="0" width="100%">
+																																<tr>
+																																	<td align="left" width="8%" nowrap="nowrap">
+																																		Search Name :
+																																	</td>
+																																	<td>
+																																		<table cellpadding="0" cellspacing="0"><tr><td class="mendatoryInput"><input type="text" name="search_name"
+																																			id="search_name" size="30" /></td></tr></table>
+																																	</td>
+																																	<td class="spacerTd40">&nbsp;</td>
+																																	<td align="left" nowrap="nowrap" width="5%">
+																																		<span class="mendatoryAsterisk"></span>Is Global :
+																																	</td>
+																																	<td align="left" width="400px">
+																																		<input type="checkbox" name="isglobal"
+																																			id="isglobal" value="Y" />
+																																	</td>
+																																	<td align="right">
+			
+																																		<a id="" class="btn button1" style="float: right;"
+																																			onclick="getSelectedFilterDataDescription();"
+																																			href="javascript:managereport('','','INET_SAVE_SEARCH','MANAGE_REPORTING');">
+																																			<span>Save Search 
+																																		</span> </a>
+			
+																																	</td>
+																																</tr>
+																															</table>
+																														</td>
+																													</tr>
+																												</table>
+																											</td>
+																										</tr>
+																									</table>
+																								</td>
+																							</tr>
+																							<tr>
+																								<td class="spacerTd">&nbsp;
+																									
+																								</td>
+																							</tr>
+																							<tr>
+																								<td align="right">
+																									<div class="buttonwrapper paddingTop10">
+																										<a class="btn button1" id="#REPORTING_SHOW_BACK_LINK#"
+																											href="javascript:managesubmitform(document.forms[0],'getCommissionReportPage','','','reportTabs');">
+																											<span>Back</span> 
+																										</a>
+																										<span id="isShowResetButtonTrue">
+																											<a id="#REPORTING_SHOW_RESET_LINK#"
+																											 class="btn button1"
+																												href="javascript:managereport('','','INET_RESET_REPORT','MANAGE_REPORTING');"><span>Reset</span>
+																											</a>
+																										</span>
+																										<a id="#REPORTING_SHOW_REPORT_LINK#"
+																											 class="btn button1"
+																											onclick="javascript:getSelectedFilterDataDescription();"
+																											href="javascript:managereport('','','INET_SHOW_REPORT','MANAGE_REPORTING');"><span>Report</span>
+																										</a>
+																									</div>
+																								</td>
+																							</tr>
+																						</table>
+							</td>
+						</tr>
+						<tr id="isShowDefaultReportDataListTrue">
+							<td>
+								<fieldset>
+																						<legend>
+																							Batch Report
+																						</legend>
+																						<div>
+																							<table cellpadding="0" cellspacing="0"
+																								width="100%">
+																								<tr>
+																									<td id="#REPORTING_DEFAULT_DATA_AREA#">
+																										<table cellpadding="1" cellspacing="0"
+																											width="100%" border="0">
+																											<tr>
+																												<td class="gridTopPadding">
+																													<table cellpadding="0" cellspacing="0"
+																														width="100%" border="0">
+																														<tr>
+																															<td class="gridTable">
+																																<table cellpadding="0" cellspacing="0"
+																																	width="100%" id="#REPORTING_LIST#"
+																																	border="0">
+																																	<tr id="#REPORTING_LIST_PAGINATION#">
+																																		<td colspan="100">
+																																			<table cellpadding="3"
+																																				cellspacing="0" border="0"
+																																				width="100%">
+																																				<tr>
+																																					<td align="left" width="2%"
+																																						nowrap="nowrap">
+																																						Records per page :
+																																					</td>
+																																					<td align="left" width="1%">
+																																						<select id="PAGE_SIZE"
+																																							name="PAGE_SIZE" class="inputbox">
+																																							<option value="25">
+																																								25
+																																							</option>
+																																							<option value="50">
+																																								50
+																																							</option>
+																																						</select>
+																																					</td>
+																																					<td align="center">
+																																						<table cellpadding="1"
+																																							cellspacing="1">
+																																							<tr>
+																																								<td nowrap="nowrap"
+																																									align="center">
+																																									Viewing
+																																								</td>
+																																								<td id="START_INDEX"
+																																									class="paginationTxt">
+																																								</td>
+																																								<td class="linright">
+																																									to
+																																								</td>
+																																								<td id="END_INDEX"
+																																									class="paginationTxt">
+																																								</td>
+																																								<td class="linright">
+																																									of
+																																								</td>
+																																								<td id="TOTAL_RECORD"
+																																									class="paginationTxt">
+																																								</td>
+																																							</tr>
+																																						</table>
+																																					</td>
+																																					<td align="right" width="160px"
+																																						nowrap="nowrap">
+																																						<table border="0" cellspacing="1"
+																																							cellpadding="1">
+																																							<tr>
+																																								<td id="firstpagelink">
+																																									<a id="FIRSTPAGELINK"
+																																										title="First Page"
+																																										tabindex="21"> <img
+																																											src="img/button_sort_first.gif" width="25"
+																																											height="20" border="0" /> </a>
+																																								</td>
+																																								<td id="previouspagelink">
+																																									<a id="PREVIOUSPAGELINK"
+																																										title="Previous" tabindex="21">
+																																										<img
+																																											src="img/button_sort_back.gif" width="25" height="20"
+																																											border="0" /> </a>
+																																								</td>
+																																								<td nowrap="nowrap">
+																																									Page :
+																																								</td>
+																																								<td>
+																																									<select id="PAGE_NUMBER"
+																																										name="PAGE_NUMBER"
+																																										class="inputbox">
+																																									</select>
+																																								</td>
+																																								<td id="nextpagelink">
+																																									<a id="NEXTPAGELINK"
+																																										title="Next" tabindex="21">
+																																										<img
+																																											src="img/button_sort_next.gif" width="25" height="20"
+																																											border="0" /> </a>
+																																								</td>
+																																								<td id="lastpagelink">
+																																									<a id="LASTPAGELINK"
+																																										title="Last Page" tabindex="21">
+																																										<img
+																																											src="img/button_sort_last.gif" width="25" height="20"
+																																											border="0" /> </a>
+																																								</td>
+																																							</tr>
+																																						</table>
+																																					</td>
+																																				</tr>
+																																			</table>
+																																		</td>
+																																	</tr>
+																																	<tr id="#REPORTING_LIST_HEADER#">
+			
+																																	</tr>
+																																	<tbody id="#REPORTING_LIST_DATA#">
+			
+																																	</tbody>
+																																</table>
+																															</td>
+																														</tr>
+																													</table>
+																												</td>
+																											</tr>
+																										</table>
+																									</td>
+																								</tr>
+																									
+																							</table>
+																						</div>
+																					</fieldset>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>				
+	</div>
+	<!---------Footer Start---------->
+	<div id="footer" class="footer">
+		<span id="#Include:../footerNewApp.html#"></span>
+	</div>
+	<!---------Footer End---------->
+</div>	
+		<div class="calendar_widget" id="calendar_widget">
+				<iframe id="calendar_widget_iframe" name="calendar_widget_iframe"
+					src="calendar_widget.html" frameborder="0">
+				</iframe>
+			</div>
+			<table id="reporting_freeform_contextdata_0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td>
+						<input type="hidden" name="jsessionid" id="jsessionid" />
+						<input type="hidden" name="searched_filter_data"
+							id="searched_filter_data" />
+						<input type="hidden" name="selected_filter_data"
+							id="selected_filter_data" />
+						<input type="hidden" name="issearch" id="issearch" />
+						<input type="hidden" name="to_filter_data" id="to_filter_data" />
+						<input type="hidden" name="search_id" id="search_id" />
+						<input type="hidden" name="groupby" id="groupby" />
+						<!-- <input type="hidden" name="checkAllGroupBySearch" id="checkAllGroupBySearch" /> -->
+						<input type="hidden" name="outputcolumns" id="outputcolumns" />
+						<input type="hidden" name="backPageAction" id="backPageAction"/>
+						<input type="hidden" name="popupsearchcolumns" id="popupsearchcolumns"/>
+						<input type="hidden" name="created_by" id="created_by"/>
+						<input type="hidden" name="contexturl" id="contexturl"/>
+						<input type="hidden" name="randomnumber" id="randomnumber"/>
+						<input type="hidden" name="reportID" id="reportID"/>
+						<input type="hidden" name="hierarchycolumns" id="hierarchycolumns"/>
+					</td>
+				</tr>
+			</table>
+	</form>
+
+</body>
+<script type="text/javascript">
+	
+$('#selectAll').click(function() {
+alert('ss')
+   if (this.checked) {
+       $(':checkbox').each(function() {
+           this.checked = true;                        
+       });
+   } else {
+      $(':checkbox').each(function() {
+           this.checked = false;                        
+       });
+   } 
+});
+</script>
+</html>

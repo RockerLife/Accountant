@@ -1,0 +1,1593 @@
+<reports project="AccountantIns">	
+
+
+<reportdef name="weeklyReportByState" description="weekly Report By State" isshowsavedsearch="N" 
+		isshowfiltersearch="Y" isshowdefaultreportdatalist="N" isshowresetbutton="Y" isreportdatapagination="Y" isshowgroupbysearch="N" 
+		isshowoutputcolumns="Y" isshowmultiplegrid="Y">
+		
+		<columnset name="weeklyReportByStateset1" description="month1" datasetname="report_data_list_1" executionsequence="1">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			<column name="WeekFromDate_D" columnlabel="From Date" metaproperty="report_search_columns.WeekFromDate_D" isreportfilter="Y" isreportdisplay="N" issortdisplay="N" filterdisplaytype="text" ispopupsearch="N" isdefaultdisplay="Y" isgroupbydisplay="Y" executionsequence="25"></column>
+			<column name="WeekToDate_D" columnlabel="To Date" metaproperty="report_search_columns.WeekToDate_D" isreportfilter="Y" isreportdisplay="N" issortdisplay="N" filterdisplaytype="text" ispopupsearch="N" isrequired="N" isgroupbydisplay="Y" isdefaultdisplay="Y" executionsequence="26"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset2" description="month2" datasetname="report_data_list_2" executionsequence="2">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>	
+		<columnset name="weeklyReportByStateset3" description="month3" datasetname="report_data_list_3" executionsequence="3">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset4" description="month4" datasetname="report_data_list_4" executionsequence="4">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset5" description="month5" datasetname="report_data_list_5" executionsequence="5">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset6" description="month6" datasetname="report_data_list_6" executionsequence="6">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset7" description="month7" datasetname="report_data_list_7" executionsequence="7">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset8" description="month8" datasetname="report_data_list_8" executionsequence="8">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset9" description="month9" datasetname="report_data_list_9" executionsequence="9">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset10" description="month10" datasetname="report_data_list_10" executionsequence="10">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset11" description="month11" datasetname="report_data_list_11" executionsequence="11">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<columnset name="weeklyReportByStateset12" description="month12" datasetname="report_data_list_12" executionsequence="12">
+			<column name="StateName" columnlabel="StateName" metaproperty="StateName" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalApps" columnlabel="TotalApps" metaproperty="TotalApps" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="UnderReview" columnlabel="UnderReview" metaproperty="UnderReview" isreportfilter="N" isreportdisplay="Y" isencrypt="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Declined" columnlabel="Declined" metaproperty="Declined" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Quoted" columnlabel="Quoted" metaproperty="Quoted" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Issued" columnlabel="Issued" metaproperty="Issued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Pending" columnlabel="Pending" metaproperty="Pending" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="HitRatio" columnlabel="HitRatio" metaproperty="HitRatio" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Rejected" columnlabel="Rejected" metaproperty="Rejected" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremiumFromIssued" columnlabel="TotalPremiumFromIssued" metaproperty="TotalPremiumFromIssued" isreportfilter="N" isreportdisplay="Y" isencrypt="N" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		</columnset>
+		<reportworkflow name="reportworkflow" checkfornullparams="PAGE_SIZE,PAGE_NUMBER,reportID,WeekFromDate_D,WeekToDate_D" executionsequence="0"
+			eval="WeeklyReport.assignReportData">
+			<storedprocedureoperation id="weeklyreport_statemonth_new1" applid="AccountantIns"
+				name="weeklyreport_statemonth_new1" dbspname="weeklyreport_statemonth_new"
+				executionsequence="1" operation="5" viewid="report_data_list_1" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>	
+			<storedprocedureoperation id="weeklyreport_statemonth_new2" applid="AccountantIns"
+				name="weeklyreport_statemonth_new2" dbspname="weeklyreport_statemonth_new"
+				executionsequence="2" operation="5" viewid="report_data_list_2" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new3" applid="AccountantIns"
+				name="weeklyreport_statemonth_new3" dbspname="weeklyreport_statemonth_new"
+				executionsequence="3" operation="5" viewid="report_data_list_3" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new4" applid="AccountantIns"
+				name="weeklyreport_statemonth_new4" dbspname="weeklyreport_statemonth_new"
+				executionsequence="4" operation="5" viewid="report_data_list_4" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new5" applid="AccountantIns"
+				name="weeklyreport_statemonth_new5" dbspname="weeklyreport_statemonth_new"
+				executionsequence="5" operation="5" viewid="report_data_list_5" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new6" applid="AccountantIns"
+				name="weeklyreport_statemonth_new6" dbspname="weeklyreport_statemonth_new"
+				executionsequence="6" operation="5" viewid="report_data_list_6" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new7" applid="AccountantIns"
+				name="weeklyreport_statemonth_new7" dbspname="weeklyreport_statemonth_new"
+				executionsequence="7" operation="5" viewid="report_data_list_7" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new8" applid="AccountantIns"
+				name="weeklyreport_statemonth_new8" dbspname="weeklyreport_statemonth_new"
+				executionsequence="8" operation="5" viewid="report_data_list_8" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new9" applid="AccountantIns"
+				name="weeklyreport_statemonth_new9" dbspname="weeklyreport_statemonth_new"
+				executionsequence="9" operation="5" viewid="report_data_list_9" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new10" applid="AccountantIns"
+				name="weeklyreport_statemonth_new10" dbspname="weeklyreport_statemonth_new"
+				executionsequence="10" operation="5" viewid="report_data_list_10" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new11" applid="AccountantIns"
+				name="weeklyreport_statemonth_new11" dbspname="weeklyreport_statemonth_new"
+				executionsequence="11" operation="5" viewid="report_data_list_11" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+			<storedprocedureoperation id="weeklyreport_statemonth_new12" applid="AccountantIns"
+				name="weeklyreport_statemonth_new12" dbspname="weeklyreport_statemonth_new"
+				executionsequence="12" operation="5" viewid="report_data_list_12" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="5" seq="6"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="6" seq="7"
+                        property="FirstReviewUserID" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekMarketableProductKey" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="8" seq="9"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="9" seq="10"
+                        property="SumTotal" mode="IN">
+                  </parameteroperation> 
+                 <parameteroperation indexno="10" seq="11"
+                        property="UnderReviewTotal" mode="IN">
+                  </parameteroperation>
+				  <parameteroperation indexno="11" seq="12"
+                        property="DeclinedTotal" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="12" seq="13"
+                        property="QuotedNewTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="13" seq="14"
+                        property="IssuedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="14" seq="15"
+                        property="HitRatioSum" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="15" seq="16"
+                        property="PendingTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="16" seq="17"
+                        property="RejectedTotal" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="17" seq="18"
+                        property="Totalofsumpremium" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="18" seq="19"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>
+		</reportworkflow>
+	</reportdef>
+
+<reportdef name="AllDataForAccountant" description="All data for Accountant" isshowsavedsearch="Y" 
+		isshowfiltersearch="Y" isshowdefaultreportdatalist="Y" isshowresetbutton="Y" isreportdatapagination="Y" isshowgroupbysearch="N" 
+		isshowoutputcolumns="Y" isshowmultiplegrid="N">
+		
+		<columnset name="AllDataForAccountant1" description="Accountant" datasetname="AllDataList_Accountant_list_01" executionsequence="1">
+
+			<column name="PolicyKey" columnlabel="PolicyKey" metaproperty="PolicyKey" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountID" columnlabel="AccountID" metaproperty="AccountID" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="QuoteNumber" columnlabel="QuoteNumber" metaproperty="QuoteNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountName" columnlabel="AccountName" metaproperty="AccountName" isreportfilter="N" isreportdisplay="Y" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Status" columnlabel="Status" metaproperty="Status" isreportfilter="N" isreportdisplay="Y" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="State" columnlabel="State" metaproperty="State" isreportfilter="N" isreportdisplay="Y" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Limit" columnlabel="Limit" metaproperty="Limit" isreportfilter="N" isreportdisplay="Y" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Deductible1" columnlabel="Deductible" metaproperty="Deductible1" isreportfilter="N" isreportdisplay="Y" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ClaimExpensesType" columnlabel="ClaimExpensesType" metaproperty="ClaimExpensesType" isreportfilter="N" isreportdisplay="Y" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremium" columnlabel="TotalPremium" metaproperty="TotalPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="InvoicedPremium" columnlabel="InvoicedPremium" metaproperty="InvoicedPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="11" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Amount1" columnlabel="Amount1" metaproperty="Amount1" isreportfilter="N" isreportdisplay="Y" executionsequence="12" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Amount2" columnlabel="Amount2" metaproperty="Amount2" isreportfilter="N" isreportdisplay="Y" executionsequence="13" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Amount3" columnlabel="Amount3" metaproperty="Amount3" isreportfilter="N" isreportdisplay="Y" executionsequence="14" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmCarryingProfLiabilityIns" columnlabel="IsFirmCarryingProfLiabilityIns" metaproperty="IsFirmCarryingProfLiabilityIns" isreportfilter="N" isreportdisplay="Y" executionsequence="15" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ExpiringCarrier" columnlabel="ExpiringCarrier" metaproperty="ExpiringCarrier" isreportfilter="N" isreportdisplay="Y" executionsequence="16" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="LimitPross" columnlabel="LimitPross" metaproperty="LimitPross" isreportfilter="N" isreportdisplay="Y" executionsequence="17" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="DeductiblePross" columnlabel="DeductiblePross" metaproperty="DeductiblePross" isreportfilter="N" isreportdisplay="Y" executionsequence="18" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsPriorActDateFull" columnlabel="IsPriorActDateFull" metaproperty="IsPriorActDateFull" isreportfilter="N" isreportdisplay="Y" executionsequence="19" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PriorActDatePross" columnlabel="PriorActDatePross" metaproperty="PriorActDatePross" isreportfilter="N" isreportdisplay="Y" executionsequence="20" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="FirmYear" columnlabel="FirmYear" metaproperty="FirmYear" isreportfilter="N" isreportdisplay="Y" executionsequence="21" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ProInsPremium" columnlabel="ProInsPremium" metaproperty="ProInsPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="22" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyExpirationDatePross" columnlabel="PolicyExpirationDatePross" metaproperty="PolicyExpirationDatePross" isreportfilter="N" isreportdisplay="Y" executionsequence="23" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_1" columnlabel="AOP_Percentage_1" metaproperty="AOP_Percentage_1" isreportfilter="N" isreportdisplay="Y" executionsequence="24" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_2" columnlabel="AOP_Percentage_2" metaproperty="AOP_Percentage_2" isreportfilter="N" isreportdisplay="Y" executionsequence="25" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_3" columnlabel="AOP_Percentage_3" metaproperty="AOP_Percentage_3" isreportfilter="N" isreportdisplay="Y" executionsequence="26" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_4" columnlabel="AOP_Percentage_4" metaproperty="AOP_Percentage_4" isreportfilter="N" isreportdisplay="Y" executionsequence="27" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_5" columnlabel="AOP_Percentage_5" metaproperty="AOP_Percentage_5" isreportfilter="N" isreportdisplay="Y" executionsequence="28" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_6" columnlabel="AOP_Percentage_6" metaproperty="AOP_Percentage_6" isreportfilter="N" isreportdisplay="Y" executionsequence="29" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_7" columnlabel="AOP_Percentage_7" metaproperty="AOP_Percentage_7" isreportfilter="N" isreportdisplay="Y" executionsequence="30" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_8" columnlabel="AOP_Percentage_8" metaproperty="AOP_Percentage_8" isreportfilter="N" isreportdisplay="Y" executionsequence="31" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_9" columnlabel="AOP_Percentage_9" metaproperty="AOP_Percentage_9" isreportfilter="N" isreportdisplay="Y" executionsequence="32" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_10" columnlabel="AOP_Percentage_10" metaproperty="AOP_Percentage_10" isreportfilter="N" isreportdisplay="Y" executionsequence="33" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_11" columnlabel="AOP_Percentage_11" metaproperty="AOP_Percentage_11" isreportfilter="N" isreportdisplay="Y" executionsequence="34" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_12" columnlabel="AOP_Percentage_12" metaproperty="AOP_Percentage_12" isreportfilter="N" isreportdisplay="Y" executionsequence="35" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_13" columnlabel="AOP_Percentage_13" metaproperty="AOP_Percentage_13" isreportfilter="N" isreportdisplay="Y" executionsequence="36" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_14" columnlabel="AOP_Percentage_14" metaproperty="AOP_Percentage_14" isreportfilter="N" isreportdisplay="Y" executionsequence="37" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_15" columnlabel="AOP_Percentage_15" metaproperty="AOP_Percentage_15" isreportfilter="N" isreportdisplay="Y" executionsequence="38" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_16" columnlabel="AOP_Percentage_16" metaproperty="AOP_Percentage_16" isreportfilter="N" isreportdisplay="Y" executionsequence="39" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_17" columnlabel="AOP_Percentage_17" metaproperty="AOP_Percentage_17" isreportfilter="N" isreportdisplay="Y" executionsequence="40" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_18" columnlabel="AOP_Percentage_18" metaproperty="AOP_Percentage_18" isreportfilter="N" isreportdisplay="Y" executionsequence="41" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_19" columnlabel="AOP_Percentage_19" metaproperty="AOP_Percentage_19" isreportfilter="N" isreportdisplay="Y" executionsequence="42" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_20" columnlabel="AOP_Percentage_20" metaproperty="AOP_Percentage_20" isreportfilter="N" isreportdisplay="Y" executionsequence="43" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_21" columnlabel="AOP_Percentage_21" metaproperty="AOP_Percentage_21" isreportfilter="N" isreportdisplay="Y" executionsequence="44" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_22" columnlabel="AOP_Percentage_22" metaproperty="AOP_Percentage_22" isreportfilter="N" isreportdisplay="Y" executionsequence="45" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_23" columnlabel="AOP_Percentage_23" metaproperty="AOP_Percentage_23" isreportfilter="N" isreportdisplay="Y" executionsequence="46" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_24" columnlabel="AOP_Percentage_24" metaproperty="AOP_Percentage_24" isreportfilter="N" isreportdisplay="Y" executionsequence="47" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountEmail" columnlabel="AccountEmail" metaproperty="AccountEmail" isreportfilter="N" isreportdisplay="Y" executionsequence="48" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyEffectiveDate" columnlabel="PolicyEffectiveDate" metaproperty="PolicyEffectiveDate" isreportfilter="N" isreportdisplay="Y" executionsequence="49" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Address1" columnlabel="Address1" metaproperty="Address1" isreportfilter="N" isreportdisplay="Y" executionsequence="50" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Address2" columnlabel="Address2" metaproperty="Address2" isreportfilter="N" isreportdisplay="Y" executionsequence="51" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="City" columnlabel="City" metaproperty="City" isreportfilter="N" isreportdisplay="Y" executionsequence="52" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Zip" columnlabel="Zip" metaproperty="Zip" isreportfilter="N" isreportdisplay="Y" executionsequence="53" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Comment" columnlabel="Comment" metaproperty="Comment" isreportfilter="N" isreportdisplay="Y" executionsequence="54" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsBasicPage" columnlabel="IsBasicPage" metaproperty="IsBasicPage" isreportfilter="N" isreportdisplay="Y" executionsequence="55" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsRenewed" columnlabel="IsRenewed" metaproperty="IsRenewed" isreportfilter="N" isreportdisplay="Y" executionsequence="56" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="SubProducerNumber" columnlabel="SubProducerNumber" metaproperty="SubProducerNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="57" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsSuitInstituted" columnlabel="IsSuitInstituted" metaproperty="IsSuitInstituted" isreportfilter="N" isreportdisplay="Y" executionsequence="58" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsAwarenessOfAnyProfLiability" columnlabel="IsAwarenessOfAnyProfLiability" metaproperty="IsAwarenessOfAnyProfLiability" isreportfilter="N" isreportdisplay="Y" executionsequence="59" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsAwarenessOfAnyProfLiabilitySuitAgainst" columnlabel="IsAwarenessOfAnyProfLiabilitySuitAgainst" metaproperty="IsAwarenessOfAnyProfLiabilitySuitAgainst" isreportfilter="N" isreportdisplay="Y" executionsequence="60" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyStatus" columnlabel="PolicyStatus" metaproperty="PolicyStatus" isreportfilter="N" isreportdisplay="Y" executionsequence="61" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyNumber" columnlabel="PolicyNumber" metaproperty="PolicyNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="62" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="RenewOfPolicyNumber" columnlabel="RenewOfPolicyNumber" metaproperty="RenewOfPolicyNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="63" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Reviewer" columnlabel="Reviewer" metaproperty="Reviewer" isreportfilter="N" isreportdisplay="Y" executionsequence="64" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyExpirationDate" columnlabel="PolicyExpirationDate" metaproperty="PolicyExpirationDate" isreportfilter="N" isreportdisplay="Y" executionsequence="65" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ContactPerson" columnlabel="ContactPerson" metaproperty="ContactPerson" isreportfilter="N" isreportdisplay="Y" executionsequence="66" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="County1" columnlabel="County" metaproperty="County1" isreportfilter="N" isreportdisplay="Y" executionsequence="67" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier1" columnlabel="Modifier1" metaproperty="Modifier1" isreportfilter="N" isreportdisplay="Y" executionsequence="68" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier2" columnlabel="Modifier2" metaproperty="Modifier2" isreportfilter="N" isreportdisplay="Y" executionsequence="69" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier3" columnlabel="Modifier3" metaproperty="Modifier3" isreportfilter="N" isreportdisplay="Y" executionsequence="70" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalModifiers" columnlabel="TotalModifiers" metaproperty="TotalModifiers" isreportfilter="N" isreportdisplay="Y" executionsequence="71" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsClaimOptionType" columnlabel="IsClaimOptionType" metaproperty="IsClaimOptionType" isreportfilter="N" isreportdisplay="Y" executionsequence="72" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="CreatedDate" columnlabel="CreatedDate" metaproperty="CreatedDate" isreportfilter="N" isreportdisplay="Y" executionsequence="73" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalFirmPersonnel" columnlabel="TotalFirmPersonnel" metaproperty="TotalFirmPersonnel" isreportfilter="N" isreportdisplay="Y" executionsequence="74" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			<column name="batchreport_id" columnlabel="Batch Report ID" metaproperty="batchreport_id" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="75" isgrandtotaldisplay="N"></column>
+			<column name="request_date" columnlabel="Request Date" metaproperty="request_date" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="76" isgrandtotaldisplay="N"></column>
+			<column name="last_updated_by" columnlabel="Last Updated By" metaproperty="last_updated_by" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="77" isgrandtotaldisplay="N"></column>
+			<column name="search_xml_desc" columnlabel="Search Criteria" metaproperty="search_xml_desc" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="78"></column>
+			<column name="archive_date" columnlabel="Archive Date" metaproperty="archive_date" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="79"></column>
+			<column name="isdownloadlink" columnlabel="" metaproperty="isdownloadlink" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="81"></column>
+			<column name="report_file_name" columnlabel="Batch Report Name" metaproperty="report_file_name" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="80" isgrandtotaldisplay="N"></column>
+			
+			
+			<!-- 	filter section  -->
+
+			<column name="account_name" columnlabel="Account Name" metaproperty="report_search_columns.account_name" isrequired="N" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="text" isdefaultdisplay="Y" isgroupbydisplay="N" executionsequence="27"></column>
+			<column name="policy_status" columnlabel="Policy Status" metaproperty="report_search_columns.policy_status" isrequired="N" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="select" isdefaultdisplay="Y" isgroupbydisplay="N" executionsequence="28"></column>
+			<column name="AllDataForAccountant_state" columnlabel="State" metaproperty="report_search_columns.AllDataForAccountant_state" isrequired="N" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="select" isdefaultdisplay="Y" isgroupbydisplay="N" executionsequence="29"></column>
+			
+			
+			
+		</columnset>
+		
+		<reportworkflow name="reportworkflow" checkfornullparams="PAGE_SIZE,PAGE_NUMBER,reportID,account_name,policy_status,AllDataForAccountant_state" executionsequence="0">
+			<storedprocedureoperation id="FetchAllAccountantData_new1" applid="AccountantIns"
+				name="FetchAllAccountantData_new1" dbspname="FetchAllAccountantData_new" eval="reportingframework.assignDateFields"
+				executionsequence="1" operation="5" viewid="report_data_list_1" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                  <!-- <parameteroperation indexno="5" seq="6"
+                        property="account_name" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="6" seq="7"
+                        property="policy_status" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="7" seq="8"
+                        property="AllDataForAccountant_state" mode="IN">
+                  </parameteroperation> -->
+                  <parameteroperation indexno="8" seq="9"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>	
+			
+		</reportworkflow>
+	</reportdef>
+	
+	
+	<!--Data Dump for Accountant  -->
+	<reportdef name="FetchAllAccountantData_new" description="Data Dump For Accountant" isshowsavedsearch="Y" 
+		isshowfiltersearch="Y" isshowdefaultreportdatalist="Y" isshowresetbutton="Y" isreportdatapagination="Y" isshowgroupbysearch="N" 
+		isshowoutputcolumns="Y" isshowmultiplegrid="N" ispdfdisplay="N">
+		
+		<columnset name="FetchAllAccountantData_new" description="Accountant" datasetname="FetchAllAccountantData_new" executionsequence="1">
+
+			<column name="PolicyKey" columnlabel="PolicyKey" metaproperty="PolicyKey" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountID" columnlabel="AccountID" metaproperty="AccountID" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="QuoteNumber" columnlabel="QuoteNumber" metaproperty="QuoteNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountName" columnlabel="AccountName" metaproperty="AccountName" isreportfilter="N" isreportdisplay="Y" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Status" columnlabel="Status" metaproperty="Status" isreportfilter="N" isreportdisplay="Y" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyEffectiveDate" columnlabel="PolicyEffectiveDate" metaproperty="PolicyEffectiveDate" isreportfilter="N" isreportdisplay="Y" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyExpirationDate" columnlabel="PolicyExpirationDate" metaproperty="PolicyExpirationDate" isreportfilter="N" isreportdisplay="Y" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="State" columnlabel="State" metaproperty="State" isreportfilter="N" isreportdisplay="Y" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="SubProducerNumber" columnlabel="SubProducerNumber" metaproperty="SubProducerNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalPremium" columnlabel="TotalPremium" metaproperty="TotalPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Invoiced_Premium" columnlabel="InvoicedPremium" metaproperty="Invoiced_Premium" isreportfilter="N" isreportdisplay="Y" executionsequence="11" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalModifiers" columnlabel="TotalModifiers" metaproperty="TotalModifiers" isreportfilter="N" isreportdisplay="Y" executionsequence="12" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Limit" columnlabel="Limit" metaproperty="Limit" isreportfilter="N" isreportdisplay="Y" executionsequence="13" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ClaimExpensesType" columnlabel="ClaimExpensesType" metaproperty="ClaimExpensesType" isreportfilter="N" isreportdisplay="Y" executionsequence="14" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Deductible1" columnlabel="Deductible" metaproperty="Deductible1" isreportfilter="N" isreportdisplay="Y" executionsequence="15" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ClaimOptionType" columnlabel="ClaimOptionType" metaproperty="ClaimOptionType" isreportfilter="N" isreportdisplay="Y" executionsequence="16" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Amount1" columnlabel="Amount1" metaproperty="Amount1" isreportfilter="N" isreportdisplay="Y" executionsequence="17" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Amount2" columnlabel="Amount2" metaproperty="Amount2" isreportfilter="N" isreportdisplay="Y" executionsequence="18" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Amount3" columnlabel="Amount3" metaproperty="Amount3" isreportfilter="N" isreportdisplay="Y" executionsequence="19" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ExpiringCarrier" columnlabel="ExpiringCarrier" metaproperty="ExpiringCarrier" isreportfilter="N" isreportdisplay="Y" executionsequence="20" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="LimitPross" columnlabel="LimitPross" metaproperty="LimitPross" isreportfilter="N" isreportdisplay="Y" executionsequence="21" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="DeductiblePross" columnlabel="DeductiblePross" metaproperty="DeductiblePross" isreportfilter="N" isreportdisplay="Y" executionsequence="22" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsPriorActDateFull" columnlabel="IsPriorActDateFull" metaproperty="IsPriorActDateFull" isreportfilter="N" isreportdisplay="Y" executionsequence="23" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PriorActDatePross" columnlabel="PriorActDatePross" metaproperty="PriorActDatePross" isreportfilter="N" isreportdisplay="Y" executionsequence="24" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="FirmYear" columnlabel="FirmYear" metaproperty="FirmYear" isreportfilter="N" isreportdisplay="Y" executionsequence="25" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ProInsPremium" columnlabel="ProInsPremium" metaproperty="ProInsPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="26" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyExpirationDatePross" columnlabel="PolicyExpirationDatePross" metaproperty="PolicyExpirationDatePross" isreportfilter="N" isreportdisplay="Y" executionsequence="27" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsSuitInstituted" columnlabel="IsSuitInstituted" metaproperty="IsSuitInstituted" isreportfilter="N" isreportdisplay="Y" executionsequence="28" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsAwarenessOfAnyProfLiability" columnlabel="IsAwarenessOfAnyProfLiability" metaproperty="IsAwarenessOfAnyProfLiability" isreportfilter="N" isreportdisplay="Y" executionsequence="29" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsAwarenessOfAnyProfLiabilitySuitAgainst" columnlabel="IsAwarenessOfAnyProfLiabilitySuitAgainst" metaproperty="IsAwarenessOfAnyProfLiabilitySuitAgainst" isreportfilter="N" isreportdisplay="Y" executionsequence="30" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Comment" columnlabel="Comment" metaproperty="Comment" isreportfilter="N" isreportdisplay="Y" executionsequence="31" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_1" columnlabel="Biz Tax" metaproperty="AOP_Percentage_1" isreportfilter="N" isreportdisplay="Y" executionsequence="32" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_2" columnlabel="Estate Tax" metaproperty="AOP_Percentage_2" isreportfilter="N" isreportdisplay="Y" executionsequence="33" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_3" columnlabel="Ind Tax" metaproperty="AOP_Percentage_3" isreportfilter="N" isreportdisplay="Y" executionsequence="34" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_4" columnlabel="Book keeping" metaproperty="AOP_Percentage_4" isreportfilter="N" isreportdisplay="Y" executionsequence="35" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_5" columnlabel="Pub Audit" metaproperty="AOP_Percentage_5" isreportfilter="N" isreportdisplay="Y" executionsequence="36" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_6" columnlabel="Private Audit" metaproperty="AOP_Percentage_6" isreportfilter="N" isreportdisplay="Y" executionsequence="37" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_7" columnlabel="Review" metaproperty="AOP_Percentage_7" isreportfilter="N" isreportdisplay="Y" executionsequence="38" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_8" columnlabel="Compilation" metaproperty="AOP_Percentage_8" isreportfilter="N" isreportdisplay="Y" executionsequence="39" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_9" columnlabel="Agreed Procedures" metaproperty="AOP_Percentage_9" isreportfilter="N" isreportdisplay="Y" executionsequence="40" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_10" columnlabel="Other Assurance" metaproperty="AOP_Percentage_10" isreportfilter="N" isreportdisplay="Y" executionsequence="41" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_11" columnlabel="Litigation Support" metaproperty="AOP_Percentage_11" isreportfilter="N" isreportdisplay="Y" executionsequence="42" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_12" columnlabel="Other Consulting" metaproperty="AOP_Percentage_12" isreportfilter="N" isreportdisplay="Y" executionsequence="43" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_13" columnlabel="Mgt Consulting/Plan" metaproperty="AOP_Percentage_13" isreportfilter="N" isreportdisplay="Y" executionsequence="44" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_14" columnlabel="Comp Services" metaproperty="AOP_Percentage_14" isreportfilter="N" isreportdisplay="Y" executionsequence="45" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_15" columnlabel="Biz Valuation" metaproperty="AOP_Percentage_15" isreportfilter="N" isreportdisplay="Y" executionsequence="46" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_16" columnlabel="Forcasts/Projection" metaproperty="AOP_Percentage_16" isreportfilter="N" isreportdisplay="Y" executionsequence="47" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_17" columnlabel="Mergers/Acq" metaproperty="AOP_Percentage_17" isreportfilter="N" isreportdisplay="Y" executionsequence="48" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_18" columnlabel="Biz Mgt" metaproperty="AOP_Percentage_18" isreportfilter="N" isreportdisplay="Y" executionsequence="49" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_19" columnlabel="Invest Fin Planning" metaproperty="AOP_Percentage_19" isreportfilter="N" isreportdisplay="Y" executionsequence="50" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_20" columnlabel="Other" metaproperty="AOP_Percentage_20" isreportfilter="N" isreportdisplay="Y" executionsequence="51" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_21" columnlabel="SEC Work" metaproperty="AOP_Percentage_21" isreportfilter="N" isreportdisplay="Y" executionsequence="52" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_22" columnlabel="General Biz Advice" metaproperty="AOP_Percentage_22" isreportfilter="N" isreportdisplay="Y" executionsequence="53" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_23" columnlabel="Erisa" metaproperty="AOP_Percentage_23" isreportfilter="N" isreportdisplay="Y" executionsequence="54" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_24" columnlabel="Trustee" metaproperty="AOP_Percentage_24" isreportfilter="N" isreportdisplay="Y" executionsequence="55" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountEmail" columnlabel="AccountEmail" metaproperty="AccountEmail" isreportfilter="N" isreportdisplay="Y" executionsequence="56" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Address1" columnlabel="Address1" metaproperty="Address1" isreportfilter="N" isreportdisplay="Y" executionsequence="57" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Address2" columnlabel="Address2" metaproperty="Address2" isreportfilter="N" isreportdisplay="Y" executionsequence="58" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="City" columnlabel="City" metaproperty="City" isreportfilter="N" isreportdisplay="Y" executionsequence="59" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Zip" columnlabel="Zip" metaproperty="Zip" isreportfilter="N" isreportdisplay="Y" executionsequence="60" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="County1" columnlabel="County" metaproperty="County1" isreportfilter="N" isreportdisplay="Y" executionsequence="61" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyStatus" columnlabel="PolicyStatus" metaproperty="PolicyStatus" isreportfilter="N" isreportdisplay="Y" executionsequence="62" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalFirmPersonnel" columnlabel="TotalFirmPersonnel" metaproperty="TotalFirmPersonnel" isreportfilter="N" isreportdisplay="Y" executionsequence="63" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyNumber" columnlabel="PolicyNumber" metaproperty="PolicyNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="64" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="RenewOfPolicyNumber" columnlabel="RenewOfPolicyNumber" metaproperty="RenewOfPolicyNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="65" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Reviewer" columnlabel="Reviewer" metaproperty="Reviewer" isreportfilter="N" isreportdisplay="Y" executionsequence="66" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ContactPerson" columnlabel="ContactPerson" metaproperty="ContactPerson" isreportfilter="N" isreportdisplay="Y" executionsequence="67" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier1" columnlabel="Modifier1" metaproperty="Modifier1" isreportfilter="N" isreportdisplay="Y" executionsequence="68" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier2" columnlabel="Modifier2" metaproperty="Modifier2" isreportfilter="N" isreportdisplay="Y" executionsequence="69" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier3" columnlabel="Modifier3" metaproperty="Modifier3" isreportfilter="N" isreportdisplay="Y" executionsequence="70" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="CreatedDate" columnlabel="CreatedDate" metaproperty="CreatedDate" isreportfilter="N" isreportdisplay="Y" executionsequence="71" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsQuoteLetterSend" columnlabel="IsQuoteLetterSent" metaproperty="IsQuoteLetterSend" isreportfilter="N" isreportdisplay="Y" executionsequence="72" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			<column name="QuoteSendDate" columnlabel="QuoteLetterSentdate" metaproperty="QuoteSendDate" isreportfilter="N" isreportdisplay="Y" executionsequence="73" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			
+			
+			<column name="Policy_NotAcceptedDate" columnlabel="Policy_NotAcceptedDate" metaproperty="Policy_NotAcceptedDate" isreportfilter="N" isreportdisplay="Y" executionsequence="74" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Policy_IssuedDate" columnlabel="Policy_IssuedDate" metaproperty="Policy_IssuedDate" isreportfilter="N" isreportdisplay="Y" executionsequence="75" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="month_PolicyEffectiveDate" columnlabel="Effective Month" metaproperty="month_PolicyEffectiveDate" isreportfilter="N" isreportdisplay="Y" executionsequence="76" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="year_PolicyEffectiveDate" columnlabel="Year" metaproperty="year_PolicyEffectiveDate" isreportfilter="N" isreportdisplay="Y" executionsequence="77" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="DirectSubproduced" columnlabel="Direct/Subproduced" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="78" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOPFactor" columnlabel="AOPFactor" metaproperty="AOPFactor" isreportfilter="N" isreportdisplay="Y" executionsequence="79" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="CMFactor" columnlabel="CMFactor" metaproperty="CMFactor" isreportfilter="N" isreportdisplay="Y" executionsequence="80" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="FTEFactor" columnlabel="FTEFactor" metaproperty="FTEFactor" isreportfilter="N" isreportdisplay="Y" executionsequence="81" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="DeclinedComment" columnlabel="Declined Comment" metaproperty="DeclinedComment" isreportfilter="N" isreportdisplay="Y" executionsequence="82" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="WorkPhone" columnlabel="Work Phone" metaproperty="WorkPhone" isreportfilter="N" isreportdisplay="Y" executionsequence="154" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AnnualRevenue" columnlabel="Annual Revenue" metaproperty="AnnualRevenue" isreportfilter="N" isreportdisplay="Y" executionsequence="155" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"/>
+			<column name="FirstReviewerName" columnlabel="First Reviewer Name" metaproperty="FirstReviewerName" isreportfilter="N" isreportdisplay="Y" executionsequence="156" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"/>
+			<column name="IsIndicationMailSent" columnlabel="Is IndicationMail Sent" metaproperty="IsIndicationMailSent" isreportfilter="N" isreportdisplay="Y" executionsequence="157" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"/>
+			<column name="IndicationSentDate" columnlabel="IndicationSentDate" metaproperty="IndicationSentDate" isreportfilter="N" isreportdisplay="Y" executionsequence="158" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"/>
+			<column name="FromIndication" columnlabel="FromIndication" metaproperty="FromIndication" isreportfilter="N" isreportdisplay="Y" executionsequence="159" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsDirect" columnlabel="IsDirect" metaproperty="IsDirect" isreportfilter="N" isreportdisplay="Y" executionsequence="160" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="isAutoQuote" columnlabel="isAutoQuote" metaproperty="isAutoQuote" isreportfilter="N" isreportdisplay="Y" executionsequence="161" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="isComingThroughUnderwriting" columnlabel="isComingThroughUnderwriting" metaproperty="isComingThroughUnderwriting" isreportfilter="N" isreportdisplay="Y" executionsequence="162" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IndicationPremium" columnlabel="IndicationPremium" metaproperty="IndicationPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="163" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="isRequotePolicy" columnlabel="isRequotePolicy" metaproperty="isRequotePolicy" isreportfilter="N" isreportdisplay="Y" executionsequence="164" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="QQ" columnlabel="QQ" metaproperty="QQ" isreportfilter="N" isreportdisplay="Y" executionsequence="165" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="QQPremium" columnlabel="QQPremium" metaproperty="QQPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="166" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ClaimsCount" columnlabel="Claims on policy" metaproperty="ClaimsCount" isreportfilter="N" isreportdisplay="Y" executionsequence="167" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalIncurred" columnlabel="Total Incurred" metaproperty="TotalIncurred" isreportfilter="N" isreportdisplay="Y" executionsequence="168" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PaymentMode" columnlabel="Payment Mode" metaproperty="PaymentMode" isreportfilter="N" isreportdisplay="Y" executionsequence="169" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Company" columnlabel="Company" metaproperty="Company" isreportfilter="N" isreportdisplay="Y" executionsequence="170" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="MarkAsRenewal" columnlabel="Mark As Renewal" metaproperty="MarkAsRenewal" isreportfilter="N" isreportdisplay="Y" executionsequence="171" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsRenewalReview" columnlabel="IsRenewalReview" metaproperty="Firm" isreportfilter="N" isreportdisplay="Y" executionsequence="172" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+		
+		<!--<column name="IsBasicPage" columnlabel="IsBasicPage" metaproperty="IsBasicPage" isreportfilter="N" isreportdisplay="Y" executionsequence="67" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsRenewed" columnlabel="IsRenewed" metaproperty="IsRenewed" isreportfilter="N" isreportdisplay="Y" executionsequence="68" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ClaimOptionType" columnlabel="ClaimOptionType" metaproperty="ClaimOptionType" isreportfilter="N" isreportdisplay="Y" executionsequence="72" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+  			<column name="Modifier" columnlabel="Modifier" metaproperty="Modifier" isreportfilter="N" isreportdisplay="Y" executionsequence="13" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmCarryingProfLiabilityIns" columnlabel="IsFirmCarryingProfLiabilityIns" metaproperty="IsFirmCarryingProfLiabilityIns" isreportfilter="N" isreportdisplay="Y" executionsequence="17" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsPublicTradedAudited" columnlabel="IsPublicTradedAudited" metaproperty="IsPublicTradedAudited" isreportfilter="N" isreportdisplay="Y" executionsequence="26" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsPublicPrivateOfferingsDone" columnlabel="IsPublicPrivateOfferingsDone" metaproperty="IsPublicPrivateOfferingsDone" isreportfilter="N" isreportdisplay="Y" executionsequence="27" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsInvestmentVenture" columnlabel="IsInvestmentVenture" metaproperty="IsInvestmentVenture" isreportfilter="N" isreportdisplay="Y" executionsequence="28" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsSyndicationManagers" columnlabel="IsSyndicationManagers" metaproperty="IsSyndicationManagers" isreportfilter="N" isreportdisplay="Y" executionsequence="29" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmRenderedAuditOrAttestService" columnlabel="IsFirmRenderedAuditOrAttestService" metaproperty="IsFirmRenderedAuditOrAttestService" isreportfilter="N" isreportdisplay="Y" executionsequence="30" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsManagementServiceProvided" columnlabel="IsManagementServiceProvided" metaproperty="IsManagementServiceProvided" isreportfilter="N" isreportdisplay="Y" executionsequence="31" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsCommissionRecieved" columnlabel="IsCommissionRecieved" metaproperty="IsCommissionRecieved" isreportfilter="N" isreportdisplay="Y" executionsequence="32" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsDebtOrEquityFinancing" columnlabel="IsDebtOrEquityFinancing" metaproperty="IsDebtOrEquityFinancing" isreportfilter="N" isreportdisplay="Y" executionsequence="33" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsNonPublicInvestmentDone" columnlabel="IsNonPublicInvestmentDone" metaproperty="IsNonPublicInvestmentDone" isreportfilter="N" isreportdisplay="Y" executionsequence="34" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsServedAsTrustee" columnlabel="IsServedAsTrustee" metaproperty="IsServedAsTrustee" isreportfilter="N" isreportdisplay="Y" executionsequence="35" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmRenderedServiceForAnyClient" columnlabel="IsFirmRenderedServiceForAnyClient" metaproperty="IsFirmRenderedServiceForAnyClient" isreportfilter="N" isreportdisplay="Y" executionsequence="36" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			 -->
+			<column name="batchreport_id" columnlabel="Batch Report ID" metaproperty="batchreport_id" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="275" isgrandtotaldisplay="N"></column>
+			<column name="search_name" columnlabel="Search Name" metaproperty="search_name" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="276"></column>
+			<column name="request_date" columnlabel="Request Date" metaproperty="request_date" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="277" isgrandtotaldisplay="N"></column>
+			<column name="last_updated_by" columnlabel="Last Updated By" metaproperty="last_updated_by" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="278" isgrandtotaldisplay="N"></column>
+			<column name="search_xml_desc" columnlabel="Search Criteria" metaproperty="search_xml_desc" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="279"></column>
+			<column name="archive_date" columnlabel="Archive Date" metaproperty="archive_date" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="280"></column>
+			<column name="isdownloadlink" columnlabel="" metaproperty="isdownloadlink" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="281"></column>
+			<column name="report_file_name" columnlabel="Batch Report Name" metaproperty="report_file_name" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="283" isgrandtotaldisplay="N"></column>
+		
+			<!-- 	filter section  -->
+			<column name="WeekFromDate_D" columnlabel="From Date" metaproperty="report_search_columns.WeekFromDate_D" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="text" ispopupsearch="N" isrequired="N" isgroupbydisplay="N" isdefaultdisplay="Y" executionsequence="125"></column>
+			<column name="WeekToDate_D" columnlabel="To Date" metaproperty="report_search_columns.WeekToDate_D" isreportfilter="Y" isreportdisplay="N" issortdisplay="N" filterdisplaytype="text" ispopupsearch="N" isrequired="N" isgroupbydisplay="Y" isdefaultdisplay="Y" executionsequence="126"></column>
+			<column name="DirectSubProduced" columnlabel="DirectSubProduced" metaproperty="report_search_columns.DirectSubProduced" isrequired="N" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="select" isdefaultdisplay="Y" isgroupbydisplay="N" executionsequence="128"></column>
+		</columnset>
+		
+		<reportworkflow name="reportworkflow" checkfornullparams="PAGE_SIZE,PAGE_NUMBER,reportID,account_name,policy_status,AllDataForAccountant_state,WeekFromDate_D,WeekToDate_D,DirectSubProduced" executionsequence="0">
+			<storedprocedureoperation id="FetchAllAccountantData_new" applid="AccountantIns"
+				name="FetchAllAccountantData_new" dbspname="FetchAllAccountantData_new" eval="reportingframework.assignDateFields"
+				executionsequence="1" operation="5" viewid="report_data_list_1" metaobject="report_search_columns">
+				  <parameteroperation indexno="0" seq="1"
+                        property="PAGE_SIZE" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="1" seq="2"
+                        property="PAGE_NUMBER" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="2" seq="3"
+                        property="ispaginationrequired" mode="IN">
+                  </parameteroperation> 
+                  <parameteroperation indexno="3" seq="4"
+                        property="reportID" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="4" seq="5"
+                        property="ProjectType" mode="IN">
+                  </parameteroperation> 
+                 <!--  <parameteroperation indexno="5" seq="6"
+                        property="account_name" mode="IN">
+                  </parameteroperation> -->
+                 <!--  <parameteroperation indexno="6" seq="7"
+                        property="policy_status" mode="IN">
+                  </parameteroperation> -->
+                 <!--  <parameteroperation indexno="7" seq="8"
+                        property="AllDataForAccountant_state" mode="IN">
+                  </parameteroperation> -->
+                  <parameteroperation indexno="5" seq="6"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="6" seq="7"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="8" seq="9"
+                        property="DirectSubProduced" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>	
+			
+		</reportworkflow>
+	</reportdef>
+	
+	
+	<!--Data Dump for lawyer  -->
+	<reportdef name="FetchAllLawyersData_new" description="Data Dump For Lawyer" isshowsavedsearch="Y" 
+		isshowfiltersearch="Y" isshowdefaultreportdatalist="Y" isshowresetbutton="Y" isreportdatapagination="Y" isshowgroupbysearch="N" 
+		isshowoutputcolumns="Y" isshowmultiplegrid="N" ispdfdisplay="N">
+		
+			<columnset name="FetchAllLawyersData_new" description="Accountant" datasetname="FetchAllLawyersData_new" executionsequence="1">
+			<column name="PolicyKey" columnlabel="PolicyKey" metaproperty="PolicyKey" isreportfilter="N" isreportdisplay="Y" executionsequence="1" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountID" columnlabel="AccountID" metaproperty="AccountID" isreportfilter="N" isreportdisplay="Y" executionsequence="2" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="QuoteNumber" columnlabel="QuoteNumber" metaproperty="QuoteNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="3" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountName" columnlabel="AccountName" metaproperty="AccountName" isreportfilter="N" isreportdisplay="Y" executionsequence="4" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Status" columnlabel="Status" metaproperty="Status" isreportfilter="N" isreportdisplay="Y" executionsequence="5" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyEffectiveDate" columnlabel="PolicyEffectiveDate" metaproperty="PolicyEffectiveDate" isreportfilter="N" isreportdisplay="Y" executionsequence="6" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyExpirationDate" columnlabel="PolicyExpirationDate" metaproperty="PolicyExpirationDate" isreportfilter="N" isreportdisplay="Y" executionsequence="7" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="State" columnlabel="State" metaproperty="State" isreportfilter="N" isreportdisplay="Y" executionsequence="8" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+<!-- 		<column name="SubProducerNumber" columnlabel="SubProducerNumber" metaproperty="SubProducerNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="9" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+-->		<column name="TotalPremium" columnlabel="TotalPremium" metaproperty="TotalPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="10" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Invoiced_Premium" columnlabel="InvoicedPremium" metaproperty="Invoiced_Premium" isreportfilter="N" isreportdisplay="Y" executionsequence="11" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalModifiers" columnlabel="TotalModifiers" metaproperty="TotalModifiers" isreportfilter="N" isreportdisplay="Y" executionsequence="12" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Limit" columnlabel="Limit" metaproperty="Limit" isreportfilter="N" isreportdisplay="Y" executionsequence="13" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ClaimExpensesType" columnlabel="ClaimExpensesType" metaproperty="ClaimExpensesType" isreportfilter="N" isreportdisplay="Y" executionsequence="14" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Deductible1" columnlabel="Deductible" metaproperty="Deductible1" isreportfilter="N" isreportdisplay="Y" executionsequence="15" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsClaimOptionType" columnlabel="IsClaimOptionType" metaproperty="IsClaimOptionType" isreportfilter="N" isreportdisplay="Y" executionsequence="16" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsDollarDefense" columnlabel="IsDollarDefense" metaproperty="IsDollarDefense" isreportfilter="N" isreportdisplay="Y" executionsequence="17" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="NumberOfRatedAttorney" columnlabel="NumberOfRatedAttorney" metaproperty="NumberOfRatedAttorney" isreportfilter="N" isreportdisplay="Y" executionsequence="18" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ExpiringCarrier" columnlabel="ExpiringCarrier" metaproperty="ExpiringCarrier" isreportfilter="N" isreportdisplay="Y" executionsequence="19" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+<!-- 		<column name="LimitPross" columnlabel="ExpiringCarrier" metaproperty="LimitPross" isreportfilter="N" isreportdisplay="Y" executionsequence="20" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+-->		<column name="LimitPross" columnlabel="LimitPross" metaproperty="LimitPross" isreportfilter="N" isreportdisplay="Y" executionsequence="21" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="DeductiblePross" columnlabel="DeductiblePross" metaproperty="DeductiblePross" isreportfilter="N" isreportdisplay="Y" executionsequence="22" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsPriorActDateFull" columnlabel="IsPriorActDateFull" metaproperty="IsPriorActDateFull" isreportfilter="N" isreportdisplay="Y" executionsequence="23" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PriorActDatePross" columnlabel="PriorActDatePross" metaproperty="PriorActDatePross" isreportfilter="N" isreportdisplay="Y" executionsequence="24" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="FirmYear" columnlabel="FirmYear" metaproperty="FirmYear" isreportfilter="N" isreportdisplay="Y" executionsequence="25" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ProInsPremium" columnlabel="ProInsPremium" metaproperty="ProInsPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="26" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyExpirationDatePross" columnlabel="PolicyExpirationDatePross" metaproperty="PolicyExpirationDatePross" isreportfilter="N" isreportdisplay="Y" executionsequence="27" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsAttorneyDeclineForProfLiability" columnlabel="IsAttorneyDeclineForProfLiability" metaproperty="IsAttorneyDeclineForProfLiability" isreportfilter="N" isreportdisplay="Y" executionsequence="28" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmHaveClientMoreThan25PercentOfBilling" columnlabel="IsFirmHaveClientMoreThan25PercentOfBilling" metaproperty="IsFirmHaveClientMoreThan25PercentOfBilling" isreportfilter="N" isreportdisplay="Y" executionsequence="29" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsPersonnelBeSubOfAnyInvest" columnlabel="IsPersonnelBeSubOfAnyInvest" metaproperty="IsPersonnelBeSubOfAnyInvest" isreportfilter="N" isreportdisplay="Y" executionsequence="30" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsLawyerProfLiabClaimAgntAppl" columnlabel="IsLawyerProfLiabClaimAgntAppl" metaproperty="IsLawyerProfLiabClaimAgntAppl" isreportfilter="N" isreportdisplay="Y" executionsequence="31" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsAnyActOmmBecomeClaimAgntFirm" columnlabel="IsAnyActOmmBecomeClaimAgntFirm" metaproperty="IsAnyActOmmBecomeClaimAgntFirm" isreportfilter="N" isreportdisplay="Y" executionsequence="32" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Comment" columnlabel="Comment" metaproperty="Comment" isreportfilter="N" isreportdisplay="Y" executionsequence="33" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			<column name="AOP_Percentage_1" columnlabel="Anti trust"  metaproperty="AOP_Percentage_1" isreportfilter="N" isreportdisplay="Y" executionsequence="34" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_2" columnlabel="Alternate Dispute Resolution"  metaproperty="AOP_Percentage_2" isreportfilter="N" isreportdisplay="Y" executionsequence="35" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_3" columnlabel="Bankruptcy / Insolvency and Reorganization"  metaproperty="AOP_Percentage_3" isreportfilter="N" isreportdisplay="Y" executionsequence="36" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_4" columnlabel="Civil Rights or Discrimination"  metaproperty="AOP_Percentage_4" isreportfilter="N" isreportdisplay="Y" executionsequence="37" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_5" columnlabel="Corporate / Commercial/Business"  metaproperty="AOP_Percentage_5" isreportfilter="N" isreportdisplay="Y" executionsequence="38" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_6" columnlabel="Copyright / Trademark"  metaproperty="AOP_Percentage_6" isreportfilter="N" isreportdisplay="Y" executionsequence="39" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_8" columnlabel="Family Law"  metaproperty="AOP_Percentage_8" isreportfilter="N" isreportdisplay="Y" executionsequence="40" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_9" columnlabel="Elder Law"  metaproperty="AOP_Percentage_9" isreportfilter="N" isreportdisplay="Y" executionsequence="41" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_10" columnlabel="Environmental"  metaproperty="AOP_Percentage_10" isreportfilter="N" isreportdisplay="Y" executionsequence="42" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_11" columnlabel="Employee Benefits (ERISA)"  metaproperty="AOP_Percentage_11" isreportfilter="N" isreportdisplay="Y" executionsequence="43" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_12" columnlabel="Financial Institution / Banking / Finance"  metaproperty="AOP_Percentage_12" isreportfilter="N" isreportdisplay="Y" executionsequence="44" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_13" columnlabel="Government / Municipal / Zoning"  metaproperty="AOP_Percentage_13" isreportfilter="N" isreportdisplay="Y" executionsequence="45" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_14" columnlabel="Immigration"  metaproperty="AOP_Percentage_14" isreportfilter="N" isreportdisplay="Y" executionsequence="46" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_15" columnlabel="Investment Counseling / Money Management"  metaproperty="AOP_Percentage_15" isreportfilter="N" isreportdisplay="Y" executionsequence="47" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_16" columnlabel="Natural Resources"  metaproperty="AOP_Percentage_16" isreportfilter="N" isreportdisplay="Y" executionsequence="48" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_20" columnlabel="Real Estate Commercial"  metaproperty="AOP_Percentage_20" isreportfilter="N" isreportdisplay="Y" executionsequence="49" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_21" columnlabel="Securities"  metaproperty="AOP_Percentage_21" isreportfilter="N" isreportdisplay="Y" executionsequence="50" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_22" columnlabel="Tax"  metaproperty="AOP_Percentage_22" isreportfilter="N" isreportdisplay="Y" executionsequence="51" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_24" columnlabel="Trusts / Estates / Wills / Probate"  metaproperty="AOP_Percentage_24" isreportfilter="N" isreportdisplay="Y" executionsequence="52" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_25" columnlabel="Other"  metaproperty="AOP_Percentage_25" isreportfilter="N" isreportdisplay="Y" executionsequence="53" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_27" columnlabel="Real Estate Residential"  metaproperty="AOP_Percentage_27" isreportfilter="N" isreportdisplay="Y" executionsequence="54" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_28" columnlabel="Admiralty and Maritime"  metaproperty="AOP_Percentage_28" isreportfilter="N" isreportdisplay="Y" executionsequence="55" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_29" columnlabel="Appellate Practice"  metaproperty="AOP_Percentage_29" isreportfilter="N" isreportdisplay="Y" executionsequence="56" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_30" columnlabel="Aviation"  metaproperty="AOP_Percentage_30" isreportfilter="N" isreportdisplay="Y" executionsequence="57" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_31" columnlabel="Collections / Repossession"  metaproperty="AOP_Percentage_31" isreportfilter="N" isreportdisplay="Y" executionsequence="58" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_32" columnlabel="Communications / Media"  metaproperty="AOP_Percentage_32" isreportfilter="N" isreportdisplay="Y" executionsequence="59" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_33" columnlabel="Construction"  metaproperty="AOP_Percentage_33" isreportfilter="N" isreportdisplay="Y" executionsequence="60" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_34" columnlabel="Creditor Debtor Rights"  metaproperty="AOP_Percentage_34" isreportfilter="N" isreportdisplay="Y" executionsequence="61" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_35" columnlabel="Criminal Defense"  metaproperty="AOP_Percentage_35" isreportfilter="N" isreportdisplay="Y" executionsequence="62" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_36" columnlabel="Education"  metaproperty="AOP_Percentage_36" isreportfilter="N" isreportdisplay="Y" executionsequence="63" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_37" columnlabel="Employment"  metaproperty="AOP_Percentage_37" isreportfilter="N" isreportdisplay="Y" executionsequence="64" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_38" columnlabel="Entertainment / Sports"  metaproperty="AOP_Percentage_38" isreportfilter="N" isreportdisplay="Y" executionsequence="65" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_39" columnlabel="Healthcare"  metaproperty="AOP_Percentage_39" isreportfilter="N" isreportdisplay="Y" executionsequence="66" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_41" columnlabel="Insurance Defense"  metaproperty="AOP_Percentage_41" isreportfilter="N" isreportdisplay="Y" executionsequence="67" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_42" columnlabel="International"  metaproperty="AOP_Percentage_42" isreportfilter="N" isreportdisplay="Y" executionsequence="68" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_43" columnlabel="Juvenile or Guardianship"  metaproperty="AOP_Percentage_43" isreportfilter="N" isreportdisplay="Y" executionsequence="69" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_44" columnlabel="Labor Management"  metaproperty="AOP_Percentage_44" isreportfilter="N" isreportdisplay="Y" executionsequence="70" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_45" columnlabel="Labor Union"  metaproperty="AOP_Percentage_45" isreportfilter="N" isreportdisplay="Y" executionsequence="71" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_46" columnlabel="Mergers and Acquisitions"  metaproperty="AOP_Percentage_46" isreportfilter="N" isreportdisplay="Y" executionsequence="72" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_47" columnlabel="Non Profit / Charities"  metaproperty="AOP_Percentage_47" isreportfilter="N" isreportdisplay="Y" executionsequence="73" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_48" columnlabel="Patent"  metaproperty="AOP_Percentage_48" isreportfilter="N" isreportdisplay="Y" executionsequence="74" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_49" columnlabel="Social Security / Disability"  metaproperty="AOP_Percentage_49" isreportfilter="N" isreportdisplay="Y" executionsequence="75" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_50" columnlabel="Traffic or DUI / DWI Defense"  metaproperty="AOP_Percentage_50" isreportfilter="N" isreportdisplay="Y" executionsequence="76" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_51" columnlabel="Utilities"  metaproperty="AOP_Percentage_51" isreportfilter="N" isreportdisplay="Y" executionsequence="77" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_52" columnlabel="Workers Compensation Defense"  metaproperty="AOP_Percentage_52" isreportfilter="N" isreportdisplay="Y" executionsequence="78" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_53" columnlabel="Workers Compensation Plaintiff"  metaproperty="AOP_Percentage_53" isreportfilter="N" isreportdisplay="Y" executionsequence="79" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_54" columnlabel="Administrative or Regulatory"  metaproperty="AOP_Percentage_54" isreportfilter="N" isreportdisplay="Y" executionsequence="80" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_55" columnlabel="Civil Litigation  Plaintiff"  metaproperty="AOP_Percentage_55" isreportfilter="N" isreportdisplay="Y" executionsequence="81" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_56" columnlabel="Construction Litigation  Plaintiff"  metaproperty="AOP_Percentage_56" isreportfilter="N" isreportdisplay="Y" executionsequence="82" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_57" columnlabel="Corporate / Commercial / Business Litigation - Plaintiff"  metaproperty="AOP_Percentage_57" isreportfilter="N" isreportdisplay="Y" executionsequence="83" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_58" columnlabel="Litigation  Other  Defense"  metaproperty="AOP_Percentage_58" isreportfilter="N" isreportdisplay="Y" executionsequence="84" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_59" columnlabel="Mass Tort Litigation / Class Actions - Plaintiff"  metaproperty="AOP_Percentage_59" isreportfilter="N" isreportdisplay="Y" executionsequence="85" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_60" columnlabel="Medical Malpractice  Plaintiff"  metaproperty="AOP_Percentage_60" isreportfilter="N" isreportdisplay="Y" executionsequence="86" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_61" columnlabel="Non-Medical Malpractice  Plaintiff"  metaproperty="AOP_Percentage_61" isreportfilter="N" isreportdisplay="Y" executionsequence="87" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_62" columnlabel="Personal Injury Litigation  Plaintiff"  metaproperty="AOP_Percentage_62" isreportfilter="N" isreportdisplay="Y" executionsequence="88" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_63" columnlabel="Product Liability Litigation  Plaintiff"  metaproperty="AOP_Percentage_63" isreportfilter="N" isreportdisplay="Y" executionsequence="89" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_64" columnlabel="Civil Litigation  Defense"  metaproperty="AOP_Percentage_64" isreportfilter="N" isreportdisplay="Y" executionsequence="90" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_65" columnlabel="Construction Litigation - Defense"  metaproperty="AOP_Percentage_65" isreportfilter="N" isreportdisplay="Y" executionsequence="91" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_66" columnlabel="Corporate / Commercial / Business Litigation - Defense"  metaproperty="AOP_Percentage_66" isreportfilter="N" isreportdisplay="Y" executionsequence="92" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_67" columnlabel="Litigation  Other  Plaintiff"  metaproperty="AOP_Percentage_67" isreportfilter="N" isreportdisplay="Y" executionsequence="93" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_68" columnlabel="Mass Tort Litigation / Class Actions - Defense"  metaproperty="AOP_Percentage_68" isreportfilter="N" isreportdisplay="Y" executionsequence="94" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_69" columnlabel="Medical Malpractice Defense"  metaproperty="AOP_Percentage_69" isreportfilter="N" isreportdisplay="Y" executionsequence="95" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_70" columnlabel="Non-Medical Malpractice Defense"  metaproperty="AOP_Percentage_70" isreportfilter="N" isreportdisplay="Y" executionsequence="96" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_71" columnlabel="Personal Injury Litigation  Defense"  metaproperty="AOP_Percentage_71" isreportfilter="N" isreportdisplay="Y" executionsequence="97" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOP_Percentage_72" columnlabel="Product Liability Litigation  Defense"  metaproperty="AOP_Percentage_72" isreportfilter="N" isreportdisplay="Y" executionsequence="98" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="OthersDesc" columnlabel="OthersDesc" metaproperty="OthersDesc" isreportfilter="N" isreportdisplay="Y" executionsequence="99" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsManualPremium" columnlabel="IsManualPremium" metaproperty="IsManualPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="100" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="SubProducerNumber" columnlabel="SubProducerNumber" metaproperty="SubProducerNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="101" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsApplInitiatedLawsuitForFirm" columnlabel="IsApplInitiatedLawsuitForFirm" metaproperty="IsApplInitiatedLawsuitForFirm" isreportfilter="N" isreportdisplay="Y" executionsequence="102" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyStatus" columnlabel="PolicyStatus" metaproperty="PolicyStatus" isreportfilter="N" isreportdisplay="Y" executionsequence="103" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="NoOfAttroney" columnlabel="NoOfAttroney" metaproperty="NoOfAttroney" isreportfilter="N" isreportdisplay="Y" executionsequence="104" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalNumOfNonAttorneyStaff" columnlabel="TotalNumOfNonAttorneyStaff" metaproperty="TotalNumOfNonAttorneyStaff" isreportfilter="N" isreportdisplay="Y" executionsequence="105" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PolicyNumber" columnlabel="PolicyNumber" metaproperty="PolicyNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="106" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="RenewOfPolicyNumber" columnlabel="RenewOfPolicyNumber" metaproperty="RenewOfPolicyNumber" isreportfilter="N" isreportdisplay="Y" executionsequence="107" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Is9010Policy" columnlabel="Is9010Policy" metaproperty="Is9010Policy" isreportfilter="N" isreportdisplay="Y" executionsequence="108" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Reviewer" columnlabel="Reviewer" metaproperty="Reviewer" isreportfilter="N" isreportdisplay="Y" executionsequence="109" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ContactPerson" columnlabel="ContactPerson" metaproperty="ContactPerson" isreportfilter="N" isreportdisplay="Y" executionsequence="110" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Address1" columnlabel="Address1" metaproperty="Address1" isreportfilter="N" isreportdisplay="Y" executionsequence="111" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Address2" columnlabel="Address2" metaproperty="Address2" isreportfilter="N" isreportdisplay="Y" executionsequence="112" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="City" columnlabel="City" metaproperty="City" isreportfilter="N" isreportdisplay="Y" executionsequence="113" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ZipCode" columnlabel="ZipCode" metaproperty="ZipCode" isreportfilter="N" isreportdisplay="Y" executionsequence="114" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="County1" columnlabel="County" metaproperty="County1" isreportfilter="N" isreportdisplay="Y" executionsequence="115" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AccountEmail" columnlabel="AccountEmail" metaproperty="AccountEmail" isreportfilter="N" isreportdisplay="Y" executionsequence="116" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier1" columnlabel="Modifier1" metaproperty="Modifier1" isreportfilter="N" isreportdisplay="Y" executionsequence="117" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier2" columnlabel="Modifier2" metaproperty="Modifier2" isreportfilter="N" isreportdisplay="Y" executionsequence="118" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Modifier3" columnlabel="Modifier3" metaproperty="Modifier3" isreportfilter="N" isreportdisplay="Y" executionsequence="119" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="CreatedDate" columnlabel="Policy CreatedDate" metaproperty="CreatedDate" isreportfilter="N" isreportdisplay="Y" executionsequence="120" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="YearEndDate_1" columnlabel="YearEndDate_1" metaproperty="YearEndDate_1" isreportfilter="N" isreportdisplay="Y" executionsequence="121" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Amount_1" columnlabel="Amount_1" metaproperty="Amount_1" isreportfilter="N" isreportdisplay="Y" executionsequence="122" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="YearEndDate_2" columnlabel="YearEndDate_2" metaproperty="YearEndDate_2" isreportfilter="N" isreportdisplay="Y" executionsequence="123" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Amount_2" columnlabel="Amount_2" metaproperty="Amount_2" isreportfilter="N" isreportdisplay="Y" executionsequence="124" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsQuoteLetterSend" columnlabel="IsQuoteLetterSend" metaproperty="IsQuoteLetterSend" isreportfilter="N" isreportdisplay="Y" executionsequence="125" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			<column name="QuoteSendDate" columnlabel="QuoteSendDate" metaproperty="QuoteSendDate" isreportfilter="N" isreportdisplay="Y" executionsequence="126" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			
+			<column name="Policy_NotAcceptedDate" columnlabel="Policy_NotAcceptedDate" metaproperty="Policy_NotAcceptedDate" isreportfilter="N" isreportdisplay="Y" executionsequence="127" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Policy_IssuedDate" columnlabel="Policy_IssuedDate" metaproperty="Policy_IssuedDate" isreportfilter="N" isreportdisplay="Y" executionsequence="128" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="month_PolicyEffectiveDate" columnlabel="month_PolicyEffectiveDate" metaproperty="month_PolicyEffectiveDate" isreportfilter="N" isreportdisplay="Y" executionsequence="129" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="year_PolicyEffectiveDate" columnlabel="year_PolicyEffectiveDate" metaproperty="year_PolicyEffectiveDate" isreportfilter="N" isreportdisplay="Y" executionsequence="130" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="DirectSubproduced" columnlabel="DirectSubproduced" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="131" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			<column name="YearOfFirmEstablished" columnlabel="YearOfFirmEstablished" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="132" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmPracticeInOtherState" columnlabel="IsFirmPracticeInOtherState" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="133" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsApplicantProvidesLegalServices" columnlabel="IsApplicantProvidesLegalServices" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="134" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsAppOfficeSharedWithAttorney" columnlabel="IsAppOfficeSharedWithAttorney" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="135" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmHaveClientInEntertainmentInd" columnlabel="IsFirmHaveClientInEntertainmentInd" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="136" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmProvidedLegalService" columnlabel="IsFirmProvidedLegalService" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="137" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsPolicyProhibitAttorneyWithInvestment" columnlabel="IsPolicyProhibitAttorneyWithInvestment" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="138" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			
+			<column name="IsFirmProvideInvestmentAdvice" columnlabel="IsFirmProvideInvestmentAdvice" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="139" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmHaveProcForFormersClients" columnlabel="IsFirmHaveProcForFormersClients" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="140" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmHaveIndepDockets" columnlabel="IsFirmHaveIndepDockets" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="141" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsFirmRequireEngagementLetter" columnlabel="IsFirmRequireEngagementLetter" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="142" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsNonEngagementLetterIssueToFirm" columnlabel="IsNonEngagementLetterIssueToFirm" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="143" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PercentofApplAcctRcbl" columnlabel="PercentofApplAcctRcbl" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="144" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+
+			<column name="IsFirmMergedWithOtherFirm" columnlabel="IsFirmMergedWithOtherFirm" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="145" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			
+			
+			
+			<column name="RenewalReviewComments" columnlabel="RenewalReviewComments" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="147" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="FromIndication" columnlabel="FromIndication" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="148" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsApplicationCompleted" columnlabel="IsApplicationCompleted" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="149" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AOPFactor" columnlabel="AOPFactor" metaproperty="AOPFactor" isreportfilter="N" isreportdisplay="Y" executionsequence="150" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="CMFactor" columnlabel="CMFactor" metaproperty="CMFactor" isreportfilter="N" isreportdisplay="Y" executionsequence="151" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="FTEFactor" columnlabel="FTEFactor" metaproperty="FTEFactor" isreportfilter="N" isreportdisplay="Y" executionsequence="152" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="DeclinedComment" columnlabel="Declined Comment" metaproperty="DeclinedComment" isreportfilter="N" isreportdisplay="Y" executionsequence="153" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="WorkPhone" columnlabel="Work Phone" metaproperty="WorkPhone" isreportfilter="N" isreportdisplay="Y" executionsequence="154" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="AnnualRevenue" columnlabel="Annual Revenue" metaproperty="AnnualRevenue" isreportfilter="N" isreportdisplay="Y" executionsequence="155" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"/>
+			<column name="FirstReviewerName" columnlabel="First Reviewer Name" metaproperty="FirstReviewerName" isreportfilter="N" isreportdisplay="Y" executionsequence="156" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"/>
+			<column name="IsIndicationMailSent" columnlabel="Is IndicationMail Sent" metaproperty="IsIndicationMailSent" isreportfilter="N" isreportdisplay="Y" executionsequence="157" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"/>
+			<column name="IndicationSentDate" columnlabel="IndicationSentDate" metaproperty="IndicationSentDate" isreportfilter="N" isreportdisplay="Y" executionsequence="158" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"/>
+			<column name="IsDirect" columnlabel="IsDirect" metaproperty="IsDirect" isreportfilter="N" isreportdisplay="Y" executionsequence="159" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="isAutoQuote" columnlabel="isAutoQuote" metaproperty="isAutoQuote" isreportfilter="N" isreportdisplay="Y" executionsequence="160" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="isComingThroughUnderwriting" columnlabel="isComingThroughUnderwriting" metaproperty="isComingThroughUnderwriting" isreportfilter="N" isreportdisplay="Y" executionsequence="161" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IndicationPremium" columnlabel="IndicationPremium" metaproperty="IndicationPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="163" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="isRequotePolicy" columnlabel="isRequotePolicy" metaproperty="isRequotePolicy" isreportfilter="N" isreportdisplay="Y" executionsequence="164" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="QQ" columnlabel="QQ" metaproperty="QQ" isreportfilter="N" isreportdisplay="Y" executionsequence="165" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="QQPremium" columnlabel="QQPremium" metaproperty="QQPremium" isreportfilter="N" isreportdisplay="Y" executionsequence="166" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="ClaimsCount" columnlabel="Claims on policy" metaproperty="ClaimsCount" isreportfilter="N" isreportdisplay="Y" executionsequence="167" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="TotalIncurred" columnlabel="Total Incurred" metaproperty="TotalIncurred" isreportfilter="N" isreportdisplay="Y" executionsequence="168" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="PaymentMode" columnlabel="Payment Mode" metaproperty="PaymentMode" isreportfilter="N" isreportdisplay="Y" executionsequence="169" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="Company" columnlabel="Company" metaproperty="Company" isreportfilter="N" isreportdisplay="Y" executionsequence="170" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="MarkAsRenewal" columnlabel="Mark As Renewal" metaproperty="MarkAsRenewal" isreportfilter="N" isreportdisplay="Y" executionsequence="171" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="IsRenewalReview" columnlabel="IsRenewalReview" metaproperty="FirmLW" isreportfilter="N" isreportdisplay="Y" executionsequence="172" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<!-- <column name="WillEstate_AssetsValue1" columnlabel="WillEstate Assets Value1" metaproperty="WillEstate_AssetsValue1" isreportfilter="N" isreportdisplay="Y" executionsequence="170" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="WillEstate_AssetsValue2" columnlabel="WillEstate Assets Value2" metaproperty="WillEstate_AssetsValue2" isreportfilter="N" isreportdisplay="Y" executionsequence="171" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="WillEstate_AssetsValue3" columnlabel="WillEstate Assets Value3" metaproperty="WillEstate_AssetsValue3" isreportfilter="N" isreportdisplay="Y" executionsequence="172" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="largestTransaction12MonthsComm" columnlabel="Largest Transaction 12Months Commercial" metaproperty="largestTransaction12MonthsComm" isreportfilter="N" isreportdisplay="Y" executionsequence="173" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+			<column name="largestTransaction12MonthsResi" columnlabel="Largest Transaction 12Months Residential" metaproperty="largestTransaction12MonthsResi" isreportfilter="N" isreportdisplay="Y" executionsequence="174" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+ --><!-- 		
+<column name="DirectSubproduced" columnlabel="DirectSubproduced" metaproperty="DirectSubproduced" isreportfilter="N" isreportdisplay="Y" executionsequence="91" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+-->
+	<!--<column name="IsBasicPage" columnlabel="IsBasicPage" metaproperty="IsBasicPage" isreportfilter="N" isreportdisplay="Y" executionsequence="67" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsRenewed" columnlabel="IsRenewed" metaproperty="IsRenewed" isreportfilter="N" isreportdisplay="Y" executionsequence="68" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="ClaimOptionType" columnlabel="ClaimOptionType" metaproperty="ClaimOptionType" isreportfilter="N" isreportdisplay="Y" executionsequence="72" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	 	<column name="Modifier" columnlabel="Modifier" metaproperty="Modifier" isreportfilter="N" isreportdisplay="Y" executionsequence="13" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsFirmCarryingProfLiabilityIns" columnlabel="IsFirmCarryingProfLiabilityIns" metaproperty="IsFirmCarryingProfLiabilityIns" isreportfilter="N" isreportdisplay="Y" executionsequence="17" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsPublicTradedAudited" columnlabel="IsPublicTradedAudited" metaproperty="IsPublicTradedAudited" isreportfilter="N" isreportdisplay="Y" executionsequence="26" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsPublicPrivateOfferingsDone" columnlabel="IsPublicPrivateOfferingsDone" metaproperty="IsPublicPrivateOfferingsDone" isreportfilter="N" isreportdisplay="Y" executionsequence="27" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsInvestmentVenture" columnlabel="IsInvestmentVenture" metaproperty="IsInvestmentVenture" isreportfilter="N" isreportdisplay="Y" executionsequence="28" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsSyndicationManagers" columnlabel="IsSyndicationManagers" metaproperty="IsSyndicationManagers" isreportfilter="N" isreportdisplay="Y" executionsequence="29" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsFirmRenderedAuditOrAttestService" columnlabel="IsFirmRenderedAuditOrAttestService" metaproperty="IsFirmRenderedAuditOrAttestService" isreportfilter="N" isreportdisplay="Y" executionsequence="30" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsManagementServiceProvided" columnlabel="IsManagementServiceProvided" metaproperty="IsManagementServiceProvided" isreportfilter="N" isreportdisplay="Y" executionsequence="31" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsCommissionRecieved" columnlabel="IsCommissionRecieved" metaproperty="IsCommissionRecieved" isreportfilter="N" isreportdisplay="Y" executionsequence="32" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsDebtOrEquityFinancing" columnlabel="IsDebtOrEquityFinancing" metaproperty="IsDebtOrEquityFinancing" isreportfilter="N" isreportdisplay="Y" executionsequence="33" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsNonPublicInvestmentDone" columnlabel="IsNonPublicInvestmentDone" metaproperty="IsNonPublicInvestmentDone" isreportfilter="N" isreportdisplay="Y" executionsequence="34" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsServedAsTrustee" columnlabel="IsServedAsTrustee" metaproperty="IsServedAsTrustee" isreportfilter="N" isreportdisplay="Y" executionsequence="35" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	<column name="IsFirmRenderedServiceForAnyClient" columnlabel="IsFirmRenderedServiceForAnyClient" metaproperty="IsFirmRenderedServiceForAnyClient" isreportfilter="N" isreportdisplay="Y" executionsequence="36" isgrandtotaldisplay="N" isdefaultoutputcolumn="Y"></column>
+	 -->
+	<column name="batchreport_id" columnlabel="Batch Report ID" metaproperty="batchreport_id" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="275" isgrandtotaldisplay="N"></column>
+	<column name="search_name" columnlabel="Search Name" metaproperty="search_name" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="276"></column>
+	<column name="request_date" columnlabel="Request Date" metaproperty="request_date" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="277" isgrandtotaldisplay="N"></column>
+	<column name="last_updated_by" columnlabel="Last Updated By" metaproperty="last_updated_by" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="278" isgrandtotaldisplay="N"></column>
+	<column name="search_xml_desc" columnlabel="Search Criteria" metaproperty="search_xml_desc" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="279"></column>
+	<column name="archive_date" columnlabel="Archive Date" metaproperty="archive_date" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="280"></column>
+	<column name="isdownloadlink" columnlabel="" metaproperty="isdownloadlink" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="281"></column>
+	<column name="report_file_name" columnlabel="Batch Report Name" metaproperty="report_file_name" isreportfilter="N" isreportdefaultdisplay="Y" executionsequence="283" isgrandtotaldisplay="N"></column>
+			
+	<!-- 	filter section  -->
+	<column name="WeekFromDate_D" columnlabel="From Date" metaproperty="report_search_columns.WeekFromDate_D" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="text" ispopupsearch="N" isrequired="N" isgroupbydisplay="N" isdefaultdisplay="Y" executionsequence="225"></column>
+	<column name="WeekToDate_D" columnlabel="To Date" metaproperty="report_search_columns.WeekToDate_D" isreportfilter="Y" isreportdisplay="N" issortdisplay="N" filterdisplaytype="text" ispopupsearch="N" isrequired="N" isgroupbydisplay="Y" isdefaultdisplay="Y" executionsequence="226"></column>
+	<column name="DirectSubProduced" columnlabel="DirectSubProduced" metaproperty="report_search_columns.DirectSubProduced" isrequired="N" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="select" isdefaultdisplay="Y" isgroupbydisplay="N" executionsequence="228"></column>
+	<!-- <column name="account_name" columnlabel="Account Name" metaproperty="report_search_columns.account_name" isrequired="N" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="text" isdefaultdisplay="Y" isgroupbydisplay="N" executionsequence="27"></column>
+	<column name="policy_status" columnlabel="Policy Status" metaproperty="report_search_columns.policy_status" isrequired="N" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="select" isdefaultdisplay="Y" isgroupbydisplay="N" executionsequence="28"></column>
+	<column name="AllDataForAccountant_state" columnlabel="State" metaproperty="report_search_columns.AllDataForAccountant_state" isrequired="N" isreportfilter="Y" isreportdisplay="N" issortdisplay="Y" filterdisplaytype="select" isdefaultdisplay="Y" isgroupbydisplay="N" executionsequence="29"></column>
+	 -->
+	
+</columnset>
+<reportworkflow name="reportworkflow" checkfornullparams="PAGE_SIZE,PAGE_NUMBER,reportID,account_name,policy_status,AllDataForAccountant_state,WeekFromDate_D,WeekToDate_D,DirectSubProduced" executionsequence="0">
+	<storedprocedureoperation id="FetchAllLawyersData_new" applid="AccountantIns"
+		name="FetchAllLawyersData_new" dbspname="FetchAllLawyersData_new" eval="reportingframework.assignDateFields"
+		executionsequence="1" operation="5" viewid="report_data_list_1" metaobject="report_search_columns">
+		  <parameteroperation indexno="0" seq="1"
+                      property="PAGE_SIZE" mode="IN">
+                </parameteroperation> 
+                <parameteroperation indexno="1" seq="2"
+                      property="PAGE_NUMBER" mode="IN">
+                </parameteroperation> 
+                <parameteroperation indexno="2" seq="3"
+                      property="ispaginationrequired" mode="IN">
+                </parameteroperation> 
+                <parameteroperation indexno="3" seq="4"
+                      property="reportID" mode="IN">
+                </parameteroperation>
+                <parameteroperation indexno="4" seq="5"
+                      property="ProjectType" mode="IN">
+                </parameteroperation> 
+                <parameteroperation indexno="5" seq="6"
+                      property="account_name" mode="IN">
+                </parameteroperation>
+               <!--  <parameteroperation indexno="6" seq="7"
+                      property="policy_status" mode="IN">
+                </parameteroperation>
+                <parameteroperation indexno="7" seq="8"
+                      property="AllDataForAccountant_state" mode="IN">
+                </parameteroperation> -->
+                  <parameteroperation indexno="6" seq="7"
+                        property="reportoutputtype" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="7" seq="8"
+                        property="WeekFromDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="8" seq="9"
+                        property="WeekToDate_D" mode="IN">
+                  </parameteroperation>
+                  <parameteroperation indexno="9" seq="10"
+                        property="DirectSubProduced" mode="IN">
+                  </parameteroperation>
+                  <resultsetoperation indexno="0" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+                  <resultsetoperation indexno="1" 
+                        mappingclass="java.util.HashMap">
+                  </resultsetoperation>
+			</storedprocedureoperation>	
+		</reportworkflow>
+	</reportdef>
+	
+	
+	
+	
+	
+	
+	
+
+
+</reports>

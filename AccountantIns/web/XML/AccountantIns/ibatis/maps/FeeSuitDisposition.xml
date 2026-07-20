@@ -1,0 +1,29 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FeeSuitDisposition">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from FeeSuitDisposition</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from FeeSuitDisposition</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into FeeSuitDisposition(FeeSuitDispositionKey
+          <isNotEmpty property="FeeSuitDesc" prepend=",">FeeSuitDesc</isNotEmpty>
+          ) values (#FeeSuitDispositionKey:NUMERIC#
+          <isNotEmpty property="FeeSuitDesc" prepend=",">#FeeSuitDesc#</isNotEmpty>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FeeSuitDispositionKey, FeeSuitDesc from FeeSuitDisposition where FeeSuitDispositionKey = #FeeSuitDispositionKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update FeeSuitDisposition set
+          <dynamic prepend=" ">
+               <isNotEmpty property="FeeSuitDesc" prepend=",">FeeSuitDesc = #FeeSuitDesc#</isNotEmpty>
+               <isEmpty property="FeeSuitDesc" prepend=",">FeeSuitDesc = null</isEmpty>
+          </dynamic>
+          where FeeSuitDispositionKey = #FeeSuitDispositionKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from FeeSuitDisposition where FeeSuitDispositionKey = #FeeSuitDispositionKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from FeeSuitDisposition</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from FeeSuitDisposition</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FeeSuitDispositionKey, FeeSuitDesc from FeeSuitDisposition where FeeSuitDispositionKey = #FeeSuitDispositionKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FeeSuitDispositionKey, FeeSuitDesc from FeeSuitDisposition</select>
+     <select id="getFeeSuitDispositionList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select * from FeeSuitDisposition order by FeeSuitDesc</select>
+</sqlMap>
+

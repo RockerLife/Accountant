@@ -1,0 +1,561 @@
+<functionsdef seq="0" project="AccountantIns">
+	<functiondefinition name="validateGeneral" classname="com.userbo.AccountUtils" method="validateGeneral" returntype="B">
+		<argument seq="0" name="ctx" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validateBasicinfo" classname="com.userbo.AccountUtils" method="validateBasicinfo" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>	
+	
+	<functiondefinition name="validateQuickQuote" classname="com.userbo.AccountUtils" method="validateQuickQuote" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validateAttestation" classname="com.userbo.AccountUtils" method="validateAttestation" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validateITServices" classname="com.userbo.AccountUtils" method="validateITServices" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="checkReferRuleforClaims2" classname="com.userbo.AccountUtils" method="checkReferRuleforClaims2" returntype="B">
+		<argument seq="0" name="claimList" datatype="java.util.List"/>
+		<argument seq="1" name="date" datatype="D"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="checkReferRuleforClaims1" classname="com.userbo.AccountUtils" method="checkReferRuleforClaims1" returntype="B">
+		<argument seq="0" name="claimList" datatype="java.util.List"/>
+		<argument seq="1" name="date" datatype="D"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validateTrustee" classname="com.userbo.AccountUtils" method="validateTrustee" returntype="B">
+		<argument seq="0" name="ctx" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validateClaim" classname="com.userbo.AccountUtils" method="validateClaim" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validateQuote" classname="com.userbo.QuoteLetter" method="validateQuote" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>	
+	<functiondefinition name="validateModifiers" classname="com.userbo.Modifiers" method="validateModifiers" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="validateFileName" classname="com.userbo.AccountUtils" method="validateFileName" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>
+		<argument seq="2" name="file" datatype="V"/>						
+	</functiondefinition>
+	
+	<functiondefinition name="addYearsToDate" classname="com.manage.managemetadata.functions.commonfunctions.AccountDateUtils" method="addYearsToDate" returntype="D">
+		<argument seq="0" name="date1" datatype="D"/>
+		<argument seq="1" name="months" datatype="java.lang.Object"/>
+	</functiondefinition>
+	
+	<functiondefinition name="validateUserDetail" classname="com.userbo.AccountUtils" method="validateUserDetail" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validatePassword" classname="com.manage.managemetadata.functions.commonfunctions.RuleUtils" method="validatePassword" returntype="I">
+		<argument seq="0" name="value" datatype="V"/>
+	</functiondefinition>
+	
+	<functiondefinition name="getDayFromDate" classname="com.userbo.AccountantDateUtils" method="getDayFromDate" returntype="V">
+		<argument seq="0" name="date1" datatype="D"/>
+	</functiondefinition>
+
+	<functiondefinition name="getMonthFromDate" classname="com.userbo.AccountantDateUtils" method="getMonthFromDate" returntype="V">
+		<argument seq="0" name="date1" datatype="D"/>
+	</functiondefinition>
+	
+	 
+	<functiondefinition name="getYearFromDate" classname="com.userbo.AccountantDateUtils" method="getYearFromDate" returntype="I">
+		<argument seq="0" name="date1" datatype="D"/>
+	</functiondefinition>
+	
+	<functiondefinition name="validateRenewBasicInfo" classname="com.userbo.AccountUtils" method="validateRenewBasicInfo" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validateFeeSued" classname="com.userbo.AccountUtils" method="validateFeeSued" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="validatePageOnAcceptIssue" classname="com.userbo.AccountantValidationUtils" method="validatePageOnAcceptIssue" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="validateRenewalReview" classname="com.userbo.AccountantValidationUtils" method="validateRenewalReview" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	
+	<functiondefinition name="fetchDataForReports" classname="com.util.DocumentGenerationBO" method="fetchDataForReports" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<functiondefinition name="fetchWeeklyDataForReports" classname="com.util.DocumentGenerationBO" method="fetchWeeklyDataForReports" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<functiondefinition name="fetchStateMonthDataForReports" classname="com.util.DocumentGenerationBO" method="fetchStateMonthDataForReports" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<functiondefinition name="fetchAllDataReports" classname="com.util.DocumentGenerationBO" method="fetchAllDataReports" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<functiondefinition name="generateDummyError" classname="com.userbo.AccountUtils" method="generateDummyError" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<functiondefinition name="fetchDataForQuoteRatingPdf" classname="com.util.DocumentGenerationBO" method="fetchDataForQuoteRatingPdf" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="fetchDataForViewQuoteLetter" classname="com.util.DocumentGenerationBO" method="fetchDataForViewQuoteLetter" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="fetchDataForInvoiceDownload" classname="com.util.DocumentGenerationBO" method="fetchDataForInvoiceDownload" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<functiondefinition name="fetchDataForRenewApplicationPDF" classname="com.util.DocumentGenerationBO" method="fetchDataForRenewApplicationPDF" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateSelection" classname="com.userbo.AccountUtils" method="validateSelection" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="downloadExcelReport" classname="com.util.DocumentGenerationBO" method="downloadExcelReport" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+		<functiondefinition name="checkRightClickPageDivId" classname="com.userbo.AccountUtils" method="checkRightClickPageDivId" returntype="B">
+		<argument seq="0" name="ctx" datatype="com.util.Context"/>					
+		<argument seq="1" name="divajaxpostionid" datatype="java.lang.String"/>
+		<argument seq="2" name="fieldid" datatype="java.lang.String"/>
+	</functiondefinition>
+	  <functiondefinition name="validateAllFlagsCleared" classname="com.userbo.AccountUtils" method="validateAllFlagsCleared" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="fetchDataForEmail" classname="com.userbo.AccountUtils" method="fetchDataForEmail" returntype="B">
+		<argument seq="0" name="ctx" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="evaluateAopWorkFlow" classname="com.util.RuleEngineUtility" method="evaluateAopWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateGeneralWorkFlow" classname="com.util.RuleEngineUtility" method="evaluateGeneralWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateSupplementWorkFlow" classname="com.util.RuleEngineUtility" method="evaluateSupplementWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateSupplementAuditWorkFlow" classname="com.util.RuleEngineUtility" method="evaluateSupplementAuditWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateSupplementComputerServicesWorkFlow" classname="com.util.RuleEngineUtility" method="evaluateSupplementComputerServicesWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateAllPagesSaved" classname="com.userbo.AccountUtils" method="validateAllPagesSaved" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluatePracticreManagementSupplementWorkFlow" classname="com.util.RuleEngineUtility" method="evaluatePracticreManagementSupplementWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateBusinessManagementFundsControlledWorkFlow" classname="com.util.RuleEngineUtility" method="evaluateBusinessManagementFundsControlledWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateBasicInfoRenewWorkFlow" classname="com.util.RuleEngineUtility" method="evaluateBasicInfoRenewWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="compareReferrals" classname="com.userbo.AccountUtils" method="compareReferrals" returntype="B">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition>
+     <functiondefinition name="evaluateQuoteOptions" classname="com.util.RuleEngineUtility" method="evaluateQuoteOptions" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	 <functiondefinition name="checkAllReferralsCleared" classname="com.userbo.AccountUtils" method="checkAllReferralsCleared" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateSavedPageManually" classname="com.userbo.AccountUtils" method="validateSavedPageManually" returntype="B">
+		<argument seq="0" name="ctx" datatype="com.util.Context"/>					
+	</functiondefinition>
+		<functiondefinition name="evaluatePremiumWorkFlow" classname="com.util.RuleEngineUtility" method="evaluatePremiumWorkFlow" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateIsAppCompletlyFilled" classname="com.userbo.AccountUtils" method="validateIsAppCompletlyFilled" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="processAcknowledgement" classname="com.userbo.AccountUtils" method="processAcknowledgement" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<functiondefinition name="convertPolicyExpirationDate" classname="com.userbo.AccountUtils" method="convertPolicyExpirationDate" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="validateAopPercentageIndication" classname="com.userbo.AccountUtils" method="validateAopPercentageIndication" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateCounty" classname="com.userbo.AccountUtils" method="validateCounty" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="fetchDataForRatingOutput" classname="com.formgenerator.DownloadForm" method="fetchDataForRatingOutput" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>							
+	</functiondefinition>
+	<functiondefinition name="fetchDataForIndication" classname="com.formgenerator.DownloadForm" method="fetchDataForIndication" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>							
+	</functiondefinition>
+	
+	<!-- Endorsement Start -->
+	<functiondefinition name="validateCancelEndorsementManually" classname="com.userbo.EndorsementUtilities" method="validateCancelEndorsementManually" returntype="V">
+		<argument seq="0" name="context" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="calculateReinstatementPremium" classname="com.userbo.EndorsementUtilities" method="calculateReinstatementPremium" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="calculateCancellationPremium" classname="com.userbo.EndorsementUtilities" method="calculateCancellationPremium" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="fetchDataForPolicyEndorsement" classname="com.util.DocumentGenerationBO" method="fetchDataForPolicyEndorsement" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="removeAmountFormat" classname="com.userbo.AccountUtils" method="removeAmountFormat" returntype="java.lang.Object">
+		<argument seq="0" name="arg1" datatype="java.lang.Object"/>
+	</functiondefinition>
+	<functiondefinition name="setRatingReponseValues" classname="com.userbo.EndorsementUtilities" method="setRatingReponseValues" returntype="V">
+		<argument seq="0" name="context" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="setCurrentLimitData" classname="com.userbo.EndorsementUtilities" method="setCurrentLimitData" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="setEndorsementPremium" classname="com.userbo.EndorsementUtilities" method="setEndorsementPremium" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateManualPremium" classname="com.userbo.EndorsementUtilities" method="validateManualPremium" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="dataPreprationForEndorsementRating" classname="com.userbo.Rating" method="dataPreprationForEndorsementRating" returntype="V">
+		<argument seq="0" name="context" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="populateEndorsementInputRequestData" classname="com.userbo.Rating" method="populateEndorsementInputRequestData" returntype="V">
+		<argument seq="0" name="context" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="setDataForInsurenceCertificate" classname="com.util.DocumentGenerationBO" method="setDataForInsurenceCertificate" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="downloadInsurenceCertificate" classname="com.userbo.AccountUtils" method="downloadInsurenceCertificate" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="generateInsurenceCertificate" classname="com.userbo.DocumentManagment" method="generateInsurenceCertificate" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validatePolicyExtensionDate" classname="com.userbo.AccountUtils" method="validatePolicyExtensionDate" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="calculateClaimAgeEndorsement" classname="com.userbo.EndorsementUtilities" method="calculateClaimAgeEndorsement" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="getAccountPropertyFromPropertiesFiles" classname="com.userbo.AccountUtils" method="getAccountPropertyFromPropertiesFiles" returntype="O">
+		<argument seq="0" name="filename" datatype="java.lang.String"/>			
+	</functiondefinition>
+	<!-- vivek jindal New App Flow -->
+	<functiondefinition name="validateFirmNewApp" classname="com.userbo.AccountUtils" method="validateFirmNewApp" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="supplementTabs" classname="com.userbo.AccountUtils" method="supplementTabs" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>							
+	</functiondefinition>
+	<functiondefinition name="validateAopNewApp" classname="com.userbo.AccountUtils" method="validateAopNewApp" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+    <functiondefinition name="viewFeeSuitData" method="viewFeeSuitData" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+    <functiondefinition name="saveFeeSuitData" method="saveFeeSuitData" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+	<functiondefinition name="addNewFeeSuit" method="addNewFeeSuit" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="updateFeeSuitList" method="updateFeeSuitList" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="saveFirmGrossRevenue" method="saveFirmGrossRevenue" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+    <functiondefinition name="savePageOnTabs" method="savePageOnTabs" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+    <functiondefinition name="getAopsValues" method="getAopsValues" classname="com.userbo.AOP" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+    <functiondefinition name="viewTrusteeOrEstate" method="viewTrusteeOrEstate" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+	<functiondefinition name="addNewTrusteeOrEstate" method="addNewTrusteeOrEstate" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="updateTrusteeOrEstateList" method="updateTrusteeOrEstateList" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="saveTrusteeOrEstateData" method="saveTrusteeOrEstateData" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+    <functiondefinition name="viewOutsideInterest" method="viewOutsideInterest" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+	<functiondefinition name="addNewOutsideInterest" method="addNewOutsideInterest" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="updateOutsideInterestList" method="updateOutsideInterestList" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="saveOutsideInterestData" method="saveOutsideInterestData" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateSubProducerNumber" method="validateSubProducerNumber" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateRevenueDetails" method="validateRevenueDetails" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateFeeSuitData" method="validateFeeSuitData" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateServerTrustee" method="validateServerTrustee" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateFirmRenderedService" method="validateFirmRenderedService" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateApplicationForcompletion" method="validateApplicationForcompletion" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="reatinAddedAops" classname="com.userbo.AccountUtils" method="reatinAddedAops" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="updateAOPList" classname="com.userbo.AOP" method="updateAOPList" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateFirmNewApp" classname="com.util.RuleEngineUtilityNewApp" method="evaluateFirmNewApp" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateInsuranceHistory" classname="com.util.RuleEngineUtilityNewApp" method="evaluateInsuranceHistory" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateAboutFirm" classname="com.util.RuleEngineUtilityNewApp" method="evaluateAboutFirm" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evalueAOPNewApp" classname="com.util.RuleEngineUtilityNewApp" method="evalueAOPNewApp" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateClaimSupplement" classname="com.userbo.AccountUtils" method="validateClaimSupplement" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluatePracticeManagementNewApp" classname="com.util.RuleEngineUtilityNewApp" method="evaluatePracticeManagementNewApp" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateMorePracticeManagement" classname="com.util.RuleEngineUtilityNewApp" method="evaluateMorePracticeManagement" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateTrustsAndOfficers" classname="com.util.RuleEngineUtilityNewApp" method="evaluateTrustsAndOfficers" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluatePastClaims" classname="com.util.RuleEngineUtilityNewApp" method="evaluatePastClaims" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluatePracticeSupplementNewApp" classname="com.util.RuleEngineUtilityNewApp" method="evaluatePracticeSupplementNewApp" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateInvestmentSupplementNewApp" classname="com.util.RuleEngineUtilityNewApp" method="evaluateInvestmentSupplementNewApp" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateAuditSupplement" classname="com.util.RuleEngineUtilityNewApp" method="evaluateAuditSupplement" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateBusinessManagementSupplement" classname="com.util.RuleEngineUtilityNewApp" method="evaluateBusinessManagementSupplement" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="evaluateSupplementComputerServicesSuppNewApp" classname="com.util.RuleEngineUtilityNewApp" method="evaluateSupplementComputerServicesSuppNewApp" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+		<functiondefinition name="validateRenewalSupplementFlow" method="validateRenewalSupplementFlow" classname="com.userbo.AccountUtils" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="fetchDataForNewApplicationPDF" classname="com.util.DocumentGenerationBO" method="fetchDataForNewApplicationPDF" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="addNewAopData" classname="com.userbo.AOP" method="addNewAopData" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateAopPercentageManually" classname="com.userbo.AccountUtils" method="validateAopPercentageManually" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+		<functiondefinition name="cleanPagesData" classname="com.userbo.AccountUtils" method="cleanPagesData" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+ 	<functiondefinition name="populateAccountsList" classname="com.userbo.AccountUtils" method="populateAccountsList" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+     <functiondefinition name="validateAccountManagement" classname="com.userbo.AccountUtils" method="validateAccountManagement" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+     <functiondefinition name="displayEndorsementOptions" classname="com.userbo.AccountUtils" method="displayEndorsementOptions" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+     <functiondefinition name="setFormChangesConditions" classname="com.userbo.AccountUtils" method="setFormChangesConditions" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+    <functiondefinition name="generateERPQuoteLetter" classname="com.userbo.DocumentManagment" method="generateERPQuoteLetter" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="fetchERPLetterData" classname="com.userbo.EndorsementUtilities" method="fetchERPLetterData" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="calculateERPPremium" classname="com.userbo.EndorsementUtilities" method="calculateERPPremium" returntype="V">
+	<argument seq="0" name="data" datatype="com.util.Context"/>
+	</functiondefinition>
+	 <functiondefinition name="validateQuoteAddition" classname="com.userbo.AccountUtils" method="validateQuoteAddition" returntype="V">
+			<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<!-- IPFS, CC and ACH -->
+	<functiondefinition name="checkIPFSFinanceInterval" classname="com.userbo.IPFSServiceClient" method="checkIPFSFinanceInterval" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+    <functiondefinition name="checkIPFSDownPayment" classname="com.userbo.IPFSServiceClient" method="checkIPFSDownPayment" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="getIPFSPFAData" classname="com.userbo.IPFSServiceClient" method="getIPFSPFAData" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="downloadIPFSPFA" classname="com.userbo.IPFSServiceClient" method="downloadIPFSPFA" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="submitIPFSESign" classname="com.userbo.IPFSServiceClient" method="submitIPFSESign" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="authCreditCardDetails" classname="com.userbo.CreditCardDetail" method="authCreditCardDetails" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="authACHDetails" classname="com.userbo.CreditCardDetail" method="authACHDetails" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="generateReportForRequote" classname="com.userbo.AccountUtils" method="generateReportForRequote" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+		<functiondefinition name="decrytPolicyKeyFromDB" classname="com.userbo.AccountUtils" method="decrytPolicyKeyFromDB" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="insertDataForCopiedPolicy" classname="com.userbo.AccountUtils" method="insertDataForCopiedPolicy" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateCoverageModifiersForURFlow" classname="com.userbo.AccountUtils" method="validateCoverageModifiersForURFlow" returntype="V">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="fetchDataForRLIEmail" classname="com.userbo.AccountUtils" method="fetchDataForRLIEmail" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="uploadClaimSummaryReport" classname="com.userbo.AccountUtils" method="uploadClaimSummaryReport" returntype="B">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="fetchDataInPdf" classname="com.util.DocumentGenerationBO" method="fetchDataInPdf" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="removePercentageFormat" classname="com.userbo.AccountUtils" method="removePercentageFormat" returntype="java.lang.Object">
+		<argument seq="0" name="arg1" datatype="java.lang.Object"/>
+	</functiondefinition>
+		<functiondefinition name="validateQuoteLimitIncrease" classname="com.userbo.AccountUtils" method="validateQuoteLimitIncrease" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>	
+	
+	<functiondefinition name="getBrokerPolicyDetails" classname="com.userbo.AccountUtils" method="getBrokerPolicyDetails" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validatePLPolicynumberForBrokerage" classname="com.userbo.AccountantValidationUtils" method="validatePLPolicynumberForBrokerage" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validateBrokeragePolicy" classname="com.userbo.AccountUtils" method="validateBrokeragePolicy" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="saveUpdateBrokeragePolicyDetails" classname="com.userbo.AccountUtils" method="saveUpdateBrokeragePolicyDetails" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="removeAmountFormatAccounts" classname="com.userbo.AccountUtils" method="removeAmountFormatAccounts" returntype="java.lang.Object">
+		<argument seq="0" name="arg1" datatype="java.lang.Object"/>
+	</functiondefinition>
+	<functiondefinition name="setCompanyForPolicy" classname="com.userbo.AccountUtils" method="setCompanyForPolicy" returntype="V">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="executeUnderwritingRules" classname="com.userbo.AccountUtils" method="executeUnderwritingRules" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	<functiondefinition name="validatePolicyIssuanceForCompany" classname="com.userbo.AccountUtils" method="validatePolicyIssuanceForCompany" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<!-- ZOHO -->
+	<functiondefinition name="insertZOHORecords" classname="com.userbo.AccountUtils" method="insertZOHORecords" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition> 
+      <functiondefinition name="updateZOHORecords" classname="com.userbo.AccountUtils" method="updateZOHORecords" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition>
+     <functiondefinition name="getZOHOIndicationRecordsOfAccounts" classname="com.userbo.AccountUtils" method="getZOHOIndicationRecordsOfAccounts" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+    <functiondefinition name="validateZohoStatusChange" classname="com.userbo.AccountantValidationUtils" method="validateZohoStatusChange" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="validateNameClearanceQQIndicationFlagsCleared" classname="com.userbo.AccountantValidationUtils" method="validateNameClearanceQQIndicationFlagsCleared" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	 <functiondefinition name="mailSentBeyondWorkQCovrageDays" classname="com.userbo.AccountantValidationUtils" method="mailSentBeyondWorkQCovrageDays" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition> 
+     
+     <functiondefinition name="getAndDoneToken" classname="com.userbo.CreatePaymentIntent" method="getAndDoneToken" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition>
+     <functiondefinition name="getAndDoneResponse" classname="com.userbo.CreatePaymentIntent" method="getAndDoneResponse" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition>
+     <functiondefinition name="andDonePaymentSuccess" classname="com.userbo.CreatePaymentIntent" method="andDonePaymentSuccess" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition>
+     <functiondefinition name="mailSentAfterPayment" classname="com.userbo.AccountantValidationUtils" method="mailSentAfterPayment" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition>
+     <functiondefinition name="ValidatePremiumMods" classname="com.userbo.AccountUtils" method="ValidatePremiumMods" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+     <functiondefinition name="isCFAllowedToIssuePolicy" classname="com.userbo.AccountantValidationUtils" method="isCFAllowedToIssuePolicy" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="insertEPICData" classname="com.userbo.EPICDataUpdate" method="insertEPICData" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+     </functiondefinition>
+      <functiondefinition name="saveEstimateFormData" classname="com.userbo.AccountUtils" method="saveEstimateFormData" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+     <functiondefinition name="validateEstimateFormAopPercentage" classname="com.userbo.AccountUtils" method="validateEstimateFormAopPercentage" returntype="V">
+     	<argument seq="0" name="context" datatype="com.util.Context"/>
+    </functiondefinition>
+    <functiondefinition name="validateEstimateFormRevenueDetail" method="validateEstimateFormRevenueDetail" classname="com.userbo.AccountUtils" returntype="V">
+		<argument seq="0" name="context" datatype="com.util.Context"/>	
+	</functiondefinition>
+	
+	<functiondefinition name="validateIPFSPolicyEffDate29Days" classname="com.userbo.AccountantValidationUtils" method="validateIPFSPolicyEffDate29Days" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="validatePaypalPolicyEffDate29Days" classname="com.userbo.AccountantValidationUtils" method="validatePaypalPolicyEffDate29Days" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="validateACHPolicyEffDate29Days" classname="com.userbo.AccountantValidationUtils" method="validateACHPolicyEffDate29Days" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+	<functiondefinition name="showConfirmationPage29Days" classname="com.userbo.AccountantValidationUtils" method="showConfirmationPage29Days" returntype="B">
+		<argument seq="0" name="data" datatype="com.util.Context"/>					
+	</functiondefinition>
+</functionsdef>
+
+

@@ -1,0 +1,742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Quick Quote Insured</title>
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap_3-3-6.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/account.js"></script>
+<script type="text/javascript" src="script/lawyers.js"></script>
+<script type="text/javascript" src="script/tabber.js"></script>
+<script type="text/javascript" src="script/test_new.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/capitalizeSentences.js"></script>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+
+<style type="text/css">
+.hide {
+	display: none;
+	width: 100%;
+}
+
+.style1 {
+	font-size: 10px
+}
+</style>
+
+
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+<body onload="loadExpiringInsuranceDiv();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Bootstrap Core JavaScript -->
+<div id="cover"></div>
+
+<!-- Modal -->
+<div id="zohoNameClearance" class="modal">
+  <div class="modal-dialog" style="width: 700px">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+		<a class="close" href="#" onclick="closePopUp('zohoNameClearance')"><i class="fa fa-close">&nbsp;</i></a>
+        <h4 class="modal-title">Confirm</h4>
+	</div>
+      <div class="modal-body" style="height: 100px">
+		<span id="zohoNameClearanceFlag" >The risk exists in Protexure's CRM and will need to be Name Cleared by the Protexure Underwriter prior to pricing.</span>
+      </div>
+      <div class="modal-footer">
+		<div class="buttonwrapper">
+			<!-- //<a class="ovalbutton">Save</a> -->
+			<a class="ovalbutton" onclick="closePopUp('zohoNameClearance')">Close</a>
+		</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+	<form>
+		<div class="container-fluid bootstrap-node-1">
+			<div class="tableWidth">
+				<div id="header">
+					<span id="#Include:headerNewApp.html#"></span>
+				</div>
+				<div id="contentSection">
+					<h2 class="questionHeading">
+						A Little Information
+					</h2>
+					<div class="form">
+						<div class="row">
+							<div class="block-form firmNewApp">
+							
+								<div class="section newFreeForm_UI">
+									<div class="row">
+										<div class="col-sm-12"><div class="headingNew">1. General Info</div></div> 
+									</div>
+									<div class="sectionInner"  id="quickQuoteInsured_freeform_contextdata_2">
+										<div class="row">
+											<div class="col-sm-12"><div class="headingNew3">Please provide your contact information</div></div> 
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label class="asterisk">Firm Name:</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+															<input name="AccountName" type="text"
+															class="form-control" disabled="disabled"
+															id="AccountName" 
+															maxlength="100" />
+													</div> 
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<input name="AccountName" type="text"
+															class="form-control" id="AccountName"
+															maxlength="100" autofocus
+															onblur="javascript:capitalizeSentences(this,1);" tabindex="50" />
+													</div>
+													<div id="error_AccountName" class="error"></div>
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label class="asterisk">Email:</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly"><input
+															name="AccountEmail" type="text" class="form-control"
+															disabled="disabled" id="AccountEmail"
+															maxlength="100"
+															onBlur="javascript:validateEmail(this.value,this);" />
+													</div>
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<input name="AccountEmail" type="text"
+															class="form-control" id="AccountEmail"
+															maxlength="100"
+															onBlur="javascript:validateEmail(this.value,this);" tabindex="60" />
+													</div>
+													<div id="error_AccountEmail" class="error"></div>
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label class="asterisk">Phone:</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+															<input name="WorkPhone" type="text"
+															class="form-control" disabled="disabled"
+															id="WorkPhone" size="13" maxlength="13" />
+													</div>
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<input name="WorkPhone" type="text"
+															class="form-control" id="WorkPhone" size="13"
+															maxlength="13" tabindex="70" />
+													</div>
+													<div id="error_WorkPhone" class="error"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label class="asterisk">In what state does your firm reside?</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+															<select name="StateCode" id="StateCode"
+															disabled="disabled" class="form-control">
+																<option value="">Select</option>
+														</select>
+													</div>
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<select name="StateCode" id="StateCode"
+															class="form-control" tabindex="80" 
+															onchange="javascript:ajaxpageblocklink('quickquoteinsured.html','quickquoteinsured.refreshCompany','','','countyListNew');">
+																<option value="">Select</option>
+														</select>
+													</div>
+													<div id="error_StateCode" class="error"></div>
+													<div id="error_stateEligibilityError" class="error11Bold"></div>
+												</div>
+											</div>
+											<div id="showAgentOnly">
+												<div class="col-sm-3" id="countyListNew">
+												<input type="hidden" name="CompanyAsPerState" id="CompanyAsPerState"/>
+													<div class="form-group" id="CompanyCodeEdit_Security">
+														<label class="asterisk">Company:</label> 
+														<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+															<select  name="CompanyKey" id="CompanyKey" disabled="disabled" class="form-control">
+															<option value="">Select</option>
+															</select>
+														</div>
+														<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<select  name="CompanyKey" id="CompanyKey" class="form-control" >
+															<option value="">Select</option>
+															</select>
+														</div>
+														<div id="error_CompanyKey" class="error"></div>
+													</div>
+												</div>
+											</div>
+											
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label>When would you like your coverage to start?</label> 
+													<div class="iconsStyle3" id="eval:AccountantRule.isQuickQuotePageReadOnly">
+														<span class="input-group-addon"><i class="fa fa-calendar">&nbsp;</i></span>
+														<input type="text" disabled class="form-control datepicker" 
+															id="ajax_field_PolicyEffectiveDate" name="PolicyEffectiveDate"
+															onkeyup="applyDateFormat(this,event);" />
+													</div> <div class="iconsStyle3"
+														id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+														<span class="input-group-addon"><i class="fa fa-calendar">&nbsp;</i></span>
+														<input type="text" class="form-control datepicker" 
+															id="ajax_field_PolicyEffectiveDate" name="PolicyEffectiveDate"
+															onkeyup="applyDateFormat(this,event);" tabindex="10"
+															onchange="javascript:ajaxpageblocklink('quickquoteinsured.html','quickquoteinsured.refreshCompany','','','countyListNew');"
+															/>
+													</div>
+													<div id="error_PolicyEffectiveDate" class="error"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label class="asterisk">Primary Contact Name:</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+															<input name="ContactPerson" type="text"
+															class="form-control" disabled="disabled"
+															id="ContactPerson" 
+															maxlength="100" />
+													</div> 
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<input name="ContactPerson" type="text"
+															class="form-control" id="ContactPerson"
+															maxlength="100" autofocus
+															onblur="javascript:capitalizeSentences(this,1);" tabindex="90" />
+													</div>
+													<div id="error_ContactPerson" class="error"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="section">
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="headingNew">2. Area of Practice</div>
+										</div>
+									</div>
+									<div class="sectionInner">
+										<div class="questionBlock">
+											<table class="form-table" style="padding-top: 0px" cellpadding="0" cellspacing="0" width="50%">
+												<tr>
+													<td valign="top" align="left">
+														<table cellpadding="0" cellspacing="0" width="100%">
+															<tr>
+																<td align="left">
+																	<div id="error_TotalAOP_Percentage" class="defult_tr_errors"/>
+																</td>
+															</tr>
+															<tr>
+																<td align="left">
+																	<div id="error_SelectAOP"/>
+																</td>
+															</tr>
+															<tr>
+																<td class="">
+																	<span class="mendatory">*</span>Please select your Area of Practice and provide the approximate percentage for each.
+																</td>
+															</tr>
+															<tr>
+																<td style="padding-top: 0px;" valign="top">
+																	<div>
+																		<ul class="nav nav-tabs">
+																			<li id="aop_list_btn" class="active">
+																				<a data-toggle="tab">AOP List</a>
+																			</li>
+																			<!--<li  id="aop_search_btn"><a data-toggle="tab">AOP Search</a></li>-->
+																		</ul>
+																		<div class="tab-content">
+																			<div id="aop_list" class="tab-pane fade active">
+																				<table cellpadding="0" cellspacing="0" width="100%">
+																					<tr>
+																						<td valign="top">
+																							<table cellpadding="0" cellspacing="0" style="padding-top: 16px" width="100%">
+																								<!-- <tr>
+																									<td class="" colspan="2">
+																										<span class="mendatory">*</span>
+																										<span id="NewBusiness">AOP Table</span>
+																									</td>
+																								</tr> -->
+																								<tr>
+																									<td colspan="2">
+																										<div class="law_scroll" tabindex="-1">
+																											<table cellpadding="0" cellspacing="0" class="gridTable" align="left" style="width: 99.5%; margin-left: 4px;">
+																												<thead>
+																													<tr>
+																														<th width="75%" height="25px">Area of Practice</th>
+																														<th width="15%">Percentage</th>
+																														<th width="10%"/>
+																													</tr>
+																												</thead>
+																												<tbody id="rightaoplist_list"></tbody>
+																												<tfoot> </tfoot>
+																											</table>
+																										</div>
+																									</td>
+																								</tr>
+																								<tr id="row1">
+																									<td style="text-align: right; border-bottom: none;">Total <i class="italic">(must equal 100%)</i>
+																									</td>
+																									<td valign="middle" nowrap style="border-bottom: none;">
+																										<label id="TotalAOP_Percentage" name="TotalAOP_Percentage" style="width: 70px;"/> &nbsp;
+																									</td>
+																								</tr>
+																								<tr class="no-padding">
+																									<td colspan="2" valign="middle" nowrap>
+																										<span id="error_totalPercentageError" class="error"/>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td colspan="2">
+																										<div id="dis5y" style="display: none;">
+																											<table border="0" cellspacing="0" cellpadding="0" width="100%">
+																												<tr>
+																													<td align="left" width="157px">
+																														<div class="form-group form-group-last">
+																															<label>Please describe</label>
+																															<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+																																<textarea id="AOPCommentDesc_20" name="AOPCommentDesc_20" style="width: 99%" class="inputbox" readonly="readonly" cols="60" rows="3"/>
+																															</div>
+																															<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+																																<textarea id="AOPCommentDesc_20" name="AOPCommentDesc_20" style="width: 99%" class="inputbox" cols="60" rows="3" maxlength="5000"/>
+																															</div>
+																															<div id="error_AOPCommentDesc_20" class="tr_errors"/>
+																														</div>
+																													</td>
+																												</tr>
+																											</table>
+																										</div>
+																										<div id="dis5n" style="display: none;"/>
+																									</td>
+																								</tr>
+																							</table>
+																						</td>
+																					</tr>
+																					<tr>
+																						<td valign="top" >
+																							<table cellpadding="0" cellspacing="0" width="100%">
+																								<tr>
+																									<td>
+																										<table cellpadding="0" cellspacing="0" width="100%">
+																											<tr>
+																												<td>
+																													<div class="floatRight">
+																														<span id="showPageSave">
+																															<a id="showQQAOPButton" class="btn add" onclick="toggleDisplay('showQQAOPDiv');" tabindex="340" >Find additional areas of practice</a>
+																														</span>
+																													</div>
+																												</td>
+																											</tr>
+																										</table>
+																									</td>
+																								</tr>
+																								<tr>
+																									<td>
+																										<div id="showQQAOPDiv" style="display: none;">
+																											<table cellpadding="0" cellspacing="0" id="aoplist_list_1" class="gridTable" width="100%">
+																												<tr class="tableheading" id="aoplist_list_header_1">
+																													<th width="5%" class="HeaderStyle" id="block_field_AOPKey"/>
+																													<th width="95%" height="25px" class="HeaderStyle" id="block_field_AOPDesc">Area of Practice</th>
+																												</tr>
+																												<tr>
+																													<td colspan="2" style="padding: 0px;">
+																														<div class="law_scroll" tabindex="-1">
+																															<table id="leftAOPList" cellpadding="0" cellspacing="0" class="add_claim borderNone no-borders" width="100%">
+																																<tr id="aoplist_list_data_1">
+																																	<td width="5%" id="block_field_AOPKey">
+																																		<input type="checkbox" id="AOPKey" name="AOPKey"/>
+																																	</td>
+																																	<td class="RowStyle" id="block_field_AOPDesc"/>
+																																</tr>
+																															</table>
+																														</div>
+																													</td>
+																												</tr>
+																												<tr>
+																													<td colspan="2" style="padding: 0px;">
+																														<table cellpadding="0" cellspacing="0" width="100%">
+																															<tr>
+																																<td>
+																																	<div class="floatRight">
+																																		<span id="showPageSave">
+																																			<a id="addRightAOPQQ" class="btn save" onclick="addRightAOP();toggleDisplay('showQQAOPDiv');" tabindex="340" onkeypress="aopKeyPressEvent(event);">Save</a>
+																																		</span>
+																																	</div>
+																																</td>
+																															</tr>
+																														</table>
+																													</td>
+																												</tr>
+																											</table>
+																										</div>
+																									</td>
+																								</tr>
+																							</table>
+																						</td>
+																					</tr>
+																				</table>
+																			</div>
+																		</div>
+																	</div>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div class="section">
+									<div class="row">
+										<div class="col-sm-12"><div class="headingNew">3. Coverage</div></div> 
+									</div>
+									<div class="sectionInner newFreeForm_UI"  id="quickQuoteInsured_freeform_contextdata_0" style="width: 100%">
+										<div class="row">
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label class="asterisk">What limit would you like?</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+														<select class="form-control" name="LimitSequence" id="LimitSequence" disabled="disabled">
+															<option value="">- Select -</option>
+														</select>
+													</div> 
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+														<select class="form-control" name="LimitSequence" id="LimitSequence">
+															<option value="">- Select -</option>
+														</select>
+													</div>
+													<div id="error_LimitSequence" class="error"></div>
+												</div>
+											</div>
+											<div class="col-sm-3" style="padding-top: 10px">
+												<div class="form-group">
+													<label class="asterisk">What deductible would you like?</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+														<select class="form-control" name="DeductibleSequence" id="DeductibleSequence" disabled="disabled">
+															<option value="">- Select -</option>
+														</select>
+													</div> 
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+														<select class="form-control" name="DeductibleSequence" id="DeductibleSequence">
+															<option value="">- Select -</option>
+														</select>
+													</div>
+													<div id="error_DeductibleSequence" class="error"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row" style="padding-top: 10px">
+											<!-- <div class="col-sm-12">
+												<div class="form-group form-group-last">
+													<label class="asterisk">If you currently have coverage for how  many years has your firm had continuous Insurance coverage?</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+															<select name="FirmYear" id="FirmYear" disabled="disabled" class="inputbox" style="width: 250px">
+																<option value="">Select</option>
+																<option value="0">0</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">more than 4</option>
+														</select>
+													</div>
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<select name="FirmYear" id="FirmYear" onchange="loadExpiringInsuranceDiv();" class="inputbox" tabindex="40" style="width: 250px">
+																<option value="">Select</option>
+																<option value="0">0</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">more than 4</option>
+														</select>
+													</div>
+													<div id="error_FirmYear" class="error"></div>
+												</div>
+											</div> -->
+											<div class="col-sm-12" style="padding-top: 10px">
+												<div class="form-group">
+													<label class="asterisk">Do you currently carry professional liability?</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+														<ul class="radio_ul radio_ul3">
+															<li>
+																<div class="radio_div"><input type="radio" disabled="disabled" id="IsFirmCarryingProfLiabilityIns" name="IsFirmCarryingProfLiabilityIns" value="Y"/></div>
+																<div class="radio_content_div">Yes</div>
+															</li>
+															<li>
+																<div class="radio_div"><input type="radio" disabled="disabled" id="IsFirmCarryingProfLiabilityIns" name="IsFirmCarryingProfLiabilityIns" value="N"/></div>
+																<div class="radio_content_div">No</div>
+															</li>
+														</ul>
+													</div> 
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+														<ul class="radio_ul radio_ul3">
+															<li>
+																<div class="radio_div"><input type="radio" onclick="loadExpiringInsuranceDiv();" id="IsFirmCarryingProfLiabilityIns" name="IsFirmCarryingProfLiabilityIns" value="Y"/></div>
+																<div class="radio_content_div">Yes</div>
+															</li>
+															<li>
+																<div class="radio_div"><input type="radio" onclick="loadExpiringInsuranceDiv();" id="IsFirmCarryingProfLiabilityIns" name="IsFirmCarryingProfLiabilityIns" value="N"/></div>
+																<div class="radio_content_div">No</div>
+															</li>
+														</ul>
+													</div>
+													<div id="error_IsFirmCarryingProfLiabilityIns" class="error"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row" id="expiringInsuranceDiv">
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label class="">Carrier :</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+															<input name="InsuranceCompanyNamePross" type="text"
+															class="form-control" disabled="disabled"
+															id="InsuranceCompanyNamePross" 
+															maxlength="100" />
+													</div> 
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<input name="InsuranceCompanyNamePross" type="text"
+															class="form-control" id="InsuranceCompanyNamePross" 
+															maxlength="100" autofocus
+															 tabindex="50" />
+													</div>
+													<div id="error_InsuranceCompanyNamePross" class="error"></div>
+												</div>
+											</div>
+											<div class="col-sm-3">
+												<div class="form-group">
+													<label class="">Expiring Premium :</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly"><input
+															name="ProInsPremium" type="text" class="form-control"
+															disabled="disabled" id="ProInsPremium"
+															maxlength="100"
+															onBlur="javascript:validateEmail(this.value,this);" />
+													</div>
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+															<input name="ProInsPremium" type="text"
+															class="form-control" id="ProInsPremium" onkeyup="loadAppointmentFeeInformation('ProInsPremium');"
+															maxlength="100"
+															/>
+													</div>
+													<div id="error_ProInsPremium" class="error"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="section">
+									<div class="row">
+										<div class="col-sm-12"><div class="headingNew">4. Claim History</div></div> 
+									</div>
+									<div class="sectionInner newFreeForm_UI"  id="quickQuoteInsured_freeform_contextdata_4" style="width: 100%">
+										<div class="row">
+											<div class="col-sm-12" style="padding-top: 10px">
+												<div class="form-group">
+													<label class="asterisk">Within the past five (5) years, has any firm personnel reported claims/been a subject of a regulatory matter?</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+														<ul class="radio_ul radio_ul3">
+															<li>
+																<div class="radio_div"><input type="radio" disabled="disabled" id="IsFirmDeclinedOtherthanNonPayment1" name="IsFirmDeclinedOtherthanNonPayment" value="Y"/></div>
+																<div class="radio_content_div">Yes</div>
+															</li>
+															<li>
+																<div class="radio_div"><input type="radio" disabled="disabled" id="IsFirmDeclinedOtherthanNonPayment2" name="IsFirmDeclinedOtherthanNonPayment" value="N"/></div>
+																<div class="radio_content_div">No</div>
+															</li>
+														</ul>
+													</div> 
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+														<ul class="radio_ul radio_ul3">
+															<li>
+																<div class="radio_div"><input type="radio" id="IsFirmDeclinedOtherthanNonPayment1" name="IsFirmDeclinedOtherthanNonPayment" value="Y"/></div>
+																<div class="radio_content_div">Yes</div>
+															</li>
+															<li>
+																<div class="radio_div"><input type="radio" id="IsFirmDeclinedOtherthanNonPayment2" name="IsFirmDeclinedOtherthanNonPayment" value="N"/></div>
+																<div class="radio_content_div">No</div>
+															</li>
+														</ul>
+													</div>
+													<div id="error_IsFirmDeclinedOtherthanNonPayment" class="error"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="section">
+									<div class="row">
+										<div class="col-sm-12"><div class="headingNew">5. Practice Management</div></div> 
+									</div>
+									<div class="sectionInner newFreeForm_UI"  id="quickQuoteInsured_freeform_contextdata_4" style="width: 100%">
+										<div class="row">
+											<div class="col-sm-12" style="padding-top: 10px">
+												<div class="form-group">
+													<label class="asterisk">Do you obtain a signed engagement letter or written agreement updated annually outlining the services the Firm will perform for each of the Firm's clients?</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+														<ul class="radio_ul radio_ul3">
+															<li>
+																<div class="radio_div"><input type="radio" disabled="disabled" id="IsSignedEngagement1" name="IsSignedEngagement" value="Y"/></div>
+																<div class="radio_content_div">Yes</div>
+															</li>
+															<li>
+																<div class="radio_div"><input type="radio" disabled="disabled" id="IsSignedEngagement2" name="IsSignedEngagement" value="N"/></div>
+																<div class="radio_content_div">No</div>
+															</li>
+														</ul>
+													</div> 
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+														<ul class="radio_ul radio_ul3">
+															<li>
+																<div class="radio_div"><input type="radio" id="IsSignedEngagement1" name="IsSignedEngagement" value="Y"/></div>
+																<div class="radio_content_div">Yes</div>
+															</li>
+															<li>
+																<div class="radio_div"><input type="radio" id="IsSignedEngagement2" name="IsSignedEngagement" value="N"/></div>
+																<div class="radio_content_div">No</div>
+															</li>
+														</ul>
+													</div>
+													<div id="error_IsSignedEngagement" class="error"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="section">
+									<div class="row">
+										<div class="col-sm-12"><div class="headingNew">6. Firm Information</div></div> 
+									</div>
+									<div class="sectionInner newFreeForm_UI"  id="quickQuoteInsured_freeform_contextdata_5" style="width: 100%">
+										<div class="row">
+											<div class="col-sm-12" style="padding-top: 10px">
+												<div class="form-group form-group-last">
+													<label class="asterisk">Please provide your gross annual revenue for your last completed year:</label> 
+													<div id="eval:AccountantRule.isQuickQuotePageReadOnly">
+														<input name="Amount" id="Amount" type="text" style="width: 150px"
+															disabled="disabled" class="form-control" size="20"
+															maxlength="20" />
+													</div>
+													<div id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+														<input name="Amount" id="Amount" type="text" style="width: 150px"
+															class="form-control" size="20" maxlength="20"
+															onkeyup="limitAmountText(this,15);" tabindex="90" />
+													</div>
+													<div id="error_Amount" class="error"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="buttons borderTop row marginsBtn">
+						
+						<div class="floatRight">
+							<span id="eval:AccountantRule.isNotNameClearanceQQIndicationPopupFlag">
+								<span id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+									<span id="eval:AccountantRule.showQuickQuotePageRequestTypeContent">
+										<a onclick="getPercentageValue();" class="btn save" href="javascript:submitform('quickquoteinsured.html|quickquoteoptionlist.html|qqThanks.html','quickquoteinsured.save','forwardeval','AccountantRule.isNameClearanceFirmNewAppPopupFlag|AccountantRule.isShowQQOptionListPage|AccountantRule.isShowQQThanksPage');" tabindex="350" >Get a Premium Estimate</a> 
+									</span>
+									<span id="eval:AccountantRule.showRiskManagementPageRequestTypeContent">
+										<a onclick="getPercentageValue();" class="btn save" href="javascript:submitform('quickquoteinsured.html|quickquoteoptionlist.html|qqThanks.html','quickquoteinsured.riskAssessment','forwardeval','AccountantRule.isNameClearanceFirmNewAppPopupFlag|AccountantRule.isShowQQOptionListPage|AccountantRule.isShowQQThanksPage');" tabindex="350" >Get Risk Assessment</a>
+									</span>
+								</span>
+								<span id="eval:AccountantRule.isQuickQuotePageReadOnly">
+									<a onclick="getPercentageValue();" class="btn next" href="javascript:submitform('quickquoteoptionlist.html|qqThanks.html','quickquoteinsured.saveContinue','forwardeval','AccountantRule.isShowQQOptionListPage|AccountantRule.isShowQQThanksPage');" tabindex="360" >Continue</a> 
+								</span>
+							</span>
+							<span id="eval:AccountantRule.isNameClearanceQQIndicationPopupFlag">
+								<span id="eval:AccountantRule.isShowIndicationUWLink">
+									<a class="btn button1" href="javascript:submitform('UWReview.html','quickquoteinsured.underwriter',' ','');">UnderWriter </a>
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<!---------Footer Start---------->
+			<div id="footer" class="footer">
+				<span id="#Include:footerNewApp.html#"></span>
+			</div>
+			<!---------Footer End---------->
+		</div>	
+		
+		
+		<input type="hidden" name="divHideShow" id="divHideShow" value="" />
+		<input type="hidden" name="ctxmenuparam" id="ctxmenuparam" value="" />
+		<span id="eval:AccountantRule.isQuickQuotePageReadOnly">
+			<input type="hidden" name="filedDisabled" id="filedDisabled" value="YES" />
+		</span>
+		<span id="eval:AccountantRule.isQuickQuotePageNotReadOnly">
+			<input type="hidden" name="filedDisabled" id="filedDisabled" value="NO" />
+		</span>
+
+		<div id="contextLinks"></div>
+		<table id="quickquoteinsured_freeform_contextdata_17">
+			<tr>
+				<td>
+					<input type="hidden" name="jsessionid" id="jsessionid" />
+					<input type="text" id="AOP_values" name="AOP_values" value="" style="display: none;" /> 
+					<input type="hidden" name="totalNoOfPersonnel" id="ajax_field_totalNoOfPersonnel" value="" />
+					<input type="hidden" name="aopPercentageValue" id="aopPercentageValue" value="" />
+					<input type="hidden" name="aopPercentageTRValue" id="aopPercentageTRValue" value="" />
+					<input type="text" name="QQRMLink" id="QQRMLink" value="" style="display: none;" />
+					<input type="hidden" name="AOPCommentDesc_20" id="AOPCommentDesc" value="" />
+					<input type="text" name="PolicyKey" id="PolicyKey" value="" style="display: none;" />
+					<input type="text" name="AccountKey" id="AccountKey" value="" style="display: none;" />
+					<input type="text" name="TransactionSequence" id="TransactionSequence" value="" style="display: none;" />
+					<input type="text" name="VersionSequence" id="VersionSequence" value="" style="display: none;" />
+					<input type="text" name="CoverageSequence" id="CoverageSequence" value="" style="display: none;" />
+					<input type="hidden" name="isNameClearanceRequired" id="isNameClearanceRequired" />
+					<input type="hidden" name="NameClearanceIndicationFlag" id="NameClearanceIndicationFlag" />
+					
+				</td>
+			</tr>
+		</table>
+		<div id="StatusValidation_freeform_contextdata_9990">
+			<input type="hidden" name="headerStatusDescUpdated" id="headerStatusDescUpdated" />
+			<input type="hidden" name="ZohoStatusDescUpdated" id="ZohoStatusDescUpdated" value="QuickQuoteZohoStatus"/>
+			
+		</div>
+
+
+	</form>
+	<script type="text/javascript" src="script/htmlMassking.js"/>
+</body>
+<script type="text/javascript">
+	var nameClearanceIndicationFlag = $("#NameClearanceIndicationFlag").val();
+	if(nameClearanceIndicationFlag == "Y"){
+		showPopUpOverloaded('zohoNameClearance','500','400');
+	}
+	onPageLoad();
+	document.getElementById("AOPCommentDesc_20").value = document.getElementById("AOPCommentDesc").value;
+	//document.getElementById("ajax_field_PolicyEffectiveDate").focus();
+	
+</script>
+<script>
+	loadQuickQuoteInsured();
+	loadQuickQuoteOptionList();
+	populateTotalFieldValue('AOP_Percentage_', 'TotalAOP_Percentage');
+</script>
+</html>

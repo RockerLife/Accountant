@@ -1,0 +1,61 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="reportsavedsearch">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from reportsavedsearch</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from reportsavedsearch</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into reportsavedsearch(
+          <dynamic prepend=" ">
+               <isNotEmpty property="search_name" prepend=",">search_name</isNotEmpty>
+               <isNotEmpty property="report_id" prepend=",">report_id</isNotEmpty>
+               <isNotEmpty property="search_xml" prepend=",">search_xml</isNotEmpty>
+               <isNotEmpty property="last_updated_by" prepend=",">last_updated_by</isNotEmpty>
+               <isNotEmpty property="last_updated_ts" prepend=",">last_updated_ts</isNotEmpty>
+               <isNotEmpty property="search_xml_desc" prepend=",">search_xml_desc</isNotEmpty>
+               <isNotEmpty property="created_by" prepend=",">created_by</isNotEmpty>
+               <isNotEmpty property="isglobal" prepend=",">isglobal</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="search_name" prepend=",">#search_name#</isNotEmpty>
+               <isNotEmpty property="report_id" prepend=",">#report_id#</isNotEmpty>
+               <isNotEmpty property="search_xml" prepend=",">#search_xml#</isNotEmpty>
+               <isNotEmpty property="last_updated_by" prepend=",">#last_updated_by#</isNotEmpty>
+               <isNotEmpty property="last_updated_ts" prepend=",">#last_updated_ts#</isNotEmpty>
+               <isNotEmpty property="search_xml_desc" prepend=",">#search_xml_desc#</isNotEmpty>
+               <isNotEmpty property="created_by" prepend=",">#created_by#</isNotEmpty>
+               <isNotEmpty property="isglobal" prepend=",">#isglobal#</isNotEmpty>
+          </dynamic>
+          )
+          <selectKey resultClass="int" keyProperty="search_id">SELECT IDENT_CURRENT('reportsavedsearch') as last_insert_id</selectKey>
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select search_id, search_name, report_id, search_xml, last_updated_by, last_updated_ts, search_xml_desc, created_by, isglobal from reportsavedsearch where search_id = #search_id#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update reportsavedsearch set
+          <dynamic prepend=" ">
+               <isNotEmpty property="search_name" prepend=",">search_name = #search_name#</isNotEmpty>
+               <isEmpty property="search_name" prepend=",">search_name = null</isEmpty>
+               <isNotEmpty property="report_id" prepend=",">report_id = #report_id#</isNotEmpty>
+               <isEmpty property="report_id" prepend=",">report_id = null</isEmpty>
+               <isNotEmpty property="search_xml" prepend=",">search_xml = #search_xml#</isNotEmpty>
+               <isEmpty property="search_xml" prepend=",">search_xml = null</isEmpty>
+               <isNotEmpty property="last_updated_by" prepend=",">last_updated_by = #last_updated_by#</isNotEmpty>
+               <isEmpty property="last_updated_by" prepend=",">last_updated_by = null</isEmpty>
+               <isNotEmpty property="last_updated_ts" prepend=",">last_updated_ts = #last_updated_ts#</isNotEmpty>
+               <isEmpty property="last_updated_ts" prepend=",">last_updated_ts = null</isEmpty>
+               <isNotEmpty property="search_xml_desc" prepend=",">search_xml_desc = #search_xml_desc#</isNotEmpty>
+               <isEmpty property="search_xml_desc" prepend=",">search_xml_desc = null</isEmpty>
+               <isNotEmpty property="created_by" prepend=",">created_by = #created_by#</isNotEmpty>
+               <isEmpty property="created_by" prepend=",">created_by = null</isEmpty>
+               <isNotEmpty property="isglobal" prepend=",">isglobal = #isglobal#</isNotEmpty>
+               <isEmpty property="isglobal" prepend=",">isglobal = null</isEmpty>
+          </dynamic>
+          where search_id = #search_id#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from reportsavedsearch where search_id = #search_id#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from reportsavedsearch</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from reportsavedsearch</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select search_id, search_name, report_id, search_xml, last_updated_by, last_updated_ts, search_xml_desc, created_by, isglobal from reportsavedsearch where search_id = #search_id#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select search_id, report_id, search_xml, last_updated_by, last_updated_ts, search_xml_desc, created_by, isglobal from reportsavedsearch</select>
+</sqlMap>
+

@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>More Practice Management</title>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"/>
+		<script src="js/jquery.treeview.js"/>
+		<script src="js/bootstrap_3-3-6.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script language="javascript" src="script/lawyers.js" />
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/htmlMassking.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/capitalizeSentences.js"/>
+		<script src="js/producerOne.js"/>
+		<script src="js/bootstrap-datepicker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body onload="loadmorePractManagement();loadFeeSuitSupplement();loadFeeSupplement();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form autocomplete="off">
+			<div id="cover"/>
+			<!-- Modal -->
+			<div id="msgBoxFeeSuitData" class="modal" style="display: none;">
+				<div class="modal-dialog" style="width: 400px">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<a class="close" href="#" onclick="{ $('#cover').hide();$('#msgBoxFeeSuitData').hide(); }">
+								<i class="fa fa-close">&nbsp;</i>
+							</a>
+							<h4 class="modal-title">Confirm</h4>
+						</div>
+						<div class="modal-body">
+							<p>All added fee suits data need to be filled.</p>
+						</div>
+						<div class="modal-footer">
+							<div class="buttonwrapper">
+								<!-- //<a class="ovalbutton">Save</a> -->
+								<a class="ovalbutton" onclick="{ $('#cover').hide();$('#msgBoxFeeSuitData').hide(); }">Close</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted">
+					<div id="practiceManagementDiv">
+						<div id="header">
+							<span id="#Include:headerNewApp.html#"/>
+						</div>
+						<div class="menuTab">
+							<span id="#Include:tabsNewApp.html#"></span>
+						</div>
+						<div id="contentSection">
+							<div class="confirmationMsgAlign" id="morePracticeManagement_freeform_contextdata_100">
+								<label class="Confirmation" name="pageMsg" id="pageMsg" />
+								<!-- <div id="error_ApplicationNotCompleted" class="error11Bold"> </div> -->
+							</div>
+							<div>
+								<div>
+									<h2 class="questionHeading">More Practice Management</h2>
+								</div>
+								<div class="form">
+									<table class="question underwriting_width" cellpadding="0" cellspacing="0" >
+									
+										<tr id="morePracticeManagement_freeform_contextdata_0101">
+											<td>1.</td>
+											<td width="90%">
+												<div id="error_IsSyndicationManagers" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft">Have your or your predecessors within the past five years, provide(d) services to investment funds, hedge funds, mutual funds or syndication managers?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsSyndicationManagers" id="IsSyndicationManagers" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsSyndicationManagers" id="IsSyndicationManagers" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr id="morePracticeManagement_freeform_contextdata_0102">
+											<td>2.</td>
+											<td width="90%">
+												<div id="error_IsNonPublicInvestmentDone" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft">Have your, your personnel or your predecessors within the past five years, invested in any non-public investment venture in which a client has also invested?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsNonPublicInvestmentDone" id="IsNonPublicInvestmentDone" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsNonPublicInvestmentDone" id="IsNonPublicInvestmentDone" value="N"/>No</span>
+											</td>
+										</tr>
+										<tr id="morePracticeManagement_freeform_contextdata_0103">
+											<td>3.</td>
+											<td>
+												<div id="error_IsSuitInstituted" class="error"/>
+												<span class="mendatory">*</span>In the past three years have you initiated lawsuits or arbitration procedures to enforce the collection of unpaid fees of any client?
+											</td>
+											<td>
+												<span class="radio-inline">
+													<input type="radio" name="IsSuitInstituted" id="IsSuitInstituted" value="Y" onclick="loadFeeSuitSupplement();"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsSuitInstituted" id="IsSuitInstituted" value="N" onclick="loadFeeSuitSupplement();"/>No</span>
+											</td>
+										</tr>
+										<tr id="showFeeSuitSupp" style="display:none;">
+										<td colspan="3" class="">
+											If they answer Yes to the fee suit question this will show on the screen
+											<div id="suppDiv" class="default">
+												<div id="feeSuitSupplement">
+													<div id="DefaultOpenForm:feeSuitSupplement"></div>
+												</div>
+											</div>
+										</td>
+									</tr>
+										<tbody id="morePracticeManagement_freeform_contextdata_0104">
+										<tr>
+											<td>4.</td>
+											<td width="90%">
+												<div id="error_IsPolicyExcludesCoverage" class="error"/>
+												<span class="mendatory">*</span>
+												<span class="floatLeft">Does your current policy above exclude coverage for any predecessor Firms, Firm affiliates, clients, specific engagements or other circumstances?</span>
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsPolicyExcludesCoverage" id="IsPolicyExcludesCoverage" value="Y" onchange="loadmorePractManagement();"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsPolicyExcludesCoverage" id="IsPolicyExcludesCoverage" value="N" onchange="loadmorePractManagement();"/>No</span>
+											</td>
+										</tr>
+										<tr id="rowsm2" class="default paddingNone" style="display:none;">
+											<td/>
+											<td colspan="2">
+												<table width="100%" style="margin: 10px 0px;">
+													<tr>
+														<td></td>
+														<td>
+															<div id="error_RetroFirmName" class="error"/>
+														</td>
+													</tr>
+													<tr>
+														<td style="padding-left: 6px; width: 14%;" align="right">If Yes, please describe :</td>
+														<td>
+															<textarea rows="4" name="RetroFirmName" id="RetroFirmName" cols="80" class="inputbox"
+															style="width: 78%; height: 50px;"onkeyup="limitText(this,1,5000);"/>
+														</td>
+													</tr>
+												</table>
+
+											</td>
+										</tr>
+										<tr>
+											<td>5.</td>
+											<td>
+												<div id="error_needCyberCoverage" class="error"/>
+												<span class="mendatory">*</span>Are you interested in obtaining Cyber coverage?
+	
+											</td>
+											<td>
+												<span class="radio-inline">
+													<input type="radio" name="needCyberCoverage" id="needCyberCoverage" value="Y"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="needCyberCoverage" id="needCyberCoverage" value="N"/>No</span>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+									
+								</div>
+								
+							</div>
+						</div>
+						<div class="buttons borderTop row marginsBtn">
+							<div class="floatLeft">
+								<a class="btn back" href="javascript:submitform('practiceManagement.html','morePracticeManagement.back','','');" >Back</a>
+							</div>
+							<div class="floatRight">
+								<span id="showPageSave">
+									<a class="btn save" onclick="return validateFeeSuitData();" href="javascript:submitform('trustsAndOfficer.html','morePracticeManagement.save','','');" >Save&nbsp;&&nbsp;Continue</a>
+								</span>
+								<span id="showContinue">
+									<a  href="javascript:submitform('trustsAndOfficer.html','morePracticeManagement.continue','','');"  class="btn next">Continue</a>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!---------Footer Start---------->
+					<div id="footer" class="footer">
+						<span id="#Include:footerNewApp.html#"/>
+					</div>
+					<!---------Footer End---------->
+					<table id="morePracticeManagement_freeform_contextdata_999">
+						<tr>
+							<td>
+								<input type="hidden" name="jsessionid" id="jsessionid" />
+								<input type="hidden" name="divHideShow" id="divHideShow" />
+								<input type="hidden" name="AppCreatedDate" id="AppCreatedDate" />
+								<input type="hidden" name="ProducerCode" id="ProducerCode2" />
+								<input type="hidden" name="approveSubjective" id="approveSubjective" />
+								<!-- <input type="text" name="page" id="page"/> -->
+
+								<input type="hidden" name="firmNewAppPage" id="firmNewAppPage"/>
+								<input type="hidden" name="insuranceHistoryPage" id="insuranceHistoryPage" />						
+
+								<input type="hidden" name="bankruptcySuppPage" id="bankruptcySuppPage" />
+								<input type="hidden" name="collectionSuppPage" id="collectionSuppPage" />
+								<input type="hidden" name="copyrightSuppPage" id="copyrightSuppPage" />
+								<input type="hidden" name="familyLawSuppPage" id="familyLawSuppPage" />
+								<input type="hidden" name="financialSuppPage" id="financialSuppPage" />
+								<input type="hidden" name="governmentSuppPage" id="governmentSuppPage" />
+								<input type="hidden" name="litigationSuppPage" id="litigationSuppPage" />
+								<input type="hidden" name="realEstateSuppPage" id="realEstateSuppPage" />
+								<input type="hidden" name="willStateSuppTrustPage" id="willStateSuppTrustPage"/>
+								<input type="hidden" name="taxSuppPage" id="taxSuppPage" />
+
+								<input type="hidden" name="aboutFirmPage" id="aboutFirmPage" />
+								<input type="hidden" name="aboutFirmRenewalPage" id="aboutFirmRenewalPage" />
+								<input type="hidden" name="PolicyStatusKey" id="PolicyStatusKey" />
+								<input type="hidden" name="practiceManagementPage" id="practiceManagementPage" />
+								<input type="hidden" name="morePracticeManagementPage" id="morePracticeManagementPage"/>
+								<input type="hidden" name="underWritingInfoPage" id="underWritingInfoPage" />
+								<input type="hidden" name="pastClaimsPage" id="pastClaimsPage" />
+
+								<script type="text/javascript" src="script/manageTab.js"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script>
+		/* $('#msgBoxFeeSuitData').hide(); */
+	</script>
+</html>

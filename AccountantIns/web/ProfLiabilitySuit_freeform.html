@@ -1,0 +1,940 @@
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>Untitled Document</title>
+<script src="js/jquery.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+	<body>
+		<form>
+			<div id="eval:AccountantRule.IsNotRenewalPolicy">
+				<div id="ProfLiabilitySuit_freeform">
+					<table width="94%" border="0" align="center" cellpadding="2"
+						cellspacing="0" id="claimInfo_freeform_02">
+						<!--<tr>
+                      		<td><div id="ajax_errors_list"></div></td>
+                       </tr>-->
+						<tr>
+							<td></td>
+							<td colspan="2">
+								<div id="ajax_error_NameOfClaimantCi" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Full name of claimant or potential
+								claimant:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="NameOfClaimantCi" type="text" disabled="disabled"
+										class="inputbox" id="ajax_field_NameOfClaimantCi" size="47" />
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="NameOfClaimantCi"
+										id="ajax_field_NameOfClaimantCi" size="47" maxlength="100"
+										tabindex="540"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_IsClientCi" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input type="radio" disabled="disabled" name="IsClientCi"
+										id="ajax_field_IsClientCi" value="Y" />
+									Client
+									<input type="radio" disabled="disabled" name="IsClientCi"
+										id="ajax_field_IsClientCi" value="N" />
+									Non-Client
+								</span>
+
+								<span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="radio" name="IsClientCi"
+										id="ajax_field_IsClientCi" value="Y" tabindex="545" />
+									Client
+									<input type="radio" name="IsClientCi"
+										id="ajax_field_IsClientCi" value="N" tabindex="550" />
+									Non-Client
+								</span>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_IsThisClaimReportedCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right" nowrap="nowrap">
+								Has this claim or potential claim been reported to your
+								insurance company?
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isBasicInfoPageReadOnly"
+									colspan="2"> <select name="IsThisClaimReportedCi"
+										disabled="disabled" id="ajax_field_IsThisClaimReportedCi"
+										class="inputbox">
+										<option></option>
+										<option value="Y">
+											Yes
+										</option>
+										<option value="N">
+											No
+										</option>
+									</select> </span>
+								<span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<select name="IsThisClaimReportedCi"
+										id="ajax_field_IsThisClaimReportedCi" class="inputbox"
+										tabindex="555">
+										<option></option>
+										<option value="Y">
+											Yes
+										</option>
+										<option value="N">
+											No
+										</option>
+									</select> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_NameOfInsuranceCompanyCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Name of insurance company:
+							</td>
+							<td align="left" colspan="2">
+								<!--         <span id="eval:AccountantRule.isBasicInfoPageReadOnly">
+		                                      <select name="NameOfInsuranceCompanyCi" disabled="disabled" id="ajax_field_NameOfInsuranceCompanyCi">
+		                                           <option value="" >Select</option>
+		                                      </select>
+	                                      </span>
+	                                      <span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+		                                      <select name="NameOfInsuranceCompanyCi" id="ajax_field_NameOfInsuranceCompanyCi"  class="inputbox" tabindex="175">
+		                                           <option value="" >Select</option>
+		                                      </select>
+	                                      </span>    -->
+
+
+								<span id="eval:AccountantRule.isBasicInfoPageReadOnly"> <input
+										name="NameOfInsuranceCompanyCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_NameOfInsuranceCompanyCi" size="20" /> </span>
+								<span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input name="NameOfInsuranceCompanyCi" type="text"
+										class="inputbox" id="ajax_field_NameOfInsuranceCompanyCi"
+										size="20" maxlength="100" tabindex="560"
+										 /> <!-- onblur="javascript:capitalizeSentences(this,1);" --></span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_AllegedErrorCiDate" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Date of alleged error:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="AllegedErrorCiDate" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_AllegedErrorCiDate" size="10" maxlength="10" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="AllegedErrorCiDate"
+										id="ajax_field_AllegedErrorCiDate" size="10" maxlength="8"
+										onkeyup="applyDateFormat(this,event);" tabindex="565" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" />(MM/DD/YYYY) 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ReportedCiDate" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Date reported to insurance company:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="ReportedCiDate" type="text" disabled="disabled"
+										class="inputbox" id="ajax_field_ReportedCiDate" size="10"
+										maxlength="10" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ReportedCiDate"
+										id="ajax_field_ReportedCiDate" size="10" maxlength="8"
+										onkeyup="applyDateFormat(this,event);" tabindex="570" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" />(MM/DD/YYYY) 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ClaimNotifiedCiDate"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Date the Firm was notified of claim:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="ClaimNotifiedCiDate" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_ClaimNotifiedCiDate" size="10" maxlength="10" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ClaimNotifiedCiDate"
+										id="ajax_field_ClaimNotifiedCiDate" size="10" maxlength="8"
+										onkeyup="applyDateFormat(this,event);" tabindex="575" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" />(MM/DD/YYYY) 
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_NameOfFirmPersonnelCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Names of Firm personnel involved in
+								the claim or potential claim:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="NameOfFirmPersonnelCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_NameOfFirmPersonnelCi" size="47" />
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox"
+										name="NameOfFirmPersonnelCi"
+										id="ajax_field_NameOfFirmPersonnelCi" maxlength="100"
+										size="47" tabindex="580"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Current Status:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="CurrentStatus" type="text" disabled="disabled"
+										class="inputbox" id="ajax_field_CurrentStatus" size="50" />
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="CurrentStatus"
+										id="ajax_field_CurrentStatus" size="50" maxlength="50"
+										tabindex="585" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ClaimantLastDemandCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								and/or the claimant's last demand:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="ClaimantLastDemandCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_ClaimantLastDemandCi" size="20" maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ClaimantLastDemandCi"
+										id="ajax_field_ClaimantLastDemandCi" size="20" maxlength="20"
+										onClick="javascript:attachAmountFormat(this);"
+										onKeyUp="limitAmountText(this,15);" tabindex="590" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ClosingCiDate" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								If closed, provide Date closed:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="ClosingCiDate" type="text" disabled="disabled"
+										class="inputbox" id="ajax_field_ClosingCiDate" size="10"
+										maxlength="10" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ClosingCiDate"
+										id="ajax_field_ClosingCiDate" size="10" maxlength="8"
+										tabindex="595" onkeyup="applyDateFormat(this,event);" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" />(MM/DD/YYYY) 
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_TotalClaimExpensesCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Total amount paid (including damages and defense expenses):
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isBasicInfoPageReadOnly">
+									<input name="TotalClaimExpensesCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_TotalClaimExpensesCi" size="20" maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="TotalClaimExpensesCi"
+										id="ajax_field_TotalClaimExpensesCi" size="20" maxlength="20"
+										onClick="javascript:attachAmountFormat(this);"
+										onKeyUp="limitAmountText(this,15);" tabindex="600" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_DescOfClaimCi" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<p>
+									<span class="red">*</span>Description of claim or potential
+									claim:
+								</p>
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isBasicInfoPageReadOnly"> <textarea
+										name="DescOfClaimCi" readonly="readonly"
+										id="ajax_field_DescOfClaimCi" cols="45" rows="5"
+										class="inputbox"></textarea> </span>
+								<span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<textarea name="DescOfClaimCi" id="ajax_field_DescOfClaimCi"
+										class="inputbox" cols="45" rows="5" tabindex="605"
+										onKeyUp="limitText(this,1,5000);"></textarea> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								What steps have been taken within your Firm to prevent similar
+								claims?
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isBasicInfoPageReadOnly"> <textarea
+										name="StepsTakenToPreventClaimCi" readonly="readonly"
+										id="ajax_field_StepsTakenToPreventClaimCi" cols="45" rows="5"
+										class="inputbox"></textarea> </span>
+								<span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+									<textarea name="StepsTakenToPreventClaimCi"
+										id="ajax_field_StepsTakenToPreventClaimCi" class="inputbox"
+										cols="45" rows="5" tabindex="610"
+										onKeyUp="limitText(this,1,5000);"></textarea> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								&nbsp;
+							</td>
+							<td align="left" colspan="2">
+								<table border="0" cellspacing="0" cellpadding="1">
+									<tr>
+										<td align="left" id="eval:events.saveEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('BasicInfo.html','ProfLiabilitySuit_freeform.save','','','divAy5');"
+															class="button4"
+															onClick="setFocus('IsAwarenessOfAnyProfLiabilitySuitAgainst'); showDivArea(['editN'], ['editY']); "
+															tabindex="615">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left" id="eval:events.editEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('BasicInfo.html','ProfLiabilitySuit_freeform.update','','','divAy5');"
+															class="button4"
+															onClick="showDivArea(['editN'], ['editY']); setFocus('IsAwarenessOfAnyProfLiabilitySuitAgainst');"
+															tabindex="620">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left">
+											<table border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('BasicInfo.html','ProfLiabilitySuit_freeform.close','','','divAy5');"
+															onClick="setFocus('IsAwarenessOfAnyProfLiabilitySuitAgainst');"
+															class="button4" tabindex="625">Cancel</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+					</table>
+
+
+				</div>
+			</div>
+			<div id="eval:AccountantRule.IsRenewalPolicy">
+				<div id="ProfLiabilitySuit_freeform">
+					<table width="94%" border="0" align="center" cellpadding="2"
+						cellspacing="0" id="claimInfo_freeform_02">
+						<!--<tr>
+                      		<td><div id="ajax_errors_list"></div></td>
+                       </tr>-->
+						<tr>
+							<td></td>
+							<td colspan="2">
+								<div id="ajax_error_NameOfClaimantCi" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Full name of claimant or potential
+								claimant:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="NameOfClaimantCi" type="text" disabled="disabled"
+										class="inputbox" id="ajax_field_NameOfClaimantCi" size="47" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="NameOfClaimantCi"
+										id="ajax_field_NameOfClaimantCi" size="47" maxlength="100"
+										tabindex="540"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_IsClientCi" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input type="radio" disabled="disabled" name="IsClientCi"
+										id="ajax_field_IsClientCi" value="Y" />
+									Client
+									<input type="radio" disabled="disabled" name="IsClientCi"
+										id="ajax_field_IsClientCi" value="N" />
+									Non-Client
+								</span>
+
+								<span id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="radio" name="IsClientCi"
+										id="ajax_field_IsClientCi" value="Y" tabindex="545" />
+									Client
+									<input type="radio" name="IsClientCi"
+										id="ajax_field_IsClientCi" value="N" tabindex="550" />
+									Non-Client
+								</span>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_IsThisClaimReportedCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right" nowrap="nowrap">
+								Has this claim or potential claim been reported to your
+								insurance company?
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"
+									colspan="2"> <select name="IsThisClaimReportedCi"
+										disabled="disabled" id="ajax_field_IsThisClaimReportedCi"
+										class="inputbox">
+										<option></option>
+										<option value="Y">
+											Yes
+										</option>
+										<option value="N">
+											No
+										</option>
+									</select> </span>
+								<span id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<select name="IsThisClaimReportedCi"
+										id="ajax_field_IsThisClaimReportedCi" class="inputbox"
+										tabindex="555">
+										<option></option>
+										<option value="Y">
+											Yes
+										</option>
+										<option value="N">
+											No
+										</option>
+									</select> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_NameOfInsuranceCompanyCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Name of insurance company:
+							</td>
+							<td align="left" colspan="2">
+								<!--         <span id="eval:AccountantRule.isBasicInfoPageReadOnly">
+		                                      <select name="NameOfInsuranceCompanyCi" disabled="disabled" id="ajax_field_NameOfInsuranceCompanyCi">
+		                                           <option value="" >Select</option>
+		                                      </select>
+	                                      </span>
+	                                      <span id="eval:AccountantRule.isBasicInfoPageNotReadOnly">
+		                                      <select name="NameOfInsuranceCompanyCi" id="ajax_field_NameOfInsuranceCompanyCi"  class="inputbox" tabindex="175">
+		                                           <option value="" >Select</option>
+		                                      </select>
+	                                      </span>    -->
+
+
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"> <input
+										name="NameOfInsuranceCompanyCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_NameOfInsuranceCompanyCi" size="20" /> </span>
+								<span id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input name="NameOfInsuranceCompanyCi" type="text"
+										class="inputbox" id="ajax_field_NameOfInsuranceCompanyCi"
+										size="20" maxlength="100" tabindex="560"
+										onblur="javascript:capitalizeSentences(this,1);" /> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_AllegedErrorCiDate" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Date of alleged error:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="AllegedErrorCiDate" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_AllegedErrorCiDate" size="10" maxlength="10" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="AllegedErrorCiDate"
+										id="ajax_field_AllegedErrorCiDate" size="10" maxlength="8"
+										onkeyup="applyDateFormat(this,event);" tabindex="565" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" />(MM/DD/YYYY) 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ReportedCiDate" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Date reported to insurance company:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="ReportedCiDate" type="text" disabled="disabled"
+										class="inputbox" id="ajax_field_ReportedCiDate" size="10"
+										maxlength="10" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ReportedCiDate"
+										id="ajax_field_ReportedCiDate" size="10" maxlength="8"
+										onkeyup="applyDateFormat(this,event);" tabindex="570" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" />(MM/DD/YYYY) 
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ClaimNotifiedCiDate"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Date the Firm was notified of claim:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="ClaimNotifiedCiDate" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_ClaimNotifiedCiDate" size="10" maxlength="10" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ClaimNotifiedCiDate"
+										id="ajax_field_ClaimNotifiedCiDate" size="10" maxlength="8"
+										onkeyup="applyDateFormat(this,event);" tabindex="575" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" />(MM/DD/YYYY) 
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_NameOfFirmPersonnelCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Names of Firm personnel involved in
+								the claim or potential claim:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="NameOfFirmPersonnelCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_NameOfFirmPersonnelCi" size="47" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox"
+										name="NameOfFirmPersonnelCi"
+										id="ajax_field_NameOfFirmPersonnelCi" maxlength="100"
+										size="47" tabindex="580"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Current Status:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="CurrentStatus" type="text" disabled="disabled"
+										class="inputbox" id="ajax_field_CurrentStatus" size="50" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="CurrentStatus"
+										id="ajax_field_CurrentStatus" size="50" maxlength="50"
+										tabindex="585" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ClaimantLastDemandCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								and/or the claimant's last demand:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="ClaimantLastDemandCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_ClaimantLastDemandCi" size="20" maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ClaimantLastDemandCi"
+										id="ajax_field_ClaimantLastDemandCi" size="20" maxlength="20"
+										onClick="javascript:attachAmountFormat(this);"
+										onKeyUp="limitAmountText(this,15);" tabindex="590" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ClosingCiDate" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								If closed, provide Date closed:
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="ClosingCiDate" type="text" disabled="disabled"
+										class="inputbox" id="ajax_field_ClosingCiDate" size="10"
+										maxlength="10" />
+									(MM/DD/YYYY)
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ClosingCiDate"
+										id="ajax_field_ClosingCiDate" size="10" maxlength="8"
+										tabindex="595" onkeyup="applyDateFormat(this,event);" />
+									<a title="Select Date" class="calendar-link" id="date_link"
+										onClick="show_calendar_widget(this);"><img
+											src="img/icon_calendar.gif" alt="calendar" width="12"
+											height="12" hspace="4" border="0" />(MM/DD/YYYY) 
+								</div>
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_InsurerLossReserveCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						
+						<tr>
+							<td align="right">
+								If open, provide: Insurer's loss reserve 
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="InsurerLossReserveCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_InsurerLossReserveCi" size="20" maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="InsurerLossReserveCi"
+										id="ajax_field_InsurerLossReserveCi" size="20" maxlength="20"
+										onClick="javascript:attachAmountFormat(this);"
+										onKeyUp="limitAmountText(this,15);" tabindex="590" />
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_TotalClaimExpensesCi"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Total amount paid (including damages and defense expenses):
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="TotalClaimExpensesCi" type="text"
+										disabled="disabled" class="inputbox"
+										id="ajax_field_TotalClaimExpensesCi" size="20" maxlength="20" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="TotalClaimExpensesCi"
+										id="ajax_field_TotalClaimExpensesCi" size="20" maxlength="20"
+										onClick="javascript:attachAmountFormat(this);"
+										onKeyUp="limitAmountText(this,15);" tabindex="600" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_DescOfClaimCi" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<p>
+									<span class="red">*</span>Description of claim or potential
+									claim:
+								</p>
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"> <textarea
+										name="DescOfClaimCi" readonly="readonly"
+										id="ajax_field_DescOfClaimCi" cols="45" rows="5"
+										class="inputbox"></textarea> </span>
+								<span id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<textarea name="DescOfClaimCi" id="ajax_field_DescOfClaimCi"
+										class="inputbox" cols="45" rows="5" tabindex="605"
+										onKeyUp="limitText(this,1,5000);"></textarea> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								What steps have been taken within your Firm to prevent similar
+								claims?
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"> <textarea
+										name="StepsTakenToPreventClaimCi" readonly="readonly"
+										id="ajax_field_StepsTakenToPreventClaimCi" cols="45" rows="5"
+										class="inputbox"></textarea> </span>
+								<span id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<textarea name="StepsTakenToPreventClaimCi"
+										id="ajax_field_StepsTakenToPreventClaimCi" class="inputbox"
+										cols="45" rows="5" tabindex="610"
+										onKeyUp="limitText(this,1,5000);"></textarea> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								&nbsp;
+							</td>
+							<td align="left" colspan="2">
+								<table border="0" cellspacing="0" cellpadding="1">
+									<tr>
+										<td align="left" id="eval:events.saveEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('BasicInfo.html','ProfLiabilitySuit_freeform.save','','','divAy5');"
+															class="button4"
+															onClick="setFocus('IsAwarenessOfAnyProfLiabilitySuitAgainst'); showDivArea(['editN'], ['editY']); "
+															tabindex="615">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left" id="eval:events.editEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('BasicInfo.html','ProfLiabilitySuit_freeform.update','','','divAy5');"
+															class="button4"
+															onClick="showDivArea(['editN'], ['editY']); setFocus('IsAwarenessOfAnyProfLiabilitySuitAgainst');"
+															tabindex="620">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left">
+											<table border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td background="images/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('BasicInfo.html','ProfLiabilitySuit_freeform.close','','','divAy5');"
+															onClick="setFocus('IsAwarenessOfAnyProfLiabilitySuitAgainst');"
+															class="button4" tabindex="625">Cancel</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+						</tr>
+					</table>
+
+
+				</div>
+			</div>
+			<table id="ProfLiabilitySuit_freeform_contextdata_17">
+				<tr>
+					<td>
+						<input type="hidden" name="jsessionid" id="jsessionid" />
+					</td>
+				</tr>
+			</table>
+
+
+		</form>
+	</body>
+</html>

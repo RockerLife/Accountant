@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Workq</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="script/manageperformance.js"></script>
+		<script type="text/javascript" src="script/producerOnePerformance.js"></script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+<body onload="loadManageReportDataTemplate();getWindowSize();">
+<form>
+<div id="cover"></div>
+			<div id="contextLinks"></div>
+			<div id="#REPORTING_EXPORT_POPUP#">
+				<div id="popupExport" style="width: 500px;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" class="popupBg">
+								<table cellpadding="0" cellspacing="0" width="100%" border="0">
+									<tr>
+										<td class="popupHeader" colspan="2">
+											Export
+										</td>
+									</tr>
+									<tr id="#EXPORT#">
+										<td valign="top"
+											style="padding-left: 30px; padding-top: 30px; width: 2px">
+											<input type="radio" name="exporttype" id="exporttype_0"
+												checked="checked" value="1" />
+										</td>
+										<td style="padding-top: 30px; padding-left: 10px">
+											<span><b>Export records currently shown on the
+													page?</b> </span>
+										</td>
+									</tr>
+									<tr id="#SCHEDULE#">
+										<td valign="top" style="padding-left: 30px; width: 2px">
+											<input type="radio" name="exporttype" id="exporttype_1"
+												value="2" onclick="javascript:swapOutputType(this.id);" />
+										</td>
+										<td style="padding-left: 10px">
+											<span><b>Schedule to export all records?</b> </span>
+										</td>
+									</tr>
+									<tr id="#EXPORTALL#">
+										<td valign="top" style="padding-left: 30px; width: 2px">
+											<input type="radio" name="exporttype" id="exporttype_2"
+												checked="checked" value="3" />
+										</td>
+										<td style="padding-left: 10px">
+											<span><b>Export all records?</b> </span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<table border="0">
+												<tr>
+													<td valign="top" style="padding-left: 30px; width: 105px">
+														<b>Report format : </b>
+													</td>
+													<td>
+														<select name="outputtype" id="outputtype"
+															style="width: 100px">
+															<option value="E">
+																Excel
+															</option>
+															<option value="P">
+																PDF
+															</option>
+														</select>
+													</td>
+												</tr>
+											</table>
+										</td>
+
+									</tr>
+									<tr>
+										<td colspan="2">&nbsp;
+											
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<table align="right">
+												<tr>
+													<td>
+														<div class="buttonwrapper" style="float: right">
+															<a id="#REPORTING_EXPORT_SUBMIT_LINK#" class="ovalbutton"><span>SUBMIT</span>
+															</a>
+														</div>
+													</td>
+													<td>
+														<div class="buttonwrapper" style="float: right">
+															<a class="ovalbutton" onclick="closePopUp('popupExport')"><span>CANCEL
+															</span> </a>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>&nbsp;
+											
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td width="27px" valign="top" style="background-color: none;">
+								<a onclick="closePopUp('popupExport')"><span><img
+											src="images/close.png" /> </span> </a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div id="#REPORTING_GRAPH_POPUP#">
+				<div id="popupGraph" style="width: 950px;">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" class="popupBg">
+								<table cellpadding="0" cellspacing="0" width="100%" border="0">
+									<tr>
+										<td class="popupHeader" id="#GRAPHTITLE#">
+											Graph
+										</td>
+									</tr>
+
+									<tr>
+										<td align="left" style="padding: 0px 0px 0px;">
+											<table cellpadding="0" cellspacing="0" width="100%">
+												<tr>
+													<td>
+														<table align="center">
+															<tr>
+																<td nowrap="nowrap">
+																	Select Type :
+																</td>
+																<td>
+																	<select name="graphtype" id="graphtype"
+																		onchange="loadGraphFromAJAX();" style="width: 150px">
+																		<option value="">
+																			Select
+																		</option>
+																		<option value="bar">
+																			Bar
+																		</option>
+																		<option value="line">
+																			Line
+																		</option>
+																		<option value="pie">
+																			Pie
+																		</option>
+																		<option value="geo">
+																			Geo
+																		</option>
+																	</select>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div
+															style="overflow-x: auto; overflow-y: hidden; height: 400px;">
+															<table align="center" border="0"
+																id="managereportdatatemplate_freeform_contextdata_2"
+																width="100%">
+
+																<tr>
+																	<!--<td>
+													<img src="#" id="#GRAPHLINK#"/>
+												</td>
+												-->
+																	<td colspan="2">
+																		<div id="graph_div"></div>
+																	</td>
+																</tr>
+															</table>
+														</div>
+													</td>
+												</tr>
+											</table>
+
+										</td>
+									</tr>
+									<tr>
+										<td class="popupFooter">
+											<table align="right" cellpadding="0" cellspacing="0">
+												<tr>
+													<td>
+														<div class="buttonwrapper" style="float: right">
+															<a id="#REPORTING_POPUPGRAPH_CLOSE_LINK#" href="#"
+																class="ovalbutton" onclick="closePopUp('popupGraph')"><span>CANCEL
+															</span> </a>
+														</div>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+
+								</table>
+							</td>
+							<td width="27px" valign="top" style="background-color: none;">
+								<a id="#REPORTING_POPUPGRAPH_CLOSE_LINK#" href="#"
+									onclick="closePopUp('popupGraph')"><span><img
+											src="images/close.png" /> </span> </a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+<div class="container-fluid bootstrap-node-1">
+	<div class="tableWidth manageDataReport">
+		<div id="header">
+			<span id="#Include:../headerNewApp.html#"></span>
+		</div>
+		<div id="contentSection">
+			<h2 class="questionHeading" id="#REPORTING_NAME#">Report
+			</h2>
+			<div class="form">
+				<div class="block-form">
+					<table
+						id="managereportdatatemplate_freeform_contextdata_1"
+						width="100%">
+						<tr>
+							<td align="center">
+								<label name="pageMsg" id="pageMsg"
+									class="Confirmation"></label>
+							</td>
+						</tr>
+					</table>
+					<table cellpadding="0" cellspacing="0"
+						width="100%">
+						<tr>
+							<td id="#REPORTING_DATA_AREA#">
+								<table cellpadding="1" cellspacing="0"
+									width="100%" border="0">
+									<tr>
+										<td class="gridTopPadding">
+											<table cellpadding="0" cellspacing="0"
+												width="100%" border="0">
+												<tr>
+													<td class="gridTable">
+														<table cellpadding="0" cellspacing="0"
+															width="100%" id="#REPORTING_LIST#"
+															border="0">
+															<tr id="#REPORTING_LIST_PAGINATION#">
+																<td>
+																	<table cellpadding="3"
+																		cellspacing="0" border="0"
+																		width="100%">
+																		<tr>
+																			<td align="left" width="2%"
+																				nowrap="nowrap">
+																				Records per page :
+																			</td>
+																			<td align="left" width="1%">
+																				<select id="PAGE_SIZE"
+																					name="PAGE_SIZE" class="inputbox">
+																					<option value="100">
+																						100
+																					</option>
+																					<option value="200">
+																						200
+																					</option>
+																					<option value="500">
+																						500
+																					</option>
+																				</select>
+																			</td>
+																			<td align="center">
+																				<table cellpadding="1"
+																					cellspacing="1">
+																					<tr>
+																						<td nowrap="nowrap"
+																							align="center">
+																							Viewing
+																						</td>
+																						<td id="START_INDEX"
+																							class="paginationTxt"></td>
+																						<td class="linright">
+																							to
+																						</td>
+																						<td id="END_INDEX"
+																							class="paginationTxt"></td>
+																						<td class="linright">
+																							of
+																						</td>
+																						<td id="TOTAL_RECORD"
+																							class="paginationTxt"></td>
+																					</tr>
+																				</table>
+																			</td>
+																			<td align="right" width="160px"
+																				nowrap="nowrap">
+																				<table border="0" cellspacing="1"
+																					cellpadding="1">
+																					<tr>
+																						<td id="firstpagelink">
+																							<a id="FIRSTPAGELINK"
+																								title="First Page"
+																								tabindex="21"> <img
+																									src="img/button_sort_first.gif" width="25"
+																									height="20" border="0" /> </a>
+																						</td>
+																						<td id="previouspagelink">
+																							<a id="PREVIOUSPAGELINK"
+																								title="Previous" tabindex="21">
+																								<img
+																									src="img/button_sort_back.gif" width="25" height="20"
+																									border="0" />  </a>
+																						</td>
+																						<td nowrap="nowrap">
+																							Page :
+																						</td>
+																						<td>
+																							<select id="PAGE_NUMBER"
+																								name="PAGE_NUMBER"
+																								class="inputbox">
+																							</select>
+																						</td>
+																						<td id="nextpagelink">
+																							<a id="NEXTPAGELINK"
+																								title="Next" tabindex="21">
+																								<img
+																									src="img/button_sort_next.gif" width="25" height="20"
+																									border="0" /> </a>
+																						</td>
+																						<td id="lastpagelink">
+																							<a id="LASTPAGELINK"
+																								title="Last Page"
+																								tabindex="21"> <img
+																									src="img/button_sort_last.gif" width="25" height="20"
+																									border="0" /> </a>
+																						</td>
+																					</tr>
+																				</table>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																	<div style="overflow:auto;" class="manageReportTemplateDiv" id="report_Data_Table">
+																		<table cellpadding="0"
+																			cellspacing="0" width="100%">
+																			<tr id="#REPORTING_LIST_HEADER#">
+
+																			</tr>
+																			<tbody>
+																				<tr id="#REPORTING_LIST_DATA#">
+
+																				</tr>
+																			</tbody>
+																		</table>
+																	</div>
+																</td>
+															</tr>
+
+
+														</table>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;
+								
+							</td>
+						</tr>
+						<tr id="isShowFiltersSearchTrue">
+							<td id="#REPORTING_SEARCHED_FILTERS_BLOCK#">
+								<fieldset>
+									<legend>
+										Selected Filters
+									</legend>
+									<table width="100%" cellpadding="0"
+										cellspacing="2" border="0">
+										<tr
+											id="#REPORTING_SEARCHED_FILTERS_DATA_AREA#">
+											<td></td>
+										</tr>
+									</table>
+								</fieldset>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="buttonwrapper"
+									style="float: right">
+									<a id="isDrillDownReportTrue"
+										 class="btn button1" href="#"><span>Back</span>
+									</a>
+									<a  class="btn button1" href="#"
+										onclick="window.open('','_self','');window.close();"><span>CLOSE</span>
+									</a>
+									<a id="isShowExportButtonTrue"
+										 class="btn button1"
+										onclick="javascript:showExportPopup();"
+										href="#"><span>Export</span> </a>
+									<a id="isShowGraphButtonTrue"
+										 class="btn button1" href="#"><span>Graph</span>
+									</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				<div>
+			</div>
+		</div>				
+	</div>
+	<!---------Footer Start---------->
+	<div id="footer" class="footer">
+		<span id="#Include:../footerNewApp.html#"></span>
+	</div>
+	<!---------Footer End---------->
+</div>	
+		
+		<table id="reporting_freeform_contextdata_0" cellpadding="0" cellspacing="">
+				<tr>
+					<td>
+						<input type="hidden" name="jsessionid" id="jsessionid" />
+						<input type="hidden" name="search_xml" id="search_xml" />
+						<input type="hidden" name="search_xml_desc" id="search_xml_desc" />
+						<input type="hidden" name="selected_filter_data"
+							id="selected_filter_data" />
+						<input type="hidden" name="groupby" id="groupby" />
+						<input type="hidden" name="outputcolumns" id="outputcolumns" />
+						<input type="hidden" name="isDrillDownReportTrue"
+							id="isDrillDownReportTrue" />
+						<input type="hidden" name="ISCOMINGFORDATAONLY"
+							id="ISCOMINGFORDATAONLY" />
+						<input type="hidden" name="popupsearchcolumns"
+							id="popupsearchcolumns" />
+
+						<input type="hidden" name="isgraph" id="isgraph" />
+						<input type="hidden" name="graphlink" id="graphlink" />
+						<input type="hidden" name="divHideShow" id="divHideShow" />
+						<input type="hidden" name="divHideShow1" id="divHideShow1" />
+						<input type="hidden" name="divHideShow2" id="divHideShow2" />
+						<!-- <input type="hidden" name="graphoptions" id="graphoptions" /> 
+					<input type="hidden" name="graphdatatablecolumns" id="graphdatatablecolumns" />
+					<input type="hidden" name="barcolors" id="barcolors" />
+					<input type="hidden" name="xaxislabel" id="xaxislabel" />
+					<input type="hidden" name="yaxislabel" id="yaxislabel" />
+					<input type="hidden" name="graphtitle" id="graphtitle" />
+					<input type="hidden" name="graphtype" id="graphtype" />-->
+					</td>
+				</tr>
+			</table>
+	</form>
+<script type="text/javascript">
+
+function getWindowSize(){
+var d= document, root= d.documentElement, body= d.body;
+var wid= window.innerWidth || root.clientWidth || body.clientWidth, 
+ hi= window.innerHeight || root.clientHeight || body.clientHeight ;
+wid=wid-66;
+document.getElementById("report_Data_Table").style.width = wid+'px';
+}
+</script>
+
+</body>
+
+</html>

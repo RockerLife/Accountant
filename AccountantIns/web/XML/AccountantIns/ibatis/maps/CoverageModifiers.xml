@@ -1,0 +1,44 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CoverageModifiers">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from CoverageModifiers</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from CoverageModifiers where CoverageSequence = #CoverageSequence# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into CoverageModifiers(CoverageSequence, TransactionSequence, PolicyKey, ModifierKey
+          <isNotEmpty property="Percentage" prepend=",">Percentage</isNotEmpty>
+          <isNotEmpty property="Comment" prepend=",">Comment</isNotEmpty>
+          <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID</isNotEmpty>
+          <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp</isNotEmpty>
+          <isNotEmpty property="RenewalPercentage" prepend=",">RenewalPercentage</isNotEmpty>
+          ) values (#CoverageSequence:NUMERIC#, #TransactionSequence:NUMERIC#, #PolicyKey:NUMERIC#, #ModifierKey:NUMERIC#
+          <isNotEmpty property="Percentage" prepend=",">#Percentage#</isNotEmpty>
+          <isNotEmpty property="Comment" prepend=",">#Comment#</isNotEmpty>
+          <isNotEmpty property="LastUpdateUserID" prepend=",">#LastUpdateUserID#</isNotEmpty>
+          <isNotEmpty property="LastUpdateTimeStamp" prepend=",">#LastUpdateTimeStamp#</isNotEmpty>
+          <isNotEmpty property="RenewalPercentage" prepend=",">#RenewalPercentage#</isNotEmpty>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select Percentage, Comment, LastUpdateUserID, LastUpdateTimeStamp, RenewalPercentage, CoverageSequence, TransactionSequence, PolicyKey, ModifierKey from CoverageModifiers where CoverageSequence = #CoverageSequence# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update CoverageModifiers set
+          <dynamic prepend=" ">
+               <isNotEmpty property="Percentage" prepend=",">Percentage = #Percentage#</isNotEmpty>
+               <isEmpty property="Percentage" prepend=",">Percentage = null</isEmpty>
+               <isNotEmpty property="Comment" prepend=",">Comment = #Comment#</isNotEmpty>
+               <isEmpty property="Comment" prepend=",">Comment = null</isEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = #LastUpdateUserID#</isNotEmpty>
+               <isEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = null</isEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = #LastUpdateTimeStamp#</isNotEmpty>
+               <isEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = null</isEmpty>
+               <isNotEmpty property="RenewalPercentage" prepend=",">RenewalPercentage = #RenewalPercentage#</isNotEmpty>
+               <isEmpty property="RenewalPercentage" prepend=",">RenewalPercentage = null</isEmpty>
+          </dynamic>
+          where CoverageSequence = #CoverageSequence# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from CoverageModifiers where CoverageSequence = #CoverageSequence# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from CoverageModifiers</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from CoverageModifiers where CoverageSequence = #CoverageSequence# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select Percentage, Comment, LastUpdateUserID, LastUpdateTimeStamp, RenewalPercentage, CoverageSequence, TransactionSequence, PolicyKey, ModifierKey from CoverageModifiers where CoverageSequence = #CoverageSequence# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select CoverageSequence, TransactionSequence, PolicyKey, ModifierKey, Percentage, Comment, LastUpdateUserID, LastUpdateTimeStamp, RenewalPercentage from CoverageModifiers where CoverageSequence = #CoverageSequence# and TransactionSequence = #TransactionSequence# and PolicyKey = #PolicyKey# and ModifierKey = #ModifierKey#</select>
+</sqlMap>
+

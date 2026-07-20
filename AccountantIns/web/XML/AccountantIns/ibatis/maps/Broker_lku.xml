@@ -1,0 +1,6 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Broker_lku">
+     <select id="getBrokerLkuDetails" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select BrokerKey, BrokerDesc from Broker_lku  where isArchived='False' order by BrokerDesc asc</select>
+</sqlMap>
+

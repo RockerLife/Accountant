@@ -1,0 +1,28 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Modifiers">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from Modifiers</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from Modifiers</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into Modifiers(ModifierKey
+          <isNotEmpty property="ModifierDesc" prepend=",">ModifierDesc</isNotEmpty>
+          ) values (#ModifierKey:NUMERIC#
+          <isNotEmpty property="ModifierDesc" prepend=",">#ModifierDesc#</isNotEmpty>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select ModifierKey, ModifierDesc from Modifiers where ModifierKey = #ModifierKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update Modifiers set
+          <dynamic prepend=" ">
+               <isNotEmpty property="ModifierDesc" prepend=",">ModifierDesc = #ModifierDesc#</isNotEmpty>
+               <isEmpty property="ModifierDesc" prepend=",">ModifierDesc = null</isEmpty>
+          </dynamic>
+          where ModifierKey = #ModifierKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from Modifiers where ModifierKey = #ModifierKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from Modifiers</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from Modifiers</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select ModifierKey, ModifierDesc from Modifiers where ModifierKey = #ModifierKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select ModifierKey, ModifierDesc from Modifiers</select>
+</sqlMap>
+

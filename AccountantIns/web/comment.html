@@ -1,0 +1,177 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Comments</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+		<script type="text/javascript" src="script/account.js"></script>
+		<script language="javascript" src="script/lawyers.js"> </script>
+		<script type="text/javascript" src="script/tabber.js"></script>
+		<script type="text/javascript" src="script/test_new.js"></script>
+		<script type="text/javascript" src="script/manage.js"></script>
+		<script type="text/javascript" src="script/masks.js"></script>
+		<script type="text/javascript" src="script/popup.js"></script>
+		<script type="text/javascript" src="script/utility.js"></script>
+		<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form name="myForm">
+			<DIV class=popup id="isControlFunds">
+				Do Not Quote - Refer to Management
+			</DIV>
+			<DIV class=popup id="isCountersignature">
+				Refer to Management
+			</DIV>
+			<DIV class=popup id="isBankAccount">
+				Refer to Management
+			</DIV>
+			<div id="contextLinks"></div>
+<div class="container-fluid bootstrap-node-1">
+	<div class="tableWidth">
+		<div id="header">
+			<span id="#Include:headerNewApp.html#"></span>
+		</div>
+		<div id="contentSection">
+			<h2 class="questionHeading">
+				Comments
+			</h2>
+			<div class="form">
+				<div class="block-form">
+					<div id="error_TransactionError" class="defult_tr_errors" align="center"></div>
+					<div class="defult_tr_errors" id="tr_error_indication_div"  align="center">
+						<div id="error_indication_div" class="error11Bold"  align="center"></div>
+					</div>
+					
+					<div>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="freeFormDiv form-inline">
+									<ul class="inlineBlock">
+										<li class="inlineBlock_1">
+											<div class="freeFormList form-group">
+												<div class="freeFormListTr">
+													<div class="freeFormListTdError">
+														<h6>&nbsp;</h6>
+													</div>
+													<div class="freeFormListTdError paddingLeft3">
+														<div id="eval:AccountantRule.isCommentDownloadNot">
+															<span id="error_CommentUploaded" class="error"></span>
+														</div>
+													</div>
+												</div>
+												<div class="freeFormListTr">
+													<div class="freeFormListTd labelAlign">Comment :</div>
+													<div class="freeFormListTd tdInput">
+														<div id="eval:AccountantRule.isCommentDownloadNot">
+															<textarea rows="4" name="CommentUploaded"
+																id="CommentUploaded" cols="80" class="form-control"
+																tabindex="20" onkeyup="limitText(this,1,8000);" style="width: 100%; "></textarea>
+														</div>
+														<div id="eval:AccountantRule.isCommentDownload">
+															<textarea rows="4" name="CommentUploaded"
+																id="CommentUploaded" cols="80" readonly="readonly" class="form-control"
+																tabindex="20"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-6">
+							</div>
+						</div>
+						<div class="row paddingTop20 paddingBottom10">
+							<table id="comment_list_01" width="100%" border="0"
+								cellspacing="1" cellpadding="5" class="gridTable">
+								<tr id="uploadexcelpopup_list_header_01">
+									<th id="block_field_QuoteNumber" width="10%">
+										Quote Number
+									</th>
+									<th id="block_field_AgentName" width="15%">
+										User Name
+									</th>
+									<th id="block_field_UploadedTime" width="15%">
+										Date
+									</th>
+									<th id="block_field_CommentUploaded" width="50%">
+										Comment
+									</th>
+									<!-- <th id="block_field_show_row_link"
+										width="10%"></th> -->
+								</tr>
+
+								<tr id="comment_list_data_01">
+									<td align="left" id="block_field_QuoteNumber" width="10%"
+										class="text13Arial"></td>
+									<td align="left" id="block_field_AgentName" width="15%"
+										class="text13Arial"></td>
+									<td align="left" id="block_field_UploadedTime"
+										width="15%" class="text13Arial"></td>
+									<td align="left" id="block_field_CommentUploaded"
+										width="50%" class="text13Arial"></td>
+									<!-- <td align="left" id="block_field_show_row_link"
+										width="10%" class="text13Arial">
+										<a href="javascript:submitform('comment.html','comment.show','','');"																	
+											class="text13Arial">View</a>
+									</td> -->
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="buttons borderTop row" id="eval:AccountantRule.isCommentDownloadNot">
+				<div class="floatLeft">
+					<a class="btn back"
+						href="javascript:submitform('list.html|BasicInfo.html|general.html|Practice-Management.html|attestation.html|computer-services.html|invest-finan-planing.html|indexThanks.html|quoteOption.html|confirmation.html|paymentmethod.html|RenewBasicInfo.html|Business-funds-control.html|FirmNewApp.html|insuranceHistoryNewApp.html|aboutFirm.html|AOPNewApp.html|practiceManagementSupp.html|investmentFinancialPlanningSupp.html|computerRelatedServices.html|mainBusinessManagementSupplement.html|auditSupplement.html|practiceManagement.html|morePracticeManagement.html|trustsAndOfficer.html|pastClaims.html|CancellationReinstatementEndorsement.html|limitsDeductibleOptions.html|nameAddressPriorActsExtension.html|certificateInsurance.html|ERPQuoteLetter.html|ERPEndrosement.html','comment.back','forwardeval','AccountantRule.isListPage|AccountantRule.isBasicInfoPage|AccountantRule.isGeneralPage|AccountantRule.isPracticeManagementPage|AccountantRule.isAttestationPage|AccountantRule.isComputerServicesPage|AccountantRule.isInvestFinanPlaningPage|AccountantRule.isIndexThanksPage|AccountantRule.isQuoteOptionPage|AccountantRule.isConfirmationPage|AccountantRule.isPaymentmethodPage|AccountantRule.isRenewBasicPage|AccountantRule.isBusinessFundsControlPage|AccountantRule.isFirmNewAppPage|AccountantRule.isInsuranceHistoryPage|AccountantRule.isAboutFirm|AccountantRule.isAopPage|AccountantRule.isPracticeManagementSuppPage|AccountantRule.isInvestmentFinancialPlanningSuppPage|AccountantRule.isComputerRelatedServicesPage|AccountantRule.isMainBusinessManagementSupplementPage|AccountantRule.isAuditSupplementPage|AccountantRule.isPracticeManagementPageNew|AccountantRule.isMorePracticeManagementPage|AccountantRule.isTrustsAndOfficerPage|AccountantRule.isPastClaimsPage|AccountantRule.isCancellationEndorsementPage|AccountantRule.isLimitEndorsementPage|AccountantRule.isNameAddressPriorActsExtensionPage|AccountantRule.isCertificateInsurancePage|AccountantRule.isERPQuoteLetterPage|AccountantRule.isERPEndrosementPage');">Back</a>
+				</div>
+				<div class="floatRight">
+					<a class="btn save" href="javascript:submitform('comment.html','comment.save','','');">Save</a>
+				</div>
+			</div>
+			<div class="buttons borderTop row" id="eval:AccountantRule.isCommentDownload">
+				<div class="floatLeft">
+					<a class="btn back" href="javascript:submitform('comment.html','comment.close','','');">Close</a>
+				</div>
+				<div class="floatRight">
+					
+				</div>
+			</div>
+		</div>				
+	</div>
+	<!---------Footer Start---------->
+	<div id="footer" class="footer">
+		<span id="#Include:footerNewApp.html#"></span>
+	</div>
+	<!---------Footer End---------->
+</div>			
+		<table id="uploadexcelpopup_freeform_contextdata_101">
+				<tr>
+					<td><input type="hidden" name="jsessionid" id="jsessionid"/>
+					<!-- <input type="text" name="VersionKey" id="VersionKey"/> -->
+					
+					</td>
+					
+				</tr>
+			</table>	
+
+		</form>
+		
+	</body>
+
+</html>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <Match>
+        <Class name="~org\.datacontract\.schemas\._2004\._07\.(IPFS_DTO|IntegrationSDK_Model)\..*"/>
+        <Bug pattern="HSM_HIDING_METHOD"/>
+    </Match>
+</FindBugsFilter>

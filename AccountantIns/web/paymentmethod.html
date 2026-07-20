@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Quote Option</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css"/>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css"/>
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+		<script src="js/jquery.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script type="text/javascript" src="script/account.js"/>
+		<script language="javascript" src="script/lawyers.js"/>
+		<script type="text/javascript" src="script/tabber.js"/>
+		<script type="text/javascript" src="script/test_new.js"/>
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/utility.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+		<script type="text/javascript">
+			function checks() {
+				document.getElementById("EffectiveDate").disabled = true;
+			}
+		</script>
+		<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"/>
+	</head>
+	<body onload="setPaymentModeType();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<div id="cover" style="width: 100%; height: 100%;"/>
+		<div id="popup" style="width: 430px;">
+			<table width="75%" border="0" align="center" cellpadding="10" cellspacing="0" height="120px">
+				<tr>
+					<td align="center">
+						<b>Please be patient while your policy is being issued.</b>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<form>
+			<div id="contextLinks"/>
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth">
+					<div id="header">
+						<span id="#Include:headerNewApp.html#"/>
+					</div>
+					<div id="contentSection">
+						<h2 class="questionHeading"> Payment Information</h2>
+						<div class="form">
+							<!-- <div id="eval:AccountantRule.isShowPaymentMessageForInsured">
+								<div class="bgrowyellow" style="font-weight: bold; margin-top:30px;">
+										<br/>
+											<p style="text-align:center;">Please contact your Protexure Account Executive by calling 888-803-9898 to set up payment for your policy.</p>
+										<br/>
+										</div>
+										<div class="buttons row borderTop" style="border-right: none">
+											<br/>
+											<div class="" style="float: center;" id="exit_freeform_contextdata_012">
+													<a id="eval:AccountantRule.isQAEnvironment" href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+													<a id="eval:AccountantRule.isUATEnvironment" href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+													<a id="eval:AccountantRule.isProdEnvironment" href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+											</div>
+										</div>
+							</div> -->
+							<div id="1eval:AccountantRule.isNotShowPaymenyOptionsForInsured">
+								<div class="block-form" id="payment_freeform_contextdata_01">
+									<div class="row">
+									
+										<div id="error_TransactionError" align="center" class="defult_tr_errors"/>
+										<div id="error_DocUploadError" align="center" class="defult_tr_errors"/>
+										<div class="defult_tr_errors" id="tr_error_indication_div" align="center">
+											<div id="error_indication_div" class="error11Bold"/>
+										</div>
+										<div id="error_referalsFlagsNotCleard" align="defult_tr_errors" class="center"></div>
+									</div>
+									<div class="row">
+										<p>If you need assistance please contact Protexure Insurance Agency, Inc. at 888-803-9898 and we will happily provide you with any assistance needed.</p>
+									</div>
+									<div id="eval:AccountantRule.Accept_Status" style="text-align: center; width: 100%;">
+										<div id="eval:AccountantRule.isFinalisedQuoteSelected" style="display: inline-block; width: 40%;">
+											
+											<div id="eval:AccountantRule.showOtherPaymentMode">
+												<table border="0" cellpadding="20px" height="150px" width="100%">
+													<tr>
+														<td colspan="3" align="center">
+															<div id="error_PaymentMode" class="defult_tr_errors"/>
+														</td>
+													</tr>
+													<tr id="">
+														<td width="" align="center" nowrap="nowrap" class="label">
+															<b>Payment Mode</b>
+															<span class="label" style="padding-left: 20px;">
+																<span id="eval:AccountantRule.isPaymentPageNotReadOnly">
+																	<span id="eval:AccountantRule.isAgent">
+																		<select name="PaymentMode" class="form-control" style="width:200px;" id="PaymentMode" onchange="setPaymentModeType();">
+																			<option value="">Select</option>
+																			<option value="eft">Manual Check</option>
+																			<option id="eval:AccountantRule.IsNotSubProducerPolicy" value="finance">Financing</option>
+																			<option id="eval:AccountantRule.IsNotSubProducerPolicy" value="totalPay">Total Pay</option>
+																		</select>
+																	</span>
+																	<span id="eval:AccountantRule.isInsured">
+																		<select name="PaymentMode" class="form-control" style="width:200px;" id="PaymentMode" onchange="setPaymentModeType();">
+																			<option value="">Select</option>
+																			<option value="eft">Manual Check</option>
+																			<option id="eval:AccountantRule.showPaypalDiv29Days" value="paypal">Debit/Credit Card</option>
+																			<option id="eval:AccountantRule.showACHDiv29Days" value="ach">ACH</option>
+																			<option id="eval:AccountantRule.isIPFSShowToInsured29Days" value="finance">Financing</option>
+																		</select>
+																	</span>
+																</span>
+																<span id="eval:AccountantRule.isPaymentPageReadOnly">
+																	<span>
+																		<select name="PaymentMode" class="form-control" style="width:200px;" id="PaymentMode" disabled="disabled">
+																			<option value="">Select</option>
+																			<option value="eft">Manual Check</option>
+																			<option value="paypal">Debit/Credit Card</option>
+																			<option value="ach">ACH</option>
+																			<option value="finance">Financing</option>
+																			<option value="totalPay">Total Pay</option>
+																		</select>
+																	</span>
+																</span>
+															</span>
+														</td>
+													</tr>
+													<tr id="otherPaymentButtonDiv" style="display: none;">
+														<td>
+															<div id="eval:AccountantRule.isAgent">
+																<table align="center">
+																	<tr>
+																		<td>
+																			<a class="btn next" href="javascript:submitform('paymentmethod.html','paymentmethod.saveOther','','');">Save</a>
+																		</td>
+																		<td>
+																			<div id="eval:AccountantRule.isQAEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																			<div id="eval:AccountantRule.isUATEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																			<div id="eval:AccountantRule.isProdEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</td>
+													</tr>
+													<tr id="EFTPaymentButtonDiv" style="display: none;">
+														<td>
+															<div class="paddingTop20">
+																<table border="0" align="center" cellspacing="0" cellpadding="0" id="eval:AccountantRule.isPaymentPageNotReadOnly">
+																	<tr>
+																		<td nowrap="nowrap">
+																			<div id="eval:AccountantRule.isInsured">
+																				<a class="btn next" href="javascript:submitform('indexThanksPayment.html','paymentmethod.saveEFT','','');">Save and Continue</a>
+																			</div>
+																		</td>
+																		<td nowrap="nowrap">
+																			<div id="eval:AccountantRule.isAgent">
+																				<table border="0" cellspacing="1" cellpadding="0">
+																					<tr>
+																						<td>
+																							<div>
+																								<a class="btn save" href="javascript:submitform('paymentmethod.html','paymentmethod.save','','');">Save</a>
+																							</div>
+																						</td>
+																						<td>
+																							<div id="eval:AccountantRule.isQAEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																							<div id="eval:AccountantRule.isUATEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																							<div id="eval:AccountantRule.isProdEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+																<table border="0" align="center" cellspacing="0" cellpadding="0" id="eval:AccountantRule.isPaymentPageReadOnly">
+																	<tr>
+																		<td nowrap="nowrap">
+																			<div id="eval:AccountantRule.isQAEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																			<div id="eval:AccountantRule.isUATEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																			<div id="eval:AccountantRule.isProdEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</td>
+													</tr>
+													<tr id="otherIPFSDiv" style="display: none;">
+														<td align="center">
+															<div class="paddingTop10 paddingBottom10" id="1eval:AccountantRule.IsPremiumGreaterThanFinanceLimit">
+																<table border="0" align="center" cellspacing="0" cellpadding="0" id="eval:AccountantRule.isPaymentPageNotReadOnly">
+																	<tr>
+																		<td nowrap="nowrap">
+																			<div id="eval:AccountantRule.isIPFSShowToInsured">
+																				<div id="eval:AccountantRule.isIPFSERRORSNot">
+																					<table align="center">
+																						<tr>
+																							<td colspan="2" style="font-weight: bold;">
+																								<div style="font-weight: 550;">Step 1</div>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td style="font-weight: bold; padding-top: 5px; padding-left: 45px;" colspan="2" >
+																								<b>Please select your Payment Schedule Below.</b>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td style="padding-top: 5px; padding-left: 45px;">
+																								<table>
+																									<tr>
+																										<td align="center" width="150px">
+																											<input type="radio" name="IPFSFinanceQurMon" id="IPFSFinanceQuarterly" value="IPFSFinanceQuarterly"/> Quarterly
+																											<div style="width: 77px; padding-top: 8px"> 30% down 3 payments</div>
+																										</td>
+																										<td align="center">
+																											<span class="label" style="text-align: left;">
+																												<input type="radio" name="IPFSFinanceQurMon" id="IPFSFinanceMonthly" value="IPFSFinanceMonthly"/> Monthly
+																											</span>
+																											<div style="width: 77px; padding-top: 8px"> 20% down 9 payments</div>
+																										</td>
+																									</tr>
+																								</table>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td style="padding-top: 5px; padding-left: 45px;">
+																								<div id="error_IPFSFinanceQurMon" class="defult_tr_errors"/>
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURLNot">
+																							<td align="center" style="padding-top: 5px;">
+																								<a class="btn next" href="javascript:submitform('paymentmethod.html','paymentmethod.generateIPFSPFA','','');">Press Continue</a>
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURL">
+																							<td align="left" colspan="2" style="font-weight: bold;">
+																								<div style="font-weight: 550;">Step 2</div>
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURL">
+																							<td style="font-weight: bold; padding-top: 5px; padding-left: 45px;" colspan="2" >
+																								<b>Select Down Payment Method Below.</b>
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURL">
+																							<td style="padding-top: 5px; padding-left: 45px;">
+																								<table>
+																									<tr>
+																										<td align="center" width="150px">
+																											<input type="radio" name="IPFSFinanceCCACHMC" id="IPFSFinanceCCACH" value="IPFSFinanceCCACH"/> Credit Card / ACH
+																										</td>
+																										<td align="center">
+																											<span class="label" style="text-align: left; display: none;">
+																												<input type="radio" name="IPFSFinanceCCACHMC" id="IPFSFinanceManualCheck" value="IPFSFinanceManualCheck"/> Manual Check
+																											</span>
+																										</td>
+																									</tr>
+																								</table>
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURL">
+																							<td style="padding-top: 5px; padding-left: 45px;">
+																								<div id="error_IPFSFinanceCCACHMC" class="defult_tr_errors"/>
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURL">
+																							<td align="left" colspan="2" style="font-weight: bold;">
+																								<div style="font-weight: 550;">Step 3</div>
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURL">
+																							<td colspan="2" style="padding-top: 5px; padding-left: 45px;">
+																								<input type="checkbox" name="isIPFSPFA" id="isIPFSPFA"/>&nbsp;&nbsp;I have read the Premium Finance Agreement (PFA) as shown in the link.
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURL">
+																							<td style="padding-top: 5px; padding-left: 45px;">
+																								<div id="error_isIPFSPFA" class="defult_tr_errors"/>
+																							</td>
+																						</tr>
+																						<tr id="eval:AccountantRule.isIPFSPFAURL">
+																							<td style="padding-top: 20px">
+																								<a class="btn next" onclick="ipfsPFAPreview();">Please review PFA</a>
+																								<a class="btn next" href="javascript:submitform('indexThanksPayment.html','paymentmethod.saveContinue','','');">Save and Continue</a>
+																							</td>
+																						</tr>
+																					</table>
+																				</div>
+																				<div id="eval:AccountantRule.isIPFSERRORS">
+																					<div id="error_ipfsErrorsDesc" class="defult_tr_errors"/>
+																				</div>
+																			</div>
+																		</td>
+																		<td nowrap="nowrap">
+																			<div id="eval:AccountantRule.isAgent">
+																				<table border="0" cellspacing="1" cellpadding="0">
+																					<tr>
+																						<td nowrap>Please enter the IPFS Quote Number :
+																					</td>
+																					<td>
+																						<input type="text" style="height: 22px" name="ipfsQuoteNumber" id="ipfsQuoteNumber"/>
+																					</tr>
+																					<tr>
+																						<td class="paddingTop5">
+																							<a class="btn save" href="javascript:submitform('paymentmethod.html','paymentmethod.save','','');">Save </a>
+																						</td>
+																						<td nowrap="nowrap">
+																							<div id="eval:AccountantRule.isQAEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																							<div id="eval:AccountantRule.isUATEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																							<div id="eval:AccountantRule.isProdEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+																<table border="0" align="center" cellspacing="0" cellpadding="0" id="eval:AccountantRule.isPaymentPageReadOnly">
+																	<tr>
+																		<td nowrap>Please enter the IPFS Quote Number :
+																	</td>
+																	<td>
+																		<input type="text" style="height: 22px" name="ipfsQuoteNumber" readonly="readonly" id="ipfsQuoteNumber"/>
+																	</tr>
+																	<tr>
+																		<td/>
+																		<td class="paddingTop5">
+																			<div id="eval:AccountantRule.isQAEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																			<div id="eval:AccountantRule.isUATEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																			<div id="eval:AccountantRule.isProdEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+															<!-- <div class="paddingTop10 paddingBottom10" id="eval:AccountantRule.IsNotPremiumGreaterThanFinanceLimit">
+																<div class="defult_tr_errors" style="text-align: center;">The maximum premium in a financing case should be greater than $800.</div>
+															</div> -->
+														</td>
+													</tr>
+													<tr id="CC_ACHPaymentDiv" style="display: none;">
+														<td>
+															<div class="paddingTop20">
+																<table border="0" align="center" cellspacing="0" cellpadding="0" id="eval:AccountantRule.isPaymentPageNotReadOnly">
+																	<tr>
+																		<td nowrap="nowrap">
+																			<div id="eval:AccountantRule.isInsured">
+																				<table align="center">
+																					<tr>
+																						<td>
+																							<a class="btn next" href="javascript:submitform('andDone.html','paymentmethod.saveAndDone','','');">Proceed To Payment</a>
+																						</td>
+																						<td>
+																							<div id="eval:AccountantRule.isQAEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																							<div id="eval:AccountantRule.isUATEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																							<div id="eval:AccountantRule.isProdEnvironment">
+																								<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																							</div>
+																						</td>
+																					</tr>
+																				</table>
+																			</div>
+																		</td>
+																		<td nowrap="nowrap">
+																			<div id="eval:AccountantRule.isAgent">
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+																<table border="0" align="center" cellspacing="0" cellpadding="0" id="eval:AccountantRule.isPaymentPageReadOnly">
+																	<tr>
+																		<td>
+																			<div id="eval:AccountantRule.isQAEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																			<div id="eval:AccountantRule.isUATEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																			<div id="eval:AccountantRule.isProdEnvironment">
+																				<a href="https://www.protexureaccountants.com" class="btn next">Exit</a>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+										<div id="eval:AccountantRule.isFinalisedQuoteNotSelected">
+											<div id="error_FinalisedQuoteError" class="defult_tr_errors" style="text-align: center;"> </div>
+											<div id="error_isQuoteExpired" class="defult_tr_errors" style="text-align: center;"> </div>
+										</div>
+									</div>
+									<div id="eval:AccountantRule.isAcceptedNot">
+										<div class="defult_tr_errors" style="text-align: center;">This Policy is not Accepted.</br>For any questions or assistance please call 888-803-9898 to reach your Protexure Agent.</div>
+								</div>
+								<div class="row paddingTop20" align="center">
+									<div id="error_ApplicationComplete" align="center" class="defult_tr_errors"/>
+									<div id="error_issuanceError" class="errorHeading"/>
+									<div id="error_PolicyIssuanceError" style="font-family: Arial;font-size: 16px; xcolor: #fe0e02; color: #FF0000; font-weight: bold;"/>
+									<div id="CFPolicyIssuance_Security">
+										<div id="eval:AccountantRule.isPaymentPageNotReadOnly">
+											<div id="eval:AccountantRule.isPolicySendQuoteOrIssueForCompany">
+												<div id="eval:AccountantRule.showIssuePolicy" class="border1 padding10" style="width: 70%">
+													<p align="center" style="color: #0000FF;" id="eval:AccountantRule.issuePolicyDaysValidation">
+														PLEASE BE SURE THIS IS THE RIGHT POLICY! ONCE ISSUED, THIS POLICY WILL HAVE TO BE CANCELLED AND REWRITTEN.
+													</p>
+													<p style="color: red" id="eval:AccountantRule.errorIssuePolicyDaysValidation" align="center">
+														CANNOT ISSUE THE POLICY FOR MORE THAN <span id="NewBusiness">60</span>
+														<span id="RenewBusiness">90 </span>DAYS OUT.
+													</p>
+													<p align="center" id="eval:AccountantRule.issuePolicyDaysValidation">
+														<a class="btn button1" onclick="showPopUpConfirmation('popup',434,450);" href="javascript:submitform('paymentmethod.html','paymentmethod.issuePolicy','','');">Issue Policy</a>
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!---------Footer Start---------->
+			<div id="footer" class="footer">
+				<span id="#Include:footerNewApp.html#"/>
+			</div>
+			<!---------Footer End---------->
+		</div>
+		<table id="paymentmethod_freeform_contextdata_999">
+			<tr>
+				<td>
+					<input type="hidden" name="jsessionid" id="jsessionid"/>
+					<input type="hidden" name="divHideShow" value=""/>
+					<input type="hidden" name="ctxmenuparam" value=""/>
+					<input type="hidden" name="IPFSPFAURL" id="IPFSPFAURL" value=""/>
+					<input type="hidden" name="ipfsQuoteNumber" id="ipfsQuoteNumber" value=""/>
+				</td>
+			</tr>
+		</table>
+		<div class="calendar_widget" id="calendar_widget">
+			<iframe id="calendar_widget_iframe" name="calendar_widget_iframe" src="calendar_widget.html" frameborder="0"/>
+		</iframe>
+	</div>
+</form>
+</body>
+<script>
+	loadPayment();
+	closePopupAfterIssue();
+</script>
+</html>

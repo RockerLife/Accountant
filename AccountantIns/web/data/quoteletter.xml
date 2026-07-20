@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+<address_freeform_01>
+	<AccountName>TestPolicy</AccountName>
+	<ContactPerson>Raghraj Singh</ContactPerson>
+	<Address1>No 224</Address1>
+	<Address2>NT</Address2>
+	<City>East Delhi</City>
+	<StateDesc>Delhi</StateDesc>
+	<Zip>110093</Zip> 
+</address_freeform_01>
+
+<empty></empty>
+
+<catalog>
+  <cd>
+    <title>Empire Burlesque</title>
+    <artist>Bob Dylan</artist>
+    <country>USA</country>
+    <company>Columbia</company>
+    <price>10.90</price>
+    <year>1985</year>
+  </cd>
+</catalog>
+
+</data>
+
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Served As Trustee</title>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"/>
+		<script src="js/jquery.treeview.js"/>
+		<script src="js/bootstrap_3-3-6.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script language="javascript" src="script/lawyers.js" />
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/capitalizeSentences.js"/>
+		<script src="js/producerOne.js"/>
+		<script src="js/bootstrap-datepicker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form autocomplete="off">
+			<!-- Bootstrap Core JavaScript -->
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted">
+					<div id="feeOutsideInterestDiv">
+						<div class="form" style="min-height: 250px;width:90%;" >
+							<div class="block-form" style="margin-left: 27px;">
+								<div id="firmRenderedServiceSupp">
+									<div class="freeFormDiv form-inline" id="firmRenderedServiceSupp_freeform_contextdata_001">
+										<div class="Confirmation" id="firmRenderedServiceSupp_freeform_contextdata_002" align="center">
+											<label name="pageMsg" id="pageMsg" />
+										</div>
+										<ul class="inlineBlock">
+											<li class="inlineBlock_1_fix">
+												<div class="freeFormList form-group">
+													<div class="freeFormListTr">
+														<div class="freeFormListTdError">
+															<h6>&nbsp;</h6>
+														</div>
+														<div class="freeFormListTdError paddingLeft3">
+	
+														</div>
+													</div>
+													<div class="freeFormListTr">
+														<div class="freeFormListTd">
+															<div class="txtbold">How many engagements?</div>
+														</div>
+														<div class="freeFormListTd tdInput">
+															<input type="text" name="addOutsideInterest" id="ajax_field_addOutsideInterest" maxlength="1" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;"
+															onchange="javascript:ajaxsubmitform('trustsAndOfficer.html|practiceManagement.html','firmRenderedServiceSupp.refreshGrid','forwardeval','AccountantRule.isNotRenewedPolicy|AccountantRule.isRenewedPolicy','feeOutsideInterestDiv');"/>
+															<div id="error_IsOutsideInterestSupp" class="error"> </div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="questionBlock">
+										<table cellpadding="0" cellspacing="0" width="100%">
+											<tr>
+												<td colspan="2" style="padding: 0px;">
+													<table cellspacing="0" cellpadding="2" border="0" class="gridTable" width="80%" align="center" id="OutsideInterestSupp_list_01">
+														<tbody>
+															<tr>
+																<td class="paddingTop20">
+																	<span id="ajax_error_needFirstRowFirmRendServ" class="error"/>
+																	<span id="error_completeRow" class="errors"/>
+																</td>
+															</tr>
+															<tr class="listRow2CSS">
+																<th>Firm Member</th>
+																<th>Entity Name</th>
+																<th>Industry</th>
+																<th>Position Held</th>
+																<th>Is Director/Officer Insurance in Force?</th>
+																<th>Percent Equity Interest</th>
+																<th>Firm Services</th>
+																<th><div style="width: 174px;">Does the individual Listed Perform These Services</div></th>
+																<th></th>
+															</tr>
+															<tr id="OutsideInterestSupp_list_header_01" class="no-padding">
+																<td id="block_field_ClientNameOsi"/>
+																<td id="block_field_EntityNameOsi"/>
+																<td id="block_field_ClientIndustryOsiKey"/>
+																<td id="block_field_PositionHeldOsi"/>
+																<td id="block_field_DOInsuranceOsi"/>
+																<td id="block_field_PercentEquityInterestofOsi"/>
+																<td id="block_field_ServiceIndustryOsiKey"/>
+																<td id="block_field_IndividualListedServicesOsi"/>
+																<td  id="showPageSave">
+																	<span id="block_field_deletelink_row_link"/>
+																</td>
+															</tr>
+															<tr class="listRow2CSS" id="OutsideInterestSupp_list_mom_data_01">
+																<td id="block_field_ClientNameOsi">
+																	<input name="ClientNameOsi" id="ajax_field_ClientNameOsi" type="text" maxlength="80" />
+																</td>
+																<td id="block_field_EntityNameOsi">
+																	<input name="EntityNameOsi" id="ajax_field_EntityNameOsi" type="text" maxlength="80" />
+																</td>
+																<td id="block_field_ClientIndustryOsiKey">
+																	<!-- <input name="ClientIndustryOsiKey" id="ajax_field_ClientIndustryOsiKey" type="text" maxlength="9" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;"/> -->
+																	<select name="ClientIndustryOsiKey" style="width: 126px;" id="ajax_field_ClientIndustryOsiKey" class="inputbox" >
+																		<option value="" selected="selected"> -----Select----- </option>
+																	</select>
+																</td>
+																<td id="block_field_PositionHeldOsi">
+																	<input name="PositionHeldOsi" id="ajax_field_PositionHeldOsi" type="text" maxlength="80" />
+																</td>
+																<td id="">
+																	<table cellpadding="2" cellspacing="2">
+																		<tr>
+																			<td class="padding0" nowrap id="block_field_DOInsuranceOsi">
+																				<input name="DOInsuranceOsi"  id="ajax_field_DOInsuranceOsi_FixedValue" type="radio" value="Y"/>
+																			</td>
+																			<td class="padding0">&nbsp;Yes
+																			</td>
+																			<td>&nbsp;&nbsp;&nbsp;</td>
+																			<td class="padding0" nowrap id="block_field_DOInsuranceOsi">
+																				<input name="DOInsuranceOsi"  id="ajax_field_DOInsuranceOsi_FixedValue" type="radio"  value="N"/>
+																			</td>
+																			<td class="padding0">&nbsp;No
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+																<td id="block_field_PercentEquityInterestofOsi">
+																	<input name="PercentEquityInterestofOsi" id="ajax_field_PercentEquityInterestofOsi" type="text" maxlength="9" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;" placeholder="%"/>
+																</td>
+																<td id="block_field_ServiceIndustryOsiKey">
+																	<!-- <input name="ServiceIndustryOsiKey" id="ajax_field_ServiceIndustryOsiKey" type="text" maxlength="9" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;"/> -->
+																	<select name="ServiceIndustryOsiKey"  style="width: 200px;" id="ajax_field_ServiceIndustryOsiKey" class="inputbox" >
+																		<option value="" selected="selected"> -----Select----- </option>
+																	</select>
+																</td>
+																<td id="">
+																	<table cellpadding="2" cellspacing="2">
+																		<tr>
+																			<td class="padding0" nowrap id="block_field_IndividualListedServicesOsi">
+																				<input name="IndividualListedServicesOsi"  id="ajax_field_IndividualListedServicesOsi_FixedValue" type="radio" value="Y"/>
+																			</td>
+																			<td class="padding0">&nbsp;Yes
+																			</td>
+																			<td>&nbsp;&nbsp;&nbsp;</td>
+																			<td class="padding0" nowrap id="block_field_IndividualListedServicesOsi">
+																				<input name="IndividualListedServicesOsi"  id="ajax_field_IndividualListedServicesOsi_FixedValue" type="radio"  value="N"/>
+																			</td>
+																			<td class="padding0">&nbsp;No
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+																<td  id="showPageSave">
+																	<div id="block_field_deletelink_row_link" align="right">
+																		<a href="javascript:ajaxpageblocklink('trustsAndOfficer.html|practiceManagement.html','firmRenderedServiceSupp.delete','forwardeval','AccountantRule.isNotRenewedPolicy|AccountantRule.isRenewedPolicy','feeOutsideInterestDiv');" class="Link_blue">
+																			<i class="fa fa-times delete_icon">&nbsp;</i>
+																		</a>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div class="paddingTop10 row">
+									<div  id="showPageSave">
+										<div class="floatRight">
+											<a class="btn next" href="javascript:ajaxsubmitform('trustsAndOfficer.html|practiceManagement.html','firmRenderedServiceSupp.save','forwardeval','AccountantRule.isNotRenewedPolicy|AccountantRule.isRenewedPolicy','feeOutsideInterestDiv');" >Save</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<table id="firmRenderedServiceSupp_freeform_contextdata_999">
+						<tr>
+							<td>
+								<input type="hidden" name="jsessionid" id="jsessionid" />
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

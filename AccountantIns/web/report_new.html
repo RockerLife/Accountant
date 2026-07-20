@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Reports</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/account.js"></script>
+<script language="javascript" src="script/lawyers.js"></script>
+<script type="text/javascript" src="script/tabber.js"></script>
+<script type="text/javascript" src="script/test_new.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script src="js/producerOne.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+<body>
+<form name="myForm">
+	<DIV class=popup id="isControlFunds">Do Not Quote - Refer to
+		Management</DIV>
+	<DIV class=popup id="isCountersignature">Refer to Management</DIV>
+	<DIV class=popup id="isBankAccount">Refer to Management</DIV>
+	<div id="contextLinks"></div>
+		<div class="container-fluid bootstrap-node-1">
+			<div class="tableWidth">			
+				<div id="header">
+					<span id="#Include:headerNewApp.html#"></span>
+				</div>
+				<div id="contentSection">
+					<h2 class="questionHeading">
+						Reports
+					</h2>
+					<div class="form">
+						<div class="block-form">
+							<ul class="splitList">
+								<li>
+									<a class="ico_block" href="javascript:managereport('|reportID|projectID|backPageAction|','|weeklyReportByState|AccountantIns|report_new.backReportList|','INET_OPEN_MANAGE_REPORT','MANAGE_REPORTING');">
+										Weekly Report By State
+									</a>
+								</li>
+								<li>
+									<a class="ico_block"
+										href="javascript:managereport('|reportID|projectID|backPageAction|','|AllDataForAccountant|AccountantIns|report_new.backReportList|','INET_OPEN_MANAGE_REPORT','MANAGE_REPORTING');">
+										All data for Accountant
+									</a>
+								</li>
+								<li>
+									<a class="ico_block" href="YTD-Applications.html" onclick="javascript:setAccountType2('link3');">
+										YTD Date gaps based on each workflow
+									</a>
+								</li>
+								<li>
+									<a class="ico_block"
+										href="javascript:managereport('|reportID|projectID|backPageAction|','|FetchAllAccountantData_new|AccountantIns|report_new.backReportList|','INET_OPEN_MANAGE_REPORT','MANAGE_REPORTING');">
+										<span>Data Dump Accountant</span>
+									</a>
+									
+								</li>
+								<li>
+									<a class="ico_block"
+										href="javascript:managereport('|reportID|projectID|backPageAction|','|FetchAllLawyersData_new|AccountantIns|report_new.backReportList|','INET_OPEN_MANAGE_REPORT','MANAGE_REPORTING');">
+										<span>Data Dump Lawyer</span>
+									</a>
+									<a style="display: none" href="javascript:submitform('report_new.html','report_new.backReportList','','');"></a>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+					<div class="buttons borderTop row">
+						<a class="btn back floatLeft"
+							href="javascript:submitform('workq.html','report.back','','');"
+							tabindex="43">Back</a>
+					</div>
+					
+				</div>
+			</div>
+			<!---------Footer Start---------->
+			<div id="footer" class="footer">
+				<span id="#Include:footerNewApp.html#"></span>
+			</div>
+			<!---------Footer End---------->
+		</div>
+		
+	</form>
+</body>
+</html>

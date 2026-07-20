@@ -1,0 +1,53 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Limits">
+     <select id="getDropDownLimitsPross" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select PARSENAME(Convert(varchar,Convert(money,l.AggregateLimit),1),2) +'/' +PARSENAME(Convert(varchar,Convert(money,l.OccuranceLimit),1),2) as LimitAmount,l.LimitSequence from  Limits l where CoverageKey=#CoverageKey#</select>
+     <select id="getDropDownLimitsqq" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select PARSENAME(Convert(varchar,Convert(money,l.AggregateLimit),1),2) +'/' +PARSENAME(Convert(varchar,Convert(money,l.OccuranceLimit),1),2) as LimitAmount,l.LimitSequence from  Limits l where CoverageKey=#CoverageKey# and l.AggregateLimit &lt;= 2000000 and l.OccuranceLimit &lt;= 4000000</select>
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from Limits</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from Limits where CoverageKey = #CoverageKey#</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into Limits(AggregateLimit, OccuranceLimit, CoverageKey
+          <isNotEmpty property="LimitCode" prepend=",">LimitCode</isNotEmpty>
+          <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID</isNotEmpty>
+          <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp</isNotEmpty>
+          <isNotEmpty property="LimitSequence" prepend=",">LimitSequence</isNotEmpty>
+          <isNotEmpty property="StateCode" prepend=",">StateCode</isNotEmpty>
+          ) values (#AggregateLimit:NUMERIC#, #OccuranceLimit:NUMERIC#, #CoverageKey:NUMERIC#
+          <isNotEmpty property="LimitCode" prepend=",">#LimitCode#</isNotEmpty>
+          <isNotEmpty property="LastUpdateUserID" prepend=",">#LastUpdateUserID#</isNotEmpty>
+          <isNotEmpty property="LastUpdateTimeStamp" prepend=",">#LastUpdateTimeStamp#</isNotEmpty>
+          <isNotEmpty property="LimitSequence" prepend=",">#LimitSequence#</isNotEmpty>
+          <isNotEmpty property="StateCode" prepend=",">#StateCode#</isNotEmpty>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select AggregateLimit, OccuranceLimit, LimitCode, LastUpdateUserID, LastUpdateTimeStamp, LimitSequence, StateCode, CoverageKey from Limits where AggregateLimit = #AggregateLimit# and OccuranceLimit = #OccuranceLimit# and CoverageKey = #CoverageKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update Limits set
+          <dynamic prepend=" ">
+               <isNotEmpty property="LimitCode" prepend=",">LimitCode = #LimitCode#</isNotEmpty>
+               <isEmpty property="LimitCode" prepend=",">LimitCode = null</isEmpty>
+               <isNotEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = #LastUpdateUserID#</isNotEmpty>
+               <isEmpty property="LastUpdateUserID" prepend=",">LastUpdateUserID = null</isEmpty>
+               <isNotEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = #LastUpdateTimeStamp#</isNotEmpty>
+               <isEmpty property="LastUpdateTimeStamp" prepend=",">LastUpdateTimeStamp = null</isEmpty>
+               <isNotEmpty property="LimitSequence" prepend=",">LimitSequence = #LimitSequence#</isNotEmpty>
+               <isEmpty property="LimitSequence" prepend=",">LimitSequence = null</isEmpty>
+               <isNotEmpty property="StateCode" prepend=",">StateCode = #StateCode#</isNotEmpty>
+               <isEmpty property="StateCode" prepend=",">StateCode = null</isEmpty>
+          </dynamic>
+          where AggregateLimit = #AggregateLimit# and OccuranceLimit = #OccuranceLimit# and CoverageKey = #CoverageKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from Limits where AggregateLimit = #AggregateLimit# and OccuranceLimit = #OccuranceLimit# and CoverageKey = #CoverageKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from Limits</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from Limits where CoverageKey = #CoverageKey#</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select AggregateLimit, OccuranceLimit, LimitCode, LastUpdateUserID, LastUpdateTimeStamp, LimitSequence, StateCode, CoverageKey from Limits where AggregateLimit = #AggregateLimit# and OccuranceLimit = #OccuranceLimit# and CoverageKey = #CoverageKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select AggregateLimit, OccuranceLimit, CoverageKey, LimitCode, LastUpdateUserID, LastUpdateTimeStamp, LimitSequence, StateCode from Limits where CoverageKey = #CoverageKey#</select>
+     <select id="getLimitsListBrokerage" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select l.LimitSequence,PARSENAME(Convert(varchar,Convert(money,l.AggregateLimit),1),2) +'/' +PARSENAME(Convert(varchar,Convert(money,l.OccuranceLimit),1),2) as LimitAmount from  BrokerageLimits l</select>
+     <parameterMap id="getLimitSequence_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="limitsSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="CoverageKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="getLimitSequence_p" parameterMap="getLimitSequence_pMap" resultClass="java.util.HashMap">{ call getLimitSequence_p(?,?,?)}</procedure>
+</sqlMap>
+

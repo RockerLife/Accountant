@@ -1,0 +1,61 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FirmRenderedServiceSupp">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from FirmRenderedServiceSupp</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from FirmRenderedServiceSupp</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into FirmRenderedServiceSupp(
+          <dynamic prepend=" ">
+               <isNotEmpty property="ClientNameOsi" prepend=",">ClientNameOsi</isNotEmpty>
+               <isNotEmpty property="PercentEquityInterestofOsi" prepend=",">PercentEquityInterestofOsi</isNotEmpty>
+               <isNotEmpty property="EntityNameOsi" prepend=",">EntityNameOsi</isNotEmpty>
+               <isNotEmpty property="PositionHeldOsi" prepend=",">PositionHeldOsi</isNotEmpty>
+               <isNotEmpty property="DOInsuranceOsi" prepend=",">DOInsuranceOsi</isNotEmpty>
+               <isNotEmpty property="IndividualListedServicesOsi" prepend=",">IndividualListedServicesOsi</isNotEmpty>
+               <isNotEmpty property="ClientIndustryOsiKey" prepend=",">ClientIndustryOsiKey</isNotEmpty>
+               <isNotEmpty property="ServiceIndustryOsiKey" prepend=",">ServiceIndustryOsiKey</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="ClientNameOsi" prepend=",">#ClientNameOsi#</isNotEmpty>
+               <isNotEmpty property="PercentEquityInterestofOsi" prepend=",">#PercentEquityInterestofOsi#</isNotEmpty>
+               <isNotEmpty property="EntityNameOsi" prepend=",">#EntityNameOsi#</isNotEmpty>
+               <isNotEmpty property="PositionHeldOsi" prepend=",">#PositionHeldOsi#</isNotEmpty>
+               <isNotEmpty property="DOInsuranceOsi" prepend=",">#DOInsuranceOsi#</isNotEmpty>
+               <isNotEmpty property="IndividualListedServicesOsi" prepend=",">#IndividualListedServicesOsi#</isNotEmpty>
+               <isNotEmpty property="ClientIndustryOsiKey" prepend=",">#ClientIndustryOsiKey#</isNotEmpty>
+               <isNotEmpty property="ServiceIndustryOsiKey" prepend=",">#ServiceIndustryOsiKey#</isNotEmpty>
+          </dynamic>
+          )
+          <selectKey resultClass="int" keyProperty="OutsideInterestSuppKey">SELECT IDENT_CURRENT('FirmRenderedServiceSupp') as last_insert_id</selectKey>
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select OutsideInterestSuppKey, ClientNameOsi, PercentEquityInterestofOsi, EntityNameOsi, PositionHeldOsi, DOInsuranceOsi, IndividualListedServicesOsi, ClientIndustryOsiKey, ServiceIndustryOsiKey from FirmRenderedServiceSupp where OutsideInterestSuppKey = #OutsideInterestSuppKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update FirmRenderedServiceSupp set
+          <dynamic prepend=" ">
+               <isNotEmpty property="ClientNameOsi" prepend=",">ClientNameOsi = #ClientNameOsi#</isNotEmpty>
+               <isEmpty property="ClientNameOsi" prepend=",">ClientNameOsi = null</isEmpty>
+               <isNotEmpty property="PercentEquityInterestofOsi" prepend=",">PercentEquityInterestofOsi = #PercentEquityInterestofOsi#</isNotEmpty>
+               <isEmpty property="PercentEquityInterestofOsi" prepend=",">PercentEquityInterestofOsi = null</isEmpty>
+               <isNotEmpty property="EntityNameOsi" prepend=",">EntityNameOsi = #EntityNameOsi#</isNotEmpty>
+               <isEmpty property="EntityNameOsi" prepend=",">EntityNameOsi = null</isEmpty>
+               <isNotEmpty property="PositionHeldOsi" prepend=",">PositionHeldOsi = #PositionHeldOsi#</isNotEmpty>
+               <isEmpty property="PositionHeldOsi" prepend=",">PositionHeldOsi = null</isEmpty>
+               <isNotEmpty property="DOInsuranceOsi" prepend=",">DOInsuranceOsi = #DOInsuranceOsi#</isNotEmpty>
+               <isEmpty property="DOInsuranceOsi" prepend=",">DOInsuranceOsi = null</isEmpty>
+               <isNotEmpty property="IndividualListedServicesOsi" prepend=",">IndividualListedServicesOsi = #IndividualListedServicesOsi#</isNotEmpty>
+               <isEmpty property="IndividualListedServicesOsi" prepend=",">IndividualListedServicesOsi = null</isEmpty>
+               <isNotEmpty property="ClientIndustryOsiKey" prepend=",">ClientIndustryOsiKey = #ClientIndustryOsiKey#</isNotEmpty>
+               <isEmpty property="ClientIndustryOsiKey" prepend=",">ClientIndustryOsiKey = null</isEmpty>
+               <isNotEmpty property="ServiceIndustryOsiKey" prepend=",">ServiceIndustryOsiKey = #ServiceIndustryOsiKey#</isNotEmpty>
+               <isEmpty property="ServiceIndustryOsiKey" prepend=",">ServiceIndustryOsiKey = null</isEmpty>
+          </dynamic>
+          where OutsideInterestSuppKey = #OutsideInterestSuppKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from FirmRenderedServiceSupp where OutsideInterestSuppKey = #OutsideInterestSuppKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from FirmRenderedServiceSupp</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from FirmRenderedServiceSupp</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select OutsideInterestSuppKey, ClientNameOsi, PercentEquityInterestofOsi, EntityNameOsi, PositionHeldOsi, DOInsuranceOsi, IndividualListedServicesOsi, ClientIndustryOsiKey, ServiceIndustryOsiKey from FirmRenderedServiceSupp where OutsideInterestSuppKey = #OutsideInterestSuppKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select OutsideInterestSuppKey, ClientNameOsi, PercentEquityInterestofOsi, EntityNameOsi, PositionHeldOsi, DOInsuranceOsi, IndividualListedServicesOsi, ClientIndustryOsiKey, ServiceIndustryOsiKey from FirmRenderedServiceSupp</select>
+</sqlMap>
+

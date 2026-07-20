@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Past Claims</title>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"/>
+		<script src="js/jquery.treeview.js"/>
+		<script src="js/bootstrap_3-3-6.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script language="javascript" src="script/lawyers.js" />
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/htmlMassking.js"/>
+		<script type="text/javascript" src="script/capitalizeSentences.js"/>
+		<script src="js/producerOne.js"/>
+		<script src="js/bootstrap-datepicker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body onload="showHideClaimsSupp();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form autocomplete="off" name="myForm" enctype="multipart/form-data">
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted"> 
+					<div id="header">
+						<span id="#Include:headerNewApp.html#"/>
+					</div>
+					<div class="menuTab">
+						<span id="#Include:tabsNewApp.html#"></span>
+					</div>
+					<div id="contentSection" >
+						
+						<div>
+							<h2 class="questionHeading">
+								<span>8.</span>
+								Past Claims?
+							</h2>
+						</div>
+						<div class="form">
+							<table class="question pastClaims" width="90%" cellpadding="0" cellspacing="0">
+								<tbody id="pastClaims_freeform_contextdata_01">
+									<tr>
+										<td>
+											<span >1.</span>
+										</td>
+										<td>
+											<div id="error_IsPolicyExcludesCoverage" class="error"/>
+											<span id="NewBusiness">After inquiry of all owners, partners, officers and other professional staff of the Firm, within the past five years have any past or present personnel:</span>
+											<span id="RenewBusiness">After inquiry of all owners, partners, officers and other professional staff of the Firm, within the past year have any past or present personnel:</span>
+										</td>
+										<td>
+										</td>
+									</tr>
+									<tr>
+										<td/>
+										<td width="90%">
+											<div id="error_IsAnyRegulatoryInquiry" class="error"/>
+											<div class="freeFormListTd valignTop">
+												<span class="subheading_alpha">
+													<span>a.</span>
+												</span>
+											</div>
+											<div class="freeFormListTd valignTop">
+												<span class="mendatory">*</span>
+											</div>
+											<div class="freeFormListTd valignTop">
+												<div>Been the subject of any regulatory investigation or inquiry, suspended or disbarred from practice or charged, indicted or been convicted of any criminal charge? </div>
+												<div>If "Yes" please provide details and dates.</div>
+											</div>
+										</td>
+										<td nowrap align="right">
+										
+											<span class="radio-inline">
+												<input type="radio" name="IsAnyRegulatoryInquiry" id="ajax_field_IsAnyRegulatoryInquiry" value="Y"  onclick="showHideClaimsSupp();"/>Yes</span>
+											<span class="radio-inline">
+												<input type="radio" name="IsAnyRegulatoryInquiry" id="ajax_field_IsAnyRegulatoryInquiry" value="N"  onclick="showHideClaimsSupp();"/>No</span>
+										</td>
+									</tr>
+									<tr id="criminalChargeDesc" style="display:none;">
+										<td>&nbsp;</td>
+										<td colspan="2">
+											<table width="100%">
+												<tr>
+													<td style="width: 15%;" align="right">Please Explain :</td>
+													<td nowrap>
+														<div id="error_RegulatoryInquiryExaplain" class="error"> </div>
+														<div class="iconsStyle2">
+															<textarea  id="ajax_field_RegulatoryInquiryExaplain" name="RegulatoryInquiryExaplain" rows="6" cols="65" 
+															onkeyup="limitText(this,1,3000);" style="height: 50px; width: 82%" />
+														</div>
+													</td>
+													<td/>
+												</tr>
+												<tr id="Agent_Security">
+													<td align="right" width="100px">
+														Comment by Account Rep : 
+													</td>
+													<td align="left">
+														<div id="error_RegulatoryInquiryComment" class="error"/> 
+														<textarea  id="ajax_field_RegulatoryInquiryComment" name="RegulatoryInquiryComment" rows="6" cols="65"
+														onkeyup="limitText(this,1,3000);" style="height: 50px; width: 82%" />
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td/>
+										<td>
+											<div id="error_IsAwarenessOfAnyProfLiability" class="error paddingLeft40"/>
+											<div class="freeFormListTd valignTop">
+												<span class="subheading_alpha">
+													<span>b.</span>
+												</span>
+											</div>
+											<div class="freeFormListTd valignTop">
+												<span class="mendatory">*</span>
+												know of any professional liability claims made against the firm, its affiliates or its personnel?
+											</div>
+										</td>
+										<td align="right">
+											<span class="radio-inline">
+												<input type="radio" name="IsAwarenessOfAnyProfLiability" id="ajax_field_IsAwarenessOfAnyProfLiability" value="Y" onclick="showHideClaimsSupp();"/>Yes</span>
+											<span class="radio-inline">
+												<input type="radio" name="IsAwarenessOfAnyProfLiability" id="ajax_field_IsAwarenessOfAnyProfLiability" value="N" onclick="showHideClaimsSupp();"/>No</span>
+										</td>
+									</tr>
+									<tr>
+										<td/>
+										<td>
+											<div id="error_IsAwarenessOfAnyProfLiabilitySuitAgainst" class="error paddingLeft40"/>
+											<div class="freeFormListTd valignTop">
+												<span class="subheading_alpha">
+													<span>c.</span>
+												</span>
+											</div>
+											<div class="freeFormListTd valignTop">
+												<span class="mendatory">*</span>
+											</div>
+											<div class="freeFormListTd valignTop">
+												know of any act, error or omission or fee dispute which might become the basis of a claim against the firm or its personnel?
+											</div>
+										</td>
+										<td align="right">
+											<span class="radio-inline">
+												<input type="radio" name="IsAwarenessOfAnyProfLiabilitySuitAgainst" id="ajax_field_IsAwarenessOfAnyProfLiabilitySuitAgainst" value="Y" onclick="showHideClaimsSupp();"/>Yes</span>
+											<span class="radio-inline">
+												<input type="radio" name="IsAwarenessOfAnyProfLiabilitySuitAgainst" id="ajax_field_IsAwarenessOfAnyProfLiabilitySuitAgainst" value="N" onclick="showHideClaimsSupp();"/>No</span>
+										</td>
+									</tr>
+								</tbody>
+								<tbody>
+									<tr class="default claimsSupp" style="display:none;">
+										<td colspan="3">
+											<div id="suppClaimDiv">
+												<div id="error_ClaimSupplemnts" class="error paddingLeft40"/>
+												<table width="100%" border="0" cellspacing="5" cellpadding="0">
+													<tr>
+														<td colspan="3" id="ShowClaimSuppOnPastClaim_Security">		
+															<div id="divCov1By">
+																<div id="claimSupplement">
+																	<div id="DefaultOpenForm:claimSupplement"></div>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td style="padding-top: 5px;" id="eval:AccountantRule.HideAndShowData">
+															<div class="table-responsive" style="margin-right: 20px;">
+																<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" class="gridTable" id="coverage_list_1">
+																	<tr id="coverage_list_header_1">
+																		<th align="left" id="block_field_NameOfClaimantCi">
+																			Full name of claimant or potential claimant
+																		</th>
+																		<th id="block_field_NameOfInsuranceCompanyCi">
+																			Name of insurance company
+																		</th>
+																		<th id="block_field_IsClaimInSuit">
+																			Claim in suit
+																		</th>
+																		<th id="block_field_AllegedErrorCiDate">
+																			Date of alleged error
+																		</th>
+																		<th id="block_field_ReportedCiDate">
+																			Date reported to insurance company
+																		</th>
+																		<th id="block_field_ClaimNotifiedCiDate">
+																			Date Applicant was notified or became
+																			aware of claim
+																		</th>
+																		<th id="block_field_NameOfFirmPersonnelCi">
+																			Names of Applicant personnel involved
+																			in the claim or potential claim
+																		</th>
+																		<th id="block_field_IsClientCi">
+																			Client/Non-Client
+																		</th>
+																		<th id="block_field_ClaimantLastDemandCi">
+																			Claimant's last demand
+																		</th>
+																		<th id="block_field_ClosingCiDate">
+													        				If closed, provide: Date closed
+																		</th>
+																		<th  id="block_field_TotalClaimExpensesCi">
+																			Total amount paid (including damages
+																			and defense expenses)
+																		</th>
+																		<th width="16" id="block_field_editlink_row_link"/>
+																		<th width="16" align="left" id="block_field_deletelink_row_link"/>
+																	</tr>
+																	<tbody id="coverage_list_data_1">
+
+																		<tr class="rowbg">
+																			<td align="left" id="block_field_NameOfClaimantCi"/>
+																			<td align="left" id="block_field_NameOfInsuranceCompanyCi"/>
+																			<td align="left" id="block_field_IsClaimInSuit"/>
+																			<td align="left" id="block_field_AllegedErrorCiDate"/>
+																			<td align="left" id="block_field_ReportedCiDate"/>
+																			<td align="left" id="block_field_ClaimNotifiedCiDate"/>
+																			<td align="left" id="block_field_NameOfFirmPersonnelCi"/>
+																			<td align="left" id="block_field_IsClientCi"/>
+																			<td align="left" id="block_field_ClaimantLastDemandCi">
+																				<label id="ajax_field_ClaimantLastDemandCi" name="ClaimantLastDemandCi" />
+																			</td>
+																			<td align="left" id="block_field_ClosingCiDate"/>
+																			<td align="left" id="block_field_TotalClaimExpensesCi"/>
+																			<td align="left" nowrap="nowrap" id="showPageSave">
+																				<div id="block_field_editlink_row_link">
+																					<a title="Edit" onclick="hideClaimSuppl();showEditClaimSuppl();" href="javascript:rightclickmenu('claimSupplement.html','claimSupplement.editClaims','','','div_ajaxpostioncoverageClaims_freeform:ClaimIncidentSuppKey');" class="Link_blue"> 
+																						<img src="img/edit.png" alt="Edit" border="0" />
+																					</a>
+																				</div>
+																			</td>
+																			<td align="left" nowrap="nowrap" id="showPageSave">
+																				<div id="block_field_deletelink_row_link">
+																					<a title="Delete" href="javascript:submitform('pastClaims.html','pastClaims.deleteClaim','','');">
+																						<i class="fa fa-times delete_icon">&nbsp;</i>
+																					</a>
+																				</div>
+																			</td>
+																		</tr>
+																		<tr id="coverage_ajaxpostion_list_1" class="td_error">
+																			<td align="left" colspan="12">
+																				<div id="divEditClaimCov1By">
+																				<div id="div_ajaxpostioncoverageClaims_freeform:ClaimIncidentSuppKey">
+																				</div>
+																				</div>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td align="center" id="">
+															<span id="ShowClaimSuppOnPastClaim_Security">
+															<!-- <a onclick="showHideClaimsSupp();" -->
+																<a onclick="showClaimSuppl();"
+																	class="txtBold13Maroon">
+																	<i class="fa fa-plus">&nbsp;</i> Add another Claim or Incident
+																</a>
+															</span>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+								<tbody id="pastClaims_freeform_contextdata_002" class="default claimsSupp" style="display: none;">
+									<tr>
+										<td></td>
+										<td width="90%">
+											<div class="freeFormListTd valignTop">
+												<label class="txtbold" title="Loss runs are insurance carrier reports that show how many 
+												claims you've filed under your business insurance policies. These can be requested from your current carrier." >
+												Please upload your most recent loss run pdf, if available:</label>
+											</div>
+										</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td width="90%">
+											<div id="error_DocFileName" class="error"/>
+											<div id="error_DocUploadError" class="error"/>	
+											<div class="freeFormListTd valignTop">
+												Select a document for upload
+											</div>
+										</td>
+										<td nowrap align="right">
+											<input type="file" name="file_path" class="inputbox" id="file_path" accept="application/pdf" onchange="onSelectUploadInsuedFile(this);"/>
+											<input type="text" style="display: none;" name="path" id="path" />
+										</td>
+									</tr>
+								</tbody>
+								<tbody id="NewBusiness">
+									<tr id="eval:AccountantRule.IsStateCodeMONot">
+										<td id="hideForSpecificStates" class="valignTop">2.</td>
+										<td id="hideForSpecificStates">
+											<div id="error_IsFirmDeclinedOtherthanNonPayment" class="error"/>
+											<div class="freeFormListTd valignTop"><span class="mendatory">*</span></div>
+											<div class="freeFormListTd valignTop">
+												<div>Within the past five years, has the firm or its personnel been declined , cancelled or non-renewed for professional liability insurance for any reason? </div>
+												<div>If "Yes" Please provide dates and reasons:</div>
+											</div>
+										</td>
+										<td align="right" id="hideForSpecificStates">
+											<span  id="pastClaims_freeform_contextdata_02">
+											<span class="radio-inline">
+												<input type="radio" name="IsFirmDeclinedOtherthanNonPayment" id="ajax_field_IsFirmDeclinedOtherthanNonPayment" value="Y" onclick="showHideClaimsSupp();"/>Yes</span>
+											<span class="radio-inline">
+												<input type="radio" name="IsFirmDeclinedOtherthanNonPayment" id="ajax_field_IsFirmDeclinedOtherthanNonPayment" value="N" onclick="showHideClaimsSupp();"/>No</span>
+											</span>
+										</td>
+									</tr>
+									<tr id="declinedDesc" class="default" style="display:none;">
+										<td>&nbsp;</td>
+										<td colspan="2">	
+											<table id="eval:AccountantRule.IsStateCodeMONot" width="100%" >
+												<tr id="pastClaims_freeform_contextdata_03">
+													<td style="width: 15%;" align="right">Please Explain :</td>
+													<td nowrap>
+														<div id="error_ReasonForDecline" class="error"> </div>
+														<div class="iconsStyle2">
+															<textarea  id="ajax_field_ReasonForDecline" name="ReasonForDecline" rows="6" cols="65" 
+																onkeyup="limitText(this,1,3000);" style="width: 84%; height: 50px;" />
+														</div>
+													</td>
+													<td/>
+												</tr>
+												<tr id="Agent_Security">
+													<td align="right" width="100px">
+														Comment by Account Rep  : 
+													</td>
+													<td align="left" id="pastClaims_freeform_contextdata_04">
+														<div id="error_ReasonForDeclineComment" class="error"/> 
+														<textarea  id="ajax_field_ReasonForDeclineComment" name="ReasonForDeclineComment" rows="6" cols="65" 
+														onkeyup="limitText(this,1,3000);" style="width: 84%; height: 50px;" />
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>	
+						</div>
+						<div class="buttons borderTop row marginsBtn">
+							<a  class="btn back floatLeft"href="javascript:submitform('trustsAndOfficer.html|practiceManagement.html','pastClaims.back','forwardeval','AccountantRule.isNotRenewedPolicy|AccountantRule.isRenewedPolicy');" >Back</a>
+							<div class="floatRight" id="">
+								<span id="showPageSave">
+									<a class="btn save"  href="javascript:submitform('SubmitPage.html|quoteOption.html|indexThanks.html','pastClaims.save','forwardeval','AccountantRule.isShowCompletePage|AccountantRule.showQuoteOptionTabNewAppNY|AccountantRule.isShowIndexThanksPage');" >Save&nbsp;&&nbsp;Continue</a>
+								</span>
+								<span id="showContinue">
+									<a class="btn next" href="javascript:submitform('SubmitPage.html|quoteOption.html|indexThanks.html','pastClaims.continue','forwardeval','AccountantRule.isShowCompletePage|AccountantRule.showQuoteOptionTabNewAppNY|AccountantRule.isShowIndexThanksPage');">Continue</a>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div id="footer" class="footer">
+						<span id="#Include:footerNewApp.html#"/>
+					</div>
+				</div>
+				<table id="pastClaims_freeform_contextdata_999">
+					<tr>
+						<td>
+							<input type="hidden" name="jsessionid" id="jsessionid" />
+							<input type="hidden" name="divHideShow" id="divHideShow" />
+							<input type="text" style="display: none;" name="SearchType" id="SearchType" />
+							<script type="text/javascript" src="script/manageTab.js"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</body>
+</html>

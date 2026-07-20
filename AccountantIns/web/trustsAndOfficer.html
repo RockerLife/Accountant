@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Trusts and officer</title>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"/>
+		<script src="js/jquery.treeview.js"/>
+		<script src="js/bootstrap_3-3-6.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script language="javascript" src="script/lawyers.js" />
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/capitalizeSentences.js"/>
+		<script type="text/javascript" src="script/htmlMassking.js"/>
+		<script src="js/producerOne.js"/>
+		<script src="js/bootstrap-datepicker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body onload="loadtrustsandofficer();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form autocomplete="off">
+			<div id="cover"/>
+			<!-- Modal -->
+			<div id="msgBoxTrustEstateData" class="modal" style="display: none;">
+				<div class="modal-dialog" style="width: 400px">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<a class="close" href="#" onclick="{ $('#cover').hide();$('#msgBoxTrustEstateData').hide(); }">
+								<i class="fa fa-close">&nbsp;</i>
+							</a>
+							<h4 class="modal-title">Confirm</h4>
+						</div>
+						<div class="modal-body">
+							<p>All added trust or estate data need to be filled.</p>
+						</div>
+						<div class="modal-footer">
+							<div class="buttonwrapper">
+								<!-- //<a class="ovalbutton">Save</a> -->
+								<a class="ovalbutton" onclick="{ $('#cover').hide();$('#msgBoxTrustEstateData').hide(); }">Close</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="msgBoxFirmRenderedServiceData" class="modal" style="display: none;">
+				<div class="modal-dialog" style="width: 400px">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<a class="close" href="#" onclick="{ $('#cover').hide();$('#msgBoxFirmRenderedServiceData').hide(); }">
+								<i class="fa fa-close">&nbsp;</i>
+							</a>
+							<h4 class="modal-title">Confirm</h4>
+						</div>
+						<div class="modal-body">
+							<p>All added outside interest data need to be filled.</p>
+						</div>
+						<div class="modal-footer">
+							<div class="buttonwrapper">
+								<!-- //<a class="ovalbutton">Save</a> -->
+								<a class="ovalbutton" onclick="{ $('#cover').hide();$('#msgBoxFirmRenderedServiceData').hide(); }">Close</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted"> 
+					<div id="practiceManagementDiv">
+						<div id="header">
+							<span id="#Include:headerNewApp.html#"/>
+						</div>
+						<div class="menuTab">
+							<span id="#Include:tabsNewApp.html#"></span>
+						</div>
+						<div id="contentSection">
+							<div class="confirmationMsgAlign" id="trustsAndOfficer_freeform_contextdata_1100">
+								<!-- <div id="error_ApplicationNotCompleted" class="error11Bold"> </div> -->
+							</div>
+							<div>
+								<div>
+									<h2 class="questionHeading">
+										<span>6.</span> Trusts and officer
+									</h2>
+								</div>
+								<div class="form">
+									<table class="question practiceManagement" width="80%" cellpadding="0" cellspacing="0">
+										<tr id="trustsAndOfficer_freeform_contextdata_010">
+											<td>1.</td>
+											<td width="90%">
+												<div id="error_IsServedAsTrustee" class="error"/>
+												<span class="mendatory">*</span>Have you within the past five years, served as a trustee, co-trustee, executor, administrator or personal representative for any client?
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsServedAsTrustee" id="ajax_field_IsServedAsTrustee" value="Y" onclick="loadtrustsandofficer();"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsServedAsTrustee" id="ajax_field_IsServedAsTrustee" value="N" onclick="loadtrustsandofficer();"/>No</span>
+											</td>
+										</tr>
+										<tr id="showTrustsOREstates" style="display:none;">
+											<td colspan="3" class="">
+												<span style="padding-left: 29px">If Yes require one line of below to be completed
+												Please complete the following information for each trust or estate below:</span>
+												<div id="suppDiv" class="default">
+													<div id="serverTrusteeSupp" class="paddingnone">
+														<div id="DefaultOpenForm:serverTrusteeSupp"/>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr id="trustsAndOfficer_freeform_contextdata_012">
+											<td>2.</td>
+											<td width="90%">
+												<div id="error_IsFirmRenderedServiceForAnyClient" class="error"/>
+												<span class="mendatory">*</span>Have you served as an officer, director, partner, manager or other member of a client's governing body?
+											</td>
+											<td nowrap>
+												<span class="radio-inline">
+													<input type="radio" name="IsFirmRenderedServiceForAnyClient" id="ajax_field_IsFirmRenderedServiceForAnyClient" value="Y" onclick="loadtrustsandofficer();"/>Yes</span>
+												<span class="radio-inline">
+													<input type="radio" name="IsFirmRenderedServiceForAnyClient" id="ajax_field_IsFirmRenderedServiceForAnyClient" value="N" onclick="loadtrustsandofficer();"/>No</span>
+											</td>
+										</tr>
+										<tr id="showOutsideInterest" style="display:none;">
+											<td colspan="4" class="">
+												<span style="padding-left: 29px">If Yes require one line of below to be completed
+												Please complete the following information below:</span>
+												<div id="suppDiv" class="default">
+													<div id="firmRenderedServiceSupp" class="paddingnone">
+														<div id="DefaultOpenForm:firmRenderedServiceSupp"/>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="buttons borderTop row marginsBtn">
+									<div class="floatLeft">
+										<a class="btn back" href="javascript:submitform('morePracticeManagement.html','trustsAndOfficer.back','','');" >Back
+										</a>
+									</div>
+									<div class="floatRight">
+										<span id="showPageSave">
+											<a class="btn save" onclick="return validateNBTrustsAndOfficerData();" href="javascript:submitform('pastClaims.html','trustsAndOfficer.save','','');"
+												>Save&nbsp;&&nbsp;Continue</a>
+										</span>
+										<span id="showContinue">
+											 <a  href="javascript:submitform('pastClaims.html','trustsAndOfficer.continue','','');" 
+			                  	 				class="btn next">Continue</a>
+			                  	 		</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!---------Footer Start---------->
+						<div id="footer" class="footer">
+							<span id="#Include:footerNewApp.html#"></span>
+						</div>
+						<!---------Footer End---------->
+					</div>
+				</div>
+				<table id="trustsAndOfficer_freeform_contextdata_999">
+					<tr>
+						<td>
+						<input type="hidden" name="jsessionid" id="jsessionid" />
+							<input type="hidden" name="divHideShow" id="divHideShow" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</body>
+</html>
+		

@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Audit Supplement</title>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"/>
+		<script src="js/jquery.treeview.js"/>
+		<script src="js/bootstrap_3-3-6.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script language="javascript" src="script/lawyers.js" />
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/htmlMassking.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/capitalizeSentences.js"/>
+		<script src="js/producerOne.js"/>
+		<script src="js/bootstrap-datepicker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form class="form-horizontal row" autocomplete="off">
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted">
+					<div id="practiceManagementDiv">
+						<div id="header">
+							<span id="#Include:headerNewApp.html#"/>
+						</div>
+						<div class="menuTab">
+							<span id="#Include:tabsNewApp.html#"></span>
+						</div>
+
+						<div id="contentSection">
+							<div class="confirmationMsgAlign" id="auditSupplement_freeform_contextdata_100">
+								<label class="Confirmation" name="pageMsg" id="pageMsg" />
+								<!-- <div id="error_ApplicationNotCompleted" class="error11Bold"/> -->
+							</div>
+							<div>
+								<div>
+									<h2 class="questionHeading">
+										<span>2.</span> Audit Supplement
+									</h2>
+								</div>
+								<table width="100%" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td>
+											<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="gridTable sectionPadding question">
+												<tr>
+													<td>
+														<table width="100%" border="0" cellspacing="0" cellpadding="10">
+															<tr id="auditSupplement_freeform_contextdata_100">
+																<td class="txt11BoldGray">
+																	<div id="error_TotalAuditClients" class="defult_tr_errors"/>
+																</td>
+															</tr>
+															<tr id="auditSupplement_freeform_contextdata_100">
+																<td class="txt11BoldGray">1. Please indicate the following for all Audit work.</td>
+															</tr>
+															<tr>
+																<td colspan="5">
+																	<table width="100%" id="attestation_list_03" border="0" cellspacing="0" cellpadding="5">
+																		<tr id="attestation_list_header_3">
+																			<th width="1%" id="block_field_ClientIndustrySrNo"/>
+																			<th id="block_field_ClientIndustryDesc" width="30%">Client Industry</td>
+																			<th width="15%" id="block_field_AuditClients"># of Audit Clients</td>
+																			<th width="15%" id="block_field_ClientsAssetsOver"># of Clients with Total Assets over $5,000,000</td>
+																			<th width="13%" id="block_field_NetLossForLastFYE"># of Clients with Net Loss for past Fiscal Year</td>
+																			<th width="11%" id="block_field_ClientIndustryKey" style="background: #fff;"/>
+																		</tr>
+																		<tbody id="attestation_list_mom_data_4">
+																			<tr id="mom_child_data">
+																				<td id="block_field_ClientIndustrySrNo" align="left" class="tableheading"/>
+																				<td>
+																					<table>
+																						<tr>
+																							<td id="block_field_ClientIndustryDesc"/>
+																							<td>
+																								<span id="eval:AccountantRule.ifBanksandInvCompFunds">
+																									<a onmouseout="popUp(event,'pleaseIndicate')" onmouseover="popUp(event,'pleaseIndicate')" onclick="return false">
+																										<img rc="img/HelpIcon.jpg" border="0" />
+																									</a>
+																								</span>
+																							</td>
+																						</tr>
+																					</table>
+																				</td>
+																				<td id="block_field_AuditClients">
+																					<input
+																						name="AuditClients" type="text" class="inputbox"
+																						id="AuditClients" size="9" maxlength="9" style="width: 100px;"
+																						tabindex="1"
+																						onBlur="populateauditTotalFieldValue('AuditClients_','TotalAuditClients');pleaseDescribeOtherAttestation();" />
+																				</td>
+																				<td id="block_field_ClientsAssetsOver">
+																					<input
+																						name="ClientsAssetsOver" type="text"
+																						class="inputbox" id="ClientsAssetsOver" size="9"
+																						maxlength="9" tabindex="1" style="width: 100px;"
+																						onBlur="populateauditTotalFieldValue('ClientsAssetsOver_','TotalClientsAssetsOver');pleaseDescribeOtherAttestation();" />
+																				</td>
+																				<td id="block_field_NetLossForLastFYE">
+																					<input name="NetLossForLastFYE"
+																						type="text" class="inputbox" id="NetLossForLastFYE"
+																						size="9" maxlength="9" tabindex="1" style="width: 100px;"
+																						onBlur="populateauditTotalFieldValue('NetLossForLastFYE_','TotalNetLossForLastFYE');pleaseDescribeOtherAttestation();" />
+																				</td>
+																				<td width="1" id="block_field_ClientIndustryKey">
+																					<input type="hidden" name="ClientIndustryKey"
+																						value="" />
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+															
+															<tr id="auditSupplement_freeform_contextdata_1011">
+																<td colspan="2" class="borderbottom">
+																	<table width="100%" border="0" align="center"
+																		cellpadding="2" cellspacing="0">
+																		<tr>
+																			<td width="1%" style="width: 2%;" align="right" class="Link_blue_bold">&nbsp;</td>
+																			<td width="45%" style="width: 30%;" align="right" class="Link_blue_bold">
+																			Total :</td>
+																			<td width="19%" align="left" style="width: 15%;">
+																				<label
+																					id="TotalAuditClients" name="TotalAuditClients"
+																					class="Link_blue_bold">
+																				</label>
+																			</td>
+																			<td width="20%" align="left" style="width: 15%;">
+																				<label
+																					id="TotalClientsAssetsOver"
+																					name="TotalClientsAssetsOver" class="Link_blue_bold">
+																				</label>
+																			</td>
+																			<td width="19%" align="left" style="width: 13%;">
+																				<label
+																					id="TotalNetLossForLastFYE"
+																					name="TotalNetLossForLastFYE" class="Link_blue_bold">
+																				</label>
+																			</td>
+																			<td width="1%" style="width: 11%;"></td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr id="attestation_freeform_contextdata_00">
+																<td colspan="2" class="borderbottom">
+																	<div id="divAy" style="display: none">
+																		<table border="0" cellpadding="2" width="100%"
+																				cellspacing="0" class="bgrowyellow">
+																			<tr>
+																				<td>
+																					<table width="100%" border="0" 
+																							cellpadding="5" cellspacing="0">
+																						<tr>
+																							<td align="right"/>
+																							<td align="left">
+																								<div id="error_AuditComment"
+																								class="defult_tr_errors"/>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td align="right" style="text-align: right; width: 10.5%;">Please Describe :</td>
+																							<td width="529" align="left">
+																								<!-- <div
+																									id="eval:AccountantRule.isAttestationPageReadOnly">
+																									<textarea rows="5" name="AuditComment" style="width: 78%; height: 50px"
+																										readonly="readonly" class="textarea"
+																										id="AuditComment" cols="63"/>
+																								</div> -->
+																								<div
+																									id="AppCompleted">
+																									<textarea rows="5" name="AuditComment" style="width: 78%; height: 50px"
+																										id="AuditComment" cols="63" tabindex="99"
+																										onKeyUp="limitText(this,1,1000);"
+																										class="inputbox"/>
+																								</div>
+																							</td>
+																						</tr>
+																					</table>
+																				</td>
+																			</tr>
+																		</table>
+																	</div>
+																	<div id="divAn" style="display: none"/>
+																</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+											<div id="auditSupplement_freeform_contextdata_01">
+												<table class="question practiceManagement" width="80%"
+													cellpadding="0" cellspacing="0">
+													<tr>
+														<td class="valignTop">2.</td>
+														<td width="90%">
+															<div id="error_FirmRenderedAuditAtt" class="error"/>
+															<div class="freeFormListTd valignTop"><span class="mendatory">*</span></div>
+															<div class="freeFormListTd valignTop">
+																<span id="NewBusiness">
+																	Within the past five years, how many clients for whom you rendered audit or attestation services subsequently declared or filed bankruptcy, defaulted on a debt obligation or became insolvent?
+																</span>
+																<span id="RenewBusiness">
+																	Within the past year, how many clients for whom you rendered audit or attestation services subsequently declared or filed bankruptcy, defaulted on a debt obligation or became insolvent?
+																</span>
+															</div>
+														</td>
+														<td nowrap>
+															<input type="text" class="inputbox"  name="FirmRenderedAuditAtt" id="FirmRenderedAuditAtt" size="9" maxlength="9" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;"/>
+														</td>
+													</tr>
+													<tbody id="NewBusiness">
+													<tr>
+														<td valign="middle">3.</td>
+														<td width="90%">
+															<div id="error_IsPublicTradedAudited" class="error"/>
+															<span class="mendatory">*</span>
+															<span id="NewBusiness">
+																Within the past five years have you performed audits for SEC-regulated entities (other than for broker-dealers)?
+															</span>
+														</td>
+														<td nowrap>
+															<span class="radio-inline">
+																<input
+																	type="radio" name="IsPublicTradedAudited"
+																	id="IsPublicTradedAudited" value="Y" />Yes</span>
+															<span
+																class="radio-inline">
+																<input type="radio"
+																	name="IsPublicTradedAudited"
+																	id="IsPublicTradedAudited" value="N" />No</span>
+														</td>
+													</tr>
+													
+														<tr>
+															<td valign="middle">4.</td>
+															<td width="90%">
+																<div id="error_IsFirmHaveAWrittenPolicyAtt"
+																	class="error"/>
+																<span class="mendatory">*</span>Do you have a written policy on audit-related CPE training, including required courses and CPE hours per year specific to audit services?
+															</td>
+															<td nowrap>
+																<span class="radio-inline">
+																	<input
+																		type="radio" name="IsFirmHaveAWrittenPolicyAtt"
+																		id="IsFirmHaveAWrittenPolicyAtt" value="Y" />Yes</span>
+																<span
+																	class="radio-inline">
+																	<input type="radio"
+																		name="IsFirmHaveAWrittenPolicyAtt"
+																		id="IsFirmHaveAWrittenPolicyAtt" value="N" />No</span>
+															</td>
+														</tr>
+														<tr>
+															<td valign="middle">5.</td>
+															<td width="90%">
+																<div id="error_IsSecondPartnerReviewAtt"
+																	class="error"/>
+																<span class="mendatory">*</span>Does a second partner review all audit workpapers and the audit report prior to signing and releasing of such audit report?
+															</td>
+															<td nowrap>
+																<span class="radio-inline">
+																	<input
+																		type="radio" name="IsSecondPartnerReviewAtt"
+																		id="IsSecondPartnerReviewAtt" value="Y" />Yes</span>
+																<span
+																	class="radio-inline">
+																	<input type="radio"
+																		name="IsSecondPartnerReviewAtt"
+																		id="IsSecondPartnerReviewAtt" value="N" />No</span>
+															</td>
+														</tr>
+														<tr>
+															<td valign="middle">6.</td>
+															<td width="90%">
+																<div id="error_IsAuditEngagementsAtt"
+																	class="error"/>
+																<span class="mendatory">*</span>Does a second partner or committee approve and sign off on the acceptance of new audit engagements?
+															</td>
+															<td nowrap>
+																<span class="radio-inline">
+																	<input
+																		type="radio" name="IsAuditEngagementsAtt"
+																		id="IsAuditEngagementsAtt" value="Y" />Yes</span>
+																<span
+																	class="radio-inline">
+																	<input type="radio"
+																		name="IsAuditEngagementsAtt"
+																		id="IsAuditEngagementsAtt" value="N" />No</span>
+															</td>
+														</tr>
+														<tr>
+															<td valign="middle">7.</td>
+															<td width="90%">
+																<div id="error_IsAualityReviewAtt"
+																	class="error"/>
+																<span class="mendatory">*</span>Within the past three years, have you undergone a peer or quality review offered by the AICPA or any state CPA Society?
+															</td>
+															<td nowrap>
+																<span class="radio-inline">
+																	<input
+																		type="radio" name="IsAualityReviewAtt"
+																		id="IsAualityReviewAtt" value="Y" />Yes</span>
+																<span
+																	class="radio-inline">
+																	<input type="radio"
+																		name="IsAualityReviewAtt"
+																		id="IsAualityReviewAtt" value="N" />No</span>
+															</td>
+														</tr>
+														<tr>
+															<td valign="middle">8.</td>
+															<td width="90%">
+																<div id="error_IsLastPeerReviewAtt"
+																	class="error"/>
+																<span class="mendatory">*</span>Was your last peer review modified, qualified or adverse?
+															</td>
+															<td nowrap>
+																<span class="radio-inline">
+																	<input
+																		type="radio" name="IsLastPeerReviewAtt"
+																		id="IsLastPeerReviewAtt" value="Y" />Yes</span>
+																<span
+																	class="radio-inline">
+																	<input type="radio"
+																		name="IsLastPeerReviewAtt"
+																		id="IsLastPeerReviewAtt" value="N" />No</span>
+															</td>
+														</tr>
+													</tbody>
+													<tbody id="RenewBusiness">
+													<tr>
+															<td valign="middle">3.</td>
+															<td width="90%">
+																<div id="error_IsAualityReviewAtt"
+																	class="error"/>
+																<span class="mendatory">*</span>Within the past year, have you undergone a peer or quality review offered by the AICPA or any state CPA Society?
+															</td>
+															<td nowrap>
+																<span class="radio-inline">
+																	<input
+																		type="radio" name="IsAualityReviewAtt"
+																		id="IsAualityReviewAtt" value="Y" />Yes</span>
+																<span
+																	class="radio-inline">
+																	<input type="radio"
+																		name="IsAualityReviewAtt"
+																		id="IsAualityReviewAtt" value="N" />No</span>
+															</td>
+														</tr>
+														<tr>
+															<td valign="middle">4.</td>
+															<td width="90%">
+																<div id="error_IsLastPeerReviewAtt"
+																	class="error"/>
+																<span class="mendatory">*</span>Was your last peer review modified, qualified or adverse?
+															</td>
+															<td nowrap>
+																<span class="radio-inline">
+																	<input
+																		type="radio" name="IsLastPeerReviewAtt"
+																		id="IsLastPeerReviewAtt" value="Y" />Yes</span>
+																<span
+																	class="radio-inline">
+																	<input type="radio"
+																		name="IsLastPeerReviewAtt"
+																		id="IsLastPeerReviewAtt" value="N" />No</span>
+															</td>
+														</tr>
+														<tr>
+															<td valign="middle">5.</td>
+															<td>
+																<div class="freeFormListTd valignTop">
+																	<span class="mendatory">*</span>
+																</div>
+																<div class="freeFormListTd valignTop">
+																	Within the past year have you:
+																</div>
+															</td>
+															<td/>
+														</tr>
+														<tr>
+															<td/>
+															<td width="90%">
+																<div id="error_IsSyndicationManagers" class="error"/>
+																<div class="freeFormListTd valignTop">
+																	<span class="subheading_alpha">
+																		a.
+																	</span>
+																</div>
+																<div class="freeFormListTd valignTop">
+																	<span class="mendatory">*</span>
+																</div>
+																<div class="freeFormListTd valignTop">
+											 						provided services to investment funds, hedge funds, mutual funds or syndication managers?
+																</div>
+															</td>
+															<td class="">
+																<span class="radio-inline">
+																	<input type="radio" value="Y" name="IsSyndicationManagers" id="IsSyndicationManagers"/>Yes</span>
+																<span class="radio-inline">
+																	<input type="radio" value="N" name="IsSyndicationManagers" id="IsSyndicationManagers"/>No</span>
+															</td>
+														</tr>
+														<tr>
+															<td/>
+															<td width="90%">
+																<div id="error_IsDebtOrEquityFinancing" class="error"/>
+																<div class="freeFormListTd valignTop">
+																	<span class="subheading_alpha">
+																		b.
+																	</span>
+																</div>
+																<div class="freeFormListTd valignTop">
+																	<span class="mendatory">*</span>
+																</div>
+																<div class="freeFormListTd valignTop">
+																	arranged debt or equity financing, acted as a business broker, underwritten the offering of public or private securities, or prepared fairness opinions?
+																</div>
+															</td>
+															<td class="">
+																<span class="radio-inline">
+																	<input type="radio" value="Y" name="IsDebtOrEquityFinancing" id="IsDebtOrEquityFinancing"/>Yes</span>
+																<span class="radio-inline">
+																	<input type="radio" value="N" name="IsDebtOrEquityFinancing" id="IsDebtOrEquityFinancing"/>No</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="buttons borderTop row marginsBtn">
+							<div class="floatLeft">
+								<a class="btn back" href="javascript:submitform('mainBusinessManagementSupplement.html|computerRelatedServices.html|investmentFinancialPlanningSupp.html|practiceManagementSupp.html|AOPNewApp.html','auditSupplement.back','forwardeval','AccountantRule.isBusinessManagementSupplement|AccountantRule.isComputerServicesSupplement|AccountantRule.isInvestmentSupplement|AccountantRule.isPracticeManagementSupplement|AccountantRule.isThereNoPracticeInvestmentCompBusinessSupp');" >Back</a>
+							</div>
+							<div class="floatRight">
+								<span id="showPageSave">
+									<a class="btn save" href="javascript:submitform('practiceManagement.html','auditSupplement.save','','');" >Save&nbsp;&&nbsp;Continue</a>
+								</span>
+								<span id="showContinue">
+									<a  href="javascript:submitform('practiceManagement.html','auditSupplement.continue','','');"  class="btn next">Continue</a>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!---------Footer Start---------->
+					<div id="footer" class="footer">
+						<span id="#Include:footerNewApp.html#"/>
+					</div>
+					<!---------Footer End---------->
+					<table id="auditSupplement_freeform_contextdata_999">
+						<tr>
+							<td>
+								<input type="hidden" name="jsessionid" id="jsessionid" />
+								<input type="hidden" name="divHideShow" id="divHideShow" />
+								<input type="hidden" name="AppCreatedDate" id="AppCreatedDate" />
+								<input type="hidden" name="ProducerCode" id="ProducerCode2" />
+								<input type="hidden" name="approveSubjective" id="approveSubjective" />
+								<!-- <input type="text" name="page" id="page"/> -->
+
+								<input type="hidden" name="firmNewAppPage" id="firmNewAppPage"/>
+								<input type="hidden" name="insuranceHistoryPage" id="insuranceHistoryPage" />						
+
+								<input type="hidden" name="bankruptcySuppPage" id="bankruptcySuppPage" />
+								<input type="hidden" name="collectionSuppPage" id="collectionSuppPage" />
+								<input type="hidden" name="copyrightSuppPage" id="copyrightSuppPage" />
+								<input type="hidden" name="familyLawSuppPage" id="familyLawSuppPage" />
+								<input type="hidden" name="financialSuppPage" id="financialSuppPage" />
+								<input type="hidden" name="governmentSuppPage" id="governmentSuppPage" />
+								<input type="hidden" name="litigationSuppPage" id="litigationSuppPage" />
+								<input type="hidden" name="realEstateSuppPage" id="realEstateSuppPage" />
+								<input type="hidden" name="willStateSuppTrustPage" id="willStateSuppTrustPage"/>
+								<input type="hidden" name="taxSuppPage" id="taxSuppPage" />
+
+								<input type="hidden" name="aboutFirmPage" id="aboutFirmPage" />
+								<input type="hidden" name="aboutFirmRenewalPage" id="aboutFirmRenewalPage" />
+								<input type="hidden" name="PolicyStatusKey" id="PolicyStatusKey" />
+								<input type="hidden" name="practiceManagementPage" id="practiceManagementPage" />
+								<input type="hidden" name="morePracticeManagementPage" id="morePracticeManagementPage"/>
+								<input type="hidden" name="underWritingInfoPage" id="underWritingInfoPage" />
+								<input type="hidden" name="pastClaimsPage" id="pastClaimsPage" />
+
+								<script type="text/javascript" src="script/manageTab.js"/>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script type="text/javascript">	
+	loadAttestation();
+	</script>
+</html>

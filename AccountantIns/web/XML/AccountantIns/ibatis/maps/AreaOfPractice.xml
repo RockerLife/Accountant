@@ -1,0 +1,82 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AreaOfPractice">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from AreaOfPractice</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from AreaOfPractice where VersionSequence = #VersionSequence# and PolicyKey = #PolicyKey# and AOPKey = #AOPKey#</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into AreaOfPractice(VersionSequence, PolicyKey, AOPKey
+          <isNotEmpty property="PercentageValue" prepend=",">PercentageValue</isNotEmpty>
+          <isNotEmpty property="AOPCommentDesc" prepend=",">AOPCommentDesc</isNotEmpty>
+          <isNotEmpty property="CreatedDate" prepend=",">CreatedDate</isNotEmpty>
+          <isNotEmpty property="CreatedBy" prepend=",">CreatedBy</isNotEmpty>
+          <isNotEmpty property="VersionKey" prepend=",">VersionKey</isNotEmpty>
+          ) values (#VersionSequence:NUMERIC#, #PolicyKey:NUMERIC#, #AOPKey:NUMERIC#
+          <isNotEmpty property="PercentageValue" prepend=",">#PercentageValue#</isNotEmpty>
+          <isNotEmpty property="AOPCommentDesc" prepend=",">#AOPCommentDesc#</isNotEmpty>
+          <isNotEmpty property="CreatedDate" prepend=",">#CreatedDate#</isNotEmpty>
+          <isNotEmpty property="CreatedBy" prepend=",">#CreatedBy#</isNotEmpty>
+          <isNotEmpty property="VersionKey" prepend=",">#VersionKey#</isNotEmpty>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select PercentageValue, AOPCommentDesc, CreatedDate, CreatedBy, VersionKey, VersionSequence, PolicyKey, AOPKey from AreaOfPractice where VersionSequence = #VersionSequence# and PolicyKey = #PolicyKey# and AOPKey = #AOPKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update AreaOfPractice set
+          <dynamic prepend=" ">
+               <isNotEmpty property="PercentageValue" prepend=",">PercentageValue = #PercentageValue#</isNotEmpty>
+               <isEmpty property="PercentageValue" prepend=",">PercentageValue = null</isEmpty>
+               <isNotEmpty property="AOPCommentDesc" prepend=",">AOPCommentDesc = #AOPCommentDesc#</isNotEmpty>
+               <isEmpty property="AOPCommentDesc" prepend=",">AOPCommentDesc = null</isEmpty>
+               <isNotEmpty property="CreatedDate" prepend=",">CreatedDate = #CreatedDate#</isNotEmpty>
+               <isEmpty property="CreatedDate" prepend=",">CreatedDate = null</isEmpty>
+               <isNotEmpty property="CreatedBy" prepend=",">CreatedBy = #CreatedBy#</isNotEmpty>
+               <isEmpty property="CreatedBy" prepend=",">CreatedBy = null</isEmpty>
+               <isNotEmpty property="VersionKey" prepend=",">VersionKey = #VersionKey#</isNotEmpty>
+               <isEmpty property="VersionKey" prepend=",">VersionKey = null</isEmpty>
+          </dynamic>
+          where VersionSequence = #VersionSequence# and PolicyKey = #PolicyKey# and AOPKey = #AOPKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from AreaOfPractice where VersionSequence = #VersionSequence# and PolicyKey = #PolicyKey# and AOPKey = #AOPKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from AreaOfPractice</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from AreaOfPractice where VersionSequence = #VersionSequence# and PolicyKey = #PolicyKey# and AOPKey = #AOPKey#</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select PercentageValue, AOPCommentDesc, CreatedDate, CreatedBy, VersionKey, VersionSequence, PolicyKey, AOPKey from AreaOfPractice where VersionSequence = #VersionSequence# and PolicyKey = #PolicyKey# and AOPKey = #AOPKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select VersionSequence, PolicyKey, AOPKey, PercentageValue, AOPCommentDesc, CreatedDate, CreatedBy, VersionKey from AreaOfPractice where VersionSequence = #VersionSequence# and PolicyKey = #PolicyKey# and AOPKey = #AOPKey#</select>
+     <parameterMap id="InsertIndicationAOPToSmartSearchAcc_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="InsertIndicationAOPToSmartSearchAcc_p" parameterMap="InsertIndicationAOPToSmartSearchAcc_pMap">{ call InsertIndicationAOPToSmartSearchAcc_p(?,?,?)}</procedure>
+     <parameterMap id="InsertUpdateAreaOfPracticeACC_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="VersionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="outputList" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="VersionKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="InsertUpdateAreaOfPracticeACC_p" parameterMap="InsertUpdateAreaOfPracticeACC_pMap">{ call InsertUpdateAreaOfPracticeACC_p(?,?,?,?,?,?)}</procedure>
+     <parameterMap id="UpdateAOPDetailsAfterDeleteACC_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Aopkey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="UpdateAOPDetailsAfterDeleteACC_p" parameterMap="UpdateAOPDetailsAfterDeleteACC_pMap">{ call UpdateAOPDetailsAfterDeleteACC_p(?,?,?,?)}</procedure>
+     <parameterMap id="ValidateIsAppCompletedAccountIns_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="AccountKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="ValidateIsAppCompletedAccountIns_p" parameterMap="ValidateIsAppCompletedAccountIns_pMap" resultClass="java.util.HashMap">{ call ValidateIsAppCompletedAccountIns_p(?,?)}</procedure>
+     <parameterMap id="GETAOPFIELDSMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="VersionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+     </parameterMap>
+     <procedure id="GETAOPFIELDS" parameterMap="GETAOPFIELDSMap" resultClass="java.util.HashMap">{ call GETAOPFIELDS(?,?)}</procedure>
+     <parameterMap id="InsertIndicationAAOPToSmartSearchAcc_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="InsertIndicationAAOPToSmartSearchAcc_p" parameterMap="InsertIndicationAAOPToSmartSearchAcc_pMap">{ call InsertIndicationAOPToSmartSearchAcc_p(?,?,?)}</procedure>
+</sqlMap>
+

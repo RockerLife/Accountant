@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Documents</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+		<script type="text/javascript" src="script/account.js"></script>
+		<script language="javascript" src="script/lawyers.js"> </script>
+		<script type="text/javascript" src="script/tabber.js"></script>
+		<script type="text/javascript" src="script/test_new.js"></script>
+		<script type="text/javascript" src="script/manage.js"></script>
+		<script type="text/javascript" src="script/masks.js"></script>
+		<script type="text/javascript" src="script/popup.js"></script>
+		<script type="text/javascript" src="script/utility.js"></script>
+		<script type="text/javascript" src="script/date-picker.js"></script>
+		<script type="text/javascript">
+
+function checks(){
+
+alert(document.getElementById("file_path").value);
+ document.getElementById("path").value=document.getElementById("file_path").value;
+
+}
+</script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+<body onload="showDocTitle();">
+<form name="myForm" enctype="multipart/form-data">
+<DIV class=popup id="isControlFunds">
+	Do Not Quote - Refer to Management
+</DIV>
+<DIV class=popup id="isCountersignature">
+	Refer to Management
+</DIV>
+<DIV class=popup id="isBankAccount">
+	Refer to Management
+</DIV>
+<div id="contextLinks"></div>
+<div class="container-fluid bootstrap-node-1">
+	<div class="tableWidth">
+		<div id="header">
+			<span id="#Include:headerNewApp.html#"></span>
+		</div>
+		<div id="contentSection">
+			<h2 class="questionHeading">
+				Documents
+			</h2>
+			<div class="form">
+				<div class="block-form">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td>
+								<div id="error_TransactionError" class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr class="defult_tr_errors"
+							id="tr_error_indication_div">
+							<td align="left">
+								<div id="error_indication_div" class="error11Bold"></div>
+							</td>
+						</tr>
+					</table>
+					<div>
+						<div id="eval:AccountantRule.roleEditOnly">
+							<table width="100%" border="0" cellspacing="10"
+								cellpadding="10">
+								<tr align="left">
+									<td valign="top">
+										<table width="500" border="0" align="center"
+											cellpadding="2" cellspacing="0"
+											id="uploadexcelpopup_freeform_01">
+											<tr>
+												<td></td>
+												<td>
+													<div id="error_SearchType" class="defult_tr_errors"></div>
+												   <div id="error_DocUploadError" class="defult_tr_errors"></div>	
+												</td>
+											</tr>		
+											<tr>
+												<td align="right" width="180" class="label"
+													valign="top">																				
+												</td>
+												
+												<td align="left" valign="top" colspan="3">
+													<div style="padding-left: 215px;">
+
+														<!-- <input type="radio" name="SearchType"
+															value="policyform" id="SearchType"
+															 onclick="showotherdiv(this.value,'otherdiv');"/>
+														Policy Form<br />
+														<input type="radio" name="SearchType"
+															value="quoteletter" id="SearchType" onclick="showotherdiv(this.value,'otherdiv');"/>
+														Quote Letter<br />
+														<input type="radio" name="SearchType"
+															value="signedform" id="SearchType" onclick="showotherdiv(this.value,'otherdiv');"/>
+														Application Form<br />
+														<input type="radio" name="SearchType" value="other"
+															id="SearchType" onclick="showotherdiv(this.value,'otherdiv');" />
+														Other<br />
+
+														<input type="hidden" name="SearchHidden" class="inputbox"
+														id="SearchHidden" /> -->
+														
+														<select name="SearchType" id="SearchType" onchange="showotherdiv(this.value,'otherdiv');"
+																									class="inputbox" style=" width:95%;">
+																										<option value="">Select</option>
+																										<option value="policyform">Policy</option>
+																										<option value="quoteletter">Quote Letter</option>
+																										<option value="signedform">Application Form</option>
+																										<option value="lossRun">Loss Run</option>
+																										<option value="priorPolicy">Prior Policy</option>
+																										<option value="other">Other</option>
+																									</select>
+													</div>
+
+												</td>
+											</tr>
+											
+											<tr id="eval:AccountantRule.isBrokerageVisible">
+																			<td align="left"></td>
+																			<td align="left">
+																				<div class="freeFormListTd tdInput">
+																							&nbsp;<input type="checkbox"  name="isBrokerageDoc" id="isBrokerageDoc"  onchange="setBrokerage();"/> is Brokerage Document 
+																					</div>
+																				
+																				</td>
+																		</tr>
+											<!-- 
+											<tr>
+												<td align="left"></td>
+												<td align="left">
+													<div id="error_DocTitle" class="defult_tr_errors"></div>																		</td>
+											</tr>
+											 -->
+											<tr>
+												
+												<td colspan="2">
+													<div id="otherdiv" style="display: none;">
+													<table width="100%" border="0">
+													<tr>
+														<td align="left"></td>
+														<td align="left">
+															<div id="error_DocTitle" class="defult_tr_errors"></div>	
+														</td>
+													</tr>
+													<tr>
+														<td align="right" nowrap="nowrap" width="218px" class="label">
+															<span class="red">*</span>Document Title :
+														</td>
+														<td>
+															<input name="DocTitle" type="text" class="inputbox"
+																id="DocTitle" />
+														</td>
+													</tr>
+													<tr>
+																				
+																					<td colspan="2" align="center">
+																					<div style="float:right;text-align:left;color:red;margin-top: 20px;margin-bottom: 20px;"> 
+																					<table>
+																					<tr><td><span style="color:red;">*Doc Title shouldn't contain special characters.</span></td></tr>
+																					<tr><td><span style="color:red;">*Doc Title length should be less than of 25 characters.</span></td></tr>
+																					</table>
+																						</div>
+																					 </td>
+																				 </tr>
+													</table>
+													</div>
+												</td>
+													</tr>																		
+											<tr></tr>
+
+
+
+											<tr>
+												<td align="left"></td>
+												<td align="left">
+													<div id="error_DocFileName" class="defult_tr_errors"></div>
+												</td>
+											</tr>
+											<tr>
+												<td align="left"></td>
+												<td align="left">
+													<div id="error_FileNameCorrect"
+														class="defult_tr_errors"></div>
+												</td>
+											</tr>
+											<tr>
+												<td align="right" nowrap="nowrap">
+													<span class="red">*</span>Select a document for
+													upload :
+												</td>
+												<td>
+													<input type="file" name="file_path" class="inputbox"
+														id="file_path" />
+
+													<input type="hidden" name="path" class="inputbox"
+														id="path" />
+												</td>
+											</tr>
+											<tr>
+												<td align="left"></td>
+												<td align="left">
+													<div id="error_Comment" class="defult_tr_errors"></div>
+												</td>
+											</tr>
+											<tr>
+												<td width="220" align="right" nowrap="nowrap">
+													<span class="red">*</span>Document Description :
+												</td>
+												<td class="paddingTop5">
+													<textarea rows="5" cols="30" name="Comment"
+														id="Comment" class="" onKeyUp="limitText(this,1,5000);"></textarea>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+
+						</div>
+						<div class="buttons row">
+							<div class="floatLeft">
+								<a class="btn back"
+								href="javascript:submitform('list.html|BasicInfo.html|general.html|Practice-Management.html|attestation.html|computer-services.html|invest-finan-planing.html|indexThanks.html|quoteOption.html|confirmation.html|paymentmethod.html|RenewBasicInfo.html|FirmNewApp.html|insuranceHistoryNewApp.html|aboutFirm.html|AOPNewApp.html|practiceManagementSupp.html|investmentFinancialPlanningSupp.html|computerRelatedServices.html|mainBusinessManagementSupplement.html|auditSupplement.html|practiceManagement.html|morePracticeManagement.html|trustsAndOfficer.html|pastClaims.html|indicationinjack.html|CancellationReinstatementEndorsement.html|limitsDeductibleOptions.html|nameAddressPriorActsExtension.html|certificateInsurance.html|ERPQuoteLetter.html|ERPEndrosement.html|addEditBrokeragePolicy.html','uploadexcelpopup.back','forwardeval','AccountantRule.isListPage|AccountantRule.isBasicInfoPage|AccountantRule.isGeneralPage|AccountantRule.isPracticeManagementPage|AccountantRule.isAttestationPage|AccountantRule.isComputerServicesPage|AccountantRule.isInvestFinanPlaningPage|AccountantRule.isIndexThanksPage|AccountantRule.isQuoteOptionPage|AccountantRule.isConfirmationPage|AccountantRule.isPaymentmethodPage|AccountantRule.isRenewBasicPage|AccountantRule.isFirmNewAppPage|AccountantRule.isInsuranceHistoryPage|AccountantRule.isAboutFirm|AccountantRule.isAopPage|AccountantRule.isPracticeManagementSuppPage|AccountantRule.isInvestmentFinancialPlanningSuppPage|AccountantRule.isComputerRelatedServicesPage|AccountantRule.isMainBusinessManagementSupplementPage|AccountantRule.isAuditSupplementPage|AccountantRule.isPracticeManagementPageNew|AccountantRule.isMorePracticeManagementPage|AccountantRule.isTrustsAndOfficerPage|AccountantRule.isPastClaimsPage|AccountantRule.isIndicationPage|AccountantRule.isCancellationEndorsementPage|AccountantRule.isLimitEndorsementPage|AccountantRule.isNameAddressPriorActsExtensionPage|AccountantRule.isCertificateInsurancePage|AccountantRule.isERPQuoteLetterPage|AccountantRule.isERPEndrosementPage|AccountantRule.isAddEditBrokeragePolicyListPage');">Back</a>
+							</div>
+							<div class="floatRight">
+								<a class="btn button1"
+								href="javascript:submitform('uploadexcelpopup.html','uploadexcelpopup.douploadexcel','','');">Upload</a>						
+							</div>
+						</div>
+						<div class="padding20">
+						<table id="uploadexcelpopup_list_01" width="100%"
+							border="0" cellspacing="1" cellpadding="5" class="gridTable">
+							<tr class="tableheading1"
+								id="uploadexcelpopup_list_header_01">
+								<th id="block_field_DocTitle" width="20%">
+									Title
+								</th>
+								<th id="block_field_UploadedTime" width="10%">
+									Date
+								</th>
+								<th id="block_field_Comment" width="20%">
+									Document Description
+								</th>
+								<th id="block_field_UploadedType" width="10%">
+									Uploaded Type
+								</th>
+								
+								<th class="tableheading1"
+									id="block_field_download_row_link" width="6%"></th>
+									
+								<th id="block_field_delete_row_link"
+												 width="1%"></th>
+									
+							</tr>
+							<tr id="uploadexcelpopup_list_data_01">
+								<td align="left" id="block_field_DocTitle" width="20%"
+									class="text13Arial"></td>
+								<td align="left" id="block_field_UploadedTime"
+									width="10%" class="text13Arial"></td>
+									
+								<td align="left" id="block_field_Comment"
+									width="20%" class="text13Arial"></td>	
+								<td align="left" id="block_field_UploadedType"
+									width="10%" class="text13Arial"></td>
+										
+								<td align="left" id="block_field_download_row_link"
+									width="10%" class="text13Arial">
+									<a href="javascript:submitform('uploadexcelpopup.html','uploadexcelpopup.downloadexcel','','');"
+										
+										class="text13Arial">Download</a>
+								</td>
+								<!--  
+								<td align="left" id="block_field_delete_row_link"
+												 width="10%" class="text13Arial">                                                                             
+									<a href="javascript:submitform('uploadexcelpopup.html','uploadexcelpopup.deletedocument','','');"
+															class="Link_blue"><img src="img/cross.gif" title="Delete Policy" border="0" /></a> 
+								
+								</td>
+								-->
+								<td align="left" >
+									<span id="eval:AccountantRule.IsManagementRole">
+										<span id="block_field_delete_row_link"><a href="javascript:submitform('uploadexcelpopup.html','uploadexcelpopup.deletedocument','','');" class="Link_blue"><img src="img/cross.gif" width="16" height="17" border="0" title="Delete" /></a></span>
+									</span>
+								</td>
+								
+								
+							</tr>
+						</table>
+						</div>
+						
+					</div>	
+				</div>
+			</div>
+		</div>				
+	</div>
+	<!---------Footer Start---------->
+	<div id="footer" class="footer">
+		<span id="#Include:footerNewApp.html#"></span>
+	</div>
+	<!---------Footer End---------->
+</div>
+			
+			<table id="uploadexcelpopup_freeform_contextdata_101">
+				<tr>
+					<td><input type="hidden" name="jsessionid" id="jsessionid"/>
+					<input type="hidden" name="NEXT_PAGE_COMPONENT" id="NEXT_PAGE_COMPONENT"/>
+					<input type="hidden" name="headerStatusDescUpdated" id="headerStatusDescUpdated" />
+					<input type="hidden" name="page" id="page" />
+					<input type="hidden" name="BrokeragePolicyKey" id="BrokeragePolicyKey" />
+					<input type="hidden" name="isBrokerPolicy" id="isBrokerPolicy" />
+					<input type="hidden" name="SearchHidden" class="inputbox" 	id="SearchHidden" />
+					<input type="hidden" name="isBrokerageDocument" class="inputbox" id="isBrokerageDocument" />
+					<input type="hidden" name="AccountID" id="AccountID" />
+					
+					</td>
+					
+				</tr>
+			</table>
+		</form>		
+	</body>
+
+	
+</html>

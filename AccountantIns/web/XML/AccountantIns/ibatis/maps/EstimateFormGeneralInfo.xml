@@ -1,0 +1,146 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EstimateFormGeneralInfo">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from EstimateFormGeneralInfo</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from EstimateFormGeneralInfo</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into EstimateFormGeneralInfo(
+          <dynamic prepend=" ">
+               <isNotEmpty property="MarketableProductKey" prepend=",">MarketableProductKey</isNotEmpty>
+               <isNotEmpty property="AccountName" prepend=",">AccountName</isNotEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">AccountEmail</isNotEmpty>
+               <isNotEmpty property="WorkPhone" prepend=",">WorkPhone</isNotEmpty>
+               <isNotEmpty property="CountyDesc" prepend=",">CountyDesc</isNotEmpty>
+               <isNotEmpty property="City" prepend=",">City</isNotEmpty>
+               <isNotEmpty property="LimitSequence" prepend=",">LimitSequence</isNotEmpty>
+               <isNotEmpty property="DeductibleSequence" prepend=",">DeductibleSequence</isNotEmpty>
+               <isNotEmpty property="IsClaimExpensesType" prepend=",">IsClaimExpensesType</isNotEmpty>
+               <isNotEmpty property="IsClaimOptionType" prepend=",">IsClaimOptionType</isNotEmpty>
+               <isNotEmpty property="Zip" prepend=",">Zip</isNotEmpty>
+               <isNotEmpty property="Address1" prepend=",">Address1</isNotEmpty>
+               <isNotEmpty property="StateCode" prepend=",">StateCode</isNotEmpty>
+               <isNotEmpty property="ContactPerson" prepend=",">ContactPerson</isNotEmpty>
+               <isNotEmpty property="hasAnyFirmPersonnelReported" prepend=",">hasAnyFirmPersonnelReported</isNotEmpty>
+               <isNotEmpty property="InsuranceCompanyNamePross" prepend=",">InsuranceCompanyNamePross</isNotEmpty>
+               <isNotEmpty property="PolicyExpirationDatePross" prepend=",">PolicyExpirationDatePross</isNotEmpty>
+               <isNotEmpty property="ProInsPremium" prepend=",">ProInsPremium</isNotEmpty>
+               <isNotEmpty property="IsPriorActDateFull" prepend=",">IsPriorActDateFull</isNotEmpty>
+               <isNotEmpty property="FirmYear" prepend=",">FirmYear</isNotEmpty>
+               <isNotEmpty property="IsSignedEngagement" prepend=",">IsSignedEngagement</isNotEmpty>
+               <isNotEmpty property="PriorActDatePross" prepend=",">PriorActDatePross</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="MarketableProductKey" prepend=",">#MarketableProductKey#</isNotEmpty>
+               <isNotEmpty property="AccountName" prepend=",">#AccountName#</isNotEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">#AccountEmail#</isNotEmpty>
+               <isNotEmpty property="WorkPhone" prepend=",">#WorkPhone#</isNotEmpty>
+               <isNotEmpty property="CountyDesc" prepend=",">#CountyDesc#</isNotEmpty>
+               <isNotEmpty property="City" prepend=",">#City#</isNotEmpty>
+               <isNotEmpty property="LimitSequence" prepend=",">#LimitSequence#</isNotEmpty>
+               <isNotEmpty property="DeductibleSequence" prepend=",">#DeductibleSequence#</isNotEmpty>
+               <isNotEmpty property="IsClaimExpensesType" prepend=",">#IsClaimExpensesType#</isNotEmpty>
+               <isNotEmpty property="IsClaimOptionType" prepend=",">#IsClaimOptionType#</isNotEmpty>
+               <isNotEmpty property="Zip" prepend=",">#Zip#</isNotEmpty>
+               <isNotEmpty property="Address1" prepend=",">#Address1#</isNotEmpty>
+               <isNotEmpty property="StateCode" prepend=",">#StateCode#</isNotEmpty>
+               <isNotEmpty property="ContactPerson" prepend=",">#ContactPerson#</isNotEmpty>
+               <isNotEmpty property="hasAnyFirmPersonnelReported" prepend=",">#hasAnyFirmPersonnelReported#</isNotEmpty>
+               <isNotEmpty property="InsuranceCompanyNamePross" prepend=",">#InsuranceCompanyNamePross#</isNotEmpty>
+               <isNotEmpty property="PolicyExpirationDatePross" prepend=",">#PolicyExpirationDatePross#</isNotEmpty>
+               <isNotEmpty property="ProInsPremium" prepend=",">#ProInsPremium#</isNotEmpty>
+               <isNotEmpty property="IsPriorActDateFull" prepend=",">#IsPriorActDateFull#</isNotEmpty>
+               <isNotEmpty property="FirmYear" prepend=",">#FirmYear#</isNotEmpty>
+               <isNotEmpty property="IsSignedEngagement" prepend=",">#IsSignedEngagement#</isNotEmpty>
+               <isNotEmpty property="PriorActDatePross" prepend=",">#PriorActDatePross#</isNotEmpty>
+          </dynamic>
+          )
+          <selectKey resultClass="int" keyProperty="FormKey">SELECT IDENT_CURRENT('EstimateFormGeneralInfo') as last_insert_id</selectKey>
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FormKey, MarketableProductKey, AccountName, AccountEmail, WorkPhone, CountyDesc, City, LimitSequence, DeductibleSequence, IsClaimExpensesType, IsClaimOptionType, Zip, Address1, StateCode, ContactPerson, hasAnyFirmPersonnelReported, InsuranceCompanyNamePross, PolicyExpirationDatePross, ProInsPremium, IsPriorActDateFull, FirmYear, IsSignedEngagement, PriorActDatePross from EstimateFormGeneralInfo where FormKey = #FormKey#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update EstimateFormGeneralInfo set
+          <dynamic prepend=" ">
+               <isNotEmpty property="MarketableProductKey" prepend=",">MarketableProductKey = #MarketableProductKey#</isNotEmpty>
+               <isEmpty property="MarketableProductKey" prepend=",">MarketableProductKey = null</isEmpty>
+               <isNotEmpty property="AccountName" prepend=",">AccountName = #AccountName#</isNotEmpty>
+               <isEmpty property="AccountName" prepend=",">AccountName = null</isEmpty>
+               <isNotEmpty property="AccountEmail" prepend=",">AccountEmail = #AccountEmail#</isNotEmpty>
+               <isEmpty property="AccountEmail" prepend=",">AccountEmail = null</isEmpty>
+               <isNotEmpty property="WorkPhone" prepend=",">WorkPhone = #WorkPhone#</isNotEmpty>
+               <isEmpty property="WorkPhone" prepend=",">WorkPhone = null</isEmpty>
+               <isNotEmpty property="CountyDesc" prepend=",">CountyDesc = #CountyDesc#</isNotEmpty>
+               <isEmpty property="CountyDesc" prepend=",">CountyDesc = null</isEmpty>
+               <isNotEmpty property="City" prepend=",">City = #City#</isNotEmpty>
+               <isEmpty property="City" prepend=",">City = null</isEmpty>
+               <isNotEmpty property="LimitSequence" prepend=",">LimitSequence = #LimitSequence#</isNotEmpty>
+               <isEmpty property="LimitSequence" prepend=",">LimitSequence = null</isEmpty>
+               <isNotEmpty property="DeductibleSequence" prepend=",">DeductibleSequence = #DeductibleSequence#</isNotEmpty>
+               <isEmpty property="DeductibleSequence" prepend=",">DeductibleSequence = null</isEmpty>
+               <isNotEmpty property="IsClaimExpensesType" prepend=",">IsClaimExpensesType = #IsClaimExpensesType#</isNotEmpty>
+               <isEmpty property="IsClaimExpensesType" prepend=",">IsClaimExpensesType = null</isEmpty>
+               <isNotEmpty property="IsClaimOptionType" prepend=",">IsClaimOptionType = #IsClaimOptionType#</isNotEmpty>
+               <isEmpty property="IsClaimOptionType" prepend=",">IsClaimOptionType = null</isEmpty>
+               <isNotEmpty property="Zip" prepend=",">Zip = #Zip#</isNotEmpty>
+               <isEmpty property="Zip" prepend=",">Zip = null</isEmpty>
+               <isNotEmpty property="Address1" prepend=",">Address1 = #Address1#</isNotEmpty>
+               <isEmpty property="Address1" prepend=",">Address1 = null</isEmpty>
+               <isNotEmpty property="StateCode" prepend=",">StateCode = #StateCode#</isNotEmpty>
+               <isEmpty property="StateCode" prepend=",">StateCode = null</isEmpty>
+               <isNotEmpty property="ContactPerson" prepend=",">ContactPerson = #ContactPerson#</isNotEmpty>
+               <isEmpty property="ContactPerson" prepend=",">ContactPerson = null</isEmpty>
+               <isNotEmpty property="hasAnyFirmPersonnelReported" prepend=",">hasAnyFirmPersonnelReported = #hasAnyFirmPersonnelReported#</isNotEmpty>
+               <isEmpty property="hasAnyFirmPersonnelReported" prepend=",">hasAnyFirmPersonnelReported = null</isEmpty>
+               <isNotEmpty property="InsuranceCompanyNamePross" prepend=",">InsuranceCompanyNamePross = #InsuranceCompanyNamePross#</isNotEmpty>
+               <isEmpty property="InsuranceCompanyNamePross" prepend=",">InsuranceCompanyNamePross = null</isEmpty>
+               <isNotEmpty property="PolicyExpirationDatePross" prepend=",">PolicyExpirationDatePross = #PolicyExpirationDatePross#</isNotEmpty>
+               <isEmpty property="PolicyExpirationDatePross" prepend=",">PolicyExpirationDatePross = null</isEmpty>
+               <isNotEmpty property="ProInsPremium" prepend=",">ProInsPremium = #ProInsPremium#</isNotEmpty>
+               <isEmpty property="ProInsPremium" prepend=",">ProInsPremium = null</isEmpty>
+               <isNotEmpty property="IsPriorActDateFull" prepend=",">IsPriorActDateFull = #IsPriorActDateFull#</isNotEmpty>
+               <isEmpty property="IsPriorActDateFull" prepend=",">IsPriorActDateFull = null</isEmpty>
+               <isNotEmpty property="FirmYear" prepend=",">FirmYear = #FirmYear#</isNotEmpty>
+               <isEmpty property="FirmYear" prepend=",">FirmYear = null</isEmpty>
+               <isNotEmpty property="IsSignedEngagement" prepend=",">IsSignedEngagement = #IsSignedEngagement#</isNotEmpty>
+               <isEmpty property="IsSignedEngagement" prepend=",">IsSignedEngagement = null</isEmpty>
+               <isNotEmpty property="PriorActDatePross" prepend=",">PriorActDatePross = #PriorActDatePross#</isNotEmpty>
+               <isEmpty property="PriorActDatePross" prepend=",">PriorActDatePross = null</isEmpty>
+          </dynamic>
+          where FormKey = #FormKey#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from EstimateFormGeneralInfo where FormKey = #FormKey#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from EstimateFormGeneralInfo</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from EstimateFormGeneralInfo</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FormKey, MarketableProductKey, AccountName, AccountEmail, WorkPhone, CountyDesc, City, LimitSequence, DeductibleSequence, IsClaimExpensesType, IsClaimOptionType, Zip, Address1, StateCode, ContactPerson, hasAnyFirmPersonnelReported, InsuranceCompanyNamePross, PolicyExpirationDatePross, ProInsPremium, IsPriorActDateFull, FirmYear, IsSignedEngagement, PriorActDatePross from EstimateFormGeneralInfo where FormKey = #FormKey#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select FormKey, AccountName, AccountEmail, WorkPhone, CountyDesc, City, LimitSequence, DeductibleSequence, IsClaimExpensesType, IsClaimOptionType, Zip, Address1, StateCode, ContactPerson, hasAnyFirmPersonnelReported, InsuranceCompanyNamePross, PolicyExpirationDatePross, ProInsPremium, IsPriorActDateFull, FirmYear, IsSignedEngagement, PriorActDatePross from EstimateFormGeneralInfo</select>
+     <parameterMap id="InsertUpdateProtexureFormGeneralData_ACC_pMap" class="java.util.HashMap">
+          <parameter property="LimitSequence" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="DeductibleSequence" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsClaimExpensesType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsClaimOptionType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="AccountEmail" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="InsuranceCompanyNamePross" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyExpirationDatePross" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="ProInsPremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsPriorActDateFull" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PriorActDatePross" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirmYear" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="hasAnyFirmPersonnelReported" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="AccountName" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ContactPerson" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="Address1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="StateCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="CountyDesc" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="City" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="Zip" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WorkPhone" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="IsSignedEngagement" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="MarketableProductKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="outputList" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="outputList1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="InsertUpdateProtexureFormGeneralData_ACC_p" parameterMap="InsertUpdateProtexureFormGeneralData_ACC_pMap">{ call InsertUpdateProtexureFormGeneralData_ACC_p(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+</sqlMap>
+

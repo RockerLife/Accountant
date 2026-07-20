@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Fee Suit Supplement</title>
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.js"/>
+		<script src="js/bootstrap_3-3-6.js"/>
+		<script type="text/javascript" src="script/common.js"/>
+		<script language="javascript" src="script/lawyers.js"/>
+		<script type="text/javascript" src="script/manage.js"/>
+		<script type="text/javascript" src="script/date-picker.js"/>
+		<script type="text/javascript" src="script/htmlMassking.js"/>
+		<script type="text/javascript" src="script/masks.js"/>
+		<script type="text/javascript" src="script/popup.js"/>
+		<script type="text/javascript" src="script/capitalizeSentences.js"/>
+		<script src="js/producerOne.js"/>
+		<script src="js/bootstrap-datepicker.js"/>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+	<body onload="loadFeeSupplement();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form autocomplete="off">
+			<!-- Bootstrap Core JavaScript -->
+			<div class="container-fluid bootstrap-node-1">
+				<div class="tableWidth" id="AppCompleted">
+					<div id="feeDiv">
+						<div>
+							<h2 class="questionHeading">
+							Fee Suit Supplement
+							</h2>
+						</div>
+						<div class="form" style="min-height: 250px;width:90%;" >
+							<div class="block-form" >
+								<div id="feeSuitSupplement">
+									<div class="freeFormDiv form-inline" id="feeSuitSupplement_freeform_contextdata_001">
+										<div class="Confirmation" id="feeSuitSupplement_freeform_contextdata_002" align="center">
+											<label name="pageMsg" id="pageMsg" />
+										</div>
+										<ul class="inlineBlock">
+											<li class="inlineBlock_1_fix">
+												<div class="freeFormList form-group">
+													<div class="freeFormListTr">
+														<div class="freeFormListTdError">
+															<h6>&nbsp;</h6>
+														</div>
+														<div class="freeFormListTdError paddingLeft3">
+	
+														</div>
+													</div>
+													<div class="freeFormListTr">
+														<div class="freeFormListTd">
+															<div id="NewBusiness" class="txtbold">How many fee suits have you filed in the past 3 years ?</div>
+															<div id="RenewBusiness" class="txtbold">How many fee suits have you filed in the past year.</div>
+														</div>
+														<div class="freeFormListTd tdInput">
+															<input type="text" name="addFeeSuits" id="ajax_field_addFeeSuits" 
+															onchange="javascript:ajaxsubmitform('morePracticeManagement.html','feeSuitSupplement.refreshGrid','','','feeDiv');"/>
+															<div id="error_feesuitIncompleteData" class="error"> </div>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="questionBlock">
+										<table cellpadding="0" cellspacing="0" width="100%">
+											<tr>
+												<td colspan="2" class="">
+													<table cellspacing="0" cellpadding="2" border="0" class="gridTable" width="80%" align="center" id="FeeSuitData_list_01">
+														<tbody>
+															<tr>
+																<td class="paddingTop20">
+																	<span id="ajax_error_needFirstRowfee" class="error"/>
+																	<span id="error_completeRow" class="errors"/>
+																</td>
+															</tr>
+															<tr class="listRow2CSS">
+																<!-- <th>Named Defendant in suit</th> -->
+																<th>Amount of Fees Sued For</th>
+																<!-- <th>Date Fees Were Due</th> -->
+																<th>Date Fee Suit Filed</th>
+																<th>
+																	<div style="width:220px" class="txtbold">Was There a Counter Claim or Allegation of Legal Malpractice</div>
+																</th>
+																<th>Disposition of Fee Suit</th>
+																<th/>
+															</tr>
+															<tr id="FeeSuitData_list_header_01" class="no-padding">
+																<!-- <td id="block_field_NamedDefendantsInSuit"/> -->
+																<td id="block_field_AmountOfFeesSued"/>
+																<!-- <td id="block_field_DueDateFees"/> -->
+																<td id="block_field_SuitFilesDateFees"/>
+																<td id="block_field_IsAllegOfLegalMalPrac"/>
+																<td id="block_field_FeeSuitDispositionKey"/>
+																<td  id="showPageSave">
+																	<span id="block_field_deletelink_row_link"/>
+																</td>
+															</tr>
+															<tr class="listRow2CSS" id="FeeSuitData_list_mom_data_01">
+																<!-- <td id="block_field_NamedDefendantsInSuit">
+																	<input name="NamedDefendantsInSuit" id="ajax_field_NamedDefendantsInSuit" type="text"/>
+																</td> -->
+																<td id="block_field_AmountOfFeesSued">
+																	<input name="AmountOfFeesSued" id="ajax_field_AmountOfFeesSued" type="text" onclick="loadFeeSupplement();"/>
+																</td>
+																<!-- <td nowrap class="iconsStyle2">
+																	<span id="block_field_DueDateFees">
+																		<input name="DueDateFees" id="ajax_field_DueDateFees" type="text" placeholder="MM/DD/YYYY" class="form-control" onkeyup="applyDateFormat(this,event);"/>
+																	</span>
+																</td> -->
+																<td nowrap class="iconsStyle2">
+																	<span id="block_field_SuitFilesDateFees">
+																		<input name="SuitFilesDateFees" id="ajax_field_SuitFilesDateFees" type="text" placeholder="MM/DD/YYYY" class="form-control" onkeyup="applyDateFormat(this,event);"/>
+																	</span>
+																</td>
+																<td id="">
+																	<table cellpadding="2" cellspacing="2">
+																		<tr>
+																			<td class="padding0" nowrap id="block_field_IsAllegOfLegalMalPrac">
+																				<input name="IsAllegOfLegalMalPrac"  id="ajax_field_IsAllegOfLegalMalPrac_FixedValue" type="radio" value="Y"/>
+																			</td>
+																			<td class="padding0">&nbsp;Yes
+																			</td>
+																			<td>&nbsp;&nbsp;&nbsp;</td>
+																			<td class="padding0" nowrap id="block_field_IsAllegOfLegalMalPrac">
+																				<input name="IsAllegOfLegalMalPrac"  id="ajax_field_IsAllegOfLegalMalPrac_FixedValue" type="radio"  value="N"/>
+																			</td>
+																			<td class="padding0">&nbsp;No
+																			</td>
+
+																		</tr>
+																	</table>
+																</td>
+																<td>
+																	<span id="block_field_FeeSuitDispositionKey">
+																		<select name="FeeSuitDispositionKey" id="ajax_field_FeeSuitDispositionKey" class="inputbox">
+																			<option value="">- Select -</option>
+																		</select>
+																	</span>
+																</td>
+																<td  id="showPageSave">
+																	<div id="block_field_deletelink_row_link">
+																		<a href="javascript:ajaxpageblocklink('morePracticeManagement.html','feeSuitSupplement.delete','','','feeDiv');" class="Link_blue">
+																			<i class="fa fa-times delete_icon">&nbsp;</i>
+																		</a>
+																	</div>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div class="paddingTop10 row">
+									<div  id="showPageSave">
+										<div class="floatRight">
+											<a class="btn next" href="javascript:ajaxsubmitform('morePracticeManagement.html','feeSuitSupplement.save','','','feeDiv');" >Save</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<table id="feeSuitSupplement_freeform_contextdata_999">
+						<tr>
+							<td>
+								<input type="hidden" name="jsessionid" id="jsessionid" />
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

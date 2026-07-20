@@ -1,0 +1,60 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SmartSearchValueACC">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from SmartSearchValueACC</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from SmartSearchValueACC</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into SmartSearchValueACC(
+          <dynamic prepend=" ">
+               <isNotEmpty property="AOPKey" prepend=",">AOPKey</isNotEmpty>
+               <isNotEmpty property="Percentage" prepend=",">Percentage</isNotEmpty>
+               <isNotEmpty property="PercentageOld" prepend=",">PercentageOld</isNotEmpty>
+               <isNotEmpty property="PolicyKey" prepend=",">PolicyKey</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="AOPKey" prepend=",">#AOPKey#</isNotEmpty>
+               <isNotEmpty property="Percentage" prepend=",">#Percentage#</isNotEmpty>
+               <isNotEmpty property="PercentageOld" prepend=",">#PercentageOld#</isNotEmpty>
+               <isNotEmpty property="PolicyKey" prepend=",">#PolicyKey#</isNotEmpty>
+          </dynamic>
+          )
+          <selectKey resultClass="int" keyProperty="SmartSearchID">SELECT IDENT_CURRENT('SmartSearchValueACC') as last_insert_id</selectKey>
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select SmartSearchID, AOPKey, Percentage, PercentageOld, PolicyKey from SmartSearchValueACC where SmartSearchID = #SmartSearchID#</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update SmartSearchValueACC set
+          <dynamic prepend=" ">
+               <isNotEmpty property="AOPKey" prepend=",">AOPKey = #AOPKey#</isNotEmpty>
+               <isEmpty property="AOPKey" prepend=",">AOPKey = null</isEmpty>
+               <isNotEmpty property="Percentage" prepend=",">Percentage = #Percentage#</isNotEmpty>
+               <isEmpty property="Percentage" prepend=",">Percentage = null</isEmpty>
+               <isNotEmpty property="PercentageOld" prepend=",">PercentageOld = #PercentageOld#</isNotEmpty>
+               <isEmpty property="PercentageOld" prepend=",">PercentageOld = null</isEmpty>
+               <isNotEmpty property="PolicyKey" prepend=",">PolicyKey = #PolicyKey#</isNotEmpty>
+               <isEmpty property="PolicyKey" prepend=",">PolicyKey = null</isEmpty>
+          </dynamic>
+          where SmartSearchID = #SmartSearchID#
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from SmartSearchValueACC where SmartSearchID = #SmartSearchID#</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from SmartSearchValueACC</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from SmartSearchValueACC</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select SmartSearchID, AOPKey, Percentage, PercentageOld, PolicyKey from SmartSearchValueACC where SmartSearchID = #SmartSearchID#</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select SmartSearchID, AOPKey, Percentage, PercentageOld, PolicyKey from SmartSearchValueACC</select>
+     <parameterMap id="InsertAopDataACC_pMap" class="java.util.HashMap">
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="outputList" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="InsertAopDataACC_p" parameterMap="InsertAopDataACC_pMap">{ call InsertAopDataACC_p(?,?,?,?)}</procedure>
+     <parameterMap id="AddMultipleAopACC_ProcMap" class="java.util.HashMap">
+          <parameter property="AOP_values" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PolicyKey" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="VersionSequence" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="LastUpdateUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="LastUpdateTimeStamp" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="AddMultipleAopACC_Proc" parameterMap="AddMultipleAopACC_ProcMap">{ call AddMultipleAopACC_Proc(?,?,?,?,?)}</procedure>
+</sqlMap>
+

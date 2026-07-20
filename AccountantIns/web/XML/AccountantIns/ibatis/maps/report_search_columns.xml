@@ -1,0 +1,357 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="report_search_columns">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from report_search_columns</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from report_search_columns</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into report_search_columns(
+          <dynamic prepend=" ">
+               <isNotEmpty property="WeekFromDate_D" prepend=",">WeekFromDate_D</isNotEmpty>
+               <isNotEmpty property="WeekToDate_D" prepend=",">WeekToDate_D</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="WeekFromDate_D" prepend=",">#WeekFromDate_D#</isNotEmpty>
+               <isNotEmpty property="WeekToDate_D" prepend=",">#WeekToDate_D#</isNotEmpty>
+          </dynamic>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select WeekFromDate_D, WeekToDate_D from report_search_columns</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update report_search_columns set
+          <dynamic prepend=" ">
+               <isNotEmpty property="WeekFromDate_D" prepend=",">WeekFromDate_D = #WeekFromDate_D#</isNotEmpty>
+               <isEmpty property="WeekFromDate_D" prepend=",">WeekFromDate_D = null</isEmpty>
+               <isNotEmpty property="WeekToDate_D" prepend=",">WeekToDate_D = #WeekToDate_D#</isNotEmpty>
+               <isEmpty property="WeekToDate_D" prepend=",">WeekToDate_D = null</isEmpty>
+          </dynamic>
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from report_search_columns</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from report_search_columns</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from report_search_columns</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select WeekFromDate_D, WeekToDate_D from report_search_columns</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  from report_search_columns</select>
+     <select id="getpolicystatuslist" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select StatusKey,StatusDesc from status</select>
+     <select id="getstatelist" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select statecode,statedesc from state</select>
+     <select id="getdirect" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select distinct (CASE WHEN pt.producercode =' ' or pt.producercode is null THEN 'Direct' ELSE 'Subproduced' END) as DirectSubproduced_code,(CASE WHEN pt.producercode =' ' or pt.producercode is null THEN 'Direct' ELSE 'Subproduced' END) as DirectSubproduced from PolicyTransaction pt</select>
+     <parameterMap id="insert_pone_batch_reports_p_javaMap" class="java.util.HashMap">
+          <parameter property="module_name" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="search_xml" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="user_id" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="roles" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="isemailnotificationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="last_updated_by" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="search_xml_desc" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="project_name" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="Type" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="search_name" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="insert_pone_batch_reports_p_java" parameterMap="insert_pone_batch_reports_p_javaMap" resultClass="java.util.HashMap">{ call insert_pone_batch_reports_p_java(?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="getPoneBatchReports_p_javaMap" class="java.util.HashMap">
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="getPoneBatchReports_p_java" parameterMap="getPoneBatchReports_p_javaMap" resultClass="java.util.HashMap">{ call getPoneBatchReports_p_java(?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new7Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new7" parameterMap="weeklyreport_statemonth_new7Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new6Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new6" parameterMap="weeklyreport_statemonth_new6Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new10Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new10" parameterMap="weeklyreport_statemonth_new10Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new9Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new9" parameterMap="weeklyreport_statemonth_new9Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new11Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new11" parameterMap="weeklyreport_statemonth_new11Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new8Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new8" parameterMap="weeklyreport_statemonth_new8Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new12Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new12" parameterMap="weeklyreport_statemonth_new12Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new3Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new3" parameterMap="weeklyreport_statemonth_new3Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new2Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new2" parameterMap="weeklyreport_statemonth_new2Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new5Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new5" parameterMap="weeklyreport_statemonth_new5Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new4Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new4" parameterMap="weeklyreport_statemonth_new4Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="weeklyreport_statemonth_new1Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="FirstReviewUserID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekMarketableProductKey" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="SumTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="UnderReviewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="DeclinedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="QuotedNewTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="IssuedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="HitRatioSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="PendingTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="RejectedTotal" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="Totalofsumpremium" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="weeklyreport_statemonth_new1" parameterMap="weeklyreport_statemonth_new1Map" resultClass="java.util.HashMap,java.util.HashMap">{ call weeklyreport_statemonth_new(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="FetchAllAccountantData_newMap" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="DirectSubProduced" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="FetchAllAccountantData_new" parameterMap="FetchAllAccountantData_newMap" resultClass="java.util.HashMap,java.util.HashMap">{ call FetchAllAccountantData_new(?,?,?,?,?,?,?,?,?)}</procedure>
+     <parameterMap id="FetchAllAccountantData_new1Map" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="FetchAllAccountantData_new1" parameterMap="FetchAllAccountantData_new1Map" resultClass="java.util.HashMap,java.util.HashMap">{ call FetchAllAccountantData_new(?,?,?,?,?,?)}</procedure>
+     <parameterMap id="FetchAllLawyersData_newMap" class="java.util.HashMap">
+          <parameter property="PAGE_SIZE" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="PAGE_NUMBER" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="ispaginationrequired" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportID" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="ProjectType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="account_name" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="reportoutputtype" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="WeekFromDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="WeekToDate_D" jdbcType="DATE" javaType="java.util.Date" mode="IN" />
+          <parameter property="DirectSubProduced" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+     </parameterMap>
+     <procedure id="FetchAllLawyersData_new" parameterMap="FetchAllLawyersData_newMap" resultClass="java.util.HashMap,java.util.HashMap">{ call FetchAllLawyersData_new(?,?,?,?,?,?,?,?,?,?)}</procedure>
+</sqlMap>
+

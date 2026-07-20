@@ -1,0 +1,51 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="QuickBookRepsLKU">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from QuickBookRepsLKU</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from QuickBookRepsLKU</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into QuickBookRepsLKU(
+          <dynamic prepend=" ">
+               <isNotEmpty property="Subproducer" prepend=",">Subproducer</isNotEmpty>
+               <isNotEmpty property="RepCode" prepend=",">RepCode</isNotEmpty>
+               <isNotEmpty property="LawyersNBRate" prepend=",">LawyersNBRate</isNotEmpty>
+               <isNotEmpty property="LawyersRenewalRate" prepend=",">LawyersRenewalRate</isNotEmpty>
+               <isNotEmpty property="AccountantsNBRate" prepend=",">AccountantsNBRate</isNotEmpty>
+               <isNotEmpty property="AccountantsRenewalRate" prepend=",">AccountantsRenewalRate</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="Subproducer" prepend=",">#Subproducer#</isNotEmpty>
+               <isNotEmpty property="RepCode" prepend=",">#RepCode#</isNotEmpty>
+               <isNotEmpty property="LawyersNBRate" prepend=",">#LawyersNBRate#</isNotEmpty>
+               <isNotEmpty property="LawyersRenewalRate" prepend=",">#LawyersRenewalRate#</isNotEmpty>
+               <isNotEmpty property="AccountantsNBRate" prepend=",">#AccountantsNBRate#</isNotEmpty>
+               <isNotEmpty property="AccountantsRenewalRate" prepend=",">#AccountantsRenewalRate#</isNotEmpty>
+          </dynamic>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select Subproducer, RepCode, LawyersNBRate, LawyersRenewalRate, AccountantsNBRate, AccountantsRenewalRate from QuickBookRepsLKU</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update QuickBookRepsLKU set
+          <dynamic prepend=" ">
+               <isNotEmpty property="Subproducer" prepend=",">Subproducer = #Subproducer#</isNotEmpty>
+               <isEmpty property="Subproducer" prepend=",">Subproducer = null</isEmpty>
+               <isNotEmpty property="RepCode" prepend=",">RepCode = #RepCode#</isNotEmpty>
+               <isEmpty property="RepCode" prepend=",">RepCode = null</isEmpty>
+               <isNotEmpty property="LawyersNBRate" prepend=",">LawyersNBRate = #LawyersNBRate#</isNotEmpty>
+               <isEmpty property="LawyersNBRate" prepend=",">LawyersNBRate = null</isEmpty>
+               <isNotEmpty property="LawyersRenewalRate" prepend=",">LawyersRenewalRate = #LawyersRenewalRate#</isNotEmpty>
+               <isEmpty property="LawyersRenewalRate" prepend=",">LawyersRenewalRate = null</isEmpty>
+               <isNotEmpty property="AccountantsNBRate" prepend=",">AccountantsNBRate = #AccountantsNBRate#</isNotEmpty>
+               <isEmpty property="AccountantsNBRate" prepend=",">AccountantsNBRate = null</isEmpty>
+               <isNotEmpty property="AccountantsRenewalRate" prepend=",">AccountantsRenewalRate = #AccountantsRenewalRate#</isNotEmpty>
+               <isEmpty property="AccountantsRenewalRate" prepend=",">AccountantsRenewalRate = null</isEmpty>
+          </dynamic>
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from QuickBookRepsLKU</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from QuickBookRepsLKU</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from QuickBookRepsLKU</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select Subproducer, RepCode, LawyersNBRate, LawyersRenewalRate, AccountantsNBRate, AccountantsRenewalRate from QuickBookRepsLKU</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select Subproducer, RepCode, LawyersNBRate, LawyersRenewalRate, AccountantsNBRate, AccountantsRenewalRate from QuickBookRepsLKU</select>
+</sqlMap>
+

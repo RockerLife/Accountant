@@ -1,0 +1,35 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="claimSupp">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from claimSupp</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from claimSupp</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into claimSupp(
+          <dynamic prepend=" ">
+               <isNotEmpty property="ClaimNotifiedCiDate" prepend=",">ClaimNotifiedCiDate</isNotEmpty>
+               <isNotEmpty property="IsClaimInSuit" prepend=",">IsClaimInSuit</isNotEmpty>
+          </dynamic>
+          ) values (
+          <dynamic prepend=" ">
+               <isNotEmpty property="ClaimNotifiedCiDate" prepend=",">#ClaimNotifiedCiDate#</isNotEmpty>
+               <isNotEmpty property="IsClaimInSuit" prepend=",">#IsClaimInSuit#</isNotEmpty>
+          </dynamic>
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select ClaimNotifiedCiDate, IsClaimInSuit from claimSupp</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update claimSupp set
+          <dynamic prepend=" ">
+               <isNotEmpty property="ClaimNotifiedCiDate" prepend=",">ClaimNotifiedCiDate = #ClaimNotifiedCiDate#</isNotEmpty>
+               <isEmpty property="ClaimNotifiedCiDate" prepend=",">ClaimNotifiedCiDate = null</isEmpty>
+               <isNotEmpty property="IsClaimInSuit" prepend=",">IsClaimInSuit = #IsClaimInSuit#</isNotEmpty>
+               <isEmpty property="IsClaimInSuit" prepend=",">IsClaimInSuit = null</isEmpty>
+          </dynamic>
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from claimSupp</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from claimSupp</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from claimSupp</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select ClaimNotifiedCiDate, IsClaimInSuit from claimSupp</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select ClaimNotifiedCiDate, IsClaimInSuit from claimSupp</select>
+</sqlMap>
+

@@ -1,0 +1,7 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TrustTypeLKU">
+     <select id="getCancellationReason" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select CANCELLATION_REASON_ID,CANCELLATION_REASON_DESC  from CANCELLATIONREASONLKU order by CANCELLATION_REASON_ID</select>
+     <select id="getCancellationType" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select CANCELLATION_TYPE_ID,CANCELLATION_TYPE_DESC  from CANCELLATIONTYPELKU order by CANCELLATION_TYPE_ID</select>
+</sqlMap>
+

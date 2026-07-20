@@ -1,0 +1,843 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Untitled Document</title>
+<script src="js/jquery.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+	<body>
+		<form>
+			<div id="eval:AccountantRule.IsNotRenewalPolicy">
+				<div id="FirmRenderedService_freeform">
+
+					<table width="94%" border="0" align="center" cellpadding="2"
+						cellspacing="0" id="FirmRenderedService_freeform_contextdata_01">
+
+						<!--<tr>
+                                                <td colspan="3" ><div id="ajax_errors_list"></div></td>
+                                              </tr>-->
+						<tr>
+							<td width="350">
+								&nbsp;
+							</td>
+							<td colspan="2">
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_ClientNameOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Firm Member :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="ClientNameOsi" type="text" disabled="disabled"
+										class="inputbox" size="50" id="ajax_field_ClientNameOsi" />
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox" name="ClientNameOsi"
+										size="50" maxlength="100" id="ajax_field_ClientNameOsi"
+										tabindex="131"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_EntityNameOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Entity Name :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="EntityNameOsi" type="text" disabled="disabled"
+										class="inputbox" size="50" id="ajax_field_EntityNameOsi" />
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox" name="EntityNameOsi"
+										size="50" maxlength="100" id="ajax_field_EntityNameOsi"
+										tabindex="132"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_ClientIndustryOsiKey"></div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right">
+								Industry
+								<span id="eval:AccountantRule.ClientIndustryOsiKeyRefer"><a
+									onmouseout="popUp(event,'industry')"
+									onmouseover="popUp(event,'industry')" onclick="return false"><img
+											src="img/HelpIcon2.jpg" width="16" height="16" border="0" />
+								</a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isGeneralPageReadOnly"> <select
+										name="ClientIndustryOsiKey" disabled="disabled"
+										id="ajax_field_ClientIndustryOsiKey" class="inputbox">
+										<option value="" selected="selected">
+											-----Select-----
+										</option>
+									</select> </span>
+								<span id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<select name="ClientIndustryOsiKey"
+										id="ajax_field_ClientIndustryOsiKey" class="inputbox"
+										onChange="showDivAreaClientAjax(this.value,'ClientIndustryOsiKeyOthers');"
+										tabindex="133">
+										<option value="" selected="selected">
+											-----Select-----
+										</option>
+									</select> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ClientIndustryOsiKeyOthers"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<div style="display: none"
+									id="div_header_ClientIndustryOsiKeyOthers">
+									Specify Others:
+								</div>
+								<div
+									id="eval:AccountantRule.div_header_title_ClientIndustryOsiKeyOthers">
+									Specify Others :
+								</div>
+							</td>
+							<td align="left" colspan="2">
+								<div style="display: none"
+									id="div_data_ClientIndustryOsiKeyOthers">
+									<div id="eval:AccountantRule.isGeneralPageReadOnly">
+										<textarea rows="2" name="ClientIndustryOsiKeyOthers"
+											readonly="readonly"
+											id="ajax_field_ClientIndustryOsiKeyOthers" class="inputbox"
+											cols="20"></textarea>
+									</div>
+									<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+										<textarea rows="2" name="ClientIndustryOsiKeyOthers"
+											id="ajax_field_ClientIndustryOsiKeyOthers" cols="20"
+											class="inputbox" onKeyUp="limitText(this,1,5000);"
+											tabindex="134"></textarea>
+									</div>
+								</div>
+								<div
+									id="eval:AccountantRule.div_header_data_ClientIndustryOsiKeyOthers">
+									<div id="eval:AccountantRule.isGeneralPageReadOnly">
+										<textarea rows="2" name="ClientIndustryOsiKeyOthers"
+											readonly="readonly"
+											id="ajax_field_ClientIndustryOsiKeyOthers" cols="20"
+											class="inputbox"></textarea>
+									</div>
+									<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+										<textarea rows="2" name="ClientIndustryOsiKeyOthers"
+											id="ajax_field_ClientIndustryOsiKeyOthers" class="inputbox"
+											cols="20" onKeyUp="limitText(this,1,5000);" tabindex="134"></textarea>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_PositionHeldOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Position Held :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="PositionHeldOsi" type="text" disabled="disabled"
+										class="inputbox" size="50" id="ajax_field_PositionHeldOsi" />
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox" name="PositionHeldOsi"
+										size="50" id="ajax_field_PositionHeldOsi" maxlength="100"
+										tabindex="135" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_DOInsuranceOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Is Director / Officer Insurance in
+								force?
+								<span id="eval:AccountantRule.DOInsuranceOsiRefer"><a
+									onmouseout="popUp(event,'officerInsurance')"
+									onmouseover="popUp(event,'officerInsurance')"
+									onclick="return false"><img src="img/HelpIcon2.jpg"
+											width="16" height="16" border="0" /> </a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isGeneralPageReadOnly"><input
+										type="radio" name="DOInsuranceOsi" disabled="disabled"
+										id="ajax_field_DOInsuranceOsi" value="Y" /> </span><span
+									id="eval:AccountantRule.isGeneralPageNotReadOnly"><input
+										type="radio" name="DOInsuranceOsi"
+										id="ajax_field_DOInsuranceOsi" value="Y" tabindex="136" /> </span>
+								Yes
+								<span id="eval:AccountantRule.isGeneralPageReadOnly"><input
+										type="radio" disabled="disabled" name="DOInsuranceOsi"
+										id="ajax_field_DOInsuranceOsi" value="N" /> </span><span
+									id="eval:AccountantRule.isGeneralPageNotReadOnly"><input
+										type="radio" name="DOInsuranceOsi"
+										id="ajax_field_DOInsuranceOsi" value="N" tabindex="137" /> </span>
+								No
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_PercentEquityInterestofOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Percent Equity Interest
+								<span id="eval:AccountantRule.PercentEquityInterestOsiRefer"><a
+									onmouseout="popUp(event,'equityInterest')"
+									onmouseover="popUp(event,'equityInterest')"
+									onclick="return false"><img src="img/HelpIcon2.jpg"
+											width="16" height="16" border="0" /> </a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isGeneralPageReadOnly">
+									<input name="PercentEquityInterestofOsi" type="text"
+										disabled="disabled" class="inputbox" size="3" maxlength="3"
+										id="ajax_field_PercentEquityInterestofOsi" />
+								</div>
+								<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<input type="text" class="inputbox"
+										name="PercentEquityInterestofOsi" size="3" maxlength="3"
+										id="ajax_field_PercentEquityInterestofOsi" tabindex="138" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_ServiceIndustryOsiKey"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Firm services
+								<span id="eval:AccountantRule.ServiceIndustryOsiKeyRefer"><a
+									onmouseout="popUp(event,'firmservices')"
+									onmouseover="popUp(event,'firmservices')"
+									onclick="return false"><img src="img/HelpIcon2.jpg"
+											width="16" height="16" border="0" /> </a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isGeneralPageReadOnly"> <select
+										name="ServiceIndustryOsiKey" disabled="disabled"
+										id="ajax_field_ServiceIndustryOsiKey" class="inputbox">
+										<option value="" selected="selected">
+											-----Select-----
+										</option>
+									</select> </span>
+								<span id="eval:AccountantRule.isGeneralPageNotReadOnly">
+									<select name="ServiceIndustryOsiKey"
+										id="ajax_field_ServiceIndustryOsiKey" class="inputbox"
+										onChange="showDivAreaPrimaryServiceAjax(this.value,'ServiceIndustryOsiKeyOthers');"
+										tabindex="139">
+										<option value="" selected="selected">
+											-----Select-----
+										</option>
+									</select> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ServiceIndustryOsiKeyOthers"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<div style="display: none"
+									id="div_header_ServiceIndustryOsiKeyOthers">
+									Specify Others:
+								</div>
+								<div
+									id="eval:AccountantRule.div_header_title_ServiceIndustryOsiKeyOthers">
+									Specify Others :
+								</div>
+							</td>
+							<td align="left" colspan="2">
+								<div style="display: none"
+									id="div_data_ServiceIndustryOsiKeyOthers">
+									<div id="eval:AccountantRule.isGeneralPageReadOnly">
+										<textarea rows="2" name="ServiceIndustryOsiKeyOthers"
+											readonly="readonly"
+											id="ajax_field_ServiceIndustryOsiKeyOthers" class="inputbox"
+											cols="20"></textarea>
+									</div>
+									<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+										<textarea rows="2" name="ServiceIndustryOsiKeyOthers"
+											id="ajax_field_ServiceIndustryOsiKeyOthers" cols="20"
+											onKeyUp="limitText(this,1,5000);" class="inputbox"
+											tabindex="140"></textarea>
+									</div>
+								</div>
+								<div
+									id="eval:AccountantRule.div_header_data_ServiceIndustryOsiKeyOthers">
+									<div id="eval:AccountantRule.isGeneralPageReadOnly">
+										<textarea rows="2" name="ServiceIndustryOsiKeyOthers"
+											readonly="readonly"
+											id="ajax_field_ServiceIndustryOsiKeyOthers" cols="20"
+											class="inputbox"></textarea>
+									</div>
+									<div id="eval:AccountantRule.isGeneralPageNotReadOnly">
+										<textarea rows="2" name="ServiceIndustryOsiKeyOthers"
+											id="ajax_field_ServiceIndustryOsiKeyOthers" class="inputbox"
+											cols="20" tabindex="140" onKeyUp="limitText(this,1,5000);"></textarea>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_IndividualListedServicesOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Does the individual listed perform
+								these services
+								<span id="eval:AccountantRule.IndividualListedServicesOsiRefer"><a
+									onmouseout="popUp(event,'individualperform')"
+									onmouseover="popUp(event,'individualperform')"
+									onclick="return false"><img src="img/HelpIcon2.jpg"
+											width="16" height="16" border="0" /> </a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isGeneralPageReadOnly"> <input
+										type="radio" name="IndividualListedServicesOsi"
+										disabled="disabled"
+										id="ajax_field_IndividualListedServicesOsi" value="Y" /> </span><span
+									id="eval:AccountantRule.isGeneralPageNotReadOnly"><input
+										type="radio" name="IndividualListedServicesOsi"
+										id="ajax_field_IndividualListedServicesOsi" value="Y"
+										tabindex="142" /> </span> Yes
+								<span id="eval:AccountantRule.isGeneralPageReadOnly"> <input
+										type="radio" disabled="disabled"
+										name="IndividualListedServicesOsi"
+										id="ajax_field_IndividualListedServicesOsi" value="N" /> </span><span
+									id="eval:AccountantRule.isGeneralPageNotReadOnly"><input
+										type="radio" name="IndividualListedServicesOsi"
+										id="ajax_field_IndividualListedServicesOsi" value="N"
+										tabindex="143" /> </span> No
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								&nbsp;
+							</td>
+							<td colspan="2" align="left">
+								<table border="0" align="left" cellpadding="1" cellspacing="0">
+									<tr>
+										<td align="left" id="eval:events.saveEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isGeneralPageNotReadOnly">
+												<tr>
+													<td background="img/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('general.html','FirmRenderedService_freeform.save','','','divGy');"
+															class="button4"
+															onClick="closeErrorDiv('IsFirmRenderedServiceForAnyClient');showDivArea(['editN'], ['editY']);"
+															tabindex="144">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left" id="eval:events.editEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isGeneralPageNotReadOnly">
+												<tr>
+													<td background="img/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('general.html','FirmRenderedService_freeform.update','','','divGy');"
+															class="button4" tabindex="145">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left">
+											<table border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td background="img/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('general.html','FirmRenderedService_freeform.close','','','divGy');"
+															class="button4" tabindex="147">Cancel</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+
+
+
+						</tr>
+					</table>
+
+				</div>
+			</div>
+			<div id="eval:AccountantRule.IsRenewalPolicy">
+				<div id="FirmRenderedService_freeform">
+
+					<table width="94%" border="0" align="center" cellpadding="2"
+						cellspacing="0" id="FirmRenderedService_freeform_contextdata_02">
+
+						
+						<tr>
+							<td width="350">
+								&nbsp;
+							</td>
+							<td colspan="2">
+								&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_ClientNameOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Firm Member :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="ClientNameOsi" type="text" disabled="disabled"
+										class="inputbox" size="50" id="ajax_field_ClientNameOsi" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="ClientNameOsi"
+										size="50" maxlength="100" id="ajax_field_ClientNameOsi"
+										tabindex="131"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_EntityNameOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Entity Name :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="EntityNameOsi" type="text" disabled="disabled"
+										class="inputbox" size="50" id="ajax_field_EntityNameOsi" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="EntityNameOsi"
+										size="50" maxlength="100" id="ajax_field_EntityNameOsi"
+										tabindex="132"
+										onblur="javascript:capitalizeSentences(this,1);" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_ClientIndustryOsiKey"></div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right">
+								Industry
+								<span id="eval:AccountantRule.ClientIndustryOsiKeyRefer"><a
+									onmouseout="popUp(event,'industry')"
+									onmouseover="popUp(event,'industry')" onclick="return false"><img
+											src="img/HelpIcon2.jpg" width="16" height="16" border="0" />
+								</a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"> <select
+										name="ClientIndustryOsiKey" disabled="disabled"
+										id="ajax_field_ClientIndustryOsiKey" class="inputbox">
+										<option value="" selected="selected">
+											-----Select-----
+										</option>
+									</select> </span>
+								<span id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<select name="ClientIndustryOsiKey"
+										id="ajax_field_ClientIndustryOsiKey" class="inputbox"
+										onChange="showDivAreaClientAjax(this.value,'ClientIndustryOsiKeyOthers');"
+										tabindex="133">
+										<option value="" selected="selected">
+											-----Select-----
+										</option>
+									</select> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ClientIndustryOsiKeyOthers"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<div style="display: none"
+									id="div_header_ClientIndustryOsiKeyOthers">
+									Specify Others:
+								</div>
+								<div
+									id="eval:AccountantRule.div_header_title_ClientIndustryOsiKeyOthers">
+									Specify Others :
+								</div>
+							</td>
+							<td align="left" colspan="2">
+								<div style="display: none"
+									id="div_data_ClientIndustryOsiKeyOthers">
+									<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+										<textarea rows="2" name="ClientIndustryOsiKeyOthers"
+											readonly="readonly"
+											id="ajax_field_ClientIndustryOsiKeyOthers" class="inputbox"
+											cols="20"></textarea>
+									</div>
+									<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+										<textarea rows="2" name="ClientIndustryOsiKeyOthers"
+											id="ajax_field_ClientIndustryOsiKeyOthers" cols="20"
+											class="inputbox" onKeyUp="limitText(this,1,5000);"
+											tabindex="134"></textarea>
+									</div>
+								</div>
+								<div
+									id="eval:AccountantRule.div_header_data_ClientIndustryOsiKeyOthers">
+									<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+										<textarea rows="2" name="ClientIndustryOsiKeyOthers"
+											readonly="readonly"
+											id="ajax_field_ClientIndustryOsiKeyOthers" cols="20"
+											class="inputbox"></textarea>
+									</div>
+									<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+										<textarea rows="2" name="ClientIndustryOsiKeyOthers"
+											id="ajax_field_ClientIndustryOsiKeyOthers" class="inputbox"
+											cols="20" onKeyUp="limitText(this,1,5000);" tabindex="134"></textarea>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_PositionHeldOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Position Held :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="PositionHeldOsi" type="text" disabled="disabled"
+										class="inputbox" size="50" id="ajax_field_PositionHeldOsi" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox" name="PositionHeldOsi"
+										size="50" id="ajax_field_PositionHeldOsi" maxlength="100"
+										tabindex="135" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors" id="ajax_error_DOInsuranceOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Is Director / Officer Insurance in
+								force?
+								<span id="eval:AccountantRule.DOInsuranceOsiRefer"><a
+									onmouseout="popUp(event,'officerInsurance')"
+									onmouseover="popUp(event,'officerInsurance')"
+									onclick="return false"><img src="img/HelpIcon2.jpg"
+											width="16" height="16" border="0" /> </a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"><input
+										type="radio" name="DOInsuranceOsi" disabled="disabled"
+										id="ajax_field_DOInsuranceOsi" value="Y" /> </span><span
+									id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly"><input
+										type="radio" name="DOInsuranceOsi"
+										id="ajax_field_DOInsuranceOsi" value="Y" tabindex="136" /> </span>
+								Yes
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"><input
+										type="radio" disabled="disabled" name="DOInsuranceOsi"
+										id="ajax_field_DOInsuranceOsi" value="N" /> </span><span
+									id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly"><input
+										type="radio" name="DOInsuranceOsi"
+										id="ajax_field_DOInsuranceOsi" value="N" tabindex="137" /> </span>
+								No
+							</td>
+						</tr>
+
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_PercentEquityInterestofOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Percent Equity Interest
+								<span id="eval:AccountantRule.PercentEquityInterestOsiRefer"><a
+									onmouseout="popUp(event,'equityInterest')"
+									onmouseover="popUp(event,'equityInterest')"
+									onclick="return false"><img src="img/HelpIcon2.jpg"
+											width="16" height="16" border="0" /> </a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+									<input name="PercentEquityInterestofOsi" type="text"
+										disabled="disabled" class="inputbox" size="3" maxlength="3"
+										id="ajax_field_PercentEquityInterestofOsi" />
+								</div>
+								<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<input type="text" class="inputbox"
+										name="PercentEquityInterestofOsi" size="3" maxlength="3"
+										id="ajax_field_PercentEquityInterestofOsi" tabindex="138" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_ServiceIndustryOsiKey"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								Firm services
+								<span id="eval:AccountantRule.ServiceIndustryOsiKeyRefer"><a
+									onmouseout="popUp(event,'firmservices')"
+									onmouseover="popUp(event,'firmservices')"
+									onclick="return false"><img src="img/HelpIcon2.jpg"
+											width="16" height="16" border="0" /> </a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"> <select
+										name="ServiceIndustryOsiKey" disabled="disabled"
+										id="ajax_field_ServiceIndustryOsiKey" class="inputbox">
+										<option value="" selected="selected">
+											-----Select-----
+										</option>
+									</select> </span>
+								<span id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+									<select name="ServiceIndustryOsiKey"
+										id="ajax_field_ServiceIndustryOsiKey" class="inputbox"
+										onChange="showDivAreaPrimaryServiceAjax(this.value,'ServiceIndustryOsiKeyOthers');"
+										tabindex="139">
+										<option value="" selected="selected">
+											-----Select-----
+										</option>
+									</select> </span>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div id="ajax_error_ServiceIndustryOsiKeyOthers"
+									class="defult_tr_errors"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<div style="display: none"
+									id="div_header_ServiceIndustryOsiKeyOthers">
+									Specify Others:
+								</div>
+								<div
+									id="eval:AccountantRule.div_header_title_ServiceIndustryOsiKeyOthers">
+									Specify Others :
+								</div>
+							</td>
+							<td align="left" colspan="2">
+								<div style="display: none"
+									id="div_data_ServiceIndustryOsiKeyOthers">
+									<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+										<textarea rows="2" name="ServiceIndustryOsiKeyOthers"
+											readonly="readonly"
+											id="ajax_field_ServiceIndustryOsiKeyOthers" class="inputbox"
+											cols="20"></textarea>
+									</div>
+									<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+										<textarea rows="2" name="ServiceIndustryOsiKeyOthers"
+											id="ajax_field_ServiceIndustryOsiKeyOthers" cols="20"
+											onKeyUp="limitText(this,1,5000);" class="inputbox"
+											tabindex="140"></textarea>
+									</div>
+								</div>
+								<div
+									id="eval:AccountantRule.div_header_data_ServiceIndustryOsiKeyOthers">
+									<div id="eval:AccountantRule.isRenewBasicInfoPageReadOnly">
+										<textarea rows="2" name="ServiceIndustryOsiKeyOthers"
+											readonly="readonly"
+											id="ajax_field_ServiceIndustryOsiKeyOthers" cols="20"
+											class="inputbox"></textarea>
+									</div>
+									<div id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+										<textarea rows="2" name="ServiceIndustryOsiKeyOthers"
+											id="ajax_field_ServiceIndustryOsiKeyOthers" class="inputbox"
+											cols="20" tabindex="140" onKeyUp="limitText(this,1,5000);"></textarea>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right"></td>
+							<td align="left" colspan="2">
+								<div class="defult_tr_errors"
+									id="ajax_error_IndividualListedServicesOsi"></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<span class="red">*</span>Does the individual listed perform
+								these services
+								<span id="eval:AccountantRule.IndividualListedServicesOsiRefer"><a
+									onmouseout="popUp(event,'individualperform')"
+									onmouseover="popUp(event,'individualperform')"
+									onclick="return false"><img src="img/HelpIcon2.jpg"
+											width="16" height="16" border="0" /> </a> </span> :
+							</td>
+							<td align="left" colspan="2">
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"> <input
+										type="radio" name="IndividualListedServicesOsi"
+										disabled="disabled"
+										id="ajax_field_IndividualListedServicesOsi" value="Y" /> </span><span
+									id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly"><input
+										type="radio" name="IndividualListedServicesOsi"
+										id="ajax_field_IndividualListedServicesOsi" value="Y"
+										tabindex="142" /> </span> Yes
+								<span id="eval:AccountantRule.isRenewBasicInfoPageReadOnly"> <input
+										type="radio" disabled="disabled"
+										name="IndividualListedServicesOsi"
+										id="ajax_field_IndividualListedServicesOsi" value="N" /> </span><span
+									id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly"><input
+										type="radio" name="IndividualListedServicesOsi"
+										id="ajax_field_IndividualListedServicesOsi" value="N"
+										tabindex="143" /> </span> No
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								&nbsp;
+							</td>
+							<td colspan="2" align="left">
+								<table border="0" align="left" cellpadding="1" cellspacing="0">
+									<tr>
+										<td align="left" id="eval:events.saveEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+												<tr>
+													<td background="img/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('RenewBasicInfo.html','FirmRenderedService_freeform.renewSave','','','divGy');"
+															class="button4"
+															onClick="closeErrorDiv('IsFirmRenderedServiceForAnyClient');showDivArea(['editN'], ['editY']);"
+															tabindex="144">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left" id="eval:events.editEvent">
+											<table border="0" cellspacing="0" cellpadding="0"
+												id="eval:AccountantRule.isRenewBasicInfoPageNotReadOnly">
+												<tr>
+													<td background="img/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('RenewBasicInfo.html','FirmRenderedService_freeform.renewUpdate','','','divGy');"
+															class="button4" tabindex="145">Save</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+										<td align="left">
+											<table border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td background="img/button-bg.jpg" class="button4">
+														<a
+															href="javascript:ajaxsubmitform('RenewBasicInfo.html','FirmRenderedService_freeform.renewClose','','','divGy');"
+															class="button4" tabindex="147">Cancel</a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								&nbsp;
+							</td>
+
+
+
+						</tr>
+					</table>
+
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

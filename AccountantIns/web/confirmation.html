@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>E-Signature</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+		<script type="text/javascript" src="script/common.js"></script>
+		<script type="text/javascript" src="script/account.js"></script>
+		<script language="javascript" src="script/lawyers.js"> </script>
+		<script type="text/javascript" src="script/tabber.js"></script>
+		<script type="text/javascript" src="script/test_new.js"></script>
+		<script type="text/javascript" src="script/date-picker.js"></script>
+		<script type="text/javascript" src="script/manage.js"></script>
+		<script type="text/javascript" src="script/masks.js"></script>
+		<script type="text/javascript" src="script/popup.js"></script>
+		<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script>
+	
+	<style>	
+	blockquote {
+	padding: 10px 20px;
+	margin: 0 0 20px;
+	font-size: 17.5px;
+	border-left: 5px solid #eee;
+}
+</style>
+	 </head>
+	<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+		<form name="myForm">
+			<div id="cover" style="width: 100%; height: 100%"></div>
+			<div id="popup" style="width: 430px;">
+				<table width="75%" border="0" align="center" cellpadding="10"
+					cellspacing="0" height="120px">
+					<tr>
+						<td align="center">
+							<b>Please be patient while we create your documents for
+								signing.</b>
+						</td>
+					</tr>
+				</table>
+			</div>
+<div class="container-fluid bootstrap-node-1">
+	<div class="tableWidth">
+		<div id="header">
+			<span id="#Include:headerNewApp.html#"></span>
+		</div>
+		<div id="contentSection">
+		<h2 class="questionHeading">
+				 Confirmation
+					</h2>
+			<div class="form">
+				<div class="block-form">
+					<div id="error_referalsFlagsNotCleard" align="defult_tr_errors" class="center"></div>
+					<div id="error_ApplicationComplete" align="center" class="defult_tr_errors"></div>
+					<div id="eval:AccountantRule.isErrorInESign" align="center" class="error11Bold">
+						Document could not be signed, please contact
+						1-888-803-9898 for assistance
+					</div>
+					
+					<div class="row box_confirmation">
+						<p>You are almost there.</p>
+						<p id="confirmation_freeform_contextdata_01">
+							<strong>Your premium is <label id="InvoicedPremium" name="InvoicedPremium" /></strong>
+						</p>
+						<p>Next steps:</p>
+						<ol>
+							<li>
+								<p>Sign your application. You can click and continue
+								to electronically sign or you can print your
+								application and sign it and send it 
+								via email, fax or the postal service.</p>
+								<blockquote style="line-height: 10px">
+									 <div>
+										<p>Protexure Insurance/MPA</p>
+										<p>PO Box 773197, Detroit, Michigan 48277-3197</p>
+										<p>Fax: (440) 333-3214</p>
+										<p>accts.mail@protexure.com</p>
+									</div>
+								</blockquote>
+							</li>
+							<li>
+								<p>Payment Options</p>
+								<p>After signing your application you will
+									have the option to pay by:</p>
+								<blockquote style="line-height: 10px">
+								<div>
+									<p>Manual Check</p>
+									<p>Credit Card</p>
+									<p>ACH</p>
+									<p>Finance</p>
+								</div>
+								</blockquote>
+							</li>
+						</ol>
+						
+					</div>
+					
+					<div class="row">
+						<div class="box_confirmation2">
+							<table border="0" 
+								cellpadding="2" cellspacing="2" align="center"
+								id="confirmation_freeform_contextdata_01">
+								<tr>
+									<td>
+										<div id="error_isSigned" class="error11Bold"></div>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>
+										Limits :
+									</td>
+									<td>
+										<label id="LimitAmount" name="LimitAmount" />
+									</td>
+								</tr>
+								<tr id="eval:AccountantRule.IsClaimExpensesType">
+									<td>
+									</td>
+									<td>
+										Defense expenses paid in addition to the limits of
+										liability
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Deductible :
+									</td>
+									<td>
+										<label id="DeductibleAmount"
+											name="DeductibleAmount" />
+									</td>
+								</tr>
+								<tr id="eval:AccountantRule.IsClaimOptionType">
+									<td>
+									</td>
+									<td align="left">
+										Annual Aggregate
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Tax amount :
+									</td>
+									<td>
+										<label id="TotalPolicyTaxAmount"
+											name="TotalPolicyTaxAmount" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<strong>Premium :</strong>
+									</td>
+									<td>
+										<strong><label id="TotalPremium" name="TotalPremium" /></strong>
+									</td>
+								</tr>
+								<tr>
+									<td style="font-weight: bold;font-size: 20px; border-top: solid 1px #999999">
+										Total :
+									</td>
+									<td style="font-weight: bold;font-size: 20px; border-top: solid 1px #999999">
+										<label id="InvoicedPremium" name="InvoicedPremium" />
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="buttons row marginsBtn paddingBottom10">
+				<div align="center">
+					<span id="1eval:AccountantRule.isPaymentPageNotReadOnly">
+						
+						 <a id="eval:AccountantRule.showPayment" class="btn next"
+							href="javascript:submitform('paymentmethod.html','confirmation.skipesignature','','');">Continue
+							to payment</a>
+							
+						<a id="eval:AccountantRule.showESign" class="btn next"
+							href="javascript:submitform('paymentmethod.html|confirmation.html','confirmation.withesignature','forwardeval','AccountantRule.isSigned|AccountantRule.isSignedNot');"
+							onClick="showPopUpConfirmation('popup',434,450);">Continue
+							with E-Signature</a>
+						<span id="eval:AccountantRule.isAgent">	
+							
+							<a id="eval:AccountantRule.Quoted_Status" class="btn button1"
+								href="javascript:submitform('paymentmethod.html','confirmation.accept','','');">Accept</a>
+								
+							<a id="eval:AccountantRule.Accept_Status" class="btn next"
+							href="javascript:submitform('paymentmethod.html','confirmation.skipesignature','','');">Continue
+							to payment</a>
+							</span>
+						<a class="btn button1"
+							href="javascript:submitform('quoteOption.html|indexThanks.html','confirmation.changeapplication','forwardeval','AccountantRule.isAgent|AccountantRule.isInsured');">Need Assistance</a>
+						<a id="eval:AccountantRule.showPrint"
+							href="javascript:submitform('confirmation.html','confirmation.downloadpdf','','');"
+							class="btn button1">Print the Application</a>
+							
+						<a class="btn button1"
+							href="javascript:submitform('confirmation.html','confirmation.downloadInvoice','','');"
+							>Print Invoice</a>
+							
+					</span>
+					<!-- <p align="center" id="eval:AccountantRule.IsDaysNotMoreThan90">
+									<a class="btn button1"
+										onclick="showPopUpConfirmation('popup',434,450);"
+										href="javascript:submitform('confirmation.html','confirmation.downloadandRegeneratePolicyDoc','','');">
+										Generate Policy Document</a>
+								</p> -->
+					<a id="eval:AccountantRule.isPaymentPageReadOnly" class="btn next"
+						href="javascript:submitform('paymentmethod.html','confirmation.skipesignature','','');">Continue
+						to payment</a>
+					
+					<a id="eval:AccountantRule.isAgentandIssuesStatus"
+							href="javascript:submitform('confirmation.html','confirmation.downloadDocumentPdf','','');"
+							class="btn button1">Generate Policy</a>
+				</div>
+			</div>
+			
+		</div>				
+	</div>
+	<!---------Footer Start---------->
+	<div id="footer" class="footer">
+		<span id="#Include:footerNewApp.html#"></span>
+	</div>
+	<!---------Footer End---------->
+	<table id="firm_freeform_contextdata_999">
+				<tr>
+					<td><input type="hidden" name="jsessionid" id="jsessionid" />
+						<input type="hidden" name="divHideShow" id="divHideShow" />
+					</td></tr></table>
+</div>
+
+			
+			<div id="contextLinks"></div>
+		</form>
+	</body>
+
+	<script>
+loadInsured();
+</script>
+</html>

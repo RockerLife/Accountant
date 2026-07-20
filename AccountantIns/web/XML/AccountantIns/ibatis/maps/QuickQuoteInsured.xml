@@ -1,0 +1,24 @@
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="QuickQuoteInsured">
+     <select id="findAll" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from QuickQuoteInsured</select>
+     <select id="findAllByPartialKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  *  from QuickQuoteInsured</select>
+     <insert id="insert" parameterClass="java.util.HashMap">
+          insert into QuickQuoteInsured(
+          <dynamic prepend=" " />
+          ) values (
+          <dynamic prepend=" " />
+          )
+     </insert>
+     <select id="updateFindByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  from QuickQuoteInsured</select>
+     <update id="update" parameterClass="java.util.HashMap">
+          update QuickQuoteInsured set
+          <dynamic prepend=" " />
+     </update>
+     <delete id="delete" parameterClass="java.util.HashMap">delete from QuickQuoteInsured</delete>
+     <delete id="deleteAll" parameterClass="java.util.HashMap">delete from QuickQuoteInsured</delete>
+     <delete id="deleteAllByPartialKey" parameterClass="java.util.HashMap">delete from QuickQuoteInsured</delete>
+     <select id="findByKey" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  from QuickQuoteInsured</select>
+     <select id="search" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">select  from QuickQuoteInsured</select>
+</sqlMap>
+

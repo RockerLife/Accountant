@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Endorsement</title>
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/producerOne.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.treeview.js"></script>
+<script src="js/bootstrap_3-3-6.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script language="javascript" src="script/lawyers.js" />
+<script language="javascript" src="script/account.js" />
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+<body onload="manageEndorsementTypes()">
+	<form>
+		<!-- Bootstrap Core JavaScript -->
+		<div class="container-fluid bootstrap-node-1">
+			<div class="tableWidth">
+				<span id="#Include:headerEndorsement.html#"></span>
+				<div id="contentSection">
+					<div>
+						<h2 class="questionHeading">
+							<span>1.</span> Endorsement Type
+						</h2>
+					</div>
+					<div class="form row">
+						<div class="block-form firmNewApp">
+						<div id="errorDivision" style="text-align: center;display:none;" class="error11Bold">The issued premium selected was a manual premium. Some but not all endorsements will need to be created manually. </div>
+							<div class="freeFormDiv form-inline radiobtn"
+								id="Endorsement_freeform_contextdata_001">
+								<ul class="inlineBlock">
+									<li class="inlineBlock_1" id="eval:AccountantRule.isShowCancelltionEndorsementRule">
+									<input type="radio"
+										id="ajax_field_endorsementType" name="endorsementType"
+										value="CancelReinstateEndorsement" /> Cancel / Reinstate</li>
+									<li class="inlineBlock_1" id="eval:AccountantRule.isShowLimitEndorsementRule">
+									<div id="limitDiv">
+									<input type="radio" id="ajax_field_endorsementType2"
+										name="endorsementType" value="changeLimitsEndorsement" />
+										Change Limits / Deductible
+										</div>
+										</li>
+									<li class="inlineBlock_1" id="eval:AccountantRule.isShowInsuranceCertificateRule">
+									<input type="radio"
+										id="ajax_field_endorsementType3" name="endorsementType"
+										value="certificateInsurance" /> Certificate of Insurance</li>
+										
+									<li class="inlineBlock_1" id="eval:AccountantRule.isShowNameAddressExtensionEndorsementRule">
+										<input type="radio" id="ajax_field_endorsementType4" name="endorsementType"
+										value="addressChangeEndorsement" /> Change Name / Address /
+										Prior Acts / Policy Extension</li>
+									<li class="inlineBlock_1" id="eval:AccountantRule.isShowERPQuoteLetterRule">
+											<input type="radio" id="ajax_field_endorsementType5" name="endorsementType" value="ERPQuoteLetter" />
+											ERP Quote Letter
+									</li>
+									<li class="inlineBlock_1" id="eval:AccountantRule.isShowERPEndorsementRule">
+										<input type="radio" id="ajax_field_endorsementType6" name="endorsementType" value="extendReportingEndorsement" />
+										Extended Reporting Period
+									</li>
+									
+									<!-- <li class="inlineBlock_1" id="eval:AccountantRule.isShowInsuranceCertificateRule">
+										<input type="radio" id="ajax_field_endorsementType" name="endorsementType" value="certificateInsurance" />
+										Certificate of Insurance
+									</li> -->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="buttons borderTop row">
+						<a class="btn back floatLeft"
+							href="javascript:submitform('list.html','Endorsement.back','','');">
+							Back </a>
+						<div class="floatRight">
+							<!-- <a class="btn next val1" href="javascript:submitform('CancellationReinstatementEndorsement.html|addChangeAttorney.html|deleteAttorney.html|nameAddressPriorActsExtension.html|limitsDeductibleOptions.html|extendedReportingPeriod.html|certificateInsurance.html','Endorsement.continue','forwardeval','AccountantRule.isCancellationReinstatementEndorsement|AccountantRule.isAddChangeAttorneyEndorsement|AccountantRule.isDeleteAttorneyEndorsement|AccountantRule.isAddressChangeEndorsement|AccountantRule.isChangeLimitsEndorsement|AccountantRule.isExtendReportingEndorsement|AccountantRule.iscertificateInsurance');" > -->
+							<a class="btn next val1"
+								href="javascript:submitform('CancellationReinstatementEndorsement.html|limitsDeductibleOptions.html|nameAddressPriorActsExtension.html|certificateInsurance.html|ERPEndrosement.html|ERPQuoteLetter.html|Endorsement.html','Endorsement.continue','forwardeval','AccountantRule.isCancellationReinstatementEndorsement|AccountantRule.isChangeLimitsEndorsement|AccountantRule.isNameAddressPriorActExtension|AccountantRule.isCertificateOfInsurence|AccountantRule.isExtendReportingEndorsement|AccountantRule.isERPQuoteLetter|AccountantRule.isShowEndorsementPage');">
+								Continue </a>
+						</div>
+					</div>
+				</div>
+				<div id="content">
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="16"><img src="img/bottombg.jpg" width="16"
+								height="59" /></td>
+							<td align="center" background="img/bottombg.jpg" class="topLink">
+								Copyright 2026, Protexure. All rights reserved.</td>
+							<td width="16"><img src="img/bottombg.jpg" width="16"
+								height="59" /></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<table id="Endorsement_freeform_contextdata_999">
+				<tr>
+					<td><input type="hidden" name="jsessionid" id="jsessionid" />
+						<input type="hidden" name="divHideShow" id="divHideShow" />
+						<input type="hidden" name="isShowCancelltionEndorsement" id="isShowCancelltionEndorsement" />
+						<input type="hidden" name="isEnforcedPolicy" id="isEnforcedPolicy" />
+						<input type="hidden" name="isManualPremiumPolicy" id="isManualPremiumPolicy" />
+						
+						</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+	</form>
+</body>
+</html>

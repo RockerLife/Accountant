@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Areas of Practice</title>
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.treeview.js"></script>
+<script src="js/bootstrap_3-3-6.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script language="javascript" src="script/lawyers.js" />
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/capitalizeSentences.js"></script>
+<script src="js/producerOne.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="script/googleanalytics.js"></script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3334505.js"></script> </head>
+
+<body onload="isAreasofPracticeValueChange();">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HXDF9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	<form class="form-horizontal row" id="AppCompleted"  autocomplete="off">
+
+
+		<div class="container-fluid bootstrap-node-1" id="AppCompleted">
+			<div class="tableWidth" >
+			
+				<div id="header">
+					<span id="#Include:headerNewApp.html#"></span>
+				</div>
+				<div class="menuTab">
+					<span id="#Include:tabsNewApp.html#"></span>
+				</div>
+				
+				<div id="contentSection">
+					<h2 class="questionHeading">
+						<span>1.</span> Areas of Practice
+					</h2>
+					<div class="form">
+						<div class="section">
+							<div class="">
+								<div class="questionBlock">
+									<table class="form-table" style="padding-top: 0px" width="100%"
+										cellpadding="0" cellspacing="0">
+										<tr id="RenewBusiness">										
+											
+											<td class="paddingTop20">	
+											<div id="error_IsAOPChange" class="error"></div>										
+												<span class="mendatory">*</span>Has the distribution of your Areas of Practice changed?
+												<span id="firm_freeform_contextdata_01" class="paddingLeft20">
+													<span>
+														<input type="radio" name="IsAOPChange" id="IsAOPChangeY" value="Y" onchange="isAreasofPracticeValueChange();"/> Yes</span>
+													<span class="paddingLeft20">
+														<input type="radio" name="IsAOPChange" id="IsAOPChangeN" value="N" onchange="javascript:submitform('AOPNewApp.html','AOPNewApp.backToPriorYear','','');"/> No</span>
+												</span>
+											</td>
+										</tr>
+										<tr>
+											<td valign="top" align="right">
+												<table cellpadding="0"
+													cellspacing="0" width="100%">
+													<tr>
+														<td align="left">
+															<div id="error_SelectAOP"></div>
+														</td>
+													</tr>
+													<tr>
+														<td class=""><span class="mendatory">*</span>Please select any additional Areas of Practice to the chart on the right?</td>
+													</tr>
+													<tr>
+														<td style="padding-top: 0px;height: 300px;" valign="top"><div>
+																<ul class="nav nav-tabs">
+																	<li id="aop_list_btn" class="active"><a data-toggle="tab">AOP List</a></li>
+																</ul>
+																<div class="tab-content">
+																	<div id="aop_list" class="tab-pane fade active">
+																		<table cellpadding="0" cellspacing="0" width="100%">
+																			<tr>
+																				<td valign="top" width="49%">
+																					<table cellpadding="0" cellspacing="0" width="100%">
+																						<tr>
+																							<td>
+																								<table cellpadding="0" cellspacing="0"
+																									width="100%">
+																									<tr>
+																										<td valign="middle">&nbsp;What are your Areas of Practice?</td>
+																										<td>
+																											<div class="floatRight">
+																												<!-- <span id="showPageSave"> 
+																													<a id="addRightAOPQQ" class="btn add" onclick="addRightAOP();" tabindex="340" onkeypress="aopKeyPressEvent(event);">Add AOP</a>
+																												</span> -->
+																												<span id="showPageSave">
+																													<a id="addAopNewApp" class="btn add" onclick="javascript:setAccountType2('aop_list');getLoc();" href="javascript:submitform('AOPNewApp.html','AOPNewApp.saveAOP','','');">Add AOP</a>
+																												</span>
+																											</div>
+																										</td>
+																									</tr>
+																								</table>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td style="padding-top: 9px">
+																								<table cellpadding="0" cellspacing="0" width="100%" id="aoplist_list_1" class="gridTable">
+																									<tr class="tableheading" id="aoplist_list_header_1">
+																										<th width="5%" class="HeaderStyle" id="block_field_AOPKey"/>
+																										<th width="95%" height="25px" class="HeaderStyle" id="block_field_AOPDesc">Area of Practice</th>
+																									</tr>
+																									<tr>
+																										<td colspan="2" style="padding: 0px;">
+																											<div class="law_scroll" tabindex="-1" style="height: 196px">
+																												<table id="leftAOPList" cellpadding="0" cellspacing="0" width="100%" class="add_claim borderNone no-borders">
+																													<tr id="aoplist_list_data_1">
+																														<td width="5%" id="block_field_AOPKey">
+																															<input type="checkbox" id="AOPKey" name="AOPKey" />
+																														</td>
+																														<td class="RowStyle" id="block_field_AOPDesc" />
+																													</tr>
+																												</table>
+																											</div>
+																										</td>
+																									</tr>
+																								</table>
+																							</td>
+																						</tr>
+																					</table>
+																				</td>
+																				<td width="3%"></td>
+																				<td valign="top">
+																					<table cellpadding="0" cellspacing="0" width="100%" style="padding-top: 17px">
+																						<tr>
+																							<td class="" colspan="2">
+																								<span class="mendatory">*</span>
+																								<span>Enter the percentage of revenue for each area below for the past fiscal year</span>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td colspan="2">
+																								<div>
+																									<table cellpadding="0" cellspacing="0" id="aoplist_list_2" class="gridTable" align="left" style="width: 99.5%; margin-left: 4px;">
+																										<thead>
+																											<tr id="aoplist_list_header_2">
+																												<th width="56%" height="25px" id="block_field_AOPDesc">Area of Practice</th>
+																												<th width="17%">
+																													<div id="RenewBusiness">
+																														<span id="block_field_PercentageOld" >Prior Application</span>
+																													</div>
+																												</th>
+																												<th id="block_field_percentage" width="18%">Current Percentage</th>
+																												<th id="showPageSave" width="5%">
+																													<span id="block_field_deletelink_row_link" />
+																												</th>
+																												<th id="block_field_IsEdit" style="display: none;" />
+																											</tr>
+																										</thead>
+																										<tbody>
+																											<tr>
+																												<td colspan="5" style="padding: 0px;">
+																													<div class="law_scroll" tabindex="-1" style="height: 209px;">
+																														<table width="100%">
+																															<tbody>
+																																<tr id="aoplist_list_mom_data_2">
+																																	<td class="areaOfPractice" colspan="4" style="padding: 0px;">
+																																		<table width="100%">
+																																			<tr>
+																																				<td id="block_field_AOPDesc" class="aopName" width="59%">
+																																					<input type="hidden" name="AOPDesc" id="AOPDesc" />
+																																					<label id="AOPDesc" name="AOPDesc" />
+																																				</td>
+																																				<td valign="middle" class="aopPercentage" width="18%">
+																																					<div id="RenewBusiness">
+																																						<div id="block_field_PercentageOld">
+																																							<input name="AOP_PercentageOld" readonly="readonly" id="AOP_PercentageOld" maxlength="3" type="text" 
+																																							onblur="populateTotalFieldValue('AOP_Percentage_','TotalAOP_Percentage');" style="width: 70px; margin-left: 0px;" /> 
+																																						</div>
+																																					</div>
+																																				</td>
+																																				<td valign="middle" class="aopPercentage" width="18%">
+																																					<div id="block_field_percentage" >
+																																						<input name="AOP_Percentage" id="AOP_Percentage" placeholder="%" maxlength="3" type="text" 
+																																						onblur="populateTotalFieldValue('AOP_Percentage_','TotalAOP_Percentage');" style="width: 70px; margin-left: 0px;" onkeypress="return IsNumeric(this, event, true, true, '');" ondrop="return false;" onpaste="return false;"/>
+																																					</div>
+																																				</td>
+																																				<td id="showPageSave" class="aopPageSave" width="5%">
+																																					<div id="eval:AccountantRule.isAOPDeleteButtonShow">
+																																						<div id="block_field_deletelink_row_link" >
+																																							<a href="javascript:submitform('AOPNewApp.html','AOPNewApp.deleteAOP','','');" class="Link_blue">
+																																								<i class="fa fa-times delete_icon">&nbsp;</i>
+																																							</a>
+																																						</div>
+																																					</div>
+																																				</td>
+																																				<td id="block_field_IsEdit" style="display: none;">
+																																					<input type="hidden" name="IsEdit" id="IsEdit" />
+																																				</td>
+																																			</tr>
+																																		</table>
+																																	</td>
+																																</tr>
+																															</tbody>
+																															<tfoot> </tfoot>
+																														</table>
+																													</div>
+																												</td>
+																											</tr>
+																										</tbody>
+																										
+																									</table>
+																								</div>
+																							</td>
+																						</tr>
+																						<tr id="row1">
+																							<td style="text-align: right; border-bottom: none;">Total <i class="italic">(must equal 100%)</i>
+																							</td>
+																							<td valign="middle" nowrap style="border-bottom: none;">
+																								<label id="TotalAOP_Percentage" name="TotalAOP_Percentage" style="width: 70px;"></label> &nbsp;
+																							</td>
+																						</tr>
+																						<tr>
+																							<td colspan="2">
+																								<div id="dis5y" style="display: none;">
+																									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																										<tr>
+																											<td align="left" width="157px">
+																												<div id="error_otherAopDescError" class="tr_errors"></div>
+																												<div class="form-group form-group-last">
+																													<table>
+																														<tr>
+																															<td>
+																															<label>
+																																Other Aop Description:
+																															</label>
+																															</td>
+																															<td>
+																															<textarea id="otherDescId" name="AOPCommentDesc_20" style="width: 99%" class="inputbox" cols="60" rows="3" maxlength="5000" />
+																															</td>
+																															
+																														</tr>
+																													
+																													</table>
+																													
+																													
+																												</div>
+																											</td>
+																										</tr>
+																										
+																									</table>
+																								</div>
+																								<div id="dis5n" style="display: none;"></div>
+																							</td>
+																						</tr>
+																						<tr class="no-padding">
+																							<td colspan="2" valign="middle" nowrap="nowrap">
+																								<div id="error_totalPercentageError" class="error"></div>
+																							</td>
+																						</tr>
+																					</table>
+																				</td>
+																			</tr>
+																		</table>
+																		
+																	</div>
+																</div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td></td>
+													</tr>
+													<tr>
+														<td></td>
+													</tr>
+													<tr>
+														<td valign="top" style="padding-top: 10px;">
+															<div>
+															</div>
+														</td>
+													</tr>
+													<tr>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="buttons borderTop row marginsBtn">
+						<div class="floatLeft">
+							<a class="btn back" href="javascript:submitform('aboutFirm.html','AOPNewApp.back','','');" >Back
+							</a>
+						</div>
+						<div class="floatRight">
+							<span id="showPageSave">
+								
+								<a class="btn save"  href="javascript:submitform('practiceManagementSupp.html|investmentFinancialPlanningSupp.html|computerRelatedServices.html|mainBusinessManagementSupplement.html|auditSupplement.html|practiceManagement.html','AOPNewApp.save','forwardeval','AccountantRule.isPracticeManagementSupplement|AccountantRule.isInvestmentSupplement|AccountantRule.isComputerServicesSupplement|AccountantRule.isBusinessManagementSupplement|AccountantRule.isAuditSupplement|AccountantRule.isThereNoSupplement');" >Save&nbsp;&&nbsp;Continue</a>
+							</span>
+							<span id="showContinue">
+								 <a  href="javascript:submitform('practiceManagementSupp.html|investmentFinancialPlanningSupp.html|computerRelatedServices.html|mainBusinessManagementSupplement.html|auditSupplement.html|practiceManagement.html','AOPNewApp.continue','forwardeval','AccountantRule.isPracticeManagementSupplement|AccountantRule.isInvestmentSupplement|AccountantRule.isComputerServicesSupplement|AccountantRule.isBusinessManagementSupplement|AccountantRule.isAuditSupplement|AccountantRule.isThereNoSupplement');" 
+                  	 				class="btn next">Continue</a>
+                  	 		</span>
+						</div>
+					</div>
+				</div>
+				<!---------Footer Start---------->
+				<div id="footer" class="footer">
+					<span id="#Include:footerNewApp.html#"></span>
+				</div>
+				<!---------Footer End---------->
+			</div>
+			
+			<table id="firm_freeform_contextdata_999">
+				<tr>
+					<td>
+						<input type="hidden" name="filedDisabled" id="filedDisabled" />
+						<input type="hidden" name="jsessionid" id="jsessionid" />
+						<input type="hidden" name="divHideShow" id="divHideShow" />
+						<input type="hidden" name="AppCreatedDate" id="AppCreatedDate" />
+						<input type="hidden" name="StatusKey" id="StatusKeyAOP"/>
+						<input type="hidden" name="PolicyStatusKey" id="PolicyStatusKeyAOP"/>
+						<input type="hidden" id="AOP_values" name="AOP_values" /> 
+						<input type="hidden" name="totalNoOfPersonnel" id="ajax_field_totalNoOfPersonnel" value="" />
+						<input type="hidden" name="aopPercentageValue" id="aopPercentageValue" value="" />
+						<input type="hidden" name="aopPercentageTRValue" id="aopPercentageTRValue" value="" />
+						<input type="hidden" name="AOPCommentDesc_20" id="AOPCommentDesc" value="" />
+						
+						<script type="text/javascript" src="script/manageTab.js"></script>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	</form>
+</body>
+<script type="text/javascript" src="script/htmlMassking.js"/>
+<script type="text/javascript">
+	//onAopNewAppPageLoad();
+	document.getElementById("otherDescId").value = document.getElementById("AOPCommentDesc").value;
+	loadQuickQuoteInsured();
+	loadQuickQuoteOptionList();
+	populateTotalFieldValue('AOP_Percentage_', 'TotalAOP_Percentage');
+</script>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>List</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap_3-3-6.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/account.js"></script>
+<script language="javascript" src="script/lawyers.js">
+	
+</script>
+<script type="text/javascript" src="script/tabber.js"></script>
+<script type="text/javascript" src="script/test_new.js"></script>
+<script type="text/javascript" src="script/manage.js"></script>
+<script type="text/javascript" src="script/masks.js"></script>
+<script type="text/javascript" src="script/popup.js"></script>
+<script type="text/javascript" src="script/utility.js"></script>
+<script type="text/javascript" src="script/date-picker.js"></script>
+
+<script type="text/javascript">
+	function checks() {
+		document.getElementById("EffectiveDate").disabled = true;
+	}
+</script>
+</head>
+
+<body>
+	<div id="cover"/>
+	<div id="processing" style="display: none;">
+		<div style="border-radius: 6px; color: #000000; font-family: arial; font-size: 18px !important; font-weight: bold; margin-left: 43%; margin-top: 18%; text-align: center; width: 16%;">
+			<img src="image/29.gif" style="width: 20%;" />
+		</div>
+		<div id="sessionTimeoutWarning" style="display: none;"></div>
+	</div>
+	<form name="myForm">
+		<input type="hidden" name="divHideShow" value="" /> <input
+			type="hidden" name="ctxmenuparam" value="" />
+		<div id="contextLinks"></div>
+		<div class="container-fluid bootstrap-node-1">
+			<div class="tableWidth">
+				<div id="header">
+					<span id="#Include:headerNewApp.html#"></span>
+				</div>
+				<div id="contentSection">
+					<h2 id="eval:AccountantRule.isNotShowHistoryList" class="questionHeading">List</h2>
+					<h2 id="eval:AccountantRule.isShowHistoryList" class="questionHeading">History List</h2>
+					<div class="form">
+						<div class="block-form paddingBottom20">
+							<div id="ajax_sorting">
+								<div id="eval:AccountantRule.isSearchListEmpty" align="center" style="padding-bottom: 10px;">
+									<strong>No search result found.</strong>
+								</div>
+								<table width="100%" border="0" align="center" cellpadding="0"
+									cellspacing="0">
+									<tr>
+										<td valign="top">
+
+											
+
+											<div id="eval:AccountantRule.checkSearchListSize">
+												<div id="ajax_sorting">
+													<table width="100%" border="0" align="center"
+														cellpadding="2" cellspacing="0" class="border1 listTable"
+														id="Search_firm_list_01">
+														<tr>
+															<td colspan="28"><table width="100%" border="0"
+																	cellpadding="0" cellspacing="5">
+																	<tr id="Search_firm_pagination_01" class="pagination paginationTd3">
+																		<td class="linright">Page:</td>
+																		<td width="50"><select id="pagenumber"
+																			onchange="ajax_sorting" name="pagenumber"
+																			class="inputbox">
+																		</select></td>
+																		<td nowrap="nowrap" class="linright">Records per
+																			Page:</td>
+																		<td width="75%"><select id="recordsperpage"
+																			onchange="ajax_sorting" name="recordsperpage"
+																			class="inputbox">
+																		</select></td>
+																		<td id="Search_firm_firstpagelink_01"><a
+																			href="javascript:ajaxpagination('list.html','ajax_sorting','','');"
+																			title="FirstPage" tabindex="21"> <img
+																				src="img/button_sort_first.gif" width="25"
+																				height="20" border="0" />
+																		</a></td>
+																		<td id="Search_firm_previouspagelink_01"><a
+																			href="javascript:ajaxpagination('list.html','ajax_sorting','','');"
+																			title="Previous" tabindex="21"> <img
+																				src="img/button_sort_back.gif" width="25" height="20"
+																				border="0" />
+																		</a></td>
+																		<td class="linright">Viewing</td>
+																		<td id="Search_firm_recordsfrom_01"
+																			class=" txtBold13Maroon"></td>
+																		<td class="linright">to</td>
+																		<td id="Search_firm_recordsto_01"
+																			class=" txtBold13Maroon"></td>
+																		<td class="linright">from</td>
+																		<td id="Search_firm_totalrecords_01"
+																			class=" txtBold13Maroon"></td>
+																		<td id="Search_firm_nextpagelink_01"><a
+																			href="javascript:ajaxpagination('list.html','ajax_sorting','','');"
+																			title="NextPage" tabindex="21"> <img
+																				src="img/button_sort_next.gif" width="25" height="20"
+																				border="0" />
+																		</a></td>
+																		<td id="Search_firm_lastpagelink_01"><a
+																			href="javascript:ajaxpagination('list.html','ajax_sorting','','');"
+																			title="LastPage" tabindex="21"> <img
+																				src="img/button_sort_last.gif" width="25" height="20"
+																				border="0" />
+																		</a></td>
+																	</tr>
+																</table></td>
+														</tr>												
+
+														<tr class="tableheading" id="Search_firm_list_header_01">
+
+															<td  align="left" class="tablehead">
+															<span id="internalUsers_security">
+																<span id="eval:AccountantRule.isShowEndorsement">
+																	<span id="block_field_PolicyEndorsement_row_link"></span>
+																</span></span>
+															</td>
+															<!-- <td align="left" class="tablehead"><span
+																id="block_field_sendregistrationmail_row_link">
+																	&nbsp;</span></td> -->
+															<td align="left" class="tablehead">
+																<span id="CompanyCodeVisibility_Security">
+																	<span id="block_field_sendquotationmail_row_link"></span>
+																</span>
+															</td>
+															<td align="left" class="tablehead">
+																<span ><!--id="CompanyCodeVisibility_Security"  -->
+																	<span id="block_field_sendcompleteapplinkmail_row_link"> &nbsp;</span>
+																</span>
+															</td>		
+																	
+															<!-- <td width="3%" align="left" class="tablehead">
+															<span id="eval:AccountantRule.isNotCFOrInsured"><span
+																id="block_field_resetpassword_row_link"> &nbsp;</span>
+																</span></td> -->
+															<td  align="left" nowrap class="left-link"
+																id="block_field_IsApplicationCompleted" height="30px">
+															</td>
+															<!-- <td width="1%" align="left" nowrap class="left-link" id="block_field_AppDays"></td>-->
+															<td  align="left" nowrap class="left-link"
+																id="block_field_IsViewed"></td>
+
+															<td  align="left" class="tablehead"><span
+																id="block_field_IsInsuredViewed_row_link"> &nbsp;</span></td>
+																
+															<td  align="left" class="tablehead">
+															<span
+																id="block_field_IsIndicationMailSent_row_link"> &nbsp;</span></td>
+																
+															<td width="10%" height="30" align="left" nowrap
+																class="left-link headerSortable"
+																id="sorting(,A,ajax_sorting):block_field_QuoteNumber"
+																style="border-right:1px solid #ffffff;">Quote No</td>
+															<td width="28%" align="left"
+																class="left-link headerSortable"
+																id="sorting(,A,ajax_sorting):block_field_AccountName"
+																style="border-right:1px solid #ffffff;">Firm Name</td>
+															<td width="10%" align="left"
+																class="left-link headerSortable" nowrap="nowrap"
+																id="sorting(,A,ajax_sorting):block_field_PolicyNumber"
+																style="border-right:1px solid #ffffff;">Policy
+																Number</td>
+															<td width="5%" align="left"
+																class="left-link headerSortable"
+																id="sorting(,A,ajax_sorting):block_field_StateDesc"
+																style="border-right:1px solid #ffffff;">State</td>
+															<td width="10%" align="left" nowrap
+																class="left-link headerSortable"
+																id="sorting(,A,ajax_sorting):block_field_PolicyEffectiveDate"
+																style="border-right:1px solid #ffffff;">Effective
+																Date</td>
+															<td width="10%" align="left" nowrap
+																class="left-link headerSortable"
+																id="sorting(,A,ajax_sorting):block_field_AppCreatedDate"
+																style="border-right:1px solid #ffffff;">Creation
+																Date</td>
+															<td width="10%" align="left" nowrap
+																class="left-link headerSortable"
+																id="sorting(,A,ajax_sorting):block_field_AgentName"
+																style="border-right:1px solid #ffffff;">1st Reviewer</td>
+															<td width="11%" align="left"
+																class="left-link headerSortable"
+																id="sorting(,A,ajax_sorting):block_field_StatusDesc"
+																style="border-right:1px solid #ffffff;">Status</td>
+															<td width="10%" align="left"
+																class="left-link headerSortable"
+																style="border-right:1px solid #ffffff;"><span
+																id="sorting(,A,ajax_sorting):block_field_Premium">Premium</span></td>
+															<td width="15%" align="left"
+																class="left-link headerSortable"
+																id="sorting:block_field_FullQuick"
+																style="border-right:1px solid #ffffff;">QuoteType</td>
+															    <td width="16%" align="left" class="left-link headerSortable"
+																id="sorting(,A,ajax_sorting):block_field_lostworkqComment"
+																style="border-right: 1px solid #ffffff; padding: 0px 2px;">
+																Comment</td>
+															<td width="16" align="left" class="tablehead"
+																id="block_field_edit_row_link">&nbsp;</td>
+															<!-- <td width="16" align="left" class="tablehead"><span
+																id="block_field_downloadexcel_row_link"> &nbsp;</span></td> -->
+
+															<td width="16" align="left" class="tablehead"><span
+																id="block_field_downloadpdf_row_link"> &nbsp;</span></td>
+															
+														<td width="16" align="left" class="tablehead"><span
+																id="block_field_changestatus_row_link">&nbsp;</span></td>
+																
+															<td width="16" align="left" class="tablehead"><span
+																id="block_field_document_row_link"> &nbsp;</span></td>
+															<!-- 
+											<td width="16"  align="left" class="tablehead"><span id="block_field_downloadrating_row_link"> &nbsp;</span></td>
+									   -->
+															<td  align="left" class="tablehead"><span
+																id="block_field_deleteQQ_row_link"> </span></td>
+															<td  align="left" class="tablehead"><span
+																id="block_field_comment_row_link"> </span></td>
+															<td  align="left" class="tablehead"><span
+																id="block_field_renew_row_link"> </span></td>
+															<td  align="left" class="tablehead"><span
+																id="block_field_history_row_link"> </span></td>
+															<td  align="left" class="tablehead"><span
+																id="block_field_claim_row_link"> </span></td>
+															<td align="left" class="tablehead">
+																<span id="block_field_underwriter_row_link"> &nbsp;</span>
+															</td>	
+															<td  align="left" class="tablehead">
+															<span id="renewalReviewLinkListPage_security">
+															<span
+																id="block_field_renewalreview_row_link"></span>
+																</span>
+																</td>
+
+                                                             <!-- <td width="16" align="left" class="tablehead"><span
+																id="block_field_changelostworkq_row_link">&nbsp;</span></td> -->
+																<td></td>
+                                                           <td id="actionLinkListPage_security">
+                                                           
+	                                                           <!-- <span id="block_field_changestatus_row_link" /> -->
+	                                                          <span id="block_field_firstreviewer_row_link" />
+	                                                          <span id="block_field_copyData_row_link"></span>
+	                                                           <span id="block_field_changelostworkq_row_link"/>
+	                                                           <span id="block_field_resetpassword_row_link"/>
+	                                                           <span id="block_field_downloadexcel_row_link"/>
+	                                                           <span id="block_field_brokeragePolicy_row_link"/>
+	                                                           <span id="block_field_renewBrokeragePolicy_row_link"/>
+                                                           </td>
+
+														</tr>
+
+														<tbody id="Search_firm_list_data_2">
+															<tr class="bglightGray">
+																<td align="center" valign="middle" nowrap="nowrap">
+																<span id="internalUsers_security">
+																	<span id="eval:AccountantRule.isShowEndorsement">
+																		<span id="block_field_PolicyEndorsement_row_link">
+																			<a	href="javascript:submitform('Endorsement.html','list.policyEndorsement','','');" class="Link_blue">
+																				<img title="Endorsement" src="img/endrosement.png" width="18px" height="18px"/>
+																			</a>
+																		</span></span>
+																	</span>
+																</td>
+																<!-- <td align="center" valign="middle" nowrap="nowrap">
+																	<span id="eval:AccountantRule.showQuickQuoteMailIcon">
+																	<span id="eval:AccountantRule.roleEditOnly">
+																	<span id="eval:AccountantRule.mailIconShow"><span
+																		id="block_field_sendregistrationmail_row_link"><a
+																			href="javascript:submitform('list.html','list.sendregistrationmail','','');"
+																			class="Link_blue"><img src="img/mail.jpg"
+																				title="Mail" border="0" /></a></span></span></span></span>
+																</td> -->
+																<td align="center" valign="middle" nowrap="nowrap">
+																		<span id="eval:AccountantRule.isCFAllowedToIssuePolicy">                                       
+                                        								<span id="CompanyCodeVisibility_Security">
+																	<span id="eval:AccountantRule.showSendSignAndPayEmail"><span
+																		id="block_field_sendquotationmail_row_link"><a
+																			href="javascript:submitform('list.html','list.sendsignandpaymail','','');"
+																			class="Link_blue"><img width="16px" height="16px"
+																				src="img/signandpay.png" title="Sign And Pay Email"
+																				border="0" /></a></span></span></span></span>
+																</td>
+																<td align="center" valign="middle" nowrap="nowrap"> 
+                                       								<span ><!-- id="CompanyCodeVisibility_Security" -->
+																	<span id="1eval:AccountantRule.showCompleteAppLinkEmail">
+																	<span id="eval:AccountantRule.isInternalOrPartenerUser">
+																	<span id="k">
+																	<a href="javascript:submitform('list.html','list.completeAppLink','','');" class="Link_blue"><img width="16px" height="16px" src="img/mail.jpg" title="Send Complete App Link Email"  border="0"/></a>
+																	</span></span></span></span>
+																</td>	
+																
+																<!-- <td 
+																
+																
+																	align="center" valign="middle" nowrap="nowrap">
+																	<span id="eval:AccountantRule.isNotCFOrInsured">
+																	<span
+																	id="block_field_resetpassword_row_link"><a
+																		href="javascript:submitform('resetPassword.html','list.goToResetPassword','','');"
+																		class="Link_blue"><img height="18px" width="18px"
+																			alt="Reset Password" title="Reset Password"
+																			src="image/reset.png"></a></span>
+																			</span>
+																			</td> -->
+																<td align="left" id="block_field_IsApplicationCompleted"
+																	height="30px" style="border-bottom: 1px solid #ffffff;">
+																	<span id="eval:AccountantRule.IsApplicationCompleted"><img
+																		src="img/completed.png" height="16px" width="16px"
+																		alt="Completed" title="Completed Application" /> </span>
+																</td>
+
+																<!-- <td align="left" id="sorting:block_field_AppDays"><span id="eval:AccountantRule.isHotApp"><img src="img/icon_hot.jpg"/></span></td>-->
+																<td align="left" id="sorting:block_field_IsViewed"><span
+																	id="eval:AccountantRule.isViewedNot"><img
+																		src="img/icon_hot.jpg" title="Hot Application" /></span></td>
+																
+																<td align="center"><span
+																	id="eval:AccountantRule.IsQuoteOptionViewed"> <span
+																		id="block_field_IsInsuredViewed_row_link"><img
+																			src="img/ico_bulbOn.jpg" width="16" height="17"
+																			border="0" title="NotViewed" /></span>
+																</span></td>
+																<td align="center"><span
+																	id="eval:AccountantRule.isIndicationMailSent"> <span
+																		id="block_field_IsIndicationMailSent_row_link"><img width="16"
+																			src="img/email_notsent.png" title="Indication mail already sent to insured" /></span>																		
+																</span></td>
+																
+																<td align="left" nowrap
+																	id="sorting:block_field_QuoteNumber"
+																	style="border-right:1px solid #ffffff;"></td>
+																<td align="left" id="sorting:block_field_AccountName"
+																	style="border-right:1px solid #ffffff;"></td>
+																<td align="left" id="sorting:block_field_PolicyNumber"
+																	style="border-right:1px solid #ffffff;"></td>
+																<td align="left" nowrap="nowrap"
+																	id="sorting:block_field_StateDesc"
+																	style="border-right:1px solid #ffffff;"></td>
+																<td align="left"
+																	id="sorting:block_field_PolicyEffectiveDate"
+																	style="border-right:1px solid #ffffff;"></td>
+																<td align="left" id="sorting:block_field_AppCreatedDate"
+																	style="border-right:1px solid #ffffff;"></td>
+																<td align="left" id="sorting:block_field_AgentName"
+																	style="border-right:1px solid #ffffff;"></td>
+																<td align="left" id="sorting:block_field_StatusDesc"
+																	style="border-right:1px solid #ffffff;" nowrap></td>
+
+																<td align="left" style="border-right:1px solid #ffffff;">
+																	<span id="eval:AccountantRule.ShowInvoicedPremium"><span
+																		id="sorting:block_field_Premium"></span></span>
+																</td>
+
+																<td align="left" id="sorting:block_field_FullQuick"></td>
+																
+																<td> 
+																	<span id="eval:AccountantRule.ComingfromLostworkqBucket">
+																	<align="left" id="sorting:block_field_lostworkqComment"
+																	 style="border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff; padding: 0px 2px;">
+																	</align></span>
+																</td>
+																<td align="center" valign="middle" nowrap="nowrap"
+																	id="block_field_edit_row_link"><a
+																	href="javascript:submitform('RenewBasicInfo.html|FirmNewApp.html|BasicInfo.html|indicationinjack.html|quickquoteinsured.html|addEditBrokeragePolicy.html','list.Edit','forwardeval','AccountantRule.IsNonBrokerRenewalPolicyOldAppFlow|AccountantRule.showFullQuoteNonBrokerNewFlow|AccountantRule.showFullQuoteNonBrokerOldFlow|AccountantRule.showNonBrokerQuickQuoteIndication|AccountantRule.showNonBrokerQuickQuote|AccountantRule.isBrokeragePolicy');"
+																	class="Link_blue"><span
+																		id="eval:AccountantRule.ShowEdit"><span
+																			id="eval:AccountantRule.showEditLink"><img
+																				src="img/edit.png" title="Edit" border="0" /></span></span><span
+																		id="eval:AccountantRule.ShowView"><span
+																			id="eval:AccountantRule.showViewLink"><img
+																				src="img/icon_select.png" title="View" border="0" /></span></span>
+																		<!-- <span id="eval:AccountantRule.ShowViewOrEdit"><span id="eval:AccountantRule.isQuickQuote"><img src="img/edit.png" title="Edit"  border="0"/></span><span id="eval:AccountantRule.isFullQuote"><img src="img/icon_select.png" title="View"  border="0"/></span></span>
+												 --> </a></td>
+
+																<!-- <td align="center" valign="middle" nowrap="nowrap">
+																	<span id="eval:AccountantRule.showDocumentDownload"><span
+																		id="block_field_downloadexcel_row_link"><a
+																			href="javascript:submitform('list.html','list.downloadexcel','','');"
+																			class="Link_blue"><img src="img/icon_excelD.jpg"
+																				title="Download Excel" border="0" /></a></span></span>
+																</td> -->
+																<td align="center" valign="middle" nowrap="nowrap">
+																	<span id="eval:AccountantRule.ShowDownloadPDF"><span
+																		id="block_field_downloadpdf_row_link"><a
+																			href="javascript:submitform('list.html','list.downloadpdf','','');"
+																			class="Link_blue"><img src="img/icon_pdf.jpg"
+																				title="Download PDF" border="0" /></a></span></span>
+																</td>
+
+																<!--   
+											<td align="center" valign="middle" nowrap="nowrap">
+												<span id="eval:AccountantRule.ShowDownloadQLDoc"><span id="eval:AccountantRule.ShowDownloadQLDocQuoteSelected"><span id="block_field_downloadquoteletterpdf_row_link"><a href="javascript:submitform('list.html','list.downloadquoteletterpdf','','');" class="Link_blue"><img src="img/icon_location.gif" title="Download Quote Letter" alt="Download Quote Letter" width="15" height="17" border="0" /></a></span></span></span></td>  
+												 -->
+																<!--<span id="eval:AccountantRule.ShowDownloadQLDoc"><span id="block_field_downloadquoteletterpdf_row_link"><a href="javascript:submitform('list.html','list.downloadquoteletterpdf','','');" class="Link_blue"><img src="img/icon_location.gif" title="Download Quote Letter" alt="Download Quote Letter" width="15" height="17" border="0" /></a></span></span>     -->
+
+
+																<td align="center" valign="middle" nowrap="nowrap">
+																	<span id="eval:AccountantRule.isChangeStatusVisibile">
+																		<span id="eval:AccountantRule.ShowChangeStatus">
+																			<span id="eval:AccountantRule.roleEditOnly"> <span
+																				id="block_field_changestatus_row_link"> <a
+																					href="javascript:rightclickmenu('status_freeform.html','status_freeform.ChangeStatus','','','div_ajaxpostionpremium_freeform:AccountKey');"
+																					onclick="showDivArea(['divAy'], ['divAn']);showDivArea(['divBn'], ['divBy']);"
+																					class="Link_blue"><img src="img/icon_status.jpg"
+																						title="Change Status" border="0" /> </a>
+																				</span>
+																			</span>
+																		</span>
+																	</span>
+																</td>
+															
+																<td align="center" valign="middle" nowrap="nowrap">
+																	<!-- <span id="eval:AccountantRule.showDocumentDownload"> -->
+																		<span id="block_field_document_row_link"> <a
+																			href="javascript:submitform('uploadexcelpopup.html','list.uploadexcel','','');"
+																			class="Link_blue"><img src="img/new.png"
+																				title="Documents" alt="Documents" width="16"
+																				height="16" border="0" /> </a>
+																	</span>
+																<!-- </span> -->
+																</td>
+																
+																<td align="center"><span
+																	id="eval:AccountantRule.showDeactivatePolicy"> <span
+																		id="block_field_deleteQQ_row_link"><a
+																			href="javascript:submitform('list.html','list.deleteQQ','','');"
+																			class="Link_blue" onclick="return confirmDelete();"><img
+																				src="img/cross.gif" width="16" height="17" border="0"
+																				title="Delete" /></a></span>
+																</span></td>
+
+																<td align="center"><span
+																	id="eval:AccountantRule.isAgent"> <span
+																		id="block_field_comment_row_link"><a
+																			href="javascript:submitform('comment.html','list.comment','','');"
+																			class="Link_blue"><img src="img/icon_comment.png"
+																				width="16" height="17" border="0" title="Comments" /></a></span>
+																</span></td>
+
+																<td align="center"><span
+																	id="eval:AccountantRule.showRenewLinkForAgent"> <span
+																		id="block_field_renew_row_link"><a onclick="processBarIn(this);" 
+																			href="javascript:submitform('RenewBasicInfo.html|FirmNewApp.html','list.renew','forwardeval','AccountantRule.IsRenewalPolicyOldAppFlow|AccountantRule.showFullQuoteNewFlow');"
+																			class="Link_blue"><img src="images/icon_Renew.png"
+																				width="16" height="17" border="0" title="Renew" /></a> </span>
+																</span></td>
+
+																<td align="center">
+																	<span id="eval:AccountantRule.showHistoryLink">
+																		<span id="block_field_history_row_link"><a
+																			href="javascript:submitform('list.html','list.history',' ','');"
+																			class="Link_blue"><img src="images/history.png"
+																				width="16" height="17" border="0" title="History" /></a>
+																		</span>
+																	</span>
+																</td>
+																<td id="" align="center">
+																	<span id="eval:AccountantRule.isShowClaimIcon">
+																		<span id="block_field_claim_row_link">
+																			<a href="javascript:submitform('claimsSummaryList.html','list.claim','','');" 
+																			class="Link_blue">
+																			<span id="eval:AccountantRule.isShowBlueIcon">
+																			<img src="image/ClaimBlue.png"
+																				width="16" height="13" border="0" title="Claim" />
+																				</span>
+																				<span id="eval:AccountantRule.isShowGreenIcon">
+																			<img src="image/ClaimGreen.png"
+																				width="16" height="13" border="0" title="Claim" />
+																				</span>
+																				<span id="eval:AccountantRule.isShowRedIcon">
+																			<img src="image/ClaimRed.png"
+																				width="16" height="13" border="1" title="Claim" />
+																				</span>
+																			</a>
+																		</span>
+																	</span>
+																</td>
+																<td align="center">
+																	<span id="">
+																		<span id="block_field_underwriter_row_link"><a
+																			href="javascript:submitform('UWReview.html','list.underwriter',' ','');"
+																			class="Link_blue"><img src="images/ico_UW_2.png"
+																				 border="0" title="Under Writer" /></a>
+																	</span>
+																	</span>
+																	</td>
+																<td align="center" >
+																	<span id="eval:AccountantRule.isShowAdditionalInformationIcon">
+																		<img src="images/ico_Add_Info.png"
+																				 border="0" title="Additional Information" />
+																	</span>
+																
+																	</td>
+																<td align="center" valign="middle" nowrap="nowrap">
+																	<span id="renewalReviewLinkListPage_security"><span
+																		id="block_field_renewalreview_row_link"><a
+																			href="javascript:rightclickmenu('renewalReview_freeform.html','renewalReview_freeform.renewReview','','','div_ajaxpostionpremium_freeform:AccountKey');showHideCommentDiv();"
+																			class="Link_blue"><img src="images/icon_pause.png"
+																				title="Renewal Review" border="0" /></a></span></span>
+																</td>
+																
+																<td nowrap="nowrap" id="actionLinkListPage_security">
+							                                    	<div id="" class="dropdown icon-dropdown">
+																	 <a class="dropdown-toggle" data-toggle="dropdown">Action
+																	  <span class="caret">&nbsp;</span></a>
+																	  <ul class="dropdown-menu">
+																	 
+																		<li>
+																			<!-- <span
+																				id="1eval:AccountantRule.showNotQuickQuote"> <span
+																					id="1eval:AccountantRule.ShowChangeStatus"> -->
+																					<span id="changeFirstReviewerLinkListPage_security">
+																					 <span
+																						id="block_field_firstreviewer_row_link"> <a
+																							href="javascript:rightclickmenu('changeFirstReviewer.html','changeFirstReviewer.updateReviewer','','','div_ajaxpostionpremium_freeform:AccountKey');"
+																							class="Link_blue"> <img
+																								src="images/reviewer.png" title="Update First Reviewer"
+																								border="0" style="height: 16px; width: 21px;"/>
+																								<span>Update First Reviewer</span>
+																						</a>
+																		<!-- 	</span>
+																		</span> -->
+																		</span>
+																	</span>
+																		</li> 
+																		<li  id="internalUsers_security" >
+																				
+																					<span id="copyPolicyData_security">
+																					 <span id="block_field_copyData_row_link">
+																				    	  <a
+																								href="javascript:submitform('FirmNewApp.html','list.copyPolicy','','');">
+																								 <img src="img/copyDataImg.png" title="copy function"
+																								border="0" style="height: 16px; width: 18px;"/><span>Copy Policy Data</span>
+																						</a>
+																					
+																					</span>
+																				</span>
+																		</li> 
+																		<li id="LostWorkqLinkListPage_security">
+																	  		
+																				
+																					<span id="block_field_changelostworkq_row_link">
+																						<a href="javascript:rightclickmenu('changelostworkq.html','changelostworkq.updatelostworkq','','','div_ajaxpostionpremium_freeform:AccountKey');">
+																							<img class="Link_blue"></img>
+																						    <img src="img/lost.png" title="Update lost workq" border="0" style="height: 16px; width: 21px;"/>
+																						    <span>Move to LostWorkq</span>
+																						</a>
+																					</span>
+																				
+																			
+																	  	</li>
+																	  	<li id="resetPasswordLinkListPage_security">
+																	  	<span
+																				id="block_field_resetpassword_row_link"><a
+																					href="javascript:submitform('resetPassword.html','list.goToResetPassword','','');"
+																					class="Link_blue"><img height="18px" width="18px"
+																						alt="Reset Password" title="Reset Password"
+																						src="image/reset.png">
+																						<span>Reset Password</span>
+																						</a>
+																		</span>
+																			
+																	  	</li>
+																	  	<li>
+																	  	
+																	  		<span id="downloadExcelLinkListPage_security"><span
+																				id="block_field_downloadexcel_row_link"><a
+																					href="javascript:submitform('list.html','list.downloadexcel','','');"
+																					class="Link_blue"><img src="img/icon_excelD.jpg"
+																						title="Download Excel" border="0" />
+																						<span>Download Excel</span>
+																						
+																						</a></span></span>
+																	  	</li>
+																	  	 <li>
+																	     	<!-- <span id="internalUsers_security"> -->
+																	     <span id="NewBrokerageLinkListPage_security">
+																	      	<span id="block_field_brokeragePolicy_row_link">
+																	    	  <a
+																				href="javascript:submitform('addEditBrokeragePolicy.html','list.createBrokerage','','','');"> <img
+																					src="img/lost.png" title="Update lost workq"
+																					border="0" style="height: 16px; width: 18px;"/><span>New Brokerage Policy</span>
+																			</a>
+																				</span>														</span>
+																		<!-- </span> -->
+																	    </li> 
+																	    
+																	    <li>
+																	    	<!-- <span id="internalUsers_security">
+																	     <span id="RenewBrokerageLinkListPage_security"> -->
+																	      	<span id="block_field_renewBrokeragePolicy_row_link">
+																	    	  <a
+																				href="javascript:submitform('addEditBrokeragePolicy.html','list.renewAsBrokerage','','','');"> <img
+																					src="img/lost.png" title="Update lost workq"
+																					border="0" style="height: 16px; width: 18px;"/><span>Renew as Brokerage</span>
+																			</a>
+																		</span>
+																	<!-- 	</span>
+																		</span> -->
+																	    </li> 
+																	  </ul>
+																	</div> 
+							                                    </td>
+															</tr>
+															<tr id="search_ajaxpostion_list_01">
+																<td colspan="30"><div
+																		id="div_ajaxpostionpremium_freeform:AccountKey"></div></td>
+															</tr>
+														</tbody>
+
+													</table>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<!---------Footer Start---------->
+			<div id="footer" class="footer">
+				<span id="#Include:footerNewApp.html#"></span>
+			</div>
+			<!---------Footer End---------->
+		</div>
+		<table id="list_freeform_contextdata_15">
+			<tr>
+				<td><input type="hidden" name="jsessionid" id="jsessionid" />
+					<input type="hidden" id="ajax_field_AccountID_search" name="AccountID_search" /> 
+					<input type="hidden" id="ajax_field_StatusKey_search" name="StatusKey_search" /> 
+					<input type="hidden" id="ajax_field_AccountNamesearch"name="AccountNamesearch" />
+					<input type="hidden" id="ajax_field_PolicyEffectiveDate_search" name="PolicyEffectiveDate_search" /> 
+					<input type="hidden" id="ajax_field_PolicyEffectiveDate_searchTo" name="PolicyEffectiveDate_searchTo" />
+					<input type="hidden" id="ajax_field_StateCode_search" name="StateCode_search" /> 
+					<input type="hidden" id="ajax_field_StatusKey_search" name="StatusKey_search" /> 
+					<input type="hidden" id="ajax_field_QuoteNumber_search" name="QuoteNumber_search" />
+					<input type="hidden" id="ajax_field_PolicyNumber_search" name="PolicyNumber_search" /> 
+					<input type="hidden" id="ajax_field_NumberOfDays_search" name="NumberOfDays_search" />
+					<input type="hidden" id="ajax_field_IsRenewed_search" name="IsRenewed_search" />
+					<input type="hidden" id="ajax_field_showhistorylist" name="showhistorylist" />
+					<input type="hidden" id="ajax_field_accountantIndication" name="accountantIndication" />
+					<input type="hidden" id="Qnumber" name="Qnumber" />
+					<input type="hidden" id="Aname" name="Aname" />
+					<input type="hidden" id="showhistorylist" name="showhistorylist" />
+					
+					</td>
+					
+			</tr>
+		</table>
+	</form>
+</body>
+<script type="text/javascript">
+	loadList();
+</script>
+</html>
