@@ -44,8 +44,8 @@ public class CreditCardDetail {
 				return;
 			}
 		} catch (Exception e) {
+			logger.error("Error in CreditCardDetail.authCreditCardDetails", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		try {
@@ -116,7 +116,7 @@ public class CreditCardDetail {
 			userfields.put("Insured Name", accname);			
 			authRequest.put("userfields", userfields);
 
-			logger.debug("Credit Card WS auth Request : " + authRequest);
+			{ if (logger.isDebugEnabled()) logger.debug("Credit Card WS auth Request : " + authRequest); }
 			logger.debug("Going to call credit card WS.");
 			String subFolder = "auth";
 			JSONObject authResponse = authorizeTransaction(authRequest,webServiceURI,username,password,subFolder);
@@ -126,7 +126,7 @@ public class CreditCardDetail {
 				AccountUtils.populateError(ctx, "authorizationFailed", "Authorization failed");
 				return;
 			}
-			logger.debug("Credit Card WS auth Response..." + authResponse);
+			{ if (logger.isDebugEnabled()) logger.debug("Credit Card WS auth Response..." + authResponse); }
 			
         	JSONObject captureRequest = new JSONObject();
 			// Merchant ID
@@ -139,7 +139,7 @@ public class CreditCardDetail {
 			while (authKeys.hasNext()) {
 				String authKeyValue = (String)authKeys.next();
 		        String authValueString = authResponse.getString(authKeyValue);
-		        logger.debug(authKeyValue + "   :    " + authValueString);
+		        { if (logger.isDebugEnabled()) logger.debug(authKeyValue + "   :    " + authValueString); }
 		        if("respstat".equals(authKeyValue) && "A".equals(authValueString)){
 		        	approvalStatus++;
 		        }
@@ -158,20 +158,20 @@ public class CreditCardDetail {
 			
 			if(approvalStatus == 2){
 
-				logger.debug("Credit Card WS capture Request : " + captureRequest);
+				{ if (logger.isDebugEnabled()) logger.debug("Credit Card WS capture Request : " + captureRequest); }
 	        	subFolder = "capture";				
 	        	JSONObject captureResponse = authorizeTransaction(captureRequest, webServiceURI, username, password, subFolder);
 	        	if(captureResponse == null){
 					AccountUtils.populateError(ctx, "authorizationFailed", "Authorization failed");
 					return;
 				}
-	        	logger.debug("Credit Card WS capture Response..." + captureResponse);
+				{ if (logger.isDebugEnabled()) logger.debug("Credit Card WS capture Response..." + captureResponse); }
 	        	
 	        	Iterator<String> captureKeys = captureResponse.keys();
 				while (captureKeys.hasNext()) {
 					String captureKeyValue = (String)captureKeys.next();
 			        String captureValueString = captureResponse.getString(captureKeyValue);
-			        logger.debug(captureKeyValue + "   :    " + captureValueString);
+			        { if (logger.isDebugEnabled()) logger.debug(captureKeyValue + "   :    " + captureValueString); }
 			        if("setlstat".equals(captureKeyValue)){
 			        	if("Queued for Capture".equals(captureValueString) || "Accepted".equals(captureValueString)){
 							ctx.put("creditcardrespstat", "A");
@@ -192,7 +192,7 @@ public class CreditCardDetail {
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in CreditCardDetail.authCreditCardDetails", e);
 		}
 	}
 	
@@ -216,8 +216,8 @@ public class CreditCardDetail {
 				return;
 			}
 		} catch (Exception e) {
+			logger.error("Error in CreditCardDetail.authACHDetails", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		try {
@@ -277,7 +277,7 @@ public class CreditCardDetail {
 			authRequest.put("userfields", userfields);
 			// Create the REST client
 
-			logger.debug("Credit card connect WS auth Request..." + authRequest);
+			{ if (logger.isDebugEnabled()) logger.debug("Credit card connect WS auth Request..." + authRequest); }
 			logger.debug("Going to call credit card connect WS.");
 			String subFolder = "auth";
 			JSONObject authResponse = authorizeTransaction(authRequest,webServiceURI,username,password,subFolder);
@@ -287,7 +287,7 @@ public class CreditCardDetail {
 				AccountUtils.populateError(ctx, "authorizationFailedACH", "Authorization failed");
 				return;
 			}
-			logger.debug("Credit card connect WS auth Response..." + authResponse);
+			{ if (logger.isDebugEnabled()) logger.debug("Credit card connect WS auth Response..." + authResponse); }
 			
         	JSONObject captureRequest = new JSONObject();
 			// Merchant ID
@@ -300,7 +300,7 @@ public class CreditCardDetail {
 			while (authKeys.hasNext()) {
 				String authKeyValue = (String)authKeys.next();
 		        String authValueString = authResponse.getString(authKeyValue);
-		        logger.debug(authKeyValue + "   :    " + authValueString);
+		        { if (logger.isDebugEnabled()) logger.debug(authKeyValue + "   :    " + authValueString); }
 		        if("respstat".equals(authKeyValue) && "A".equals(authValueString)){
 		        	approvalStatus++;
 		        }
@@ -318,20 +318,20 @@ public class CreditCardDetail {
 			}
 			
 			if(approvalStatus == 2){
-	        	logger.debug("Credit Card Connect WS captureRequest..." + captureRequest);
+				{ if (logger.isDebugEnabled()) logger.debug("Credit Card Connect WS captureRequest..." + captureRequest); }
 	        	subFolder = "capture";				
 	        	JSONObject captureResponse = authorizeTransaction(captureRequest, webServiceURI, username, password, subFolder);
 	        	if(captureResponse == null){
 					AccountUtils.populateError(ctx, "authorizationFailedACH", "ACH Authorization has been failed");
 					return;
 				}
-	        	logger.debug("Credit Card Connect WS captureResponse..." + captureResponse);
+				{ if (logger.isDebugEnabled()) logger.debug("Credit Card Connect WS captureResponse..." + captureResponse); }
 	        	
 	        	Iterator<String> captureKeys= captureResponse.keys();
 				while (captureKeys.hasNext()) {
 					String captureKeyValue = (String)captureKeys.next();
 			        String captureValueString = captureResponse.getString(captureKeyValue);
-			        logger.debug(captureKeyValue + "   :    " + captureValueString);
+			        { if (logger.isDebugEnabled()) logger.debug(captureKeyValue + "   :    " + captureValueString); }
 			        if("setlstat".equals(captureKeyValue)){
 			        	if("Queued for Capture".equals(captureValueString) || "Accepted".equals(captureValueString)){
 							ctx.put("achrespstat", "A");
@@ -362,7 +362,7 @@ public class CreditCardDetail {
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in CreditCardDetail.authACHDetails", e);
 		}
 	}
 	
@@ -392,7 +392,7 @@ public class CreditCardDetail {
 
 			return new JSONObject(result);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in CreditCardDetail.authorizeTransaction", e);
 		}
 		return null;
 	}

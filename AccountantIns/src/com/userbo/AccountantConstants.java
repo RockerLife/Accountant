@@ -44,27 +44,27 @@ public class AccountantConstants {
 		
 		try {
 			
-			LEVEL1FORMCHANGES = SystemProperties.getInstance().getString("appl.AccountantIns.formchanges.level1.Date");
+			LEVEL1FORMCHANGES = SystemProperties.getInstance().getString("appl.AccountantIns.formchanges.level1.Date", LEVEL1FORMCHANGES);
 			
 		} catch (Exception e) {
-			logger.debug("error in Assigning dates for form changes");
+			logger.error("error in Assigning dates for form changes", e);
 		}
 		
 		try {
-			NEWAPPFLOW_CUT_OFF_DATE = SystemProperties.getInstance().getString("appl.AccountantIns.newAppFlow.cutOffDate");
-			CUT_OFF_DATE = SystemProperties.getInstance().getString("appl.AccountantIns.cutOffDate");
-			CUT_OFF_DATE_GROUP2 = SystemProperties.getInstance().getString("appl.AccountantIns.Group2.cutOffDate");
-			CUT_OFF_DATE_GROUP3 = SystemProperties.getInstance().getString("appl.AccountantIns.Group3.cutOffDate");
-			CUT_OFF_DATE_GROUP4 = SystemProperties.getInstance().getString("appl.AccountantIns.Group4.cutOffDate");
-			CUT_OFF_DATE_GROUP5 = SystemProperties.getInstance().getString("appl.AccountantIns.Group5.cutOffDate");
-			CUT_OFF_DATE_GROUP6 = SystemProperties.getInstance().getString("appl.AccountantIns.Group6.cutOffDate");
-			CUT_OFF_DATE_GROUP7 = SystemProperties.getInstance().getString("appl.AccountantIns.Group7.cutOffDate");
-			CUT_OFF_DATE_GROUP8 = SystemProperties.getInstance().getString("appl.AccountantIns.Group8.cutOffDate");
-			CUT_OFF_DATE_CCBSupp = SystemProperties.getInstance().getString("appl.AccountantIns.CCBSupp.cutOffDate");
-			CUT_OFF_DATE_2020 = SystemProperties.getInstance().getString("appl.AccountantIns.Group1.cutOffDate.2020");
-			END_DATE_CF_POLICYISSUANCE= SystemProperties.getInstance().getString("appl.AccountantIns.CF.policyissuance");
+			NEWAPPFLOW_CUT_OFF_DATE = SystemProperties.getInstance().getString("appl.AccountantIns.newAppFlow.cutOffDate", NEWAPPFLOW_CUT_OFF_DATE);
+			CUT_OFF_DATE = SystemProperties.getInstance().getString("appl.AccountantIns.cutOffDate", CUT_OFF_DATE);
+			CUT_OFF_DATE_GROUP2 = SystemProperties.getInstance().getString("appl.AccountantIns.Group2.cutOffDate", CUT_OFF_DATE_GROUP2);
+			CUT_OFF_DATE_GROUP3 = SystemProperties.getInstance().getString("appl.AccountantIns.Group3.cutOffDate", CUT_OFF_DATE_GROUP3);
+			CUT_OFF_DATE_GROUP4 = SystemProperties.getInstance().getString("appl.AccountantIns.Group4.cutOffDate", CUT_OFF_DATE_GROUP4);
+			CUT_OFF_DATE_GROUP5 = SystemProperties.getInstance().getString("appl.AccountantIns.Group5.cutOffDate", CUT_OFF_DATE_GROUP5);
+			CUT_OFF_DATE_GROUP6 = SystemProperties.getInstance().getString("appl.AccountantIns.Group6.cutOffDate", CUT_OFF_DATE_GROUP6);
+			CUT_OFF_DATE_GROUP7 = SystemProperties.getInstance().getString("appl.AccountantIns.Group7.CutOffDate", CUT_OFF_DATE_GROUP7);
+			CUT_OFF_DATE_GROUP8 = SystemProperties.getInstance().getString("appl.AccountantIns.Group8.cutOffDate", CUT_OFF_DATE_GROUP8);
+			CUT_OFF_DATE_CCBSupp = SystemProperties.getInstance().getString("appl.AccountantIns.CCBSupp.cutOffDate", CUT_OFF_DATE_CCBSupp);
+			CUT_OFF_DATE_2020 = SystemProperties.getInstance().getString("appl.AccountantIns.Group1.cutOffDate.2020", CUT_OFF_DATE_2020);
+			END_DATE_CF_POLICYISSUANCE= SystemProperties.getInstance().getString("appl.AccountantIns.CF.policyissuance", END_DATE_CF_POLICYISSUANCE);
 		} catch (Exception e) {
-			logger.debug("CutOff dates are not defined for rating/new app flow");
+			logger.error("CutOff dates are not defined for rating/new app flow", e);
 		}
 	}
 }

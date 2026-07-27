@@ -182,13 +182,13 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 					//going to add hidden fields for SSO token handling
 					
 					try{
-						String isSSOEnabled = SystemProperties.getInstance().getString("appl."+ctx.getProject()+".issso.enabled");
-						if(isSSOEnabled != null && isSSOEnabled.equals("Y")){
+						String isSSOEnabled = SystemProperties.getInstance().getProperty("appl."+ctx.getProject()+".issso.enabled");
+						if("Y".equalsIgnoreCase(isSSOEnabled)){
 							String ssoTokenKey = "SAMLart";
 							try{
 								ssoTokenKey = SystemProperties.getInstance().getString("sso.token.key");
 							}catch (Exception e) {
-								logger.error("Unable to get sso.token.key property due to error : " + e.getMessage());
+								logger.error("Unable to get sso.token.key property due to error : " + e.getMessage(), e);
 							}
 							
 							pageSource = start + "<INPUT name=REQUEST_AUTH_TOKEN value=" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + " type=hidden>";
@@ -198,6 +198,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 							pageSource = start + "<INPUT name=REQUEST_AUTH_TOKEN value=" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + " type=hidden>" + end;
 						}
 					}catch (Exception e) {
+						logger.error("Error in PIMRequestProcessorImpl.populateNextComponentpage", e);
 						pageSource = start + "<INPUT name=REQUEST_AUTH_TOKEN value=" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + " type=hidden>" + end;
 					}
 				}
@@ -206,13 +207,13 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 					String end = pageSource.substring(pageSource.lastIndexOf("</form>"), pageSource.length());
 					
 					try{
-						String isSSOEnabled = SystemProperties.getInstance().getString("appl."+ctx.getProject()+".issso.enabled");
-						if(isSSOEnabled != null && isSSOEnabled.equals("Y")){
+						String isSSOEnabled = SystemProperties.getInstance().getProperty("appl."+ctx.getProject()+".issso.enabled");
+						if("Y".equalsIgnoreCase(isSSOEnabled)){
 							String ssoTokenKey = "SAMLart";
 							try{
 								ssoTokenKey = SystemProperties.getInstance().getString("sso.token.key");
 							}catch (Exception e) {
-								logger.error("Unable to get sso.token.key property due to error : " + e.getMessage());
+								logger.error("Unable to get sso.token.key property due to error : " + e.getMessage(), e);
 							}
 							
 							pageSource = start + "<input name=\"REQUEST_AUTH_TOKEN\" value=\"" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + "\" type=\"hidden\"/>";
@@ -222,6 +223,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 							pageSource = start + "<input name=\"REQUEST_AUTH_TOKEN\" value=\"" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + "\" type=\"hidden\"/>" + end;
 						}
 					}catch (Exception e) {
+						logger.error("Error in PIMRequestProcessorImpl.populateNextComponentpage", e);
 						pageSource = start + "<input name=\"REQUEST_AUTH_TOKEN\" value=\"" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + "\" type=\"hidden\"/>" + end;
 					}
 				}
@@ -231,13 +233,13 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 					String end = pageSource.substring(pageSource.lastIndexOf("</form>"), pageSource.length());
 					
 					try{
-						String isSSOEnabled = SystemProperties.getInstance().getString("appl."+ctx.getProject()+".issso.enabled");
-						if(isSSOEnabled != null && isSSOEnabled.equals("Y")){
+						String isSSOEnabled = SystemProperties.getInstance().getProperty("appl."+ctx.getProject()+".issso.enabled");
+						if("Y".equalsIgnoreCase(isSSOEnabled)){
 							String ssoTokenKey = "SAMLart";
 							try{
 								ssoTokenKey = SystemProperties.getInstance().getString("sso.token.key");
 							}catch (Exception e) {
-								logger.error("Unable to get sso.token.key property due to error : " + e.getMessage());
+								logger.error("Unable to get sso.token.key property due to error : " + e.getMessage(), e);
 							}
 							
 							pageSource = start + "<input type=\"hidden\" name=\"REQUEST_AUTH_TOKEN\" value=\"" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + "\"/>";
@@ -247,6 +249,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 							pageSource = start + "<input type=\"hidden\" name=\"REQUEST_AUTH_TOKEN\" value=\"" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + "\"/>" + end;
 						}
 					}catch (Exception e) {
+						logger.error("Error in PIMRequestProcessorImpl.populateNextComponentpage", e);
 						pageSource = start + "<input type=\"hidden\" name=\"REQUEST_AUTH_TOKEN\" value=\"" + request.getSession().getAttribute("REQUEST_AUTH_TOKEN").toString() + "\"/>" + end;
 					}
 				}
@@ -594,7 +597,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 				ctx.put("mailMsg", "Test Mail has been sent successfully");
 				logger.debug("Test Mail has been sent successfully");
 			}catch(Exception e1){
-				logger.error("Unable to send mail due to error : " + e1.getMessage());
+				logger.error("Unable to send mail due to error : " + e1.getMessage(), e1);
 				DataUtils.populateError(ctx, "mailError", "Unable to send mail due to error : " + e1.getMessage());
 			}
 			
@@ -711,7 +714,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 				ctx.put("#dynamicContent#", new XMLOutputter(Format.getPrettyFormat()).outputString(tableElement));
 			}
 		}catch(Exception e){
-			logger.error("Unable to generate logs information due to error : " + e.getMessage());
+			logger.error("Unable to generate logs information due to error : " + e.getMessage(), e);
 		}
 	}
 	
@@ -1314,7 +1317,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 			
 			return hc.getResponseCode() == 200 ? "On" : "Down";
 		}catch(Exception e){
-			logger.error("Error while connecting to url : " + e.getMessage());
+			logger.error("Error while connecting to url : " + e.getMessage(), e);
 		}
 		
 		return "Down";
@@ -1325,7 +1328,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 			path = path.replace("//", File.separator).replace("\\", File.separator);
 			return new File(path).exists() ? "Exists" : "Not Exists";
 		}catch(Exception e){
-			logger.error("Error while connecting to url : " + e.getMessage());
+			logger.error("Error while connecting to url : " + e.getMessage(), e);
 		}
 		
 		return "Not Exists";
@@ -1338,7 +1341,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 			else
 				new DataUtils().getErrorInformationById(ctx, "columnListName", "errors_list_1", "Y", ctx.get("LogId").toString());
 		}catch(Exception e){
-			logger.error("Error while generating errors response : " + e.getMessage());
+			logger.error("Error while generating errors response : " + e.getMessage(), e);
 		}
 	}
 	

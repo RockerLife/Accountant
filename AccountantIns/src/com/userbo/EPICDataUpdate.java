@@ -20,6 +20,7 @@ import com.ormapping.ibatis.SqlResources;
 import com.util.Context;
 import com.util.IContext;
 import com.util.InetLogger;
+import com.util.SharedHttpClient;
 import com.util.SystemProperties;
 
 
@@ -32,8 +33,8 @@ public class EPICDataUpdate {
 			Context ctx = new Context();
 			insertEPICData(ctx);
 		}catch (Exception e) {
+			logger.error("Error in EPICDataUpdate.main", e);
 			// TODO: handle exception
-			e.printStackTrace();
 		}
 	}
 	
@@ -152,7 +153,7 @@ public class EPICDataUpdate {
 				
 				
 			} catch(Exception e) {
-				e.printStackTrace();
+				logger.error("Error in EPICDataUpdate.getEPICData", e);
 			}
 
 			insertData.put("OldAccountId", (insertData.get("oldAccountId") == null ? "" : insertData.get("oldAccountId").toString()));
@@ -259,17 +260,17 @@ public class EPICDataUpdate {
 ///ClientData
 			epicType = "Client API";
 			
-			logger.debug("Insured " + epicType + " Data is going to set in request");
+			{ if (logger.isDebugEnabled()) logger.debug("Insured " + epicType + " Data is going to set in request"); }
 	
 			JSONObject messageBodyJsonObject = new JSONObject();
 			String subURL = new EPICDataUpdate().setClientData(messageBodyJsonObject, insertData);
 			
-			logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " is going to call. Request.. " + messageBodyJsonObject);
+			{ if (logger.isDebugEnabled()) logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " is going to call. Request.. " + messageBodyJsonObject); }
 			
 			epicData = messageBodyJsonObject.toString();
 			String result = authorizeTransaction(messageBodyJsonObject, webServiceURL,  subURL, userAgentKey);
 			
-			logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " has been called. Response... " + result);
+			{ if (logger.isDebugEnabled()) logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " has been called. Response... " + result); }
 
 			if(result.startsWith("#Sucesss#")) {
 				result = result.replace("#Sucesss#", "");
@@ -284,17 +285,17 @@ public class EPICDataUpdate {
 				if(insertData.get("TransactionTypeKey") != null && !"".equals(insertData.get("TransactionTypeKey")) && Integer.parseInt(insertData.get("TransactionTypeKey").toString()) < 6){
 					epicType = "Policy API";
 					
-					logger.debug("Insured " + epicType + " Data is going to set in request");
+					{ if (logger.isDebugEnabled()) logger.debug("Insured " + epicType + " Data is going to set in request"); }
 					
 					messageBodyJsonObject = new JSONObject();
 					subURL = new EPICDataUpdate().setPolicyData(messageBodyJsonObject, insertData);
 		
-					logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " is going to call. Request.. " + messageBodyJsonObject);
+					{ if (logger.isDebugEnabled()) logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " is going to call. Request.. " + messageBodyJsonObject); }
 					
 					epicData = messageBodyJsonObject.toString();
 					result = authorizeTransaction(messageBodyJsonObject, webServiceURL,  subURL, userAgentKey);
 					
-					logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " has been called. Response... " + result);
+					{ if (logger.isDebugEnabled()) logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " has been called. Response... " + result); }
 				} else {
 					result = "#Sucesss#";
 				}
@@ -311,17 +312,17 @@ public class EPICDataUpdate {
 					if(insertData.get("BillingMode") != null && !"".equals(insertData.get("BillingMode")) && "DirectBilled".equals(insertData.get("BillingMode"))) {
 						epicType = "Transaction API";
 						
-						logger.debug("Insured " + epicType + " Data is going to set in request");
+						{ if (logger.isDebugEnabled()) logger.debug("Insured " + epicType + " Data is going to set in request"); }
 						
 						messageBodyJsonObject = new JSONObject();
 						subURL = new EPICDataUpdate().setTransactionData(messageBodyJsonObject, insertData);
 			
-						logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " is going to call. Request.. " + messageBodyJsonObject);
+						{ if (logger.isDebugEnabled()) logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " is going to call. Request.. " + messageBodyJsonObject); }
 						
 						epicData = messageBodyJsonObject.toString();
 						result = authorizeTransaction(messageBodyJsonObject, webServiceURL,  subURL, userAgentKey);
 						
-						logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " has been called. Response... " + result);
+						{ if (logger.isDebugEnabled()) logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " has been called. Response... " + result); }
 						
 						if(result.startsWith("#Sucesss#")) {
 							result = result.replace("#Sucesss#", "").replace("[", "").replace("]", "");
@@ -346,6 +347,7 @@ public class EPICDataUpdate {
 				setErrorLogsData(result, policyKey, newCtx, epicType, epicData);
 			}
 		}catch (Exception e) {
+			logger.error("Error in EPICDataUpdate.getEPICData", e);
 			// TODO: handle exception
 			newCtx.put("EPICType", epicType);
 			newCtx.put("EPICData", epicData);
@@ -354,10 +356,8 @@ public class EPICDataUpdate {
 				sendEPICError((Context)newCtx);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
-				logger.error("Exception occured while sendEPICError" + e.getMessage());
-				e1.printStackTrace();
+				logger.error("Exception occured while sendEPICError" + e.getMessage(), e1);
 			}
-			e.printStackTrace();
 		}
 	}
 	
@@ -604,21 +604,22 @@ public class EPICDataUpdate {
 		    post.setRequestHeader("User-Agent", userAgentKey);
 		    post.setRequestBody(authRequest.toString());
 
-		    HttpClient httpclient = new HttpClient();
+		    HttpClient httpclient = SharedHttpClient.get();
 
 		    int result = httpclient.executeMethod(post);
+		    String responseBody = post.getResponseBodyAsString();
 		    
-    		System.out.print(result);
-    		System.out.print(post.getResponseBodyAsString());
+			{ if (logger.isDebugEnabled()) logger.debug(result); }
+			{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
 		    
-    		if (result == 201 || result == 200) {
-		    	return "#Sucesss#" + post.getResponseBodyAsString();
+			if (result == 201 || result == 200) {
+				return "#Sucesss#" + responseBody;
 			} else {
-		    	return "#Failed#" + post.getResponseBodyAsString();
+				return "#Failed#" + responseBody;
 			}
 		    
 		} catch (Exception e) {
-		    e.printStackTrace();
+			logger.error("Error in EPICDataUpdate.authorizeTransaction", e);
 		} finally {
 		    post.releaseConnection();
 		}
@@ -649,7 +650,7 @@ public class EPICDataUpdate {
 			error = result;
     	}
     	
-	    logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " has been called. Error Response... " + error);
+	    { if (logger.isDebugEnabled()) logger.debug("EPIC Insert " + epicType + " Data for Policy " + policyKey + " has been called. Error Response... " + error); }
 
 	    newCtx.put("CreatedBy", (newCtx.get("LastUpdateUserID") == null ? 0 : newCtx.get("LastUpdateUserID")));
 		newCtx.put("EPICType", epicType);
@@ -667,6 +668,7 @@ public class EPICDataUpdate {
 	    try {
 	        new JSONObject(json);
 	    } catch (JSONException e) {
+            logger.error("Error in EPICDataUpdate.isValidJSON", e);
 	        return false;
 	    }
 	    return true;

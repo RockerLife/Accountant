@@ -123,7 +123,7 @@ public class EndorsementUtilities {
 		}
 		catch(Exception e)
 		{
-			logger.debug("exception occured while validating Cancel Reinstate Endorsement  "+e);
+			logger.error("exception occured while validating Cancel Reinstate Endorsement  "+e, e);
 			
 		}
 	}
@@ -165,7 +165,7 @@ public class EndorsementUtilities {
 			}
 		
 			catch (Exception e) {
-					e.printStackTrace();
+				logger.error("Error in EndorsementUtilities.setCurrentLimitData", e);
 				}
 	}
 	public static void setRatingReponseValues(Context ctx)
@@ -190,7 +190,7 @@ public class EndorsementUtilities {
 			}
 		
 			catch (Exception e) {
-					e.printStackTrace();
+				logger.error("Error in EndorsementUtilities.setRatingReponseValues", e);
 				}
 	}
 	
@@ -226,7 +226,7 @@ public class EndorsementUtilities {
 	    		}
 	    	}
     	}catch (Exception e) {
-    		logger.error("Unable to send email notification due to error : " + e.getMessage());
+            logger.error("Unable to send email notification due to error : " + e.getMessage(), e);
 		}
 		
 	}
@@ -275,7 +275,7 @@ public class EndorsementUtilities {
 					to_role_desc = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.email");
 				}
 				catch (Exception e) 
-				{logger.error("error in getting admin email address");}
+				{logger.error("error in getting admin email address", e);}
 
 			} else {
 				to_role_desc = AccountUtils.getInsuredAccountEmail(ctx);
@@ -490,7 +490,7 @@ public class EndorsementUtilities {
 	  }
 	  catch(Exception e)
 	  {
-		  e.printStackTrace();
+        logger.error("Error in EndorsementUtilities.setEndorsementPremium", e);
 	  }
 	  
   }
@@ -510,7 +510,7 @@ public static void validateManualPremium(Context ctx)
 	}
 	catch(Exception e)
 	{
-		logger.error("errro in validating manual quote");
+		logger.error("errro in validating manual quote", e);
 	}
 }
 public static  void calculateClaimAgeEndorsement(Context ctx) throws Exception {
@@ -650,7 +650,7 @@ public static void fetchERPLetterData(Context ctx)
 	}
 	catch(Exception e)
 	{
-		logger.error("exception occured while fetching data for quote letter : "+e.getMessage());
+		logger.error("exception occured while fetching data for quote letter : "+e.getMessage(), e);
 	}
 	logger.debug("fetching data for erp letter ended");
 }
@@ -758,7 +758,7 @@ public static void calculateERPPremium(Context ctx) {
 		} 
 	
 	} catch (Exception e) {
-		logger.error("Error occured while calculating ERP premium : " + e);
+		logger.error("Error occured while calculating ERP premium : " + e, e);
 	}
 
 	long totalPremium=premium+tax;
@@ -785,7 +785,7 @@ public static void getdateforERP(IContext ctx){
 	String todaydate=sdf.format(todaydt);
 	ctx.put("CurrentDate", todaydate);
 	}catch(Exception ex){
-		logger.error("Error occured while calculating ERP date : "+ex);
+		logger.error("Error occured while calculating ERP date : "+ex, ex);
 	}
 	
 	
@@ -803,8 +803,7 @@ public static void getDaysDifference(Context ctx)
 	}
 	catch(Exception e)
 	{
-			logger.debug("exception occured while getting days difference" );
-			e.printStackTrace();
+			logger.error("exception occured while getting days difference" , e);
 			
 	}
 	

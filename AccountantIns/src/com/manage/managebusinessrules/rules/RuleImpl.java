@@ -82,20 +82,20 @@ public class RuleImpl extends Rule
 			expression.setRuleContent(ruleContent);
 			expression.setRuleExpression(expr);	
 			
-			logger.debug("Expression " + getExpression() + " is going to validate");
+			{ if (logger.isDebugEnabled()) logger.debug("Expression " + getExpression() + " is going to validate"); }
 			populateLoggerBuffer(data).append("Expression " + getExpression() + " is going to validate \n");
 			Object result = expression.validateRule(data);
 			
 			if(result != null && result instanceof Boolean)
 				flag = ((Boolean)result).booleanValue();		
 			
-			logger.debug("Expression " + getExpression() + " has been validated");	
+			{ if (logger.isDebugEnabled()) logger.debug("Expression " + getExpression() + " has been validated"); }
 			populateLoggerBuffer(data).append("Expression " + getExpression() + " has been validated \n");
 			return flag;
 		}
 		catch (Exception e)
 		{
-			logger.debug(getExpression() + " could not validated");
+			logger.error(getExpression() + " could not validated", e);
 			populateLoggerBuffer(data).append(getExpression() + " could not validated \n");
 			return false;
 		}
@@ -213,13 +213,13 @@ public class RuleImpl extends Rule
 					String ruleId = getId();
 					ruleId = ruleId.replace("CUSTOM", HtmlConstants.EMPTY);
 					
-					logger.debug("Executing CUSTOM rule : " + ruleId);
+					{ if (logger.isDebugEnabled()) logger.debug("Executing CUSTOM rule : " + ruleId); }
 					if(!data.containsKey("RuleObject")) { 
 						RuleService ruleService = new RuleServiceImpl();
 						data.put("rule_id", ruleId);
 						
 						if(!ruleService.validate(data)){
-							logger.debug(getExpression() + " could not evaluated");
+							{ if (logger.isDebugEnabled()) logger.debug(getExpression() + " could not evaluated"); }
 							return null;
 						}
 						
@@ -230,7 +230,7 @@ public class RuleImpl extends Rule
 					}
 				}
 			}catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in RuleImpl.execute", e);
 				// TODO: handle exception
 			}
 			
@@ -246,7 +246,7 @@ public class RuleImpl extends Rule
 			Expression expression = ExpressionFactory.getExpression(rule);
 			if(expression == null)
 			{
-				logger.debug("Instance of " + expr + " is not generated from expression factory");
+				{ if (logger.isDebugEnabled()) logger.debug("Instance of " + expr + " is not generated from expression factory"); }
 				populateLoggerBuffer(data).append("Instance of " + expr + " is not generated from expression factory \n");
 				return result;
 			}
@@ -277,19 +277,19 @@ public class RuleImpl extends Rule
 //			if(this.validate(data, null))
 //				result = expression.executeRule(data);
 			
-			logger.debug("Expression " + getExpression() + " is going to execute");
+			{ if (logger.isDebugEnabled()) logger.debug("Expression " + getExpression() + " is going to execute"); }
 //			populateLoggerBuffer(data).append("Rule " + getId() + " is going to execute \n");
 			
 			result = expression.executeRule(data);			
 			
-			logger.debug("Expression " + getExpression() + " has been executed");
+			{ if (logger.isDebugEnabled()) logger.debug("Expression " + getExpression() + " has been executed"); }
 //			populateLoggerBuffer(data).append("Rule " + getId() + " has been executed \n");
 			
 			return result;
 		}
 		catch (Exception e)
 		{
-			logger.debug(getExpression() + " could not evaluated");
+			logger.error(getExpression() + " could not evaluated", e);
 			//populateLoggerBuffer(data).append(getExpression() + " could not evaluated \n");
 			
 			return null;
@@ -305,7 +305,7 @@ public class RuleImpl extends Rule
 					String ruleId = getId();
 					ruleId = ruleId.replace("CUSTOM", HtmlConstants.EMPTY);
 					
-					logger.debug("Executing CUSTOM rule : " + ruleId);
+					{ if (logger.isDebugEnabled()) logger.debug("Executing CUSTOM rule : " + ruleId); }
 					
 					RuleService ruleService = new RuleServiceObjectImpl();
 					//data.put("rule_id", ruleId);
@@ -318,7 +318,7 @@ public class RuleImpl extends Rule
 					return ruleService.execute(data.get("RuleObject"),ruleId);
 				}
 			}catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in RuleImpl.executeByObject", e);
 				// TODO: handle exception
 			}
 			
@@ -334,7 +334,7 @@ public class RuleImpl extends Rule
 			Expression expression = ExpressionFactory.getExpression(rule);
 			if(expression == null)
 			{
-				logger.debug("Instance of " + expr + " is not generated from expression factory");
+				{ if (logger.isDebugEnabled()) logger.debug("Instance of " + expr + " is not generated from expression factory"); }
 				//populateLoggerBuffer(data).append("Instance of " + expr + " is not generated from expression factory \n");
 				return result;
 			}
@@ -365,19 +365,19 @@ public class RuleImpl extends Rule
 //			if(this.validate(data, null))
 //				result = expression.executeRule(data);
 			
-			logger.debug("Expression " + getExpression() + " is going to execute");
+			{ if (logger.isDebugEnabled()) logger.debug("Expression " + getExpression() + " is going to execute"); }
 //			populateLoggerBuffer(data).append("Rule " + getId() + " is going to execute \n");
 			
 			result = expression.executeRule(data);			
 			
-			logger.debug("Expression " + getExpression() + " has been executed");
+			{ if (logger.isDebugEnabled()) logger.debug("Expression " + getExpression() + " has been executed"); }
 //			populateLoggerBuffer(data).append("Rule " + getId() + " has been executed \n");
 			
 			return result;
 		}
 		catch (Exception e)
 		{
-			logger.debug(getExpression() + " could not evaluated");
+			logger.error(getExpression() + " could not evaluated", e);
 			//populateLoggerBuffer(data).append(getExpression() + " could not evaluated \n");
 			
 			return null;

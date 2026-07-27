@@ -54,14 +54,14 @@ public class PDFGenerator {
 		
 		document.open();
 		populateHeader(document, ctx);
-		logger.debug("Populating Header has been done " + new Date());
+		{ if (logger.isDebugEnabled()) logger.debug("Populating Header has been done " + new Date()); }
 		
 		new BasicInfo().getDataForBasicInfo(ctx);
 		new BasicInfo().populateBasicInfoData(document, ctx, writer);		
-		logger.debug("Populating Basic Info data has been done " + new Date());
+		{ if (logger.isDebugEnabled()) logger.debug("Populating Basic Info data has been done " + new Date()); }
 		
 		new LicensePage().addLicenseData(document, ctx);
-		logger.debug("Populating License Page has been done " + new Date());
+		{ if (logger.isDebugEnabled()) logger.debug("Populating License Page has been done " + new Date()); }
 		
 		//monika
 		String IsControlClientFunds = "";
@@ -86,14 +86,14 @@ public class PDFGenerator {
 			
 			new PracticeMangement().getDataForPracticeMangement(ctx);
 			new PracticeMangement().populatePracticeMangementData(document, ctx, writer);
-			logger.debug("Populating Practise Management has been done " + new Date());
+			{ if (logger.isDebugEnabled()) logger.debug("Populating Practise Management has been done " + new Date()); }
 		}
 		
 		if(ctx.get("AOP_Percentage_19") != null && !"".equals(ctx.get("AOP_Percentage_19")) 
 				&& Integer.parseInt(ctx.get("AOP_Percentage_19").toString()) != 0  ){
 			new Investment().getDataForInvestment(ctx);
 			new Investment().populateInvestmentData(document, ctx, writer);	
-			logger.debug("Populating Investment has been done " + new Date());
+			{ if (logger.isDebugEnabled()) logger.debug("Populating Investment has been done " + new Date()); }
 		}
 		
 		if((ctx.get("AOP_Percentage_5") != null && !"".equals(ctx.get("AOP_Percentage_5")) 
@@ -102,14 +102,14 @@ public class PDFGenerator {
 						&& Integer.parseInt(ctx.get("AOP_Percentage_6").toString()) != 0)){
 			new Audit().getDataForAudit(ctx);
 			new Audit().populateAuditData(document, ctx, writer);
-			logger.debug("Populating Audit has been done " + new Date());
+			{ if (logger.isDebugEnabled()) logger.debug("Populating Audit has been done " + new Date()); }
 		}
 		
 		if(ctx.get("AOP_Percentage_14") != null && !"".equals(ctx.get("AOP_Percentage_14")) 
 				&& Integer.parseInt(ctx.get("AOP_Percentage_14").toString()) != 0  ){
 			new ComputerService().getDataForComputerService(ctx);
 			new ComputerService().populateComputerServiceData(document, ctx, writer);
-			logger.debug("Populating Computer Services has been done " + new Date());
+			{ if (logger.isDebugEnabled()) logger.debug("Populating Computer Services has been done " + new Date()); }
 		}
 		
 //		if(ctx.get("AOP_Percentage_18") != null && !"".equals(ctx.get("AOP_Percentage_18")) 
@@ -130,7 +130,7 @@ public class PDFGenerator {
 			new BusinessManagment().getDataForBusinessManagment(ctx);
 			new BusinessManagment().populateBusinessManagmentData(document, ctx, writer);
 			
-			logger.debug("Populating Business Management has been done " + new Date());
+			{ if (logger.isDebugEnabled()) logger.debug("Populating Business Management has been done " + new Date()); }
 		}
 		
 		
@@ -141,25 +141,25 @@ public class PDFGenerator {
 			if((ctx.get("IsAwarenessOfAnyProfLiability") != null && !"".equals(ctx.get("IsAwarenessOfAnyProfLiability").toString()))
 					&& "Yes".equals(ctx.get("IsAwarenessOfAnyProfLiability").toString())) {
 				new BasicInfo().populateClaimSupplementList(document, ctx,writer);
-				logger.debug("Populating Claim List has been done " + new Date());
+				{ if (logger.isDebugEnabled()) logger.debug("Populating Claim List has been done " + new Date()); }
 			}
 			else if((ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst") != null && !"".equals(ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst").toString()))
 					&& "Yes".equals(ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst").toString())) {
 				new BasicInfo().populateClaimSupplementList(document, ctx, writer);
-				logger.debug("Populating Claim List has been done " + new Date());
+				{ if (logger.isDebugEnabled()) logger.debug("Populating Claim List has been done " + new Date()); }
 			}
 		}
 		
 		if((ctx.get("IsFirmRenderingServices") != null && !"".equals(ctx.get("IsFirmRenderingServices").toString()))
 				&& "Yes".equals(ctx.get("IsFirmRenderingServices").toString())) {
 			new General().populateSeperateEntity(document, ctx, writer);
-			logger.debug("PopulatingSeperate Entity has been done " + new Date());
+			{ if (logger.isDebugEnabled()) logger.debug("PopulatingSeperate Entity has been done " + new Date()); }
 		}
 		
 		if(firmMap.get("IsSuitInstituted") != null && !"".equals(firmMap.get("IsSuitInstituted").toString()) 
 				&& "Y".equals(firmMap.get("IsSuitInstituted").toString())){
 			new General().populateFeeSued(document, ctx, writer);
-			logger.debug("Populating Fee Sued has been done " + new Date());
+			{ if (logger.isDebugEnabled()) logger.debug("Populating Fee Sued has been done " + new Date()); }
 		}
 			
 		

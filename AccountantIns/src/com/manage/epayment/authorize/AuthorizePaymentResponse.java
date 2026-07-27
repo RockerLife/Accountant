@@ -21,7 +21,7 @@ public class AuthorizePaymentResponse {
 			logger.debug("Going to process payment response");
 			String x_response_code = ctx.get("x_response_code") != null ? ctx.get("x_response_code").toString() : "";
 			
-			logger.debug("Response Code is -------- >" + x_response_code);
+			{ if (logger.isDebugEnabled()) logger.debug("Response Code is -------- >" + x_response_code); }
 			
 			Context nctx = new Context();
 			nctx.putAll(ctx);
@@ -32,8 +32,8 @@ public class AuthorizePaymentResponse {
 			String x_response_reason_code = ctx.get("x_response_reason_code") != null ? ctx.get("x_response_reason_code").toString() : "";
 			String x_response_reason_text = ctx.get("x_response_reason_text") != null ? ctx.get("x_response_reason_text").toString() : "";
 			
-			logger.debug("Response Reason Code - - > " + x_response_reason_code);
-			logger.debug("Response Reason Text - - > " + x_response_reason_text);
+			{ if (logger.isDebugEnabled()) logger.debug("Response Reason Code - - > " + x_response_reason_code); }
+			{ if (logger.isDebugEnabled()) logger.debug("Response Reason Text - - > " + x_response_reason_text); }
 			
 			nctx.put("TransactionStatus", x_response_code.equals("1") ? "Approved" : "Declined");
 			nctx.put("Amount", ctx.get("x_amount"));				
@@ -42,13 +42,13 @@ public class AuthorizePaymentResponse {
 			try{
 				RuleUtils.executeRule(nctx, "AccountantRule.AssignLastUpdateTimeStamp");
 				if(ctx.get("LastUpdateTimeStamp") != null){
-						logger.debug("LastUpdateTimeStamp--   "+nctx.get("LastUpdateTimeStamp"));
+						{ if (logger.isDebugEnabled()) logger.debug("LastUpdateTimeStamp--   "+nctx.get("LastUpdateTimeStamp")); }
 						nctx.put("TransactionDate",new SimpleDateFormat(DATE_PATTERN).format(nctx.get("LastUpdateTimeStamp")));
-						logger.debug("TransactionDate ---->    "+nctx.get("TransactionDate"));		
+						{ if (logger.isDebugEnabled()) logger.debug("TransactionDate ---->    "+nctx.get("TransactionDate")); }
 					}
 				}
 				catch (Exception e){			
-					logger.debug("AssignLastUpdateTimeStamp------"+e.getMessage());
+					logger.error("AssignLastUpdateTimeStamp------"+e.getMessage(), e);
 				}
 			logger.debug("Check if data already in Payment details");
 			
@@ -103,7 +103,7 @@ public class AuthorizePaymentResponse {
 				logger.debug("Payment did not processed");
 			}
 		}catch(Exception e){
-			logger.debug("There was an error processing the transaction response " + e.getMessage());
+			logger.error("There was an error processing the transaction response " + e.getMessage(), e);
 		}
 		
 	}
@@ -127,13 +127,13 @@ public class AuthorizePaymentResponse {
 			try{
 				RuleUtils.executeRule(ctx, "AccountantRule.AssignLastUpdateTimeStamp");
 				if(ctx.get("LastUpdateTimeStamp") != null){
-					logger.debug("LastUpdateTimeStamp--   "+ctx.get("LastUpdateTimeStamp"));
+					{ if (logger.isDebugEnabled()) logger.debug("LastUpdateTimeStamp--   "+ctx.get("LastUpdateTimeStamp")); }
 					ctx.put("TransactionDate",ctx.get("LastUpdateTimeStamp"));
-					logger.debug("TransactionDate ---->    "+ctx.get("TransactionDate"));	
+					{ if (logger.isDebugEnabled()) logger.debug("TransactionDate ---->    "+ctx.get("TransactionDate")); }
 				}
 			}
 			catch (Exception e){			
-				logger.debug("AssignLastUpdateTimeStamp------"+e.getMessage());
+				logger.error("AssignLastUpdateTimeStamp------"+e.getMessage(), e);
 			}
 			
 			List paymentDetailList = SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementManualBoQueriesgetPaymentDetail", ctx);
@@ -162,7 +162,7 @@ public class AuthorizePaymentResponse {
 			}			
 			logger.debug("Processing CC payment response is completed.");
 		}catch(Exception e){
-			logger.debug("There was an error processing the transaction response " + e.getMessage());
+			logger.error("There was an error processing the transaction response " + e.getMessage(), e);
 		}
 	}
 }

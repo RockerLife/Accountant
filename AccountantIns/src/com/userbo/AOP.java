@@ -115,7 +115,7 @@ public class AOP {
 					}
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AOP.savePopulateFields", e);
 			}
 			// }
 			// }
@@ -185,7 +185,7 @@ public class AOP {
 					}
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AOP.savePopulateFieldsQuickQuote", e);
 			}
 			// }
 			// }
@@ -355,7 +355,7 @@ public class AOP {
 						SqlResources.getSqlMapProcessor(ctx).select("GrossRevenueForFirm.SwapRevenueYear", ctx);
 					}
 					String yearEndDate = populateYearEndDate(map.get("YearEndDate") == null ? "" : map.get("YearEndDate").toString(),policyeffectivedate);
-					logger.debug("Year End Date = " + yearEndDate);
+					{ if (logger.isDebugEnabled()) logger.debug("Year End Date = " + yearEndDate); }
 					ctx.put("YearEndDate", yearEndDate);			
 					
 				}else{
@@ -389,8 +389,8 @@ public class AOP {
 
 	public String populateYearEndDate(String yearEndDate,String policyeffectivedate) throws Exception {
 		try{
-		logger.debug("Going to populate Year End Date with year end date " + yearEndDate + 
-				" and Policy effective date " + policyeffectivedate);
+		{ if (logger.isDebugEnabled()) logger.debug("Going to populate Year End Date with year end date " + yearEndDate +
+				" and Policy effective date " + policyeffectivedate); }
 		policyeffectivedate = policyeffectivedate.substring(0,10);
 		Date d = AccountantDateUtils.convertStringToDate(policyeffectivedate, "mm/dd/yyyy");
 		Calendar cal = Calendar.getInstance();
@@ -411,7 +411,7 @@ public class AOP {
 					grossyear = policyyear - 1 ;
 				}
 				
-				logger.debug("Year is " + grossyear);
+				{ if (logger.isDebugEnabled()) logger.debug("Year is " + grossyear); }
 				String newStrYear = yearEndDate.replace(stryear, String
 						.valueOf(grossyear));
 
@@ -419,8 +419,7 @@ public class AOP {
 			}
 		}
 		}catch(Exception e){
-			logger.debug("Exception in populateYearEndDate " + e.getMessage());
-			e.printStackTrace();
+			logger.error("Exception in populateYearEndDate " + e.getMessage(), e);
 			throw e ;
 		}
 		return yearEndDate;
@@ -431,8 +430,8 @@ public class AOP {
 		boolean swapyears = false ;
 		try{
 			
-		logger.debug("Going to populate Year End Date with year end date " + yearEndDate + 
-				" and Policy effective date " + policyeffectivedate);
+		{ if (logger.isDebugEnabled()) logger.debug("Going to populate Year End Date with year end date " + yearEndDate +
+				" and Policy effective date " + policyeffectivedate); }
 		policyeffectivedate = policyeffectivedate.substring(0,10);
 		Date d = AccountantDateUtils.convertStringToDate(policyeffectivedate, "mm/dd/yyyy");
 		Calendar cal = Calendar.getInstance();
@@ -454,8 +453,7 @@ public class AOP {
 			}
 		}
 		}catch(Exception e){
-			logger.debug("Exception in populateYearEndDate " + e.getMessage());
-			e.printStackTrace();
+			logger.error("Exception in populateYearEndDate " + e.getMessage(), e);
 			throw e ;
 		}
 		return swapyears;
@@ -498,7 +496,7 @@ public class AOP {
 
 		boolean flag = true;
 
-		System.out.println(ctx.get("IsInsuredViewed"));
+		{ if (logger.isDebugEnabled()) logger.debug(ctx.get("IsInsuredViewed")); }
 
 		AccountUtils.populateLastUpdateTimeStamp(ctx);
 
@@ -568,7 +566,7 @@ public class AOP {
 			int newYear = intyear + 1;
 			String newStrYear = yeardate.replace(year, String.valueOf(newYear));
 
-			System.out.println("=====> " + newStrYear);
+			{ if (logger.isDebugEnabled()) logger.debug("=====> " + newStrYear); }
 		}
 
 	}
@@ -625,7 +623,7 @@ public class AOP {
 //						DBUtils.executeDBOperation(ctx1, "SmartSearchValue", "1");
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AOP.fillIndicationAOP", e);
 			}			
 		}
 	}
@@ -656,7 +654,7 @@ public class AOP {
 			}
 			catch (Exception e)
 			{
-				e.printStackTrace();
+				logger.error("Error in AOP.getAopsValues", e);
 			}
 	}
 	
@@ -720,7 +718,7 @@ public class AOP {
 					}
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AOP.savePopulateFieldsNewApp", e);
 			}
 		}
 	}
@@ -788,7 +786,7 @@ public class AOP {
 			sess.setAttribute("aoplist_list_2", newList);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AOP.updateAOPList", e);
 		}
 	}
 	public void populateITSuppValues(Context ctx) throws Exception {
@@ -909,7 +907,7 @@ public class AOP {
 	        }
 	        catch(Exception e)
 	        {
-	        	e.printStackTrace();	        	
+                logger.error("Error in AOP.addNewAopData", e);
 	        }
 		
 	}

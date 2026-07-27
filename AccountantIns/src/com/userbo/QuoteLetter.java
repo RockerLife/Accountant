@@ -270,7 +270,7 @@ public class QuoteLetter {
 					if(ruleMapObject != null && ruleMapObject instanceof Map){						
 						Map ruleMap = (Map)ruleMapObject;
 						String IsDefensePaidWithinRuleND = ruleMap.get("IsDefensePaidWithinRuleND") != null ? ruleMap.get("IsDefensePaidWithinRuleND").toString() : "";
-						logger.debug("Is IsDefensePaidWithinRuleND ? " + IsDefensePaidWithinRuleND);						
+						{ if (logger.isDebugEnabled()) logger.debug("Is IsDefensePaidWithinRuleND ? " + IsDefensePaidWithinRuleND); }
 						if("Y".equals(IsDefensePaidWithinRuleND)){
 							outFile = htmlDir + "data//MO_42_001_06_15.pdf";
 							out = new java.io.FileOutputStream(outFile);
@@ -291,15 +291,14 @@ public class QuoteLetter {
 				
 				
 				try{
-					logger.debug("Going to upload Quote letter for QuoteNumber " + ctx.get("QuoteNumber").toString() );
+					{ if (logger.isDebugEnabled()) logger.debug("Going to upload Quote letter for QuoteNumber " + ctx.get("QuoteNumber").toString() ); }
 					new DocumentManagment().uploadQuoteLetter(ctx);
 					docUploaded = true;
-					logger.debug("docUploaded value " + docUploaded);
+					{ if (logger.isDebugEnabled()) logger.debug("docUploaded value " + docUploaded); }
 				}
 				catch(Exception e){
-					logger.error("Error in uploading quote letter ");
+					logger.error("Error in uploading quote letter ", e);
 					ctx.put("QuoteLetterSent", "N");
-					e.printStackTrace();					
 				}
 			
 				
@@ -312,7 +311,7 @@ public class QuoteLetter {
 					}else{
 						dstId = AccountUtils.getEmailID (ctx);
 					}
-					logger.debug("Going to send mail to destination " + dstId);
+					{ if (logger.isDebugEnabled()) logger.debug("Going to send mail to destination " + dstId); }
 							//dstId = AccountUtils.getEmailID (ctx);
 							if("".equals(dstId))
 								return;					
@@ -367,8 +366,7 @@ public class QuoteLetter {
 					
 				}
 				catch(Exception e){
-					e.printStackTrace();
-					logger.debug("Quote letter  could not be send");
+					logger.error("Quote letter  could not be send", e);
 					ctx.put("QuoteLetterSent", "N");
 					ctx.remove("RuleRequestType");
 				}
@@ -693,7 +691,7 @@ public class QuoteLetter {
 			mailSender.sendMail();
 		
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in QuoteLetter.main", e);
 		}
 	}
 	
@@ -1087,7 +1085,7 @@ public static boolean isQuoteEffDateGreater5DaysLess29DaysFrmPED(IContext ctx, S
 	    	}
 
 		} catch (Exception e) {
-		    e.printStackTrace();
+			logger.error("Error in QuoteLetter.isQuoteEffDateGreater5DaysLess29DaysFrmPED", e);
 		}
 		return false;
 
@@ -1416,8 +1414,7 @@ public static boolean isQuoteEffDateGreater5DaysLess29DaysFrmPED(IContext ctx, S
 					}
 				}
 				catch(Exception e){
-					logger.error("Error in uploading quick quote letter  ");
-					e.printStackTrace();					
+					logger.error("Error in uploading quick quote letter  ", e);
 				}
 				String bccAddress="";
 				bccAddress=SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.cc.email");
@@ -1444,8 +1441,7 @@ public static boolean isQuoteEffDateGreater5DaysLess29DaysFrmPED(IContext ctx, S
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
-				logger.debug("Quick quote option could not be uploaded");								
+				logger.error("Quick quote option could not be uploaded", e);
 			}	
 		}
 		
@@ -1470,17 +1466,17 @@ public static boolean isQuoteEffDateGreater5DaysLess29DaysFrmPED(IContext ctx, S
 			    Date date2 = myFormat.parse(inputString2);
 			    long diff = date2.getTime() - date1.getTime();
 			    long days = (diff / (1000*60*60*24));
-			    System.out.println ("Days: " + days);
+			    { if (logger.isDebugEnabled()) logger.debug("Days: " + days); }
 			   
 			    if(days>90){
 			    	AccountUtils.populateError(ctx, "PolicyEffectiveDateError", "Policy Effective date is Greater than 90 days");
 			    }
 			    
 			} catch (Exception e) {
-			    e.printStackTrace();
+				logger.error("Error in QuoteLetter.signAndPay", e);
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in QuoteLetter.signAndPay", e);
 		}
 	}
 

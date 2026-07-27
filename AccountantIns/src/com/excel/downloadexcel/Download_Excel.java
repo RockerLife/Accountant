@@ -97,7 +97,7 @@ public class Download_Excel implements Constants {
 //			System.out.println("Java");
 //			input.close();
 		} catch (Throwable e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.main", e);
 			
 		}
 		finally{
@@ -124,7 +124,7 @@ public class Download_Excel implements Constants {
 			outputStream.flush();			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.downloadExcel", e);
 			throw e;
 		}
 		finally{
@@ -132,16 +132,16 @@ public class Download_Excel implements Constants {
 				try {
 					input.close();
 				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadExcel", e);
 					
-					e.printStackTrace();
 					throw e;
 				}
 			if(outputStream != null)
 				try {
 					outputStream.close();
 				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadExcel", e);
 					
-					e.printStackTrace();
 					throw e;
 				}			
 		}
@@ -197,8 +197,7 @@ public class Download_Excel implements Constants {
 							try{
 								evaluator.evaluateFormulaCell(c);
 							}catch(Exception e){
-								System.out.println("## ERROR IN CELL ## "+ new CellReference(r.getRowNum(),c.getColumnIndex()).formatAsString());
-								logger.error("## ERROR IN CELL ## "+ new CellReference(r.getRowNum(),c.getColumnIndex()).formatAsString());
+								logger.error("## ERROR IN CELL ## "+ new CellReference(r.getRowNum(),c.getColumnIndex()).formatAsString(), e);
 								//e.printStackTrace();
 								
 							}
@@ -264,11 +263,11 @@ public class Download_Excel implements Constants {
 		fis.close();     
 		
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.processExcel", e);
 			
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.processExcel", e);
 			
 		}
 		
@@ -298,7 +297,7 @@ public class Download_Excel implements Constants {
 	        row = sheet.getRow(r);
 	        if(row != null) {
 	        	for(int c=0; c < row.getLastCellNum(); c++){
-	        		System.out.print("\t" + row.getCell(c));
+					{ if (logger.isDebugEnabled()) logger.debug("\t" + row.getCell(c)); }
 	        		if(null!=row.getCell(c) 
 	        				&& Cell.CELL_TYPE_STRING == row.getCell(c).getCellType()
 	        				&& row.getCell(c).getStringCellValue().length() > 1
@@ -354,22 +353,22 @@ public class Download_Excel implements Constants {
 			outputStream.flush();			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.downloadWeeklyReport", e);
 		
 		}
 		finally{
 			if(input != null)
 				try {
 					input.close();
-				} catch (IOException e) {					
-					e.printStackTrace();					
+				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadWeeklyReport", e);
 				}
 				
 			if(outputStream != null)
 				try {
 					outputStream.close();
-				} catch (IOException e) {					
-					e.printStackTrace();					
+				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadWeeklyReport", e);
 				}			
 		}
 	}
@@ -393,22 +392,22 @@ public class Download_Excel implements Constants {
 			outputStream.flush();			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.downloadAllReport", e);
 		
 		}
 		finally{
 			if(input != null)
 				try {
 					input.close();
-				} catch (IOException e) {					
-					e.printStackTrace();					
+				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadAllReport", e);
 				}
 				
 			if(outputStream != null)
 				try {
 					outputStream.close();
-				} catch (IOException e) {					
-					e.printStackTrace();					
+				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadAllReport", e);
 				}			
 		}
 	}
@@ -432,21 +431,21 @@ public class Download_Excel implements Constants {
 			outputStream.flush();			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.downloadStateMonthReport", e);
 			throw e;
 		}
 		finally{
 			if(input != null)
 				try {
 					input.close();
-				} catch (IOException e) {					
-					e.printStackTrace();					
+				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadStateMonthReport", e);
 				}
 			if(outputStream != null)
 				try {
 					outputStream.close();
-				} catch (IOException e) {					
-					e.printStackTrace();					
+				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadStateMonthReport", e);
 				}			
 		}
 	}
@@ -527,7 +526,7 @@ public class Download_Excel implements Constants {
 			outputStream.flush();			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.downloadReport", e);
 			
 		}
 		finally{
@@ -535,15 +534,15 @@ public class Download_Excel implements Constants {
 				try {
 					input.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.error("Error in Download_Excel.downloadReport", e);
 					
 				}
 			if(outputStream != null)
 				try {
 					outputStream.close();
 				} catch (IOException e) {
+					logger.error("Error in Download_Excel.downloadReport", e);
 					
-					e.printStackTrace();
 					
 				}			
 		}
@@ -580,7 +579,7 @@ public class Download_Excel implements Constants {
 			sheetsids= SystemProperties.getInstance().getString("app.AccountantIns.Weeklyreport.userids");
 			
 		}catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.populateWeeklyReportDataIntoExcel", e);
 			
 		}
 		
@@ -704,7 +703,7 @@ public void downloadEndorsementPdf(Context ctx, HttpServletRequest req, HttpServ
 			ZipOutputStream zout = new ZipOutputStream(outputStream);
 			for (int i = 0; i < fList.length; i++) {
 	
-				System.out.println("Adding " + fList[i].getAbsolutePath());
+				{ if (logger.isDebugEnabled()) logger.debug("Adding " + fList[i].getAbsolutePath()); }
 	
 				FileInputStream fin = new FileInputStream(fList[i].getAbsolutePath());
 				zout.putNextEntry(new ZipEntry(fList[i].getName()));
@@ -716,9 +715,9 @@ public void downloadEndorsementPdf(Context ctx, HttpServletRequest req, HttpServ
 				fin.close();
 			}
 			zout.close();
-			System.out.println("Zip file has been created!");
+			{ if (logger.isDebugEnabled()) logger.debug("Zip file has been created!"); }
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in Download_Excel.addFilesToZipAndDownload", e);
 		}
 	}
 	public void populateReportDataIntoExcelDynamic(Context ctx, Workbook wb,String templateName) throws Exception 
@@ -770,9 +769,9 @@ public void downloadEndorsementPdf(Context ctx, HttpServletRequest req, HttpServ
 		for (File f : files) {
 			if (f.isFile() && f.exists()) {
 				f.delete();
-				System.out.println("successfully deleted");
+				{ if (logger.isDebugEnabled()) logger.debug("successfully deleted"); }
 			} else {
-				System.out.println("cant delete a file due to open or error");
+				{ if (logger.isDebugEnabled()) logger.debug("cant delete a file due to open or error"); }
 			}
 		}
 	}

@@ -57,7 +57,7 @@ public class DownloadForm {
 			}
 			if("3".equals(ctx.get("CompanyKey").toString()))
 				foFile = SystemProperties.getInstance().getString("html.basedir") + "ISMIE//PolicyForms//wrapnew.xsl";	
-			logger.debug("generateForm--------"+foFile);			
+			{ if (logger.isDebugEnabled()) logger.debug("generateForm--------"+foFile); }
 			
 			populateEndorsement(ctx, listFormID);
 			fetchDataForXml(ctx);
@@ -67,7 +67,7 @@ public class DownloadForm {
 			new XML2PDF().convertXMLtoStream(foFile, new StringBuffer(generateDataXml(ctx)), listFormID, out, baseUrl, uriResolver,ctx);
 		}
 		catch(Exception e){
-			logger.error("Problem in generating forms for Policy Number : " +ctx.get("PolicyNumber"));
+			logger.error("Problem in generating forms for Policy Number : " +ctx.get("PolicyNumber"), e);
 			throw e;
 		}
 	}
@@ -104,7 +104,7 @@ public class DownloadForm {
 				mapEndorsment.put(formID.replace("-", "").replace(" ", "").replace("(", "").replace("/", "").replace(")","").replace("#", ""), formID);
 			
 			formIDs = formIDs + ", " + formID;			
-			logger.debug("populateEndorsement......"+formIDs);
+			{ if (logger.isDebugEnabled()) logger.debug("populateEndorsement......"+formIDs); }
 		}
 		
 		if(formIDs.length() > 0)
@@ -159,14 +159,15 @@ public class DownloadForm {
 		Object objProLiabIns = SqlResources.getSqlMapProcessor(ctx).findByKey("SqlStmts.UserStatementpdfquotelettergetProfessionalLiabilityInsDetail", ctx);
 		ctx.put("professionalliabilityinsdetail_freeform_01", objProLiabIns);
 		
-		Object objFinalisedQuote = SqlResources.getSqlMapProcessor(ctx).findByKey("SqlStmts.UserStatementsaveAccountstmtsgetFinalisedQuote", ctx);
-		Map mapFinalisedQuote = null;
+		Map mapFinalisedQuote = map;
+		if (mapFinalisedQuote == null) {
+			Object objFinalisedQuote = SqlResources.getSqlMapProcessor(ctx).findByKey("SqlStmts.UserStatementsaveAccountstmtsgetFinalisedQuote", ctx);
+			if (objFinalisedQuote instanceof Map)
+				mapFinalisedQuote = (Map) objFinalisedQuote;
+		}
 		String IsClaimExpensesTypeFlag = "N";
 		String IsClaimOptionTypeFlag = "N";
 		String OKStateRuleFlag = "N";
-		
-		if(objFinalisedQuote != null && objFinalisedQuote instanceof Map)	
-			mapFinalisedQuote = (Map) objFinalisedQuote;
 		
 		if(mapFinalisedQuote != null && !mapFinalisedQuote.isEmpty())
 		{			
@@ -179,7 +180,7 @@ public class DownloadForm {
 			try{
 				agrLim = mapFinalisedQuote.get("AggregateLimit") !=null ? Integer.parseInt(mapFinalisedQuote.get("AggregateLimit").toString())  : 0;
 			}catch(Exception e){
-				logger.debug("Number Format Exception " + e.getMessage());
+				logger.error("Number Format Exception " + e.getMessage(), e);
 			}
 			
 			if(agrLim < 1000000 && "Y".equals(IsClaimExpensesTypeFlag))
@@ -211,7 +212,7 @@ public class DownloadForm {
 			if(ruleMapObject != null && ruleMapObject instanceof Map){						
 				Map ruleMap = (Map)ruleMapObject;
 				String IsDefensePaidWithinRuleND = ruleMap.get("IsDefensePaidWithinRuleND") != null ? ruleMap.get("IsDefensePaidWithinRuleND").toString() : "";
-				logger.debug("Is IsDefensePaidWithinRuleND ? " + IsDefensePaidWithinRuleND);						
+				{ if (logger.isDebugEnabled()) logger.debug("Is IsDefensePaidWithinRuleND ? " + IsDefensePaidWithinRuleND); }
 				ctx.put("IsDefensePaidWithinRuleND", IsDefensePaidWithinRuleND);
 			}
 		}
@@ -221,8 +222,7 @@ public class DownloadForm {
 		
 		}
 		catch(Exception e){
-			logger.error("Problem in fetching data for Policy Number : " +ctx.get("PolicyNumber"));
-			e.printStackTrace();
+			logger.error("Problem in fetching data for Policy Number : " +ctx.get("PolicyNumber"), e);
 		}
 		
 	}
@@ -236,7 +236,7 @@ public class DownloadForm {
 		
 		}
 		catch(Exception e){
-			logger.error("Problem in generating data xml for Policy Number : " +ctx.get("PolicyNumber"));
+			logger.error("Problem in generating data xml for Policy Number : " +ctx.get("PolicyNumber"), e);
 		}
 		
 		//System.out.println(dataXML);
@@ -293,7 +293,7 @@ public class DownloadForm {
 			new XML2PDF().convertPOToPDF(foFile, new StringBuffer(generateDataXml(ctx)), out, baseUrl, uriResolver);
 		}
 		catch(Exception e){
-			logger.error("Problem in generating forms for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage());
+			logger.error("Problem in generating forms for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage(), e);
 			throw e;
 		}
 	}
@@ -393,7 +393,7 @@ public class DownloadForm {
 			}
 						
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in DownloadForm.fetchDataForIndication", e);
 		}
 	}
 	
@@ -413,6 +413,7 @@ public class DownloadForm {
 			}			
 					
 		} catch (Exception e) {
+			logger.error("Error in DownloadForm.fetchDataForRatingOutput", e);
 			
 		}
 	}
@@ -449,7 +450,7 @@ public class DownloadForm {
 			processEndorsementData(ctx);
 			
 		} catch(Exception e){
-			logger.error("Problem in fetching data for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage());
+			logger.error("Problem in fetching data for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage(), e);
 			
 		}
 	}
@@ -549,7 +550,7 @@ public class DownloadForm {
 				setEndorsementForNonIsmiePolicy(ctx,newPC,preExistPC);
 						
 		} catch(Exception e){
-			logger.error("Problem in fetching data for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage());
+			logger.error("Problem in fetching data for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage(), e);
 			
 		}
 	}
@@ -564,7 +565,7 @@ public class DownloadForm {
 			else	
 			foFile = SystemProperties.getInstance().getString("html.basedir") + "foxsl2017//WrapEndorsementAcc.xsl";
             //ISMIE\Endorsement\WrapEndorsementAcc.xsl
-			logger.debug("generateForm--------"+foFile);	
+			{ if (logger.isDebugEnabled()) logger.debug("generateForm--------"+foFile); }
 			//populateEndorsement(ctx, listFormID);
 			//new XML2PDF().convertXMLtoStream(foFile, new StringBuffer(generateDataXml(ctx)), listFormID, out, baseUrl, uriResolver, ctx);
 			/*fetchDataForXmlEndorsement(ctx);
@@ -573,7 +574,7 @@ public class DownloadForm {
 			new XML2PDF().convertPOToPDF(foFile, new StringBuffer(generateDataXml(ctx)), out, baseUrl, uriResolver);
 		}
 		catch(Exception e){
-			logger.error("Problem in generating endorsement for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage());
+			logger.error("Problem in generating endorsement for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage(), e);
 			throw e;
 		}
 	}
@@ -845,7 +846,8 @@ public class DownloadForm {
 		
 		
 		catch(Exception e)
-		{e.printStackTrace();}
+		{
+			logger.error("Error in DownloadForm.setEndorsementForNonIsmiePolicy", e);}
 	}
 	public void setEndorsementForIsmiePolicy(Context ctx,Map newPC,Map preExistPC)
 	{	
@@ -1069,7 +1071,8 @@ public class DownloadForm {
 		}
 		
 		catch(Exception e)
-		{e.printStackTrace();}
+		{
+			logger.error("Error in DownloadForm.setEndorsementForIsmiePolicy", e);}
 	}
 	
 	

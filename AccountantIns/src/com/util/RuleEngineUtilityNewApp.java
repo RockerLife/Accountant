@@ -23,7 +23,7 @@ import com.outline.rules.pojo.InvestmentAcc;
 import com.outline.rules.pojo.PracticreManagementAcc;
 
 public class RuleEngineUtilityNewApp {
-	private static InetLogger logger = InetLogger.getInetLogger(RuleEngineUtility.class);
+	private static InetLogger logger = InetLogger.getInetLogger(RuleEngineUtilityNewApp.class);
 	
 	
 	@SuppressWarnings("unchecked")
@@ -45,7 +45,7 @@ public class RuleEngineUtilityNewApp {
 			}
 			catch(Exception e)
 			{
-				logger.debug("exeception occured while getting days difference from effective and  current date");
+				logger.error("exeception occured while getting days difference from effective and  current date", e);
 			}
 			ctx.put("daysDifferenceForEfectiveDate",daysDifferenceForEfectiveDate);
 		
@@ -56,7 +56,7 @@ public class RuleEngineUtilityNewApp {
 				{
 					ruleid="firmAddress_Accountant";	
 					boolean containsPOBOX=false;
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					String address1 = ctx.get("Address1") != null ? ctx.get("Address1").toString().trim().toLowerCase() : "";
 					//String address2 = ctx.get("Address2") != null ? ctx.get("Address2").toString().trim().toLowerCase()  : "";
 					String poBoxNamePatterns="P.O. Box,P. o. Box,p. O. Box,p. o. box,p. O. box,P. o. box,PO Box,po Box,PO box,po box,PO. Box,po. box,PO. box,po.box";
@@ -76,13 +76,13 @@ public class RuleEngineUtilityNewApp {
 				}
 				
 				ruleid="validateEffectiveDateWithDaysNewBusiness_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				BasicInfoAcc basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
 				
 				ruleid="validateEffectiveDateWithCurrentDateNewBusiness_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isCurrentDateAfterEfectiveDate",DateUtils.isDateBefore(ctx.get("effectiveDateOfPolicy"), ctx.get("currentDate")));
 	    		basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -105,7 +105,7 @@ public class RuleEngineUtilityNewApp {
 				{
 					ruleid="firmAddressRenew_Accountant";	
 					boolean containsPOBOX=false;
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					String address1 = ctx.get("Address1") != null ? ctx.get("Address1").toString().trim().toLowerCase() : "";
 					String poBoxNamePatterns="P.O. Box,P. o. Box,p. O. Box,p. o. box,p. O. box,P. o. box,PO Box,po Box,PO box,po box,PO. Box,po. box,PO. box,po.box";
 					String[] poPatterns=getTokens(poBoxNamePatterns.toString().trim().toLowerCase(),",");
@@ -128,7 +128,7 @@ public class RuleEngineUtilityNewApp {
 				}
 				//Policy Effective date Validation
 				ruleid="validateEffectiveDateWithCurrentDateRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isCurrentDateAfterEfectiveDateRenew",DateUtils.isDateBefore(ctx.get("effectiveDateOfPolicy"), ctx.get("currentDate")));
 				BasicInfoAcc basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -136,7 +136,7 @@ public class RuleEngineUtilityNewApp {
 				
 				
 				ruleid="validateEffectiveDateWithDaysRenewBusiness_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -147,7 +147,7 @@ public class RuleEngineUtilityNewApp {
 					ctx.put("newPolicyState", ctx.get("StateCode"));
 					ctx.put("oldPolicyState", oldPolicyContext.get("StateCode"));
 					ruleid="checkStateRenew_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
 					insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -164,7 +164,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.debug("error occured while executing evaulateFirmNewApp"+e);
+			logger.error("error occured while executing evaulateFirmNewApp"+e, e);
 		}
 	}
 	
@@ -182,14 +182,14 @@ public class RuleEngineUtilityNewApp {
 			if(ctx.get("IsFirmCarryingProfLiabilityIns")!=null && ctx.get("IsFirmCarryingProfLiabilityIns").toString().equals("Y"))
 			{	
 				ruleid="ValidateForPriorCopyofPolicy_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				RuleEngineUtilityNewApp.insertRulesToDatabaseTemp(ctx,ruleid,"Confirm that copy of current policy is received"," ");
 			
 				
 				if( ctx.get("IsPriorActDateFull")!=null && ctx.get("IsPriorActDateFull").toString().equals("Y"))
 				{
 				ruleid="fullPriorActDateInsuranceCoverage_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("firmYear",Integer.parseInt(ctx.get("FirmYear").toString()));
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -205,7 +205,7 @@ public class RuleEngineUtilityNewApp {
 				{
 				ctx.put("limitSequenceDifference", limitSequenceDifference);
 				ruleid="validateLimitsNewBusiness_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -221,7 +221,7 @@ public class RuleEngineUtilityNewApp {
 				ctx.put("policyExpiryDateNewPros", new Date(ctx.get("PolicyExpirationDatePross").toString()).getTime());
 				ctx.put("effectiveDateOfPolicyNew",new Date(new SimpleDateFormat("MM/dd/yyyy").format(new Date(ctx.get("PolicyEffectiveDate").toString()))).getTime());
 				ruleid="validateExpirationDateNewBusiness_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -247,7 +247,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.error("Error Occured evaluateInsuranceHistory method : " + e.getMessage());
+			logger.error("Error Occured evaluateInsuranceHistory method : " + e.getMessage(), e);
 		}
 	}
 	
@@ -263,7 +263,7 @@ public class RuleEngineUtilityNewApp {
 			{
 				int sum=ctx.get("TotalFirmPersonnel")!=null && !ctx.get("TotalFirmPersonnel").equals(HtmlConstants.EMPTY) ?Integer.parseInt(ctx.get("TotalFirmPersonnel").toString()):0;								
 				ruleid="totalNoOfPerson_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("totalFirmPersonnel", sum);
 				 basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -280,7 +280,7 @@ public class RuleEngineUtilityNewApp {
 					ctx.put("annualRevenue_Amount0",annualRevenue_Amount);
 					
 					ruleid="annualRevenueLastBusinessYear_Accountant";		
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					 basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
 					insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -293,7 +293,7 @@ public class RuleEngineUtilityNewApp {
 					ctx.put("annualRevenue_Amount0",annualRevenue_Amount);
 					
 					ruleid="annualRevenueLastBusinessYear2M_Accountant";		
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
 					insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -326,7 +326,7 @@ public class RuleEngineUtilityNewApp {
 				int totalFirmPersonnelOld=Integer.parseInt(oldFirmContext.get("TotalFirmPersonnel").toString());
 				int result=totalFirmPersonnel-totalFirmPersonnelOld;
 				ruleid="totalNoOfPersonRenew_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("totalFirmPersonnel",result);
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -355,7 +355,7 @@ public class RuleEngineUtilityNewApp {
 				 int annualRevenue_Amount=amountLastCompleted;
 				ctx.put("annualRevenue_Amount0",annualRevenue_Amount);
 				ruleid="annualRevenueLastBusinessYearRenew_Accountant";		
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				 basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -374,7 +374,7 @@ public class RuleEngineUtilityNewApp {
 			String oldAmount,newAmount;
 			newAmount=ctx.get("Amount").toString().replaceAll("[-+.^:,$]","");
 			oldAmount=oldPolicyContext.get("Amount").toString().replaceAll("[-+.^:,$]","");
-			System.out.println("New amount.."+ newAmount+"...old Amount.."+oldAmount);
+			{ if (logger.isDebugEnabled()) logger.debug("New amount.."+ newAmount+"...old Amount.."+oldAmount); }
 			if(!newAmount.equals(oldAmount) && Integer.parseInt(newAmount)>2000000)
 			{
 				flagAnnualRevenue=true;
@@ -382,7 +382,7 @@ public class RuleEngineUtilityNewApp {
 			}
 			ctx.put("flagAnnualRevenue", flagAnnualRevenue);
 			ruleid="annualRevenueRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 			ctx.put("RuleObject",basicinfo);
 			insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -397,7 +397,7 @@ public class RuleEngineUtilityNewApp {
 			if(ctx.get("IsAnyFirmMeargedOrAcquired")!=null && ctx.get("IsAnyFirmMeargedOrAcquired").toString().equals("Y") )
 			{	
 			ruleid="hasFirmMergedBusinessSolePractitionerRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAnyFirmMeargedOrAcquired", ctx.get("IsAnyFirmMeargedOrAcquired"));
 			 basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 			ctx.put("RuleObject",basicinfo);
@@ -412,7 +412,7 @@ public class RuleEngineUtilityNewApp {
 			if(ctx.get("IsControlClientFunds")!=null && ctx.get("IsControlClientFunds").toString().equals("Y") )
 			{	
 			ruleid="hasFirmEnteredNewEngagementRequiringFirmControlDisburseRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isControlClientFunds", ctx.get("IsControlClientFunds"));
 			basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 			ctx.put("RuleObject",basicinfo);
@@ -428,7 +428,7 @@ public class RuleEngineUtilityNewApp {
 			{	
 			int percentOfRevenueFromLargestClient=ctx.get("PercentOfRevenueFromLargestClient")!=null && !ctx.get("PercentOfRevenueFromLargestClient").equals(HtmlConstants.EMPTY) ?Integer.parseInt(ctx.get("PercentOfRevenueFromLargestClient").toString()):0;
 			ruleid="percentageRevenueFromLargestRevenueClientRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("percentOfRevenueFromLargestClient", percentOfRevenueFromLargestClient);
 			basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 			ctx.put("RuleObject",basicinfo);
@@ -443,7 +443,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.debug("error occured while executing evaluateAboutFirm "+e);
+			logger.error("error occured while executing evaluateAboutFirm "+e, e);
 		}
 		
 	}
@@ -459,7 +459,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey5>0)
 				{
 				ruleid="auditPubliclyheld_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("a_Percentage_5",aopKey5);
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -475,7 +475,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey12>0)
 				{
 					ruleid="otherConsulting_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_12",aopKey12);
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -491,7 +491,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey15>0)
 				{
 				ruleid="businessValuation_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("aop_Percentage_15",aopKey15);
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -506,7 +506,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey21>0)
 				{
 					ruleid="SECWorkOtherAudit_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_21",aopKey21);
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -522,7 +522,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey19>0)
 				{
 					ruleid="investmentFinancial_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_19",aopKey19);
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -537,7 +537,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey20>0)
 				{
 					ruleid="otherAOP_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_20",aopKey20);
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -553,7 +553,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey13>0)
 				{
 					ruleid="managementConsultingBusinessPlanning_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_13", ctx.get("aopPercentage_13"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -569,7 +569,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey16>0)
 				{
 					ruleid="forecastsProjections_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_16", ctx.get("aopPercentage_16"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -585,7 +585,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey17>0)
 				{
 					ruleid="mergersAcquisitions_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_17", ctx.get("aopPercentage_17"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -601,7 +601,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey18>0)
 				{
 					ruleid="businessManagement_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_18", ctx.get("aopPercentage_18"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -617,7 +617,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey23>0)
 				{
 					ruleid="erisaPensionPlans_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_23", ctx.get("aopPercentage_23"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -633,7 +633,7 @@ public class RuleEngineUtilityNewApp {
 				if(aopKey24>0)
 				{
 					ruleid="trusteeServices_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_24", ctx.get("aopPercentage_24"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -657,7 +657,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("aopPercentage_20")!=null && !ctx.get("aopPercentage_20").toString().isEmpty() && Integer.valueOf(ctx.get("aopPercentage_20").toString())>0 )
 				{	
 				ruleid="otherAOPRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("aop_Percentage_20", ctx.get("aopPercentage_20"));
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -671,7 +671,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("aopPercentage_5")!=null && !ctx.get("aopPercentage_5").toString().isEmpty() && Integer.valueOf(ctx.get("aopPercentage_5").toString())>0)
 				{
 					ruleid="auditPubliclyheldRenew_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("a_Percentage_5", ctx.get("aopPercentage_5"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -686,7 +686,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("aopPercentage_21")!=null && !ctx.get("aopPercentage_21").toString().isEmpty() && Integer.valueOf(ctx.get("aopPercentage_21").toString())>0)
 				{
 					ruleid="SECWorkOtherAuditRenew_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_21", ctx.get("aopPercentage_21"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -701,7 +701,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("aopPercentage_19")!=null && !ctx.get("aopPercentage_19").toString().isEmpty() && Integer.valueOf(ctx.get("aopPercentage_19").toString())>0)
 				{
 					ruleid="investmentFinancialRenew_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("aop_Percentage_19", ctx.get("aopPercentage_19"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -736,7 +736,7 @@ public class RuleEngineUtilityNewApp {
 							if(diffAopOthrConsultant!=0)
 							{
 								ruleid="otherConsultingRenew_Accountant";	
-								logger.debug("going to debug : "+ ruleid);
+								{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 								basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 								ctx.put("RuleObject",basicinfo);
 								insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -760,7 +760,7 @@ public class RuleEngineUtilityNewApp {
 							if(diffAopManagement!=0)
 							{
 								ruleid="managementConsultingBusinessPlanningRenew_Accountant";	
-								logger.debug("going to debug : "+ ruleid);
+								{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 								basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 								ctx.put("RuleObject",basicinfo);
 								insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -823,7 +823,7 @@ public class RuleEngineUtilityNewApp {
 									|| diffAopForecastsProjections>5)
 							{
 								ruleid="forecastsProjectionsRenew_Accountant";	
-								logger.debug("going to debug : "+ ruleid);
+								{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 								ctx.put("percentageValue", ctx.get("PercentageValue"));
 								basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 								ctx.put("RuleObject",basicinfo);
@@ -843,7 +843,7 @@ public class RuleEngineUtilityNewApp {
 						if(dataMap.get("AOPKey").toString().equals("17"))
 						{
 							int diffAopMergersAcquisitions,mergersAcquisitionsNew=0;
-							System.out.println("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("aopPercentage_17")+"cc..");
+							{ if (logger.isDebugEnabled()) logger.debug("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("aopPercentage_17")+"cc.."); }
 							
 							if(ctx.get("aopPercentage_17")!=null && !ctx.get("aopPercentage_17").toString().isEmpty())
 							{
@@ -862,7 +862,7 @@ public class RuleEngineUtilityNewApp {
 									|| diffAopMergersAcquisitions>10)
 							{
 								ruleid="mergersAcquisitionsRenew_Accountant";	
-								logger.debug("going to debug : "+ ruleid);
+								{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 								ctx.put("percentageValue", ctx.get("PercentageValue"));
 								basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 								ctx.put("RuleObject",basicinfo);
@@ -879,7 +879,7 @@ public class RuleEngineUtilityNewApp {
 						if(dataMap.get("AOPKey").toString().equals("18"))
 						{
 							int diffAopBusinessManagement,businessManagementNew=0;
-							System.out.println("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("aopPercentage_18")+"cc..");
+							{ if (logger.isDebugEnabled()) logger.debug("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("aopPercentage_18")+"cc.."); }
 							
 							if(ctx.get("aopPercentage_18")!=null && !ctx.get("aopPercentage_18").toString().isEmpty())
 								businessManagementNew=Integer.valueOf(ctx.get("aopPercentage_18").toString());
@@ -895,7 +895,7 @@ public class RuleEngineUtilityNewApp {
 									|| diffAopBusinessManagement>10)
 							{
 								ruleid="businessManagementRenew_Accountant";	
-								logger.debug("going to debug : "+ ruleid);
+								{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 								ctx.put("percentageValue", ctx.get("PercentageValue"));
 								basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 								ctx.put("RuleObject",basicinfo);
@@ -912,7 +912,7 @@ public class RuleEngineUtilityNewApp {
 						if(dataMap.get("AOPKey").toString().equals("23"))
 						{
 							int diffAopErisaPension,erisaPensionNew=0;
-							System.out.println("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("aopPercentage_23")+"cc..");
+							{ if (logger.isDebugEnabled()) logger.debug("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("aopPercentage_23")+"cc.."); }
 							
 							if(ctx.get("aopPercentage_23")!=null && !ctx.get("aopPercentage_23").toString().isEmpty())
 							{
@@ -928,7 +928,7 @@ public class RuleEngineUtilityNewApp {
 									|| diffAopErisaPension>10)
 							{
 								ruleid="erisaPensionPlansRenew_Accountant";	
-								logger.debug("going to debug : "+ ruleid);
+								{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 								ctx.put("percentageValue", ctx.get("PercentageValue"));
 								ctx.put("diffAopErisaPension",diffAopErisaPension);
 								ctx.put("erisaPensionNew",erisaPensionNew);
@@ -948,7 +948,7 @@ public class RuleEngineUtilityNewApp {
 						if(dataMap.get("AOPKey").toString().equals("24"))
 						{
 							int diffAopTrusteeServices,trusteeServicesNew=0;
-							System.out.println("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("aopPercentage_24")+"cc..");
+							{ if (logger.isDebugEnabled()) logger.debug("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("aopPercentage_24")+"cc.."); }
 							
 							if(ctx.get("aopPercentage_24")!=null && !ctx.get("aopPercentage_24").toString().isEmpty())
 							{
@@ -968,7 +968,7 @@ public class RuleEngineUtilityNewApp {
 									|| diffAopTrusteeServices>10)
 							{
 								ruleid="trusteeServicesRenew_Accountant";	
-								logger.debug("going to debug : "+ ruleid);
+								{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 								ctx.put("percentageValue", ctx.get("PercentageValue"));
 								basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 								ctx.put("RuleObject",basicinfo);
@@ -991,7 +991,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.debug("error occured while executing evalueAOPNewApp "+e);
+			logger.error("error occured while executing evalueAOPNewApp "+e, e);
 		}
 	}
 	
@@ -1015,7 +1015,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 					ruleid="officersConductBusinessUnderSeparateEntity_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isFirmRenderingServices", ctx.get("IsFirmRenderingServices"));
 					general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 					ctx.put("RuleObject",general);
@@ -1030,7 +1030,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsFirmsRevenueMorethan25Percent")!=null && ctx.get("IsFirmsRevenueMorethan25Percent").toString().equals("Y") && Integer.valueOf(ctx.get("PercentOfRevenueFromLargestClient").toString())>39)
 				{
 					ruleid="lastYearFirmRevenue_Accountant";	
-					logger.debug("going to debug "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug "+ ruleid); }
 					ctx.put("percentOfRevenueFromLargestClient",ctx.get("PercentOfRevenueFromLargestClient"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -1044,7 +1044,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAnyFirmMeargedOrAcquired")!=null && ctx.get("IsAnyFirmMeargedOrAcquired").toString().equals("Y") )
 				{	
 					ruleid="anySolePractitionerAccountingFirm_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isAnyFirmMeargedOrAcquired", ctx.get("IsAnyFirmMeargedOrAcquired"));
 					general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 					ctx.put("RuleObject",general);
@@ -1059,7 +1059,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 					ruleid="controlOrDisburseClientFunds_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isControlClientFunds", ctx.get("IsControlClientFunds"));
 					general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 					ctx.put("RuleObject",general);
@@ -1074,7 +1074,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="OrganizePromoteReferInvestInvestmentVentures_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isInvestmentVenture", ctx.get("IsReferralsInvestmentVentures"));
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
@@ -1091,7 +1091,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsServedAsTrustee")!=null && ctx.get("IsServedAsTrustee").toString().equals("Y") )
 				{	
 				ruleid="hasFirmEnteredEngagementServingTrusteeCoTrusteeRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isServedAsTrustee", ctx.get("IsServedAsTrustee"));
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -1105,7 +1105,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsFirmRenderedServiceForAnyClient")!=null && ctx.get("IsFirmRenderedServiceForAnyClient").toString().equals("Y") )
 				{	
 				ruleid="hasFirmEnteredEngagementServingOfficerDirectorRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isFirmRenderedServiceForAnyClient", ctx.get("IsFirmRenderedServiceForAnyClient"));
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -1119,7 +1119,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAnyRegulatoryInquiry")!=null && ctx.get("IsAnyRegulatoryInquiry").toString().equals("Y") )
 				{	
 				ruleid="regulatoryInvestigationInquirySuspendedPracticeChargedRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isAnyRegulatoryInquiry", ctx.get("IsAnyRegulatoryInquiry"));
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -1134,7 +1134,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsSuitInstituted")!=null && ctx.get("IsSuitInstituted").toString().equalsIgnoreCase("Y"))
 				{
 				List firmInitLawsuits=SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementdroolQueriesgetFirmInitLawsuits",ctx);
-				System.out.println("in suits"+firmInitLawsuits);
+				{ if (logger.isDebugEnabled()) logger.debug("in suits"+firmInitLawsuits); }
 				int count=0;
 				int totalAmountfee=0;
 				long daysDifferenceForFeeSuits=0;
@@ -1160,8 +1160,8 @@ public class RuleEngineUtilityNewApp {
 						int currentYear=Integer.valueOf(sdf.format(new Date(new SimpleDateFormat("MM/dd/yyyy").format(new Date(ctx.get("PolicyEffectiveDate").toString())))).toString());
 
 						//int currentYear=Integer.valueOf(sdf.format(new Date()).toString());
-						System.out.println(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3));
-						System.out.println(feeSuedDate);
+						{ if (logger.isDebugEnabled()) logger.debug(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3)); }
+						{ if (logger.isDebugEnabled()) logger.debug(feeSuedDate); }
 
 						daysDifferenceForFeeSuits=DateUtils.calculateDiffInDays(new Date(ctx.get("SuitFilesDateFeesFormat").toString()),new Date(ctx.get("effectiveDateOfPolicy").toString()));
 						if(feeSuedDate==(currentYear-3))
@@ -1187,14 +1187,14 @@ public class RuleEngineUtilityNewApp {
 
 				ctx.put("totalAmountfeeCal",totalAmountfee);
 				ruleid="checkAmountOfFeesSuedRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
 				
 				ctx.put("coutOfFeeSuit",count);
 				ruleid="checkCountOfFeeSuitInPastYears_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),general,ruleid,general.getDescription(),general.getTooltip());
@@ -1216,7 +1216,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.error("exception occured while executing evaluatePracticeManagementNewApp :"+e);
+			logger.error("exception occured while executing evaluatePracticeManagementNewApp :"+e, e);
 		}
 	}
 	
@@ -1238,7 +1238,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="investmentFundsHedgeFundsMutualFunds_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isSyndicationManagers", ctx.get("IsSyndicationManagers"));
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
@@ -1254,7 +1254,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="hasFirmPersonnelPredecessorsInvestedNonpublicInvestment_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isNonPublicInvestmentDone", ctx.get("IsNonPublicInvestmentDone"));
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
@@ -1292,15 +1292,15 @@ public class RuleEngineUtilityNewApp {
 								
 						SimpleDateFormat sdf=new SimpleDateFormat("yyyy");
 						int currentYear=Integer.valueOf(sdf.format(new Date(new SimpleDateFormat("MM/dd/yyyy").format(new Date(ctx.get("PolicyEffectiveDate").toString())))).toString());
-						System.out.println(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3));
-						System.out.println(feeSuedDate);
+						{ if (logger.isDebugEnabled()) logger.debug(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3)); }
+						{ if (logger.isDebugEnabled()) logger.debug(feeSuedDate); }
 
 						daysDifferenceForFeeSuits=DateUtils.calculateDiffInDays(new Date(ctx.get("SuitFilesDateFeesFormat").toString()),new Date(ctx.get("effectiveDateOfPolicy").toString()));
 						if(feeSuedDate==(currentYear-3))
 						{
 							int monthFeeSuit =Integer.valueOf(str.substring(0, Math.min(str.length(),2)));
 							int monthEffectiveDatePolicy=Integer.valueOf(effectiveDatePolicy.substring(0, Math.min(effectiveDatePolicy.length(),2)));
-							System.out.println("Fee Siut Month..."+monthFeeSuit+" Effective date Month.."+monthEffectiveDatePolicy);
+							{ if (logger.isDebugEnabled()) logger.debug("Fee Siut Month..."+monthFeeSuit+" Effective date Month.."+monthEffectiveDatePolicy); }
 							if(monthFeeSuit<monthEffectiveDatePolicy)
 							{
 								flagFeeSuitMonth=false;
@@ -1319,14 +1319,14 @@ public class RuleEngineUtilityNewApp {
 				
 				ctx.put("coutOfFeeSuit",count);
 				ruleid="checkCountOfFeeSuitInPastYears_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),general,ruleid,general.getDescription(),general.getTooltip());
 				
 				ctx.put("totalAmountfeeCal",totalAmountfee);
 				ruleid="checkAmountOfFeesSued_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
 				insertRulesToDatabase(callRuleEngine(ctx,ruleid),general,ruleid,general.getDescription(),general.getTooltip());
@@ -1341,7 +1341,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="policyExcludeCoveragePredecessorFirmAffiliatesClients_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isPolicyExcludesCoverage", ctx.get("IsPolicyExcludesCoverage"));
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
@@ -1357,7 +1357,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.debug("error occured while executing evaluateMorePracticeManagement "+e);
+			logger.error("error occured while executing evaluateMorePracticeManagement "+e, e);
 			
 		}
 		
@@ -1375,7 +1375,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="servingTrusteeCotrusteeExecutor_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isServedAsTrustee", ctx.get("IsServedAsTrustee"));
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
@@ -1391,7 +1391,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="servingOfficerDirectorPartner_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isFirmRenderedServiceForAnyClient", ctx.get("IsFirmRenderedServiceForAnyClient"));
 				general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
@@ -1408,7 +1408,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.debug("error occured while executing evaluateTrustsAndOfficers "+e);
+			logger.error("error occured while executing evaluateTrustsAndOfficers "+e, e);
 			
 		}
 		
@@ -1427,7 +1427,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAnyRegulatoryInquiry")!=null && ctx.get("IsAnyRegulatoryInquiry").toString().equals("Y") )
 				{	
 					ruleid="IsAnyRegulatoryInquiry_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isAnyRegulatoryInquiry", ctx.get("IsAnyRegulatoryInquiry"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -1443,7 +1443,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAwarenessOfAnyProfLiability")!=null && ctx.get("IsAwarenessOfAnyProfLiability").toString().equals("Y") )
 				{	
 					ruleid="IsAwarenessOfAnyProfLiability_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isAwarenessOfAnyProfLiability", ctx.get("IsAwarenessOfAnyProfLiability"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -1457,7 +1457,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst")!=null && ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst").toString().equals("Y") )
 				{	
 					ruleid="IsAwarenessOfAnyProfLiabilitySuitAgainst_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isAwarenessOfAnyProfLiabilitySuitAgainst", ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -1472,7 +1472,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsFirmDeclinedOtherthanNonPayment")!=null && ctx.get("IsFirmDeclinedOtherthanNonPayment").toString().equals("Y") && !ctx.get("StateCode").toString().equals("MO") )
 				{	
 					ruleid="FirmDeclinedCancelledNnonrenewedProfessionalLiability_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isFirmDeclinedOtherthanNonPayment", ctx.get("IsFirmDeclinedOtherthanNonPayment"));
 					basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 					ctx.put("RuleObject",basicinfo);
@@ -1490,7 +1490,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAnyRegulatoryInquiry")!=null && ctx.get("IsAnyRegulatoryInquiry").toString().equals("Y") )
 				{	
 				ruleid="regulatoryInvestigationInquirySuspendedPracticeChargedRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isAnyRegulatoryInquiry", ctx.get("IsAnyRegulatoryInquiry"));
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -1505,7 +1505,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAwarenessOfAnyProfLiability")!=null && ctx.get("IsAwarenessOfAnyProfLiability").toString().equals("Y") )
 				{	
 				ruleid="anyAccountantsProfessionalLiabilityClaimsMadeAgainstFirmRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isAwarenessOfAnyProfLiability", ctx.get("IsAwarenessOfAnyProfLiability"));
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -1520,7 +1520,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst")!=null && ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst").toString().equals("Y") )
 				{	
 				ruleid="anyActOmissionFeeDisputeBasisOfClaimAgainstFirmRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isAwarenessOfAnyProfLiabilitySuitAgainst", ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst"));
 				basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 				ctx.put("RuleObject",basicinfo);
@@ -1536,7 +1536,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.error("Error ocured while executing evaluatePastClaims method :"+e);
+			logger.error("Error ocured while executing evaluatePastClaims method :"+e, e);
 		}
 	}
 	public static void evaluatePracticeSupplementNewApp(Context ctx)
@@ -1551,7 +1551,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsNonMonetaryCompensationRecieved")!=null && ctx.get("IsNonMonetaryCompensationRecieved").toString().equals("Y") )
 				{	
 				ruleid="hasFirmReceivedNonMonetaryCompensation_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isNonMonetaryCompensationRecieved", ctx.get("IsNonMonetaryCompensationRecieved"));
 				PracticreManagementAcc practice=(PracticreManagementAcc)initlizePOJO(ctx, new PracticreManagementAcc());
 				ctx.put("RuleObject",practice);
@@ -1566,7 +1566,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.error("error occured while executing evaluatePracticeSupplementNewApp");
+			logger.error("error occured while executing evaluatePracticeSupplementNewApp", e);
 		}
 	}
 	public static void evaluateInvestmentSupplementNewApp(Context ctx)
@@ -1586,7 +1586,7 @@ public class RuleEngineUtilityNewApp {
 			{	
 				
 				ruleid="haveRecieveCommissionReferralsInvestment_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isSecuritiesSales", ctx.get("IsAnyReferralFeesInvestments"));
 				investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 				ctx.put("RuleObject",investment);
@@ -1600,7 +1600,7 @@ public class RuleEngineUtilityNewApp {
 			if(ctx.get("IsAnyFirmAffiliateLicensed")!=null && ctx.get("IsAnyFirmAffiliateLicensed").toString().equals("Y") )
 			{	
 			ruleid="firmLicensedLifeHealthAccidentDisabilityInsuranceAgentBrokerRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAnyFirmAffiliateLicensed", ctx.get("IsAnyFirmAffiliateLicensed"));
 			investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 			ctx.put("RuleObject",investment);
@@ -1617,7 +1617,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 					ruleid="financialPlanningServicesSecuritiesSales_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isSecuritiesSales", ctx.get("IsSecuritiesSales"));
 					investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 					ctx.put("RuleObject",investment);
@@ -1633,7 +1633,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 					ruleid="doesFirmHaveContractualRelationship_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isContractualRelationShip", ctx.get("IsContractualRelationShip"));
 					investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 					ctx.put("RuleObject",investment);
@@ -1648,7 +1648,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 					ruleid="haveAnyPersonnelRecommendedAnyNonPublicInvestments_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isAnyNonPublicInvestments", ctx.get("IsAnyNonPublicInvestments"));
 					investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 					ctx.put("RuleObject",investment);
@@ -1664,7 +1664,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 					ruleid="anyPersonLicensedLifeHealthAccidentDisability_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isAnyNonPublicInvestments", ctx.get("IsAnyNonPublicInvestments"));
 					investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 					ctx.put("RuleObject",investment);
@@ -1680,7 +1680,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 					ruleid="FirmPersonnelDiscretionaryAuthorityToInvest_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isAnyEmployeeBenefitPlan", ctx.get("IsAnyEmployeeBenefitPlan"));
 					investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 					ctx.put("RuleObject",investment);
@@ -1696,7 +1696,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 					ruleid="discretionaryInvestmentAuthority_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isDiscretionaryAssetMangt", ctx.get("IsDiscretionaryAssetMangt"));
 					
 					 investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
@@ -1716,7 +1716,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsDiscretionaryAssetMangt")!=null && ctx.get("IsDiscretionaryAssetMangt").toString().equals("Y") )
 				{	
 				ruleid="discretionaryAssetManagementServicesRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isDiscretionaryAssetMangt", ctx.get("IsDiscretionaryAssetMangt"));
 				investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 				ctx.put("RuleObject",investment);
@@ -1731,7 +1731,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsSecuritiesSales")!=null && ctx.get("IsSecuritiesSales").toString().equals("Y") )
 				{	
 				ruleid="securitiesSalesRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isSecuritiesSales", ctx.get("IsSecuritiesSales"));
 				investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 				ctx.put("RuleObject",investment);
@@ -1746,7 +1746,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsContractualRelationShip")!=null && ctx.get("IsContractualRelationShip").toString().equals("Y") )
 				{	
 				ruleid="doesFirmContractualRelationshipWithSecuritiesbrokerDealerRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isContractualRelationShip", ctx.get("IsContractualRelationShip"));
 				investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 				ctx.put("RuleObject",investment);
@@ -1761,7 +1761,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAnyNonPublicInvestments")!=null && ctx.get("IsAnyNonPublicInvestments").toString().equals("Y") )
 				{	
 				ruleid="haveAnyPersonnelRecommendedNonPublicInvestmentsToClientsRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isAnyNonPublicInvestments", ctx.get("IsAnyNonPublicInvestments"));
 				investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 				ctx.put("RuleObject",investment);
@@ -1778,7 +1778,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsAnyEmployeeBenefitPlan")!=null && ctx.get("IsAnyEmployeeBenefitPlan").toString().equals("Y") )
 				{	
 				ruleid="doesFirmPersonnelDiscretionaryAuthorityInvestForEmployeeBenefitPlanRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isAnyEmployeeBenefitPlan", ctx.get("IsAnyEmployeeBenefitPlan"));
 				investment=(InvestmentAcc)initlizePOJO(ctx, new InvestmentAcc());
 				ctx.put("RuleObject",investment);
@@ -1796,7 +1796,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.error("error occured while executing evaluateInvestmentSupplementNewApp");
+			logger.error("error occured while executing evaluateInvestmentSupplementNewApp", e);
 		}
 	}
 	public static void evaluateAuditSupplement(Context ctx) throws Exception
@@ -1820,7 +1820,7 @@ public class RuleEngineUtilityNewApp {
 			{	
 				
 				ruleid="auditRelatedCPETraining_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isFirmHaveAWrittenPolicyAtt", ctx.get("IsFirmHaveAWrittenPolicyAtt"));
 				audit=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
 				ctx.put("RuleObject",audit);
@@ -1835,7 +1835,7 @@ public class RuleEngineUtilityNewApp {
 			{	
 				
 				ruleid="isPublicTradedAuditedReferral_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isFirmHaveAWrittenPolicyAtt", ctx.get("IsPublicTradedAudited"));
 				audit=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
 				ctx.put("RuleObject",audit);
@@ -1851,7 +1851,7 @@ public class RuleEngineUtilityNewApp {
 			{	
 				
 			ruleid="hasFirmUndergonePeerQualityReviewRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAualityReviewAtt", ctx.get("IsAualityReviewAtt"));
 			AuditAcc auditrenew=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
 			ctx.put("RuleObject",auditrenew);
@@ -1881,7 +1881,7 @@ public class RuleEngineUtilityNewApp {
 			if(ctx.get("IsLastPeerReviewAtt")!=null && ctx.get("IsLastPeerReviewAtt").toString().equals("Y") )
 			{	
 				ruleid="hasFirmlastpeerreviewmodifiedqualified_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isLastPeerReviewAtt", ctx.get("IsLastPeerReviewAtt"));
 				audit=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
 				ctx.put("RuleObject",audit);
@@ -1920,7 +1920,7 @@ public class RuleEngineUtilityNewApp {
 				ctx.put("AuditClients_9n",AuditClients_9n);
 				/*ctx.put("containsBankBrokerInsurance", "true");*/
 				ruleid="banksBrokersInsuranceCompaniesInvestmentCompanies_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("auditClients_1n", ctx.get("AuditClients_1n"));
 				ctx.put("auditClients_2n", ctx.get("AuditClients_2n"));
 				ctx.put("auditClients_8n", ctx.get("AuditClients_8n"));
@@ -1943,7 +1943,7 @@ public class RuleEngineUtilityNewApp {
 			{	
 				
 			ruleid="howManyClientsFirmRenderedAuditAttestation_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("firmRenderedAuditAtt", ctx.get("FirmRenderedAuditAtt"));
 			audit=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
 			ctx.put("RuleObject",audit);
@@ -1969,7 +1969,7 @@ public class RuleEngineUtilityNewApp {
 			{	
 			
 			ruleid="doesSecondPartnerReviewAuditWorkpapers_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("numberOfPersonnelValue", ctx.get("NumberOfPersonnelValue"));
 			ctx.put("isSecondPartnerReviewAtt", ctx.get("IsSecondPartnerReviewAtt"));
 			audit=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
@@ -1986,7 +1986,7 @@ public class RuleEngineUtilityNewApp {
 			{	
 				
 			ruleid="doesSecondPartnerCommitteeApproveSignOof_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("numberOfPersonnelValue", ctx.get("NumberOfPersonnelValue"));
 			ctx.put("isAuditEngagementsAtt", ctx.get("IsAuditEngagementsAtt"));
 			audit=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
@@ -2028,7 +2028,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="howManyClientsFirmRenderedAuditAttestationRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("firmRenderedAuditAtt", ctx.get("FirmRenderedAuditAtt"));
 				auditr=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
 				ctx.put("RuleObject",auditr);
@@ -2060,7 +2060,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="hasFirmlastpeerreviewmodifiedqualifiedRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isLastPeerReviewAtt", ctx.get("IsLastPeerReviewAtt"));
 				auditr=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
 				ctx.put("RuleObject",auditr);
@@ -2098,7 +2098,7 @@ public class RuleEngineUtilityNewApp {
 					}
 					ctx.put("AuditClients_9n",AuditClients_9n);
 					ruleid="banksBrokersInsuranceCompaniesInvestmentCompaniesRenew_Accountant";	
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("auditClients_1n", ctx.get("AuditClients_1n"));
 					ctx.put("auditClients_2n", ctx.get("AuditClients_2n"));
 					ctx.put("auditClients_8n", ctx.get("AuditClients_8n"));
@@ -2116,7 +2116,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="auditRelatedCPETrainingRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isFirmHaveAWrittenPolicyAtt", ctx.get("IsFirmHaveAWrittenPolicyAtt"));
 				auditr=(AuditAcc)initlizePOJO(ctx, new AuditAcc());
 				ctx.put("RuleObject",auditr);
@@ -2132,7 +2132,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="hasFirmArrangedFinancingBusinessBrokerOfferingPublicPrivateSecurities_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isDebtOrEquityFinancing", ctx.get("IsDebtOrEquityFinancing"));
 				
 				GeneralAcc general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
@@ -2148,7 +2148,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="investmentFundsHedgeFundsMutualFunds_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isSyndicationManagers", ctx.get("IsSyndicationManagers"));
 				GeneralAcc general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
 				ctx.put("RuleObject",general);
@@ -2163,7 +2163,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.error("error occured while executing ");
+			logger.error("error occured while executing ", e);
 		}
 		
 }
@@ -2182,7 +2182,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("HaveInvestmentAuthorityFC")!=null && ctx.get("HaveInvestmentAuthorityFC").toString().equals("Y") )
 				{	
 				ruleid="doesFirmhaveDiscretionaryInvestment_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("haveInvestmentAuthorityFC", ctx.get("HaveInvestmentAuthorityFC"));
 				business=(BusinessManagementAcc)initlizePOJO(ctx, new BusinessManagementAcc());
 				ctx.put("RuleObject",business);
@@ -2197,7 +2197,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsControlFundsForBusinessAndEntimentFc")!=null && ctx.get("IsControlFundsForBusinessAndEntimentFc").toString().equals("Y") )
 				{	
 				ruleid="provideBusinessManagementFamilyOfficeServices_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isControlFundsForBusinessAndEntimentFc", ctx.get("IsControlFundsForBusinessAndEntimentFc"));
 				business=(BusinessManagementAcc)initlizePOJO(ctx, new BusinessManagementAcc());
 				ctx.put("RuleObject",business);
@@ -2212,7 +2212,7 @@ public class RuleEngineUtilityNewApp {
 				{	
 					
 				ruleid="providedManagementServicesForInvestmentVentures_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isManagementServiceProvided", ctx.get("IsManagementServiceProvided"));
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isManagementServiceProvided");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2230,7 +2230,7 @@ public class RuleEngineUtilityNewApp {
 				if(ctx.get("IsFirmPersonnelBusinessManagerFc")!=null && ctx.get("IsFirmPersonnelBusinessManagerFc").toString().equals("Y") )
 				{	
 				ruleid="doFirmPersonnelActasManagerCFOforClients_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isFirmPersonnelBusinessManagerFc", ctx.get("IsFirmPersonnelBusinessManagerFc"));
 				business=(BusinessManagementAcc)initlizePOJO(ctx, new BusinessManagementAcc());
 				ctx.put("RuleObject",business);
@@ -2252,7 +2252,7 @@ public class RuleEngineUtilityNewApp {
 				aopValueBusinessMgmt.setProject(ctx.getProject());
 				aopValueBusinessMgmt.put("AOPKey",ctx.get("AOPKey"));
 				aopValueBusinessMgmt.put("PercentageValue",ctx.get("PercentageValue"));
-				System.out.println("Aop value new policy.."+aopValueBusinessMgmt);
+				{ if (logger.isDebugEnabled()) logger.debug("Aop value new policy.."+aopValueBusinessMgmt); }
 				
 				/*getting old policydate for comparing business management*/
 				List previousPolicyKey= (List) SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementdroolQueriesgetPreviousPolicyKey",ctx);
@@ -2269,7 +2269,7 @@ public class RuleEngineUtilityNewApp {
 					if(ctx.get("HaveInvestmentAuthorityFC")!=null && ctx.get("HaveInvestmentAuthorityFC").toString().equals("Y") )
 					{	
 					ruleid="doesFirmhaveDiscretionaryInvestmentRenew_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("haveInvestmentAuthorityFC", ctx.get("HaveInvestmentAuthorityFC"));
 					business=(BusinessManagementAcc)initlizePOJO(ctx, new BusinessManagementAcc());
 					ctx.put("RuleObject",business);
@@ -2284,7 +2284,7 @@ public class RuleEngineUtilityNewApp {
 					if(ctx.get("IsControlFundsForBusinessAndEntimentFc")!=null && ctx.get("IsControlFundsForBusinessAndEntimentFc").toString().equals("Y") )
 					{	
 					ruleid="provideBusinessManagementFamilyOfficeServicesRenew_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isControlFundsForBusinessAndEntimentFc", ctx.get("IsControlFundsForBusinessAndEntimentFc"));
 					business=(BusinessManagementAcc)initlizePOJO(ctx, new BusinessManagementAcc());
 					ctx.put("RuleObject",business);
@@ -2299,7 +2299,7 @@ public class RuleEngineUtilityNewApp {
 					{	
 						
 					ruleid="providedManagementServicesForInvestmentVentures_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isManagementServiceProvided", ctx.get("IsManagementServiceProvided"));
 					
 					GeneralAcc general=(GeneralAcc)initlizePOJO(ctx, new GeneralAcc());
@@ -2315,7 +2315,7 @@ public class RuleEngineUtilityNewApp {
 					if(ctx.get("IsFirmPersonnelBusinessManagerFc")!=null && ctx.get("IsFirmPersonnelBusinessManagerFc").toString().equals("Y") )
 					{	
 					ruleid="doFirmPersonnelActasManagerCFOforClientsRenew_Accountant";
-					logger.debug("going to debug : "+ ruleid);
+					{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 					ctx.put("isFirmPersonnelBusinessManagerFc", ctx.get("IsFirmPersonnelBusinessManagerFc"));
 					business=(BusinessManagementAcc)initlizePOJO(ctx, new BusinessManagementAcc());
 					ctx.put("RuleObject",business);
@@ -2331,7 +2331,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.error("Error occured while executing evaluateBusinessManagementSupplement method");
+			logger.error("Error occured while executing evaluateBusinessManagementSupplement method", e);
 		}
 	}
 	
@@ -2362,7 +2362,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch (Exception e)
 		{
-			logger.error("Error Occured while initilizing data  : " + e.getMessage());
+			logger.error("Error Occured while initilizing data  : " + e.getMessage(), e);
 			return null;
 		}
 	}
@@ -2384,7 +2384,7 @@ public class RuleEngineUtilityNewApp {
 		
 		}
 		catch (Exception e) {
-			logger.error("Error Occured while initilizing attorney data  : " + e.getMessage());
+			logger.error("Error Occured while initilizing attorney data  : " + e.getMessage(), e);
 			return null;
 		}	
 	}
@@ -2413,7 +2413,7 @@ public class RuleEngineUtilityNewApp {
 				}
 			}
 	
-			System.out.println("Question= "+question+" Question Hint="+hint);
+			{ if (logger.isDebugEnabled()) logger.debug("Question= "+question+" Question Hint="+hint); }
 			if(!question.equals("") && !hint.equals("") )
 			{	
 				ctx.put("ruleId",ruleId);
@@ -2424,7 +2424,7 @@ public class RuleEngineUtilityNewApp {
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 					SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.SETFlagsLawyers_p",ctx);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in RuleEngineUtilityNewApp.insertRulesToDatabase", e);
 				}
 			}
 			else
@@ -2433,7 +2433,7 @@ public class RuleEngineUtilityNewApp {
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 					SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.RESETFlagsLawyers_p",ctx);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in RuleEngineUtilityNewApp.insertRulesToDatabase", e);
 				}
 				
 			}
@@ -2458,7 +2458,7 @@ public class RuleEngineUtilityNewApp {
 			new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.RESETFlagsLawyers_p",ctx);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in RuleEngineUtilityNewApp.archiveFlag", e);
 			}
 		}
 		
@@ -2474,8 +2474,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			logger.debug("Rule Id: '"+ ruleId+"' is not found on drool rule file.");
-			e.printStackTrace();
+			logger.error("Rule Id: '"+ ruleId+"' is not found on drool rule file.", e);
 		}
 	}
 	public static String formatDate(Object obj,String format)
@@ -2489,7 +2488,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in RuleEngineUtilityNewApp.formatDate", e);
 			return null;
 		}
 		
@@ -2501,7 +2500,7 @@ public class RuleEngineUtilityNewApp {
           if(getTotalPremiumList!=null &&  getTotalPremiumList.size()>0)
           {           
                       ruleid="renewalPremiumComparision_Lawyers";
-                      logger.debug("going to debug : "+ ruleid);
+                      { if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
                       for (int i = 0; i < getTotalPremiumList.size(); i++) 
                       {
                             Map dataMap = (Map) getTotalPremiumList.get(i);
@@ -2535,7 +2534,7 @@ public class RuleEngineUtilityNewApp {
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 					SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.SETFlagsLawyers_p",ctx);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in RuleEngineUtilityNewApp.insertRulesToDatabase", e);
 				}
 			}
 			else
@@ -2546,7 +2545,7 @@ public class RuleEngineUtilityNewApp {
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 					SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.RESETFlagsLawyers_p",ctx);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in RuleEngineUtilityNewApp.insertRulesToDatabase", e);
 				}
 				
 			}
@@ -2566,7 +2565,7 @@ public class RuleEngineUtilityNewApp {
 						new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 						SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.SETFlagsLawyers_p",ctx);
 					} catch (Exception e) {
-						e.printStackTrace();
+						logger.error("Error in RuleEngineUtilityNewApp.insertRulesToDatabaseTemp", e);
 					}
 				}
 				else
@@ -2577,7 +2576,7 @@ public class RuleEngineUtilityNewApp {
 						new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 						SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.RESETFlagsLawyers_p",ctx);
 					} catch (Exception e) {
-						e.printStackTrace();
+						logger.error("Error in RuleEngineUtilityNewApp.insertRulesToDatabaseTemp", e);
 					}
 					
 				}
@@ -2647,7 +2646,7 @@ public class RuleEngineUtilityNewApp {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in RuleEngineUtilityNewApp.initlizePOJO", e);
 		}
 		return obj;
 	}	
@@ -2714,7 +2713,7 @@ public class RuleEngineUtilityNewApp {
 		/*boolean containsAnyAmountInRevenue=false;
 			ctx.put("containsAnyAmountInRevenue", "true");*/
 		ruleid="computerRelatedServicesAmountInRevenues_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("revenuesFromLastYear_2n", ctx.get("RevenuesFromLastYear_2n"));
 		ctx.put("revenuesFromLastYear_3n", ctx.get("RevenuesFromLastYear_3n"));
 		ctx.put("revenuesFromLastYear_4n", ctx.get("RevenuesFromLastYear_4n"));
@@ -2774,7 +2773,7 @@ public class RuleEngineUtilityNewApp {
 			}
 			ctx.put("EstimatedRevenue_5n",EstimatedRevenue_5s);
 			ruleid="computerRelatedServicesAmountInRevenuesRenew_Accountant";
-	logger.debug("going to debug : "+ ruleid);
+	{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 	ctx.put("revenuesFromLastYear_2n", ctx.get("RevenuesFromLastYear_2n"));
 	ctx.put("revenuesFromLastYear_3n", ctx.get("RevenuesFromLastYear_3n"));
 	ctx.put("revenuesFromLastYear_4n", ctx.get("RevenuesFromLastYear_4n"));

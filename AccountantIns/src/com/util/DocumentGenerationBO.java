@@ -47,10 +47,10 @@ public class DocumentGenerationBO {
 	public void downloadPDF(IContext ctx) throws Exception {
 		HttpServletResponse res = (HttpServletResponse) ctx
 				.get("DocumentResponse");
-		logger.debug("DownloadPDF Start for Quote Number : "
-				+ ctx.get("QuoteNumber"));
-		logger.debug("DownloadPDF Start for Quote Number : "
-				+ ctx.get("QuoteNumber"));
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadPDF Start for Quote Number : "
+				+ ctx.get("QuoteNumber")); }
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadPDF Start for Quote Number : "
+				+ ctx.get("QuoteNumber")); }
 		OutputStream out = null;
 		ByteArrayOutputStream baos = null;
 		try {
@@ -78,7 +78,6 @@ public class DocumentGenerationBO {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
 
 			logger.error(e);
 			throw e;
@@ -87,27 +86,26 @@ public class DocumentGenerationBO {
 				try {
 					baos.close();
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in DocumentGenerationBO.downloadPDF", e);
 				}
 			if (out != null)
 				try {
 					out.close();
 				} catch (Exception e) {
-					e.printStackTrace();
 					logger.error(e);
 					throw e;
 				}
 		}
 
-		logger.debug("DownloadPDF end for Quote Number : "
-				+ ctx.get("QuoteNumber"));
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadPDF end for Quote Number : "
+				+ ctx.get("QuoteNumber")); }
 	}
 
 	public void downloadRatingPDF(Context ctx) {
-		logger.debug("Download rating start for Quote Number : "
-				+ ctx.get("QuoteNumber"));
-		logger.debug("Download rating start for transaction sequence : "
-				+ ctx.get("TransactionSequence"));
+		{ if (logger.isDebugEnabled()) logger.debug("Download rating start for Quote Number : "
+				+ ctx.get("QuoteNumber")); }
+		{ if (logger.isDebugEnabled()) logger.debug("Download rating start for transaction sequence : "
+				+ ctx.get("TransactionSequence")); }
 		HttpServletRequest req = (HttpServletRequest) ctx
 				.get("DocumentRequest");
 		HttpServletResponse res = (HttpServletResponse) ctx
@@ -139,19 +137,18 @@ public class DocumentGenerationBO {
 			out = res.getOutputStream();
 			out.flush();
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.error(e);
 		} finally {
 			if (out != null)
 				try {
 					out.close();
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in DocumentGenerationBO.downloadRatingPDF", e);
 
 				}
 		}
-		logger.debug("Download rating end for Quote Number : "
-				+ ctx.get("QuoteNumber"));
+		{ if (logger.isDebugEnabled()) logger.debug("Download rating end for Quote Number : "
+				+ ctx.get("QuoteNumber")); }
 	}
 
 	public static Object fetchDataForReports(Context ctx) throws Exception {
@@ -573,8 +570,8 @@ public class DocumentGenerationBO {
 					Element root = XMLUtils.parseXMLRootElement(outputString);
 					Element outputElement = root.getChild("PremiumInfo");
 					Map out = populateOutput(outputElement);
-					System.out.println("MTTaxAmmount-------"
-							+ out.get("MTTaxAmmount"));
+					{ if (logger.isDebugEnabled()) logger.debug("MTTaxAmmount-------"
+							+ out.get("MTTaxAmmount")); }
 
 					Map outData = calculateTax(out, ctx);
 
@@ -588,9 +585,8 @@ public class DocumentGenerationBO {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.error("Problem in fetching data for Quote Number : "
-					+ ctx.get("QuoteNumber"));
+					+ ctx.get("QuoteNumber"), e);
 		}
 		return null;
 	}
@@ -603,8 +599,8 @@ public class DocumentGenerationBO {
 		ServletContext servletContext = (ServletContext) ctx
 				.get("DocumentServletContext");
 
-		logger.debug("DownloadDocument Start for Document : "
-				+ ctx.get("DocFileName"));
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadDocument Start for Document : "
+				+ ctx.get("DocFileName")); }
 		String contentType = servletContext.getMimeType((String) ctx
 				.get("DocFileName"));
 		res.setContentType(contentType);
@@ -613,8 +609,8 @@ public class DocumentGenerationBO {
 		res.setHeader("Content-disposition", "attachment; filename="
 				+ newFileName);
 		new DocumentManagment().downloadDocument(ctx, req, res);
-		logger.debug("DownloadDocument End for Document : "
-				+ ctx.get("DocFileName"));
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadDocument End for Document : "
+				+ ctx.get("DocFileName")); }
 	}
 
 	public static Map calculateTax(Map out, Context ctx) throws Exception {
@@ -655,9 +651,9 @@ public class DocumentGenerationBO {
 				mTCountyTax = mTCountyTax
 						+ Double.parseDouble(out.get("CountyTaxAmmount")
 								.toString());
-				System.out.println("countrytaxamount------"
+				{ if (logger.isDebugEnabled()) logger.debug("countrytaxamount------"
 						+ Double.parseDouble(out.get("CountyTaxAmmount")
-								.toString()));
+								.toString())); }
 
 				out.put("CountyTaxAmmount", Double.parseDouble(out.get(
 						"CountyTaxAmmount").toString()));
@@ -888,7 +884,7 @@ public class DocumentGenerationBO {
 
 		} catch (Exception e) {
 			logger.error("Problem in fetching data for Quote Number : "
-					+ ctx.get("QuoteNumber") + " " + e.getMessage());
+					+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 
 		return null;
@@ -906,9 +902,8 @@ public class DocumentGenerationBO {
 				ctx.put("InvoiceDataLW", objInvoiceData);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			logger.error("Problem in fetching Invoiced  data for Quote Number : "
-					+ ctx.get("QuoteNumber"));
+					+ ctx.get("QuoteNumber"), e);
 		}
 		ctx.remove("PolicyKey_Invoice");
 		return null;
@@ -947,7 +942,7 @@ public class DocumentGenerationBO {
 					userno = SystemProperties.getInstance().getString(
 							"appl." + ctx.getProject() + ".userno");
 				} catch (Exception e) {
-					System.out.println(e);
+					logger.error("Error in DocumentGenerationBO.processDocForESign", e);
 				}
 
 				if (flagLicenseNumberRequired) {
@@ -992,7 +987,7 @@ public class DocumentGenerationBO {
 
 			} catch (Exception e) {
 				logger.error("Error in updating LicenseNumber for Insured------"
-						+ e.getMessage());
+						+ e.getMessage(), e);
 				throw e;
 			}
 		}
@@ -1014,11 +1009,11 @@ public class DocumentGenerationBO {
 	private String processAssureSign(Context ctx, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		logger.debug("ES Value: " + ctx.get("ESMode").toString());
-		logger.debug("AccountName: " + ctx.get("AccountName").toString());
-		logger.debug("AccountEmail: " + ctx.get("AccountEmail").toString());
-		logger.debug("PolicyEffectiveDate: "
-				+ ctx.get("PolicyEffectiveDate").toString());
+		{ if (logger.isDebugEnabled()) logger.debug("ES Value: " + ctx.get("ESMode").toString()); }
+		{ if (logger.isDebugEnabled()) logger.debug("AccountName: " + ctx.get("AccountName").toString()); }
+		{ if (logger.isDebugEnabled()) logger.debug("AccountEmail: " + ctx.get("AccountEmail").toString()); }
+		{ if (logger.isDebugEnabled()) logger.debug("PolicyEffectiveDate: "
+				+ ctx.get("PolicyEffectiveDate").toString()); }
 		ServletContext servletContext = (ServletContext) ctx
 				.get("DocumentServletContext");
 		String assuresignurl = "";
@@ -1078,7 +1073,7 @@ public class DocumentGenerationBO {
 					try {
 						baos.close();
 					} catch (Exception e) {
-						e.printStackTrace();
+						logger.error("Error in DocumentGenerationBO.processAssureSign", e);
 						throw e;
 					}
 			}
@@ -1156,8 +1151,7 @@ public class DocumentGenerationBO {
 			logger.debug("Signing document has completed");
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug(e.getMessage());
+			logger.error(e.getMessage(), e);
 			logger.debug("Problem in signing document");
 		} finally{
 			out.close();
@@ -1483,7 +1477,7 @@ public class DocumentGenerationBO {
 
 		} catch (Exception e) {
 			logger.error("Problem in fetching data for Quote Number : "
-					+ ctx.get("QuoteNumber") + " " + e.getMessage());
+					+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 
 		return null;
@@ -1496,8 +1490,8 @@ public class DocumentGenerationBO {
 			offrisk.OffRiskUpload(ctx);
 			offrisk.downloadOffRiskLetter(ctx);
 		} catch (Exception e) {
+			logger.error("Error in DocumentGenerationBO.downloadAndPrintOffRiskDocs", e);
 
-			e.printStackTrace();
 		}
 		return null;
 	}
@@ -1516,7 +1510,7 @@ public class DocumentGenerationBO {
 		} 
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in DocumentGenerationBO.downloadExcelReport", e);
 		}				
 			
 	}
@@ -1756,7 +1750,7 @@ public class DocumentGenerationBO {
 			new XML2PDF().convertPOToPDF(foFile, new StringBuffer(new DownloadForm().generateDataXml(ctx)), outFile);
 			*/
 		} catch (Exception e) {
-			logger.error("Problem in fetching data for Policy Number : "	+ ctx.get("PolicyNumber") + " " + e.getMessage());
+			logger.error("Problem in fetching data for Policy Number : "	+ ctx.get("PolicyNumber") + " " + e.getMessage(), e);
 		}
 		logger.debug("fetchDataForPolicyEndorsement end  ........");		
 		return null;
@@ -1773,8 +1767,7 @@ public class DocumentGenerationBO {
 		}
 		catch(Exception e)
 		{
-			logger.debug("exception in generating Insurance certificate");
-			e.printStackTrace();
+			logger.error("exception in generating Insurance certificate", e);
 		}
 	}
 	
@@ -1799,7 +1792,7 @@ public class DocumentGenerationBO {
 				Map o = (Map) objPolicy;
 				String pdate=o.get("PolicyEffectiveDate").toString();
 				Date dt = com.util.DateUtils.convertStringToDate(pdate, "MM/dd/yyyy");
-				System.out.println(dt.toString());
+				{ if (logger.isDebugEnabled()) logger.debug(dt.toString()); }
 				String policyeffectivedate = com.util.DateUtils.convertDateToString(dt, "MM/dd/yyyy");
 				
 				ctx.put("PolicyEffectiveDate", policyeffectivedate);
@@ -2157,7 +2150,7 @@ public class DocumentGenerationBO {
 		new DownloadForm().downloadPolicyPdf(ctx, req, res);
 		result = "File added successfully!";	
 		
-		logger.debug("Result from uploadFormDocument(ctx) " + result);
+		{ if (logger.isDebugEnabled()) logger.debug("Result from uploadFormDocument(ctx) " + result); }
 
 		
 	  return SUCCESS_MESSAGE;
@@ -2170,9 +2163,9 @@ public class DocumentGenerationBO {
 	
 	public static void main(String args[]){
 		Date dt = com.util.DateUtils.convertStringToDate("2018-01-01", "MM/dd/yyyy");
-		System.out.println(dt.toString());
+		{ if (logger.isDebugEnabled()) logger.debug(dt.toString()); }
 		String str = com.util.DateUtils.convertDateToString(dt, "MM/dd/yyyy");
-		System.out.println(str);
+		{ if (logger.isDebugEnabled()) logger.debug(str); }
 	}
 	
 	

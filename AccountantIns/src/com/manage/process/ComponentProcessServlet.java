@@ -20,6 +20,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.fop.servlet.ServletContextURIResolver;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.manage.managecomponent.processflow.PagecomponentImpl;
@@ -66,10 +68,17 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 			
 			//Change log properties from server properties file instead of log4j.properties located at src folder
 			PropertyConfigurator.configure(getServletConfig().getInitParameter(Constants.APP_PROPERTIES));
+			// manage-8.0.0.2 FunctionParser passes null resource keys for ordinary arguments.
+			InetLogger.getInetLogger("com.manage.managemetadata.expressions.exprUtils.Var").setLevel(Level.ERROR);
 			String realPath = this.getServletContext().getRealPath("/");
 			Configuration conf = SystemProperties.getInstance(getServletContext());
+			String environment = conf.getString("appl." + project_resource + ".environment");
+			if ("PD".equalsIgnoreCase(environment) || "PROD".equalsIgnoreCase(environment))
+				Logger.getRootLogger().setLevel(Level.ERROR);
+			else if ("UT".equalsIgnoreCase(environment) || "UAT".equalsIgnoreCase(environment))
+				Logger.getRootLogger().setLevel(Level.INFO);
 			
-			logger.debug("At the Startup set the Application Path to : "+ realPath);
+			{ if (logger.isDebugEnabled()) logger.debug("At the Startup set the Application Path to : "+ realPath); }
 			
 			conf.setProperty("appl.home.dir", realPath);			
 			
@@ -87,6 +96,7 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 					Class claz = Class.forName(className);
 					ajaxProcessorInterface = (PIMAjaxProcessorInterface)claz.newInstance();
 				}catch(ClassNotFoundException e) {
+					logger.error("Error in ComponentProcessServlet.init", e);
 					logger.info("PIMAjaxProcessorInterface does not found any implementation class.");
 				}
 			}
@@ -96,6 +106,7 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 					Class claz = Class.forName(className);
 					requestProcessorInterface = (PIMRequestProcessorInterface)claz.newInstance();
 				}catch(ClassNotFoundException e) {
+					logger.error("Error in ComponentProcessServlet.init", e);
 					logger.info("PIMRequestProcessorInterface does not found any implementation class.");
 				}
 			}
@@ -104,7 +115,7 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 			ruleEngine.start();
 		} catch (Exception e) {
 			//e.printStackTrace();
-			logger.error("Project resources are not initialized properly due to exception : " + e.getMessage());
+			logger.error("Project resources are not initialized properly due to exception : " + e.getMessage(), e);
 		}
 	}
 
@@ -123,13 +134,12 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 					if(SystemProperties.getInstance().getProperty("appl.logs.required") != null && 
 							SystemProperties.getInstance().getProperty("appl.logs.required").toString().equalsIgnoreCase("Y")){
 						
-						logger.error("Error in reading Html - " + pcImpl.getName());
-						e.printStackTrace();
+						logger.error("Error in reading Html - " + pcImpl.getName(), e);
 					}
 				}
 				
 				CacheManager.put(pcImpl.getName(), map);
-				logger.debug("Done Caching of Html - " + pcImpl.getName());
+				{ if (logger.isDebugEnabled()) logger.debug("Done Caching of Html - " + pcImpl.getName()); }
 			}
 		}
 	}
@@ -148,16 +158,17 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 					loadHtmls(projects[i]);
 				
 				try{
-					if(SystemProperties.getInstance().getString("appl." + projects[i] + ".xslt.processor").equals("Y")){
+					if("Y".equalsIgnoreCase(SystemProperties.getInstance().getProperty("appl." + projects[i] + ".xslt.processor"))){
 						try{
 							String isLoadXSLTS = SystemProperties.getInstance().getString("appl." + projects[i] + ".LoadXSLTS");
 							if(isLoadXSLTS != null && "Y".equalsIgnoreCase(isLoadXSLTS))
 								loadXslts(projects[i]);
 						}catch (Exception e) {
-							logger.error("Error in loading xslts in cache : " + e.getMessage());
+							logger.error("Error in loading xslts in cache : " + e.getMessage(), e);
 						}
 					}
 				}catch (Exception e) {
+					logger.error("Error in ComponentProcessServlet.loadProjects", e);
 					//Nothing to display
 				}
 			}
@@ -170,16 +181,17 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 				loadHtmls(project_resource);
 			
 			try{
-				if(SystemProperties.getInstance().getString("appl." + project_resource + ".xslt.processor").equals("Y")){
+				if("Y".equalsIgnoreCase(SystemProperties.getInstance().getProperty("appl." + project_resource + ".xslt.processor"))){
 					try{
 						String isLoadXSLTS = SystemProperties.getInstance().getString("appl." + project_resource + ".LoadXSLTS");
 						if(isLoadXSLTS != null && "Y".equalsIgnoreCase(isLoadXSLTS))
 							loadXslts(project_resource);
 					}catch (Exception e) {
-						logger.error("Error in loading xslts in cache : " + e.getMessage());
+						logger.error("Error in loading xslts in cache : " + e.getMessage(), e);
 					}
 				}
 			}catch (Exception e) {
+				logger.error("Error in ComponentProcessServlet.loadProjects", e);
 				//Nothing to display
 			}
 		}
@@ -236,7 +248,7 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 							resourcePath = resourcePathFromProperties;
 						}
 					} catch (Exception e) {
-						logger.error("Unable to load "+resourceType+" for "+projectName+" due to error : " + e.getMessage());
+						logger.error("Unable to load "+resourceType+" for "+projectName+" due to error : " + e.getMessage(), e);
 					}
 				}else{
 					if(SystemProperties.getInstance().getProperty("appl." + projectName + "." + resourceType + ".path") != null){
@@ -246,7 +258,7 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 								resourcePath = resourcePathFromProperties;
 							}
 						} catch (Exception e) {
-							logger.error("Unable to load "+resourceType+" for "+projectName+" due to error : " + e.getMessage());
+							logger.error("Unable to load "+resourceType+" for "+projectName+" due to error : " + e.getMessage(), e);
 						}
 					}
 				}
@@ -416,7 +428,7 @@ public abstract class ComponentProcessServlet extends HttpServlet{
                 	try {
 						isRequestAuthTokenOn = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".request.auth.token");
 					} catch (Exception e) {
-						logger.error(e.getMessage());
+						logger.error(e.getMessage(), e);
 					}
 					
 					//Bypass requestauthtoken check F5 button click for managereportdatatemplate page events
@@ -476,7 +488,7 @@ public abstract class ComponentProcessServlet extends HttpServlet{
                     	try {
 							isRequestAuthTokenOn = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".request.auth.token");
 						} catch (Exception e) {
-							logger.error(e.getMessage());
+							logger.error(e.getMessage(), e);
 						}
                     	if(!(ctx.get(HtmlConstants.INET_METHOD).toString().startsWith("download") || ctx.get(HtmlConstants.INET_METHOD).toString().startsWith("export") ||
                     			ctx.get(HtmlConstants.INET_METHOD).toString().startsWith("showSessionList"))){
@@ -526,7 +538,6 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 				}
 			}
 		}catch(Exception e){
-			e.printStackTrace();
 			String stackTrace = e.getMessage();			
 			stackTrace = DataUtils.getExceptionStackTrace(e);
 	        logger.fatal(stackTrace);
@@ -590,7 +601,7 @@ public abstract class ComponentProcessServlet extends HttpServlet{
 			if(SystemProperties.getInstance().getProperty(ERROR_FORWARD_URL) != null)
 				return SystemProperties.getInstance().getProperty(ERROR_FORWARD_URL).toString();
 		}catch (Exception e) {
-			logger.error("Error In Getting error.jsp Forward Page");
+			logger.error("Error In Getting error.jsp Forward Page", e);
 		}
 		
 		return "";

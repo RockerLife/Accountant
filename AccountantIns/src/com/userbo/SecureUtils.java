@@ -77,7 +77,7 @@ public class SecureUtils {
         } catch (Exception e) {
             AccountUtils.populateError(ctx, "AccountEmail",
                       "Please contact 1-888-803-9898 for assistance");
-            logger.debug("User cannot be updated due to exception");
+            logger.error("User cannot be updated due to exception", e);
 
         }
 
@@ -141,7 +141,7 @@ public class SecureUtils {
 			
 			
 			
-			logger.debug("Result -- " + result);
+			{ if (logger.isDebugEnabled()) logger.debug("Result -- " + result); }
 
 			if ("true".equalsIgnoreCase(result)) {
 				
@@ -159,11 +159,11 @@ public class SecureUtils {
 
 				if(isUserUpdated){
 				ctx.put("userSaved", "Y");
-				logger.debug("Is User updated -- " + isUserUpdated);
+				{ if (logger.isDebugEnabled()) logger.debug("Is User updated -- " + isUserUpdated); }
 				logger.debug("User has been created and updated ---- ");
 				}else{
 					ctx.put("userSaved", "N");
-					logger.debug("Is User updated -- " + isUserUpdated);
+					{ if (logger.isDebugEnabled()) logger.debug("Is User updated -- " + isUserUpdated); }
 					logger.debug("User has not been updated ---- ");
 				}
 			} else {
@@ -193,7 +193,7 @@ public class SecureUtils {
 
 			AccountUtils.populateError(ctx, "AccountEmail",	"Please contact 1-888-803-9898 for assistance");
 			ctx.put("userSaved", "N");
-			logger.error("User has not been created due to exception---- ");
+			logger.error("User has not been created due to exception---- ", e);
 		
 		}
 
@@ -221,7 +221,7 @@ public class SecureUtils {
 			String result = bindingStub.isUserAuthenticate(ctx.get(
 					"AccountEmail").toString(), ctx.get("PassWord").toString());
 
-			logger.debug("Result -- " + result);
+			{ if (logger.isDebugEnabled()) logger.debug("Result -- " + result); }
 		//	result="true";
 			boolean isPrimary = false;
 			UserRole userRole = null;
@@ -372,6 +372,7 @@ public class SecureUtils {
 			// SystemProperties.getInstance().getString("appl."+ctx.getProject()+".management"));
 
 		} catch (Exception e) {
+			logger.error("Error in SecureUtils.validateUser", e);
 
 			 //ctx.put("User", "insured");
 //			 ctx
@@ -381,7 +382,6 @@ public class SecureUtils {
 //			 ctx.put("User", "Agent");
 //			 ctx.put("role_id",
 //			 SystemProperties.getInstance().getString("appl."+ctx.getProject()+".management"));			
-			e.printStackTrace();
 			AccountUtils.populateError(ctx, "AccountEmail",	"Please contact 1-888-803-9898 for assistance");
 			
 		}
@@ -414,7 +414,7 @@ public class SecureUtils {
 			for (int i = 0; i < privileges.length; i++) {
 				privilege = privileges[i];
 				
-				System.out.println("jsessionid="+ctx.get("jsessionid"));
+				{ if (logger.isDebugEnabled()) logger.debug("jsessionid="+ctx.get("jsessionid")); }
 				Map mapPrivilege = new HashMap();
 				mapPrivilege.put("rescr_url", privilege.getRescr_url()
 						+ "?User=" + ctx.get("User").toString() + "&role_id="
@@ -452,7 +452,7 @@ public class SecureUtils {
 	
 			AccountUtils.populateError(ctx, "AccountEmail",
 					"Please contact 1-888-803-9898 for assistance");
-			logger.debug("Privilage has not been got---");
+			logger.error("Privilage has not been got---", e);
 			
 		}
 
@@ -609,7 +609,7 @@ public class SecureUtils {
 
 			AccountUtils.populateError(ctx, "old_pwd",
 					"Please contact 1-888-803-9898 for assistance");
-			logger.debug("Password has not been changed---");
+			logger.error("Password has not been changed---", e);
 			
 		}
 
@@ -648,7 +648,7 @@ public class SecureUtils {
 
 			AccountUtils.populateError(ctx, "old_pwd",
 					"Please contact 1-888-803-9898 for assistance");
-			logger.debug("Security data has not been got---");
+			logger.error("Security data has not been got---", e);
 			
 		}
 
@@ -707,7 +707,7 @@ public class SecureUtils {
 
 			AccountUtils.populateError(ctx, "AccountEmail",
 					"Please contact 1-888-803-9898 for assistance");
-			logger.error("AccountEmail has not been validated---");
+			logger.error("AccountEmail has not been validated---", e);
 			
 		}
 	}
@@ -768,13 +768,13 @@ public class SecureUtils {
 			boolean pwdChanged = bindingStub.resetPassword(ctx.get("AccountEmail").toString());
 			
 
-			logger.debug("Password has been reset--- " + pwdChanged);
+			{ if (logger.isDebugEnabled()) logger.debug("Password has been reset--- " + pwdChanged); }
 
 		} catch (Exception e) {
 
 			AccountUtils.populateError(ctx, "old_pwd",
 					"Please contact 1-888-803-9898 for assistance");
-			logger.error("Password has not been reset---");
+			logger.error("Password has not been reset---", e);
 			
 		}
 
@@ -796,11 +796,11 @@ public class SecureUtils {
 					endPointUrl);
 			
 			String loginID = ctx.get("LoginID") != null ? ctx.get("LoginID").toString() : "";
-			logger.debug("Login ID --- > " +loginID);
+			{ if (logger.isDebugEnabled()) logger.debug("Login ID --- > " +loginID); }
 			if (!"".equals(ctx.get("LoginID").toString())) {
 				
 				boolean resetPassword= bindingStub.resetPassword(loginID);
-				logger.debug("Reset Password --- > " + resetPassword);
+				{ if (logger.isDebugEnabled()) logger.debug("Reset Password --- > " + resetPassword); }
 				if(resetPassword){
 					 logger.debug("Going to get User Details");
 					 UserDetails ud= bindingStub.getUserDetail(loginID);
@@ -813,6 +813,7 @@ public class SecureUtils {
 			}
 			
 		} catch (Exception e) {
+			logger.error("Error in SecureUtils.resetPasswordInSecureOne", e);
 			AccountUtils.populateError(ctx, "AccountEmail",
 					"Please contact 1-877-569-4111 for assistance");
 		}

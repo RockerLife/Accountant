@@ -45,7 +45,7 @@ public class EsignUtil {
 		try {
 			templateResult = listTemplates(contextIdentifier, userName);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in EsignUtil.doSignature", e);
 			throw e;
 		}
 		
@@ -108,7 +108,7 @@ public class EsignUtil {
 			try {
 				parameterMapping = populateParameters(parameterItems, data);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in EsignUtil.doSignature", e);
 			}
 		}
 		// Submit document using the template file as the underlying document
@@ -119,7 +119,7 @@ public class EsignUtil {
 					parameterMapping, fileContent,pageNumber, data
 							.get("AccountEmail"), data.get("PolicyEffectiveDate"), xyMap, newFlow , policyStatusKey);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in EsignUtil.doSignature", e);
 		}
 
 		// If the result is NULL, throw an exception
@@ -172,7 +172,7 @@ public class EsignUtil {
 			service = new DocumentNowWcfService()
 					.getBasicHttpBindingIListTemplatesService();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in EsignUtil.listTemplates", e);
 		}
 		// Make list templates request
 		TemplateListQueryResult result = service.listTemplates(query);
@@ -194,7 +194,7 @@ public class EsignUtil {
 			service = new DocumentNowWcfService()
 					.getBasicHttpBindingIListParametersService();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in EsignUtil.listParameters", e);
 		}
 		// Make list parameters request
 		ParameterListQueryResult result = service.listParameters(query);
@@ -211,7 +211,7 @@ public class EsignUtil {
 			parameterResult = listParameters(contextIdentifier, userName,
 					templateItem.getId());
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in EsignUtil.getTemplateParam", e);
 			throw e;
 		}
 

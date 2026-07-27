@@ -56,7 +56,7 @@ public class QuestionDropdown implements IDropDown
 		}catch (Exception e) {
 					
 			AccountUtils.populateError(ctx, "AccountEmail", "Please contact 1-888-803-9898 for assistance");
-			logger.debug("Questions has been got-error--");
+			logger.error("Questions has been got-error--", e);
 			//throw e;
 		}
 			

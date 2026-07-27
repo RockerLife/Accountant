@@ -83,6 +83,7 @@ import com.util.MessageStringFormat;
 import com.util.ResourceLoader;
 import com.util.RuleEngineUtility;
 import com.util.RuleEngineUtilityNewApp;
+import com.util.SharedHttpClient;
 import com.util.StringUtils;
 import com.util.SystemProperties;
 import com.util.XMLUtils;
@@ -148,7 +149,7 @@ public class AccountUtils {
 			if (key.contains("NumberOfPersonnel_")) {
 				if (ctx.get(key) != null && !"".equals(ctx.get(key))) {
 					if (!"NumberOfPersonnel_1".equals(key.toString())) {
-						System.out.println(ctx.get(key).toString());
+						{ if (logger.isDebugEnabled()) logger.debug(ctx.get(key).toString()); }
 						total = total + Integer.parseInt(ctx.get(key).toString());
 					}
 				}
@@ -287,6 +288,7 @@ public class AccountUtils {
 				try {
 					total = total + Integer.parseInt(percentageValue);
 				} catch (Exception e) {
+					logger.error("Error in AccountUtils.validateAOPPercentage", e);
 					populateError(ctx, "TotalAOP_Percentage", "Invalid data");
 				}
 
@@ -464,6 +466,7 @@ public class AccountUtils {
 					try {
 						numberkey = Integer.parseInt(ctx.get(key).toString().trim());
 					} catch (Exception e) {
+						logger.error("Error in AccountUtils.validatePersonnelNumber", e);
 						populateError(ctx, "TotalFirmPersonnel", "That number is invalid.  Please enter again");
 					}
 					// total = total
@@ -1244,6 +1247,7 @@ public class AccountUtils {
 
 			mailingOnOFF = SystemProperties.getInstance().getString("Insured.sendmail");
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.sendMail", e);
 			throw e;
 		}
 
@@ -1869,6 +1873,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.validateLeapYearDate", e);
 			populateError(ctx, field, "Invalid date format.");
 		}
 	}
@@ -1917,6 +1922,7 @@ public class AccountUtils {
 
 			}
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.validateMMYYYYDate", e);
 			populateError(ctx, field, "Invalid date format");
 			throw e;
 		}
@@ -2464,6 +2470,7 @@ public class AccountUtils {
 			productionEnv = SystemProperties.getInstance()
 					.getString("appl." + ctx.getProject() + ".environment.production");
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.getEmailID", e);
 			throw e;
 		}
 
@@ -2487,6 +2494,7 @@ public class AccountUtils {
 					.getString("appl." + ctx.getProject() + ".environment.production");
 			policyIssueEmailAdmin = SystemProperties.getInstance().getString("policy.issue.admin.email");
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.getIssueEmailID", e);
 			throw e;
 		}
 
@@ -2649,15 +2657,13 @@ public class AccountUtils {
 					}
 				}
 				catch(Exception e){
-					logger.error("Error in uploading quick quote letter  ");
-					e.printStackTrace();					
+					logger.error("Error in uploading quick quote letter  ", e);
 				}
 					
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
-				logger.debug("Quick quote option could not be uploaded");								
+				logger.error("Quick quote option could not be uploaded", e);
 			}	
 		}
 
@@ -2920,12 +2926,13 @@ public class AccountUtils {
 				try {
 					productionEnv = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".environment.production");
 				} catch (Exception e) {
-					logger.error("error in geeting production environment");
+					logger.error("error in geeting production environment", e);
 				}
 				if ("N".equals(productionEnv))
 					emailID = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.cc.email");
     		}
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.getFirstReviewerAgentEmailID", e);
 			throw e;
 		}
 
@@ -3135,7 +3142,7 @@ public class AccountUtils {
 			ctx.put("isPaypalProduction", isPaypalProduction);
 
 		} catch (Exception e) {
-			logger.error("error in login " + e);
+			logger.error("error in login " + e, e);
 			throw e;
 		}
 
@@ -3198,7 +3205,7 @@ public class AccountUtils {
 						ctx.put("AgentEmail", map.get("AgentEmail"));
 
 						ctx.put("LastUpdateUserID", map.get("UserNo"));
-						System.out.println(map.get("UserNo"));
+						{ if (logger.isDebugEnabled()) logger.debug(map.get("UserNo")); }
 						ctx.put("UserNo", map.get("UserNo"));
 						ctx.put("AgentName", map.get("AgentName"));
 						ctx.put("LicenseNumber", map.get("LicenseNumber"));
@@ -3416,9 +3423,9 @@ public class AccountUtils {
 
 							/*
 							 * int currentYear=Integer.valueOf(sdf.format(new Date()).toString());
-							 */ System.out.println(currentYear + " " + (currentYear - 1) + " " + (currentYear - 2) + " "
-									+ (currentYear - 3));
-							System.out.println(feeSuedDate);
+							 */ { if (logger.isDebugEnabled()) logger.debug(currentYear + " " + (currentYear - 1) + " " + (currentYear - 2) + " "
+									+ (currentYear - 3)); }
+							{ if (logger.isDebugEnabled()) logger.debug(feeSuedDate); }
 
 							// daysDifferenceForFeeSuits=DateUtils.calculateDiffInDays(new
 							// Date(ctx.get("effectiveDateOfPolicy").toString()),new
@@ -3431,8 +3438,8 @@ public class AccountUtils {
 								int monthFeeSuit = Integer.valueOf(str.substring(0, Math.min(str.length(), 2)));
 								int monthEffectiveDatePolicy = Integer.valueOf(
 										effectiveDatePolicy.substring(0, Math.min(effectiveDatePolicy.length(), 2)));
-								System.out.println("Fee Siut Month..." + monthFeeSuit + " Effective date Month.."
-										+ monthEffectiveDatePolicy);
+								{ if (logger.isDebugEnabled()) logger.debug("Fee Siut Month..." + monthFeeSuit + " Effective date Month.."
+										+ monthEffectiveDatePolicy); }
 								if (monthFeeSuit < monthEffectiveDatePolicy) {
 									flagFeeSuitMonth = false;
 								}
@@ -5488,7 +5495,7 @@ public class AccountUtils {
 		// ctx.get("TransactionSequence");
 		// ctx.get("QuoteEffectiveDate");
 		// ctx.get("UserNo");
-		System.out.println(ctx.get("NameOfClaimantCi") + "\t" + ctx.get("IsClientCi"));
+		{ if (logger.isDebugEnabled()) logger.debug(ctx.get("NameOfClaimantCi") + "\t" + ctx.get("IsClientCi")); }
 		ctx.get("NameOfClaimantCi");
 		ctx.get("WeekFromDate");
 		ctx.get("WeekToDate");
@@ -5531,15 +5538,14 @@ public class AccountUtils {
 
 		String prefix = "570";
 		String initialPolicyNo = null;
-		Thread.sleep(800);
 		Object objPNo = SqlResources.getSqlMapProcessor(ctx)
 				.findByKey("SqlStmts.UserStatementprocessquotegetMaxPolicyNo", ctx);
 		if (objPNo != null && objPNo instanceof Map) {
 			Map map = (Map) objPNo;
 			if (map.get("PolicyNumber") != null) {
 				String PolicyNumber = map.get("PolicyNumber").toString();
-				logger.debug(
-						"LAST MAX POLICY NUMBER:-" + PolicyNumber + " LAST UPDATED AT" + System.currentTimeMillis());
+				{ if (logger.isDebugEnabled()) logger.debug(
+						"LAST MAX POLICY NUMBER:-" + PolicyNumber + " LAST UPDATED AT" + System.currentTimeMillis()); }
 				int index = PolicyNumber.indexOf("-");
 				// int lastIndex = PolicyNumber.lastIndexOf("-");
 
@@ -5575,8 +5581,8 @@ public class AccountUtils {
 			rdp = Integer.parseInt(strRDP);
 			val = 9 - rdp;
 		}
-		logger.debug("NEWLY GENERATED POLICY NUMBER:-" + prefix + "-" + initialPolicyNo + "-"
-				+ new Integer(val).toString() + " LAST UPDATED AT" + System.currentTimeMillis());
+		{ if (logger.isDebugEnabled()) logger.debug("NEWLY GENERATED POLICY NUMBER:-" + prefix + "-" + initialPolicyNo + "-"
+				+ new Integer(val).toString() + " LAST UPDATED AT" + System.currentTimeMillis()); }
 		return prefix + "-" + initialPolicyNo + "-" + new Integer(val).toString();
 	}
 
@@ -5951,7 +5957,7 @@ public class AccountUtils {
 			skipMethod = checkAuditAOP19(ctx, IsSupplementPage);
 			if (skipMethod == false) {
 				skipMethod = checkAuditAOP56(ctx, IsAttesationPage);
-				System.out.println(skipMethod);
+				{ if (logger.isDebugEnabled()) logger.debug(skipMethod); }
 				if (skipMethod == false) {
 					skipMethod = checkAuditAOP14(ctx, IsComputerServicePage);
 
@@ -5988,7 +5994,7 @@ public class AccountUtils {
 			skipMethod = checkAuditAOP19(ctx, IsSupplementPage);
 			if (skipMethod == false) {
 				skipMethod = checkAuditAOP56(ctx, IsAttesationPage);
-				System.out.println(skipMethod);
+				{ if (logger.isDebugEnabled()) logger.debug(skipMethod); }
 				if (skipMethod == false) {
 					skipMethod = checkAuditAOP14(ctx, IsComputerServicePage);
 					if (skipMethod == false) {
@@ -6127,8 +6133,8 @@ public class AccountUtils {
 
 	public static void checkAccountEmailExist(IContext ctx) throws Exception {
 
-		System.out.println(ctx.get("fromClickRegistrationLink"));
-		System.out.println(ctx.get("fromRegistrationLink"));
+		{ if (logger.isDebugEnabled()) logger.debug(ctx.get("fromClickRegistrationLink")); }
+		{ if (logger.isDebugEnabled()) logger.debug(ctx.get("fromRegistrationLink")); }
 		boolean isAccountEmailExist = false;
 
 		List listFirm = SqlResources.getSqlMapProcessor(ctx)
@@ -6179,7 +6185,7 @@ public class AccountUtils {
 	}
 
 	public void insertDataForRenewPolicy(IContext ctx) throws Exception {
-		logger.debug("Renew policy----" + ctx.get("RenewPolicy_Data"));
+		{ if (logger.isDebugEnabled()) logger.debug("Renew policy----" + ctx.get("RenewPolicy_Data")); }
 		Object obj = ctx.get("RenewPolicy_Data");
 
 		if (obj != null) {
@@ -6629,10 +6635,10 @@ public class AccountUtils {
 					.getString("appl." + ctx.getProject() + ".Insured.SendIssuedEmail");
 
 		} catch (Exception e) {
-			logger.error("Error in getting data from properties file " + e);
+			logger.error("Error in getting data from properties file " + e, e);
 			throw e;
 		}
-		logger.debug("Got the value appl.AccountantIns.Insured.SendIssuedEmail  " + isIssuedMailSendToInsured);
+		{ if (logger.isDebugEnabled()) logger.debug("Got the value appl.AccountantIns.Insured.SendIssuedEmail  " + isIssuedMailSendToInsured); }
 		if ("Y".equals(isIssuedMailSendToInsured)) {
 
 			boolean isMailSendToInsured = isPolicyIssuedMailSendToInsured(ctx);
@@ -6708,7 +6714,7 @@ public class AccountUtils {
 					"D:\\ProtexureWorkspace\\Accountant\\11.0.0.3\\codebase\\AccountantIns\\web\\XML\\AccountantIns\\metadata\\metadata.xml",
 					"metadata", "AccountantIns");
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			logger.error("Error in AccountUtils.main", e1);
 		}
 
 		AccountUtils au = new AccountUtils();
@@ -6726,8 +6732,8 @@ public class AccountUtils {
 //			String dataXML = new RequestProcessor().generateResponseXml(ctx,false);	
 //			System.out.println(dataXML);
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.main", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
@@ -6833,7 +6839,7 @@ public class AccountUtils {
 		try {
 			email = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".specialissue.emailid");
 		} catch (Exception e) {
-			System.out.println("Exception in getting special issuance email id " + e);
+			logger.error("Error in AccountUtils.getSpecialIssuanceEmail", e);
 		}
 		return email;
 
@@ -6866,7 +6872,7 @@ public class AccountUtils {
 				Calendar cal = Calendar.getInstance();
 				int currentYear = cal.get(Calendar.YEAR);
 
-				System.out.println(currentYear + " is the current year");
+				{ if (logger.isDebugEnabled()) logger.debug(currentYear + " is the current year"); }
 				if (!(currentYear - intyear == 1)) {
 					populateError(ctx, "estimate_year",
 							"Last Completed Year should be one year prior to the current year.");
@@ -6906,7 +6912,7 @@ public class AccountUtils {
 		String bccAddress = "";
 		bccAddress = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.cc.email");
 
-		logger.debug(" - - - Sending Sign and Pay Email to - - - " + emailID);
+		{ if (logger.isDebugEnabled()) logger.debug(" - - - Sending Sign and Pay Email to - - - " + emailID); }
 		MailSender mail = new MailSender();
 		mail.setToAdd(emailID);
 		mail.setCcAdd(getFirstReviewerAgentEmailID(ctx));
@@ -6985,7 +6991,7 @@ public class AccountUtils {
 
 				logger.debug("Check for North Dakota StateRule");
 				String limitSequence = ctx.get("LimitSequence") != null ? ctx.get("LimitSequence").toString() : "";
-				logger.debug("Limit Sequence " + limitSequence);
+				{ if (logger.isDebugEnabled()) logger.debug("Limit Sequence " + limitSequence); }
 				String IsClaimExpensesType = ctx.get("IsClaimExpensesType") != null
 						? ctx.get("IsClaimExpensesType").toString()
 						: "";
@@ -7003,8 +7009,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			logger.debug("Exception in validateNorthDakotaStateRule " + e.getMessage());
-			e.printStackTrace();
+			logger.error("Exception in validateNorthDakotaStateRule " + e.getMessage(), e);
 		}
 
 		return true;
@@ -7022,8 +7027,8 @@ public class AccountUtils {
 			if (policyKey == null | policyKey.equals(""))
 				AccountUtils.populateError(ctx, "noSelecion", "No offrisk policy has selected");
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.validateSelection", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}
@@ -7577,7 +7582,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.checkRightClickPageDivId", e);
 		}
 	}
 
@@ -7599,14 +7604,14 @@ public class AccountUtils {
 			}
 
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.validateAllFlagsCleared", e);
 
-			e.printStackTrace();
 		}
 
 	}
 
 	public static void fetchDataForEmail(Context ctx) {
-		System.out.println("Exceute");
+		{ if (logger.isDebugEnabled()) logger.debug("Exceute"); }
 		try {
 			String email_notification_event_name = ctx.get("event_name").toString();
 			Context newCtx = new Context();
@@ -7637,7 +7642,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			logger.error("Unable to send email notification due to error : " + e.getMessage());
+			logger.error("Unable to send email notification due to error : " + e.getMessage(), e);
 		}
 
 	}
@@ -7894,7 +7899,7 @@ public class AccountUtils {
 
 				List aopPreviousList = SqlResources.getSqlMapProcessor(previousContext)
 						.select("SqlStmts.UserStatementsaveAccountstmtspopulateAOPFields", previousContext);
-				System.out.println("in change..." + aopPreviousList);
+				{ if (logger.isDebugEnabled()) logger.debug("in change..." + aopPreviousList); }
 				Map previousMap = new HashMap();
 				if (aopPreviousList != null) {
 					Map map = new HashMap();
@@ -8094,7 +8099,7 @@ public class AccountUtils {
 			SqlResources.getSqlMapProcessor(newCtx).update("SqlStmts.UserStatementManualBoQueriesresetRatingsAndUWflow",
 					newCtx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.compareReferrals", e);
 
 		}
 	}
@@ -8116,8 +8121,8 @@ public class AccountUtils {
 			}
 
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.checkAllReferralsCleared", e);
 
-			e.printStackTrace();
 		}
 
 	}
@@ -8133,7 +8138,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateSavedPageManually", e);
 		}
 
 	}
@@ -8155,7 +8160,7 @@ public class AccountUtils {
 				AccountUtils.populateError(ctx, "incompleteApp", "Please complete the application.");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateIsAppCompletlyFilled", e);
 		}
 
 	}
@@ -8228,7 +8233,7 @@ public class AccountUtils {
 				deleteDirectory(new File(filePath));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.printQuickQuoteContent", e);
 		}
 	}
 
@@ -8277,7 +8282,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception ee) {
-			ee.printStackTrace();
+			logger.error("Error in AccountUtils.exportFileDownLoad", ee);
 		}
 	}
 
@@ -8300,16 +8305,17 @@ public class AccountUtils {
 
 				String sDate1 = (String) ctx.get("PolicyExpirationDate");
 				Date date1 = new SimpleDateFormat("E MMM dd HH:mm:ss Z yyyy").parse(sDate1);
-				System.out.println(sDate1 + "\t" + date1);
+				{ if (logger.isDebugEnabled()) logger.debug(sDate1 + "\t" + date1); }
 				ctx.put("PolicyExpirationDate", date1);
 			}
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.convertPolicyExpirationDate", e);
 //			e.printStackTrace();
 		}
 	}
 
 	public static void processAcknowledgement(Context ctx) {
-		logger.debug("Response came back from external service for policykey= " + ctx.get("PolicyKey"));
+		{ if (logger.isDebugEnabled()) logger.debug("Response came back from external service for policykey= " + ctx.get("PolicyKey")); }
 
 	}
 
@@ -8436,7 +8442,7 @@ public class AccountUtils {
 							"The total AOP percentage is required to equal 100%, current total is " + total + "%");
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AccountUtils.validateAopPercentageIndication", e);
 			}
 		}
 	}
@@ -8838,6 +8844,7 @@ public class AccountUtils {
 				ctx.put("RatingTraceSequence", indicationMap.get("RatingTraceSequence"));
 			}
 		} catch (ArrayIndexOutOfBoundsException ae) {
+			logger.error("Error in AccountUtils.processSelectedIndication", ae);
 			indicationMap = (Map) listIndication.get(0);
 			if (indicationMap != null) {
 				ctx.put("TransactionSequence", indicationMap.get("TransactionSequence"));
@@ -8916,7 +8923,7 @@ public class AccountUtils {
 					.delete("SqlStmts.UserStatementManualBoQueriesdeleteIndicationLogically", ctx);
 
 		} catch (Exception e) {
-			logger.error("Error occured while deleting indication");
+			logger.error("Error occured while deleting indication", e);
 
 		}
 	}
@@ -9143,7 +9150,7 @@ public class AccountUtils {
 				deleteDirectory(new File(filePath));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.downloadInsurenceCertificate", e);
 		}
 	}
 
@@ -9164,7 +9171,7 @@ public class AccountUtils {
 				long daysDifference = DateUtils.calculateDiffInDays(
 						new Date(ctx.get("policyExtendExpirationDate").toString()),
 						new Date(ctx.get("PolicyEffectiveDate").toString()));
-				logger.debug("days difference " + daysDifference);
+				{ if (logger.isDebugEnabled()) logger.debug("days difference " + daysDifference); }
 				if (daysDifference1 < 0) {
 					populateError(ctx, "policyExtendExpirationDateError",
 							"Requested policy expiration date can't be less than of current policy expiration date");
@@ -9180,7 +9187,7 @@ public class AccountUtils {
 			} else
 				populateError(ctx, "policyExtendExpirationDateError", "Please enter policy expiration date");
 		} catch (Exception e) {
-			logger.debug("execption occured in validatePolicyExtensionDate method :" + e);
+			logger.error("execption occured in validatePolicyExtensionDate method :" + e, e);
 		}
 	}
 
@@ -9190,7 +9197,7 @@ public class AccountUtils {
 			obj = SystemProperties.getInstance().getString(propertyName);
 
 		} catch (Exception e) {
-			logger.error("error in fetching data from property file");
+			logger.error("error in fetching data from property file", e);
 		}
 		return obj;
 	}
@@ -9262,7 +9269,7 @@ public class AccountUtils {
 				ctx.put("SubProducer", decryptPnumber);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.decryptPolicyNumber", e);
 		}
 	}
 
@@ -9276,7 +9283,7 @@ public class AccountUtils {
 				if (validatePageData != null && validatePageData.size() > 0)
 					ctx.putAll((Map) validatePageData.get(0));
 			} catch (Exception etab) {
-				etab.printStackTrace();
+				logger.error("Error in AccountUtils.supplementTabs", etab);
 			}
 
 			HashMap cmap = null;
@@ -9296,7 +9303,7 @@ public class AccountUtils {
 				for (int i = 0; i < list.size(); i++) {
 					Map map = (Map) list.get(i);
 					ctx.put("flag_for_supplment", map.get("flag_for_supplment"));
-					logger.debug("flag for policy----" + ctx.get("flag_for_supplment"));
+					{ if (logger.isDebugEnabled()) logger.debug("flag for policy----" + ctx.get("flag_for_supplment")); }
 				}
 			}
 
@@ -9314,7 +9321,7 @@ public class AccountUtils {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.supplementTabs", e);
 		}
 	}
 
@@ -9333,7 +9340,7 @@ public class AccountUtils {
 				ctx.put("Zip", ctx.get("Zip").toString().substring(0, 5));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.assignFirmNewDetails", e);
 		}
 
 	}
@@ -9350,7 +9357,7 @@ public class AccountUtils {
 				ctx.put("ProInsPremium", objAmount);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.removeSymbolFormat", e);
 		}
 	}
 
@@ -9502,7 +9509,7 @@ public class AccountUtils {
 //				ctx.put("FeeSuitData_list_01",inputList);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.saveFeeSuitData", e);
 		}
 	}
 
@@ -9606,7 +9613,7 @@ public class AccountUtils {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.addNewFeeSuit", e);
 		}
 	}
 
@@ -9662,7 +9669,7 @@ public class AccountUtils {
 			ctx.put("FeeSuitData_list_01", newList);
 			sess.setAttribute("FeeSuitData_list_01", newList);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.updateFeeSuitList", e);
 		}
 	}
 
@@ -9749,7 +9756,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.saveFirmGrossRevenue", e);
 		}
 	}
 
@@ -9811,8 +9818,8 @@ public class AccountUtils {
 			else
 				ctx.put("WORKFLOW_FORWARD", ctx.get("from_page"));
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.savePageOnTabs", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}
@@ -9941,7 +9948,7 @@ public class AccountUtils {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.addNewTrusteeOrEstate", e);
 		}
 	}
 
@@ -9994,7 +10001,7 @@ public class AccountUtils {
 			ctx.put("ServerTrusteeSupp_list_01", newList);
 			sess.setAttribute("ServerTrusteeSupp_list_01", newList);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.updateTrusteeOrEstateList", e);
 		}
 	}
 
@@ -10042,7 +10049,7 @@ public class AccountUtils {
 				ctx.put("outputList", newCtx.get("outputList"));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.saveTrusteeOrEstateData", e);
 		}
 	}
 
@@ -10193,7 +10200,7 @@ public class AccountUtils {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.addNewOutsideInterest", e);
 		}
 	}
 
@@ -10256,7 +10263,7 @@ public class AccountUtils {
 			ctx.put("OutsideInterestSupp_list_01", newList);
 			sess.setAttribute("OutsideInterestSupp_list_01", newList);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.updateOutsideInterestList", e);
 		}
 	}
 
@@ -10318,7 +10325,7 @@ public class AccountUtils {
 				ctx.put("outputList", newCtx.get("outputList"));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.saveOutsideInterestData", e);
 		}
 	}
 
@@ -10327,7 +10334,7 @@ public class AccountUtils {
 		try {
 			validateEstimateForCurrentYear((IContext) ctx);
 		} catch (Exception e) {
-			logger.error("exeception occured while validating revenue details " + e);
+			logger.error("exeception occured while validating revenue details " + e, e);
 		}
 	}
 
@@ -10427,6 +10434,7 @@ public class AccountUtils {
 			try {
 				dstId = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.email");
 			} catch (Exception e) {
+				logger.error("Error in AccountUtils.sendCompleteAppLinkMail", e);
 			}
 		} else {
 			dstId = getEmailID(ctx);
@@ -10509,7 +10517,7 @@ public class AccountUtils {
 			final byte[] plainText = decipher.doFinal(encData);
 			return new String(plainText, "UTF-8");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.decrypt", e);
 			return message;
 		}
 	}
@@ -10527,6 +10535,7 @@ public class AccountUtils {
 				ctx.put("SubProducer", decryptPnumber);
 			}
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.decryptSubproducerNumber", e);
 
 		}
 	}
@@ -10540,6 +10549,7 @@ public class AccountUtils {
 			if (pNumber.equals("SPACE"))
 				ctx.put("SubProducer", "");
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.validateSubProducerNumber", e);
 
 		}
 	}
@@ -10575,7 +10585,7 @@ public class AccountUtils {
 
 			mailingOnOFF = SystemProperties.getInstance().getString("Insured.sendmail");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.sendIndicationToInsured", e);
 		}
 
 		try {
@@ -10601,7 +10611,7 @@ public class AccountUtils {
 				// }
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.sendIndicationToInsured", e);
 		}
 	}
 
@@ -10750,7 +10760,7 @@ public class AccountUtils {
 				flag = true;
 
 		} catch (Exception e) {
-			logger.error("Exception occured at Validation date data");
+			logger.error("Exception occured at Validation date data", e);
 			flag = true;
 		}
 		return flag;
@@ -10798,7 +10808,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateFeeSuitData", e);
 		}
 	}
 
@@ -10829,7 +10839,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateServerTrustee", e);
 		}
 	}
 
@@ -10870,12 +10880,12 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateFirmRenderedService", e);
 		}
 	}
 
 	public static void test(IContext ctx) {
-		System.out.println("ss");
+		{ if (logger.isDebugEnabled()) logger.debug("ss"); }
 	}
 
 	public static void getRBPolicyGrossRevenueYear(IContext ctx) {
@@ -10904,7 +10914,7 @@ public class AccountUtils {
 				AccountUtils.populateError(ctx, "ApplicationNotCompleted", "Please complete the application.");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateApplicationForcompletion", e);
 		}
 
 	}
@@ -10925,6 +10935,7 @@ public class AccountUtils {
 				try {
 					total = total + Integer.parseInt(percentageValue);
 				} catch (Exception e) {
+					logger.error("Error in AccountUtils.validateAOPPercentageNewApp", e);
 					populateError(ctx, "TotalAOP_Percentage", "Invalid data");
 				}
 
@@ -11021,11 +11032,11 @@ public class AccountUtils {
 				convertListDataToXML(newCtx, "inputList", "outputList");
 				ctx.put("outputList", newCtx.get("outputList"));
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AccountUtils.reatinAddedAops", e);
 			}
 
 		} catch (Exception e) {
-			logger.debug("problem occured in retainingAop method");
+			logger.error("problem occured in retainingAop method", e);
 		}
 	}
 
@@ -11037,7 +11048,7 @@ public class AccountUtils {
 				AccountUtils.populateError(ctx, "ClaimSupplemnts",
 						"Claims information is empty, atleast one record is required.");
 		} catch (Exception e) {
-			logger.error("error occured while validating claim supplement page");
+			logger.error("error occured while validating claim supplement page", e);
 		}
 	}
 
@@ -11063,7 +11074,7 @@ public class AccountUtils {
 			// AOP.getAopsValues(ctx);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateRenewalSupplementFlow", e);
 		}
 	}
 
@@ -11112,7 +11123,7 @@ public class AccountUtils {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateAopPercentageManually", e);
 		}
 	}
 
@@ -11133,7 +11144,7 @@ public class AccountUtils {
 				SqlResources.getSqlMapProcessor(ctx).update("Firm.CleanPracticeManagementSuppPageDataAcc_p", ctx);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.cleanPagesData", e);
 		}
 	}
 
@@ -11167,7 +11178,7 @@ public class AccountUtils {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getPageNumber", e);
 		} finally {
 			/* code by sukhi 26/09/2018 */
 			file = null;
@@ -11266,7 +11277,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			logger.debug("error occured while population Accounts list data " + e);
+			logger.error("error occured while population Accounts list data " + e, e);
 		}
 	}
 
@@ -11323,8 +11334,7 @@ public class AccountUtils {
 			}
 
 		} catch (Exception e) {
-			logger.debug("error occured while validating Account management data");
-			e.printStackTrace();
+			logger.error("error occured while validating Account management data", e);
 		}
 
 	}
@@ -11339,8 +11349,7 @@ public class AccountUtils {
 				ctx.putAll((Map) endorsementOptionsList.get(0));
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Error occured while displaying Endorsement Options");
+			logger.error("Error occured while displaying Endorsement Options", e);
 		}
 	}
 
@@ -11358,7 +11367,7 @@ public class AccountUtils {
 				ctx.put("isNewFormChanges", "N");
 
 		} catch (Exception e) {
-			logger.error("exception occured while validating fom changes conditions");
+			logger.error("exception occured while validating fom changes conditions", e);
 
 		}
 	}
@@ -11388,7 +11397,7 @@ public class AccountUtils {
 			String result = currencyFormatter.format(currencyAmount);
 			return result.substring(0, result.indexOf('.'));
 		} catch (Exception e) {
-			logger.error("Exception ocured while formationg premium");
+			logger.error("Exception ocured while formationg premium", e);
 			return new Double(premiumAmount).toString();
 		}
 	}
@@ -11414,7 +11423,7 @@ public class AccountUtils {
 			}
 
 		} catch (Exception e) {
-			logger.error("Exception ocured while validateStatesEligibleForQQ premium");
+			logger.error("Exception ocured while validateStatesEligibleForQQ premium", e);
 		}
 	}
 
@@ -11437,7 +11446,7 @@ public class AccountUtils {
 			}
 
 		} catch (Exception e) {
-			logger.error("Error ocured while validating quotes for duplicacy. " + e);
+			logger.error("Error ocured while validating quotes for duplicacy. " + e, e);
 
 		}
 
@@ -11461,7 +11470,7 @@ public class AccountUtils {
 			ctx.put("TransactionDate", ctx.get("LastUpdateTimeStamp"));
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.isPaymentDetailExist", e);
 		}
 	}
 
@@ -11485,7 +11494,7 @@ public class AccountUtils {
 			logger.debug("Payment Detail has been updated by FinanceInterval and FinanceDownPayment...");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.processFinanceData", e);
 		}
 	}
 
@@ -11514,14 +11523,14 @@ public class AccountUtils {
 					"EffectiveDateFrom,EffectiveDateTo,stateCodes,aopCodes,revenueCount,reQuoteURL,requoteTransactionType");
 			List list = (List) SqlResources.getSqlMapProcessor(ctx).select("Firm.RequoteReportDataACC_p", ctx);
 			logger.debug("BatchRatingForLawyers_Proc has been executed");
-			System.out.println(list.size());
+			{ if (logger.isDebugEnabled()) logger.debug(list.size()); }
 
 			generateReportSheet(ctx, "Data", list, excelname, sheetHeaders);
 
 			AccountsBatch.FormatExcel(filePath);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.generateReportForRequote", e);
 
 		}
 	}
@@ -11601,7 +11610,7 @@ public class AccountUtils {
 			fileOut.close();
 
 		} catch (Exception e) {
-			logger.debug("Problem in writing in file " + path + " " + e.getMessage());
+			logger.error("Problem in writing in file " + path + " " + e.getMessage(), e);
 		} finally {
 			/* code by sukhi 26/09/2018 */
 			if (input != null) {
@@ -11626,6 +11635,7 @@ public class AccountUtils {
 				context.put("requotePolicyEffectiveDate", obj.get("decryptedEffectiveDate"));
 			}
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.decrytPolicyKeyFromDB", e);
 		}
 
 	}
@@ -11634,7 +11644,7 @@ public class AccountUtils {
 
 		boolean oldFlow = false, newFlow = false;
 		Object obj = null;
-		logger.debug("Copied policy----" + ctx.get("CopyPolicyData_list"));
+		{ if (logger.isDebugEnabled()) logger.debug("Copied policy----" + ctx.get("CopyPolicyData_list")); }
 
 		obj = ctx.get("CopyPolicyData_list");
 
@@ -11701,7 +11711,7 @@ public class AccountUtils {
 			else
 				ctx.put("resetRatingFlag", "Y");
 		} catch (Exception e) {
-			logger.error("Exception occured in validateCoverageModifiersForURFlow method");
+			logger.error("Exception occured in validateCoverageModifiersForURFlow method", e);
 		}
 	}
 
@@ -11709,8 +11719,7 @@ public class AccountUtils {
 		try {
 			SqlResources.getSqlMapProcessor(ctx).insert("UserSessionLogin.insert", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Exception occured while updateLoginDetalis");
+			logger.error("Exception occured while updateLoginDetalis", e);
 		}
 	}
 
@@ -11763,7 +11772,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			logger.error("Unable to send email notification due to error : " + e.getMessage());
+			logger.error("Unable to send email notification due to error : " + e.getMessage(), e);
 		}
 
 	}
@@ -11787,7 +11796,7 @@ public class AccountUtils {
 			sendEmailNotification(ctx, map);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.sendErrorEmail", e);
 		}
 	}
 
@@ -11811,10 +11820,9 @@ public class AccountUtils {
 					}
 				}
 			}
-			System.out.println(filePath);
+			{ if (logger.isDebugEnabled()) logger.debug(filePath); }
 		} catch (Exception e) {
-			logger.debug("Error in file process");
-			e.printStackTrace();
+			logger.error("Error in file process", e);
 		}
 
 		filePath = filePath + "_" + generateUniqueId();
@@ -11826,7 +11834,7 @@ public class AccountUtils {
 		try {
 			uploadFile_logo.write(new File(uploaddirectory, filePath));
 		} catch (Exception e) {
-			System.out.println("Exception " + e);
+			logger.error("Error in AccountUtils.uploadFile", e);
 			populateError(ctx, "DocUploadError", "Document could not be write to file");
 
 		}
@@ -11843,7 +11851,7 @@ public class AccountUtils {
 		try {
 			readExcelFile(ctx, new File(uploaddirectory + filePath));
 		} catch (Exception e) {
-			logger.debug("Got exception while uploading report");
+			logger.error("Got exception while uploading report", e);
 		}
 	}
 
@@ -11927,7 +11935,7 @@ public class AccountUtils {
 				convertListDataToXML(ctx, "inputList", "outputList");
 			}
 		} catch (Exception ioe) {
-			ioe.printStackTrace();
+			logger.error("Error in AccountUtils.readExcelFile", ioe);
 		}
 	}
 
@@ -11954,6 +11962,7 @@ public class AccountUtils {
 			uniqueId = new Timestamp(new Date().getTime()).toString().replaceAll("[.,:\\ ]", "");
 			// System.out.println("uniqueId" + uniqueId);
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.generateUniqueId", e);
 			uniqueId = "Not Found";
 		}
 		return uniqueId;
@@ -12017,7 +12026,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			logger.error("exception occurred while validating imit increase" + e);
+			logger.error("exception occurred while validating imit increase" + e, e);
 		}
 
 	}
@@ -12083,8 +12092,7 @@ public class AccountUtils {
 				ctx.putAll((Map) claimSuppData.get(0));
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Error occured while fetching details of broker poliy");
+			logger.error("Error occured while fetching details of broker poliy", e);
 		}
 	}
 
@@ -12114,6 +12122,7 @@ public class AccountUtils {
 				ctx.put("isShowDocUpload", "Y");
 
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.validateBrokeragePolicy", e);
 		}
 	}
 
@@ -12144,8 +12153,7 @@ public class AccountUtils {
 			SqlResources.getSqlMapProcessor(newCtx).update("BrokeragePolicy.BrokeragePolicyDetailsLW_p", newCtx);
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Error occured while saving brokerage policy data");
+			logger.error("Error occured while saving brokerage policy data", e);
 		}
 	}
 
@@ -12158,7 +12166,7 @@ public class AccountUtils {
 			ctx.putAll((Map) getPolicyData.get(0));
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getPolicyData", e);
 		}
 
 	}
@@ -12195,8 +12203,7 @@ public class AccountUtils {
 				ctx.put(COMPANY_LOOKUP_CACHE_KEY, lookupKey);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug("error occured while settong up company :" + e);
+			logger.error("error occured while settong up company :" + e, e);
 		} finally {
 			ctx.put("PolicyEffectiveDate", policyEffectiveDate);
 		}
@@ -12218,6 +12225,7 @@ public class AccountUtils {
 		try {
 			return date.equals(format.format(format.parse(date)));
 		} catch (Exception e) {
+			logger.error("Error in AccountUtils.isValidPolicyEffectiveDate", e);
 			return false;
 		}
 	}
@@ -12229,63 +12237,63 @@ public class AccountUtils {
 					"PolicyKey,AccountKey,AccountID,AddressKey,VersionSequence,PolicyStatusKey,LastUpdateUserID");
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_AboutYou_ACC", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_InsuranceHistory_ACC", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_FirmInfo_ACC", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_LawPractice_ACC", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_PracticeManagement_ACC", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_PracticemanagementSupp_ACC",
 					ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_InvestmentFinancialSupp_ACC",
 					ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_AuditSupp_ACC", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_ComputerRelatedSupp_ACC", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_BusinessManagementSupp_ACC",
 					ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 		try {
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.UWRules_QuoteOptions_ACC", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.executeUnderwritingRules", e);
 		}
 
 	}
@@ -12308,8 +12316,7 @@ public class AccountUtils {
 					result = true;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug("error occured while settong up company :" + e);
+			logger.error("error occured while settong up company :" + e, e);
 		}
 		return result;
 	}
@@ -12345,8 +12352,8 @@ public class AccountUtils {
 
 			if (map.get("PolicyNumber") != null) {
 				String PolicyNumber = map.get("PolicyNumber").toString();
-				logger.debug(
-						"LAST MAX POLICY NUMBER:-" + PolicyNumber + " LAST UPDATED AT" + System.currentTimeMillis());
+				{ if (logger.isDebugEnabled()) logger.debug(
+						"LAST MAX POLICY NUMBER:-" + PolicyNumber + " LAST UPDATED AT" + System.currentTimeMillis()); }
 				int index = PolicyNumber.indexOf("-");
 				int second = PolicyNumber.indexOf("-", index + 1);
 				int third = PolicyNumber.indexOf("-", second + 1);
@@ -12377,8 +12384,8 @@ public class AccountUtils {
 			}	
 		}
 
-		logger.debug(
-				"NEWLY GENERATED POLICY NUMBER:-" + newPolicyNumber + " LAST UPDATED AT" + System.currentTimeMillis());
+		{ if (logger.isDebugEnabled()) logger.debug(
+				"NEWLY GENERATED POLICY NUMBER:-" + newPolicyNumber + " LAST UPDATED AT" + System.currentTimeMillis()); }
 		return newPolicyNumber;
 	}
 
@@ -12392,7 +12399,7 @@ public class AccountUtils {
 				insertZOHORecordsOfPotentials(ctx, zohoAccountID);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.insertZOHORecords", e);
 		}
 	}
 
@@ -12404,7 +12411,7 @@ public class AccountUtils {
 				insertZOHORecordsOfPotentials(ctx, zohoAccountID);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.updateZOHORecords", e);
 		}
 	}
 
@@ -12412,10 +12419,9 @@ public class AccountUtils {
 		try {
 			int status = SqlResources.getSqlMapProcessor(ctx)
 					.update("SqlStmts.UserStatementManualBoQueriesupdateZohoAccessToken", ctx);
-			System.out.println(status);
+			{ if (logger.isDebugEnabled()) logger.debug(status); }
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Exception occured while updateZohoToken");
+			logger.error("Exception occured while updateZohoToken", e);
 		}
 	}
 
@@ -12434,8 +12440,7 @@ public class AccountUtils {
 				ctx.put("isZohoAccessToken", getZohoAccessToken);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Exception occured while updateZohoToken");
+			logger.error("Exception occured while updateZohoToken", e);
 		}
 	}
 
@@ -12484,17 +12489,18 @@ public class AccountUtils {
 			get = new GetMethod(serachTargetURL);
 			get.setRequestHeader("Authorization", authtoken);
 
-			HttpClient httpclient = new HttpClient();
+			HttpClient httpclient = SharedHttpClient.get();
 			int result = httpclient.executeMethod(get);
+			String responseBody = get.getResponseBodyAsString();
 
-			System.out.println(result);
-			System.out.println("status     " + get.getResponseBodyAsString());
+			{ if (logger.isDebugEnabled()) logger.debug(result); }
+			{ if (logger.isDebugEnabled()) logger.debug("status     " + responseBody); }
 
-			if (get.getResponseBodyAsString() != null && !"".equals(get.getResponseBodyAsString())) {
-				return new JSONObject(get.getResponseBodyAsString());
+			if (responseBody != null && !"".equals(responseBody)) {
+				return new JSONObject(responseBody);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getZOHORecordOfPotentials", e);
 		}
 		return null;
 	}
@@ -12755,7 +12761,7 @@ public class AccountUtils {
 				ctx.put("Owner", "");
 			}
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			System.out.println(dateFormat.format(date)); // 2016/11/16 12:08:43
+			{ if (logger.isDebugEnabled()) logger.debug(dateFormat.format(date)); } // 2016/11/16 12:08:43
 			ctx.put("Closing_Date", dateFormat.format(date));
 			ctx.put("Stage", statusDesc);
 			ctx.put("Premium", (totalPremium == null || totalPremium.isEmpty()) ? "" : Integer.parseInt(totalPremium));
@@ -12770,7 +12776,7 @@ public class AccountUtils {
 			updateZOHORecordsOfPotentials(accountName, zohoPotentialsID, zohoAccountID, ctx, keyList, keyValue,
 					matchColumns, matchColumnValues, ownerMap);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.insertZOHORecordsOfPotentials", e);
 		}
 	}
 
@@ -12813,7 +12819,7 @@ public class AccountUtils {
 					ctx.put("Account_Name", "");
 					xmlDataString = createZohoUpdateJsonObjectOfPotentials(ctx, keyList, keyValue, ownerMap);
 					if (!xmlDataString.isEmpty()) {
-						logger.debug("update   " + xmlDataString);
+						{ if (logger.isDebugEnabled()) logger.debug("update   " + xmlDataString); }
 						updateRecordsIntoZOHODataOfPotentials(ctx, xmlDataString, zohoPotentialsID, "NO");
 					}
 					flag = false;
@@ -12828,7 +12834,7 @@ public class AccountUtils {
 			ctx.put("AccountZohoID", zohoAccountID);
 			xmlDataString = createZohoUpdateJsonObjectOfPotentials(ctx, keyList, keyValue, ownerMap);
 			if (!xmlDataString.isEmpty()) {
-				logger.debug("Insert   " + xmlDataString);
+				{ if (logger.isDebugEnabled()) logger.debug("Insert   " + xmlDataString); }
 				insertRecordsIntoZOHODataOfPotentials(ctx, xmlDataString);
 			}
 		}
@@ -12880,8 +12886,8 @@ public class AccountUtils {
 
 			return captureZohoObject.toString();
 		} catch (JSONException e) {
+			logger.error("Error in AccountUtils.createZohoUpdateJsonObjectOfPotentials", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		return "";
 	}
@@ -12905,13 +12911,14 @@ public class AccountUtils {
 				post.setRequestHeader("Content-Type", "application/json");
 				post.setRequestBody(XmlString);
 
-				HttpClient httpclient = new HttpClient();
+				HttpClient httpclient = SharedHttpClient.get();
 
 				int result = httpclient.executeMethod(post);
+				String responseBody = post.getResponseBodyAsString();
 				logger.debug(result);
-				System.out.println(post.getResponseBodyAsString());
+				{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
 
-				JSONObject captureZohoData = new JSONObject(post.getResponseBodyAsString());
+				JSONObject captureZohoData = new JSONObject(responseBody);
 				if (captureZohoData != null && !captureZohoData.isNull("data")) {
 					JSONArray captureZohoDataList = (JSONArray) captureZohoData.get("data");
 					for (int captureZohoDataCount = 0; captureZohoDataCount < captureZohoDataList
@@ -12926,19 +12933,19 @@ public class AccountUtils {
 								ctx.put("ZohoPotentialsID", zohoPotentialsID);
 								int status = SqlResources.getSqlMapProcessor(ctx)
 										.update("SqlStmts.UserStatementManualBoQueriesupdateZohoPotentialsID", ctx);
-								System.out.println(status);
+								{ if (logger.isDebugEnabled()) logger.debug(status); }
 							}
 						}
 					}
 				}
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AccountUtils.insertRecordsIntoZOHODataOfPotentials", e);
 			} finally {
 				post.releaseConnection();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.insertRecordsIntoZOHODataOfPotentials", e);
 		}
 	}
 
@@ -12962,13 +12969,14 @@ public class AccountUtils {
 				post.setRequestHeader("Content-Type", "application/json");
 				post.setRequestBody(XmlString);
 
-				HttpClient httpclient = new HttpClient();
+				HttpClient httpclient = SharedHttpClient.get();
 
 				int result = httpclient.executeMethod(post);
+				String responseBody = post.getResponseBodyAsString();
 				logger.debug(result);
-				System.out.println(post.getResponseBodyAsString());
-				if (post.getResponseBodyAsString() != null && !"".equals(post.getResponseBodyAsString())) {
-					JSONObject captureZohoData = new JSONObject(post.getResponseBodyAsString());
+				{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
+				if (responseBody != null && !"".equals(responseBody)) {
+					JSONObject captureZohoData = new JSONObject(responseBody);
 					if (captureZohoData != null && !captureZohoData.isNull("data")) {
 						JSONArray captureZohoDataList = (JSONArray) captureZohoData.get("data");
 						for (int captureZohoDataCount = 0; captureZohoDataCount < captureZohoDataList
@@ -12990,12 +12998,12 @@ public class AccountUtils {
 				}
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AccountUtils.updateRecordsIntoZOHODataOfPotentials", e);
 			} finally {
 				post.releaseConnection();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.updateRecordsIntoZOHODataOfPotentials", e);
 		}
 		return true;
 	}
@@ -13054,14 +13062,15 @@ public class AccountUtils {
 				GetMethod get = new GetMethod(serachTargetURL);
 				get.setRequestHeader("Authorization", authtoken);
 
-				HttpClient httpclient = new HttpClient();
+				HttpClient httpclient = SharedHttpClient.get();
 				int result = httpclient.executeMethod(get);
+				String responseBody = get.getResponseBodyAsString();
 
-				System.out.println(result);
-				System.out.println("status     " + get.getResponseBodyAsString());
+				{ if (logger.isDebugEnabled()) logger.debug(result); }
+				{ if (logger.isDebugEnabled()) logger.debug("status     " + responseBody); }
 
-				if (get.getResponseBodyAsString() != null && !"".equals(get.getResponseBodyAsString())) {
-					JSONObject captureZohoData = new JSONObject(get.getResponseBodyAsString());
+				if (responseBody != null && !"".equals(responseBody)) {
+					JSONObject captureZohoData = new JSONObject(responseBody);
 					if (!(captureZohoData != null && !captureZohoData.isNull("status")
 							&& "error".equals(captureZohoData.get("status")))) {
 						if (copyCaptureZohoData == null) {
@@ -13080,7 +13089,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getZOHORecordOfAccounts", e);
 		}
 		return copyCaptureZohoData;
 	}
@@ -13300,7 +13309,7 @@ public class AccountUtils {
 
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				Date date = new Date();
-				System.out.println(dateFormat.format(date)); // 2016/11/16 12:08:43
+				{ if (logger.isDebugEnabled()) logger.debug(dateFormat.format(date)); } // 2016/11/16 12:08:43
 				Date exDate = null;
 				if ("".equals(policyEffectiveDate)) {
 					exDate = new SimpleDateFormat("MM/dd/yyyy").parse(ctx.get("PolicyEffectiveDate").toString());
@@ -13368,12 +13377,12 @@ public class AccountUtils {
 				}
 				int status = SqlResources.getSqlMapProcessor(ctx)
 						.update("SqlStmts.UserStatementManualBoQueriesupdateZohoSubProducerNameClearance", ctx);
-				System.out.println(status);
+				{ if (logger.isDebugEnabled()) logger.debug(status); }
 
 				return zohoAccountID;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.insertZOHORecordsOfAccounts", e);
 		}
 		return "";
 	}
@@ -13394,7 +13403,7 @@ public class AccountUtils {
 			ctx.put("id", zohoAccountID);
 			xmlDataString = createZohoUpdateXML(ctx, keyList, keyValue);
 			if (!xmlDataString.isEmpty()) {
-				logger.debug("update   " + xmlDataString);
+				{ if (logger.isDebugEnabled()) logger.debug("update   " + xmlDataString); }
 				boolean result = updateRecordsIntoZOHOData(ctx, xmlDataString, zohoAccountID, "NO", isZohoInsert);
 				if (!result) {
 					zohoAccountID = "";
@@ -13429,7 +13438,7 @@ public class AccountUtils {
 						ctx.put("id", zohoAccountID);
 						xmlDataString = createZohoUpdateXML(ctx, keyList, keyValue);
 						if (!xmlDataString.isEmpty()) {
-							logger.debug("update   " + xmlDataString);
+							{ if (logger.isDebugEnabled()) logger.debug("update   " + xmlDataString); }
 							updateRecordsIntoZOHOData(ctx, xmlDataString, zohoAccountID, "YES", isZohoInsert);
 						}
 						flag = false;
@@ -13441,7 +13450,7 @@ public class AccountUtils {
 				ctx.put("id", zohoAccountID);
 				xmlDataString = createZohoUpdateXML(ctx, keyList, keyValue);
 				if (!xmlDataString.isEmpty()) {
-					logger.debug("Insert   " + xmlDataString);
+					{ if (logger.isDebugEnabled()) logger.debug("Insert   " + xmlDataString); }
 					zohoAccountID = insertRecordsIntoZOHOData(ctx, xmlDataString);
 					ctx.put("isNameClearanceRequired", "N");
 				}
@@ -13489,8 +13498,8 @@ public class AccountUtils {
 
 			return captureZohoObject.toString();
 		} catch (JSONException e) {
+			logger.error("Error in AccountUtils.createZohoUpdateXML", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		return "";
 	}
@@ -13515,13 +13524,14 @@ public class AccountUtils {
 				post.setRequestHeader("Content-Type", "application/json");
 				post.setRequestBody(XmlString);
 
-				HttpClient httpclient = new HttpClient();
+				HttpClient httpclient = SharedHttpClient.get();
 
 				int result = httpclient.executeMethod(post);
+				String responseBody = post.getResponseBodyAsString();
 				logger.debug(result);
-				System.out.println(post.getResponseBodyAsString());
+				{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
 
-				JSONObject captureZohoData = new JSONObject(post.getResponseBodyAsString());
+				JSONObject captureZohoData = new JSONObject(responseBody);
 				if (captureZohoData != null && !captureZohoData.isNull("data")) {
 					JSONArray captureZohoDataList = (JSONArray) captureZohoData.get("data");
 					for (int captureZohoDataCount = 0; captureZohoDataCount < captureZohoDataList
@@ -13539,19 +13549,19 @@ public class AccountUtils {
 										.update("SqlStmts.UserStatementManualBoQueriesupdateZohoAccountID", ctx);
 								status = SqlResources.getSqlMapProcessor(ctx)
 										.update("SqlStmts.UserStatementManualBoQueriesupdateISZohoInsert", ctx);
-								System.out.println(status);
+								{ if (logger.isDebugEnabled()) logger.debug(status); }
 							}
 						}
 					}
 				}
 				return zohoAccountID;
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AccountUtils.insertRecordsIntoZOHOData", e);
 			} finally {
 				post.releaseConnection();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.insertRecordsIntoZOHOData", e);
 		}
 		return "";
 	}
@@ -13576,14 +13586,15 @@ public class AccountUtils {
 				post.setRequestHeader("Content-Type", "application/json");
 				post.setRequestBody(XmlString);
 
-				HttpClient httpclient = new HttpClient();
+				HttpClient httpclient = SharedHttpClient.get();
 
 				int result = httpclient.executeMethod(post);
+				String responseBody = post.getResponseBodyAsString();
 				logger.debug(result);
-				System.out.println(post.getResponseBodyAsString());
+				{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
 
-				if (post.getResponseBodyAsString() != null && !"".equals(post.getResponseBodyAsString())) {
-					JSONObject captureZohoData = new JSONObject(post.getResponseBodyAsString());
+				if (responseBody != null && !"".equals(responseBody)) {
+					JSONObject captureZohoData = new JSONObject(responseBody);
 					if (captureZohoData != null && !captureZohoData.isNull("data")) {
 						JSONArray captureZohoDataList = (JSONArray) captureZohoData.get("data");
 						for (int captureZohoDataCount = 0; captureZohoDataCount < captureZohoDataList
@@ -13609,12 +13620,12 @@ public class AccountUtils {
 							.update("SqlStmts.UserStatementManualBoQueriesupdateISZohoInsert", ctx);
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in AccountUtils.updateRecordsIntoZOHOData", e);
 			} finally {
 				post.releaseConnection();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.updateRecordsIntoZOHOData", e);
 		}
 		return true;
 	}
@@ -13718,7 +13729,7 @@ public class AccountUtils {
 										}
 										ctx.put("ProducerCode", subProducerCode);
 									} catch (Exception e) {
-										e.printStackTrace();
+										logger.error("Error in AccountUtils.getZOHOIndicationRecordsOfAccounts", e);
 									}
 
 									// } else {
@@ -13735,6 +13746,7 @@ public class AccountUtils {
 									Date date = inSDF.parse(effectiveDate);
 									outDate = outSDF.format(date);
 								} catch (Exception ex) {
+									logger.error("Error in AccountUtils.getZOHOIndicationRecordsOfAccounts", ex);
 								}
 
 								ctx.put("PolicyEffectiveDate", outDate);
@@ -13771,7 +13783,7 @@ public class AccountUtils {
 				populateError(ctx, "ZohoError", "Please Enter Insured Email.");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getZOHOIndicationRecordsOfAccounts", e);
 		}
 	}
 
@@ -13823,17 +13835,18 @@ public class AccountUtils {
 			get = new GetMethod(serachTargetURL);
 			get.setRequestHeader("Authorization", authtoken);
 
-			HttpClient httpclient = new HttpClient();
+			HttpClient httpclient = SharedHttpClient.get();
 			int result = httpclient.executeMethod(get);
+			String responseBody = get.getResponseBodyAsString();
 
-			System.out.println(result);
-			System.out.println("status     " + get.getResponseBodyAsString());
+			{ if (logger.isDebugEnabled()) logger.debug(result); }
+			{ if (logger.isDebugEnabled()) logger.debug("status     " + responseBody); }
 
-			if (get.getResponseBodyAsString() != null && !"".equals(get.getResponseBodyAsString())) {
-				return new JSONObject(get.getResponseBodyAsString());
+			if (responseBody != null && !"".equals(responseBody)) {
+				return new JSONObject(responseBody);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getZOHOIndicationRecordAccounts", e);
 		}
 		return null;
 	}
@@ -13925,7 +13938,7 @@ public class AccountUtils {
 				populateError(ctx, "ZohoError", "Please Enter Insured Email.");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getZOHOIndicationRecordsOfContacts", e);
 		}
 	}
 
@@ -13977,17 +13990,18 @@ public class AccountUtils {
 			get = new GetMethod(serachTargetURL);
 			get.setRequestHeader("Authorization", authtoken);
 
-			HttpClient httpclient = new HttpClient();
+			HttpClient httpclient = SharedHttpClient.get();
 			int result = httpclient.executeMethod(get);
+			String responseBody = get.getResponseBodyAsString();
 
-			System.out.println(result);
-			System.out.println("status     " + get.getResponseBodyAsString());
+			{ if (logger.isDebugEnabled()) logger.debug(result); }
+			{ if (logger.isDebugEnabled()) logger.debug("status     " + responseBody); }
 
-			if (get.getResponseBodyAsString() != null && !"".equals(get.getResponseBodyAsString())) {
-				return new JSONObject(get.getResponseBodyAsString());
+			if (responseBody != null && !"".equals(responseBody)) {
+				return new JSONObject(responseBody);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getZOHOIndicationRecordContacts", e);
 		}
 		return null;
 	}
@@ -14078,7 +14092,7 @@ public class AccountUtils {
 										}
 										ctx.put("ProducerCode", subProducerCode);
 									} catch (Exception e) {
-										e.printStackTrace();
+										logger.error("Error in AccountUtils.getZOHOIndicationRecordsOfAccountsSecond", e);
 									}
 								}
 							}
@@ -14092,6 +14106,7 @@ public class AccountUtils {
 									Date date = inSDF.parse(effectiveDate);
 									outDate = outSDF.format(date);
 								} catch (Exception ex) {
+									logger.error("Error in AccountUtils.getZOHOIndicationRecordsOfAccountsSecond", ex);
 								}
 
 								ctx.put("PolicyEffectiveDate", outDate);
@@ -14113,7 +14128,7 @@ public class AccountUtils {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.getZOHOIndicationRecordsOfAccountsSecond", e);
 		}
 	}
 
@@ -14131,14 +14146,14 @@ public class AccountUtils {
 					ctx.putAll((Map) obj);
 				}
 			} catch (Exception e) {
-				logger.error("Error occured while fetching secondary email address of firm :" + e);
+				logger.error("Error occured while fetching secondary email address of firm :" + e, e);
 			}
 
 			if (ctx.get("secondaryEmail") != null)
 				emailID = emailID + "," + ctx.get("secondaryEmail").toString();
 
 		} catch (Exception e) {
-			logger.debug("Error occured while  fetching insured AccountEmail");
+			logger.error("Error occured while  fetching insured AccountEmail", e);
 		}
 		return emailID;
 	}
@@ -14171,8 +14186,7 @@ public class AccountUtils {
 					ctx);
 
 		} catch (Exception e) {
-			logger.error("error occured while executing isReferRuleTriggeredNewApp method" + e);
-			e.printStackTrace();
+			logger.error("error occured while executing isReferRuleTriggeredNewApp method" + e, e);
 		}
 
 	}
@@ -14219,14 +14233,13 @@ public class AccountUtils {
 			try{
 				AccountUtils.updateZOHORecords((Context) ctx);
 			} catch(Exception e) {
-				logger.debug("Exception occured during ZOHO update "+e);
-				System.out.println("Exception occured during ZOHO update Issue "+e);
+				logger.error("Exception occured during ZOHO update "+e, e);
 			}
 		
 		}
 		catch(Exception e)
 		{
-			logger.debug("exception occured while sending Auto quote email for "+ctx.get("PolicyKey")+"\t"+e.getMessage());
+			logger.error("exception occured while sending Auto quote email for "+ctx.get("PolicyKey")+"\t"+e.getMessage(), e);
 		}
 
 	}
@@ -14286,7 +14299,7 @@ public class AccountUtils {
 		}
 		catch(Exception e)
 		{
-			logger.error("exception occured while adding mods to auto quote premium. "+e.getMessage());
+			logger.error("exception occured while adding mods to auto quote premium. "+e.getMessage(), e);
 		}
 	}
 	public static boolean validateIfPolicynumberExists(Context ctx)
@@ -14302,7 +14315,7 @@ public class AccountUtils {
 			result=ctx.get("result")!=null && !ctx.get("result").equals(HtmlConstants.EMPTY)?Boolean.parseBoolean(ctx.get("result").toString()):false;
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateIfPolicynumberExists", e);
 		}
 		
 		return result;
@@ -14326,8 +14339,7 @@ public static void saveEstimateFormData(Context ctx)  {
 
 
 	} catch (Exception e) {
-		logger.error("error occured while executing isReferRuleTriggeredNewApp method" + e);
-		e.printStackTrace();
+		logger.error("error occured while executing isReferRuleTriggeredNewApp method" + e, e);
 	}
 	
 }
@@ -14369,8 +14381,7 @@ public static void saveRevenueForEstimateForm(Context ctx)  {
 	}
 	catch(Exception e)
 	{
-		logger.error("Exception occured while preparing data of gross revenue to save "+e.getMessage());
-		e.printStackTrace();
+		logger.error("Exception occured while preparing data of gross revenue to save "+e.getMessage(), e);
 	}
 	
 		
@@ -14404,7 +14415,7 @@ public static void validateEstimateFormAopPercentage(Context ctx) throws Excepti
 						"The total AOP percentage is required to equal 100%, current total is " + total + "%");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateEstimateFormAopPercentage", e);
 		}
 	}
 }
@@ -14454,7 +14465,7 @@ public static void saveEstimateFormAOP(Context ctx)
 				}
 				 logger.debug(ctx.get("outputList"));
 			} catch (Exception e) {
-				logger.debug("Exception Occured while saving Estimate form AOP"+e.getMessage());			}			
+				logger.error("Exception Occured while saving Estimate form AOP"+e.getMessage(), e);			}
 		}
 		
        
@@ -14462,7 +14473,7 @@ public static void saveEstimateFormAOP(Context ctx)
 	}
 	catch(Exception e)
 	{
-		logger.debug("problem occured in retainingAop method");
+		logger.error("problem occured in retainingAop method", e);
 	}
 }
 
@@ -14482,7 +14493,7 @@ public static void sendProtexureEstimateForm(Context ctx){
 		mail.sendMail((Context) ctx);
 		logger.debug("Mail has sent---- ");
 	}catch(Exception e){
-		e.printStackTrace();
+		logger.error("Error in AccountUtils.sendProtexureEstimateForm", e);
 	}
 }
 
@@ -14495,11 +14506,11 @@ public static void sendProtexureEstimateForm(Context ctx){
 		try {
 			productionEnv = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".environment.production");
 		} catch (Exception e) {
-			logger.error("error in geeting production environment");
+			logger.error("error in geeting production environment", e);
 		}
 		if ("N".equals(productionEnv)){
 			emailID = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.email");
-			logger.debug("email id------->"+emailID);
+			{ if (logger.isDebugEnabled()) logger.debug("email id------->"+emailID); }
 		} else { 
 			String forDirectFRRS = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectrenew.firstreviewer.RS");
 			String forDirectFRQB = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.QB");
@@ -14718,7 +14729,7 @@ public static void validateEstimateFormRevenueDetail(Context ctx)  {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in AccountUtils.validateEstimateFormRevenueDetail", e);
 		}
 		
 	}

@@ -41,7 +41,7 @@ private static InetLogger logger = InetLogger.getInetLogger(DownloadRating.class
 			new XML2PDF().convertPOToPDF(foFile, xmlFile, out, baseUrl, (ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER),ctx);			
 		}
 		catch(Exception e){
-			logger.error("Problem in generating rating for Quote Number : " +ctx.get("QuoteNumber"));
+			logger.error("Problem in generating rating for Quote Number : " +ctx.get("QuoteNumber"), e);
 		}
 	}
 
@@ -61,7 +61,7 @@ private static InetLogger logger = InetLogger.getInetLogger(DownloadRating.class
 			new XML2PDF().convertPOToPDF(foFile, xmlFile, out, baseUrl, (ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER),ctx);			
 		}
 		catch(Exception e){
-			logger.error("Problem in generating rating for Quote Number : " +ctx.get("QuoteNumber"));
+			logger.error("Problem in generating rating for Quote Number : " +ctx.get("QuoteNumber"), e);
 		}
 	}
 	public void fetchDataForInvoiceXml(Context ctx) {		
@@ -75,8 +75,7 @@ private static InetLogger logger = InetLogger.getInetLogger(DownloadRating.class
 			}			
 		}
 		catch(Exception e){
-			e.printStackTrace();
-			logger.error("Problem in fetching Invoiced  data for Quote Number : " +ctx.get("QuoteNumber"));
+			logger.error("Problem in fetching Invoiced  data for Quote Number : " +ctx.get("QuoteNumber"), e);
 		}
 		
 	}
@@ -124,7 +123,7 @@ private static InetLogger logger = InetLogger.getInetLogger(DownloadRating.class
 					Element root = XMLUtils.parseXMLRootElement(outputString);					
 					Element outputElement = root.getChild("PremiumInfo");
 					Map out = populateOutput( outputElement);
-					System.out.println("MTTaxAmmount-------"+out.get("MTTaxAmmount"));
+					{ if (logger.isDebugEnabled()) logger.debug("MTTaxAmmount-------"+out.get("MTTaxAmmount")); }
 					
 					Map outData = calculateTax(out, ctx);
 					
@@ -139,8 +138,7 @@ private static InetLogger logger = InetLogger.getInetLogger(DownloadRating.class
 				
 		}
 		catch(Exception e){
-			e.printStackTrace();
-			logger.error("Problem in fetching data for Quote Number : " +ctx.get("QuoteNumber"));
+			logger.error("Problem in fetching data for Quote Number : " +ctx.get("QuoteNumber"), e);
 		}
 		
 	}
@@ -186,7 +184,7 @@ private static InetLogger logger = InetLogger.getInetLogger(DownloadRating.class
                      mTCountyTax = mTCountyTax
                                + Double.parseDouble(out.get(
                                         "CountyTaxAmmount").toString());
-                     System.out.println("countrytaxamount------"+Double.parseDouble(out.get("CountyTaxAmmount").toString()));
+                     { if (logger.isDebugEnabled()) logger.debug("countrytaxamount------"+Double.parseDouble(out.get("CountyTaxAmmount").toString())); }
                      
                      out.put("CountyTaxAmmount", Double.parseDouble(out.get("CountyTaxAmmount").toString()));
                 }
@@ -236,7 +234,7 @@ private static InetLogger logger = InetLogger.getInetLogger(DownloadRating.class
 			IOUtils.writeToFile(xmlFile, buffer.append(new RequestProcessor().generateResponseXml(ctx,false)));
 		}
 		catch(Exception e){
-			logger.error("Problem in generating data xml for Quote Number : " +ctx.get("QuoteNumber"));
+			logger.error("Problem in generating data xml for Quote Number : " +ctx.get("QuoteNumber"), e);
 		}
 	}
 	

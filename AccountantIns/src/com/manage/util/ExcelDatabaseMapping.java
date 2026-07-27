@@ -460,6 +460,7 @@ public class ExcelDatabaseMapping
 						style.setAlignment(CellStyle.ALIGN_CENTER);
 					}
 				}catch (Exception e) {
+					logger.error("Error in ExcelDatabaseMapping.createDynamicHeaderRow", e);
 					// TODO: handle exception
 				}
 				//Ended code
@@ -549,6 +550,7 @@ public class ExcelDatabaseMapping
 								cell.setCellStyle(style);
 							}
 						}catch (Exception e) {
+							logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 							// TODO: handle exception
 						}
 						
@@ -585,7 +587,7 @@ public class ExcelDatabaseMapping
 									value = newValue;
 								}
 							}catch (Exception e) {
-								logger.error("Unable to decrypt " +key+ " due to error : " + e.getMessage());
+								logger.error("Unable to decrypt " +key+ " due to error : " + e.getMessage(), e);
 							}
 						}else{
 							value = dataMap.get(key) != null ? dataMap.get(key).toString().replaceAll("&amp;", "&") : "";
@@ -604,6 +606,7 @@ public class ExcelDatabaseMapping
 								try{
 									cell.setCellValue(Double.parseDouble(value.toString()));
 								}catch (Exception e) {
+									logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 									cell.setCellValue(value.toString());
 								}
 								
@@ -613,6 +616,7 @@ public class ExcelDatabaseMapping
 								continue;
 							}
 						}catch (Exception e) {
+							logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 							// TODO: handle exception
 						}
 						//Ended code
@@ -757,6 +761,7 @@ public class ExcelDatabaseMapping
 							cell.setCellStyle(style);
 						}
 					}catch (Exception e) {
+						logger.error("Error in ExcelDatabaseMapping.createDynamicAccordianDataRow", e);
 						// TODO: handle exception
 					}
 						
@@ -793,7 +798,7 @@ public class ExcelDatabaseMapping
 								value = newValue;
 							}
 						}catch (Exception e) {
-							logger.error("Unable to decrypt " +key+ " due to error : " + e.getMessage());
+							logger.error("Unable to decrypt " +key+ " due to error : " + e.getMessage(), e);
 						}
 					}else{
 						value = dataMap.get(key) != null ? dataMap.get(key).toString().replaceAll("&amp;", "&") : "";
@@ -810,6 +815,7 @@ public class ExcelDatabaseMapping
 							try{
 								cell.setCellValue(Double.parseDouble(value.toString()));
 							}catch (Exception e) {
+								logger.error("Error in ExcelDatabaseMapping.createDynamicAccordianDataRow", e);
 								cell.setCellValue(value.toString());
 							}
 								
@@ -819,6 +825,7 @@ public class ExcelDatabaseMapping
 							continue;
 						}
 					}catch (Exception e) {
+						logger.error("Error in ExcelDatabaseMapping.createDynamicAccordianDataRow", e);
 						// TODO: handle exception
 					}
 					//Ended code
@@ -915,6 +922,7 @@ public class ExcelDatabaseMapping
 					style.setAlignment(CellStyle.ALIGN_CENTER);
 				}
 			}catch (Exception e) {
+				logger.error("Error in ExcelDatabaseMapping.createDynamicAccordianHeaderRow", e);
 				// TODO: handle exception
 			}
 			//Ended code
@@ -1010,7 +1018,7 @@ public class ExcelDatabaseMapping
 									value = newValue;
 								}
 							}catch (Exception e) {
-								logger.error("Unable to decrypt " +key+ " due to error : " + e.getMessage());
+								logger.error("Unable to decrypt " +key+ " due to error : " + e.getMessage(), e);
 							}
 						}else{
 							value = dataMap.get(key) != null ? dataMap.get(key).toString().replaceAll("&amp;", "&") : "";
@@ -1028,6 +1036,7 @@ public class ExcelDatabaseMapping
 								try{
 									cell.setCellStyle(dateStyle);
 								}catch (Exception e) {
+									logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 									cell.setCellStyle(textStyle);
 								}
 								
@@ -1038,6 +1047,7 @@ public class ExcelDatabaseMapping
 								continue;
 							}
 						}catch (Exception e) {
+							logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 							// TODO: handle exception
 						}
 						
@@ -1063,6 +1073,7 @@ public class ExcelDatabaseMapping
 								try{
 									cell.setCellValue(Double.parseDouble(value.toString()));
 								}catch (Exception e) {
+									logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 									cell.setCellValue(value.toString());
 								}
 								
@@ -1072,6 +1083,7 @@ public class ExcelDatabaseMapping
 								continue;
 							}
 						}catch (Exception e) {
+							logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 							// TODO: handle exception
 							//logger.error("Error in setting numeric cell : " + key + " with value : " + value + " : " + e.getMessage());
 						}
@@ -1087,6 +1099,7 @@ public class ExcelDatabaseMapping
 										cell.setCellValue(Integer.parseInt(value.toString()));
 									}
 								}catch (Exception e) {
+									logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 									// TODO: handle exception
 								}
 								
@@ -1096,6 +1109,7 @@ public class ExcelDatabaseMapping
 								continue;
 							}
 						}catch (Exception e) {
+							logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 							// TODO: handle exception
 						}
 						//Ended code
@@ -1106,6 +1120,7 @@ public class ExcelDatabaseMapping
 						try{
 							cell.setCellType(Cell.CELL_TYPE_STRING);
 						}catch (Exception e) {
+							logger.error("Error in ExcelDatabaseMapping.createDynamicDataRow", e);
 							//logger.error("Error in setting cell : " + key + " with value : " + value + " : " + e.getMessage());
 							cell.setCellType(Cell.CELL_TYPE_BLANK);
 						}
@@ -2156,6 +2171,7 @@ public class ExcelDatabaseMapping
 					cell.setCellValue(Double.parseDouble(value.toString()));
 					cell.setCellType(Cell.CELL_TYPE_NUMERIC);
 				}catch (Exception e1) {
+					logger.error("Error in ExcelDatabaseMapping.setRepeatCellValue", e1);
 					cell.setCellValue(value.toString());
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 				}
@@ -2207,7 +2223,7 @@ public class ExcelDatabaseMapping
 				return style;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in ExcelDatabaseMapping.setRepeatCellValue", e);
 		}
 		
 		//style = mainSheet.getWorkbook().createCellStyle();
@@ -2227,6 +2243,7 @@ public class ExcelDatabaseMapping
 					cell.setCellValue(Double.parseDouble(value.toString()));
 					cell.setCellType(Cell.CELL_TYPE_NUMERIC);
 				}catch (Exception e1) {
+					logger.error("Error in ExcelDatabaseMapping.setRepeatCellValue", e1);
 					cell.setCellValue(value.toString());
 					cell.setCellType(Cell.CELL_TYPE_STRING);
 				}
@@ -2254,6 +2271,7 @@ public class ExcelDatabaseMapping
 						cell.setCellValue(Integer.parseInt(value.toString()));
 					}
 				}catch (Exception e) {
+					logger.error("Error in ExcelDatabaseMapping.setRepeatCellValue", e);
 					// TODO: handle exception
 				}
 				
@@ -2265,7 +2283,7 @@ public class ExcelDatabaseMapping
 				CellUtil.setCellStyleProperty(cell, mainSheet.getWorkbook(), CellUtil.DATA_FORMAT, (short)0x31);
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in ExcelDatabaseMapping.setRepeatCellValue", e);
 		}
 	}
 	

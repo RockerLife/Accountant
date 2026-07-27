@@ -293,7 +293,7 @@ public class AccountantValidationUtils {
 			final byte[] plainText = decipher.doFinal(encData);
 			return new String(plainText, "UTF-8");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountantValidationUtils.decrypt", e);
 			return message;
 		}
 	}
@@ -312,6 +312,7 @@ public class AccountantValidationUtils {
 		}
 		catch(NumberFormatException ne)
 		{
+			logger.error("Error in AccountantValidationUtils.decryptyPolicyKey", ne);
 			AccountantValidationUtils o = new AccountantValidationUtils();
 			ctx.put("PolicyKey", o.decrypt(policyKey));
 			ctx.put("ParentPolicyKey", o.decrypt(policyKey));
@@ -1596,7 +1597,7 @@ public class AccountantValidationUtils {
 	public void insertDataForAlreadyRenewedPolicy(IContext ctx)
 			throws Exception {
 
-		logger.debug("Old Policy Key" + ctx.get("ParentPolicyKey"));
+		{ if (logger.isDebugEnabled()) logger.debug("Old Policy Key" + ctx.get("ParentPolicyKey")); }
 		Object object = SqlResources.getSqlMapProcessor(ctx).findByKey(
 				"Policy.findByKey", ctx);
 
@@ -1606,8 +1607,8 @@ public class AccountantValidationUtils {
 			String accountId = accountmap.get("AccountID") != null ? accountmap
 					.get("AccountID").toString() : "";
 			ctx.put("AccountID", accountmap.get("AccountID"));
-			logger.debug("AccountID is "
-					+ accountmap.get("AccountID").toString());
+			{ if (logger.isDebugEnabled()) logger.debug("AccountID is "
+					+ accountmap.get("AccountID").toString()); }
 			Object alldataObject = SqlResources.getSqlMapProcessor(ctx).select(
 					"Policy.SearchAccountHistory_Proc", ctx);
 
@@ -1665,7 +1666,7 @@ public class AccountantValidationUtils {
 		} else {
 			producerCodeExist = false;
 		}
-		logger.debug("Producer Code exist ? " +  producerCodeExist);
+		{ if (logger.isDebugEnabled()) logger.debug("Producer Code exist ? " +  producerCodeExist); }
 		return producerCodeExist;
 
 	}
@@ -1836,7 +1837,7 @@ public class AccountantValidationUtils {
 		}
 		catch(Exception e)
 		{
-			logger.debug("error occured while validating status :"+e);
+			logger.error("error occured while validating status :"+e, e);
 		}
 		return false;
 	}
@@ -1845,6 +1846,8 @@ public class AccountantValidationUtils {
 	public static void validateUserLogin(Context ctx) throws Exception 
 	{
 		try {
+			if (ctx.get("UserLoginKey") == null)
+				return;
 			if(ctx.get("AccountEmail") != null){
 				ctx.put("UserEmail", ctx.get("AccountEmail").toString());
 			}
@@ -1858,8 +1861,7 @@ public class AccountantValidationUtils {
 				SqlResources.getSqlMapProcessor(ctx).update("UserSessionLogin.update", ctx);
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
-			logger.debug("error occured while validating status :"+e);
+			logger.error("error occured while validating status :"+e, e);
 		}
 	}
 	
@@ -1913,7 +1915,7 @@ public class AccountantValidationUtils {
 		}
 		catch(Exception e)
 		{
-			logger.error("Error occured while validating PL Policy Number for Brokerage");
+			logger.error("Error occured while validating PL Policy Number for Brokerage", e);
 			
 		}
 		try
@@ -1924,7 +1926,8 @@ public class AccountantValidationUtils {
 		}
 		}
 		catch(Exception e1)
-		{e1.printStackTrace();}
+		{
+			logger.error("Error in AccountantValidationUtils.validatePLPolicynumberForBrokerage", e1);}
 		//return result;
 	}
 
@@ -1963,7 +1966,7 @@ public class AccountantValidationUtils {
 				}
 			}
 		} catch(Exception e) {
-			logger.debug("error occured while validating status :"+e);
+			logger.error("error occured while validating status :"+e, e);
 		}
 		return false;
 	}
@@ -1988,7 +1991,7 @@ public class AccountantValidationUtils {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountantValidationUtils.validateNameClearanceQQIndicationFlagsCleared", e);
 		}
 
 	}
@@ -2006,7 +2009,7 @@ public class AccountantValidationUtils {
 			}
     		
   		} catch(Exception e){
-  			e.printStackTrace();
+            logger.error("Error in AccountantValidationUtils.validateExistingZohoRecordInProdDB", e);
   		}
 		return false;
   	}
@@ -2025,12 +2028,12 @@ public class AccountantValidationUtils {
 			try {
 				productionEnv = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".environment.production");
 			} catch (Exception e) {
-				logger.error("error in geeting production environment");
+				logger.error("error in geeting production environment", e);
 			}
 			
 			if ("N".equals(productionEnv)){
 				emailID = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.email");
-				logger.debug("email id------->"+emailID);
+				{ if (logger.isDebugEnabled()) logger.debug("email id------->"+emailID); }
 			}
 			
 			Context newCtx = new Context();
@@ -2068,7 +2071,7 @@ public class AccountantValidationUtils {
 			SqlResources.getSqlMapProcessor(ctx).delete("SqlStmts.UserStatementManualBoQueriesUpdateMailSentBeyondWorkQCovrageDaysFlag", ctx);
 			
 		} catch(Exception e) {
-			logger.error("Error occured while Update MailSentBeyondWorkQCovrageDays Flag");
+			logger.error("Error occured while Update MailSentBeyondWorkQCovrageDays Flag", e);
 		}
 
 	}
@@ -2090,12 +2093,12 @@ public class AccountantValidationUtils {
 			try {
 				productionEnv = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".environment.production");
 			} catch (Exception e) {
-				logger.error("error in geeting production environment");
+				logger.error("error in geeting production environment", e);
 			}
 			
 			if ("N".equals(productionEnv)){
 				emailID = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.email");
-				logger.debug("email id------->"+emailID);
+				{ if (logger.isDebugEnabled()) logger.debug("email id------->"+emailID); }
 			}
 			
 			Context newCtx = new Context();
@@ -2162,7 +2165,7 @@ public class AccountantValidationUtils {
 			logger.debug("Mail has sent---- ");
 			
 		} catch(Exception e) {
-			logger.error("Error occured while Update mailSentAfterPayment Flag");
+			logger.error("Error occured while Update mailSentAfterPayment Flag", e);
 		}
 
 	}
@@ -2172,7 +2175,7 @@ public class AccountantValidationUtils {
 				AccountUtils.setCompanyForPolicy(ctx);
 				return "3".equals(String.valueOf(ctx.get("CompanyKey")));
 			} catch(Exception e) {
-				logger.debug("error occured while validating status :"+e);
+				logger.error("error occured while validating status :"+e, e);
 			}
 			return false;
 		}

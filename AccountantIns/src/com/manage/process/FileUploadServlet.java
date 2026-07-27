@@ -6,6 +6,7 @@
  */
 package com.manage.process;
 
+import com.util.InetLogger;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -32,12 +33,13 @@ import com.util.SystemProperties;
  */
 public class FileUploadServlet extends HttpServlet 
 {
+	private static final InetLogger logger = InetLogger.getInetLogger(FileUploadServlet.class);
 	
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
             doPost(request, response);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error in FileUploadServlet.doGet", e);
         }
     }
 
@@ -137,17 +139,17 @@ public class FileUploadServlet extends HttpServlet
 		    dispatcher.forward(request,response);
 		    
 		} catch (Exception e) {
+			logger.error("Error in FileUploadServlet.doPost", e);
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("/upload.do?dynaKeys="+dynaKeys+"&dynaValues="+dynaValues+"&inet_method="+inet_method+"&inet_page="+inet_page+"&uploadSuccess=N&FileNameCorrect=N");
 		    try {
 				dispatcher.forward(request,response);
 			} catch (ServletException e1) {
+				logger.error("Error in FileUploadServlet.doPost", e1);
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			} catch (IOException e1) {
+				logger.error("Error in FileUploadServlet.doPost", e1);
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			}
-		    e.printStackTrace();
 		}
     }
     

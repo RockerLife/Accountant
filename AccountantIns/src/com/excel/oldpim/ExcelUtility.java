@@ -190,7 +190,6 @@ public class ExcelUtility {
 							.parse(getFormattedDateFromObject(value));
 					cell.setCellValue(date);
 				} catch (Exception e) {
-					System.out.println("Exception :" + e);
 					logger.error(e);
 				}
 				// DateUtil.isValidExcelDate(Double.parseDouble(getFormattedDateFromObject(value)));
@@ -210,7 +209,7 @@ public class ExcelUtility {
 							.parse(getFormattedDateFromObject(value));
 					cell.setCellValue(date);
 				} catch (Exception e) {
-					logger.debug("Exception :" + e);
+					logger.error("Exception :" + e, e);
 				}
 				// DateUtil.isValidExcelDate(Double.parseDouble(value.toString()));
 			} else
@@ -371,7 +370,7 @@ public class ExcelUtility {
 							.parse(getFormattedDateFromObject(value));
 					cell.setCellValue(date);
 				} catch (Exception e) {
-					logger.debug("Exception :" + e);
+					logger.error("Exception :" + e, e);
 				}
 				// DateUtil.isValidExcelDate(Double.parseDouble(getFormattedDateFromObject(value)));
 			} else
@@ -390,7 +389,7 @@ public class ExcelUtility {
 							.parse(getFormattedDateFromObject(value));
 					cell.setCellValue(date);
 				} catch (Exception e) {
-					logger.debug("Exception :" + e);
+					logger.error("Exception :" + e, e);
 				}
 				// DateUtil.isValidExcelDate(Double.parseDouble(value.toString()));
 			} else
@@ -404,6 +403,7 @@ public class ExcelUtility {
 			try {
 				cell.setCellValue(Integer.parseInt(value.toString()));
 			} catch (NumberFormatException nfe) {
+				logger.error("Error in ExcelUtility.setCellValue", nfe);
 				cell.setCellValue(value.toString());
 			}
 
@@ -415,9 +415,11 @@ public class ExcelUtility {
 			try {
 				cell.setCellValue(Integer.parseInt(value.toString()));
 			} catch (NumberFormatException nfe) {
+				logger.error("Error in ExcelUtility.setCellValue", nfe);
 				try {
 					cell.setCellValue(Double.parseDouble(value.toString()));
 				} catch (NumberFormatException nfe1) {
+					logger.error("Error in ExcelUtility.setCellValue", nfe1);
 				
 				
 				cell.setCellValue(value.toString());

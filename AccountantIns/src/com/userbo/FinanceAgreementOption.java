@@ -25,7 +25,7 @@ public class FinanceAgreementOption {
 	public String receiveAgreementQuoteNumber(String ipfsQuoteNumber, String paymentType){	
 		
 		logger.debug("AccountantIns Going To Issue Policy from the Web Service Call");
-		logger.debug("Your Agreement Quote Number is ---> " + ipfsQuoteNumber);
+		{ if (logger.isDebugEnabled()) logger.debug("Your Agreement Quote Number is ---> " + ipfsQuoteNumber); }
 		//return ERROR_MESSAGE ;	
 		
 		if(ipfsQuoteNumber.isEmpty() || ipfsQuoteNumber == null){
@@ -50,13 +50,13 @@ public class FinanceAgreementOption {
 		try{
 			wsCtx.put("LastUpdateTimeStamp", new Timestamp(new Date().getTime()));
 			if(wsCtx.get("LastUpdateTimeStamp") != null){
-				logger.debug("LastUpdateTimeStamp--   "+wsCtx.get("LastUpdateTimeStamp"));
+				{ if (logger.isDebugEnabled()) logger.debug("LastUpdateTimeStamp--   "+wsCtx.get("LastUpdateTimeStamp")); }
 				wsCtx.put("TransactionDate",new SimpleDateFormat(DATE_PATTERN).format(wsCtx.get("LastUpdateTimeStamp")));
-				logger.debug("TransactionDate ---->    "+wsCtx.get("TransactionDate"));	
+				{ if (logger.isDebugEnabled()) logger.debug("TransactionDate ---->    "+wsCtx.get("TransactionDate")); }
 			}
 		}
 		catch (Exception e){			
-			logger.debug("AssignLastUpdateTimeStamp------"+e.getMessage());
+			logger.error("AssignLastUpdateTimeStamp------"+e.getMessage(), e);
 		}		
 		
 		try{
@@ -75,7 +75,7 @@ public class FinanceAgreementOption {
 				if(paymentDetailList != null && paymentDetailList.size() > 0){
 					Map paymentDetailMap = (Map)paymentDetailList.get(0);
 					if("ManualCheck".equals(paymentDetailMap.get("FinanceDownPayment"))){
-						logger.debug("IPFS Manual Check Quote Number (" + ipfsQuoteNumber + ") can not be issued");
+						{ if (logger.isDebugEnabled()) logger.debug("IPFS Manual Check Quote Number (" + ipfsQuoteNumber + ") can not be issued"); }
 						return "IPFS Manual Check Quote Number (" + ipfsQuoteNumber + ") can not be issued";
 					}
 				}
@@ -85,7 +85,7 @@ public class FinanceAgreementOption {
 					String out = mgt.processDocumentManagment(wsCtx);
 					
 					if(!SUCCESS_MESSAGE.equals(out)){
-						logger.debug("Problem in DocumentManagment...." + out);
+						{ if (logger.isDebugEnabled()) logger.debug("Problem in DocumentManagment...." + out); }
 						return "IPFS Quote Number (" + ipfsQuoteNumber + ") " + out;
 					}
 					
@@ -103,19 +103,17 @@ public class FinanceAgreementOption {
 					}					
 					
 				} catch(Exception e){
-					e.printStackTrace();
-					logger.debug("Problem in FinanceAgreementOption " + e.getMessage());
+					logger.error("Problem in FinanceAgreementOption " + e.getMessage(), e);
 					return ERROR_MESSAGE + e.getMessage();
 				}
 				logger.debug("Called the document Management.");
 			} else {
-				logger.debug("Could Not find Data for ipfsQuoteNumber - " + ipfsQuoteNumber );
+				{ if (logger.isDebugEnabled()) logger.debug("Could Not find Data for ipfsQuoteNumber - " + ipfsQuoteNumber ); }
 				return "IPFS Quote Number (" + ipfsQuoteNumber + ") is invalid" ;
 			}
 						
 		}catch(Throwable t){
-			t.printStackTrace();
-			logger.debug("Problem in FinanceAgreementOption " + t.getMessage());
+			logger.error("Problem in FinanceAgreementOption " + t.getMessage(), t);
 			return ERROR_MESSAGE + t.getMessage();
 		}		
 		return SUCCESS_MESSAGE;

@@ -160,7 +160,7 @@ public abstract class IOUtils
 			createDirectory("","C://new1//new2//new.txt");
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in IOUtils.main", e);
 		}
 		
 	}
@@ -188,6 +188,7 @@ public abstract class IOUtils
 			fileStream = new FileInputStream(filename);
 		} catch (FileNotFoundException e) 
 		{
+			logger.error("Error in IOUtils.fileExists", e);
 			return false;
 		}
 		return true;
@@ -206,7 +207,7 @@ public abstract class IOUtils
             
         } catch (Exception e)
         {
-            logger.error(e.getMessage());
+            logger.error(e.getMessage(), e);
             return;
         } finally
         {
@@ -227,8 +228,7 @@ public abstract class IOUtils
 		    
 		} catch (Exception e)
 		{
-			logger.error(e.getMessage());
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 			return;
 		} finally
 		{
@@ -247,6 +247,7 @@ public abstract class IOUtils
 			fout.write(strbuf.toString().getBytes());
 		} catch (Exception e)
 		{
+			logger.error("Error in IOUtils.appendToFile", e);
 			logger.trace(e);
 			return;
 		} finally
@@ -264,6 +265,7 @@ public abstract class IOUtils
 			f = new File(fileName);
 		} catch (Exception e)
 		{
+			logger.error("Error in IOUtils.deleteFile", e);
 			logger.trace(e);
 		}
 		
@@ -360,7 +362,7 @@ public abstract class IOUtils
 			f.delete();
 		} catch (Exception e)
 		{
-			logger.debug("Error delete file " + fileName);
+			logger.error("Error delete file " + fileName, e);
 			logger.trace(e);
 		}
 		FileOutputStream fout = null;

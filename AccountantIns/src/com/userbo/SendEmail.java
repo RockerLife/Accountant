@@ -202,7 +202,8 @@ public class SendEmail {
 		 strDate = formatter.format(date);
 		logger.debug(strDate);
 		}catch(Exception e)
-		{e.printStackTrace();}
+		{
+			logger.error("Error in SendEmail.getFormatDate", e);}
 		return strDate;
 	}
 	

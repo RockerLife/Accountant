@@ -48,6 +48,7 @@ public class RatingBatch {
 			url = SystemProperties.getInstance().getString("appl.AccountantIns.webserviceurl");
 		} 
 		catch (Exception e) {
+			logger.error("Error in RatingBatch.callingRatingEngine", e);
 
 		}
 
@@ -69,8 +70,8 @@ public class RatingBatch {
 			
 			populateOuputResponse(newCtx);	
 			
-			System.out.println("Outputresponse:::::::::>>>>>>>>>?????????"+newCtx.get("XmlOutputDatafromRating"));
-			System.out.println("Inputresponse:::::::::>>>>>>>>>?????????"+newCtx.get("XmlInputDatatoRating"));
+			{ if (logger.isDebugEnabled()) logger.debug("Outputresponse:::::::::>>>>>>>>>?????????"+newCtx.get("XmlOutputDatafromRating")); }
+			{ if (logger.isDebugEnabled()) logger.debug("Inputresponse:::::::::>>>>>>>>>?????????"+newCtx.get("XmlInputDatatoRating")); }
 			quoteMap.put("Premium", newCtx.get("Premium"));
 			quoteMap.put("RatingInput", newCtx.get("XmlInputDatatoRating"));
 			quoteMap.put("RatingOutput", newCtx.get("XmlOutputDatafromRating"));
@@ -343,7 +344,7 @@ public class RatingBatch {
 		
 		}
 		catch (Exception e) {
-			logger.error("populate output reponse-"+e);
+			logger.error("populate output reponse-"+e, e);
 //			System.out.println("populate output reponse---"+e);
 			
 		}

@@ -61,8 +61,7 @@ public class PaymentUtils {
 			
 		}catch (Exception e) {
 			
-			logger.debug("Paypal credential have not been generated---- ");
-			e.printStackTrace();
+			logger.error("Paypal credential have not been generated---- ", e);
 			throw e;
 		}
 	}
@@ -71,8 +70,8 @@ public class PaymentUtils {
 		try {	
 			
 			logger.debug("Going to get data for Payment Request.");
-			logger.debug("Policy Key is " + ctx.get("PolicyKey"));
-			logger.debug("Transaction Sequence " + ctx.get("FinalisedQuote_TransactionSequence"));
+			{ if (logger.isDebugEnabled()) logger.debug("Policy Key is " + ctx.get("PolicyKey")); }
+			{ if (logger.isDebugEnabled()) logger.debug("Transaction Sequence " + ctx.get("FinalisedQuote_TransactionSequence")); }
 			
 			long timeStamp = System.currentTimeMillis()/1000;
 			String ts = String.valueOf(timeStamp);
@@ -123,7 +122,7 @@ public class PaymentUtils {
 			logger.debug("Got the data for Payment request");
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in PaymentUtils.processPaymentAuth", e);
 		}
 
 	}

@@ -42,7 +42,7 @@ public class AccountantInsServlet extends ComponentProcessServlet{
 				
 				String url = SystemProperties.getInstance().getString("appl.configuration.service.url");
 				
-				logger.debug("Going to load xmls from url "+url+" at time : " + new Date());
+				{ if (logger.isDebugEnabled()) logger.debug("Going to load xmls from url "+url+" at time : " + new Date()); }
 				
 				ConfigurationService service = new ConfigurationServiceProxy(url);
 				logger.debug(service);
@@ -282,7 +282,7 @@ public class AccountantInsServlet extends ComponentProcessServlet{
 										logger.debug("componentshelp xml generated");
 									}
 								}catch(Exception e1){
-									logger.error("Error while generating " + xmlObj.getXmlName() + " xml due to error : " + e1.getMessage());
+									logger.error("Error while generating " + xmlObj.getXmlName() + " xml due to error : " + e1.getMessage(), e1);
 								}
 							}
 						}
@@ -333,10 +333,10 @@ public class AccountantInsServlet extends ComponentProcessServlet{
 					}
 				}
 				
-				logger.debug("Xmls loaded successfully at time : " + new Date());
+				{ if (logger.isDebugEnabled()) logger.debug("Xmls loaded successfully at time : " + new Date()); }
 			}
 		} catch (Exception e) {
-			logger.error("Unable to generate config xmls due to error : " + e.getMessage());
+			logger.error("Unable to generate config xmls due to error : " + e.getMessage(), e);
 		}
 		
 		new TabsConfiguration().getTabsConf();	
@@ -364,13 +364,13 @@ public class AccountantInsServlet extends ComponentProcessServlet{
 	    java.util.Date date=null;
 	    millis=System.currentTimeMillis();  
 	    date=new java.util.Date(millis);  
-	    logger.debug("Request process input time ----------->>>>>>> "+date);
+	    { if (logger.isDebugEnabled()) logger.debug("Request process input time ----------->>>>>>> "+date); }
 	      
 		super.process(request, response);
 		
 		millis=System.currentTimeMillis();  
 	    date=new java.util.Date(millis);  
-	    logger.debug("Request process output time ---------->>>>>>> "+date);
+	    { if (logger.isDebugEnabled()) logger.debug("Request process output time ---------->>>>>>> "+date); }
 	}
 
 	
@@ -442,6 +442,7 @@ public class AccountantInsServlet extends ComponentProcessServlet{
 		  try{
 				response.sendRedirect(getErrorForwardUrl(ctx, true));
 		  }catch (Exception e) {
+            logger.error("Error in AccountantInsServlet.logOut", e);
 				// TODO: handle exception
 		  }
 	}
@@ -450,7 +451,7 @@ public class AccountantInsServlet extends ComponentProcessServlet{
 		try{
 			return SystemProperties.getInstance().getString("appl.error.forward.url");
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in AccountantInsServlet.getErrorForwardUrl", e);
 		}
 		
 		return null; 
@@ -487,7 +488,7 @@ public class AccountantInsServlet extends ComponentProcessServlet{
 	    		file.delete();
 	    	}
 		}catch(Exception e){
-			logger.debug("Error while deleting file : " + file);
+			logger.error("Error while deleting file : " + file, e);
 		}
     }
 }

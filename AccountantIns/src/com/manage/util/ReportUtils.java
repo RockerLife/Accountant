@@ -327,7 +327,7 @@ public class ReportUtils {
 							} catch (Exception arg8) {
 								logger.error(ctx, "Unable to execute rule : "
 										+ eval + " for report : "
-										+ reportDefImpl.getName());
+										+ reportDefImpl.getName(), arg8);
 							}
 						}
 
@@ -596,7 +596,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + eval
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg8);
 						}
 					}
 
@@ -687,7 +687,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + eval
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg8);
 						}
 					}
 
@@ -752,7 +752,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + eval
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg9);
 						}
 					}
 
@@ -815,7 +815,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + eval
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg8);
 						}
 					}
 
@@ -932,7 +932,7 @@ public class ReportUtils {
 						}
 					}
 				} catch (Exception arg18) {
-					logger.debug(ctx, "Invalid search_xml found");
+					logger.error(ctx, "Invalid search_xml found", arg18);
 				}
 			}
 		}
@@ -955,7 +955,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + arg21
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg17);
 						}
 					}
 
@@ -1110,7 +1110,7 @@ public class ReportUtils {
 																+ colLabel
 																		.getEval()
 																+ " due to error : "
-																+ arg14.getMessage());
+																+ arg14.getMessage(), arg14);
 											}
 										} else {
 											HashMap arg19 = CacheManager
@@ -1131,7 +1131,7 @@ public class ReportUtils {
 								} catch (Exception arg15) {
 									logger.error(ctx,
 											"Error while getting label for default display column due to error : "
-													+ arg15.getMessage());
+													+ arg15.getMessage(), arg15);
 								}
 
 								if (value != null && value.equals("Select")) {
@@ -1154,7 +1154,7 @@ public class ReportUtils {
 									} catch (Exception arg13) {
 										logger.error(ctx,
 												"Unable to execute rule for column : "
-														+ key);
+														+ key, arg13);
 									}
 								}
 
@@ -1264,6 +1264,7 @@ public class ReportUtils {
 												break;
 											}
 										} catch (Exception arg12) {
+											logger.error("Error in ReportUtils.validatePage", arg12);
 											DataUtils.populateError(ctx,
 													isFound.getName(),
 													"incorrect_date");
@@ -1271,6 +1272,7 @@ public class ReportUtils {
 										}
 									}
 								} catch (Exception arg13) {
+									logger.error("Error in ReportUtils.validatePage", arg13);
 									;
 								}
 							}
@@ -1357,12 +1359,14 @@ public class ReportUtils {
 										break;
 									}
 								} catch (Exception arg10) {
+									logger.error("Error in ReportUtils.validatePage", arg10);
 									DataUtils.populateError(ctx,
 											arg17.getName(), "incorrect_date");
 									break;
 								}
 							}
 						} catch (Exception arg11) {
+							logger.error("Error in ReportUtils.validatePage", arg11);
 							;
 						}
 					}
@@ -1833,9 +1837,9 @@ public class ReportUtils {
 											}
 										}
 									} catch (Exception arg24) {
-										logger.debug(ctx,
+										logger.error(ctx,
 												"Error found while generating search xml due to error : "
-														+ arg24.getMessage());
+														+ arg24.getMessage(), arg24);
 									}
 								}
 
@@ -1915,9 +1919,9 @@ public class ReportUtils {
 									}
 								}
 							} catch (Exception arg23) {
-								logger.debug(ctx,
+								logger.error(ctx,
 										"Error found while generating search xml due to error : "
-												+ arg23.getMessage());
+												+ arg23.getMessage(), arg23);
 							}
 						}
 
@@ -1992,6 +1996,7 @@ public class ReportUtils {
 									}
 								}
 							} catch (Exception arg25) {
+								logger.error("Error in ReportUtils.generateRequestXml", arg25);
 								;
 							}
 
@@ -2106,7 +2111,7 @@ public class ReportUtils {
 				if (root != null) {
 					Element e = root.getChild("body");
 					if (e == null) {
-						logger.debug(ctx, pageName + " does not contain BODY Element");
+						{ if (logger.isDebugEnabled()) logger.debug(ctx, pageName + " does not contain BODY Element"); }
 						return root.getDocument();
 					}
 					Element form = e.getChild("form");
@@ -2117,8 +2122,8 @@ public class ReportUtils {
 					}
 
 					if (form == null) {
-						logger.debug(ctx, pageName
-								+ " does not contain FORM Element");
+						{ if (logger.isDebugEnabled()) logger.debug(ctx, pageName
+								+ " does not contain FORM Element"); }
 					}
 
 					List children = e.getChildren();
@@ -2126,7 +2131,7 @@ public class ReportUtils {
 				}
 			}
 		} catch (Exception arg9) {
-			arg9.printStackTrace();
+			logger.error("Error in ReportUtils.parseReportDocument", arg9);
 			throw arg9;
 		}
 
@@ -2170,6 +2175,7 @@ public class ReportUtils {
 							arg23 = (new PageUtils()).parseHtmlDocument(ctx,
 									arg22, "", request);
 						} catch (Exception arg20) {
+							logger.error("Error in ReportUtils.parseHTML", arg20);
 							dynaValues = SystemProperties.getInstance()
 									.getString(
 											"appl." + ctx.getProject()
@@ -2573,7 +2579,7 @@ public class ReportUtils {
 							logger.error(
 									ctx,
 									"Unable to parse managereport link href to add dynamic values at run time due to error : "
-											+ arg21.getMessage());
+											+ arg21.getMessage(), arg21);
 						}
 					}
 
@@ -2708,7 +2714,7 @@ public class ReportUtils {
 										} catch (Exception arg10) {
 											logger.error(ctx,
 													"Unable to execute rule for column : "
-															+ arg16.getName());
+															+ arg16.getName(), arg10);
 										}
 									}
 
@@ -2748,6 +2754,7 @@ public class ReportUtils {
 										}
 									}
 								} catch (Exception arg9) {
+									logger.error("Error in ReportUtils.creatingExcelHeadersMap", arg9);
 									;
 								}
 
@@ -2811,7 +2818,7 @@ public class ReportUtils {
 									} catch (Exception arg12) {
 										logger.error(ctx,
 												"Unable to execute rule for column : "
-														+ column.getName());
+														+ column.getName(), arg12);
 									}
 								}
 
@@ -2853,6 +2860,7 @@ public class ReportUtils {
 									}
 								}
 							} catch (Exception arg11) {
+								logger.error("Error in ReportUtils.creatingExcelHeadersMap", arg11);
 								;
 							}
 
@@ -2944,7 +2952,7 @@ public class ReportUtils {
 										} catch (Exception arg26) {
 											logger.error(ctx,
 													"Unable to execute rule for column : "
-															+ itr.getName());
+															+ itr.getName(), arg26);
 										}
 									}
 
@@ -3062,6 +3070,7 @@ public class ReportUtils {
 
 											value = strbuf.toString();
 										} catch (Exception arg27) {
+											logger.error("Error in ReportUtils.filterDataXml", arg27);
 											;
 										}
 									}
@@ -3081,6 +3090,7 @@ public class ReportUtils {
 											}
 										}
 									} catch (Exception arg25) {
+										logger.error("Error in ReportUtils.filterDataXml", arg25);
 										;
 									}
 
@@ -3215,7 +3225,7 @@ public class ReportUtils {
 						} catch (Exception arg13) {
 							logger.error(ctx,
 									"Unable to execute rule for column : "
-											+ key);
+											+ key, arg13);
 						}
 					}
 
@@ -3399,7 +3409,7 @@ public class ReportUtils {
 																	+ colLabel
 																			.getEval()
 																	+ " due to error : "
-																	+ arg15.getMessage());
+																	+ arg15.getMessage(), arg15);
 												}
 											} else {
 												HashMap arg20 = CacheManager
@@ -3420,7 +3430,7 @@ public class ReportUtils {
 									} catch (Exception arg16) {
 										logger.error(ctx,
 												"Error while getting label for default display column due to error : "
-														+ arg16.getMessage());
+														+ arg16.getMessage(), arg16);
 									}
 
 									if (value != null && value.equals("Select")) {
@@ -3443,7 +3453,7 @@ public class ReportUtils {
 										} catch (Exception arg14) {
 											logger.error(ctx,
 													"Unable to execute rule for column : "
-															+ key);
+															+ key, arg14);
 										}
 									}
 
@@ -3549,7 +3559,7 @@ public class ReportUtils {
 														+ eval
 														+ " for report : "
 														+ reportDefImpl
-																.getName());
+																.getName(), arg9);
 									}
 								}
 
@@ -3608,7 +3618,7 @@ public class ReportUtils {
 														+ eval
 														+ " for report : "
 														+ reportDefImpl
-																.getName());
+																.getName(), arg10);
 									}
 								}
 
@@ -3833,7 +3843,7 @@ public class ReportUtils {
 							} catch (Exception arg8) {
 								logger.error(ctx, "Unable to execute rule : "
 										+ eval + " for report : "
-										+ reportDefImpl.getName());
+										+ reportDefImpl.getName(), arg8);
 							}
 						}
 
@@ -3888,7 +3898,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + eval
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg7);
 						}
 					}
 
@@ -3928,7 +3938,7 @@ public class ReportUtils {
 		} catch (Exception arg7) {
 			logger.error(ctx,
 					"Unable to download file from server path due to error : "
-							+ arg7.getMessage());
+							+ arg7.getMessage(), arg7);
 			HttpServletResponse rb = (HttpServletResponse) ctx
 					.get("DocumentResponse");
 			byte[] fileName = new byte[0];
@@ -4084,7 +4094,7 @@ public class ReportUtils {
 		} catch (Exception arg4) {
 			logger.error(ctx,
 					"unable to populate context with pagination xml due to error : "
-							+ arg4.getMessage());
+							+ arg4.getMessage(), arg4);
 		}
 
 	}
@@ -4201,7 +4211,7 @@ public class ReportUtils {
 						} catch (Exception arg9) {
 							logger.error(ctx,
 									"Unable to execute rule for column : "
-											+ key);
+											+ key, arg9);
 						}
 					}
 
@@ -4290,7 +4300,7 @@ public class ReportUtils {
 							} catch (Exception arg8) {
 								logger.error(ctx, "Unable to execute rule : "
 										+ arg14 + " for report : "
-										+ reportDefImpl.getName());
+										+ reportDefImpl.getName(), arg8);
 							}
 						}
 
@@ -4320,7 +4330,7 @@ public class ReportUtils {
 			}
 		} catch (Exception arg9) {
 			logger.error(ctx, "Unable to reset filter data due to error : "
-					+ arg9.getMessage());
+					+ arg9.getMessage(), arg9);
 		}
 
 	}
@@ -4435,7 +4445,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + arg14
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg10);
 						}
 					}
 
@@ -4728,8 +4738,8 @@ public class ReportUtils {
 		String replayid = ctx.get("datadisplayid").toString();
 		Element element = (new PageUtils()).getExistingElement(root, replayid);
 		if (element == null) {
-			logger.debug(ctx, replayid + " div id is not present in "
-					+ ctx.get("inet_page").toString() + ".html");
+			{ if (logger.isDebugEnabled()) logger.debug(ctx, replayid + " div id is not present in "
+					+ ctx.get("inet_page").toString() + ".html"); }
 		}
 
 		String htmlDoc = "";
@@ -4771,7 +4781,7 @@ public class ReportUtils {
 							} catch (Exception arg6) {
 								logger.error(ctx, "Unable to execute rule : "
 										+ eval + " for report : "
-										+ reportDefImpl.getName());
+										+ reportDefImpl.getName(), arg6);
 							}
 						}
 					}
@@ -4804,7 +4814,7 @@ public class ReportUtils {
 			}
 		} catch (Exception arg4) {
 			logger.error("Unable to read label for key " + key
-					+ " due to error : " + arg4.getMessage());
+					+ " due to error : " + arg4.getMessage(), arg4);
 		}
 
 		if (StringUtils.isBlank(labelData)) {
@@ -4861,12 +4871,12 @@ public class ReportUtils {
 															value1);
 											e2.evaluate(ctx, (String[]) null);
 										} catch (Exception arg13) {
-											logger.debug(
+											logger.error(
 													ctx,
 													"Unable to execute rule for dynakey "
 															+ e1
 															+ " due to error : "
-															+ arg13.getMessage());
+															+ arg13.getMessage(), arg13);
 										}
 									} else {
 										ctx.put(e1, value1);
@@ -4903,11 +4913,11 @@ public class ReportUtils {
 											.getInstance(ctx).findRule(value);
 									arg18.evaluate(ctx, (String[]) null);
 								} catch (Exception arg12) {
-									logger.debug(ctx,
+									logger.error(ctx,
 											"Unable to execute rule for dynakey "
 													+ arg17
 													+ " due to error : "
-													+ arg12.getMessage());
+													+ arg12.getMessage(), arg12);
 								}
 							} else {
 								ctx.put(arg17, value);
@@ -4919,7 +4929,7 @@ public class ReportUtils {
 				logger.error(ctx,
 						"Unable to get dynakeysvalues for reportId "
 								+ reportDefImpl.getName() + " due to error : "
-								+ arg14.getMessage());
+								+ arg14.getMessage(), arg14);
 			}
 
 		}
@@ -4985,7 +4995,7 @@ public class ReportUtils {
 				return true;
 			} catch (Exception arg12) {
 				logger.error(ctx, "Unable to navigate to page " + next_page
-						+ " due to error : " + arg12.getMessage());
+						+ " due to error : " + arg12.getMessage(), arg12);
 				return false;
 			}
 		} else {
@@ -5020,7 +5030,7 @@ public class ReportUtils {
 				}
 			} catch (Exception arg5) {
 				logger.error(ctx, "unable to execute rule " + column.getEval()
-						+ " due to error : " + arg5.getMessage());
+						+ " due to error : " + arg5.getMessage(), arg5);
 			}
 		}
 
@@ -5075,6 +5085,7 @@ public class ReportUtils {
 					return newValue;
 				}
 			} catch (Exception arg7) {
+				logger.error("Error in ReportUtils.getDecryptValue", arg7);
 				;
 			}
 
@@ -5116,7 +5127,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + eval
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg8);
 						}
 					}
 
@@ -5175,7 +5186,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + eval
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg8);
 						}
 					}
 
@@ -5229,7 +5240,7 @@ public class ReportUtils {
 				logger.error(
 						ctx,
 						"Unable to show graph due to error : "
-								+ arg4.getMessage());
+								+ arg4.getMessage(), arg4);
 			}
 
 		}
@@ -5299,7 +5310,7 @@ public class ReportUtils {
 											"Unable to execute rule : "
 													+ tableElement
 													+ " for report : "
-													+ e.getName());
+													+ e.getName(), arg16);
 								}
 							}
 
@@ -5358,10 +5369,9 @@ public class ReportUtils {
 				String arg21 = (new XMLOutputter()).outputString(arg20);
 				response.getWriter().write(arg21);
 			} catch (Exception arg17) {
-				arg17.printStackTrace();
 				logger.error(ctx,
 						"Unable to get accordian report due to error : "
-								+ arg17.getMessage());
+								+ arg17.getMessage(), arg17);
 			}
 
 		}
@@ -5446,7 +5456,7 @@ public class ReportUtils {
 														+ eval
 														+ " for report : "
 														+ reportDefImpl
-																.getName());
+																.getName(), arg11);
 									}
 								}
 
@@ -5505,7 +5515,7 @@ public class ReportUtils {
 														+ eval
 														+ " for report : "
 														+ reportDefImpl
-																.getName());
+																.getName(), arg12);
 									}
 								}
 
@@ -5695,16 +5705,16 @@ public class ReportUtils {
 				out = res.getOutputStream();
 				out.flush();
 			} catch (Exception arg27) {
-				arg27.printStackTrace();
+				logger.error("Error in ReportUtils.convertPOToPDF", arg27);
 			}
 		} catch (Exception arg28) {
-			arg28.printStackTrace();
+			logger.error("Error in ReportUtils.convertPOToPDF", arg28);
 		} finally {
 			if (out != null) {
 				try {
 					out.close();
 				} catch (Exception arg26) {
-					arg26.printStackTrace();
+					logger.error("Error in ReportUtils.convertPOToPDF", arg26);
 				}
 			}
 
@@ -6513,6 +6523,7 @@ public class ReportUtils {
 							}
 						}
 					} catch (Exception arg11) {
+						logger.error("Error in ReportUtils.getAccordianReportHeaders", arg11);
 						;
 					}
 
@@ -6634,6 +6645,7 @@ public class ReportUtils {
 							}
 						}
 					} catch (Exception arg14) {
+						logger.error("Error in ReportUtils.getAccordianReportHeaders1", arg14);
 						;
 					}
 
@@ -6681,7 +6693,7 @@ public class ReportUtils {
 					records = Integer.parseInt(e);
 				}
 			} catch (Exception arg13) {
-				logger.debug(
+				logger.error(
 						ctx,
 						"Property appl."
 								+ ctx.getProject()
@@ -6720,7 +6732,7 @@ public class ReportUtils {
 													"Unable to execute rule "
 															+ colImpl.getEval()
 															+ " due to error : "
-															+ arg14.getMessage());
+															+ arg14.getMessage(), arg14);
 										}
 									} else {
 										HashMap arg17 = ctx.get("Tabs_Conf") == null
@@ -6761,7 +6773,7 @@ public class ReportUtils {
 														arg18.length()) + ")";
 									}
 								} catch (Exception arg12) {
-									arg12.printStackTrace();
+									logger.error("Error in ReportUtils.filterDataXMLWithFormat", arg12);
 								}
 
 								if (reportDefImpl.getIsshowgroupbysearch()
@@ -6785,6 +6797,7 @@ public class ReportUtils {
 					}
 				}
 			} catch (Exception arg15) {
+				logger.error("Error in ReportUtils.filterDataXMLWithFormat", arg15);
 				ctx.put("isErrorExists", "Y");
 			}
 
@@ -6829,7 +6842,7 @@ public class ReportUtils {
 									} catch (Exception arg12) {
 										logger.error(ctx,
 												"Unable to execute rule for column : "
-														+ column.getName());
+														+ column.getName(), arg12);
 									}
 								}
 
@@ -6874,6 +6887,7 @@ public class ReportUtils {
 										}
 									}
 								} catch (Exception arg11) {
+									logger.error("Error in ReportUtils.filterHeadersMapWithFormat", arg11);
 									;
 								}
 
@@ -6920,6 +6934,7 @@ public class ReportUtils {
 										}
 									}
 								} catch (Exception arg10) {
+									logger.error("Error in ReportUtils.filterHeadersMapWithFormat", arg10);
 									;
 								}
 
@@ -6935,6 +6950,7 @@ public class ReportUtils {
 					}
 				}
 			} catch (Exception arg13) {
+				logger.error("Error in ReportUtils.filterHeadersMapWithFormat", arg13);
 				ctx.put("isErrorExists", "Y");
 			}
 
@@ -7161,8 +7177,8 @@ public class ReportUtils {
 		String replayid = ctx.get("datadisplayid").toString();
 		Element element = (new PageUtils()).getExistingElement(root, replayid);
 		if (element == null) {
-			logger.debug(ctx, replayid + " div id is not present in "
-					+ ctx.get("inet_page").toString() + ".html");
+			{ if (logger.isDebugEnabled()) logger.debug(ctx, replayid + " div id is not present in "
+					+ ctx.get("inet_page").toString() + ".html"); }
 		}
 
 		String htmlDoc = "";
@@ -7232,7 +7248,7 @@ public class ReportUtils {
 									} catch (Exception arg11) {
 										logger.error(ctx,
 												"Unable to execute rule for column : "
-														+ column.getName());
+														+ column.getName(), arg11);
 									}
 								}
 
@@ -7274,6 +7290,7 @@ public class ReportUtils {
 									}
 								}
 							} catch (Exception arg10) {
+								logger.error("Error in ReportUtils.creatingExcelHeadersMapForMultipleGrid", arg10);
 								;
 							}
 
@@ -7334,7 +7351,7 @@ public class ReportUtils {
 									ctx,
 									"Unable to execute rule : " + eval
 											+ " for report : "
-											+ reportDefImpl.getName());
+											+ reportDefImpl.getName(), arg9);
 						}
 					}
 

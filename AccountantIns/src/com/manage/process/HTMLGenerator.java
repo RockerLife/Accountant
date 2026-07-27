@@ -94,7 +94,7 @@ public class HTMLGenerator {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in HTMLGenerator.main", e);
 		}
 		
 	}
@@ -152,6 +152,7 @@ public class HTMLGenerator {
 		}
 		catch(Exception e)
 		{
+			logger.error("Error in HTMLGenerator.process", e);
 //			System.out.println(e.toString());
 		}
 		
@@ -181,11 +182,11 @@ public class HTMLGenerator {
 		
 		try 
 		{
-			System.out.println(XMLUtils.beautifyXML(root.getDocument()));
+			{ if (logger.isDebugEnabled()) logger.debug(XMLUtils.beautifyXML(root.getDocument())); }
 		} 
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in HTMLGenerator.parseTest", e);
 		}	
 		
 	}	
@@ -250,7 +251,7 @@ public class HTMLGenerator {
 			//reader.close();
 		}
 		catch(Exception e){
-			logger.debug("Unable to parse the html "+pageName);
+			logger.error("Unable to parse the html "+pageName, e);
 		}
 		finally{
 			reader.close();
@@ -290,7 +291,7 @@ public class HTMLGenerator {
 	//changing for logging by vikas
 	public Document parseDocument(Context ctx, Document document, String pageName,HttpServletRequest request)throws Exception
 	{
-		System.out.println(ctx.get("PolicyStatusKey"));
+		{ if (logger.isDebugEnabled()) logger.debug(ctx.get("PolicyStatusKey")); }
 		Element root= null;
 		try 
 		{	
@@ -303,7 +304,7 @@ public class HTMLGenerator {
 					Element body=root.getChild(HtmlConstants.BODY);
 					if(body==null)
 					{
-						logger.debug(pageName + " does not contain BODY Element");
+						{ if (logger.isDebugEnabled()) logger.debug(pageName + " does not contain BODY Element"); }
 						return root.getDocument();
 					}
 					Element form=body.getChild(HtmlConstants.FORM);
@@ -316,10 +317,10 @@ public class HTMLGenerator {
 					
 					if(form==null)
 					{
-						logger.debug(pageName + " does not contain FORM Element");
+						{ if (logger.isDebugEnabled()) logger.debug(pageName + " does not contain FORM Element"); }
 						form = body;
 						if(form==null){
-							logger.debug(pageName + " does not contain BODY Element");
+							{ if (logger.isDebugEnabled()) logger.debug(pageName + " does not contain BODY Element"); }
 							return root.getDocument();
 						}
 					}
@@ -357,7 +358,7 @@ public class HTMLGenerator {
 		} 
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in HTMLGenerator.parseDocument", e);
 			throw e;
 		}
 		
@@ -562,7 +563,7 @@ public class HTMLGenerator {
 								
 								blockelement.setAttribute(HtmlConstants.HREF, newHref);
 							}catch (Exception e) {
-								logger.error("Unable to parse managereport link href to add dynamic values at run time due to error : " + e.getMessage());
+								logger.error("Unable to parse managereport link href to add dynamic values at run time due to error : " + e.getMessage(), e);
 							}
 						}
                     	
@@ -612,6 +613,7 @@ public class HTMLGenerator {
                     		form = form.substring(form.lastIndexOf("/")+1, form.length()-5);
                     		new ProcessAction().processRoute(ctx, form);
                     	}catch (Exception e) {
+                            logger.error("Error in HTMLGenerator.parseHTML", e);
 							// TODO: handle exception
 						}
                     	
@@ -679,6 +681,7 @@ public class HTMLGenerator {
                         	
                     		new ProcessAction().processRoute(ctx, form);
                     	}catch (Exception e) {
+                            logger.error("Error in HTMLGenerator.parseHTML", e);
 							// TODO: handle exception
 						}
                     	
@@ -764,7 +767,7 @@ public class HTMLGenerator {
 								
 								blockelement.setAttribute(HtmlConstants.HREF, newHref);
 							}catch (Exception e) {
-								logger.error("Unable to parse managereport link href to add dynamic values at run time due to error : " + e.getMessage());
+								logger.error("Unable to parse managereport link href to add dynamic values at run time due to error : " + e.getMessage(), e);
 							}
 						}
                     	
@@ -861,19 +864,20 @@ public class HTMLGenerator {
 		
 		//going to add hidden fields for SSO token handling
 		try{
-			String isSSOEnabled = SystemProperties.getInstance().getString("appl."+ctx.getProject()+".issso.enabled");
-			if(isSSOEnabled != null && isSSOEnabled.equals("Y")){
+			String isSSOEnabled = SystemProperties.getInstance().getProperty("appl."+ctx.getProject()+".issso.enabled");
+			if("Y".equalsIgnoreCase(isSSOEnabled)){
 				String ssoTokenKey = "SAMLart";
 				try{
 					ssoTokenKey = SystemProperties.getInstance().getString("sso.token.key");
 				}catch (Exception e) {
-					logger.error("Unable to get sso.token.key property due to error : " + e.getMessage());
+					logger.error("Unable to get sso.token.key property due to error : " + e.getMessage(), e);
 				}
 				
 				form.addContent(ParseUtil.createInputElement(HtmlConstants.SSOTOKENKEY, HtmlConstants.HIDDEN, ssoTokenKey, "ajax_field_ssoTokenKey"));
 				form.addContent(ParseUtil.createInputElement(ssoTokenKey, HtmlConstants.HIDDEN, (ctx.get(ssoTokenKey) != null ? ctx.get(ssoTokenKey).toString() : HtmlConstants.EMPTY), "ajax_field_"+ssoTokenKey));
 			}
 		}catch (Exception e) {
+			logger.error("Error in HTMLGenerator.appendHiddenFields", e);
 			// TODO: handle exception
 		}
 		if(ctx.get("NEXT_PAGE_COMPONENT") != null)
@@ -1254,7 +1258,7 @@ public class HTMLGenerator {
 				obj = root.getChild(field) != null ? root.getChild(field).getText() : HtmlConstants.EMPTY;
 			}
 		}catch (Exception e) {
-			logger.debug(e.getMessage());
+			logger.error(e.getMessage(), e);
 		}
 		
 		return obj;
@@ -1303,6 +1307,7 @@ public class HTMLGenerator {
 						
 						token = displayName;
 					}catch (Exception e) {
+						logger.error("Error in HTMLGenerator.generateAuditHistoryDataList", e);
 						// TODO: handle exception
 					}
 					
@@ -1797,6 +1802,7 @@ public class HTMLGenerator {
 																						}
 																					}
 																				}catch (Exception e2) {
+																					logger.error("Error in HTMLGenerator.generateDynamicPageContent", e2);
 																					// TODO: handle exception
 																				}
 																			}
@@ -1835,7 +1841,7 @@ public class HTMLGenerator {
 																	String legend = fielddescription;//MetaDataResources.getInstance(ctx).getField(name).getDisplayname();
 																	legendElement.addContent(legend);
 																}catch (Exception e2) {
-																	logger.error("Unable to get field displayname for property "+ name +" due to error : " + e2.getMessage());
+																	logger.error("Unable to get field displayname for property "+ name +" due to error : " + e2.getMessage(), e2);
 																}
 																
 																fieldSetElement.addContent(legendElement.detach());
@@ -1875,6 +1881,7 @@ public class HTMLGenerator {
 														try{
 															displayname = fielddescription;//MetaDataResources.getInstance(ctx).getField(name).getDisplayname();
 														}catch (Exception e3) {
+															logger.error("Error in HTMLGenerator.generateDynamicPageContent", e3);
 															// TODO: handle exception
 														}
 														
@@ -1932,6 +1939,7 @@ public class HTMLGenerator {
 													try{
 														displayname = fielddescription;//MetaDataResources.getInstance(ctx).getField(name).getDisplayname();
 													}catch (Exception e3) {
+														logger.error("Error in HTMLGenerator.generateDynamicPageContent", e3);
 														// TODO: handle exception
 													}
 													
@@ -1978,7 +1986,7 @@ public class HTMLGenerator {
 												}
 											}
 										}catch (Exception e1) {
-											logger.error("Unable to get metaobject information due to error : " + e1.getMessage());
+											logger.error("Unable to get metaobject information due to error : " + e1.getMessage(), e1);
 											
 											//going to make textbox here because no dropdown exists 
 											String value = ctx.get(name) != null ? ctx.get(name).toString() : HtmlConstants.EMPTY;
@@ -1992,6 +2000,7 @@ public class HTMLGenerator {
 											try{
 												displayname = fielddescription;//MetaDataResources.getInstance(ctx).getField(name).getDisplayname();
 											}catch (Exception e3) {
+												logger.error("Error in HTMLGenerator.generateDynamicPageContent", e3);
 												// TODO: handle exception
 											}
 											
@@ -2046,7 +2055,7 @@ public class HTMLGenerator {
 				//blockElement.addContent(tableElement.detach());
 			}
 		}catch (Exception e) {
-			logger.error("Unable to generate dynamic page content due to error : " + e.getMessage());
+			logger.error("Unable to generate dynamic page content due to error : " + e.getMessage(), e);
 		}
 	}
 	
@@ -2669,6 +2678,7 @@ public class HTMLGenerator {
 																							}
 																						}
 																					}catch (Exception e) {
+																						logger.error("Error in HTMLGenerator.generateDynamicPageContentCreateTable", e);
 																						isDropDownExists = false;
 																					}
 																					
@@ -2736,8 +2746,7 @@ public class HTMLGenerator {
 				}
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Unable to generate dynamic page content create table due to error : " + e.getMessage());
+			logger.error("Unable to generate dynamic page content create table due to error : " + e.getMessage(), e);
 		}
 	}
 	
@@ -2788,6 +2797,7 @@ public class HTMLGenerator {
 												}
 											}
 										}catch (Exception e1) {
+											logger.error("Error in HTMLGenerator.generateDynamicPageContentDataRowCreateTable", e1);
 											// TODO: handle exception
 										}
 										
@@ -2862,7 +2872,7 @@ public class HTMLGenerator {
 				}
 			}
 		}catch (Exception e) {
-			logger.error("Unable to generate dynamic page content create table due to error : " + e.getMessage());
+			logger.error("Unable to generate dynamic page content create table due to error : " + e.getMessage(), e);
 		}
 		
 		return finalDataList;
@@ -2889,7 +2899,7 @@ public class HTMLGenerator {
 				}
 			}
 		}catch (Exception e) {
-			logger.error("Unable to get inner create table items due to error : " + e.getMessage());
+			logger.error("Unable to get inner create table items due to error : " + e.getMessage(), e);
 			Map newMap = new HashMap();
 			newMap.putAll(finalMap);
 			
@@ -3312,6 +3322,7 @@ public class HTMLGenerator {
 												}
 											}
 										}catch (Exception e1) {
+											logger.error("Error in HTMLGenerator.getDynamicTemplateBuilderFiltersData", e1);
 											// TODO: handle exception
 										}
 										
@@ -3345,7 +3356,7 @@ public class HTMLGenerator {
 				}
 			}
 		}catch (Exception e) {
-			logger.error("Unable to get dynamic template builder filters data due to error : " + e.getMessage());
+			logger.error("Unable to get dynamic template builder filters data due to error : " + e.getMessage(), e);
 		}
 	}
 	

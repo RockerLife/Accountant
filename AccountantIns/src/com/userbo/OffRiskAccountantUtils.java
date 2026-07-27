@@ -44,11 +44,11 @@ public class OffRiskAccountantUtils {
 			String strPolicyKey = ctx.get("strPolicyKey") != null ? ctx.get(
 					"strPolicyKey").toString() : "";
 			policyKeyArray = strPolicyKey.split(",");
-			logger.debug("Length of Array " + policyKeyArray.length);
+			{ if (logger.isDebugEnabled()) logger.debug("Length of Array " + policyKeyArray.length); }
 			if (policyKeyArray.length == 0)
 				return;
 			for (String policykey : policyKeyArray) {
-				logger.debug("Going to fetch data for PolicyKey " + policykey);
+				{ if (logger.isDebugEnabled()) logger.debug("Going to fetch data for PolicyKey " + policykey); }
 				offRiskContext.put("PolicyKey", Integer.parseInt(policykey));
 
 				List list = SqlResources.getSqlMapProcessor(offRiskContext).select("Policy.FetchAllPolicyDataFromPolicyKey",offRiskContext);
@@ -59,8 +59,8 @@ public class OffRiskAccountantUtils {
 					offRiskContext.put("Address1", map.get("Address1"));
 					offRiskContext.put("AccountNameOffRisk",map.get("AccountNameOffRisk"));
 					String isLetterAlreadyUploaded = map.get("IsOffRiskLetterUploaded") != null ? map.get("IsOffRiskLetterUploaded").toString() : "";
-					logger.debug("Is Off Risk Letter Already Uploaded "
-							+ isLetterAlreadyUploaded);
+					{ if (logger.isDebugEnabled()) logger.debug("Is Off Risk Letter Already Uploaded "
+							+ isLetterAlreadyUploaded); }
 					if (!isLetterAlreadyUploaded.equals("Yes"))
 						utils.generateOffRiskLetters(offRiskContext);
 				}
@@ -71,9 +71,8 @@ public class OffRiskAccountantUtils {
 				offRiskContext.remove("AccountNameOffRisk");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug("Problem in Uploading the Off Risk Letters "
-					+ e.getMessage());
+			logger.error("Problem in Uploading the Off Risk Letters "
+					+ e.getMessage(), e);
 			offRiskContext.remove("VersionSequence");
 			offRiskContext.remove("PolicyKey");
 			offRiskContext.remove("QuoteNumber");
@@ -84,8 +83,8 @@ public class OffRiskAccountantUtils {
 
 	private void generateOffRiskLetters(IContext ctx) throws Exception {
 
-		logger.debug("Going To Create Off Risk Letters "
-				+ ctx.get("QuoteNumber"));
+		{ if (logger.isDebugEnabled()) logger.debug("Going To Create Off Risk Letters "
+				+ ctx.get("QuoteNumber")); }
 		OutputStream out = null;
 		try {
 			String htmlDir = SystemProperties.getInstance().getString(
@@ -104,17 +103,17 @@ public class OffRiskAccountantUtils {
 			if (ctx.get("uriResolver") != null)
 				uriResolver = (ServletContextURIResolver) ctx
 						.get("uriResolver");
-			logger.debug("Going to create Off Risk PDFs"
-					+ ctx.get("QuoteNumber"));
+			{ if (logger.isDebugEnabled()) logger.debug("Going to create Off Risk PDFs"
+					+ ctx.get("QuoteNumber")); }
 			baseUrl = "file:///" + ((ServletContext)ctx.get(HtmlConstants.DOCUMENTSERVLETCONTEXT)).getRealPath("/");
 			new DownloadFOP().makeOffRiskPDF((Context) ctx, out, baseUrl,(ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER));
-			logger.debug("Off Risk PDF created succesfully for "
-					+ ctx.get("QuoteNumber"));
+			{ if (logger.isDebugEnabled()) logger.debug("Off Risk PDF created succesfully for "
+					+ ctx.get("QuoteNumber")); }
 			if (out != null)
 				out.close();
 
-			logger.debug("Going to upload OffRisk PDF "
-					+ ctx.get("QuoteNumber"));
+			{ if (logger.isDebugEnabled()) logger.debug("Going to upload OffRisk PDF "
+					+ ctx.get("QuoteNumber")); }
 			boolean documentUploaded = false;
 			try {
 				String skipUpload = SystemProperties.getInstance().getString(
@@ -124,13 +123,13 @@ public class OffRiskAccountantUtils {
 					documentUploaded = true;
 				}
 				
-				logger.debug("Document is uploaded successfully "
-						+ documentUploaded);
-				logger.debug("Off Risk Letter uploaded for "
-						+ ctx.get("QuoteNumber"));
+				{ if (logger.isDebugEnabled()) logger.debug("Document is uploaded successfully "
+						+ documentUploaded); }
+				{ if (logger.isDebugEnabled()) logger.debug("Off Risk Letter uploaded for "
+						+ ctx.get("QuoteNumber")); }
 			} catch (Exception e) {
-				logger.debug("Exception in upload OffRiskLetters . . " + e);
-				logger.debug("Exception Occured " + ctx.get("QuoteNumber"));
+				logger.error("Exception in upload OffRiskLetters . . " + e, e);
+				{ if (logger.isDebugEnabled()) logger.debug("Exception Occured " + ctx.get("QuoteNumber")); }
 			}
 			if (documentUploaded) {
 				ctx.put("IsOffRiskLetterUploaded", "Yes");
@@ -143,7 +142,7 @@ public class OffRiskAccountantUtils {
 			}
 			ctx.remove("IsOffRiskLetterUploaded");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in OffRiskAccountantUtils.generateOffRiskLetters", e);
 		}
 
 	}
@@ -174,9 +173,8 @@ public class OffRiskAccountantUtils {
 			downloadOffRiskLetters(downloadCtx, downloadList);
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug("Problem in Download Off Risk Letters "
-					+ e.getMessage());
+			logger.error("Problem in Download Off Risk Letters "
+					+ e.getMessage(), e);
 		}
 
 	}
@@ -188,20 +186,19 @@ public class OffRiskAccountantUtils {
 			createDownloadDirectory(ctx);
 			DocumentManagment docMgt = new DocumentManagment();
 			for (HashMap downloadMap : list) {
-				logger.debug("DownloadDocument Start for Document : "
-						+ downloadMap.get("DocFileName"));
+				{ if (logger.isDebugEnabled()) logger.debug("DownloadDocument Start for Document : "
+						+ downloadMap.get("DocFileName")); }
 				String newFileName = (String) downloadMap.get("DocFileName");
 				ctx.put("DocUrl", downloadMap.get("DocUrl"));
 				ctx.put("DocFileName", downloadMap.get("DocFileName"));
 				new DocumentManagment().downloadDocumentOffRisk(ctx);
-				logger.debug("DownloadDocument End for Document : "
-						+ downloadMap.get("DocFileName"));
+				{ if (logger.isDebugEnabled()) logger.debug("DownloadDocument End for Document : "
+						+ downloadMap.get("DocFileName")); }
 			}
 			addFilesToZipAndDownload(ctx);
 			deleteDownloadDirectory(ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug("Download Failed " + e.getMessage());
+			logger.error("Download Failed " + e.getMessage(), e);
 		}
 	}
 
@@ -236,7 +233,7 @@ public class OffRiskAccountantUtils {
 			resp.getOutputStream().flush();
 			resp.getOutputStream().close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in OffRiskAccountantUtils.downloadZip", e);
 		}
 
 	}
@@ -253,7 +250,7 @@ public class OffRiskAccountantUtils {
 			ZipOutputStream zout = new ZipOutputStream(fout);
 			for (int i = 0; i < fList.length; i++) {
 
-				System.out.println("Adding " + fList[i].getAbsolutePath());
+				{ if (logger.isDebugEnabled()) logger.debug("Adding " + fList[i].getAbsolutePath()); }
 
 				FileInputStream fin = new FileInputStream(
 						fList[i].getAbsolutePath());
@@ -266,10 +263,10 @@ public class OffRiskAccountantUtils {
 				fin.close();
 			}
 			zout.close();
-			System.out.println("Zip file has been created!");
+			{ if (logger.isDebugEnabled()) logger.debug("Zip file has been created!"); }
 			downloadZip(ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in OffRiskAccountantUtils.addFilesToZipAndDownload", e);
 		}
 	}
 
@@ -284,7 +281,7 @@ public class OffRiskAccountantUtils {
 
 			return uploaddirectorypath;
 		} catch (Exception e) {
-			logger.debug("Not able to create directory " + e.getMessage());
+			logger.error("Not able to create directory " + e.getMessage(), e);
 		}
 		return "";
 	}
@@ -309,7 +306,7 @@ public class OffRiskAccountantUtils {
 					delete(directory);
 
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in OffRiskAccountantUtils.deleteDownloadDirectory", e);
 					return;
 				}
 			}
@@ -317,7 +314,7 @@ public class OffRiskAccountantUtils {
 			logger.debug("Directory Deleted");
 
 		} catch (Exception e) {
-			logger.debug("Not able to delete directory " + e.getMessage());
+			logger.error("Not able to delete directory " + e.getMessage(), e);
 		}
 
 	}
@@ -330,8 +327,8 @@ public class OffRiskAccountantUtils {
 			if (file.list().length == 0) {
 
 				file.delete();
-				logger.debug("Directory is deleted : "
-						+ file.getAbsolutePath());
+				{ if (logger.isDebugEnabled()) logger.debug("Directory is deleted : "
+						+ file.getAbsolutePath()); }
 
 			} else {
 
@@ -349,15 +346,15 @@ public class OffRiskAccountantUtils {
 				// check the directory again, if empty then delete it
 				if (file.list().length == 0) {
 					file.delete();
-					logger.debug("Directory is deleted : "
-							+ file.getAbsolutePath());
+					{ if (logger.isDebugEnabled()) logger.debug("Directory is deleted : "
+							+ file.getAbsolutePath()); }
 				}
 			}
 
 		} else {
 			// if file, then delete it
 			file.delete();
-			logger.debug("File is deleted : " + file.getAbsolutePath());
+			{ if (logger.isDebugEnabled()) logger.debug("File is deleted : " + file.getAbsolutePath()); }
 		}
 	}
 

@@ -47,7 +47,7 @@ public class ACCPayPalIPNListener extends HttpServlet {
         } 
 	    catch (Exception e)
 	    {
-            logger.error("Project resources are not initialized properly");
+            logger.error("Project resources are not initialized properly", e);
         }	    		
 	}
 	
@@ -55,7 +55,7 @@ public class ACCPayPalIPNListener extends HttpServlet {
 		try {
 			processRequest(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in ACCPayPalIPNListener.doGet", e);
 		}
 	}
 
@@ -63,7 +63,7 @@ public class ACCPayPalIPNListener extends HttpServlet {
 		try {
 			processRequest(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in ACCPayPalIPNListener.doPost", e);
 		}
 	}
 
@@ -100,14 +100,14 @@ public class ACCPayPalIPNListener extends HttpServlet {
 			payPalUrl = SystemProperties.getInstance().getString("payment.gateway.url");
 		}
 		catch(Exception se){
-			se.printStackTrace();
+			logger.error("Error in ACCPayPalIPNListener.processRequest", se);
 		}
 		
 		try {
 			u = new URL(payPalUrl);
 		} catch (MalformedURLException e) {
+			logger.error("Error in ACCPayPalIPNListener.processRequest", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 		try {
@@ -130,8 +130,8 @@ public class ACCPayPalIPNListener extends HttpServlet {
 
 			in.close();
 		} catch (IOException e) {
+			logger.error("Error in ACCPayPalIPNListener.processRequest", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 		// assign posted variables to local variables
@@ -169,13 +169,13 @@ public class ACCPayPalIPNListener extends HttpServlet {
 		try{
 		RuleUtils.executeRule(ctx, "AccountantRule.AssignLastUpdateTimeStamp");
 		if(ctx.get("LastUpdateTimeStamp") != null)
-			logger.debug("LastUpdateTimeStamp--   "+ctx.get("LastUpdateTimeStamp"));
+			{ if (logger.isDebugEnabled()) logger.debug("LastUpdateTimeStamp--   "+ctx.get("LastUpdateTimeStamp")); }
 			ctx.put("TransactionDate",ctx.get("LastUpdateTimeStamp"));
-			logger.debug("TransactionDate--    "+ctx.get("TransactionDate"));
+			{ if (logger.isDebugEnabled()) logger.debug("TransactionDate--    "+ctx.get("TransactionDate")); }
 			
 		}
 		catch (Exception e){			
-			logger.debug("AssignLastUpdateTimeStamp------"+e.getMessage());
+			logger.error("AssignLastUpdateTimeStamp------"+e.getMessage(), e);
 		}
 		
 		logger.debug("Before verify-------");
@@ -187,9 +187,9 @@ public class ACCPayPalIPNListener extends HttpServlet {
 			// check that receiverEmail is your Primary PayPal email
 			// check that paymentAmount/paymentCurrency are correct
 			// process payment
-			logger.debug("payment Status------"+paymentStatus);
+			{ if (logger.isDebugEnabled()) logger.debug("payment Status------"+paymentStatus); }
 			if(paymentStatus != null && "Completed".equals(paymentStatus)){				
-				logger.debug("customVar -----"+customVar);
+				{ if (logger.isDebugEnabled()) logger.debug("customVar -----"+customVar); }
 				if(customVar != null && !"".equals(customVar))
 				{
 					logger.debug("IPNListener verified and completed");					
@@ -234,9 +234,9 @@ public class ACCPayPalIPNListener extends HttpServlet {
 								ctx.put("TransactionStatus", paymentStatus);
 								ctx.put("TransactionID", txnId);
 								String amount = ctx.get("Amount") != null ? ctx.get("Amount").toString() : "0" ;
-								logger.debug("String Amount is - - > " + amount);
+								{ if (logger.isDebugEnabled()) logger.debug("String Amount is - - > " + amount); }
 								Object intamount = AccountUtils.removeAmountFormat(amount);
-								logger.debug("Amount Format Removed - - > " + amount);
+								{ if (logger.isDebugEnabled()) logger.debug("Amount Format Removed - - > " + amount); }
 								ctx.put("Amount", intamount);
 								SqlResources.getSqlMapProcessor(ctx).insert("PaymentDetail.insert", ctx);
 								
@@ -270,8 +270,7 @@ public class ACCPayPalIPNListener extends HttpServlet {
 						}
 						
 					}catch (Exception e) {
-						e.printStackTrace();
-						logger.debug("Error in processing IPNListener");
+						logger.error("Error in processing IPNListener", e);
 						
 					}						
 					
@@ -308,7 +307,7 @@ public class ACCPayPalIPNListener extends HttpServlet {
 											
 					
 				}catch (Exception e) {
-					logger.debug("Error in processing IPNListener");
+					logger.error("Error in processing IPNListener", e);
 				}
 			}
 			
@@ -342,7 +341,7 @@ public class ACCPayPalIPNListener extends HttpServlet {
 //				}
 				
 			}catch (Exception e) {
-				logger.debug("Error in processing IPNListener");
+				logger.error("Error in processing IPNListener", e);
 			}
 			
 			
@@ -374,7 +373,7 @@ public class ACCPayPalIPNListener extends HttpServlet {
 //				}
 				
 			}catch (Exception e) {
-				logger.debug("Error in processing IPNListener");
+				logger.error("Error in processing IPNListener", e);
 			}
 		}
 

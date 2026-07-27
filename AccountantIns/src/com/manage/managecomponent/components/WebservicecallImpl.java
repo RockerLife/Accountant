@@ -28,7 +28,7 @@ import com.util.XMLUtils;
 public class WebservicecallImpl extends Webservicecall {
 	
 	private final String VALIDATIONERROR = "validationerrors";
-	private static InetLogger logger = InetLogger.getInetLogger(AccountUtils.class);
+	private static InetLogger logger = InetLogger.getInetLogger(WebservicecallImpl.class);
 	public boolean evaluate(IContext data) throws Exception {
 		// TODO Auto-generated method stub
 		//return true;
@@ -65,10 +65,10 @@ public class WebservicecallImpl extends Webservicecall {
 		Document doc = populateInput(data, outputMo);
 		String inputString = XMLUtils.beautifyXML(doc);
 
-		 System.out.println("####Input XML : " +inputString );
+		 { if (logger.isDebugEnabled()) logger.debug("####Input XML : " +inputString ); }
 		String outputString = sendRequest(inputString);
 
-		System.out.println("####Output XML : " +outputString );
+		{ if (logger.isDebugEnabled()) logger.debug("####Output XML : " +outputString ); }
 		Element root = XMLUtils.parseXMLRootElement(outputString);
 
 		Element outputElement = root.getChild(getOutput());
@@ -145,7 +145,7 @@ public class WebservicecallImpl extends Webservicecall {
 			writer.close();
 			// rd.close();
 		} catch (Exception exception) {
-			exception.printStackTrace();
+			logger.error("Error in WebservicecallImpl.sendRequest", exception);
 		}
 		return outputXML;
 	}

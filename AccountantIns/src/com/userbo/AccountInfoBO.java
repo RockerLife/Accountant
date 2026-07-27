@@ -1,5 +1,6 @@
 package com.userbo;
 
+import com.util.InetLogger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import com.ormapping.ibatis.SqlResources;
 import com.util.IContext;
 
 public class AccountInfoBO {
+	private static final InetLogger logger = InetLogger.getInetLogger(AccountInfoBO.class);
 	@SuppressWarnings("unchecked")
 	public void populateAccountID(IContext ctx) throws Exception
 	{   
@@ -37,7 +39,7 @@ public class AccountInfoBO {
 		try {
 			maxAccountMap = (HashMap) SqlResources.getSqlMapProcessor(ctx).findByKey("SqlStmts.UserStatementsaveAccountstmtsgetMaxAccountID", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountInfoBO.getMaxAccountID", e);
 			throw e;
 		}
 		return maxAccountMap;
@@ -48,7 +50,7 @@ public class AccountInfoBO {
 		try {
 			maxAccountMap = (HashMap) SqlResources.getSqlMapProcessor(ctx).findByKey("SqlStmts.UserStatementsaveAccountstmtsgeMaxAccountNum", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountInfoBO.getMaxAccountNUM", e);
 			throw e;
 		}
 		 

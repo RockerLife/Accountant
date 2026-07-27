@@ -65,48 +65,48 @@ public class ButtonEncryptionUtil
 		} 
 		catch (NoSuchAlgorithmException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		catch (NoSuchProviderException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		catch (IOException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		catch (CMSException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		catch (CertificateException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		catch (KeyStoreException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		catch (UnrecoverableKeyException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		catch (InvalidAlgorithmParameterException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} 
 		catch (CertStoreException e) 
 		{
+			logger.error("Error in ButtonEncryptionUtil.getEncryptedButton", e);
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
 		return result;

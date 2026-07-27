@@ -85,22 +85,22 @@ public class DownloadExcelLawyers extends Download_Excel implements Constants {
 			outputStream.flush();			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in DownloadExcelLawyers.downloadWeeklyReport", e);
 		
 		}
 		finally{
 			if(input != null)
 				try {
 					input.close();
-				} catch (IOException e) {					
-					e.printStackTrace();					
+				} catch (IOException e) {
+					logger.error("Error in DownloadExcelLawyers.downloadWeeklyReport", e);
 				}
 				
 			if(outputStream != null)
 				try {
 					outputStream.close();
-				} catch (IOException e) {					
-					e.printStackTrace();					
+				} catch (IOException e) {
+					logger.error("Error in DownloadExcelLawyers.downloadWeeklyReport", e);
 				}			
 		}
 	}
@@ -117,7 +117,7 @@ public class DownloadExcelLawyers extends Download_Excel implements Constants {
 			sheetsids= SystemProperties.getInstance().getString("app.LawyersIns.Weeklyreport.userids");
 			
 		}catch (Exception e) {
-			e.printStackTrace();			
+			logger.error("Error in DownloadExcelLawyers.populateWeeklyReportDataIntoExcel", e);
 		}
 		
 		String[] sheetsWeeklyReport=null;
@@ -177,8 +177,7 @@ public class DownloadExcelLawyers extends Download_Excel implements Constants {
 							try{
 								evaluator.evaluateFormulaCell(c);
 							}catch(Exception e){
-								System.out.println("## ERROR IN CELL ## "+ new CellReference(r.getRowNum(),c.getColumnIndex()).formatAsString());
-								logger.error("## ERROR IN CELL ## "+ new CellReference(r.getRowNum(),c.getColumnIndex()).formatAsString());
+								logger.error("## ERROR IN CELL ## "+ new CellReference(r.getRowNum(),c.getColumnIndex()).formatAsString(), e);
 								//e.printStackTrace();
 								
 							}

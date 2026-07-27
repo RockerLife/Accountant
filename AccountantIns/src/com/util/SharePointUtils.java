@@ -31,8 +31,8 @@ public class SharePointUtils {
         try (CloseableHttpClient httpclient = HttpClients.custom()
                 .setRetryHandler(new DefaultHttpRequestRetryHandler(0, false))
                 .build()) {
-            logger.debug("Document goin to upload details : doc lib path=" + docLibPathName
-                    + " folderName=" + folderName + " base dir" + baseDir + " doc Name=" + docName);
+            { if (logger.isDebugEnabled()) logger.debug("Document goin to upload details : doc lib path=" + docLibPathName
+                    + " folderName=" + folderName + " base dir" + baseDir + " doc Name=" + docName); }
 
             CredentialsProvider credsProvider = new BasicCredentialsProvider();
             credsProvider.setCredentials(AuthScope.ANY, new NTCredentials(userName, password, "", ""));
@@ -42,7 +42,7 @@ public class SharePointUtils {
 
             try (CloseableHttpResponse response = httpclient.execute(target, new HttpHead("/"), context)) {
                 EntityUtils.consume(response.getEntity());
-                logger.debug("Share point connecting status : " + response.getStatusLine().getStatusCode());
+                { if (logger.isDebugEnabled()) logger.debug("Share point connecting status : " + response.getStatusLine().getStatusCode()); }
             }
 
             String uri = "/" + baseDir + "/" + folderName + "/" + docName;
@@ -53,17 +53,17 @@ public class SharePointUtils {
             try (CloseableHttpResponse response = httpclient.execute(target, request, context)) {
                 EntityUtils.consume(response.getEntity());
                 if (isUploadSuccess(response.getStatusLine().getStatusCode())) {
-                    logger.debug(file.getName() + " is copied");
+                    { if (logger.isDebugEnabled()) logger.debug(file.getName() + " is copied"); }
                     return "File added successfully!";
                 }
             }
 
-            logger.debug(uri + " is going to be created");
+            { if (logger.isDebugEnabled()) logger.debug(uri + " is going to be created"); }
             HttpClientFactory factory = new HttpClientFactory(userName, password, spUrl, domain);
             try {
                 factory.executeCreateFolder(baseDir, folderName);
             } catch (Exception ex) {
-                logger.error("There is some problem in creating " + uri + " " + ex.getMessage());
+                logger.error("There is some problem in creating " + uri + " " + ex.getMessage(), ex);
             } finally {
                 factory.getHttpClient().close();
             }
@@ -72,7 +72,7 @@ public class SharePointUtils {
                 EntityUtils.consume(response.getEntity());
                 int status = response.getStatusLine().getStatusCode();
                 if (isUploadSuccess(status)) {
-                    logger.debug(file.getName() + " is copied");
+                    { if (logger.isDebugEnabled()) logger.debug(file.getName() + " is copied"); }
                     return "File added successfully!";
                 }
                 String message = "Problem in copying on share point " + file.getName() + " reason "
@@ -85,7 +85,7 @@ public class SharePointUtils {
 
     public byte[] downloadDocFromSharePoint(String docUrl, String baseDir, String userName, String password,
             String domain, String workStation, int port) throws Exception {
-        String lawyersDir = SystemProperties.getInstance().getString("sharepoint.basedirLawyers");
+        String lawyersDir = SystemProperties.getInstance().getProperty("sharepoint.basedirLawyers");
         try (CloseableHttpClient httpclient = HttpClients.custom()
                 .setRetryHandler(new DefaultHttpRequestRetryHandler(0, false))
                 .build()) {
@@ -102,7 +102,7 @@ public class SharePointUtils {
                 HttpEntity entity = response.getEntity();
                 int status = response.getStatusLine().getStatusCode();
                 if (status == HttpStatus.SC_OK) {
-                    logger.debug(file + " has been found from share point");
+                    { if (logger.isDebugEnabled()) logger.debug(file + " has been found from share point"); }
                     return EntityUtils.toByteArray(entity);
                 }
                 EntityUtils.consume(entity);

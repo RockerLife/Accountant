@@ -1,5 +1,6 @@
 package com.userbo;
 
+import com.util.InetLogger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import com.util.IContext;
 import com.util.SystemProperties;
 
 public class MaillingObj {
+	private static final InetLogger logger = InetLogger.getInetLogger(MaillingObj.class);
 
 	public void mailingToInsured(IContext ctx) throws Exception
 	{
@@ -17,6 +19,7 @@ public class MaillingObj {
 		try {
 			mailingOnOFF = SystemProperties.getInstance().getString("Insured.sendmail");
 		} catch (Exception e) {
+			logger.error("Error in MaillingObj.mailingToInsured", e);
 			throw e;
 		}
 		
@@ -70,7 +73,7 @@ public class MaillingObj {
 		try {
 			maxAccountMap = (HashMap) SqlResources.getSqlMapProcessor(ctx).findByKey("SqlStmts.BasicInfoviewgetAccountAndAddressdetails", ctx);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in MaillingObj.getAccountInfo", e);
 			throw e;
 		}
 		return maxAccountMap;

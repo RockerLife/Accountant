@@ -107,7 +107,7 @@ public class HTMLParser
 				htmlcontent = cleanContent(htmlcontent);
 			} catch (Exception e) {
                       errorpages.add(startpage);
-			         logger.error( ">>>"+htmlpath+"\\"+  startpage +" does not located at desire path");
+			         logger.error( ">>>"+htmlpath+"\\"+  startpage +" does not located at desire path", e);
 				}
 			SAXBuilder builder = new SAXBuilder();
 		    		if(htmlcontent!=null)
@@ -121,12 +121,12 @@ public class HTMLParser
 		    			 	 } catch (JDOMException e) {
 		    			 		errorpages.add(startpage);
 
-		  	    	 		    logger.error( ">>>"+htmlpath+"\\"+  startpage +"Error-->"+e);
+                                logger.error( ">>>"+htmlpath+"\\"+  startpage +"Error-->"+e, e);
 		  	    	 		    logger.error( ">>>"+htmlpath+"\\"+  startpage +"unable to parse the Html file");
 		                     } catch (IOException e) {
 //		                    	e.printStackTrace();
 		                    	 errorpages.add(startpage);
-		                    	 logger.error(htmlpath+" page does not exit." +e);
+                                 logger.error(htmlpath+" page does not exit." +e, e);
 		                     }
 		    		}
 		    		else{
@@ -154,17 +154,17 @@ public class HTMLParser
 			if(ComponentResources.getInstance(ctx).getComponent(startpageComp) == null){
 				errorpages.add(startpageComp);
 				
-				logger.debug("Start validation for "+startpage);
+				{ if (logger.isDebugEnabled()) logger.debug("Start validation for "+startpage); }
 				logger.error("Component "+startpageComp+" is not loaded due to error : " + "Component " + startpage + " does not exist.");
-				logger.debug("Ended validation for " + startpage); 
+				{ if (logger.isDebugEnabled()) logger.debug("Ended validation for " + startpage); }
 				return;
 			}
 		}catch (Exception e) {
 			errorpages.add(startpageComp);
 			
-			logger.debug("Start validation for "+startpage);
-			logger.error("Component "+startpageComp+" is not loaded due to error : " + e.getMessage());
-			logger.debug("Ended validation for " + startpage); 
+			{ if (logger.isDebugEnabled()) logger.debug("Start validation for "+startpage); }
+			logger.error("Component "+startpageComp+" is not loaded due to error : " + e.getMessage(), e);
+			{ if (logger.isDebugEnabled()) logger.debug("Ended validation for " + startpage); }
 			return;
 		}
 		
@@ -191,7 +191,7 @@ public class HTMLParser
 				}
 				
 				if(frm_body != null){	  
-					logger.debug("Start processing for " + startpage);
+					{ if (logger.isDebugEnabled()) logger.debug("Start processing for " + startpage); }
 					List children = frm_body.getChildren();
 					Element rootTable = null;
 					blockInfo = new BlockInfo();			  
@@ -204,14 +204,13 @@ public class HTMLParser
 					if(formlinkmap.isEmpty())
 						pageMap.putAll(formlinkmap);
 					
-					logger.debug("Ended processing for " + startpage);
+					{ if (logger.isDebugEnabled()) logger.debug("Ended processing for " + startpage); }
 					populateForwardPages(startpage);
 				}
 		    }
 		}catch (Exception e) {
 			  errorpages.add(startpage);
-			  e.printStackTrace();
-			  logger.error(startpage+"error occured processing the page ");
+			  logger.error(startpage+"error occured processing the page ", e);
 		}
 	}
 	
@@ -331,7 +330,7 @@ public class HTMLParser
 			parser.populateProcessFlow();
 			
         }catch (Exception e) {
-        	e.printStackTrace();        	
+            logger.error("Error in HTMLParser.main", e);
 		}
 
 	}

@@ -120,7 +120,7 @@ public class ComponentImpl extends Component {
     			}*/
     			ctx.putAll(lctx);
     		}catch (Exception e) {
-				logger.error("Unable to execute rules from rule engine due to error : " + e.getMessage());
+				logger.error("Unable to execute rules from rule engine due to error : " + e.getMessage(), e);
 			}
     	}
     	
@@ -205,13 +205,14 @@ public class ComponentImpl extends Component {
             //going to execute email notifications
             if(ctx.get(HtmlConstants.EMAIL_NOTIFICATION_EVENT_NAME) != null && 
                 	!ctx.get(HtmlConstants.EMAIL_NOTIFICATION_EVENT_NAME).toString().equals(HtmlConstants.EMPTY)){ 
-            	logger.debug("going to execute Email Notification : " + ctx.get(HtmlConstants.EMAIL_NOTIFICATION_EVENT_NAME).toString());
+				{ if (logger.isDebugEnabled()) logger.debug("going to execute Email Notification : " + ctx.get(HtmlConstants.EMAIL_NOTIFICATION_EVENT_NAME).toString()); }
             	actionImpl.executeEmailNotification(ctx);
             	logger.debug("Email Notification done");
             }
             
             populateActionParams(ctx,paramList,false,true);
         }catch(ValidationException e){
+            logger.error("Error in ComponentImpl.performAction", e);
             ArrayList errorsList = (ArrayList) ctx.get(Constants.INET_ERRORS_LIST);
             if(errorsList == null){
                 errorsList = new ArrayList();
@@ -264,13 +265,14 @@ public class ComponentImpl extends Component {
 	                	ctx.put(HtmlConstants.ISMETAOBJECTBOEXECUTED, "Y");
 	                }
 	            }catch(InvocationTargetException e){
+                    logger.error("Error in ComponentImpl.performViewAction", e);
 	                Throwable t = e.getCause();
 	                throw (Exception) e.getCause();
 	            }
 	            
 	    		logger.info("Bo execution done for ..... com.userbo.BeforeMetaObjectBO");
 	        }catch (Exception e) {
-				logger.debug("Problem in execution of BeforeMetaObject.BO bcoz of error : " + e.getMessage());
+				logger.error("Problem in execution of BeforeMetaObject.BO bcoz of error : " + e.getMessage(), e);
 				ctx.put(HtmlConstants.ISMETAOBJECTBOEXECUTED, "Y");
 			}
         }
@@ -437,6 +439,7 @@ public class ComponentImpl extends Component {
     			ctx.put(HtmlConstants.INET_PARENT_PAGE, parent);
     		}
     	}catch (Exception e) {
+            logger.error("Error in ComponentImpl.validate", e);
     		//Do nothing
 		}
     	
@@ -666,7 +669,7 @@ public class ComponentImpl extends Component {
 				actionImpl.processRequest(ctx);
 			}
 		} catch (Exception e){
-			logger.debug("error occured processing the Multisave List "+e);
+			logger.error("error occured processing the Multisave List "+e, e);
 		}
 	}
     
@@ -809,7 +812,7 @@ public class ComponentImpl extends Component {
                 }
             }*/    
     	}catch (Exception e) {
-    		logger.error("Unable to validate custom fields attached rule due to error : " + e.getMessage());
+            logger.error("Unable to validate custom fields attached rule due to error : " + e.getMessage(), e);
 		}
     }
     
@@ -856,6 +859,7 @@ public class ComponentImpl extends Component {
 	    		        	    if(ruleImpl.evaluate(ctx, null))
 	    		        	    	isErrorToBeChecked = true;    
 	    		        	}catch (Exception e) {
+                                logger.error("Error in ComponentImpl.validateFieldsXML", e);
 	    		        		// TODO: handle exception
 	    		        	}
 	    		        	 
@@ -883,6 +887,7 @@ public class ComponentImpl extends Component {
 		    			if(datatype != null && datatype.equals("D"))
 		    				new PropertyImpl().validateDateField(ctx, ctx.get(fieldImpl.getName()), fieldImpl.getName(), null);
 	    			}catch(ValidationException e1){
+                        logger.error("Error in ComponentImpl.validateFieldsXML", e1);
 	    				ArrayList errorsList = (ArrayList)ctx.get(Constants.INET_ERRORS_LIST);
 	    				if(errorsList == null){
 	    					errorsList = new ArrayList();
@@ -912,7 +917,7 @@ public class ComponentImpl extends Component {
 	    		}
 	    	}
     	}catch(Exception e){
-    		logger.error("Unable to validate field for page "+ctx.get(HtmlConstants.NEXT_PAGE_FOR_PARSE)+" due to error : " + e.getMessage());
+            logger.error("Unable to validate field for page "+ctx.get(HtmlConstants.NEXT_PAGE_FOR_PARSE)+" due to error : " + e.getMessage(), e);
     	}
     	
     	/*if(htmlFieldsList == null || htmlFieldsList.size() == 0)
@@ -1104,6 +1109,16 @@ public class ComponentImpl extends Component {
     //Method created to check for default values for htmlfields available on screen
     private void checkForDefaultValues(Context ctx) throws Exception{
     	try{
+			List configuredFields = FieldsResources.getInstance(ctx).getFieldList();
+			if(configuredFields == null || configuredFields.isEmpty())
+				return;
+
+			Map<String, FieldImpl> fieldsByName = new HashMap<String, FieldImpl>();
+			for(Object configuredField : configuredFields){
+				FieldImpl fieldImpl = (FieldImpl)configuredField;
+				fieldsByName.put(fieldImpl.getName(), fieldImpl);
+			}
+
     		List fieldsList = getHtmlFields(ctx, ProcessFlowResources.getInstance(ctx).getPagecomponent(name));
     		if(fieldsList == null || fieldsList.size() == 0)
     			return;
@@ -1123,20 +1138,21 @@ public class ComponentImpl extends Component {
     				
     				field = currentPageComp + "." + field;
     				
-	    			if(FieldsResources.getInstance(ctx).getField(field) != null){
-	    				FieldImpl fieldImpl = (FieldImpl)FieldsResources.getInstance(ctx).getField(field);
-	    				
-	    				//if field have no value in request but having defaultvalue
+				FieldImpl fieldImpl = fieldsByName.get(field);
+				if(fieldImpl != null){
+
+					//if field have no value in request but having defaultvalue
 		    			if((ctx.get((String)fieldsList.get(i)) == null || ctx.get((String)fieldsList.get(i)).toString().equals(HtmlConstants.EMPTY)) 
 		    					&& StringUtils.isNotBlank(fieldImpl.getDefaultvalue()))
 		    				ctx.put((String)fieldsList.get(i), fieldImpl.getDefaultvalue());
 	    			}
     			}catch (Exception e1) {
+                    logger.error("Error in ComponentImpl.checkForDefaultValues", e1);
 					// TODO: handle exception
 				}
     		}
     	}catch (Exception e) {
-			logger.error("Error while checking for fields to be encrypted : " + e.getMessage());
+			logger.error("Error while checking for fields to be encrypted : " + e.getMessage(), e);
 		}
     }
     
@@ -1147,17 +1163,18 @@ public class ComponentImpl extends Component {
     		
             if(ApplicationWorkflowResources.getInstance(ctx) != null && ApplicationWorkflowResources.getInstance(ctx).getEvent(workflow_event) != null){
             	EventImpl eventImpl = ApplicationWorkflowResources.getInstance(ctx).getEvent(workflow_event);
-        		logger.debug("Going to execute workflow event : " + workflow_event);
+				{ if (logger.isDebugEnabled()) logger.debug("Going to execute workflow event : " + workflow_event); }
         		
         		try{
 	        		actionImpl.executeWorkflowEventNew(ctx, eventImpl);
 	        		
-	        		logger.debug("Workflow event " + workflow_event + " executed successfully");
+					{ if (logger.isDebugEnabled()) logger.debug("Workflow event " + workflow_event + " executed successfully"); }
         		}catch (Exception e) {
-        			logger.error("Unable to execute event due to error : - " + e.getMessage());
+                    logger.error("Unable to execute event due to error : - " + e.getMessage(), e);
 				}
             }
         }catch (Exception e) {
+            logger.error("Error in ComponentImpl.executeWorkflowNew", e);
 			// TODO: handle exception
 		}
     }
@@ -1170,13 +1187,13 @@ public class ComponentImpl extends Component {
         	String workflow_event = ctx.get(HtmlConstants.WORKFLOW_EVENT).toString();
         	try{
         		EventImpl eventImpl = ApplicationWorkflowResources.getInstance(ctx).getEvent(workflow_event);
-        		logger.debug("Going to execute workflow event : " + workflow_event);
+				{ if (logger.isDebugEnabled()) logger.debug("Going to execute workflow event : " + workflow_event); }
         		
         		actionImpl.executeWorkflowEvent(ctx, eventImpl);
         		
-        		logger.debug("Workflow event " + workflow_event + " executed successfully");
+				{ if (logger.isDebugEnabled()) logger.debug("Workflow event " + workflow_event + " executed successfully"); }
         	}catch (Exception e) {
-				logger.error("Unbale to get event from applicationworkflow.xml due to error : - " + e.getMessage());
+				logger.error("Unbale to get event from applicationworkflow.xml due to error : - " + e.getMessage(), e);
 			}
         }
     }
@@ -1205,6 +1222,7 @@ public class ComponentImpl extends Component {
 		    	}
 	    	}
     	}catch(Exception e){
+            logger.error("Error in ComponentImpl.getParentComponent", e);
     		//Do nothing
     	}
 	}
@@ -1235,6 +1253,7 @@ public class ComponentImpl extends Component {
 		    	}
 			}
 		}catch(Exception e){
+			logger.error("Error in ComponentImpl.getParentComponent", e);
 			//Do nothing
 		}
 	}
@@ -1283,6 +1302,7 @@ public class ComponentImpl extends Component {
                 	logger.info("Bo can't be execute bcoz it has no execute method.");
                 }
             }catch(InvocationTargetException e){
+                logger.error("Error in ComponentImpl.insertUserVisitInformation", e);
                 Throwable t = e.getCause();
                 throw (Exception) e.getCause();
             }
@@ -1305,7 +1325,7 @@ public class ComponentImpl extends Component {
 			
 			SqlResources.getSqlMapProcessor(newCtx).insert("uservisits.insert", newCtx);*/
 		}catch(Exception e){
-			logger.error("Unable to insert user visists information due to error : " + e.getMessage());
+			logger.error("Unable to insert user visists information due to error : " + e.getMessage(), e);
 		}
 	}
 	
@@ -1354,7 +1374,7 @@ public class ComponentImpl extends Component {
 				SqlResources.getSqlMapProcessor(ctx).insert("manageScreens.insertUpdateDeleteConfigurationExtendedFieldsData_p", ctx);
 			}
 		}catch(Exception e){
-			logger.error("Unable to insert custom fields due to error : " + e.getMessage());
+			logger.error("Unable to insert custom fields due to error : " + e.getMessage(), e);
 		}
 	}
 	
@@ -1398,7 +1418,7 @@ public class ComponentImpl extends Component {
 				}
 			}
 		}catch(Exception e){
-			logger.error("Unable to get custom fields data due to error : " + e.getMessage());
+			logger.error("Unable to get custom fields data due to error : " + e.getMessage(), e);
 		}
 	}
 	
@@ -1421,7 +1441,7 @@ public class ComponentImpl extends Component {
   		  	SqlResources.getSqlMapProcessor(localCtx).insert("dummy_metadata.insertUserLogs_p", localCtx);
   		  	ctx.remove("DEBUGMSG");
         }catch(Exception e){
-        	logger.error("Unable to insert userlog into database due to error : " + e.getMessage());
+            logger.error("Unable to insert userlog into database due to error : " + e.getMessage(), e);
         }
 	}
 }

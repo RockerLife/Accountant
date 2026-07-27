@@ -21,6 +21,7 @@ import org.ow2.util.base64.Base64;
 import com.ormapping.ibatis.SqlResources;
 import com.util.Context;
 import com.util.InetLogger;
+import com.util.SharedHttpClient;
 import com.util.SystemProperties;
 
 public class IPFSServiceClient {
@@ -38,10 +39,9 @@ public class IPFSServiceClient {
 				AccountUtils.populateError(ctx, "IPFSFinanceQurMon", "Please Select Interval");
 				return false;
 			}
-			logger.debug("IPFSFinanceQurMon : " + ctx.get("IPFSFinanceQurMon"));	
+			{ if (logger.isDebugEnabled()) logger.debug("IPFSFinanceQurMon : " + ctx.get("IPFSFinanceQurMon")); }
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Error in IPFS checkIPFSFinanceInterval : " + e.getMessage());
+			logger.error("Error in IPFS checkIPFSFinanceInterval : " + e.getMessage(), e);
 		}
 		return true;
 	}
@@ -61,8 +61,7 @@ public class IPFSServiceClient {
 				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Error in IPFS checkIPFSDownPayment : " + e.getMessage());
+			logger.error("Error in IPFS checkIPFSDownPayment : " + e.getMessage(), e);
 		}
 		return true;
 	}
@@ -161,12 +160,12 @@ public class IPFSServiceClient {
 				    date.add(Calendar.YEAR,1);
 				    SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 				    policyExpirationDate = f.format(date.getTime());
-				    logger.debug("Get policyExpirationDate " + policyExpirationDate);
+				    { if (logger.isDebugEnabled()) logger.debug("Get policyExpirationDate " + policyExpirationDate); }
 				} else {
 					 policyExpirationDate = ctx.get("PolicyExpirationDate").toString();
 				}
 			} catch(Exception e) {
-				e.printStackTrace();
+				logger.error("Error in IPFSServiceClient.getIPFSPFAData", e);
 			}
 			
 			float policyTotalPremium = Float.parseFloat((ctx.get("InvoicedPremium") == null ? 1999.00 : ctx.get("InvoicedPremium")).toString().replace("$", "").replace(",", ""));
@@ -271,36 +270,35 @@ public class IPFSServiceClient {
 			authRequest.put("header", headerJsonObject);
 			
 			
-			logger.debug("IPFS SubmitQuote for Policy  " + policyKey + " is going to call.");
+			{ if (logger.isDebugEnabled()) logger.debug("IPFS SubmitQuote for Policy  " + policyKey + " is going to call."); }
 			
 			JSONObject json = authorizeTransaction(authRequest, webServiceURL,  subURL, userAgentKey);
 			
-			logger.debug("IPFS SubmitQuote for Policy  " + policyKey + " has been called.");
+			{ if (logger.isDebugEnabled()) logger.debug("IPFS SubmitQuote for Policy  " + policyKey + " has been called."); }
 			
 			json = json.getJSONObject("item");
-		    logger.debug("IPFS SubmitQuote for Policy  " + policyKey + " Response..." + json);
+		    { if (logger.isDebugEnabled()) logger.debug("IPFS SubmitQuote for Policy  " + policyKey + " Response..." + json); }
 		    
 			Iterator<String> keys= json.keys();
 			while (keys.hasNext()) {
 		        String keyValue = (String)keys.next();
 		        String valueString = json.getString(keyValue);
-		        logger.debug(keyValue + "   :    " + valueString);
+		        { if (logger.isDebugEnabled()) logger.debug(keyValue + "   :    " + valueString); }
 		        
 		        if("pfa".equals(keyValue)){
 		        	logger.debug("PFA is found from json response");
 					//Decode data on other side, by processing encoded data
 					try{
 			        	byte[] valueDecoded = Base64.decode(valueString.trim().toCharArray());
-						logger.debug("PFA data  :    " + valueDecoded);
+						{ if (logger.isDebugEnabled()) logger.debug("PFA data  :    " + valueDecoded); }
 						String IPFSPFAURL = SystemProperties.getInstance().getString("appl.home.dir") + "data/IPFSPFA_" + policyKey + ".pdf";
 			            FileOutputStream fos = new FileOutputStream(IPFSPFAURL);
 			            fos.write(valueDecoded);
 			            fos.close();
 			            ctx.put("IPFSPFAURL", IPFSPFAURL);
-			            logger.debug("IPFSPFAURL" + IPFSPFAURL);
+			            { if (logger.isDebugEnabled()) logger.debug("IPFSPFAURL" + IPFSPFAURL); }
 					} catch (Exception e) {
-						e.printStackTrace();
-						logger.error("Error in IPFS getIPFSPFAData : " + e.getMessage());
+						logger.error("Error in IPFS getIPFSPFAData : " + e.getMessage(), e);
 					}
 		        } else if("quoteKey".equals(keyValue)){
 		        	ctx.put("ipfsQuoteNumberResponse", valueString);		        	
@@ -313,7 +311,7 @@ public class IPFSServiceClient {
 			    			while (errKeys.hasNext()) {
 			    		        String errKey = (String)errKeys.next();
 			    		        String errValue = object.getString(errKey);
-			    		        logger.debug(errKey + "   :    " + errValue);
+								{ if (logger.isDebugEnabled()) logger.debug(errKey + "   :    " + errValue); }
 			    		        if("Description".equals(errKey)){
 			    		        	//AccountUtils.populateError(ctx, "ipfs", errValue);
 //			    		        	ctx.put("ipfsErrorsDesc", "fdfdf");
@@ -330,8 +328,7 @@ public class IPFSServiceClient {
 			}
 			logger.debug("IPFS SubmitQuote Response has been processed");
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Error in IPFS getIPFSPFAData : " + e.getMessage());
+			logger.error("Error in IPFS getIPFSPFAData : " + e.getMessage(), e);
 			isError = true;
 		}
 		if(isError){
@@ -340,8 +337,8 @@ public class IPFSServiceClient {
 				ctx.put("IPFSERRORS", "ipfserrors");
 				return;
 			} catch (Exception e1) {
+				logger.error("Error in IPFSServiceClient.getIPFSPFAData", e1);
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			}
 		}
 	}
@@ -387,12 +384,12 @@ public class IPFSServiceClient {
 			authRequest.put("header", headerJsonObject);
 			
 	    	
-	    	logger.debug("IPFS StartESign for Policy  " + policyKey + " is going to call.");
+			{ if (logger.isDebugEnabled()) logger.debug("IPFS StartESign for Policy  " + policyKey + " is going to call."); }
 			
 			JSONObject json = authorizeTransaction(authRequest, webServiceURL,  subURL, userAgentKey);
 			
-			logger.debug("IPFS StartESign for Policy  " + policyKey + " has been called.");
-		    logger.debug("IPFS StartESign for Policy  " + policyKey + " Response..." + json);
+			{ if (logger.isDebugEnabled()) logger.debug("IPFS StartESign for Policy  " + policyKey + " has been called."); }
+		    { if (logger.isDebugEnabled()) logger.debug("IPFS StartESign for Policy  " + policyKey + " Response..." + json); }
 		    
 		    if(json.getBoolean("success") == true) {
 		    	JSONArray jsonArray = json.getJSONArray("results");
@@ -401,24 +398,23 @@ public class IPFSServiceClient {
 				while (keys.hasNext()) {
 			        String keyValue = (String)keys.next();
 			        String valueString = json.getString(keyValue);
-			        logger.debug(keyValue + "   :    " + valueString);
+			        { if (logger.isDebugEnabled()) logger.debug(keyValue + "   :    " + valueString); }
 			        
 			        if("insuredURL".equals(keyValue)){
 			        	
 		    			int status = SqlResources.getSqlMapProcessor(ctx).update("SqlStmts.UserStatementManualBoQueriesupdateipfsQuoteNumber", ctx);
 		    			ctx.remove("ipfsQuoteNumberResponse");   			
-			        	logger.debug("Firm has been updated by status... " + status + "ipfsQuoteNumber..." + ipfsQuoteNumber);
+						{ if (logger.isDebugEnabled()) logger.debug("Firm has been updated by status... " + status + "ipfsQuoteNumber..." + ipfsQuoteNumber); }
 						ctx.put("TransactionStatus", "Pending");
 			        	
-			        	logger.debug("Going to redirect to IPFS Insured URL...." + valueString);
+						{ if (logger.isDebugEnabled()) logger.debug("Going to redirect to IPFS Insured URL...." + valueString); }
 		    			HttpServletResponse response = (HttpServletResponse) ctx.get("DocumentResponse");
 		    			response.sendRedirect(valueString);
 			        }
 				}
 		    }
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("Error in IPFS submitIPFSESign : " + e.getMessage());
+			logger.error("Error in IPFS submitIPFSESign : " + e.getMessage(), e);
 		}
 	}
 	
@@ -432,22 +428,23 @@ public class IPFSServiceClient {
 		    post.setRequestHeader("User-Agent", userAgentKey);
 		    post.setRequestBody(authRequest.toString());
 
-		    HttpClient httpclient = new HttpClient();
+		    HttpClient httpclient = SharedHttpClient.get();
 
 		    int result = httpclient.executeMethod(post);
+		    String responseBody = post.getResponseBodyAsString();
 		    
-    		logger.debug(result);
-		    logger.debug(post.getResponseBodyAsString());
+			logger.debug(result);
+		    logger.debug(responseBody);
 		    
 		    if (result != 201 && result != 200) {
 				return null;
 			}
 		    
-		    if(post.getResponseBodyAsString() != null && !"".equals(post.getResponseBodyAsString())){
-		    	return new JSONObject(post.getResponseBodyAsString());
+		    if(responseBody != null && !"".equals(responseBody)){
+				return new JSONObject(responseBody);
   			}
 		} catch (Exception e) {
-		    e.printStackTrace();
+			logger.error("Error in IPFSServiceClient.authorizeTransaction", e);
 		} finally {
 		    post.releaseConnection();
 		}
@@ -459,11 +456,10 @@ public class IPFSServiceClient {
 		HttpServletResponse response = (HttpServletResponse) ctx.get("DocumentResponse");
 		try{
 			String filePath = ctx.get("IPFSPFAURL").toString();
-	    	logger.debug("method in downloadIPFSPFA  " + filePath);
+			{ if (logger.isDebugEnabled()) logger.debug("method in downloadIPFSPFA  " + filePath); }
 			AccountUtils.exportFileDownLoad(filePath, response);
 		}catch(Exception e){
- 			e.printStackTrace();
-			logger.error("Error in IPFS downloadIPFSPFA : " + e.getMessage());
+			logger.error("Error in IPFS downloadIPFSPFA : " + e.getMessage(), e);
 		}
 	}
 }

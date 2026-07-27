@@ -1,5 +1,6 @@
 package com.pdf;
 
+import com.util.InetLogger;
 import java.util.Map;
 
 import com.lowagie.text.Chunk;
@@ -13,6 +14,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.util.Context;
 
 public class LicensePage {
+	private static final InetLogger logger = InetLogger.getInetLogger(LicensePage.class);
 
 	public void addLicenseData(Document document, Context ctx) {
 
@@ -794,7 +796,7 @@ public class LicensePage {
 				document.add(maintable);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in LicensePage.addLicenseData", e);
 		}
 	}
 }

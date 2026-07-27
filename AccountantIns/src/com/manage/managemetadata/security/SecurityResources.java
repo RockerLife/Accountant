@@ -35,9 +35,14 @@ public class SecurityResources extends Resources{
 
         static{
             try{
-                USER_ID = SystemProperties.getInstance().getString("USER_ID_FIELD_NAME");
-                ROLE_ID = SystemProperties.getInstance().getString("ROLE_ID_FIELD_NAME");
+                String userId = SystemProperties.getInstance().getProperty("USER_ID_FIELD_NAME");
+                String roleId = SystemProperties.getInstance().getProperty("ROLE_ID_FIELD_NAME");
+                if(userId != null)
+                    USER_ID = userId;
+                if(roleId != null)
+                    ROLE_ID = roleId;
             }catch(Exception e){
+                logger.error("Error in SecurityResources.initializer", e);
                
             }
         }
@@ -94,7 +99,7 @@ public class SecurityResources extends Resources{
 				accessType = Integer.parseInt(protectedresourceImpl.getDefaultaccesstype());
 			}
 		}catch(Exception e1){
-			logger.error("Unable to parse security id : " + resourceName + " due to error : " + e1.getMessage());
+			logger.error("Unable to parse security id : " + resourceName + " due to error : " + e1.getMessage(), e1);
 			//do nothing
 		}
 		
@@ -134,7 +139,7 @@ public class SecurityResources extends Resources{
 								}
 							}
 						}catch (Exception e) {
-							logger.error("Unable to execute rule from security.xml due to error : " + e.getMessage());
+							logger.error("Unable to execute rule from security.xml due to error : " + e.getMessage(), e);
 						}
 					}
 				}
@@ -157,7 +162,7 @@ public class SecurityResources extends Resources{
 								break;
 							}*/
 						}catch (Exception e) {
-							logger.error("Unable to execute rule from security.xml due to error : " + e.getMessage());
+							logger.error("Unable to execute rule from security.xml due to error : " + e.getMessage(), e);
 						}
 					}
 				}
@@ -178,7 +183,7 @@ public class SecurityResources extends Resources{
 								}
 							}
 						}catch (Exception e) {
-							logger.error("Unable to execute rule from security.xml due to error : " + e.getMessage());
+							logger.error("Unable to execute rule from security.xml due to error : " + e.getMessage(), e);
 						}
 					}
 				}
@@ -229,6 +234,7 @@ public class SecurityResources extends Resources{
 				accessType = useraccesslevelImpl.getAccesstype();
 			}
 		}catch(Exception e){
+			logger.error("Error in SecurityResources.checkUser", e);
 			//do nothing
 		}
 		
@@ -379,7 +385,7 @@ public class SecurityResources extends Resources{
 							}
 						}
 					}catch (Exception e) {
-						logger.error("Unable to execute rule from security.xml due to error : " + e.getMessage());
+						logger.error("Unable to execute rule from security.xml due to error : " + e.getMessage(), e);
 					}
 				}
 			}
@@ -569,6 +575,7 @@ public class SecurityResources extends Resources{
 				}
 			}
 		}catch (Exception e) {
+			logger.error("Error in SecurityResources.checkForEncryptionDecryptionInner", e);
 			//logger.error("Unable to encrypt/decrypt resource " + fld + " due to error : " + e.getMessage());
 		}
 		

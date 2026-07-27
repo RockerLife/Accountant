@@ -644,7 +644,7 @@
                <formlinkforward component="computer-services" name="tabSupplements" eval="AccountantRule.isAuditAOP14" seq="4" action="view" />
                <formlinkforward component="Business-funds-control" name="tabSupplements" eval="AccountantRule.isAuditAOP18" seq="5" action="view" />
                <formlinkforward component="referThanks" name="tabSupplements" eval="AccountantRule.isReferRuleTriggered" seq="6" action="view" />
-               <formlinkforward component="inedxThanks" name="tabSupplements" eval="AccountantRule.IsGeneralPageSaved" seq="7" action="view" />
+               <formlinkforward component="indexThanks" name="tabSupplements" eval="AccountantRule.IsGeneralPageSaved" seq="7" action="view" />
           </formlink>
           <formlink name="BasicInfo" seq="30" action="tabSupplementsContinue">
                <formlinkforward component="BasicInfo" name="tabSupplementsContinue" eval="AccountantRule.isBusinessNonActive" seq="0" action="view" />
@@ -654,7 +654,7 @@
                <formlinkforward component="computer-services" name="tabSupplementsContinue" eval="AccountantRule.isAuditAOP14" seq="4" action="view" />
                <formlinkforward component="Business-funds-control" name="tabSupplementsContinue" eval="AccountantRule.isAuditAOP18" seq="5" action="view" />
                <formlinkforward component="referThanks" name="tabSupplementsContinue" eval="AccountantRule.isReferRuleTriggered" seq="6" action="view" />
-               <formlinkforward component="inedxThanks" name="tabSupplementsContinue" eval="AccountantRule.IsGeneralPageSaved" seq="7" action="view" />
+               <formlinkforward component="indexThanks" name="tabSupplementsContinue" eval="AccountantRule.IsGeneralPageSaved" seq="7" action="view" />
           </formlink>
           <formlink name="BasicInfo" seq="34" action="tabQuoteOption">
                <formlinkforward component="quoteOption" name="tabQuoteOption" eval="AccountantRule.isQuoteOptionBasicPageSaved" seq="0" action="view" />
@@ -1048,7 +1048,7 @@
                <formlinkforward component="computer-services" name="tabSupplements" eval="AccountantRule.isAuditAOP14" seq="4" action="view" />
                <formlinkforward component="Business-funds-control" name="tabSupplements" eval="AccountantRule.isAuditAOP18" seq="5" action="view" />
                <formlinkforward component="referThanks" name="tabSupplements" eval="AccountantRule.isReferRuleTriggered" seq="6" action="view" />
-               <formlinkforward component="inedxThanks" name="tabSupplements" eval="AccountantRule.IsBasicPageSaved" seq="7" action="view" />
+               <formlinkforward component="indexThanks" name="tabSupplements" eval="AccountantRule.IsBasicPageSaved" seq="7" action="view" />
           </formlink>
           <formlink name="RenewBasicInfo" seq="24" action="tabSupplementsContinue">
                <formlinkforward component="RenewBasicInfo" name="tabSupplementsContinue" eval="AccountantRule.isBusinessNonActive" seq="0" action="view" />
@@ -1058,7 +1058,7 @@
                <formlinkforward component="computer-services" name="tabSupplementsContinue" eval="AccountantRule.isAuditAOP14" seq="4" action="view" />
                <formlinkforward component="Business-funds-control" name="tabSupplementsContinue" eval="AccountantRule.isAuditAOP18" seq="5" action="view" />
                <formlinkforward component="referThanks" name="tabSupplementsContinue" eval="AccountantRule.isReferRuleTriggered" seq="6" action="view" />
-               <formlinkforward component="inedxThanks" name="tabSupplementsContinue" eval="AccountantRule.IsBasicPageSaved" seq="7" action="view" />
+               <formlinkforward component="indexThanks" name="tabSupplementsContinue" eval="AccountantRule.IsBasicPageSaved" seq="7" action="view" />
           </formlink>
           <formlink name="RenewBasicInfo" seq="28" action="tabQuoteOption">
                <formlinkforward component="quoteOption" name="tabQuoteOption" eval="AccountantRule.isQuoteOptionRenewBasicPageSaved" seq="0" action="view" />
@@ -1372,7 +1372,7 @@
                <formlinkforward component="computer-services" name="tabSupplements" eval="AccountantRule.isAuditAOP14" seq="3" action="view" />
                <formlinkforward component="Business-funds-control" name="tabSupplements" eval="AccountantRule.isAuditAOP18" seq="4" action="view" />
                <formlinkforward component="referThanks" name="tabSupplements" eval="AccountantRule.isReferRuleTriggered" seq="5" action="view" />
-               <formlinkforward component="inedxThanks" name="tabSupplements" eval="AccountantRule.IsGeneralPageSaved" seq="6" action="view" />
+               <formlinkforward component="indexThanks" name="tabSupplements" eval="AccountantRule.IsGeneralPageSaved" seq="6" action="view" />
           </formlink>
           <formlink name="general" seq="28" action="tabSupplementsContinue">
                <formlinkforward component="Practice-Management" name="tabSupplementsContinue" eval="AccountantRule.isAuditAOPPM" seq="0" action="view" />
@@ -1381,7 +1381,7 @@
                <formlinkforward component="computer-services" name="tabSupplementsContinue" eval="AccountantRule.isAuditAOP14" seq="3" action="view" />
                <formlinkforward component="Business-funds-control" name="tabSupplementsContinue" eval="AccountantRule.isAuditAOP18" seq="4" action="view" />
                <formlinkforward component="referThanks" name="tabSupplementsContinue" eval="AccountantRule.isReferRuleTriggered" seq="5" action="view" />
-               <formlinkforward component="inedxThanks" name="tabSupplementsContinue" eval="AccountantRule.IsGeneralPageSaved" seq="6" action="view" />
+               <formlinkforward component="indexThanks" name="tabSupplementsContinue" eval="AccountantRule.IsGeneralPageSaved" seq="6" action="view" />
           </formlink>
           <formlink name="general" seq="29" action="tabQuoteOption">
                <formlinkforward component="quoteOption" name="tabQuoteOption" seq="0" action="view" />
@@ -2784,27 +2784,24 @@
           <formlink name="UWReview" seq="2" action="collapseAll">
                <formlinkforward component="UWReview" name="collapseAll" seq="0" action="view" />
           </formlink>
-          <formlink name="UWReview" seq="3" action="viewAll">
-               <formlinkforward component="ViewAll" name="viewAll" seq="0" action="view" />
-          </formlink>
-          <formlink name="UWReview" seq="7" action="uwcomplete">
+          <formlink name="UWReview" seq="6" action="uwcomplete">
                <formlinkforward component="UWReview" name="uwcomplete" seq="0" action="view" />
           </formlink>
-          <formlink name="UWReview" seq="8" action="ureview">
+          <formlink name="UWReview" seq="7" action="ureview">
                <formlinkforward component="UWReview" name="ureview" seq="0" action="view" />
           </formlink>
-          <formlink name="UWReview" seq="9" action="underreview">
+          <formlink name="UWReview" seq="8" action="underreview">
                <formlinkforward component="UWReview" name="underreview" seq="0" action="view" />
           </formlink>
-          <formlink name="DeclineStatusOnUW" seq="10" action="edit">
+          <formlink name="DeclineStatusOnUW" seq="9" action="edit">
                <formlinkforward component="addNewPricingComment" name="edit" seq="2" action="view" />
                <formlinkforward component="DeclineStatusOnUW" name="edit" seq="3" action="view" />
           </formlink>
-          <formlink name="UWReview" seq="12" action="nameClearanceIndicationFlag">
+          <formlink name="UWReview" seq="11" action="nameClearanceIndicationFlag">
                <formlinkforward component="quickquoteinsured" name="nameClearanceIndicationFlag" eval="AccountantRule.isquickquoteinsured" seq="0" action="view" />
                <formlinkforward component="indicationinjack" name="nameClearanceIndicationFlag" eval="AccountantRule.isIndicationPage" seq="1" action="view" />
           </formlink>
-          <formlink name="UWReview" seq="40" action="back">
+          <formlink name="UWReview" seq="39" action="back">
                <formlinkforward component="quickquoteinsured" name="back" eval="AccountantRule.isquickquoteinsured" seq="0" action="view" />
                <formlinkforward component="indicationinjack" name="back" eval="AccountantRule.isIndicationPage" seq="1" action="view" />
                <formlinkforward component="list" name="back" eval="AccountantRule.isListPage" seq="2" action="view" />
@@ -2834,7 +2831,7 @@
                <formlinkforward component="trustsAndOfficer" name="back" eval="AccountantRule.isTrustsAndOfficerPage" seq="26" action="view" />
                <formlinkforward component="pastClaims" name="back" eval="AccountantRule.isPastClaimsPage" seq="27" action="view" />
           </formlink>
-          <formlink name="firm" seq="41" action="#Include:footerNewApp.html#">
+          <formlink name="firm" seq="40" action="#Include:footerNewApp.html#">
                <formlinkforward component="footerNewApp.html" name="#Include:footerNewApp.html#" seq="0" action="view" />
           </formlink>
      </pagecomponent>

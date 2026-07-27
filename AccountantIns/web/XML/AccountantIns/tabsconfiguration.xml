@@ -1,8 +1,6 @@
 <tabsconfiguration project="AccountantIns">
 
 	
-	<tabsconfigurationresource name="actionsToSkipErrorDiv"  value="deleteClaimIncidentSupp,deleteservedastrustee,deleteFormRendered,deleteFeesSued">
-		<tabsconfigurationresource name="poBoxNamePatterns" value="P.O. Box,P. o. Box,p. O. Box,p. o. box,p. O. box,P. o. box,PO Box,po Box,PO box,po box,PO. Box,po. box,PO. box,po.box"/>
-	
-	</tabsconfigurationresource>
+	<tabsconfigurationresource name="actionsToSkipErrorDiv" value="deleteClaimIncidentSupp,deleteservedastrustee,deleteFormRendered,deleteFeesSued"/>
+	<tabsconfigurationresource name="poBoxNamePatterns" value="P.O. Box,P. o. Box,p. O. Box,p. o. box,p. O. box,P. o. box,PO Box,po Box,PO box,po box,PO. Box,po. box,PO. box,po.box"/>
 </tabsconfiguration>

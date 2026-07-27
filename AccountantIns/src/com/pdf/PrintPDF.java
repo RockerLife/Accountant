@@ -79,7 +79,6 @@ public class PrintPDF  {
 				pdfWriter.toString();
 			} catch (DocumentException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
 				logger.error(e);
 			} 
     }
@@ -122,17 +121,16 @@ public class PrintPDF  {
 //			}
 			logger.debug("Going to call PDFGenerator");
 			new PDFGenerator().execute(document, null, ctx, writer);
-			logger.debug("PDFGenerator ends " + new Date());
+			{ if (logger.isDebugEnabled()) logger.debug("PDFGenerator ends " + new Date()); }
 			document.close();	
 			
 			return baos;
 			
 		}catch(DocumentException de) {
-			logger.error(de.getMessage());
+			logger.error(de.getMessage(), de);
 		}
 		catch (Exception e2) {
-			logger.error("Error in " + getClass().getName() + "\n" + e2);
-			e2.printStackTrace();
+			logger.error("Error in " + getClass().getName() + "\n" + e2, e2);
 		}		
 		finally{
 			if(document != null)
@@ -156,7 +154,7 @@ public class PrintPDF  {
 			{
 				//queryString = request.getQueryString();
 				baos = new ByteArrayOutputStream();
-				System.out.println(baos.toString());
+				{ if (logger.isDebugEnabled()) logger.debug(baos.toString()); }
 				writer=PdfWriter.getInstance(document, baos);
 			}
 			else
@@ -193,11 +191,10 @@ public class PrintPDF  {
 		
 			
 		}catch(DocumentException de) {
-            System.err.println(de.getMessage());
+			logger.error("Error in PrintPDF.makePdf", de);
 		}
 		catch (Exception e2) {
-			System.out.println("Error in " + getClass().getName() + "\n" + e2);
-			e2.printStackTrace();
+			logger.error("Error in PrintPDF.makePdf", e2);
 		}
 		finally{
 			if(document != null)
@@ -206,15 +203,15 @@ public class PrintPDF  {
 				try {
 					baos.close();
 				} catch (IOException e) {
+					logger.error("Error in PrintPDF.makePdf", e);
 					
-					e.printStackTrace();
 				}
 			if(out != null)
 				try {
 					out.close();
 				} catch (IOException e) {
+					logger.error("Error in PrintPDF.makePdf", e);
 					
-					e.printStackTrace();
 				}
 			
 			

@@ -215,6 +215,7 @@ public class MailSender {
 			sendMail();
 			return true;
 		} catch (Exception mex) {
+			logger.error("Error in MailSender.sendMail", mex);
 			if (MAIL_ERROR_NOTIFICATION_ADDRESS == null || "".equals(MAIL_ERROR_NOTIFICATION_ADDRESS)
 					|| MAIL_ERROR_NOTIFICATION_ADDRESS.equals(toAdd))
 				return false;
@@ -364,7 +365,6 @@ public class MailSender {
 			MAIL_CC_ADDRESS = PropertiesLoader.getSystemProperty("mail.admin.cc.address");
 
 		} catch (Exception e) {
-			System.err.println(" <*|*> Not able to initialize Mail Properties, Exception : " + e.getMessage());
 			logger.error(" <*|*> Not able to initialize Mail Properties, Exception : " + e.getMessage());
 		}
 
@@ -380,7 +380,7 @@ public class MailSender {
 		// mail.setPdfFile("C:\\Tomcat\\webapps\\AccountantIns\\list.html");
 		// mail.sendMail();
 		String path = "C:\\Tomcat\\webapps\\AccountantIns\\list.html";
-		System.out.println(path.substring(path.lastIndexOf("\\") + 1));
+		{ if (logger.isDebugEnabled()) logger.debug(path.substring(path.lastIndexOf("\\") + 1)); }
 	}
 
 	/**

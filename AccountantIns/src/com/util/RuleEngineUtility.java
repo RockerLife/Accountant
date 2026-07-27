@@ -40,12 +40,12 @@ public class RuleEngineUtility {
 		if(ctx.get("IsFirmCarryingProfLiabilityIns")!=null && ctx.get("IsFirmCarryingProfLiabilityIns").toString().equals("Y")  && ctx.get("IsPriorActDateFull")!=null && ctx.get("IsPriorActDateFull").toString().equals("Y"))
 		{	
 			
-				System.out.println("in this ..."+ctx.get("IsPriorActDateFull")+" years "+ctx.get("FirmYear").getClass());
+				{ if (logger.isDebugEnabled()) logger.debug("in this ..."+ctx.get("IsPriorActDateFull")+" years "+ctx.get("FirmYear").getClass()); }
 		
 		ruleid="fullPriorActDateInsuranceCoverage_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("firmYear",Integer.parseInt((String) ctx.get("FirmYear")));
-		System.out.println("in this ..."+ctx.get("firmYear").getClass());
+		{ if (logger.isDebugEnabled()) logger.debug("in this ..."+ctx.get("firmYear").getClass()); }
 		BasicInfoAcc basicinfo=(BasicInfoAcc)initlizePOJO(ctx, new BasicInfoAcc());
 		ctx.put("RuleObject",basicinfo);
 		insertRulesToDatabase(callRuleEngine(ctx,ruleid),basicinfo,ruleid,basicinfo.getDescription(),basicinfo.getTooltip());
@@ -66,7 +66,7 @@ public class RuleEngineUtility {
 		{
 			ruleid="firmAddress_Accountant";	
 			boolean containsPOBOX=false;
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			String address1 = ctx.get("Address1") != null ? ctx.get("Address1").toString().trim().toLowerCase() : "";
 			//String address2 = ctx.get("Address2") != null ? ctx.get("Address2").toString().trim().toLowerCase()  : "";
 			String poBoxNamePatterns="P.O. Box,P. o. Box,p. O. Box,p. o. box,p. O. box,P. o. box,PO Box,po Box,PO box,po box,PO. Box,po. box,PO. box,po.box";
@@ -99,14 +99,14 @@ public class RuleEngineUtility {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in RuleEngineUtility.evaluateAopWorkFlow", e);
 		}
 		
 		ctx.put("daysDifferenceForEfectiveDate",daysDifferenceForEfectiveDate);
 		if(ctx.get("PolicyStatusKey")!=null && ctx.get("PolicyStatusKey").toString().equals("1"))
 		{			
 			ruleid="validateEffectiveDateWithDaysNewBusiness_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"daysDifferenceForEfectiveDate");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 			clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -127,7 +127,7 @@ public class RuleEngineUtility {
 		{
 			
 			ruleid="validateEffectiveDateWithCurrentDateNewBusiness_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isCurrentDateAfterEfectiveDate",DateUtils.isDateBefore(ctx.get("effectiveDateOfPolicy"), ctx.get("currentDate")));
     		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isCurrentDateAfterEfectiveDate");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -155,7 +155,7 @@ public class RuleEngineUtility {
 
 			int sum=num1+num2+num3+num4+num5;											
 			ruleid="totalNoOfPerson_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			  ctx.put("totalFirmPersonnel", sum);
 			/*ctx.put("totalFirmPersonnel",ctx.get("TotalFirmPersonnel"));*/
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"totalFirmPersonnel");
@@ -217,7 +217,7 @@ public class RuleEngineUtility {
 			
 			ctx.put("annualRevenue_Amount0",annualRevenue_Amount);
 			ruleid="annualRevenueLastBusinessYear_Accountant";		
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"annualRevenue_Amount0");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 			clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -285,7 +285,7 @@ public class RuleEngineUtility {
 			
 			ctx.put("annualRevenue_Amount0",annualRevenue_Amount);
 			ruleid="annualRevenueLastBusinessYear2M_Accountant";		
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"annualRevenue_Amount0");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 			clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -307,7 +307,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_5")!=null && !ctx.get("AOP_Percentage_5").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_5").toString())>0)
 		{
 			ruleid="auditPubliclyheld_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("a_Percentage_5",ctx.get("AOP_Percentage_5"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_5");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -335,7 +335,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_12")!=null && !ctx.get("AOP_Percentage_12").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_12").toString())>0)
 		{
 			ruleid="otherConsulting_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_12",ctx.get("AOP_Percentage_12"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_12");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -353,7 +353,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_15")!=null && !ctx.get("AOP_Percentage_15").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_15").toString())>0)
 		{
 			ruleid="businessValuation_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_15",ctx.get("AOP_Percentage_15"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_15");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -371,7 +371,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_21")!=null && !ctx.get("AOP_Percentage_21").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_21").toString())>0)
 		{
 			ruleid="SECWorkOtherAudit_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_21",ctx.get("AOP_Percentage_21"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_21");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -390,7 +390,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_19")!=null && !ctx.get("AOP_Percentage_19").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_19").toString())>0)
 		{
 			ruleid="investmentFinancial_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_19",ctx.get("AOP_Percentage_19"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_19");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -421,7 +421,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_20")!=null && !ctx.get("AOP_Percentage_20").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_20").toString())>0)
 		{
 			ruleid="otherAOP_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_20",ctx.get("AOP_Percentage_20"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_20");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -439,7 +439,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsFirmsRevenueMorethan25Percent")!=null && ctx.get("IsFirmsRevenueMorethan25Percent").toString().equals("Y") && Integer.valueOf(ctx.get("PercentOfRevenueFromLargestClient").toString())>39)
 		{
 			ruleid="lastYearFirmRevenue_Accountant";	
-			logger.debug("going to debug "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug "+ ruleid); }
 			ctx.put("percentOfRevenueFromLargestClient",ctx.get("PercentOfRevenueFromLargestClient"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"percentOfRevenueFromLargestClient");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -459,7 +459,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="firmSECEntities_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isPublicTradedAudited", ctx.get("IsPublicTradedAudited"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isPublicTradedAudited");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -478,7 +478,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="firmSalePromotionRecommendation_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isPublicPrivateOfferingsDone", ctx.get("IsPublicPrivateOfferingsDone"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isPublicPrivateOfferingsDone");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -497,7 +497,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="firmSecuritiesrealEstateOtherInvestments_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isCommissionRecieved", ctx.get("IsCommissionRecieved").toString());
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isCommissionRecieved");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -517,7 +517,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsAnyRegulatoryInquiry")!=null && ctx.get("IsAnyRegulatoryInquiry").toString().equals("Y") )
 		{	
 		ruleid="IsAnyRegulatoryInquiry_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isAnyRegulatoryInquiry", ctx.get("IsAnyRegulatoryInquiry"));
 	/*	ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyRegulatoryInquiry");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -537,7 +537,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsAwarenessOfAnyProfLiability")!=null && ctx.get("IsAwarenessOfAnyProfLiability").toString().equals("Y") )
 		{	
 		ruleid="IsAwarenessOfAnyProfLiability_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isAwarenessOfAnyProfLiability", ctx.get("IsAwarenessOfAnyProfLiability"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAwarenessOfAnyProfLiability");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -555,7 +555,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst")!=null && ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst").toString().equals("Y") )
 		{	
 		ruleid="IsAwarenessOfAnyProfLiabilitySuitAgainst_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isAwarenessOfAnyProfLiabilitySuitAgainst", ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAwarenessOfAnyProfLiabilitySuitAgainst");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -573,7 +573,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_13")!=null && !ctx.get("AOP_Percentage_13").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_13").toString())>0)
 		{
 			ruleid="managementConsultingBusinessPlanning_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_13", ctx.get("AOP_Percentage_13"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_13");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -591,7 +591,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_16")!=null && !ctx.get("AOP_Percentage_16").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_16").toString())>0)
 		{
 			ruleid="forecastsProjections_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_16", ctx.get("AOP_Percentage_16"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_16");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -609,7 +609,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_17")!=null && !ctx.get("AOP_Percentage_17").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_17").toString())>0)
 		{
 			ruleid="mergersAcquisitions_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_17", ctx.get("AOP_Percentage_17"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_17");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -627,7 +627,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_18")!=null && !ctx.get("AOP_Percentage_18").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_18").toString())>0)
 		{
 			ruleid="businessManagement_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_18", ctx.get("AOP_Percentage_18"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_18");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -651,7 +651,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_23")!=null && !ctx.get("AOP_Percentage_23").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_23").toString())>0)
 		{
 			ruleid="erisaPensionPlans_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_23", ctx.get("AOP_Percentage_23"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_23");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -669,7 +669,7 @@ public class RuleEngineUtility {
 		if(ctx.get("AOP_Percentage_24")!=null && !ctx.get("AOP_Percentage_24").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_24").toString())>0)
 		{
 			ruleid="trusteeServices_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_24", ctx.get("AOP_Percentage_24"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_24");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -689,7 +689,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsFirmDeclinedOtherthanNonPayment")!=null && ctx.get("IsFirmDeclinedOtherthanNonPayment").toString().equals("Y") && !ctx.get("StateCode").toString().equals("MO") )
 		{	
 		ruleid="FirmDeclinedCancelledNnonrenewedProfessionalLiability_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isFirmDeclinedOtherthanNonPayment", ctx.get("IsFirmDeclinedOtherthanNonPayment"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmDeclinedOtherthanNonPayment");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -708,7 +708,7 @@ public class RuleEngineUtility {
 		
 		if(ctx.get("PolicyStatusKey")!=null && ctx.get("PolicyStatusKey").toString().equals("1")&&  ctx.get("IsFirmCarryingProfLiabilityIns").toString().equals("Y"))
 		{
-			System.out.println(ctx.get("PolicyExpirationDatePross").toString());
+			{ if (logger.isDebugEnabled()) logger.debug(ctx.get("PolicyExpirationDatePross").toString()); }
 			/*
 			ctx.put("policyExpiryDateNew", new SimpleDateFormat("MM/dd/yyyy").format(new Date(ctx.get("PolicyExpirationDate").toString())));
 
@@ -718,7 +718,7 @@ public class RuleEngineUtility {
 			ctx.put("policyExpiryDateNewPros", new Date(ctx.get("PolicyExpirationDatePross").toString()).getTime());
 			ctx.put("effectiveDateOfPolicyNew",new Date(ctx.get("PolicyEffectiveDate").toString()).getTime());
 			ruleid="validateExpirationDateNewBusiness_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"policyExpiryDateNewPros,effectiveDateOfPolicyNew");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 			clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -731,7 +731,7 @@ public class RuleEngineUtility {
 			int limitSequenceDifference=Integer.valueOf(ctx.get("LimitSequence").toString())-Integer.valueOf(ctx.get("LimitSequencePross").toString());
 			ctx.put("limitSequenceDifference", limitSequenceDifference);
 			ruleid="validateLimitsNewBusiness_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"limitSequenceDifference");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 			clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -825,7 +825,7 @@ public class RuleEngineUtility {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in RuleEngineUtility.initlizePOJO", e);
 		}
 		return obj;
 	}
@@ -842,7 +842,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="anySolePractitionerAccountingFirm_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isAnyFirmMeargedOrAcquired", ctx.get("IsAnyFirmMeargedOrAcquired"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyFirmMeargedOrAcquired");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -862,7 +862,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="controlOrDisburseClientFunds_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isControlClientFunds", ctx.get("IsControlClientFunds"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isControlClientFunds");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -883,7 +883,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="servingTrusteeCotrusteeExecutor_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isServedAsTrustee", ctx.get("IsServedAsTrustee"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isServedAsTrustee");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -903,7 +903,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="servingOfficerDirectorPartner_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isFirmRenderedServiceForAnyClient", ctx.get("IsFirmRenderedServiceForAnyClient"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmRenderedServiceForAnyClient");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -922,7 +922,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="policyExcludeCoveragePredecessorFirmAffiliatesClients_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isPolicyExcludesCoverage", ctx.get("IsPolicyExcludesCoverage"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isPolicyExcludesCoverage");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -941,7 +941,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="officersConductBusinessUnderSeparateEntity_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isFirmRenderingServices", ctx.get("IsFirmRenderingServices"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmRenderingServices");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -960,7 +960,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="OrganizePromoteReferInvestInvestmentVentures_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isInvestmentVenture", ctx.get("IsInvestmentVenture"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isInvestmentVenture");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -979,7 +979,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="investmentFundsHedgeFundsMutualFunds_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isSyndicationManagers", ctx.get("IsSyndicationManagers"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isSyndicationManagers");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -998,7 +998,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="renderServicesOtherThanTaxServices_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isFirmRenderedAuditOrAttestService", ctx.get("IsFirmRenderedAuditOrAttestService"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmRenderedAuditOrAttestService");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1017,7 +1017,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="providedManagementServicesForInvestmentVentures_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isManagementServiceProvided", ctx.get("IsManagementServiceProvided"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isManagementServiceProvided");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1036,7 +1036,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="hasFirmArrangedFinancingBusinessBrokerOfferingPublicPrivateSecurities_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isDebtOrEquityFinancing", ctx.get("IsDebtOrEquityFinancing"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isDebtOrEquityFinancing");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1055,7 +1055,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="hasFirmPersonnelPredecessorsInvestedNonpublicInvestment_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isNonPublicInvestmentDone", ctx.get("IsNonPublicInvestmentDone"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isNonPublicInvestmentDone");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1101,8 +1101,8 @@ public class RuleEngineUtility {
 				int currentYear=Integer.valueOf(sdf.format(new Date(new SimpleDateFormat("MM/dd/yyyy").format(new Date(ctx.get("PolicyEffectiveDate").toString())))).toString());
 
 /*				int currentYear=Integer.valueOf(sdf.format(new Date()).toString());
-*/				System.out.println(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3));
-				System.out.println(feeSuedDate);
+*/				{ if (logger.isDebugEnabled()) logger.debug(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3)); }
+				{ if (logger.isDebugEnabled()) logger.debug(feeSuedDate); }
 
 				//daysDifferenceForFeeSuits=DateUtils.calculateDiffInDays(new Date(ctx.get("effectiveDateOfPolicy").toString()),new Date(ctx.get("SuitFilesDateFeesFormat").toString()));
 				daysDifferenceForFeeSuits=DateUtils.calculateDiffInDays(new Date(ctx.get("SuitFilesDateFeesFormat").toString()),new Date(ctx.get("effectiveDateOfPolicy").toString()));
@@ -1111,7 +1111,7 @@ public class RuleEngineUtility {
 				{
 					int monthFeeSuit =Integer.valueOf(str.substring(0, Math.min(str.length(),2)));
 					int monthEffectiveDatePolicy=Integer.valueOf(effectiveDatePolicy.substring(0, Math.min(effectiveDatePolicy.length(),2)));
-					System.out.println("Fee Siut Month..."+monthFeeSuit+" Effective date Month.."+monthEffectiveDatePolicy);
+					{ if (logger.isDebugEnabled()) logger.debug("Fee Siut Month..."+monthFeeSuit+" Effective date Month.."+monthEffectiveDatePolicy); }
 					if(monthFeeSuit<monthEffectiveDatePolicy)
 					{
 						flagFeeSuitMonth=false;
@@ -1131,7 +1131,7 @@ public class RuleEngineUtility {
 
 		ctx.put("totalAmountfeeCal",totalAmountfee);
 		ruleid="checkAmountOfFeesSued_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"totalAmountfeeCal");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 		clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -1150,7 +1150,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsSuitInstituted")!=null && ctx.get("IsSuitInstituted").toString().equalsIgnoreCase("Y"))
 		{
 		List firmInitLawsuits=SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementdroolQueriesgetFirmInitLawsuits",ctx);
-		System.out.println("in suits"+firmInitLawsuits);
+		{ if (logger.isDebugEnabled()) logger.debug("in suits"+firmInitLawsuits); }
 		int count=0;
 		int totalAmountfee=0;
 		long daysDifferenceForFeeSuits=0;
@@ -1175,15 +1175,15 @@ public class RuleEngineUtility {
 						
 				SimpleDateFormat sdf=new SimpleDateFormat("yyyy");
 				int currentYear=Integer.valueOf(sdf.format(new Date(new SimpleDateFormat("MM/dd/yyyy").format(new Date(ctx.get("PolicyEffectiveDate").toString())))).toString());
-				System.out.println(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3));
-				System.out.println(feeSuedDate);
+				{ if (logger.isDebugEnabled()) logger.debug(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3)); }
+				{ if (logger.isDebugEnabled()) logger.debug(feeSuedDate); }
 
 				daysDifferenceForFeeSuits=DateUtils.calculateDiffInDays(new Date(ctx.get("SuitFilesDateFeesFormat").toString()),new Date(ctx.get("effectiveDateOfPolicy").toString()));
 				if(feeSuedDate==(currentYear-3))
 				{
 					int monthFeeSuit =Integer.valueOf(str.substring(0, Math.min(str.length(),2)));
 					int monthEffectiveDatePolicy=Integer.valueOf(effectiveDatePolicy.substring(0, Math.min(effectiveDatePolicy.length(),2)));
-					System.out.println("Fee Siut Month..."+monthFeeSuit+" Effective date Month.."+monthEffectiveDatePolicy);
+					{ if (logger.isDebugEnabled()) logger.debug("Fee Siut Month..."+monthFeeSuit+" Effective date Month.."+monthEffectiveDatePolicy); }
 					if(monthFeeSuit<monthEffectiveDatePolicy)
 					{
 						flagFeeSuitMonth=false;
@@ -1203,7 +1203,7 @@ public class RuleEngineUtility {
 		
 		ctx.put("coutOfFeeSuit",count);
 		ruleid="checkCountOfFeeSuitInPastYears_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"coutOfFeeSuit");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 		clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -1236,7 +1236,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="financialPlanningServicesSecuritiesSales_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isSecuritiesSales", ctx.get("IsSecuritiesSales"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isSecuritiesSales");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1255,7 +1255,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="doesFirmHaveContractualRelationship_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isContractualRelationShip", ctx.get("IsContractualRelationShip"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isContractualRelationShip");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1274,7 +1274,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="haveAnyPersonnelRecommendedAnyNonPublicInvestments_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isAnyNonPublicInvestments", ctx.get("IsAnyNonPublicInvestments"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyNonPublicInvestments");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1293,7 +1293,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="anyPersonLicensedLifeHealthAccidentDisability_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isAnyNonPublicInvestments", ctx.get("IsAnyNonPublicInvestments"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyNonPublicInvestments");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1312,7 +1312,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="FirmPersonnelDiscretionaryAuthorityToInvest_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isAnyEmployeeBenefitPlan", ctx.get("IsAnyEmployeeBenefitPlan"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyEmployeeBenefitPlan");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1332,7 +1332,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="discretionaryInvestmentAuthority_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isDiscretionaryAssetMangt", ctx.get("IsDiscretionaryAssetMangt"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isDiscretionaryAssetMangt");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1357,7 +1357,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsDiscretionaryAssetMangt")!=null && ctx.get("IsDiscretionaryAssetMangt").toString().equals("Y") )
 			{	
 			ruleid="discretionaryAssetManagementServicesRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isDiscretionaryAssetMangt", ctx.get("IsDiscretionaryAssetMangt"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isDiscretionaryAssetMangt");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1375,7 +1375,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsSecuritiesSales")!=null && ctx.get("IsSecuritiesSales").toString().equals("Y") )
 			{	
 			ruleid="securitiesSalesRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isSecuritiesSales", ctx.get("IsSecuritiesSales"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isSecuritiesSales");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1393,7 +1393,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsContractualRelationShip")!=null && ctx.get("IsContractualRelationShip").toString().equals("Y") )
 			{	
 			ruleid="doesFirmContractualRelationshipWithSecuritiesbrokerDealerRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isContractualRelationShip", ctx.get("IsContractualRelationShip"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isContractualRelationShip");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1411,7 +1411,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsAnyNonPublicInvestments")!=null && ctx.get("IsAnyNonPublicInvestments").toString().equals("Y") )
 			{	
 			ruleid="haveAnyPersonnelRecommendedNonPublicInvestmentsToClientsRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAnyNonPublicInvestments", ctx.get("IsAnyNonPublicInvestments"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyNonPublicInvestments");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1429,7 +1429,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsAnyFirmAffiliateLicensed")!=null && ctx.get("IsAnyFirmAffiliateLicensed").toString().equals("Y") )
 			{	
 			ruleid="firmLicensedLifeHealthAccidentDisabilityInsuranceAgentBrokerRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAnyFirmAffiliateLicensed", ctx.get("IsAnyFirmAffiliateLicensed"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyFirmAffiliateLicensed");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1447,7 +1447,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsAnyEmployeeBenefitPlan")!=null && ctx.get("IsAnyEmployeeBenefitPlan").toString().equals("Y") )
 			{	
 			ruleid="doesFirmPersonnelDiscretionaryAuthorityInvestForEmployeeBenefitPlanRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAnyEmployeeBenefitPlan", ctx.get("IsAnyEmployeeBenefitPlan"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyEmployeeBenefitPlan");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1476,7 +1476,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="auditRelatedCPETraining_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isFirmHaveAWrittenPolicyAtt", ctx.get("IsFirmHaveAWrittenPolicyAtt"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmHaveAWrittenPolicyAtt");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1496,7 +1496,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="hasFirmUndergonePeerQualityReview_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isAualityReviewAtt", ctx.get("IsAualityReviewAtt"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAualityReviewAtt");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1516,7 +1516,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="hasFirmlastpeerreviewmodifiedqualified_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isLastPeerReviewAtt", ctx.get("IsLastPeerReviewAtt"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isLastPeerReviewAtt");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1558,7 +1558,7 @@ public class RuleEngineUtility {
 			ctx.put("AuditClients_9n",AuditClients_9n);
 			/*ctx.put("containsBankBrokerInsurance", "true");*/
 			ruleid="banksBrokersInsuranceCompaniesInvestmentCompanies_Accountant";	
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("auditClients_1n", ctx.get("AuditClients_1n"));
 			ctx.put("auditClients_2n", ctx.get("AuditClients_2n"));
 			ctx.put("auditClients_8n", ctx.get("AuditClients_8n"));
@@ -1584,7 +1584,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="howManyClientsFirmRenderedAuditAttestation_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("firmRenderedAuditAtt", ctx.get("FirmRenderedAuditAtt"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"firmRenderedAuditAtt");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1605,7 +1605,7 @@ public class RuleEngineUtility {
 		if(objAffiliation != null)
 		{
 			Map affiliationvalue = (Map) objAffiliation;
-			System.out.println("value"+ affiliationvalue.get("NumberOfPersonnel"));
+			{ if (logger.isDebugEnabled()) logger.debug("value"+ affiliationvalue.get("NumberOfPersonnel")); }
 			ctx.put("NumberOfPersonnelValue", affiliationvalue.get("NumberOfPersonnel"));
 			
 		}
@@ -1613,7 +1613,7 @@ public class RuleEngineUtility {
 		{	
 		
 		ruleid="doesSecondPartnerReviewAuditWorkpapers_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("numberOfPersonnelValue", ctx.get("NumberOfPersonnelValue"));
 		ctx.put("isSecondPartnerReviewAtt", ctx.get("IsSecondPartnerReviewAtt"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"numberOfPersonnelValue,isSecondPartnerReviewAtt");
@@ -1633,7 +1633,7 @@ public class RuleEngineUtility {
 		{	
 			
 		ruleid="doesSecondPartnerCommitteeApproveSignOof_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("numberOfPersonnelValue", ctx.get("NumberOfPersonnelValue"));
 		ctx.put("isAuditEngagementsAtt", ctx.get("IsAuditEngagementsAtt"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"numberOfPersonnelValue,isAuditEngagementsAtt");
@@ -1683,7 +1683,7 @@ public class RuleEngineUtility {
 			{	
 				
 			ruleid="howManyClientsFirmRenderedAuditAttestationRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("firmRenderedAuditAtt", ctx.get("FirmRenderedAuditAtt"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"firmRenderedAuditAtt");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1702,7 +1702,7 @@ public class RuleEngineUtility {
 			{	
 				
 			ruleid="hasFirmUndergonePeerQualityReviewRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAualityReviewAtt", ctx.get("IsAualityReviewAtt"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAualityReviewAtt");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1721,7 +1721,7 @@ public class RuleEngineUtility {
 			{	
 				
 			ruleid="hasFirmlastpeerreviewmodifiedqualifiedRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isLastPeerReviewAtt", ctx.get("IsLastPeerReviewAtt"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isLastPeerReviewAtt");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1768,7 +1768,7 @@ public class RuleEngineUtility {
 				}
 				ctx.put("AuditClients_9n",AuditClients_9n);
 				ruleid="banksBrokersInsuranceCompaniesInvestmentCompaniesRenew_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("auditClients_1n", ctx.get("AuditClients_1n"));
 				ctx.put("auditClients_2n", ctx.get("AuditClients_2n"));
 				ctx.put("auditClients_8n", ctx.get("AuditClients_8n"));
@@ -1794,7 +1794,7 @@ public class RuleEngineUtility {
 			{	
 				
 			ruleid="auditRelatedCPETrainingRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isFirmHaveAWrittenPolicyAtt", ctx.get("IsFirmHaveAWrittenPolicyAtt"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmHaveAWrittenPolicyAtt");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -1814,7 +1814,7 @@ public class RuleEngineUtility {
 			if(objAffiliation != null)
 			{
 				Map affiliationvalue = (Map) objAffiliation;
-				System.out.println("value"+ affiliationvalue.get("NumberOfPersonnel"));
+				{ if (logger.isDebugEnabled()) logger.debug("value"+ affiliationvalue.get("NumberOfPersonnel")); }
 				ctx.put("NumberOfPersonnelValue", affiliationvalue.get("NumberOfPersonnel"));
 				
 			}
@@ -1823,7 +1823,7 @@ public class RuleEngineUtility {
 			{	
 			
 			ruleid="doesSecondPartnerReviewAuditWorkpapersRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("numberOfPersonnelValue", ctx.get("NumberOfPersonnelValue"));
 			ctx.put("isSecondPartnerReviewAtt", ctx.get("IsSecondPartnerReviewAtt"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"numberOfPersonnelValue,isSecondPartnerReviewAtt");
@@ -1843,7 +1843,7 @@ public class RuleEngineUtility {
 			{	
 				
 			ruleid="doesSecondPartnerCommitteeApproveSignOofRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("numberOfPersonnelValue", ctx.get("NumberOfPersonnelValue"));
 			ctx.put("isAuditEngagementsAtt", ctx.get("IsAuditEngagementsAtt"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"numberOfPersonnelValue,isAuditEngagementsAtt");
@@ -1939,7 +1939,7 @@ public class RuleEngineUtility {
 		/*boolean containsAnyAmountInRevenue=false;
 			ctx.put("containsAnyAmountInRevenue", "true");*/
 		ruleid="computerRelatedServicesAmountInRevenues_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("revenuesFromLastYear_2n", ctx.get("RevenuesFromLastYear_2n"));
 		ctx.put("revenuesFromLastYear_3n", ctx.get("RevenuesFromLastYear_3n"));
 		ctx.put("revenuesFromLastYear_4n", ctx.get("RevenuesFromLastYear_4n"));
@@ -2018,7 +2018,7 @@ public class RuleEngineUtility {
 					}
 					ctx.put("EstimatedRevenue_5n",EstimatedRevenue_5s);
 					ruleid="computerRelatedServicesAmountInRevenuesRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("revenuesFromLastYear_2n", ctx.get("RevenuesFromLastYear_2n"));
 			ctx.put("revenuesFromLastYear_3n", ctx.get("RevenuesFromLastYear_3n"));
 			ctx.put("revenuesFromLastYear_4n", ctx.get("RevenuesFromLastYear_4n"));
@@ -2055,7 +2055,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsNonMonetaryCompensationRecieved")!=null && ctx.get("IsNonMonetaryCompensationRecieved").toString().equals("Y") )
 		{	
 		ruleid="hasFirmReceivedNonMonetaryCompensation_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isNonMonetaryCompensationRecieved", ctx.get("IsNonMonetaryCompensationRecieved"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isNonMonetaryCompensationRecieved");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2082,7 +2082,7 @@ public class RuleEngineUtility {
 		if(ctx.get("HaveInvestmentAuthorityFC")!=null && ctx.get("HaveInvestmentAuthorityFC").toString().equals("Y") )
 		{	
 		ruleid="doesFirmhaveDiscretionaryInvestment_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("haveInvestmentAuthorityFC", ctx.get("HaveInvestmentAuthorityFC"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"haveInvestmentAuthorityFC");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2103,7 +2103,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsControlFundsForBusinessAndEntimentFc")!=null && ctx.get("IsControlFundsForBusinessAndEntimentFc").toString().equals("Y") )
 		{	
 		ruleid="provideBusinessManagementFamilyOfficeServices_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isControlFundsForBusinessAndEntimentFc", ctx.get("IsControlFundsForBusinessAndEntimentFc"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isControlFundsForBusinessAndEntimentFc");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2122,7 +2122,7 @@ public class RuleEngineUtility {
 		if(ctx.get("IsFirmPersonnelBusinessManagerFc")!=null && ctx.get("IsFirmPersonnelBusinessManagerFc").toString().equals("Y") )
 		{	
 		ruleid="doFirmPersonnelActasManagerCFOforClients_Accountant";
-		logger.debug("going to debug : "+ ruleid);
+		{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 		ctx.put("isFirmPersonnelBusinessManagerFc", ctx.get("IsFirmPersonnelBusinessManagerFc"));
 		/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmPersonnelBusinessManagerFc");
 		insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2150,7 +2150,7 @@ public class RuleEngineUtility {
 			aopValueBusinessMgmt.setProject(ctx.getProject());
 			aopValueBusinessMgmt.put("AOPKey",ctx.get("AOPKey"));
 			aopValueBusinessMgmt.put("PercentageValue",ctx.get("PercentageValue"));
-			System.out.println("Aop value new policy.."+aopValueBusinessMgmt);
+			{ if (logger.isDebugEnabled()) logger.debug("Aop value new policy.."+aopValueBusinessMgmt); }
 			
 			/*getting old policydate for comparing business management*/
 			List previousPolicyKey= (List) SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementdroolQueriesgetPreviousPolicyKey",ctx);
@@ -2161,7 +2161,7 @@ public class RuleEngineUtility {
 			oldPolicyContext.put("VersionSequence",ctx.get("previousVersionSequence"));
 			List auditAopListOld = SqlResources.getSqlMapProcessor(oldPolicyContext).select("SqlStmts.UserStatementdroolQueriesgetNewPolicyAopBusinessMgmt",oldPolicyContext);
 			oldPolicyContext.putAll((Map) auditAopListOld.get(0));
-			System.out.println("Aop value old policy.."+oldPolicyContext);
+			{ if (logger.isDebugEnabled()) logger.debug("Aop value old policy.."+oldPolicyContext); }
 			difference=Integer.valueOf(aopValueBusinessMgmt.get("PercentageValue").toString())-Integer.valueOf(oldPolicyContext.get("PercentageValue").toString());
 			if(difference>10)
 			{
@@ -2169,7 +2169,7 @@ public class RuleEngineUtility {
 				if(ctx.get("HaveInvestmentAuthorityFC")!=null && ctx.get("HaveInvestmentAuthorityFC").toString().equals("Y") )
 				{	
 				ruleid="doesFirmhaveDiscretionaryInvestmentRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("haveInvestmentAuthorityFC", ctx.get("HaveInvestmentAuthorityFC"));
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"haveInvestmentAuthorityFC");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2187,7 +2187,7 @@ public class RuleEngineUtility {
 				if(ctx.get("IsControlFundsForBusinessAndEntimentFc")!=null && ctx.get("IsControlFundsForBusinessAndEntimentFc").toString().equals("Y") )
 				{	
 				ruleid="provideBusinessManagementFamilyOfficeServicesRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isControlFundsForBusinessAndEntimentFc", ctx.get("IsControlFundsForBusinessAndEntimentFc"));
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isControlFundsForBusinessAndEntimentFc");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2205,7 +2205,7 @@ public class RuleEngineUtility {
 				if(ctx.get("IsFirmPersonnelBusinessManagerFc")!=null && ctx.get("IsFirmPersonnelBusinessManagerFc").toString().equals("Y") )
 				{	
 				ruleid="doFirmPersonnelActasManagerCFOforClientsRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isFirmPersonnelBusinessManagerFc", ctx.get("IsFirmPersonnelBusinessManagerFc"));
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmPersonnelBusinessManagerFc");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2258,7 +2258,7 @@ public class RuleEngineUtility {
 				String oldAmount,newAmount;
 				newAmount=ctx.get("Amount").toString().replaceAll("[-+.^:,$]","");
 				oldAmount=oldPolicyContext.get("Amount").toString().replaceAll("[-+.^:,$]","");
-				System.out.println("New amount.."+ newAmount+"...old Amount.."+oldAmount);
+				{ if (logger.isDebugEnabled()) logger.debug("New amount.."+ newAmount+"...old Amount.."+oldAmount); }
 				if((newAmount!=oldAmount) && Integer.parseInt(newAmount)>2000000)
 				{
 					flagAnnualRevenue=true;
@@ -2266,7 +2266,7 @@ public class RuleEngineUtility {
 				}
 				ctx.put("flagAnnualRevenue", flagAnnualRevenue);
 				ruleid="annualRevenueRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"flagAnnualRevenue");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 				clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -2287,7 +2287,7 @@ public class RuleEngineUtility {
 			if(ctx.get("AOP_Percentage_20")!=null && !ctx.get("AOP_Percentage_20").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_20").toString())>0 )
 			{	
 			ruleid="otherAOPRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("aop_Percentage_20", ctx.get("AOP_Percentage_20"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_20");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2305,7 +2305,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsAnyFirmMeargedOrAcquired")!=null && ctx.get("IsAnyFirmMeargedOrAcquired").toString().equals("Y") )
 			{	
 			ruleid="hasFirmMergedBusinessSolePractitionerRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAnyFirmMeargedOrAcquired", ctx.get("IsAnyFirmMeargedOrAcquired"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyFirmMeargedOrAcquired");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2324,7 +2324,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsControlClientFunds")!=null && ctx.get("IsControlClientFunds").toString().equals("Y") )
 			{	
 			ruleid="hasFirmEnteredNewEngagementRequiringFirmControlDisburseRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isControlClientFunds", ctx.get("IsControlClientFunds"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isControlClientFunds");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2343,7 +2343,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsServedAsTrustee")!=null && ctx.get("IsServedAsTrustee").toString().equals("Y") )
 			{	
 			ruleid="hasFirmEnteredEngagementServingTrusteeCoTrusteeRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isServedAsTrustee", ctx.get("IsServedAsTrustee"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isServedAsTrustee");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2362,7 +2362,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsFirmRenderedServiceForAnyClient")!=null && ctx.get("IsFirmRenderedServiceForAnyClient").toString().equals("Y") )
 			{	
 			ruleid="hasFirmEnteredEngagementServingOfficerDirectorRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isFirmRenderedServiceForAnyClient", ctx.get("IsFirmRenderedServiceForAnyClient"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isFirmRenderedServiceForAnyClient");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2380,7 +2380,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsAnyRegulatoryInquiry")!=null && ctx.get("IsAnyRegulatoryInquiry").toString().equals("Y") )
 			{	
 			ruleid="regulatoryInvestigationInquirySuspendedPracticeChargedRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAnyRegulatoryInquiry", ctx.get("IsAnyRegulatoryInquiry"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAnyRegulatoryInquiry");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2398,7 +2398,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsAwarenessOfAnyProfLiability")!=null && ctx.get("IsAwarenessOfAnyProfLiability").toString().equals("Y") )
 			{	
 			ruleid="anyAccountantsProfessionalLiabilityClaimsMadeAgainstFirmRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAwarenessOfAnyProfLiability", ctx.get("IsAwarenessOfAnyProfLiability"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAwarenessOfAnyProfLiability");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2416,7 +2416,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst")!=null && ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst").toString().equals("Y") )
 			{	
 			ruleid="anyActOmissionFeeDisputeBasisOfClaimAgainstFirmRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("isAwarenessOfAnyProfLiabilitySuitAgainst", ctx.get("IsAwarenessOfAnyProfLiabilitySuitAgainst"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isAwarenessOfAnyProfLiabilitySuitAgainst");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2434,7 +2434,7 @@ public class RuleEngineUtility {
 			if(ctx.get("AOP_Percentage_5")!=null && !ctx.get("AOP_Percentage_5").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_5").toString())>0)
 			{
 				ruleid="auditPubliclyheldRenew_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("a_Percentage_5", ctx.get("AOP_Percentage_5"));
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_5");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2454,7 +2454,7 @@ public class RuleEngineUtility {
 			if(ctx.get("AOP_Percentage_21")!=null && !ctx.get("AOP_Percentage_21").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_21").toString())>0)
 			{
 				ruleid="SECWorkOtherAuditRenew_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("aop_Percentage_21", ctx.get("AOP_Percentage_21"));
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_21");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2472,7 +2472,7 @@ public class RuleEngineUtility {
 			if(ctx.get("AOP_Percentage_19")!=null && !ctx.get("AOP_Percentage_19").toString().isEmpty() && Integer.valueOf(ctx.get("AOP_Percentage_19").toString())>0)
 			{
 				ruleid="investmentFinancialRenew_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("aop_Percentage_19", ctx.get("AOP_Percentage_19"));
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"aOP_Percentage_19");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2490,7 +2490,7 @@ public class RuleEngineUtility {
 			{
 				ruleid="firmAddressRenew_Accountant";	
 				boolean containsPOBOX=false;
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				String address1 = ctx.get("Address1") != null ? ctx.get("Address1").toString().trim().toLowerCase() : "";
 				//String address2 = ctx.get("Address2") != null ? ctx.get("Address2").toString().trim().toLowerCase()  : "";
 				String poBoxNamePatterns="P.O. Box,P. o. Box,p. O. Box,p. o. box,p. O. box,P. o. box,PO Box,po Box,PO box,po box,PO. Box,po. box,PO. box,po.box";
@@ -2525,7 +2525,7 @@ public class RuleEngineUtility {
 
 				
 				ruleid="validateEffectiveDateWithCurrentDateRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("isCurrentDateAfterEfectiveDateRenew",DateUtils.isDateBefore(ctx.get("effectiveDateOfPolicy"), ctx.get("currentDate")));
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"isCurrentDateAfterEfectiveDateRenew");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2557,7 +2557,7 @@ public class RuleEngineUtility {
 				ctx.put("newPolicyState", ctx.get("StateCode"));
 				ctx.put("oldPolicyState", oldPolicyContext.get("StateCode"));
 				ruleid="checkStateRenew_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"newPolicyState,oldPolicyState");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 				clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -2586,7 +2586,7 @@ public class RuleEngineUtility {
 				int num5=ctx.get("NumberOfPersonnel_5")!=null && !ctx.get("NumberOfPersonnel_5").equals(HtmlConstants.EMPTY)?Integer.parseInt(ctx.get("NumberOfPersonnel_5").toString()):0;
 				int sum=num1+num2+num3+num4+num5;	
 				ruleid="totalNoOfPersonRenew_Accountant";	
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				ctx.put("totalFirmPersonnel",sum);
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"totalFirmPersonnel");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2626,7 +2626,7 @@ public class RuleEngineUtility {
 				
 				ctx.put("annualRevenue_Amount0",annualRevenue_Amount);
 				ruleid="annualRevenueLastBusinessYearRenew_Accountant";		
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"annualRevenue_Amount0");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 				clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -2675,7 +2675,7 @@ public class RuleEngineUtility {
 						if(diffAopOthrConsultant!=0)
 						{
 							ruleid="otherConsultingRenew_Accountant";	
-							logger.debug("going to debug : "+ ruleid);
+							{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 							/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"diffAopOthrConsultant");
 							insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 							clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -2715,7 +2715,7 @@ public class RuleEngineUtility {
 						if(diffAopManagement!=0)
 						{
 							ruleid="managementConsultingBusinessPlanningRenew_Accountant";	
-							logger.debug("going to debug : "+ ruleid);
+							{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 							/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"diffAopManagement");
 							insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 							clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -2765,7 +2765,7 @@ public class RuleEngineUtility {
 						if(flagForBusinessValuation)
 						{
 							ruleid="businessValuationRenew_Accountant";	
-							logger.debug("going to debug : "+ ruleid);
+							{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 							/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"flagForBusinessValuation");
 							insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 							clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -2806,7 +2806,7 @@ public class RuleEngineUtility {
 								|| diffAopForecastsProjections>5)
 						{
 							ruleid="forecastsProjectionsRenew_Accountant";	
-							logger.debug("going to debug : "+ ruleid);
+							{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 							ctx.put("percentageValue", ctx.get("PercentageValue"));
 							/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"percentageValue,forecastsProjectionsNew,diffAopForecastsProjections");
 							insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2829,7 +2829,7 @@ public class RuleEngineUtility {
 					if(dataMap.get("AOPKey").toString().equals("17"))
 					{
 						int diffAopMergersAcquisitions,mergersAcquisitionsNew=0;
-						System.out.println("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("AOP_Percentage_17")+"cc..");
+						{ if (logger.isDebugEnabled()) logger.debug("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("AOP_Percentage_17")+"cc.."); }
 						
 						if(ctx.get("AOP_Percentage_17")!=null && !ctx.get("AOP_Percentage_17").toString().isEmpty())
 						{
@@ -2850,7 +2850,7 @@ public class RuleEngineUtility {
 								|| diffAopMergersAcquisitions>10)
 						{
 							ruleid="mergersAcquisitionsRenew_Accountant";	
-							logger.debug("going to debug : "+ ruleid);
+							{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 							ctx.put("percentageValue", ctx.get("PercentageValue"));
 							/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"percentageValue,mergersAcquisitionsNew,diffAopMergersAcquisitions");
 							insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2873,7 +2873,7 @@ public class RuleEngineUtility {
 					if(dataMap.get("AOPKey").toString().equals("18"))
 					{
 						int diffAopBusinessManagement,businessManagementNew=0;
-						System.out.println("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("AOP_Percentage_18")+"cc..");
+						{ if (logger.isDebugEnabled()) logger.debug("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("AOP_Percentage_18")+"cc.."); }
 						
 						if(ctx.get("AOP_Percentage_18")!=null && !ctx.get("AOP_Percentage_18").toString().isEmpty())
 						{
@@ -2894,7 +2894,7 @@ public class RuleEngineUtility {
 								|| diffAopBusinessManagement>10)
 						{
 							ruleid="businessManagementRenew_Accountant";	
-							logger.debug("going to debug : "+ ruleid);
+							{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 							ctx.put("percentageValue", ctx.get("PercentageValue"));
 							/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"percentageValue,businessManagementNew,diffAopBusinessManagement");
 							insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -2917,7 +2917,7 @@ public class RuleEngineUtility {
 					if(dataMap.get("AOPKey").toString().equals("23"))
 					{
 						int diffAopErisaPension,erisaPensionNew=0;
-						System.out.println("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("AOP_Percentage_23")+"cc..");
+						{ if (logger.isDebugEnabled()) logger.debug("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("AOP_Percentage_23")+"cc.."); }
 						
 						if(ctx.get("AOP_Percentage_23")!=null && !ctx.get("AOP_Percentage_23").toString().isEmpty())
 						{
@@ -2936,7 +2936,7 @@ public class RuleEngineUtility {
 								|| diffAopErisaPension>10)
 						{
 							ruleid="erisaPensionPlansRenew_Accountant";	
-							logger.debug("going to debug : "+ ruleid);
+							{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 							ctx.put("percentageValue", ctx.get("PercentageValue"));
 							ctx.put("diffAopErisaPension",diffAopErisaPension);
 							ctx.put("erisaPensionNew",erisaPensionNew);
@@ -2961,7 +2961,7 @@ public class RuleEngineUtility {
 					if(dataMap.get("AOPKey").toString().equals("24"))
 					{
 						int diffAopTrusteeServices,trusteeServicesNew=0;
-						System.out.println("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("AOP_Percentage_24")+"cc..");
+						{ if (logger.isDebugEnabled()) logger.debug("percentage value..:"+dataMap.get("PercentageValue")+"Ctx"+ctx.get("AOP_Percentage_24")+"cc.."); }
 						
 						if(ctx.get("AOP_Percentage_24")!=null && !ctx.get("AOP_Percentage_24").toString().isEmpty())
 						{
@@ -2981,7 +2981,7 @@ public class RuleEngineUtility {
 								|| diffAopTrusteeServices>10)
 						{
 							ruleid="trusteeServicesRenew_Accountant";	
-							logger.debug("going to debug : "+ ruleid);
+							{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 							ctx.put("percentageValue", ctx.get("PercentageValue"));
 							/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"percentageValue,trusteeServicesNew,diffAopTrusteeServices");
 							insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -3008,7 +3008,7 @@ public class RuleEngineUtility {
 			if(ctx.get("IsSuitInstituted")!=null && ctx.get("IsSuitInstituted").toString().equalsIgnoreCase("Y"))
 			{
 			List firmInitLawsuits=SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementdroolQueriesgetFirmInitLawsuits",ctx);
-			System.out.println("in suits"+firmInitLawsuits);
+			{ if (logger.isDebugEnabled()) logger.debug("in suits"+firmInitLawsuits); }
 			int count=0;
 			int totalAmountfee=0;
 			long daysDifferenceForFeeSuits=0;
@@ -3034,8 +3034,8 @@ public class RuleEngineUtility {
 					int currentYear=Integer.valueOf(sdf.format(new Date(new SimpleDateFormat("MM/dd/yyyy").format(new Date(ctx.get("PolicyEffectiveDate").toString())))).toString());
 
 					//int currentYear=Integer.valueOf(sdf.format(new Date()).toString());
-					System.out.println(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3));
-					System.out.println(feeSuedDate);
+					{ if (logger.isDebugEnabled()) logger.debug(currentYear+" "+(currentYear-1)+" "+(currentYear-2)+" "+(currentYear-3)); }
+					{ if (logger.isDebugEnabled()) logger.debug(feeSuedDate); }
 
 					daysDifferenceForFeeSuits=DateUtils.calculateDiffInDays(new Date(ctx.get("SuitFilesDateFeesFormat").toString()),new Date(ctx.get("effectiveDateOfPolicy").toString()));
 					if(feeSuedDate==(currentYear-3))
@@ -3061,7 +3061,7 @@ public class RuleEngineUtility {
 
 			ctx.put("totalAmountfeeCal",totalAmountfee);
 			ruleid="checkAmountOfFeesSuedRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"totalAmountfeeCal");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 			clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -3081,7 +3081,7 @@ public class RuleEngineUtility {
 					&& ctx.get("PercentOfRevenueFromLargestClient")!=null && !ctx.get("PercentOfRevenueFromLargestClient").toString().isEmpty())
 			{	
 			ruleid="percentageRevenueFromLargestRevenueClientRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			ctx.put("percentOfRevenueFromLargestClient", ctx.get("PercentOfRevenueFromLargestClient"));
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"percentOfRevenueFromLargestClient");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
@@ -3106,14 +3106,14 @@ public class RuleEngineUtility {
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
+				logger.error("Error in RuleEngineUtility.evaluateBasicInfoRenewWorkFlow", e);
 			}
 			
 			ctx.put("daysDifferenceForEfectiveDateRenew",daysDifferenceForEfectiveDateRenew);
 			if(ctx.get("PolicyStatusKey")!=null && ctx.get("PolicyStatusKey").toString().equals("2"))
 			{			
 				ruleid="validateEffectiveDateWithDaysRenewBusiness_Accountant";
-				logger.debug("going to debug : "+ ruleid);
+				{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 				/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"daysDifferenceForEfectiveDateRenew");
 				insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 				clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -3163,7 +3163,7 @@ public class RuleEngineUtility {
 			{
 			ctx.put("coutOfPremium",count);
 			ruleid="checkPremiumRenew_Accountant";
-			logger.debug("going to debug : "+ ruleid);
+			{ if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
 			/*ruleSetContextList=initilizeRuleEngineContext(ctx,ruleid,"coutOfPremium");
 			insertRulesToDatabase(ctx,ruleSetContextList,ruleid);
 			clearRuleSetContextList(ruleid,ruleSetContextList);*/
@@ -3223,7 +3223,7 @@ public class RuleEngineUtility {
 		}
 		catch (Exception e)
 		{
-			logger.error("Error Occured while initilizing data  : " + e.getMessage());
+			logger.error("Error Occured while initilizing data  : " + e.getMessage(), e);
 			return null;
 		}
 	}
@@ -3245,7 +3245,7 @@ public class RuleEngineUtility {
 		
 		}
 		catch (Exception e) {
-			logger.error("Error Occured while initilizing attorney data  : " + e.getMessage());
+			logger.error("Error Occured while initilizing attorney data  : " + e.getMessage(), e);
 			return null;
 		}	
 	}
@@ -3274,7 +3274,7 @@ public class RuleEngineUtility {
 				}
 			}
 	
-			System.out.println("Question= "+question+" Question Hint="+hint);
+			{ if (logger.isDebugEnabled()) logger.debug("Question= "+question+" Question Hint="+hint); }
 			if(!question.equals("") && !hint.equals("") )
 			{	
 				ctx.put("ruleId",ruleId);
@@ -3285,7 +3285,7 @@ public class RuleEngineUtility {
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 					SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.SETFlagsLawyers_p",ctx);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in RuleEngineUtility.insertRulesToDatabase", e);
 				}
 			}
 			else
@@ -3294,7 +3294,7 @@ public class RuleEngineUtility {
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 					SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.RESETFlagsLawyers_p",ctx);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in RuleEngineUtility.insertRulesToDatabase", e);
 				}
 				
 			}
@@ -3319,7 +3319,7 @@ public class RuleEngineUtility {
 			new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 			SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.RESETFlagsLawyers_p",ctx);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in RuleEngineUtility.archiveFlag", e);
 			}
 		}
 		
@@ -3335,8 +3335,7 @@ public class RuleEngineUtility {
 		}
 		catch(Exception e)
 		{
-			logger.debug("Rule Id: '"+ ruleId+"' is not found on drool rule file.");
-			e.printStackTrace();
+			logger.error("Rule Id: '"+ ruleId+"' is not found on drool rule file.", e);
 		}
 	}
 	public static String formatDate(Object obj,String format)
@@ -3350,7 +3349,7 @@ public class RuleEngineUtility {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in RuleEngineUtility.formatDate", e);
 			return null;
 		}
 		
@@ -3383,7 +3382,7 @@ public class RuleEngineUtility {
           if(getTotalPremiumList!=null &&  getTotalPremiumList.size()>0)
           {           
                       ruleid="renewalPremiumComparision_Lawyers";
-                      logger.debug("going to debug : "+ ruleid);
+                      { if (logger.isDebugEnabled()) logger.debug("going to debug : "+ ruleid); }
                       for (int i = 0; i < getTotalPremiumList.size(); i++) 
                       {
                             Map dataMap = (Map) getTotalPremiumList.get(i);
@@ -3417,7 +3416,7 @@ public class RuleEngineUtility {
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 					SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.SETFlagsLawyers_p",ctx);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in RuleEngineUtility.insertRulesToDatabase", e);
 				}
 			}
 			else
@@ -3428,7 +3427,7 @@ public class RuleEngineUtility {
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,ruleId,question,hint,ActionTakenBy");
 					SqlResources.getSqlMapProcessor(ctx).update("rulepolicytransaction.RESETFlagsLawyers_p",ctx);
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in RuleEngineUtility.insertRulesToDatabase", e);
 				}
 				
 			}

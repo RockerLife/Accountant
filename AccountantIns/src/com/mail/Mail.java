@@ -125,6 +125,7 @@ public class Mail {
         }
         catch (Exception mex)
         {
+            logger.error("Error in Mail.sendMail", mex);
             if(MAIL_ERROR_NOTIFICATION_ADDRESS == null
                     || "".equals(MAIL_ERROR_NOTIFICATION_ADDRESS)
                     || MAIL_ERROR_NOTIFICATION_ADDRESS.equals(toAdd))

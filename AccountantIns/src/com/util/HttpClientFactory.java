@@ -15,7 +15,7 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
 public class HttpClientFactory {
-	private static InetLogger logger = InetLogger.getInetLogger(SharePointUtils.class);
+	private static InetLogger logger = InetLogger.getInetLogger(HttpClientFactory.class);
 	
 	private String SiteUrl;
 	private CredentialsProvider credsProvider;
@@ -38,7 +38,7 @@ public class HttpClientFactory {
 		postMethodLocation.append(this.SiteUrl);
 		postMethodLocation.append("/_api/Web/Folders/add('" + documentLibrary + "/" + folderName + "')");
 
-		logger.debug("SharePointTestClient.uploadFileMethodLocation " + postMethodLocation );
+		{ if (logger.isDebugEnabled()) logger.debug("SharePointTestClient.uploadFileMethodLocation " + postMethodLocation ); }
 		//System.out.println("SharePointTestClient.uploadFileMethodLocation " + postMethodLocation );
 
 		HttpPost httppost = new HttpPost(postMethodLocation.toString());
@@ -95,7 +95,7 @@ public class HttpClientFactory {
 		try {
 			factory.executeCreateFolder("LawyersDocs", "TestFolder");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in HttpClientFactory.main", e);
 		} finally { 
 
 		}

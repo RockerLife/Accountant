@@ -1,5 +1,6 @@
 package com.userbo;
 
+import com.util.InetLogger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +14,9 @@ import com.util.IContext;
 import com.util.StringUtils;
 import com.util.SystemProperties;
 
-public class Modifiers {		
+public class Modifiers {
+	private static final InetLogger logger = InetLogger.getInetLogger(Modifiers.class);
+
 	
 	public static boolean validateModifiers(Context ctx) throws Exception
     {	
@@ -83,7 +86,7 @@ public class Modifiers {
 					addCoverageModifiers(ctx);				
 				}
 			}catch (Exception e) {
-				 e.printStackTrace() ;
+				logger.error("Error in Modifiers.saveCoverageModifiers", e);
 				 throw e;
 			}
 			
@@ -107,7 +110,7 @@ public class Modifiers {
 					addRenewCoverageModifiers(ctx);				
 				}
 			}catch (Exception e) {
-				 e.printStackTrace() ;
+				logger.error("Error in Modifiers.saveRenewCoverageModifiers", e);
 				 throw e;
 			}
 			
@@ -227,7 +230,7 @@ public class Modifiers {
 											}
 										}
 									}catch(Exception e){
-										e.printStackTrace();
+										logger.error("Error in Modifiers.addCoverageModifiers", e);
 									}
 								}
 								if(!"OTHERAOP".equals(aopPercentageValue)){
@@ -279,7 +282,7 @@ public class Modifiers {
 					 
 				}
 			}catch (Exception e) {
-				 e.printStackTrace() ;
+				logger.error("Error in Modifiers.addCoverageModifiers", e);
 				 throw e;
 			}
 		
@@ -346,7 +349,7 @@ public class Modifiers {
 					 
 				}
 			}catch (Exception e) {
-				 e.printStackTrace() ;
+				logger.error("Error in Modifiers.addRenewCoverageModifiers", e);
 				 throw e;
 			}
 		

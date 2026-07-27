@@ -82,6 +82,7 @@ public class Rating {
 			url = SystemProperties.getInstance().getString("appl."+ctx.getProject()+".webserviceurl");
 		}
 		catch (Exception e){
+			logger.error("Error in Rating.callingRatingEngine", e);
 			
 		}
 		
@@ -177,8 +178,8 @@ public class Rating {
 			Map map= new HashMap();
 			for(int i=0;i<aoplist.size();i++){	
 				map = (HashMap)aoplist.get(i);
-				logger.debug("AOP_Percentage_" + map.get("AOPKey") + "  " + map
-						.get("PercentageValue"));
+				{ if (logger.isDebugEnabled()) logger.debug("AOP_Percentage_" + map.get("AOPKey") + "  " + map
+						.get("PercentageValue")); }
 				inputMap.put("AOP_Percentage_"+map.get("AOPKey"), map.get("PercentageValue"));							
 			}
 		}
@@ -524,7 +525,7 @@ public class Rating {
 		
 		}
 		catch (Exception e) {
-			logger.error("populate output reponse-"+e);
+			logger.error("populate output reponse-"+e, e);
 //			System.out.println("populate output reponse---"+e);
 			throw e;
 		}
@@ -703,6 +704,7 @@ public class Rating {
 			url = SystemProperties.getInstance().getString("appl."+ctx.getProject()+".webserviceurl");
 		}
 		catch (Exception e){
+			logger.error("Error in Rating.callingRatingEngineQuickQuote", e);
 			throw e;
 		}
 		
@@ -937,15 +939,14 @@ public class Rating {
 	public static void prepareDataForRatingEngine(IContext ctx) {
 		try {
 			
-			logger.debug("Going to Prepare Data For Rating Engine For State " + ctx.get("StateCode"));
+			{ if (logger.isDebugEnabled()) logger.debug("Going to Prepare Data For Rating Engine For State " + ctx.get("StateCode")); }
 			ctx.put("PolicyKey_rule", ctx.get("PolicyKey").toString());
 			ctx.put("StateCode_rule", ctx.get("StateCode").toString());
 			SqlResources.getSqlMapProcessor(ctx).update("RatingTrace.StateSpecificRatingDataAcc_proc", ctx);
-			logger.debug("Data Prepared for PolicyKey - " + ctx.get("PolicyKey"));
+			{ if (logger.isDebugEnabled()) logger.debug("Data Prepared for PolicyKey - " + ctx.get("PolicyKey")); }
 			
 		} catch (Exception e) {
-			logger.debug("Exception in Method prepareDataForRatingEngine" + e.getMessage());
-			e.printStackTrace();
+			logger.error("Exception in Method prepareDataForRatingEngine" + e.getMessage(), e);
 		}
 	}
 	// Endrosment start
@@ -975,7 +976,7 @@ public class Rating {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in Rating.dataPreprationForEndorsementRating", e);
 			
 		}
 	}
@@ -1117,8 +1118,8 @@ public class Rating {
 				Map map= new HashMap();
 				for(int i=0;i<aoplist.size();i++){	
 					map = (HashMap)aoplist.get(i);
-					logger.debug("AOP_Percentage_" + map.get("AOPKey") + "  " + map
-							.get("PercentageValue"));
+					{ if (logger.isDebugEnabled()) logger.debug("AOP_Percentage_" + map.get("AOPKey") + "  " + map
+							.get("PercentageValue")); }
 					inputMap.put("AOP_Percentage_"+map.get("AOPKey"), map.get("PercentageValue"));							
 				}
 			}
@@ -1169,7 +1170,7 @@ public class Rating {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in Rating.fetchDataForEndorsementInputRequest", e);
 		}
 	}
 	
@@ -1186,8 +1187,8 @@ public class Rating {
 		//System.out.println(Math.decimalFormat("3466.6789", 2));
 		
 		
-		System.out.println(Double.parseDouble("0"));
-		System.out.println(Math.round("0"));
+		{ if (logger.isDebugEnabled()) logger.debug(Double.parseDouble("0")); }
+		{ if (logger.isDebugEnabled()) logger.debug(Math.round("0")); }
 	}
 
 }

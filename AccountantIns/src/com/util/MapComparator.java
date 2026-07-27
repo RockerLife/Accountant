@@ -104,6 +104,7 @@ public class MapComparator implements Comparator
     		return new Long(val.toString());
     	}catch(Exception e)
     	{
+            logger.error("Error in MapComparator.getLongVal", e);
     		return new Long(Long.MIN_VALUE);
     	}
     }

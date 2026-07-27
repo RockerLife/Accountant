@@ -79,9 +79,9 @@ public class AccountantDateUtils {
             return 0;
 		
 		Date date3=formatDate(date1);
-		System.out.println(date3);
+		{ if (logger.isDebugEnabled()) logger.debug(date3); }
 		Date date4=formatDate(date2);
-		System.out.println(date4);
+		{ if (logger.isDebugEnabled()) logger.debug(date4); }
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date3);
@@ -92,7 +92,7 @@ public class AccountantDateUtils {
 		long time2 = cal1.getTimeInMillis();
 		long timeInMilli = time1 - time2;
 		Long numOfDays = timeInMilli/(24*60*60*1000);
-		System.out.println("Number  of Days is - - - - - >" + numOfDays);
+		{ if (logger.isDebugEnabled()) logger.debug("Number  of Days is - - - - - >" + numOfDays); }
 		return numOfDays;
 		/*
 		if(date1 == null || date2 == null)
@@ -127,11 +127,13 @@ public class AccountantDateUtils {
           }
           catch(ParseException pe)
           {
+            logger.error("Error in AccountantDateUtils.convertStringToDate", pe);
                 try{
                       return new SimpleDateFormat(SQL_DATE_PATTERN).parse(value);
                 }
                 catch(Exception e)
                 {
+                    logger.error("Error in AccountantDateUtils.convertStringToDate", e);
                     
                 	//logger.trace(e);
                       return null;
@@ -139,6 +141,7 @@ public class AccountantDateUtils {
           }
           catch(Exception e)
           {
+            logger.error("Error in AccountantDateUtils.convertStringToDate", e);
         	 
                 //logger.trace(e);
                 return null;
@@ -261,7 +264,7 @@ public class AccountantDateUtils {
 		Calendar cal = Calendar.getInstance();
 		int day = cal.get(Calendar.HOUR);
 		
-		System.out.println(day);
+		{ if (logger.isDebugEnabled()) logger.debug(day); }
 //		SimpleDateFormat strFormat = new SimpleDateFormat("MM/dd/yyyy");
 //		Date strDate = strFormat.parse(datetime);
 //		System.out.println(strDate);

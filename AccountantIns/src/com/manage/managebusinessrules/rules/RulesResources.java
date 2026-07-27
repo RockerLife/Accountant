@@ -33,19 +33,22 @@ public class RulesResources extends Resources{
    
     public RuleImpl findRule(String evalStr)  
     {
+        if(evalStr == null)
+            return null;
     	try{
     		RuleService ruleService = new RuleServiceImpl();
     		if(evalStr.indexOf(".") != -1){
     			String ruleId = evalStr.substring(evalStr.lastIndexOf(".")+1, evalStr.length());
     			
     			if(ruleService.exists(ruleId)){
-    				logger.debug("CUSTOM rule found : " + ruleId);
+					{ if (logger.isDebugEnabled()) logger.debug("CUSTOM rule found : " + ruleId); }
     				RuleImpl ruleImpl = new RuleImpl();
     				ruleImpl.setId("CUSTOM"+ruleId);
     				return ruleImpl;
     			}
     		}
     	}catch (Exception e) {
+            logger.error("Error in RulesResources.findRule", e);
 			// TODO: handle exception
 		}
     	

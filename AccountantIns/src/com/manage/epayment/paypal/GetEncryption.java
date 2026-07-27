@@ -100,7 +100,7 @@ public class GetEncryption
 		CMSProcessableByteArray cmsByteArray = new CMSProcessableByteArray(data);
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		cmsByteArray.write(baos);
-		logger.debug( "CMSProcessableByteArray contains [" + baos.toString() + "]" );
+		{ if (logger.isDebugEnabled()) logger.debug( "CMSProcessableByteArray contains [" + baos.toString() + "]" ); }
 
 		CMSSignedData signedData = signedGenerator.generate(cmsByteArray, true, "BC");
 		
@@ -125,7 +125,7 @@ public class GetEncryption
 		
 		byte[] stringBytes = Base64.encode(bytes);
 		
-		logger.debug("Converting " + stringBytes.length + " bytes");
+		{ if (logger.isDebugEnabled()) logger.debug("Converting " + stringBytes.length + " bytes"); }
 		
 		String encoded = new String(stringBytes);
 

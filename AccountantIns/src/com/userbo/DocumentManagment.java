@@ -100,7 +100,7 @@ public class DocumentManagment {
 						Comment = Comment.replace("'", "$APH$");
 					} else if (name.equalsIgnoreCase("SearchType")) {
 						SearchType = fi.getString();
-						logger.debug("SearchType - " + SearchType);
+						{ if (logger.isDebugEnabled()) logger.debug("SearchType - " + SearchType); }
 					}
 
 					// String value = fi.getString();
@@ -116,8 +116,7 @@ public class DocumentManagment {
 				// break;
 			}
 		} catch (Exception e) {
-			logger.debug("Error in file process");
-			e.printStackTrace();
+			logger.error("Error in file process", e);
 			throw e;
 		}
 
@@ -189,7 +188,7 @@ public class DocumentManagment {
 		String extension = fileName.substring(fileIndex);
 		logger.debug(extension);
 		if (SearchType != null && SearchType.equals("policyform")) {
-			logger.debug("ctx -----" + ctx.get("QuoteNumber").toString());
+			{ if (logger.isDebugEnabled()) logger.debug("ctx -----" + ctx.get("QuoteNumber").toString()); }
 			fileName = "Policy Form_" + ctx.get("QuoteNumber").toString();
 			DocType = "PF";
 
@@ -234,7 +233,7 @@ public class DocumentManagment {
 		try {
 			uploadFile.write(new File(uploaddirectory, DocFileName));
 		} catch (Exception e) {
-			System.out.println("Exception " + e );
+			logger.error("Error in DocumentManagment.processDocument", e);
 			AccountUtils.populateError(ctx, "DocUploadError",
 					"Document could not be write to file" );
 			
@@ -249,9 +248,9 @@ public class DocumentManagment {
 			else
 				result="File added successfully!";
 			//result = "File added successfully!";
-			logger.debug("Result from uploadDocument(ctx, uploaddirectory + docName)" + result);
+			{ if (logger.isDebugEnabled()) logger.debug("Result from uploadDocument(ctx, uploaddirectory + docName)" + result); }
 		} catch (Exception e) {
-			System.out.println("Exception --->" + e);
+			logger.error("Error in DocumentManagment.processDocument", e);
 			AccountUtils.populateError(ctx, "DocUploadError",
 					"Document could not be uploaded");
 			return;
@@ -313,7 +312,7 @@ public class DocumentManagment {
 		if (tempFile.exists())
 			tempFile.delete();
 		}catch(Exception e){
-			System.out.println("Exception in DocFileName" + e);
+			logger.error("Error in DocumentManagment.processDocument", e);
 		}
 	}
 
@@ -324,12 +323,10 @@ public class DocumentManagment {
 		String domain = getDomainName();
 		String baseDir = getSharePointBaseDirectory();
 		String spUrl = getSharePointURL();
-		String LawyersDir=SystemProperties.getInstance().getString("sharepoint.basedirLawyers");
-		
 		String isBrokerageDocument=ctx.get("isBrokerageDocument")!=null?ctx.get("isBrokerageDocument").toString():"N";
 		if( "Y".equals(isBrokerageDocument))
 		{
-			baseDir=LawyersDir;
+			baseDir=SystemProperties.getInstance().getString("sharepoint.basedirLawyers");
 	     }
 
 		byte[] docContent = new EsignUtil().getDocument(url);
@@ -380,7 +377,7 @@ public class DocumentManagment {
 		String result = uploadSignedDocument(ctx);
 //		String result = "true";
 
-		logger.debug("Result from uploadSignedDocument(ctx) " + result);
+		{ if (logger.isDebugEnabled()) logger.debug("Result from uploadSignedDocument(ctx) " + result); }
 
 		if (result != null) {
 			logger.debug("processSignedDocument has done");
@@ -459,7 +456,7 @@ public class DocumentManagment {
 
 
 	public String processDocumentManagment(IContext ctx) throws Exception {
-		logger.debug("processDocumentManagment started  ........ " + ctx.get("QuoteNumber"));
+		{ if (logger.isDebugEnabled()) logger.debug("processDocumentManagment started  ........ " + ctx.get("QuoteNumber")); }
 		ctx.remove("IsDocumentProcessed");
 		boolean issuePolicy=false,IsManualPremium=false,alreadyIssuePolicy=false;
 		String policyNumber ="";
@@ -471,7 +468,7 @@ public class DocumentManagment {
 		try{
 			
 				
-				logger.debug("Checking if the Policy is not already Issued " + ctx.get("PolicyKey"));
+				{ if (logger.isDebugEnabled()) logger.debug("Checking if the Policy is not already Issued " + ctx.get("PolicyKey")); }
 
 				Object objcheck = SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementsaveAccountstmtsgetStatusKeyFinalisedQuote",ctx);
 			if (objcheck != null && objcheck instanceof List) {
@@ -496,7 +493,7 @@ public class DocumentManagment {
 				}
 			}
 				
-				logger.debug("processDocumentManagment started  ........ " + ctx.get("QuoteNumber"));
+				{ if (logger.isDebugEnabled()) logger.debug("processDocumentManagment started  ........ " + ctx.get("QuoteNumber")); }
 				
 				if("1".equals(ctx.get("CompanyKey").toString()))
 					policyNumber = AccountUtils.generatePolicyNumber(ctx);
@@ -512,13 +509,12 @@ public class DocumentManagment {
 				new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,VersionSequence,PolicyNumber,LastUpdateUserID");
 				SqlResources.getSqlMapProcessor(ctx).update("Policy.IssuePolicyUpdateStateus_p",ctx);
 				
-				logger.debug("Policynumber to "+policyNumber+" updated and Policy Status updated to ISSUED");
+				{ if (logger.isDebugEnabled()) logger.debug("Policynumber to "+policyNumber+" updated and Policy Status updated to ISSUED"); }
 				
 				try{
 					AccountUtils.updateZOHORecords((Context) ctx);
 				} catch(Exception e) {
-					logger.debug("Exception occured during ZOHO update "+e);
-					System.out.println("Exception occured during ZOHO update Issue "+e);
+					logger.error("Exception occured during ZOHO update "+e, e);
 				}
 				
 				List getPolicyNumber=SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementManualBoQueriesgetPolicyNumber",ctx);
@@ -592,7 +588,7 @@ public class DocumentManagment {
 				}else {
 					 result = uploadFormDocument(ctx);
 				}			
-				logger.debug("Result from uploadFormDocument(ctx) " + result);
+				{ if (logger.isDebugEnabled()) logger.debug("Result from uploadFormDocument(ctx) " + result); }
 
 				
 				// ---- Commenting for testing
@@ -660,8 +656,7 @@ public class DocumentManagment {
 		catch (Exception e)
 		{
 			ctx.put("IsDocumentProcessed", "N");
-			logger.debug("processDocumentManagment failed  ........" + e);
-			e.printStackTrace();
+			logger.error("processDocumentManagment failed  ........" + e, e);
 			issuePolicy=false;
 			throw e;
 		}finally {
@@ -674,22 +669,20 @@ public class DocumentManagment {
 			if(!issuePolicy && !alreadyIssuePolicy){
 				logger.debug(issuePolicy);
 				try{
-					logger.debug("Going to rollback all database changes for issuing policy having quote number"+ctx.get("QuoteNumber"));
+					{ if (logger.isDebugEnabled()) logger.debug("Going to rollback all database changes for issuing policy having quote number"+ctx.get("QuoteNumber")); }
 					new SetParametersForStoredProcedures().setParametersInContext(ctx, "PolicyKey,VersionSequence,LastUpdateUserID");
 					SqlResources.getSqlMapProcessor(ctx).update("Policy.RollbackIssuePolicyUpdateStateus_p",ctx);
 				} catch (Exception e1) {
 					issuePolicy=false;
-					logger.debug("Exception occured during rollback all database changes for issuing policy ");
-					e1.printStackTrace();
+					logger.error("Exception occured during rollback all database changes for issuing policy ", e1);
 				}
 			}
-			logger.debug("issuing policy :  "+issuePolicy+" for policynumber :"+policyNumber+" having quote number"+ctx.get("QuoteNumber"));
+			{ if (logger.isDebugEnabled()) logger.debug("issuing policy :  "+issuePolicy+" for policynumber :"+policyNumber+" having quote number"+ctx.get("QuoteNumber")); }
 			
 			try{
 				AccountUtils.updateZOHORecords((Context) ctx);
 			} catch(Exception e) {
-				logger.debug("Exception occured during ZOHO update "+e);
-				System.out.println("Exception occured during ZOHO update Issue "+e);
+				logger.error("Exception occured during ZOHO update "+e, e);
 			}
 		}
 			if(issuePolicy)
@@ -701,9 +694,9 @@ public class DocumentManagment {
 						String specialEmailId = "";
 						logger.debug("going to get Admin Email Id");			
 						String adminEmail = AccountUtils.getAdminEmailID(ctx);
-						logger.debug("Admin email id = " + adminEmail);
+						{ if (logger.isDebugEnabled()) logger.debug("Admin email id = " + adminEmail); }
 						boolean isSpecialIssuance = AccountUtils.checkIfSpecialIssuance(ctx);
-						logger.debug("Special issuance = " + isSpecialIssuance);
+						{ if (logger.isDebugEnabled()) logger.debug("Special issuance = " + isSpecialIssuance); }
 						
 						logger.debug("Check If PA and Defense Inside");
 						boolean isPAAndDefenseInside = false ;
@@ -714,12 +707,12 @@ public class DocumentManagment {
 						if(isSpecialIssuance || producerCodeExist || isPAAndDefenseInside){
 							logger.debug("get special issuance emailid ");
 							specialEmailId = AccountUtils.getSpecialIssuanceEmail(ctx);
-							logger.debug("Got the special email id " + specialEmailId);
+							{ if (logger.isDebugEnabled()) logger.debug("Got the special email id " + specialEmailId); }
 						}
 						String insuredEmail = "";			
 						if(!producerCodeExist)
 							insuredEmail = AccountUtils.getInsuredEmail(ctx);
-						logger.debug("Got the insured email as " + insuredEmail);
+						{ if (logger.isDebugEnabled()) logger.debug("Got the insured email as " + insuredEmail); }
 						if ("".equals(insuredEmail))
 							insuredEmail = adminEmail;
 						
@@ -730,12 +723,12 @@ public class DocumentManagment {
 						try {
 							productionEnv = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".environment.production");
 						} catch (Exception e) {
-							logger.error("error in geeting production environment");
+							logger.error("error in geeting production environment", e);
 						}
 						String ccAddress="",bccAddress="";
 						if ("N".equals(productionEnv)){
 							ccAddress = SystemProperties.getInstance().getString("mail.admin.cc.address");
-							logger.debug("email id------->"+ccAddress);
+							{ if (logger.isDebugEnabled()) logger.debug("email id------->"+ccAddress); }
 						}
 						//if("".equals(ccAddress))
 						//	ccAddress=SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.cc.email");
@@ -747,10 +740,10 @@ public class DocumentManagment {
 			
 						MailSender mailSender = new MailSender();
 						mailSender.setSubject(policy);
-						logger.debug("dollarDefenseFlag ---  "+ dollarDefenseFlag );
-						logger.debug("isSpecialIssuance ---  "+ isSpecialIssuance );
-						logger.debug("producerCodeExist ---  "+ producerCodeExist );
-						logger.debug("isPAAndDefenseInside ---  "+isPAAndDefenseInside);
+						{ if (logger.isDebugEnabled()) logger.debug("dollarDefenseFlag ---  "+ dollarDefenseFlag ); }
+						{ if (logger.isDebugEnabled()) logger.debug("isSpecialIssuance ---  "+ isSpecialIssuance ); }
+						{ if (logger.isDebugEnabled()) logger.debug("producerCodeExist ---  "+ producerCodeExist ); }
+						{ if (logger.isDebugEnabled()) logger.debug("isPAAndDefenseInside ---  "+isPAAndDefenseInside); }
 						if(ctx.get("StateCode") !=null && "NY".equals(ctx.get("StateCode").toString())){
 							//isPAAndDefenseInside = AccountUtils.checkForFinalisedQuoteWithInsideLimit(ctx);
 							mailSender.setToAdd(adminEmail);
@@ -780,13 +773,12 @@ public class DocumentManagment {
 								file.delete();
 						}
 						
-						logger.debug("Issued Mail has been sent to " + insuredEmail);			
+						{ if (logger.isDebugEnabled()) logger.debug("Issued Mail has been sent to " + insuredEmail); }
 			
 				}
 				catch(Exception e)
 				{
-					e.printStackTrace();
-					logger.debug("Exception occured during sending policy to insured ");
+					logger.error("Exception occured during sending policy to insured ", e);
 					return ERROR_MESSAGE + "MailSendingError";
 				}finally {
 					/*code by sukhi 26/09/2018*/
@@ -796,7 +788,7 @@ public class DocumentManagment {
 						AccountUtils.updateZOHORecords((Context) ctx);
 						EPICDataUpdate.insertEPICData((Context) ctx);
 					}catch(Exception e){
-						logger.debug("Exception occured during ZOHO update "+e);
+						logger.error("Exception occured during ZOHO update "+e, e);
 					}
 				}
 			}
@@ -1264,7 +1256,7 @@ public class DocumentManagment {
 		if(!"Y".equals(skipUpload)){
 			result = new DocumentManagment().uploadDocument(ctx, outFile);
 		}
-		logger.debug("Result from uploadQuoteLetter(IContext ctx) " + result);
+		{ if (logger.isDebugEnabled()) logger.debug("Result from uploadQuoteLetter(IContext ctx) " + result); }
 		String DocFileName = outFile.substring(outFile.lastIndexOf("//") + 2,
 				outFile.length());
 		if (result != null) {
@@ -1307,7 +1299,7 @@ public class DocumentManagment {
 		AccountUtils.populateLastUpdateTimeStamp(ctx);
 		String result = new DocumentManagment().uploadDocument(ctx, outFile);
 		// String result = "";
-		logger.debug("Result from uploadQuickQuoteLetter(IContext ctx) " + result);
+		{ if (logger.isDebugEnabled()) logger.debug("Result from uploadQuickQuoteLetter(IContext ctx) " + result); }
 		String DocFileName = outFile.substring(outFile.lastIndexOf("//") + 2,
 				outFile.length());
 		if (result != null) {
@@ -1433,17 +1425,17 @@ public class DocumentManagment {
 		// Uploading Quote letter
 		AccountUtils.populateLastUpdateTimeStamp(ctx);
 		String result = new DocumentManagment().uploadDocument(ctx, outFile);
-		logger.debug("Result from DocumentManagment().uploadDocument(ctx, outFile); " + result);
+		{ if (logger.isDebugEnabled()) logger.debug("Result from DocumentManagment().uploadDocument(ctx, outFile); " + result); }
 		String DocFileName = outFile.substring(outFile.lastIndexOf("//") + 2,
 				outFile.length());
-		logger.debug("DocFileName - - " + DocFileName);
+		{ if (logger.isDebugEnabled()) logger.debug("DocFileName - - " + DocFileName); }
 		if (result != null) {
 			// ctx.put("DocTitle", DocFileName);
 			
 			int index = DocFileName.lastIndexOf(".");
 			String fileName1 = DocFileName.substring(0, index);
 			ctx.put("DocTitle", fileName1);
-			logger.debug("DocTitle - - " + ctx.get("DocTitle"));
+			{ if (logger.isDebugEnabled()) logger.debug("DocTitle - - " + ctx.get("DocTitle")); }
 			String fileExt = DocFileName.substring(index + 1, DocFileName
 					.length());
 			DocFileName = fileName1 + "_" + ctx.get("UploadedTime").toString()
@@ -1453,13 +1445,13 @@ public class DocumentManagment {
 
 			ctx.put("Comment", "");
 			ctx.put("DocFileName", DocFileName);
-			logger.debug("DocFileName - - " + ctx.get("DocFileName"));
+			{ if (logger.isDebugEnabled()) logger.debug("DocFileName - - " + ctx.get("DocFileName")); }
 			ctx.put("UploadedType", "Auto");
 
 			ctx.put("DocType", "OR");
 
 			setUrl(ctx, DocFileName, "DocUrl");
-			logger.debug("DocUrl - - " + ctx.get("DocUrl"));
+			{ if (logger.isDebugEnabled()) logger.debug("DocUrl - - " + ctx.get("DocUrl")); }
 		}
 		// End uploading Quote letter
 	}
@@ -1496,8 +1488,7 @@ public class DocumentManagment {
 			bout.close();
 			outputStream.close();
 		}catch(Exception ex){
-			ex.printStackTrace();
-			logger.error("error in downloadDocumentOffRisk in DocumentManagement::::"+ex.getMessage());
+			logger.error("error in downloadDocumentOffRisk in DocumentManagement::::"+ex.getMessage(), ex);
 		}finally{
 			if(bout != null){
 				bout.close();
@@ -1559,6 +1550,7 @@ public class DocumentManagment {
 
 			}
 		}catch (Exception e){
+			logger.error("Error in DocumentManagment.processIndicationDocument", e);
 			throw e;
 		}		
 	}
@@ -1735,7 +1727,7 @@ public class DocumentManagment {
 						
 			logger.debug("processEndorsementDocument end  ........");			
 		}catch (Exception e){
-			e.printStackTrace();
+			logger.error("Error in DocumentManagment.processEndorementDocument", e);
 		}		
 	}
 	
@@ -1816,11 +1808,11 @@ public class DocumentManagment {
 				else
 					foFile = SystemProperties.getInstance().getString("xsl.filepath.endorsement") + "foxslnew/endorsement/LiabilityInsCertificate.xsl";
 					            
-				logger.debug("generateForm--------"+foFile);	
+				{ if (logger.isDebugEnabled()) logger.debug("generateForm--------"+foFile); }
 				new XML2PDF().convertPOToPDF(foFile, new StringBuffer(new com.formgenerator.DownloadForm().generateDataXml(ctx)), out, baseUrl, uriResolver);
 			}
 			catch(Exception e){
-				logger.error("Problem in generating Insurance Certificate for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage());
+				logger.error("Problem in generating Insurance Certificate for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage(), e);
 				throw e;
 			}
 			//new DownloadForm().generateEndorsement((Context)ctx, outFile);			
@@ -1881,7 +1873,7 @@ public class DocumentManagment {
 						
 			logger.debug("processEndorsementDocument end  ........");			
 		}catch (Exception e){
-			e.printStackTrace();
+			logger.error("Error in DocumentManagment.generateInsurenceCertificate", e);
 		}		
 	}
 	
@@ -1924,11 +1916,11 @@ public class DocumentManagment {
 				
 				String environment=SystemProperties.getInstance().getString("appl.AccountantIns.environment.production");
 				ctx.put("environmentproduction",environment);
-				logger.debug("generateForm--------"+foFile);	
+				{ if (logger.isDebugEnabled()) logger.debug("generateForm--------"+foFile); }
 				new XML2PDF().convertPOToPDF(foFile, new StringBuffer(new com.formgenerator.DownloadForm().generateDataXml(ctx)), out, baseUrl, uriResolver);
 			}
 			catch(Exception e){
-				logger.error("Problem in generating Insurance Certificate for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage());
+				logger.error("Problem in generating Insurance Certificate for Policy Number : " +ctx.get("PolicyNumber") + " " + e.getMessage(), e);
 				throw e;
 			}
 			//new DownloadForm().generateEndorsement((Context)ctx, outFile);			
@@ -1979,8 +1971,7 @@ public class DocumentManagment {
 			logger.debug("processEndorsementDocument end  ........");	
 			
 		}catch (Exception e){
-			logger.debug("error occured while processing "+e.getMessage());
-			e.printStackTrace();
+			logger.error("error occured while processing "+e.getMessage(), e);
 		} finally {
 			/*code by sukhi 26/09/2018*/
 			try {
@@ -1989,7 +1980,7 @@ public class DocumentManagment {
 					out = null;
 				}
 			} catch(Exception ex){
-				ex.printStackTrace();
+				logger.error("Error in DocumentManagment.generateERPQuoteLetter", ex);
 			}
 			pdfFile=null;
 		}	
@@ -2110,8 +2101,7 @@ public class DocumentManagment {
 		catch (Exception e)
 		{
 			ctx.put("IsDocumentProcessed", "N");
-			logger.debug("processDocumentManagment failed  ........" + e);
-			e.printStackTrace();
+			logger.error("processDocumentManagment failed  ........" + e, e);
 			throw e;
 		}finally {
 			/*code by sukhi 26/09/2018*/
@@ -2159,7 +2149,7 @@ public class DocumentManagment {
 
 						} else if (name.equalsIgnoreCase("SearchType")) {
 							searchType = fi.getString();
-							logger.debug("SearchType - " + searchType);
+							{ if (logger.isDebugEnabled()) logger.debug("SearchType - " + searchType); }
 						}
 
 						// String value = fi.getString();
@@ -2177,8 +2167,7 @@ public class DocumentManagment {
 					// break;
 				}
 			} catch (Exception e) {
-				logger.debug("Error in file process");
-				e.printStackTrace();
+				logger.error("Error in file process", e);
 				throw e;
 			}
 			
@@ -2232,7 +2221,7 @@ public class DocumentManagment {
 				try {
 					uploadFile.write(new File(uploaddirectory, docFileName));
 				} catch (Exception e) {
-					System.out.println("Exception " + e );
+					logger.error("Error in DocumentManagment.processLossRunAndPriorDocument", e);
 					AccountUtils.populateError(ctx, "DocUploadError", "Document could not be write to file" );
 					ctx.put("DocumentID", 0);
 					return;
@@ -2245,10 +2234,10 @@ public class DocumentManagment {
 					else
 						result="File added successfully!";
 					//result = "File added successfully!";
-					logger.debug("Result from uploadDocument(ctx, uploaddirectory + docName)" + result);
+					{ if (logger.isDebugEnabled()) logger.debug("Result from uploadDocument(ctx, uploaddirectory + docName)" + result); }
 					
 				} catch (Exception e) {
-					System.out.println("Exception --->" + e);
+					logger.error("Error in DocumentManagment.processLossRunAndPriorDocument", e);
 					AccountUtils.populateError(ctx, "DocUploadError", "Document could not be uploaded");
 					ctx.put("DocumentID", 0);
 					return;
@@ -2289,7 +2278,7 @@ public class DocumentManagment {
 					RuleUtils.executeRule(ctx, "AccountantRule.assignDateTimeNUser");
 					AccountUtils.getPolicyData((Context)ctx);
 					Object insertDocumentArchiveLW =  SqlResources.getSqlMapProcessor(ctx).insert("DocumentArchive.insert", ctx);
-					System.out.println(insertDocumentArchiveLW);
+					{ if (logger.isDebugEnabled()) logger.debug(insertDocumentArchiveLW); }
 					ctx.put("DocumentID", insertDocumentArchiveLW);
 				}
 				
@@ -2305,6 +2294,7 @@ public class DocumentManagment {
 				ctx.put("DocumentID", 0);
 			}
 		}catch (Exception e){
+			logger.error("Error in DocumentManagment.processLossRunAndPriorDocument", e);
 			throw e;
 		} finally {
 			

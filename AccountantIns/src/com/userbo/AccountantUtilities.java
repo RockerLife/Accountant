@@ -39,6 +39,7 @@ public class AccountantUtilities {
 		//System.out.println("uniqueId" + uniqueId);
 		  }
 		  catch (Exception e) {
+            logger.error("Error in AccountantUtilities.generateUniqueId", e);
 			  uniqueId="Not Found";
 		  }
 		  return uniqueId;
@@ -90,10 +91,9 @@ public class AccountantUtilities {
 					}
 				}
 			}
-			System.out.println(filePath);	
+			{ if (logger.isDebugEnabled()) logger.debug(filePath); }
 		} catch (Exception e) {
-			logger.debug("Error in file process");
-			e.printStackTrace();
+			logger.error("Error in file process", e);
 		}
 		
 		filePath = filePath + "_" + generateUniqueId();
@@ -105,7 +105,7 @@ public class AccountantUtilities {
 		try {
 			uploadFile_logo.write(new File(uploaddirectory, filePath));
 		} catch (Exception e) {
-			System.out.println("Exception " + e );
+			logger.error("Error in AccountantUtilities.uploadFile", e);
 			AccountUtils.populateError(ctx, "DocUploadError","Document could not be write to file" );
 			
 		}

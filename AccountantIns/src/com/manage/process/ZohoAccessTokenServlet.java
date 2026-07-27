@@ -1,5 +1,6 @@
 package com.manage.process;
 
+import com.util.InetLogger;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
@@ -19,12 +20,14 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.json.JSONObject;
 
 import com.util.Context;
+import com.util.SharedHttpClient;
 import com.util.SystemProperties;
 
 /**
  * Servlet implementation class ZohoServlet
  */
 public class ZohoAccessTokenServlet extends HttpServlet {
+	private static final InetLogger logger = InetLogger.getInetLogger(ZohoAccessTokenServlet.class);
 	private static final long serialVersionUID = 1L;
 	private transient ZohoTimer zohoTimer;
        
@@ -96,7 +99,7 @@ public class ZohoAccessTokenServlet extends HttpServlet {
 //			System.out.println(result);
 //			System.out.println("status     " + get.getResponseBodyAsString());
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in ZohoAccessTokenServlet.generateZohoCode", e);
 //		} finally {
 //			get.releaseConnection();
 		}
@@ -129,13 +132,14 @@ public class ZohoAccessTokenServlet extends HttpServlet {
 			post.setParameter("username", username);
 			post.setParameter("password", password);
 			
-			HttpClient httpclient = new HttpClient();
+			HttpClient httpclient = SharedHttpClient.get();
 			int result = httpclient.executeMethod(post);
+			String responseBody = post.getResponseBodyAsString();
 			
-			System.out.println(result);
-			System.out.println("status     " + post.getResponseBodyAsString());
+			{ if (logger.isDebugEnabled()) logger.debug(result); }
+			{ if (logger.isDebugEnabled()) logger.debug("status     " + responseBody); }
 			
-			JSONObject captureZohoAccessToken = new JSONObject(post.getResponseBodyAsString());
+			JSONObject captureZohoAccessToken = new JSONObject(responseBody);
 			Iterator<String> captureKeys = captureZohoAccessToken.keys();
 			ServletContext context=getServletContext();
 			while (captureKeys.hasNext()) {
@@ -156,7 +160,7 @@ public class ZohoAccessTokenServlet extends HttpServlet {
 			
 			return erorr;
 		} catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in ZohoAccessTokenServlet.generateZohoAccessToken", e);
 		} finally {
 			if (post != null)
 				post.releaseConnection();
@@ -176,6 +180,7 @@ public class ZohoAccessTokenServlet extends HttpServlet {
 }
 
 class ZohoTimer {
+    private static final InetLogger logger = InetLogger.getInetLogger(ZohoTimer.class);
     Timer timer;
     String refreshToken = "";
     ServletContext context = null;
@@ -211,7 +216,7 @@ class ZohoTimer {
 
     class RemindTask extends TimerTask {
         public void run() {
-            System.out.println("Time's up!");
+            { if (logger.isDebugEnabled()) logger.debug("Time's up!"); }
             generateZohoRefreshAccessToken();
             //timer.cancel(); //Terminate the timer thread
         }
@@ -238,13 +243,14 @@ class ZohoTimer {
 			post.setParameter("username", username);
 			post.setParameter("password", password);
 			
-			HttpClient httpclient = new HttpClient();
+			HttpClient httpclient = SharedHttpClient.get();
 			int result = httpclient.executeMethod(post);
+			String responseBody = post.getResponseBodyAsString();
 			
-			System.out.println(result);
-			System.out.println("status     " + post.getResponseBodyAsString());
+			{ if (logger.isDebugEnabled()) logger.debug(result); }
+			{ if (logger.isDebugEnabled()) logger.debug("status     " + responseBody); }
 			
-			JSONObject captureZohoAccessToken = new JSONObject(post.getResponseBodyAsString());
+			JSONObject captureZohoAccessToken = new JSONObject(responseBody);
 			Iterator<String> captureKeys = captureZohoAccessToken.keys();
 			while (captureKeys.hasNext()) {
 				String captureKey = (String)captureKeys.next();
@@ -255,8 +261,8 @@ class ZohoTimer {
 		        	updateZohoAccessToken(captureKeyValue);
 		        }
 			}
-    	} catch(Exception e){
-    		e.printStackTrace();
+		} catch(Exception e){
+            logger.error("Error in ZohoTimer.generateZohoRefreshAccessToken", e);
 	    	} finally {
 			if (post != null)
 				post.releaseConnection();

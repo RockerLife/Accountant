@@ -36,7 +36,7 @@ public class AccountantServlet_old extends HttpServlet {
 	    	loadResource(project_resource, "ibatisconfig");
 	    	
 		} catch (Exception e) {
-			logger.error("Project resources are not initialized properly");
+			logger.error("Project resources are not initialized properly", e);
 		}			
 	}
 	
@@ -84,8 +84,7 @@ public class AccountantServlet_old extends HttpServlet {
 			}			
 		}
 		catch(Exception e){
-			logger.error("Unable to process request due to..." + e.getMessage());
-			System.out.println("Unable to process request due to..." + e.getMessage());
+			logger.error("Unable to process request due to..." + e.getMessage(), e);
 		}
 		
 		
@@ -100,9 +99,9 @@ public class AccountantServlet_old extends HttpServlet {
 		ctx.put("AccountKey", req.getParameter("AccountKey"));
 		ctx.put("AddressKey", req.getParameter("AddressKey"));
 		
-		logger.debug("DownloadPDF Start for Quote Number : " +req.getParameter("QuoteNumber"));
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadPDF Start for Quote Number : " +req.getParameter("QuoteNumber")); }
 		new PrintPDF().makePdf(ctx, req, res);
-		logger.debug("DownloadPDF end for Quote Number : " +req.getParameter("QuoteNumber"));		
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadPDF end for Quote Number : " +req.getParameter("QuoteNumber")); }
 	}
 
 	private void downloadExcel(HttpServletRequest req,HttpServletResponse res) throws Exception{
@@ -114,12 +113,12 @@ public class AccountantServlet_old extends HttpServlet {
 		ctx.put("AccountKey", req.getParameter("AccountKey"));
 		ctx.put("AddressKey", req.getParameter("AddressKey"));
 		
-		logger.debug("DownloadExcel Start for Quote Number : " +req.getParameter("QuoteNumber"));		
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadExcel Start for Quote Number : " +req.getParameter("QuoteNumber")); }
 		res.setContentType("application/vnd.ms-excel");
 		String newFileName = "Account_"+req.getParameter("policynumber")+".xls";
 		res.setHeader("Content-disposition","attachment; filename=\"" + newFileName + "\"");				
 		//new DownloadExcel().downloadExcel(ctx, req, res);				
-		logger.debug("DownloadExcel End for Quote Number : " +req.getParameter("QuoteNumber"));		
+		{ if (logger.isDebugEnabled()) logger.debug("DownloadExcel End for Quote Number : " +req.getParameter("QuoteNumber")); }
 	}
 		
 	
@@ -153,12 +152,12 @@ public class AccountantServlet_old extends HttpServlet {
 		      byte[] data = item.get();
 		      InputStream inputStream =  item.getInputStream();
 		      String  sheetName =   req.getParameter("uploadaction");
-		      System.out.println("Upload Start for : "+ sheetName);      
+			  { if (logger.isDebugEnabled()) logger.debug("Upload Start for : "+ sheetName); }
 
 //		      if(null!=sheetName)
 //		    	  new UploadLookupData().extractDataFromExcel(  ctx, inputStream, sheetName);
 		      
-		      System.out.println("Upload End for : "+ sheetName);
+		      { if (logger.isDebugEnabled()) logger.debug("Upload End for : "+ sheetName); }
 		   }
 		}
 

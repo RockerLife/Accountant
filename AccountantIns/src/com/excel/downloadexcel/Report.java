@@ -1,5 +1,6 @@
 package com.excel.downloadexcel;
 
+import com.util.InetLogger;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,6 +20,7 @@ import com.userbo.AccountantUtilities;
 import com.util.Context;
 
 public class Report {
+	private static final InetLogger logger = InetLogger.getInetLogger(Report.class);
 	
 	public void getDataForReport(Context ctx) throws Exception
 	{
@@ -670,7 +672,7 @@ public class Report {
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			logger.error("Error in Report.populateReportDataList", e);
 		}
 	}
 

@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import com.util.Context;
 import com.util.HtmlConstants;
 import com.util.InetLogger;
+import com.util.SharedHttpClient;
 import com.util.SystemProperties;
 
 public class CreatePaymentIntent {
@@ -83,7 +84,7 @@ public class CreatePaymentIntent {
 			
 			authRequest.put("intent", intent);
 			
-			logger.debug("AndDone WS auth Request : " + authRequest);
+			{ if (logger.isDebugEnabled()) logger.debug("AndDone WS auth Request : " + authRequest); }
 			logger.debug("Going to call AndDone WS.");
 			subURL = paymentintent;
 			JSONObject authResponse = authorizeTransaction(authRequest, webServiceURL, subURL, apiKey, appKey, userAgentKey, crossOriginURL);
@@ -93,11 +94,11 @@ public class CreatePaymentIntent {
 				AccountUtils.populateError(ctx, "authorizationFailed", "PaymentIntent Authorization failed");
 				return;
 			}
-			logger.debug("AndDone WS auth Response..." + authResponse);
+			{ if (logger.isDebugEnabled()) logger.debug("AndDone WS auth Response..." + authResponse); }
 			
 			if(!authResponse.isNull("paymentToken")){
 				String paymentToken = (String) authResponse.get("paymentToken");
-				System.out.println(paymentToken);
+				{ if (logger.isDebugEnabled()) logger.debug(paymentToken); }
 				ctx.put("paymentToken", paymentToken);
 				ctx.put("isvalidid", paymentToken);
 				ctx.put("Amount", amount);
@@ -109,7 +110,7 @@ public class CreatePaymentIntent {
 			
 			logger.debug("AndDone payment has been processed.");
 		} catch (Exception e) {
-		    e.printStackTrace();
+			logger.error("Error in CreatePaymentIntent.getAndDoneToken", e);
 		}
 
     }
@@ -144,7 +145,7 @@ public class CreatePaymentIntent {
 				paymentDetailsRequest.put("PaymentToken", paymentToken);
 				
 				
-				logger.debug("AndDone WS paymentDetails Request : " + paymentDetailsRequest);
+				{ if (logger.isDebugEnabled()) logger.debug("AndDone WS paymentDetails Request : " + paymentDetailsRequest); }
 				subURL = paymentDetails;
 	        	JSONObject paymentDetailsResponse = authorizeTransaction(paymentDetailsRequest, webServiceURL, subURL, apiKey, appKey, userAgentKey, crossOriginURL);
 	        	
@@ -169,12 +170,12 @@ public class CreatePaymentIntent {
 					}
 				}
 	        	session.setAttribute("transactionStatus", out);
-	        	logger.debug("AndDone WS PaymentDetails Response..." + paymentDetailsResponse);
+				{ if (logger.isDebugEnabled()) logger.debug("AndDone WS PaymentDetails Response..." + paymentDetailsResponse); }
 			}
 			
 			logger.debug("AndDone payment has been processed.");
 		} catch (Exception e) {
-		    e.printStackTrace();
+			logger.error("Error in CreatePaymentIntent.getAndDoneResponse", e);
 		}
 		return out;
 
@@ -192,22 +193,23 @@ public class CreatePaymentIntent {
 		    post.setRequestHeader("User-Agent", userAgentKey);
 		    post.setRequestBody(authRequest.toString());
 
-		    HttpClient httpclient = new HttpClient();
+		    HttpClient httpclient = SharedHttpClient.get();
 
 		    int result = httpclient.executeMethod(post);
+		    String responseBody = post.getResponseBodyAsString();
 		    
-    		System.out.println(result);
-		    System.out.println(post.getResponseBodyAsString());
+			{ if (logger.isDebugEnabled()) logger.debug(result); }
+		    { if (logger.isDebugEnabled()) logger.debug(responseBody); }
 		    
 		    if (result != 201 && result != 200) {
 				return null;
 			}
 		    
-		    if(post.getResponseBodyAsString() != null && !"".equals(post.getResponseBodyAsString())){
-		    	return new JSONObject(post.getResponseBodyAsString());
+		    if(responseBody != null && !"".equals(responseBody)){
+				return new JSONObject(responseBody);
   			}
 		} catch (Exception e) {
-		    e.printStackTrace();
+			logger.error("Error in CreatePaymentIntent.authorizeTransaction", e);
 		} finally {
 		    post.releaseConnection();
 		}
@@ -237,7 +239,7 @@ public class CreatePaymentIntent {
 			}
 			logger.debug("Processing CC payment response is completed.");
 		}catch(Exception e){
-			logger.debug("There was an error processing the transaction response " + e.getMessage());
+			logger.error("There was an error processing the transaction response " + e.getMessage(), e);
 		}
 	}
 }

@@ -29,10 +29,10 @@ public class BuildProcess {
 		try {
 			SystemProperties.getInstance(propertiesPath);
 		} catch (IOException ioe) {
-			logger.error("Properties file is not found at location " + propertiesPath);
+			logger.error("Properties file is not found at location " + propertiesPath, ioe);
 		}
 		catch (Exception e) {
-			logger.error("Properties file is not loaded from location " + propertiesPath);
+			logger.error("Properties file is not loaded from location " + propertiesPath, e);
 		}
 	}
 	
@@ -75,7 +75,7 @@ public class BuildProcess {
 			fout.close();*/
 			
         }catch (Exception e) {
-        	logger.error("Process flow is not generated..."+ e.toString());
+            logger.error("Process flow is not generated..."+ e.toString(), e);
 		}
 	}
 
@@ -88,7 +88,7 @@ public class BuildProcess {
 			List errors = runDBSync.generateDBFromMetadata();
 			
 		}catch(Exception e) {
-			logger.error("DB synchrnization is not completed..."+ e.toString());
+			logger.error("DB synchrnization is not completed..."+ e.toString(), e);
 		}
 	}
 	
@@ -99,7 +99,7 @@ public class BuildProcess {
 			String metaXml = genMeta.generateMetadataFromDB();
 			
 		}catch(Exception e)	{
-			logger.error("Metadata is not generated..."+ e.toString());
+			logger.error("Metadata is not generated..."+ e.toString(), e);
 		}
 	}
 	
@@ -117,7 +117,7 @@ public class BuildProcess {
 			sqlMapGenerator.generateSQLMaps(techType, reportspath, null ,null);
 			
 		}catch(Exception e)	{
-			logger.error("Ibatis are not generated..."+ e.toString());
+			logger.error("Ibatis are not generated..."+ e.toString(), e);
 		}
 	}
 	public static void main(String[] args) throws Exception {
@@ -152,7 +152,7 @@ public class BuildProcess {
 		//decryptXML("D:\\vikas_workspace\\ProducerOne\\web\\XML\\ProducerOne\\components.xml");
 //		decryptXML("D:\\vikas_workspace\\ProducerOne\\web\\XML\\ProducerOne\\processflowImpl.xml");
 		
-		System.out.println("Generated.");
+		{ if (logger.isDebugEnabled()) logger.debug("Generated."); }
 		
 	}
 }

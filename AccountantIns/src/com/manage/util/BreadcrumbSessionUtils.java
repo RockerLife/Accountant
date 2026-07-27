@@ -6,6 +6,7 @@ import java.util.Map;
 import com.util.Context;
 
 public final class BreadcrumbSessionUtils {
+	private static final int MAX_PAGES = 10;
 	private static final String[] CONTAINER_KEYS = {
 		"DocumentRequest", "DocumentResponse", "DocumentServletContext", "DocumentUriResolver"
 	};
@@ -24,7 +25,11 @@ public final class BreadcrumbSessionUtils {
 		if (!(stackValue instanceof List))
 			return;
 
-		for (Object pageValue : (List) stackValue) {
+		List pages = (List) stackValue;
+		if (pages.size() > MAX_PAGES)
+			pages.subList(0, pages.size() - MAX_PAGES).clear();
+
+		for (Object pageValue : pages) {
 			if (!(pageValue instanceof Map))
 				continue;
 

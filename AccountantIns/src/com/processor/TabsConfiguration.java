@@ -45,7 +45,7 @@ public class TabsConfiguration {
 		//going to load tabsconfiguration.xml
 		try{
 			Context ctx = new Context();
-			ctx.setProject("ProducerOne");
+			ctx.setProject("AccountantIns");
 			List tabsConfigResList = TabsConfigurationResources.getInstance(ctx).getTabsConfigurationResourceList();
 			if(tabsConfigResList != null && tabsConfigResList.size() > 0){
 				for(int i=0; i<tabsConfigResList.size(); i++){
@@ -65,8 +65,11 @@ public class TabsConfiguration {
 						//checking value from properties file
 						if(value.length() > 1){
 							try{
-								value = SystemProperties.getInstance().getString(value);
+								String propertyValue = SystemProperties.getInstance().getProperty(value);
+								if(propertyValue != null)
+									value = propertyValue;
 							}catch (Exception e) {
+								logger.error("Error in TabsConfiguration.getTabsConf", e);
 								// TODO: handle exception
 							}
 						}
@@ -76,6 +79,7 @@ public class TabsConfiguration {
 							try{
 								value = DataUtils.getLabelFromLabelConf(value);
 							}catch(Exception e){
+								logger.error("Error in TabsConfiguration.getTabsConf", e);
 								// TODO: handle exception
 							}
 						}
@@ -92,7 +96,7 @@ public class TabsConfiguration {
 				}
 			}
 		}catch (Exception e) {
-			logger.error("Unable to read tabsconfiguration.xml due to error : " + e.getMessage());
+			logger.error("Unable to read tabsconfiguration.xml due to error : " + e.getMessage(), e);
 		}
 		//ended
 		

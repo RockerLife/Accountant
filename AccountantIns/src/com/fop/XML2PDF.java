@@ -7,6 +7,8 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
@@ -14,8 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
+import javax.xml.transform.Templates;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamSource;
 
@@ -43,6 +47,39 @@ public class XML2PDF {
 	private String outFile = "C://result.pdf";
 	private String foFile = "quoteletter.xml";
 	private static InetLogger logger = InetLogger.getInetLogger(XML2PDF.class);
+	private static final FopFactory DEFAULT_FOP_FACTORY = FopFactory.newInstance();
+	private static final ConcurrentMap<ServletContextURIResolver, FopFactory> FOP_FACTORIES = new ConcurrentHashMap<ServletContextURIResolver, FopFactory>();
+	private static final ConcurrentMap<String, Templates> XSLT_TEMPLATES = new ConcurrentHashMap<String, Templates>();
+
+	private static FopFactory getFopFactory(ServletContextURIResolver resolver) {
+		if (resolver == null)
+			return DEFAULT_FOP_FACTORY;
+		FopFactory factory = FOP_FACTORIES.get(resolver);
+		if (factory == null) {
+			FopFactory candidate = FopFactory.newInstance();
+			candidate.setURIResolver(resolver);
+			FopFactory existing = FOP_FACTORIES.putIfAbsent(resolver, candidate);
+			factory = existing == null ? candidate : existing;
+		}
+		return factory;
+	}
+
+	private static Transformer newTransformer(File stylesheet, URIResolver resolver) throws Exception {
+		String key = stylesheet.getCanonicalPath() + (resolver == null ? "|default" : "|servlet");
+		Templates templates = XSLT_TEMPLATES.get(key);
+		if (templates == null) {
+			TransformerFactory factory = TransformerFactory.newInstance();
+			if (resolver != null)
+				factory.setURIResolver(resolver);
+			Templates candidate = factory.newTemplates(new StreamSource(stylesheet));
+			Templates existing = XSLT_TEMPLATES.putIfAbsent(key, candidate);
+			templates = existing == null ? candidate : existing;
+		}
+		Transformer transformer = templates.newTransformer();
+		if (resolver != null)
+			transformer.setURIResolver(resolver);
+		return transformer;
+	}
 
 	public void convertPOToPDF(String foFile, String xmlFile, Context ctx,
 			HttpServletRequest req, HttpServletResponse res,
@@ -54,9 +91,7 @@ public class XML2PDF {
 			File fofile = new File(foFile);
 
 			// configure fopFactory as desired
-			FopFactory fopFactory = FopFactory.newInstance();
-			// tell the FOPFactory object where to look for resources
-			fopFactory.setURIResolver((ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER));
+			FopFactory fopFactory = getFopFactory((ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER));
 
 			// fopFactory.setUserConfig(new File("cfg.xml"));
 			FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
@@ -84,13 +119,8 @@ public class XML2PDF {
 						foUserAgent, out);
 
 				// Setup XSLT
-				TransformerFactory factory = TransformerFactory.newInstance();
-
-				// tell the TransformerFactory where to find resources
-				factory.setURIResolver((ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER));
-
-				Transformer transformer = factory
-						.newTransformer(new StreamSource(fofile));
+				Transformer transformer = newTransformer(fofile,
+						(ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER));
 
 				// tell the Transformer object where to find resources
 				transformer.setURIResolver((ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER));
@@ -109,17 +139,17 @@ public class XML2PDF {
 				out.flush();
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in XML2PDF.convertPOToPDF", e);
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in XML2PDF.convertPOToPDF", e);
 		} finally {
 			if (out != null)
 				try {
 					out.close();
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.error("Error in XML2PDF.convertPOToPDF", e);
 				}
 		}
 	}
@@ -131,7 +161,7 @@ public class XML2PDF {
 			File fofile = new File(foFile);
 
 			// configure fopFactory as desired
-			FopFactory fopFactory = FopFactory.newInstance();
+			FopFactory fopFactory = getFopFactory(null);
 			FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 			foUserAgent
 			.setBaseURL("file:///" + ((ServletContext)ctx.get(HtmlConstants.DOCUMENTSERVLETCONTEXT)).getRealPath("/"));
@@ -140,11 +170,7 @@ public class XML2PDF {
 					out);
 
 			// Setup XSLT
-			TransformerFactory factory = TransformerFactory.newInstance();
-			factory.setURIResolver(uriResolver);
-			Transformer transformer = factory.newTransformer(new StreamSource(
-					fofile));
-			transformer.setURIResolver(uriResolver);
+			Transformer transformer = newTransformer(fofile, uriResolver);
 			// Set the value of a <param> in the stylesheet
 			// transformer.setParameter("versionParam", "2.0");
 
@@ -158,9 +184,9 @@ public class XML2PDF {
 			// Start XSLT transformation and FOP processing
 			transformer.transform(src, res);
 
-			System.out.println("Success!");
+			{ if (logger.isDebugEnabled()) logger.debug("Success!"); }
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in XML2PDF.convertPOToPDF", e);
 			throw e;
 		}
 		return out;
@@ -179,9 +205,7 @@ public class XML2PDF {
 			File fofile = new File(foFile);
 
 			// configure fopFactory as desired
-			FopFactory fopFactory = FopFactory.newInstance();
-			// tell the FOPFactory object where to look for resources
-			fopFactory.setURIResolver((ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER));
+			FopFactory fopFactory = getFopFactory((ServletContextURIResolver)ctx.get(HtmlConstants.DOCUMENTURIRESOLVER));
 
 			// fopFactory.setUserConfig(new File("cfg.xml"));
 			FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
@@ -235,12 +259,12 @@ public class XML2PDF {
 				// Start XSLT transformation and FOP processing
 				transformer.transform(src, result);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in XML2PDF.convertPOToPDF", e);
 				throw e;
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in XML2PDF.convertPOToPDF", e);
 			throw e;
 		}
 	}
@@ -326,8 +350,8 @@ public class XML2PDF {
 			
 			convertPOToPDF(foFile, xmlContent, out, baseUrl, uriResolver,ctx);
 		} catch (Exception e) {
+			logger.error("Error in XML2PDF.convertXMLtoStream", e);
 
-			e.printStackTrace();
 			throw e;
 		}
 
@@ -343,8 +367,7 @@ public class XML2PDF {
 			// File pdffile = new File(outFile);
 
 			// configure fopFactory as desired
-			FopFactory fopFactory = FopFactory.newInstance();
-			fopFactory.setURIResolver(uriResolver);
+			FopFactory fopFactory = getFopFactory(uriResolver);
 
 			FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 			
@@ -364,9 +387,7 @@ public class XML2PDF {
 						foUserAgent, out);
 
 				// Setup XSLT
-				TransformerFactory factory = TransformerFactory.newInstance();
-				Transformer transformer = factory
-						.newTransformer(new StreamSource(fofile));
+				Transformer transformer = newTransformer(fofile, uriResolver);
 
 				// Set the value of a <param> in the stylesheet
 				// transformer.setParameter("versionParam", "2.0");
@@ -390,7 +411,7 @@ public class XML2PDF {
 			
 			logger.debug("Success!");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in XML2PDF.convertPOToPDF", e);
 			throw e ;
 			//System.exit(-1);
 		}
@@ -403,7 +424,7 @@ public class XML2PDF {
 			File pdffile = new File(outFile);
 
 			// configure fopFactory as desired
-			FopFactory fopFactory = FopFactory.newInstance();
+			FopFactory fopFactory = getFopFactory(null);
 			FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
 			// configure foUserAgent as desired
@@ -417,9 +438,7 @@ public class XML2PDF {
 						foUserAgent, out);
 
 				// Setup XSLT
-				TransformerFactory factory = TransformerFactory.newInstance();
-				Transformer transformer = factory
-						.newTransformer(new StreamSource(fofile));
+				Transformer transformer = newTransformer(fofile, null);
 
 				// Set the value of a <param> in the stylesheet
 				// transformer.setParameter("versionParam", "2.0");
@@ -436,16 +455,16 @@ public class XML2PDF {
 				transformer.transform(src, res);
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error in XML2PDF.convertPOToPDF", e);
 
 			} finally {
 				out.close();
 			}
 
-			System.out.println("Success!");
+			{ if (logger.isDebugEnabled()) logger.debug("Success!"); }
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in XML2PDF.convertPOToPDF", e);
 
 		}
 	}
@@ -513,8 +532,7 @@ private static void parseReportTemplate1(Context ctx, Element element) throws Ex
 			//File pdffile = new File(outFile);			
 		
 			// configure fopFactory as desired
-			FopFactory fopFactory = FopFactory.newInstance();
-			fopFactory.setURIResolver(uriResolver);
+			FopFactory fopFactory = getFopFactory(uriResolver);
 			
 			FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 			foUserAgent.setBaseURL(baseUrl);
@@ -530,8 +548,7 @@ private static void parseReportTemplate1(Context ctx, Element element) throws Ex
 				Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
 				
 				// Setup XSLT
-				TransformerFactory factory = TransformerFactory.newInstance();
-				Transformer transformer = factory.newTransformer(new StreamSource(fofile));
+				Transformer transformer = newTransformer(fofile, uriResolver);
 				
 				// Set the value of a <param> in the stylesheet
 				//transformer.setParameter("versionParam", "2.0");
@@ -547,8 +564,7 @@ private static void parseReportTemplate1(Context ctx, Element element) throws Ex
 				transformer.transform(src, res);
 				
 			} catch (Exception e) {
-				logger.debug("FOP Transformer Failed.." + e.getMessage());	
-				e.printStackTrace();	
+				logger.error("FOP Transformer Failed.." + e.getMessage(), e);
 			} finally {			 
 				out.close();
 			}
@@ -556,7 +572,7 @@ private static void parseReportTemplate1(Context ctx, Element element) throws Ex
 			logger.debug("Success!");
 		} 
 		catch (Exception e) {
-			 e.printStackTrace();				 
+			logger.error("Error in XML2PDF.convertPOToPDF", e);
 			 //System.exit(-1);			  
 		}
 	}

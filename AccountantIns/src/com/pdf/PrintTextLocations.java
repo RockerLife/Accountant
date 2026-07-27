@@ -13,8 +13,10 @@ import org.apache.pdfbox.util.PDFTextStripper;
 import org.apache.pdfbox.util.TextPosition;
 
 import com.userbo.AccountUtils;
+import com.util.InetLogger;
 
 public class PrintTextLocations extends PDFTextStripper {
+	private static final InetLogger logger = InetLogger.getInetLogger(PrintTextLocations.class);
 	
 	public static StringBuilder tWord = new StringBuilder();
 	public static String seek;
@@ -114,7 +116,7 @@ public class PrintTextLocations extends PDFTextStripper {
             
             mapXY.put("yPos", yPos);
             mapXY.put("xPos", xPos);
-            System.out.println("hit.getX() " + hit.getX() + " hit.getY() " + hit.getY() );
+            { if (logger.isDebugEnabled()) logger.debug("hit.getX() " + hit.getX() + " hit.getY() " + hit.getY() ); }
         }
         
         return mapXY;
@@ -129,10 +131,10 @@ public class PrintTextLocations extends PDFTextStripper {
             for (TextPositionSequence hit : hits)
             {
                 TextPosition lastPosition = hit.textPositionAt(hit.length() - 1);
-                System.out.println("hit.getX() " + hit.getX() +
+                { if (logger.isDebugEnabled()) logger.debug("hit.getX() " + hit.getX() +
                 		" hit.getY() " + hit.getY() + 
                 		" lastPosition.getXDirAdj() " + lastPosition.getXDirAdj() +
-                		" lastPosition.getYDirAdj() " + lastPosition.getYDirAdj());
+						" lastPosition.getYDirAdj() " + lastPosition.getYDirAdj()); }
             }
         }
     }

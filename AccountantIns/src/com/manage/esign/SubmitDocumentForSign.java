@@ -1,5 +1,6 @@
 package com.manage.esign;
 
+import com.util.InetLogger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -54,6 +55,7 @@ import https.www_assuresign_net.services.documentnow.submit.UnderlyingFile;
 
 
 public class SubmitDocumentForSign {
+	private static final InetLogger logger = InetLogger.getInetLogger(SubmitDocumentForSign.class);
 
 	/* Submit */
 	public ArrayOfDocumentResult submit(String contextIdentifier,
@@ -124,7 +126,7 @@ public class SubmitDocumentForSign {
 			service = new DocumentNowWcfService()
 					.getBasicHttpBindingISubmitService();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in SubmitDocumentForSign.submit", e);
 		}
 
 		// Enable MTOM
@@ -199,7 +201,7 @@ public class SubmitDocumentForSign {
 			signatoryService = new DocumentNowWcfService()
 					.getBasicHttpBindingIListSignatoriesService();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in SubmitDocumentForSign.getSignatoryItems", e);
 		}
 
 		queryResult = signatoryService.listSignatories(query);
@@ -215,8 +217,8 @@ public class SubmitDocumentForSign {
 		try {
 			factory = DatatypeFactory.newInstance();
 		} catch (DatatypeConfigurationException e) {
+			logger.error("Error in SubmitDocumentForSign.getMetadata", e);
 			
-			e.printStackTrace();
 		}
 		// Initialize additional terms and conditions
 		TermsAndConditions termsAndConditions = new TermsAndConditions();
@@ -367,7 +369,7 @@ public class SubmitDocumentForSign {
 		try {
 			is = new java.io.FileInputStream(file);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error("Error in SubmitDocumentForSign.getBytesFromFile", e);
 		}
 		// Get the size of the file
 		long length = file.length();
@@ -382,13 +384,13 @@ public class SubmitDocumentForSign {
 				offset += numRead;
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error in SubmitDocumentForSign.getBytesFromFile", e);
 		}
 		// Close the input stream and return bytes
 		try {
 			is.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error in SubmitDocumentForSign.getBytesFromFile", e);
 		}
 
 		return bytes;

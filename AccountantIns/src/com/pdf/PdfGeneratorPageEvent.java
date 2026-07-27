@@ -1,5 +1,6 @@
 package com.pdf;
 
+import com.util.InetLogger;
 import com.lowagie.text.Document;
 import com.lowagie.text.ExceptionConverter;
 import com.lowagie.text.Image;
@@ -11,6 +12,7 @@ import com.lowagie.text.pdf.PdfTemplate;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class PdfGeneratorPageEvent extends PdfPageEventHelper {
+	private static final InetLogger logger = InetLogger.getInetLogger(PdfGeneratorPageEvent.class);
 	protected PdfTemplate total;
 	protected BaseFont helv;
 	protected Image img;
@@ -36,6 +38,7 @@ public class PdfGeneratorPageEvent extends PdfPageEventHelper {
 			img = Image.getInstance(PDFGenerator.logo);
 
 		} catch (Exception e) {
+			logger.error("Error in PdfGeneratorPageEvent.onOpenDocument", e);
 			throw new ExceptionConverter(e);
 		}
 
@@ -78,7 +81,7 @@ public class PdfGeneratorPageEvent extends PdfPageEventHelper {
 		cb.addImage(img,
 				img.width()/2 + 50, 0, 0, img.height()/2 + 6, 395, 750);
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in PdfGeneratorPageEvent.onStartPage", e);
 		}
 		cb.restoreState();
 	}

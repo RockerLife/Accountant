@@ -1,5 +1,6 @@
 package com.userbo;
 
+import com.util.InetLogger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,6 +21,7 @@ import com.util.IContext;
  *         Window - Preferences - Java - Code Style - Code Templates
  */
 public class LimitDropdown implements IDropDown {
+	private static final InetLogger logger = InetLogger.getInetLogger(LimitDropdown.class);
 
 	public List getDropDownData(IContext ctx, String field) throws Exception {
 		
@@ -69,7 +71,7 @@ public class LimitDropdown implements IDropDown {
 					}
 					}
 							catch (Exception e) {
-								e.printStackTrace();
+								logger.error("Error in LimitDropdown.getDropDownData", e);
 							}
 					
 				}

@@ -97,7 +97,7 @@ public class AccountsBatch{
 			String requestxml = new RequestProcessor().generateRequestXml(ctxNew);
 			ctxNew.put("inputXml", requestxml);
 			List list = fetchBatchRatingData(ctxNew);
-			System.out.println(list.size());
+			{ if (logger.isDebugEnabled()) logger.debug(list.size()); }
 			
 			generateDataSheet(ctx, "Data", list);
 			
@@ -113,7 +113,7 @@ public class AccountsBatch{
 			System.out.println("request>>>>>>>"+request);*/
 	
 		}catch(Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountsBatch.lawyerBatchXML", e);
 			
 		}
 	}
@@ -126,8 +126,8 @@ public class AccountsBatch{
 			filePath = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".ratingexceldownloadpath");
 			filePath=filePath+excelname;
 		} catch (Exception e1) {
+			logger.error("Error in AccountsBatch.populateExcel", e1);
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
 		
 		
@@ -250,11 +250,11 @@ public class AccountsBatch{
 	                = new FileOutputStream(new File(filePath));
 	        workbook.write(out);
 	        out.close();
-	        System.out.println("Excel written successfully..");
+	        { if (logger.isDebugEnabled()) logger.debug("Excel written successfully.."); }
 	    } catch (FileNotFoundException e) {
-	        e.printStackTrace();
+            logger.error("Error in AccountsBatch.populateExcel", e);
 	    } catch (IOException e) {
-	        e.printStackTrace();
+            logger.error("Error in AccountsBatch.populateExcel", e);
 	    }
 	
 	}
@@ -325,10 +325,10 @@ public class AccountsBatch{
 	        input.close();
 	        
 		} catch (FileNotFoundException e) {
-			logger.debug("Problem in reading file " + path + " " + e.getMessage());
+			logger.error("Problem in reading file " + path + " " + e.getMessage(), e);
 		}
 		catch (IOException e) {
-			logger.debug("Problem in reading file " + path + " " + e.getMessage());
+			logger.error("Problem in reading file " + path + " " + e.getMessage(), e);
 		}
 	   return valuesMap;
 	}
@@ -403,7 +403,7 @@ public class AccountsBatch{
 		        fileOut.close();
 		       
 		} catch (Exception e) {
-			logger.debug("Problem in writing in file " + path + " " + e.getMessage());
+			logger.error("Problem in writing in file " + path + " " + e.getMessage(), e);
 		} finally {
 			/*code by sukhi 26/09/2018*/
 			if(input != null){
@@ -431,11 +431,11 @@ public class AccountsBatch{
 	
 	public static void lawyerBatchExel(IContext ctx){
 		try{
-			System.out.println(ctx);
+			{ if (logger.isDebugEnabled()) logger.debug(ctx); }
 			
 			
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in AccountsBatch.lawyerBatchExel", e);
 		}
 		
 	}
@@ -454,7 +454,7 @@ public class AccountsBatch{
 	        	downloadFile = new File(filePath);
 	        	
 	        	if(downloadFile.exists()){
-	        		System.out.println(downloadFile.getAbsolutePath().substring(downloadFile.getAbsolutePath().lastIndexOf("\\")+1));
+					{ if (logger.isDebugEnabled()) logger.debug(downloadFile.getAbsolutePath().substring(downloadFile.getAbsolutePath().lastIndexOf("\\")+1)); }
 	        		/*inStream = new FileInputStream(downloadFile);
 		        	    
 		        	    // gets MIME type of the file
@@ -537,7 +537,7 @@ public class AccountsBatch{
 	        ctx.put("showCallRating","N");
 	        return;
 		} catch(Exception ee) {
-			ee.printStackTrace();
+			logger.error("Error in AccountsBatch.exportFileDownLoad", ee);
 			return;
 	    } finally {
 	    	/*code by sukhi 26/09/2018*/
@@ -552,7 +552,7 @@ public class AccountsBatch{
 		    	}
 		    	downloadFile = null;
 	    	}catch(Exception e){
-	    		e.printStackTrace();
+                logger.error("Error in AccountsBatch.exportFileDownLoad", e);
 	    	}
 	    }
 	}
@@ -562,7 +562,7 @@ public class AccountsBatch{
 		processExcel("Data",ctx);
 		DataUtils.populateError((Context) ctx, "successmessage", "Call Rating Successfully");
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in AccountsBatch.RatingProcessExcel", e);
 		}
 	}
 
@@ -610,7 +610,7 @@ public class AccountsBatch{
 	        	  
 	          }
 	          
-	          System.out.println(headersIndexUpdated);
+	          { if (logger.isDebugEnabled()) logger.debug(headersIndexUpdated); }
 	          
 	          for(int r = 1; r < rows; r++) {      	    	
 	  	        row = sheet.getRow(r);
@@ -683,7 +683,7 @@ public class AccountsBatch{
 	         
 	          
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Error in AccountsBatch.processExcel", e);
 		}finally {
 			/*code by sukhi 26/09/2018*/
 	    	try {
@@ -697,7 +697,7 @@ public class AccountsBatch{
 		    	}
 		    	file = null;
 	    	}catch(Exception e){
-	    		e.printStackTrace();
+                logger.error("Error in AccountsBatch.processExcel", e);
 	    	}
 	    }
 		
@@ -705,7 +705,7 @@ public class AccountsBatch{
 	public void proceeExcelRow(Map <String, String>valuesMap) throws Exception {
 		RatingBatch.callingRatingEngine(valuesMap);
 		//System.out.println(valuesMap.get("Premium").toString());
-		System.out.println("Row has processed");
+		{ if (logger.isDebugEnabled()) logger.debug("Row has processed"); }
 	}
 
 	public static void ValidateDownloadExcel(Context ctx){
@@ -752,7 +752,7 @@ public class AccountsBatch{
 		}
 		
 		}catch(Exception ex){
-			ex.printStackTrace();
+			logger.error("Error in AccountsBatch.ValidateDownloadExcel", ex);
 		}
 		return;
 	}
@@ -784,8 +784,7 @@ public class AccountsBatch{
               }
               
         } catch (Exception e) {
-              logger.debug("Error in file process");
-              e.printStackTrace();
+              logger.error("Error in file process", e);
               throw e;
         }
 
@@ -822,7 +821,7 @@ public class AccountsBatch{
               try {
                     uploadFile.write(new File(uploaddirectory, DocFileName));
               } catch (Exception e) {
-                    System.out.println("Exception " + e );
+                logger.error("Error in AccountsBatch.uploadExcel", e);
                     AccountUtils.populateError(ctx, "DocUploadError",
                                 "Document could not be write to file" );
                     
@@ -886,8 +885,7 @@ public class AccountsBatch{
               
               
               }catch(Exception e){
-                    System.out.println("Exception in DocFileName" + e);
-                    e.printStackTrace();
+                logger.error("Error in AccountsBatch.uploadExcel", e);
               } finally {
             	  /*code by sukhi 26/09/2018*/
                   upfile=null;
@@ -919,7 +917,7 @@ public class AccountsBatch{
                 while (cellIterator.hasNext()) {
                Cell cell = cellIterator.next();
                int cellnum=cell.getColumnIndex();
-               System.out.println(cell.getStringCellValue());
+               { if (logger.isDebugEnabled()) logger.debug(cell.getStringCellValue()); }
                sheet.autoSizeColumn(cellnum);
                 }
                 
@@ -935,8 +933,7 @@ public class AccountsBatch{
             inputStream.close();
             }
 	}catch(Exception e){
-		System.out.println(e.toString());
-		e.printStackTrace();
+		logger.error("Error in AccountsBatch.FormatExcel", e);
 	} finally {
 		/*code by sukhi 26/09/2018*/
 		try {
@@ -949,7 +946,7 @@ public class AccountsBatch{
 				inputStream = null;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in AccountsBatch.FormatExcel", e);
 		}
 	}
 

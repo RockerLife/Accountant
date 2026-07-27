@@ -174,7 +174,7 @@ public class ExcelUtil
         }
         catch (Exception e)
         {
-          System.out.println("Exception :" + e);
+            logger.error("Error in ExcelUtil.setCellValue", e);
         }
       } else {
         cell.setCellValue(0.0D);
@@ -194,7 +194,7 @@ public class ExcelUtil
         }
         catch (Exception e)
         {
-          System.out.println("Exception :" + e);
+            logger.error("Error in ExcelUtil.setCellValue", e);
         }
       } else {
         cell.setCellValue(0.0D);
@@ -245,7 +245,7 @@ public class ExcelUtil
 				
 				cell.setCellFormula(value != null ? value.toString() : HtmlConstants.EMPTY);
 			}catch (Exception e) {
-				logger.error("Error while creating index for formula execution : - " + value);
+				logger.error("Error while creating index for formula execution : - " + value, e);
 			}
 			
 			return;
@@ -276,6 +276,7 @@ public class ExcelUtil
 					cell.setCellValue(Double.parseDouble(value.toString()));
 					isFieldTypeFound = true;
 				}catch (Exception e) {
+					logger.error("Error in ExcelUtil.setCellValue", e);
 					cell.setCellValue(value.toString());
 				}
 				
@@ -497,6 +498,7 @@ public class ExcelUtil
 				return;
 			}
 		}catch (Exception e) {
+			logger.error("Error in ExcelUtil.setCellValue", e);
 			
 		}
 		
@@ -535,6 +537,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Double.parseDouble(value.toString()));
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}else
@@ -550,6 +553,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Double.parseDouble(value.toString())/100);
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}else
@@ -565,6 +569,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Double.parseDouble(value.toString())/100);
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}else
@@ -579,6 +584,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Double.parseDouble(value.toString()));
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}else
@@ -593,6 +599,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Double.parseDouble(value.toString()));
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}
@@ -609,6 +616,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Double.parseDouble(value.toString())/100);
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}else
@@ -624,6 +632,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Double.parseDouble(value.toString())/100);
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}else
@@ -639,6 +648,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Double.parseDouble(value.toString())/100);
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}else
@@ -654,6 +664,7 @@ public class ExcelUtil
 					try{
 						cell.setCellValue(Integer.parseInt(value.toString()));
 					}catch (Exception e) {
+						logger.error("Error in ExcelUtil.setCellValue", e);
 						cell.setCellValue(value.toString());
 					}
 				}else
@@ -673,7 +684,7 @@ public class ExcelUtil
 								.parse(getFormattedDateFromObject(value));
 						cell.setCellValue(date);
 					} catch (Exception e) {
-						System.out.println("Exception :" + e);
+						logger.error("Error in ExcelUtil.setCellValue", e);
 					}
 					// DateUtil.isValidExcelDate(Double.parseDouble(getFormattedDateFromObject(value)));
 				} else
@@ -692,7 +703,7 @@ public class ExcelUtil
 								.parse(getFormattedDateFromObject(value));
 						cell.setCellValue(date);
 					} catch (Exception e) {
-						System.out.println("Exception :" + e);
+						logger.error("Error in ExcelUtil.setCellValue", e);
 					}
 					// DateUtil.isValidExcelDate(Double.parseDouble(value.toString()));
 				} else
@@ -707,6 +718,7 @@ public class ExcelUtil
 					cell.setCellValue(Integer.parseInt(value.toString()));
 				}
 				catch(NumberFormatException nfe){
+					logger.error("Error in ExcelUtil.setCellValue", nfe);
 					cell.setCellValue(value.toString());
 				}		
 	
@@ -719,6 +731,7 @@ public class ExcelUtil
 					cell.setCellValue(Integer.parseInt(value.toString()));
 				}
 				catch(NumberFormatException nfe){
+					logger.error("Error in ExcelUtil.setCellValue", nfe);
 					cell.setCellValue(value.toString());
 				}	
 	

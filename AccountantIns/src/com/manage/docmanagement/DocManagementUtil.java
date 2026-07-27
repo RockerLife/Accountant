@@ -53,7 +53,7 @@ public class DocManagementUtil {
 		try{
 			docService = new UploadDocument().getUploadDocumentSoap();
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error("Error in DocManagementUtil.uploadDocToSharePoint", e);
 		}
 			
 		AuthHeader authInfo = new AuthHeader();
@@ -126,22 +126,21 @@ public class DocManagementUtil {
 		in = new BufferedReader(
 		new InputStreamReader(uc.getInputStream()));
 		}catch(Exception ex){
-			ex.printStackTrace();
-			logger.error("error in downloadDocFromSharePoint method:::"+ex.getMessage());
+			logger.error("error in downloadDocFromSharePoint method:::"+ex.getMessage(), ex);
 		}
 		finally{
 			/*code by sukhi 26/09/2018*/
 			if(writer != null)
 				try {
 					writer.close();
-				} catch (Exception e) {					
-					e.printStackTrace();
+				} catch (Exception e) {
+					logger.error("Error in DocManagementUtil.downloadDocFromSharePoint", e);
 				}
 			if(in != null)
 				try {
 					in.close();
-				} catch (Exception e) {					
-					e.printStackTrace();
+				} catch (Exception e) {
+					logger.error("Error in DocManagementUtil.downloadDocFromSharePoint", e);
 				}
 		}
 	}
@@ -176,7 +175,7 @@ public class DocManagementUtil {
 		try { 
 			is = new java.io.FileInputStream(file); 
 			} catch (FileNotFoundException e) {
-				e.printStackTrace(); 
+				logger.error("Error in DocManagementUtil.getBytesFromFile", e);
 				} 
 		// Get the size of the file 
 		long length = file.length(); 
@@ -190,13 +189,13 @@ public class DocManagementUtil {
 				offset += numRead; 
 				} 
 			} catch (IOException e) {
-				e.printStackTrace(); 
+				logger.error("Error in DocManagementUtil.getBytesFromFile", e);
 			} 
 		// Close the input stream and return bytes 
 		try { 
 			is.close(); 
 			} catch (IOException e) {
-				e.printStackTrace(); 
+				logger.error("Error in DocManagementUtil.getBytesFromFile", e);
 			}
 	
 		return bytes;

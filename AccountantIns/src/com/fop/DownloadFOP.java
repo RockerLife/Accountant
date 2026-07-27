@@ -58,7 +58,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber")+ " " + e.getMessage());
+							+ ctx.get("QuoteNumber")+ " " + e.getMessage(), e);
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber")+ " " + e.getMessage());
+							+ ctx.get("QuoteNumber")+ " " + e.getMessage(), e);
 		}
 	}
 
@@ -115,7 +115,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber")+ " " + e.getMessage());
+							+ ctx.get("QuoteNumber")+ " " + e.getMessage(), e);
 		}
 	}
 	
@@ -186,7 +186,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber")+ " " + e.getMessage());
+							+ ctx.get("QuoteNumber")+ " " + e.getMessage(), e);
 		}
 	}
 	
@@ -251,7 +251,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber")+ " " + e.getMessage());
+							+ ctx.get("QuoteNumber")+ " " + e.getMessage(), e);
 		}
 	}
 	
@@ -443,7 +443,7 @@ public class DownloadFOP {
 			amount = amount.substring(0,amount.lastIndexOf("."));
 			
 		}
-		System.out.println(amount);
+		{ if (logger.isDebugEnabled()) logger.debug(amount); }
 	}
 	
 	public static String formateAmountString(String amount){
@@ -526,7 +526,7 @@ public class DownloadFOP {
 			
 
 		} catch (Exception e) {
-			logger.error("Problem in fetching data for Quote Number : "	+ ctx.get("QuoteNumber") + " " + e.getMessage());
+			logger.error("Problem in fetching data for Quote Number : "	+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 
 	}
@@ -541,7 +541,7 @@ public class DownloadFOP {
 					.generateResponseXml(ctx,false)));
 		} catch (Exception e) {
 			logger.error("Problem in generating data xml for Quote Number : "
-					+ ctx.get("QuoteNumber") + " " + e.getMessage());
+					+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 	}
 
@@ -619,7 +619,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber") + " " + e.getMessage());
+							+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 	}
 
@@ -671,7 +671,7 @@ public class DownloadFOP {
 			}
 
 		} catch (Exception e) {
-			logger.error("Problem in fetching data for quick quote insured : " + " " + e.getMessage());
+			logger.error("Problem in fetching data for quick quote insured : " + " " + e.getMessage(), e);
 		}
 
 	}
@@ -740,7 +740,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber") + " " + e.getMessage());
+							+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 	}
 	
@@ -761,7 +761,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter PA for Quote Number : "
-							+ ctx.get("QuoteNumber") + " " + e.getMessage());
+							+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 	}
 	
@@ -782,7 +782,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter ND for Quote Number : "
-							+ ctx.get("QuoteNumber") + " " + e.getMessage());
+							+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 	}
 	
@@ -806,7 +806,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber") + " " + e.getMessage());
+							+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 	}
 	
@@ -819,7 +819,7 @@ public class DownloadFOP {
 
 		} catch (Exception e) {
 			logger.error("Problem in fetching data for Quote Number : "
-					+ ctx.get("QuoteNumber") + " " + e.getMessage());
+					+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 	}
 
@@ -889,7 +889,7 @@ public class DownloadFOP {
 		} catch (Exception e) {
 			logger
 					.error("Problem in generating quote letter for Quote Number : "
-							+ ctx.get("QuoteNumber") + " " + e.getMessage());
+							+ ctx.get("QuoteNumber") + " " + e.getMessage(), e);
 		}
 	}
 	

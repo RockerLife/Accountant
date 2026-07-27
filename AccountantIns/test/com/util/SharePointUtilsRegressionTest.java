@@ -6,6 +6,8 @@ public class SharePointUtilsRegressionTest {
 				SharePointUtils.getServerRelativePath("http://server/AccountantDocs/QN-1/file.pdf", "AccountantDocs", "LawyersDocs"));
 		assertEquals("/LawyersDocs/QN-2/file.pdf",
 				SharePointUtils.getServerRelativePath("http://server/LawyersDocs/QN-2/file.pdf", "AccountantDocs", "LawyersDocs"));
+		assertEquals("/AccountantDocs/QN-3/file.pdf",
+				SharePointUtils.getServerRelativePath("http://server/AccountantDocs/QN-3/file.pdf", "AccountantDocs", null));
 
 		try {
 			SharePointUtils.getServerRelativePath("http://server/OtherDocs/file.pdf", "AccountantDocs", "LawyersDocs");

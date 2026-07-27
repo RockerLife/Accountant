@@ -38,7 +38,7 @@ public class AchProcessorImpl {
 		loadAccountantInsInsProjectFiles(a);
 	}
 	public static void loadAccountantInsInsProjectFiles(String[] a){
-		logger.debug("ACH Batch Started....." + new Timestamp(new Date().getTime()));
+		{ if (logger.isDebugEnabled()) logger.debug("ACH Batch Started....." + new Timestamp(new Date().getTime())); }
 		Context ctx = new Context();
 		
 		a = new String[4];
@@ -51,9 +51,9 @@ public class AchProcessorImpl {
 		String propertyPathMain = a[1];
 		String xmlPath = a[2];
 		
-		logger.debug("project " + project + " " + new Timestamp(new Date().getTime()));
-		logger.debug("propertyPathMain " + propertyPathMain + " " + new Timestamp(new Date().getTime()));
-		logger.debug("xmlPath " + xmlPath + " " + new Timestamp(new Date().getTime()));
+		{ if (logger.isDebugEnabled()) logger.debug("project " + project + " " + new Timestamp(new Date().getTime())); }
+		{ if (logger.isDebugEnabled()) logger.debug("propertyPathMain " + propertyPathMain + " " + new Timestamp(new Date().getTime())); }
+		{ if (logger.isDebugEnabled()) logger.debug("xmlPath " + xmlPath + " " + new Timestamp(new Date().getTime())); }
 		
 		ctx.setProject(project);
 		ctx.put("LastUpdateTimeStamp", new Timestamp(new Date().getTime()));
@@ -64,13 +64,12 @@ public class AchProcessorImpl {
 			ResourceLoader.load(xmlPath + "/AccountantIns/functions.xml", "functions", project);
 			ResourceLoader.load(xmlPath + "/AccountantIns/metadata/metadata.xml", "metadata", project);
 		} catch (Exception e1) {
-			e1.printStackTrace();
-			logger.debug("Error in loading XML Files " + e1.getMessage() + " " + new Timestamp(new Date().getTime()));
+			logger.error("Error in loading XML Files " + e1.getMessage() + " " + new Timestamp(new Date().getTime()), e1);
 		}
-		logger.debug("XML Files Loaded...." + new Timestamp(new Date().getTime()));
+		{ if (logger.isDebugEnabled()) logger.debug("XML Files Loaded...." + new Timestamp(new Date().getTime())); }
 		setCutoffDate(ctx);
 		checkACHStatus(ctx, Integer.parseInt(a[3]));
-		logger.debug("ACH Batch Ended......" + new Timestamp(new Date().getTime()));
+		{ if (logger.isDebugEnabled()) logger.debug("ACH Batch Ended......" + new Timestamp(new Date().getTime())); }
 	}
 	
 	public static void setCutoffDate(Context ctx){
@@ -103,7 +102,7 @@ public class AchProcessorImpl {
     		
 			if(getPaymentDetailsGreaterThanThreeList != null && getPaymentDetailsGreaterThanThreeList.size() > 0 
 					&& !getPaymentDetailsGreaterThanThreeList.isEmpty()){
-    			logger.debug("Policy Count...." + getPaymentDetailsGreaterThanThreeList.size());
+				{ if (logger.isDebugEnabled()) logger.debug("Policy Count...." + getPaymentDetailsGreaterThanThreeList.size()); }
     			
     			System.setProperty("javax.net.ssl.trustStore", SystemProperties.getInstance().getString("appl.AccountantIns.webservice.securitycacerts.keyStore"));
     			System.setProperty("javax.net.ssl.keyStorePassword", SystemProperties.getInstance().getString("appl.AccountantIns.webservice.securitycacerts.keyStorePassword"));
@@ -125,7 +124,7 @@ public class AchProcessorImpl {
     			for(int i = 0; i < getPaymentDetailsGreaterThanThreeList.size(); i++){
 		        	Map getPaymentDetailsObj = (Map)getPaymentDetailsGreaterThanThreeList.get(i);		        	
 		        	String getPaymentTransactionDate = (getPaymentDetailsObj.get("TransactionDate") == null ? "" : getPaymentDetailsObj.get("TransactionDate").toString());
-		        	logger.debug("TransactionDate....." + getPaymentTransactionDate);
+					{ if (logger.isDebugEnabled()) logger.debug("TransactionDate....." + getPaymentTransactionDate); }
 		        	
 		        	Date date = new SimpleDateFormat("MM/dd/yyyy").parse(getPaymentTransactionDate); // your date
 	        		// Choose time zone in which you want to interpret your Date
@@ -136,7 +135,7 @@ public class AchProcessorImpl {
 		        	
 		        	for(int j=0; j<days; j++){
 		        		Calendar cal1 = Calendar.getInstance();
-			        	logger.debug("Cal Date....." + cal1.getTime());
+						{ if (logger.isDebugEnabled()) logger.debug("Cal Date....." + cal1.getTime()); }
 		        		cal1.setTime(date);
 		        		cal1.add(Calendar.DATE, j+1);
 		        		
@@ -144,7 +143,7 @@ public class AchProcessorImpl {
 		                int month = cal1.get(Calendar.MONTH);
 		                int day = cal1.get(Calendar.DAY_OF_MONTH);
 		                String submitedDate = (String.format("%02d", month+1)) + String.format("%02d", day) + (char)(65+i);
-		                logger.debug("SubmitedDate " + submitedDate);
+		                { if (logger.isDebugEnabled()) logger.debug("SubmitedDate " + submitedDate); }
 		                
 		                if(i == 0 || !achDetailObj.containsKey(submitedDate)){
 		                	ArrayList achDetailList = new ArrayList();
@@ -167,7 +166,7 @@ public class AchProcessorImpl {
 					String authRequestURL = webServiceURI + "?merchid=" + merchid;
 					authRequestURL += "&date=" + keyValue.substring(0,4);
 					
-					logger.debug("Going to call web service URL with date parameter...." + authRequestURL);			
+					{ if (logger.isDebugEnabled()) logger.debug("Going to call web service URL with date parameter...." + authRequestURL); }
 					JSONObject authResponse = authorizeTransaction(authRequestURL,username,password);
 					logger.debug("Web service has been called.");
 					
@@ -194,15 +193,15 @@ public class AchProcessorImpl {
 				    		        
 				    		        if(!"".equals(retrefCode)){	
 				    		        	
-				    		        	logger.debug("retref :    " + retrefCode);
+										{ if (logger.isDebugEnabled()) logger.debug("retref :    " + retrefCode); }
 				    	    			if(retrefCode.equals(getPaymentTransactionID)){
 				    	    				String statusValue = (object.isNull("status") ? "" : object.getString("status"));
 						    		        String achreturnCode = (object.isNull("achreturncode") ? "" : object.getString("achreturncode"));
-						    		        logger.debug("Status    :    " + statusValue);
-						    		        logger.debug("AchreturnCode   :    " + achreturnCode);
+											{ if (logger.isDebugEnabled()) logger.debug("Status    :    " + statusValue); }
+											{ if (logger.isDebugEnabled()) logger.debug("AchreturnCode   :    " + achreturnCode); }
 						    		        
-				    	    				logger.debug("Match retref Code " + getPaymentTransactionID + "  "+ new Timestamp(new Date().getTime()));
-				    	    				logger.debug("Match policy " + quoteNumber + "  "+ new Timestamp(new Date().getTime()));
+											{ if (logger.isDebugEnabled()) logger.debug("Match retref Code " + getPaymentTransactionID + "  "+ new Timestamp(new Date().getTime())); }
+											{ if (logger.isDebugEnabled()) logger.debug("Match policy " + quoteNumber + "  "+ new Timestamp(new Date().getTime())); }
 				    	    				
 				    	    				ctx.put("TransactionID", getPaymentTransactionID);
 				    	    				ctx.put("Amount", getPaymentAmount);
@@ -219,17 +218,17 @@ public class AchProcessorImpl {
 					    	    				
 						    					List list = SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementManualBoQueriesgetFirmDataFromACH", ctx);
 						    					if(list != null && list.size() == 1){
-						    						logger.debug("Got Firm data from ach " + new Timestamp(new Date().getTime()));
+													{ if (logger.isDebugEnabled()) logger.debug("Got Firm data from ach " + new Timestamp(new Date().getTime())); }
 						    						Map firmMap = (Map)list.get(0);
 						    						ctx.putAll(firmMap);
 						    					
 							    					DocumentManagment mgt = new DocumentManagment();
 							    					mgt.processDocumentManagment(ctx);							    					
-							    					logger.debug("Policy " + quoteNumber + "  " + " is successfully issued " + new Timestamp(new Date().getTime()));
+													{ if (logger.isDebugEnabled()) logger.debug("Policy " + quoteNumber + "  " + " is successfully issued " + new Timestamp(new Date().getTime())); }
 							    					
 							    					SqlResources.getSqlMapProcessor(ctx).update("SqlStmts.UserStatementManualBoQueriesupdatePaymentDetailPayment", ctx);
 							    					SqlResources.getSqlMapProcessor(ctx).update("SqlStmts.UserStatementManualBoQueriespolicyLastUpdateTimeStamp", ctx);
-							    					logger.debug("PaymentDetail " + quoteNumber + "is updated with status approved " + new Timestamp(new Date().getTime()));
+													{ if (logger.isDebugEnabled()) logger.debug("PaymentDetail " + quoteNumber + "is updated with status approved " + new Timestamp(new Date().getTime())); }
 						    					}
 						    					Map approvedStatusObj = new HashMap<String, ArrayList>();
 						    					approvedStatusObj.put("QuoteNumber", quoteNumber);
@@ -255,7 +254,7 @@ public class AchProcessorImpl {
 			List getPaymentDetailsLessThanThreeList = (List)SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementManualBoQueriesgetACHPaymentDetailLessThanThree", ctx);
     		if(getPaymentDetailsLessThanThreeList != null && getPaymentDetailsLessThanThreeList.size() > 0 
     				&& !getPaymentDetailsLessThanThreeList.isEmpty()){
-    			logger.debug("Policies count " + getPaymentDetailsLessThanThreeList.size());
+				{ if (logger.isDebugEnabled()) logger.debug("Policies count " + getPaymentDetailsLessThanThreeList.size()); }
     			
     			for(int k = 0 ; k < getPaymentDetailsLessThanThreeList.size(); k++){
 	    			Map getPaymentDetailsObj = (Map)getPaymentDetailsLessThanThreeList.get(k);
@@ -285,10 +284,10 @@ public class AchProcessorImpl {
 					declinedStatusObj.put("AccountName", accountName);
 					declinedStatusList.add(declinedStatusObj);
 					
-					logger.debug("Policy " + quoteNumber + " is declined " + new Timestamp(new Date().getTime()));
+					{ if (logger.isDebugEnabled()) logger.debug("Policy " + quoteNumber + " is declined " + new Timestamp(new Date().getTime())); }
 					SqlResources.getSqlMapProcessor(ctx).update("SqlStmts.UserStatementManualBoQueriesupdatePaymentDetailPayment", ctx);
 					SqlResources.getSqlMapProcessor(ctx).update("SqlStmts.UserStatementManualBoQueriespolicyLastUpdateTimeStamp", ctx);
-					logger.debug("PaymentDetail " + quoteNumber + " is updated with status Declined " + new Timestamp(new Date().getTime()));
+					{ if (logger.isDebugEnabled()) logger.debug("PaymentDetail " + quoteNumber + " is updated with status Declined " + new Timestamp(new Date().getTime())); }
     			}
     		}
     		
@@ -297,7 +296,7 @@ public class AchProcessorImpl {
     		
 			if(getPaymentDetailsManualApprovedList != null && getPaymentDetailsManualApprovedList.size() > 0 
 					&& !getPaymentDetailsManualApprovedList.isEmpty()){
-				logger.debug("Policies count " + getPaymentDetailsManualApprovedList.size());
+				{ if (logger.isDebugEnabled()) logger.debug("Policies count " + getPaymentDetailsManualApprovedList.size()); }
     			
     			for(int k = 0 ; k < getPaymentDetailsManualApprovedList.size(); k++){
 	    			Map getPaymentDetailsObj = (Map)getPaymentDetailsManualApprovedList.get(k);
@@ -323,13 +322,13 @@ public class AchProcessorImpl {
 					
 					List list = SqlResources.getSqlMapProcessor(ctx).select("SqlStmts.UserStatementManualBoQueriesgetFirmDataFromACH", ctx);
 					if(list != null && list.size() == 1){
-						logger.debug("Got Firm data from ach " + new Timestamp(new Date().getTime()));
+						{ if (logger.isDebugEnabled()) logger.debug("Got Firm data from ach " + new Timestamp(new Date().getTime())); }
 						Map firmMap = (Map)list.get(0);
 						ctx.putAll(firmMap);
 					
     					DocumentManagment mgt = new DocumentManagment();
     					mgt.processDocumentManagment(ctx);							    					
-    					logger.debug("Policy " + quoteNumber + "  " + " is successfully issued " + new Timestamp(new Date().getTime()));
+						{ if (logger.isDebugEnabled()) logger.debug("Policy " + quoteNumber + "  " + " is successfully issued " + new Timestamp(new Date().getTime())); }
     					
     					ctx.put("TransactionID", getPaymentTransactionID);
     					ctx.put("Amount", getPaymentAmount);
@@ -341,15 +340,14 @@ public class AchProcessorImpl {
     					
     					SqlResources.getSqlMapProcessor(ctx).update("SqlStmts.UserStatementManualBoQueriesupdatePaymentDetailPayment", ctx);
     					SqlResources.getSqlMapProcessor(ctx).update("SqlStmts.UserStatementManualBoQueriespolicyLastUpdateTimeStamp", ctx);
-    					logger.debug("PaymentDetail " + quoteNumber + "is updated with status Manual " + new Timestamp(new Date().getTime()));
+						{ if (logger.isDebugEnabled()) logger.debug("PaymentDetail " + quoteNumber + "is updated with status Manual " + new Timestamp(new Date().getTime())); }
 					}
     			}
 			}
     		sendStatusMail(approvedStatusList, processingStatusList, manualApprovedStatusList, declinedStatusList);
     		
 		}catch(Exception e){
-			e.printStackTrace();
-			logger.debug("Error in checkACHStatus " + e.getMessage() + " " + new Timestamp(new Date().getTime()));
+			logger.error("Error in checkACHStatus " + e.getMessage() + " " + new Timestamp(new Date().getTime()), e);
 		}
 		return false;
 	}
@@ -380,8 +378,7 @@ public class AchProcessorImpl {
 			logger.debug(result);			
 			return new JSONObject(result);
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug("Error in authorizeTransaction " + e.getMessage() + " " + new Timestamp(new Date().getTime()));
+			logger.error("Error in authorizeTransaction " + e.getMessage() + " " + new Timestamp(new Date().getTime()), e);
 		}
 		return null;
 	}
@@ -396,8 +393,7 @@ public class AchProcessorImpl {
 			mailSender.setBody(generatePolicyIssueBody(approvedStatus,processingStatus, manualApprovedStatus, declinedStatus));
 			mailSender.sendMail();
 		}catch(Exception e){
-			e.printStackTrace();
-			logger.debug("Error in sendStatusMail " + e.getMessage() + " " + new Timestamp(new Date().getTime()));
+			logger.error("Error in sendStatusMail " + e.getMessage() + " " + new Timestamp(new Date().getTime()), e);
 		}
 	}
 	
