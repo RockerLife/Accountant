@@ -5880,19 +5880,13 @@
           </block>
           <block id="AccountsSearch_list_01" blocktype="list" seq="3">
                <blockfieldset id="0" seq="0">
-                    <blockfield id="13" fieldtype="label" seq="13" fieldname="PolicyKey" />
-                    <blockfield id="14" fieldtype="label" seq="14" fieldname="AccountNumber" />
-                    <blockfield id="15" fieldtype="label" seq="15" fieldname="AccountID" />
-                    <blockfield id="16" fieldtype="label" seq="16" fieldname="FirmName" />
-                    <blockfield id="17" fieldtype="label" seq="17" fieldname="OldAccountNumber" />
-                    <blockfield id="18" fieldtype="label" seq="18" fieldname="AccountName" />
-                    <blockfield id="19" fieldtype="label" seq="19" fieldname="QuoteNumber" />
-                    <blockfield id="20" fieldtype="label" seq="20" fieldname="AccountEmail" />
-                    <blockfield id="21" fieldtype="label" seq="21" fieldname="WorkPhone" />
-                    <blockfield id="22" fieldtype="label" seq="22" fieldname="PolicyEffectiveDate" />
-                    <blockfield id="23" fieldtype="label" seq="23" fieldname="Status" />
-                    <blockfield id="24" fieldtype="label" seq="24" fieldname="State" />
-                    <blockfield id="25" fieldtype="label" seq="25" fieldname="ProducerCode" />
+                    <blockfield id="7" fieldtype="label" seq="7" fieldname="AccountID" />
+                    <blockfield id="8" fieldtype="label" seq="8" fieldname="AccountNumber" />
+                    <blockfield id="9" fieldtype="label" seq="9" fieldname="AccountName" />
+                    <blockfield id="10" fieldtype="label" seq="10" fieldname="AccountEmail" />
+                    <blockfield id="11" fieldtype="label" seq="11" fieldname="WorkPhone" />
+                    <blockfield id="12" fieldtype="label" seq="12" fieldname="PolicyEffectiveDate" />
+                    <blockfield id="13" fieldtype="label" seq="13" fieldname="State" />
                </blockfieldset>
           </block>
           <block id="ManageAccounts_freeform_contextdata_999" blocktype="freeform" seq="4">
@@ -5900,7 +5894,7 @@
                     <blockfield id="4" fieldtype="hidden" seq="4" fieldname="jsessionid" />
                     <blockfield id="5" fieldtype="hidden" seq="5" fieldname="strPolicyKey" />
                     <blockfield id="6" fieldtype="hidden" seq="6" fieldname="accountActivity" />
-                    <blockfield id="7" fieldtype="hidden" seq="7" fieldname="accountsSearchListSize" />
+                    <blockfield id="7" fieldtype="hidden" seq="7" fieldname="SearchlistSize" />
                </blockfieldset>
           </block>
           <formlink name="ManageAccounts" seq="0" action="save">
@@ -5914,6 +5908,9 @@
           </formlink>
           <formlink name="OffRiskEmailList" seq="5" action="back">
                <formlinkforward component="workq" name="back" seq="0" action="view" />
+          </formlink>
+          <formlink name="firm" seq="7" action="#Include:footerNewApp.html#">
+               <formlinkforward component="footerNewApp.html" name="#Include:footerNewApp.html#" seq="0" action="view" />
           </formlink>
      </pagecomponent>
      <pagecomponent name="requote" seq="91" path="requote.html">

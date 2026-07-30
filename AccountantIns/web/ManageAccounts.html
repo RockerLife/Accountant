@@ -3,9 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Accounts Management</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
 <link href="css/newappstyle.css" rel="stylesheet" type="text/css" />
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+<link href="css/uiupdate2026.css?v=20260730-manageaccounts-1" rel="stylesheet" type="text/css" />
 <script src="js/jquery.js"></script>
 <script src="js/jquery.treeview.js"></script>
 <script src="js/bootstrap_3-3-6.js"></script>
@@ -36,7 +38,7 @@
 		  </div>
 		  <div class="modal-body text-center" style="height: 64px;" id="cancellation_freeform_contextdata_002">
 			<p style="text-align: center; line-height: 25px;">Are you sure to
-			<label id="actionName" name="actionName"/>  following firms:</p>
+			<label id="actionName" name="actionName"/> the following account IDs:</p>
 			<p><strong><label id="activityAccountNames" name="activityAccountNames"/></strong></p>
 		  </div>
 		  <div class="modal-footer">
@@ -52,14 +54,15 @@
 </div>
 
 	<div class="container-fluid bootstrap-node-1">
-			<div class="tableWidth">
-				<div id="header">
-					<span id="#Include:headerNewApp.html#"></span>
-				</div>
+			<div class="tableWidth pageShellNoSideBorder">
+				<div id="#Include:headerNewApp.html#"></div>
 				<div id="contentSection">
 					<h2 class="questionHeading">
 						Accounts Management
 					</h2>
+					<div class="sectionRule"></div>
+					<div class="sectionHeading">Search</div>
+					<div class="sectionRule sectionRuleTight"></div>
 					<div id="errorsDiv" class="confirmationMsgAlign">
 						<div id="error_noSelecion" class="error"/>
 						<div id="error_noAccountActivity" class="error"/>
@@ -213,139 +216,61 @@
 								</ul>
 							</div>
 							<div class="row">
-								<div class="buttons" style="text-align: right; margin-top:0;">
+								<div class="buttons sectionActions sectionActionsRight">
 									<span><a class="btn button1" id="" href="#" onclick="clearSearchData();">Reset</a></span>
 									<span><a class="btn button1" id="" href="javascript:submitform('ManageAccounts.html','ManageAccounts.search','','');">Search</a></span>
 								</div>
 							</div>
-							
-							<ul class="inlineBlock">
-							<li class="inlineBlock_2_fix">
-										<div class="freeFormList form-group">
-											<div class="freeFormListTr">
-												<div class="freeFormListTdError">
-													<h6>&nbsp;</h6>
-												</div>
-												<div class="freeFormListTdError paddingLeft3">
-													<span id="error_AccountID" class="error"></span>
-												</div>
-											</div>
-											<div class="freeFormListTr">
-												<div class="freeFormListTd labelAlign freeFormLabelWidth">
-													&nbsp;</div>
-												<div class="freeFormListTd tdInput">
-													<span style="margin-right:10px;"><input type="radio" name="linkAccounts" id="ajax_field_linkAccounts" value="linkAccounts" onchange="linkDelinkAccounts();"/> <label style="font-weight:bold;">Link</label></span>
-													<span><input type="radio" name="linkAccounts" id="ajax_field_deLinkAccounts" value="deLinkAccounts" onchange="linkDelinkAccounts();"/> <label style="font-weight:bold;">DeLink</label></span>
-												</div>
-											</div>
-										</div>
-									</li>
-							</ul>					
-							
-							
+							<div class="sectionHeading">&nbsp;</div>
+							<div class="sectionRule sectionRuleTight"></div>
 							<div class="row">
 								
 								
-							<div id="policiesListDiv" class="row paddingTop10">
+							<div id="policiesListDiv" class="row paddingTop10 gridSection">
 								<div class="row">
 									<div id="error_noSelecion" class="defult_tr_errors"></div>
 								</div>
-									<table width="100%"  class="gridTable dataTables_grid" id="AccountsSearch_list_01" border="0" 
+								<div class="gridActionBar choiceField">
+									<input type="checkbox" id="selectAllAccounts" onclick="selectAllAccountManagement(this.checked);"/> <label for="selectAllAccounts">Select All</label>
+									<span class="pull-right">
+										<input type="radio" name="linkAccounts" id="ajax_field_linkAccounts" value="linkAccounts" onchange="linkDelinkAccounts();"/> <label>Link</label>
+										<input type="radio" name="linkAccounts" id="ajax_field_deLinkAccounts" value="deLinkAccounts" onchange="linkDelinkAccounts();"/> <label>DeLink</label>
+									</span>
+								</div>
+								<div>
+									<table width="100%" class="gridTable dataTables_grid modernGrid" id="AccountsSearch_list_01" border="0"
 											cellpadding="0" cellspacing="0">
 											<thead  id="AccountsSearch_list_header_01">
 												<tr class="tableheading1">
-													<th width="5%"
-														id="block_field_PolicyKey" >Select</th>
-													<th width="8%" >
-														<span id="block_field_AccountNumber"/>
-														<span id="block_field_AccountID"/>
-														<span id="block_field_FirmName"/>																	
-														Account Number</th>
-													<th width="8%" >
-														<div style="width: 100px"><span id="block_field_OldAccountNumber">
-																															
-														Old Account Number</span></div></th>
-													<th width="15%" id="block_field_AccountName">Account Name</th>
-													<th width="10%">
-														<span id="block_field_QuoteNumber"></span>
-														<span id="block_field_Address_row_link"></span>
-														Quote Number</th>
-													
-													<th width="10%" 
+													<th width="2%" id="block_field_AccountID">Select</th>
+													<th width="10%" id="block_field_AccountNumber">Account Number</th>
+													<th width="40%" id="block_field_AccountName">Account Name</th>
+													<th width="10%"
 														id="block_field_AccountEmail">Account Email</th>
-													<th width="8%" 
+													<th width="15%"
 														id="block_field_WorkPhone">Phone Number</th>
 													<th width="10%"
 														id="block_field_PolicyEffectiveDate">
-														<div style="width: 100px">Policy Effective Date</div></th>
-														<th width="8%" 
-														id="block_field_Status">Status</th>
-														<th width="8%"
-														id="block_field_State">State</th>
-													<th width="10%" 
-														id="block_field_ProducerCode">
-														<div style="width: 100px">Sub-Producer Number</div></th>
+														Policy Effective Date</th>
+													<th width="20%" id="block_field_State">State</th>
 												</tr>
 											</thead>
-											<tbody>
-												<tr id="AccountsSearch_list_mom_data_01">
-													<td id="block_field_PolicyKey"><input
-															name="PolicyKey" type="checkbox" onChange="getSelectedPolicyKeyAccountManagement();"
-															id="PolicyKey" size="10" maxlength="3"
+											<tbody id="AccountsSearch_list_mom_data_01">
+												<tr>
+													<td id="block_field_AccountID"><input
+															name="AccountID" type="checkbox" onchange="getSelectedPolicyKeyAccountManagement();"
+															id="AccountID" size="10" maxlength="10"
 															tabindex="36" /></td>
-														<td>
-															<!-- <select name=AccountID" id="ajax_field_AccountID">
-																<option value="">- Select -</option>
-															</select> -->
-															<span id="block_field_AccountNumber">
-																<input type="hidden" name="AccountNumber" id="ajax_field_AccountNumber"/>
-															</span>
-														<span id="block_field_AccountID">
-															<label name="AccountID" id="ajax_field_AccountID"/>
-														 </span>
-														
-														 <span id="block_field_FirmName">		
-														 <input type="hidden" id="FirmName" name="FirmName"/>
-														 </span>
-														</td>
-														<td nowrap="nowrap">
-															<span id="block_field_OldAccountNumber"/>
-															</td>
-														
-														<td id="block_field_AccountName">
-																<span id="block_field_Address_row_link">
-																	<a title="context_Address" href="#" style="color:black;">
-																	<span id="block_field_AccountName">
-																	
-																	</span>
-																	</a>
-																</span>
-															</td>
-														<td nowrap="nowrap">
-															<span id="block_field_QuoteNumber"/>
-															</td>
-																
-														<td id="block_field_AccountEmail"></td>
-														<td id="block_field_WorkPhone"></td>
-														<td align="center"
-															id="block_field_PolicyEffectiveDate">
-															
-															</td>
-															<td align="center"
-															id="block_field_Status">
-															
-															</td>
-														<td align="center"
-															id="block_field_State">
-															
-															</td>
-															<td align="center"
-															id="block_field_ProducerCode">
-															
-															</td>
+													<td id="block_field_AccountNumber"/>
+													<td id="block_field_AccountName"/>
+													<td id="block_field_AccountEmail"/>
+													<td id="block_field_WorkPhone"/>
+													<td align="center" id="block_field_PolicyEffectiveDate"/>
+													<td align="center" id="block_field_State"/>
 													</tr>
 												</tbody>
 										</table>
+										</div>
 									</div>	
 								
 								<div class="buttons borderTop row" style="padding-top:10px;" >
@@ -358,9 +283,9 @@
 							</div>
 						</div>
 					</div>
+					<div id="#Include:footerNewApp.html#"/>
 				</div>
 		</div>
-	</div>
 
 
 						
@@ -373,21 +298,17 @@
 												<input type="hidden" name="jsessionid" id="jsessionid" />
 													<input type="hidden" name="strPolicyKey" id="strPolicyKey" />
 													<input type="hidden" name="accountActivity" id="accountActivity" />	
-													<input type="hidden" name="accountsSearchListSize" id="accountsSearchListSize" />	
-														
+													<input type="hidden" name="SearchlistSize" id="SearchlistSize" />
+
 												</td>
-											</tr>
-											<tr>
-											<td colspan="2">
-												<div id="footer" class="footer">
-														<span id="#Include:footer.html#"></span>
-												</div>
-											</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 							</table>
+							<input type="hidden" name="divHideShow" id="divHideShow" value="" />
+							<input type="hidden" name="ctxmenuparam" value="" />
+	</div>
 							
 		<div id="popupsave3" style="display:none;">
 	<div id="myModal" class="modal fade" role="dialog">

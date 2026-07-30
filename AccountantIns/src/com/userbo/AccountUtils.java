@@ -11271,9 +11271,9 @@ public class AccountUtils {
 						"AccountNameSearch,AccountNumberSearch,AccountEmailSearch,PolicyEffectiveMonthYear,WorkPhoneSearch,MergeStateCode");
 				List policyAccountsList = (List) SqlResources.getSqlMapProcessor(ctx)
 						.select("Policy.AccountManagementSearchACC_p", ctx);
+				ctx.put("SearchlistSize", policyAccountsList.size());
 				if (policyAccountsList.size() > 0) {
 					ctx.put("AccountsSearch_list_01", policyAccountsList);
-					ctx.put("accountsSearchListSize", policyAccountsList.size());
 				}
 			}
 		} catch (Exception e) {
@@ -11282,10 +11282,11 @@ public class AccountUtils {
 	}
 
 	public static void validateAccountManagement(Context ctx) {
-		String policyKey = ctx.get("strPolicyKey").toString();
-		String accountActivity = ctx.get("accountActivity").toString();
 		boolean flag = false, flag1 = false;
 		try {
+			String accountIds = ctx.get("strPolicyKey") == null ? "" : ctx.get("strPolicyKey").toString().trim();
+			String accountActivity = ctx.get("accountActivity") == null ? ""
+					: ctx.get("accountActivity").toString().trim();
 			String methodType = ctx.get("inet_method") != null && !ctx.get("inet_method").equals(HtmlConstants.EMPTY)
 					? ctx.get("inet_method").toString()
 					: "back";
@@ -11302,7 +11303,7 @@ public class AccountUtils {
 				if (ctx.get("PolicyEffectiveMonthYear") != null
 						&& !"".equals(ctx.get("PolicyEffectiveMonthYear").toString()))
 					flag1 = true;
-				if (ctx.get("MergeStateCode") != null & !"".equals(ctx.get("MergeStateCode").toString()))
+				if (ctx.get("MergeStateCode") != null && !"".equals(ctx.get("MergeStateCode").toString()))
 					flag1 = true;
 
 				if (flag != true && flag1 != true) {
@@ -11317,15 +11318,15 @@ public class AccountUtils {
 
 			}
 			if ("save".equalsIgnoreCase(methodType)) {
-				if (policyKey == null | policyKey.equals("")) {
+				if (accountIds.equals("")) {
 					populateError(ctx, "noSelecion", "No account has selected for Link/Delink activity.");
 					return;
 				}
-				if (policyKey.length() < 4 && accountActivity.equalsIgnoreCase("linkAccounts")) {
+				if ("linkAccounts".equalsIgnoreCase(accountActivity) && accountIds.indexOf(',') < 0) {
 					populateError(ctx, "singalAccountActivity", "You need to select other account to perform linking.");
 					return;
 				}
-				if (accountActivity == null | accountActivity.equals("")) {
+				if (accountActivity.equals("")) {
 					populateError(ctx, "noAccountActivity",
 							"Please choose type of activity you need to perform with selected accounts.");
 					return;

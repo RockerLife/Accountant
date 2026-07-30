@@ -6308,22 +6308,21 @@ function clearSearchData()
 function updateData()
 {
 	var activityType=document.getElementById('accountActivity').value.length;
-	var activityAccountNames=document.getElementById('activityAccountNames').textContent.length;
+	var selectedAccounts=document.getElementById('strPolicyKey').value.length;
 	
-//alert(activityAccountNames);
 	if(activityType==0)
 		{
 		//alert('Please select Link or De-link activity type');
 		showPopUp2('popupsave3','500','400');
 		return;
 		}
-	if(activityAccountNames==0)
+	if(selectedAccounts==0)
 		{
 		//alert('Please select accounts to perform activity');
 		showPopUp2('popupsave4','500','400');
 		return;
 		}
-	if(activityType>0 && activityAccountNames>0)
+	if(activityType>0 && selectedAccounts>0)
 		{
 		showPopUp2('popupsave2','500','400');
 		}
@@ -6394,29 +6393,30 @@ function linkDelinkAccounts()
 }
 
 function getSelectedPolicyKeyAccountManagement(){
-	var strPolicyKey = "",activityAccountNames="";
-	var listSize=document.getElementById('accountsSearchListSize').value
-	//alert(listSize);
-	for(var i = 0 ; i < listSize ; i++)
-	{			
-		if(document.getElementById("PolicyKey_"+i) == null)
-			break;		
-		if(document.getElementById("PolicyKey_"+i).checked) {			
-			strPolicyKey = strPolicyKey.concat(document.getElementById("PolicyKey_"+i).value).concat(",");
-			activityAccountNames = activityAccountNames.concat(document.getElementById("FirmName_"+i).value).concat(",");
-		}		
-	}	
+	var searchlistSize=Number(document.getElementById('SearchlistSize').value);
+	var accountIds = [];
+	for(var i = 0 ; i < searchlistSize ; i++)
+	{
+		var account = document.getElementById("AccountID_"+i);
+		if(account == null)
+			break;
+		if(account.checked)
+			accountIds.push(account.value);
+	}
+	document.getElementById("strPolicyKey").value = accountIds.join(",");
+	document.getElementById("activityAccountNames").innerHTML = accountIds.join(", ");
+}
 
-	var strLength=strPolicyKey.length;
-	//alert(strLength);
-	if(strLength>0)
-		{
-		strPolicyKey=strPolicyKey.substring(0, strLength - 1);
-		activityAccountNames=activityAccountNames.substring(0, activityAccountNames.length - 1);
-		}
-	document.getElementById("strPolicyKey").value = strPolicyKey;
-	document.getElementById("activityAccountNames").innerHTML = activityAccountNames;
-	
+function selectAllAccountManagement(checked){
+	var searchlistSize=Number(document.getElementById('SearchlistSize').value);
+	for(var i = 0 ; i < searchlistSize ; i++)
+	{
+		var account = document.getElementById("AccountID_"+i);
+		if(account == null)
+			break;
+		account.checked = checked;
+	}
+	getSelectedPolicyKeyAccountManagement();
 }
 
 function checkUnCheckPaymentDiv(areas_show, areas_hide){
