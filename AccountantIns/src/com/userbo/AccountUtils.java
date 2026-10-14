@@ -2723,7 +2723,7 @@ public class AccountUtils {
 		
 //		if (ctx.get("PremiumRange") == null || "0".equals(ctx.get("PremiumRange").toString())
 //				|| "Washington".equals(ctx.get("StateDesc")) || "Nebraska".equals(ctx.get("StateDesc"))) {
-		if( "Y".equals(ctx.get("IsMinimumPremium").toString() )){
+		if( "Y".equals(ctx.get("IsMinimumPremium") == null ? "" : ctx.get("IsMinimumPremium").toString() )){
 			msg += "<br/><br/><h2><center>Your Premium is :"+ctx.get("TotalPremium")+"</h2></center>";
 		} else {
 			msg += "<br/><br/><h2><center>Your Premium Estimate is :"+ctx.get("EstimatePremiumRange")+"</h2></center>";
@@ -11240,7 +11240,7 @@ public class AccountUtils {
 					flag = true;
 				if (ctx.get("AccountEmailSearch") != null && !"".equals(ctx.get("AccountEmailSearch").toString()))
 					flag = true;
-				if (ctx.get("AccountNumberSearch") != null && !"".equals(ctx.get("AccountNumberSearch").toString()))
+				if (ctx.get("AccountNumberSearch_AM") != null && !"".equals(ctx.get("AccountNumberSearch_AM").toString()))
 					flag = true;
 				if (ctx.get("WorkPhoneSearch") != null && !"".equals(ctx.get("WorkPhoneSearch").toString()))
 					flag = true;
@@ -11257,7 +11257,7 @@ public class AccountUtils {
 				flag = true;
 			if (ctx.get("AccountEmailSearch") != null && !"".equals(ctx.get("AccountEmailSearch").toString()))
 				flag = true;
-			if (ctx.get("AccountNumberSearch") != null && !"".equals(ctx.get("AccountNumberSearch").toString()))
+			if (ctx.get("AccountNumberSearch_AM") != null && !"".equals(ctx.get("AccountNumberSearch_AM").toString()))
 				flag = true;
 			if (ctx.get("WorkPhoneSearch") != null && !"".equals(ctx.get("WorkPhoneSearch").toString()))
 				flag = true;
@@ -11296,7 +11296,7 @@ public class AccountUtils {
 					flag = true;
 				if (ctx.get("AccountEmailSearch") != null && !"".equals(ctx.get("AccountEmailSearch").toString()))
 					flag = true;
-				if (ctx.get("AccountNumberSearch") != null && !"".equals(ctx.get("AccountNumberSearch").toString()))
+				if (ctx.get("AccountNumberSearch_AM") != null && !"".equals(ctx.get("AccountNumberSearch_AM").toString()))
 					flag = true;
 				if (ctx.get("WorkPhoneSearch") != null && !"".equals(ctx.get("WorkPhoneSearch").toString()))
 					flag = true;
@@ -12177,13 +12177,15 @@ public class AccountUtils {
 
 	public static void setCompanyForPolicy(Context ctx) throws Exception {
 		Object policyEffectiveDate = ctx.get("PolicyEffectiveDate");
-		if (!isValidPolicyEffectiveDate(policyEffectiveDate))
-			return;
-
 		try {
 			String normalizedPolicyEffectiveDate = policyEffectiveDate instanceof Date
 					? new SimpleDateFormat("MM/dd/yyyy").format((Date) policyEffectiveDate)
-					: policyEffectiveDate.toString().trim();
+					: policyEffectiveDate == null ? null : policyEffectiveDate.toString().trim();
+			if (normalizedPolicyEffectiveDate != null && normalizedPolicyEffectiveDate.isEmpty())
+				normalizedPolicyEffectiveDate = null;
+			if (normalizedPolicyEffectiveDate != null && !isValidPolicyEffectiveDate(normalizedPolicyEffectiveDate))
+				return;
+
 			String lookupKey = companyLookupKey(ctx, normalizedPolicyEffectiveDate);
 			Object cachedResult = ctx.get(COMPANY_LOOKUP_CACHE_RESULT);
 			if (lookupKey.equals(ctx.get(COMPANY_LOOKUP_CACHE_KEY)) && cachedResult instanceof Map) {
@@ -12196,7 +12198,7 @@ public class AccountUtils {
 			new SetParametersForStoredProcedures().setParametersInContext(ctx,
 					"StateCode,MarketableProductKey,PolicyEffectiveDate");
 			Object obj = SqlResources.getSqlMapProcessor(ctx).findByKey("Policy.GetCompanyListACC_p", ctx);
-			if (obj != null && obj instanceof Map) {
+			if (obj instanceof Map) {
 				Map objMap = (Map) obj;
 				ctx.putAll(objMap);
 				// ponytail: policy-context cache assumes StateCompany mappings stay fixed during the policy session.
@@ -12204,7 +12206,7 @@ public class AccountUtils {
 				ctx.put(COMPANY_LOOKUP_CACHE_KEY, lookupKey);
 			}
 		} catch (Exception e) {
-			logger.error("error occured while settong up company :" + e, e);
+			logger.error("Error while setting up company", e);
 		} finally {
 			ctx.put("PolicyEffectiveDate", policyEffectiveDate);
 		}
@@ -12693,12 +12695,12 @@ public class AccountUtils {
 
 			if("".equals(subProducerName)){ // For Direct
 				if(firstReviewer == null || "".equals(firstReviewer) || ownerMap.get(firstReviewer) == null) {
+					String forDirectFRRS = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.RS");
+					String forDirectFRQB = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.QB");
+					String forDirectFRJF = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.JF");
+					String forDirectFRAL = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.AL");
+					
 		    		if("2".equals(policyStatusKey)){
-	
-						String forDirectFRRS = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectrenew.firstreviewer.RS");
-//						String forDirectFRNN = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectrenew.firstreviewer.NN");
-						String forDirectFRJF = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectrenew.firstreviewer.JF");
-						String forDirectFRAL = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectrenew.firstreviewer.AL");
 	
 						if("CO#IL#NM".contains(stateCode)){
 		    				firstReviewer = forDirectFRRS;//Ryan Schwartz
@@ -12708,31 +12710,17 @@ public class AccountUtils {
 		    				firstReviewer = forDirectFRAL;//Andrea Lakatos
 		    			}
 		    		} else {
-//						String forDirectFRRS = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectrenew.firstreviewer.RS");
-						String forDirectFRQB = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.QB");
-//		    			String forDirectFRDK = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.DK");
-//						String forDirectFRSH = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.SH");
-//						String forDirectFRCC = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.CC");
-						String forDirectFRXR = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.XR");
 	
-//						if("CT#GA#FL#IL".contains(stateCode)){
-//		    				firstReviewer = forDirectFRRS;//Ryan Schwartz
-	    				if("CT#GA#FL#IL#PA#NC#KS#UT#MD#ME#NY#NH#VT#AL#AR#HI#IA#MS".contains(stateCode)){
-		    				firstReviewer = forDirectFRXR;//Xavier
-						} else if("CA#CO#IN#TX#WA#ID#AZ#MA#NJ#MN#WI#NV#OH#MO#MI#VA#TN#AK#KY#MT#ND#NM#SC#SD#WY#NE#OK#DE#DC#LA#WV#RI".contains(stateCode)){
+						if("CT#FL#GA#IL".contains(stateCode)){
+		    				firstReviewer = forDirectFRRS;//Ryan Schwartz
+						} else {
 							firstReviewer = forDirectFRQB;//Quiana
-//		    			} else if("CT#GA#FL#KS#VA#TN#UT#NC#SC#OH#IL#MO#MI#AL#AR#HI#IA#MS#NE#OK#DE#DC#LA#WV#RI".contains(stateCode)){
-//		    				firstReviewer = forDirectFRDK;//Dane
-//		    			} else if("AZ#MA#MI#NV#NC#PA#SC#DE#DC#MD#ME#NH#RI#VT".contains(stateCode)){
-//		    				firstReviewer = forDirectFRSH;//Sharon
-//		    			} else if("OH#IL#MN#MO#NJ#WI#LA#NY#WV#MI#NV#PA#NH#RI#VT".contains(stateCode)){
-//		    				firstReviewer = forDirectFRCC;//Chaz
 		    			}
 		    		}
 				}
 			} else {
-				String forSubProducerDH = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.forsubproducer.firstreviewer.DH");
-				String forSubProducerJW = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.forsubproducer.firstreviewer.JW");
+				String forSubProducerDH = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.DH");
+				String forSubProducerJW = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.JW");
 				
 				if("P0000005".equals(producerCode) || "P0000012".equals(producerCode)) {
 					if("2".equals(policyStatusKey)){
@@ -12759,7 +12747,7 @@ public class AccountUtils {
 			if (ownerMap.get(firstReviewer) != null) {
 				ctx.put("Owner", firstReviewer);
 			} else {
-				ctx.put("Owner", "");
+				ctx.put("Owner", SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.CB"));
 			}
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			{ if (logger.isDebugEnabled()) logger.debug(dateFormat.format(date)); } // 2016/11/16 12:08:43
@@ -12916,7 +12904,7 @@ public class AccountUtils {
 
 				int result = httpclient.executeMethod(post);
 				String responseBody = post.getResponseBodyAsString();
-				logger.debug(result);
+				{ if (logger.isDebugEnabled()) logger.debug(result); }
 				{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
 
 				JSONObject captureZohoData = new JSONObject(responseBody);
@@ -12974,7 +12962,7 @@ public class AccountUtils {
 
 				int result = httpclient.executeMethod(post);
 				String responseBody = post.getResponseBodyAsString();
-				logger.debug(result);
+				{ if (logger.isDebugEnabled()) logger.debug(result); }
 				{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
 				if (responseBody != null && !"".equals(responseBody)) {
 					JSONObject captureZohoData = new JSONObject(responseBody);
@@ -13529,7 +13517,7 @@ public class AccountUtils {
 
 				int result = httpclient.executeMethod(post);
 				String responseBody = post.getResponseBodyAsString();
-				logger.debug(result);
+				{ if (logger.isDebugEnabled()) logger.debug(result); }
 				{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
 
 				JSONObject captureZohoData = new JSONObject(responseBody);
@@ -13591,7 +13579,7 @@ public class AccountUtils {
 
 				int result = httpclient.executeMethod(post);
 				String responseBody = post.getResponseBodyAsString();
-				logger.debug(result);
+				{ if (logger.isDebugEnabled()) logger.debug(result); }
 				{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
 
 				if (responseBody != null && !"".equals(responseBody)) {
@@ -14513,11 +14501,11 @@ public static void sendProtexureEstimateForm(Context ctx){
 			emailID = SystemProperties.getInstance().getString("appl." + ctx.getProject() + ".admin.email");
 			{ if (logger.isDebugEnabled()) logger.debug("email id------->"+emailID); }
 		} else { 
-			String forDirectFRRS = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectrenew.firstreviewer.RS");
-			String forDirectFRQB = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.QB");
-//			String forDirectFRDK = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.DK");
-//			String forDirectFRSH = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.SH");
-//			String forDirectFRCC = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.fordirectnew.firstreviewer.CC");
+			String forDirectFRRS = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.RS");
+			String forDirectFRQB = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.QB");
+//			String forDirectFRDK = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.DK");
+//			String forDirectFRSH = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.SH");
+//			String forDirectFRCC = SystemProperties.getInstance().getString("appl.AccountantIns.zoho.firstreviewer.CC");
 
 			if("CT#GA#FL#IL".contains(stateCode)){
 				firstReviewer = forDirectFRRS;//Ryan Schwartz

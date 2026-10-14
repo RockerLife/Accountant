@@ -1010,6 +1010,11 @@ public class QuoteLetter {
 			Object objQuoteExpDate = RuleUtils.executeRule(ctx, "AccountantRule.isQuotationExpiredAndInsured");
 			if (objQuoteExpDate != null && objQuoteExpDate instanceof Boolean)
 				flagQuoteDate = (Boolean) objQuoteExpDate;
+			
+			if(flagQuoteDate)
+				objQuoteExpDate = RuleUtils.executeRule(ctx, "AccountantRule.isQuotationExpired5DaysAndInsured");
+				if (objQuoteExpDate != null && objQuoteExpDate instanceof Boolean)
+					flagQuoteDate = (Boolean) objQuoteExpDate;
 		
 		} else {
 			//Greater QuoteEffectiveDate

@@ -198,7 +198,7 @@
      <procedure id="IssuePolicyManually_p" parameterMap="IssuePolicyManually_pMap">{ call IssuePolicyManually_p(?,?,?,?)}</procedure>
      <parameterMap id="AccountManagementSearchACC_pMap" class="java.util.HashMap">
           <parameter property="AccountNameSearch" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
-          <parameter property="AccountNumberSearch" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+          <parameter property="AccountNumberSearch_AM" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
           <parameter property="AccountEmailSearch" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
           <parameter property="PolicyEffectiveMonthYear" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
           <parameter property="WorkPhoneSearch" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />

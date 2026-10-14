@@ -2749,6 +2749,9 @@
 			<rule id="isPEDLessFrmQEDAndInsured" expression="andCondition(isNot(isEqual(:StatusKey,6)),andCondition(call_rule(LawyersRule.isInsured),call_rule(LawyersRule.isPEDLessFrmQED)));"></rule>
 			<rule id="isPolicyEffDate5DaysAndInsured" expression="andCondition(isNot(isEqual(:StatusKey,6)),andCondition(call_rule(LawyersRule.isInsured),call_rule(LawyersRule.isPolicyEffDate5Days)));"></rule>
 			
+			<rule id="isQuotationExpired5Days" expression="andCondition(isEqual(:QuoteExpiryDate,:PolicyEffectiveDate),isLessThan(daysdiff(:QuoteExpiryDate,getTodaysDate()),-5));"></rule>
+			<rule id="isQuotationExpired5DaysAndInsured" expression="andCondition(isNot(isEqual(:StatusKey,6)),andCondition(call_rule(LawyersRule.isInsured),call_rule(LawyersRule.isQuotationExpired5Days)));"></rule>
+			
 			<rule id="showConfirmationPage29Days" expression="showConfirmationPage29Days(context)"/>
  	</ruleset>  
 	 

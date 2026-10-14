@@ -117,37 +117,33 @@ public class EPICDataUpdate {
 			policyEffectiveDate = policyEffectiveDate.substring(0,10);
 			insertData.put("PolicyEffectiveDate", policyEffectiveDate);
 			
-			String transactionDate = "";
 			try {
 				Calendar calendarG = Calendar.getInstance();
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat sdfYYYYMMDD = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat sdfMMDDYYY = new SimpleDateFormat("MM/dd/yyyy");
+				
+				Calendar calendarPEff = Calendar.getInstance();
+				Date datePEff = sdfYYYYMMDD.parse(policyEffectiveDate);
+				calendarPEff.setTime(datePEff);
 
-				Date dateG = new SimpleDateFormat("MM/dd/yyyy").parse(insertData.get("PolicyExpirationDate").toString());
+				Date dateG = sdfMMDDYYY.parse(insertData.get("PolicyExpirationDate").toString());
 			    calendarG.setTime(dateG);
-				insertData.put("PolicyExpirationDate", sdf.format(calendarG.getTime()));
+				insertData.put("PolicyExpirationDate", sdfYYYYMMDD.format(calendarG.getTime()));
 				
 				if(insertData.get("TransactionTypeKey") != null && !"".equals(insertData.get("TransactionTypeKey")) && Integer.parseInt(insertData.get("TransactionTypeKey").toString()) > 6){
-					transactionDate = insertData.get("EndorsementIssuedDate").toString();
-					dateG = new SimpleDateFormat("yyyy-MM-dd").parse(transactionDate);
+					dateG = sdfYYYYMMDD.parse(insertData.get("EndorsementIssuedDate").toString());
 				} else {
-					transactionDate = insertData.get("IssuedDate").toString();
-					dateG = new SimpleDateFormat("MM/dd/yyyy").parse(transactionDate);
+					dateG = sdfMMDDYYY.parse(insertData.get("IssuedDate").toString());
 				}
-			    
 			    calendarG.setTime(dateG);
-				insertData.put("TransactionDate", sdf.format(calendarG.getTime()));
-
-				Calendar calendarEff = Calendar.getInstance();
-				Date dateEff = new SimpleDateFormat("yyyy-MM-dd").parse(policyEffectiveDate);
-				calendarEff.setTime(dateEff);
 				
 				String transactionMonth = "";
-				if(calendarG.after(calendarEff)){
-					insertData.put("ARDueDate", sdf.format(calendarG.getTime()));
+				if(calendarG.after(calendarPEff)){
+					insertData.put("TransactionDate", sdfYYYYMMDD.format(calendarG.getTime()));
 					transactionMonth = (1900+dateG.getYear()) + String.format("%02d", (dateG.getMonth()+1));
 				} else {
-					insertData.put("ARDueDate", sdf.format(calendarEff.getTime()));
-					transactionMonth = (1900+dateEff.getYear()) + String.format("%02d", (dateEff.getMonth()+1));
+					insertData.put("TransactionDate", sdfYYYYMMDD.format(calendarPEff.getTime()));
+					transactionMonth = (1900+datePEff.getYear()) + String.format("%02d", (datePEff.getMonth()+1));
 				}
 				insertData.put("TransactionMonth", transactionMonth);
 				
@@ -607,19 +603,18 @@ public class EPICDataUpdate {
 		    HttpClient httpclient = SharedHttpClient.get();
 
 		    int result = httpclient.executeMethod(post);
-		    String responseBody = post.getResponseBodyAsString();
 		    
-			{ if (logger.isDebugEnabled()) logger.debug(result); }
-			{ if (logger.isDebugEnabled()) logger.debug(responseBody); }
+    		if (logger.isDebugEnabled()) 
+    			logger.debug(result);
 		    
-			if (result == 201 || result == 200) {
-				return "#Sucesss#" + responseBody;
+    		if (result == 201 || result == 200) {
+		    	return "#Sucesss#" + post.getResponseBodyAsString();
 			} else {
-				return "#Failed#" + responseBody;
+		    	return "#Failed#" + post.getResponseBodyAsString();
 			}
 		    
 		} catch (Exception e) {
-			logger.error("Error in EPICDataUpdate.authorizeTransaction", e);
+		    e.printStackTrace();
 		} finally {
 		    post.releaseConnection();
 		}

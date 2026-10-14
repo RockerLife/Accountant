@@ -87,7 +87,7 @@ public class PIMRequestProcessorImpl implements PIMRequestProcessorInterface{
 			breadCrumbContext = (Context)ctx.get(HtmlConstants.BREADCRUMB_CONTEXT);
 		
 		ctx.put("next_page_for_view", next_page);
-		
+		ctx.put(HtmlConstants.NEXT_PAGE_FOR_PARSE, next_page);		
 		//updating session data
 		utils.populateSession(request, ctx);
 		

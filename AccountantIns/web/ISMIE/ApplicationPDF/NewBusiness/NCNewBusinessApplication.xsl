@@ -2713,6 +2713,7 @@
         </fo:table-body>
         </fo:table>
         </fo:block>
+        <fo:block keep-together.within-page="always">
         <fo:block space-before="4mm">
             <fo:table margin-top="1mm" border="1pt solid black" background-color="LightGray ">
               <fo:table-column></fo:table-column>
@@ -2911,9 +2912,9 @@
        	  </fo:table-body>
        	  </fo:table>
        	  </fo:block>
-       	  <fo:block page-break-before="always" />
-       	  <fo:block>
-          <fo:block space-after="4mm" font-size="10px" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif;" text-align="justify">
+        </fo:block>
+          <fo:block>
+         <fo:block space-after="4mm" font-size="10px" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif;" text-align="justify">
 			ANY PERSON WHO KNOWINGLY AND WITH INTENT TO DEFRAUD ANY INSURANCE
 			COMPANY OR OTHER PERSON FILES AN APPLICATION FOR INSURANCE OR STATEMENT
 			OF CLAIM CONTAINING ANY MATERIALLY FALSE INFORMATION OR CONCEALS, FOR
@@ -5360,7 +5361,7 @@
 	        </fo:table>
 	        </fo:block>
 			</xsl:if>
-			<xsl:if test="(response/FIRM_FREEFORM_01/data/IsAwarenessOfAnyProfLiability != 'N' and (response/StatusDesc != 'Issued' or response/FIRM_FREEFORM_01/data/IsAwarenessOfAnyProfLiability = 'Y')) or (response/FIRM_FREEFORM_01/data/IsAwarenessOfAnyProfLiabilitySuitAgainst != 'N' and (response/StatusDesc != 'Issued' or response/FIRM_FREEFORM_01/data/IsAwarenessOfAnyProfLiabilitySuitAgainst = 'Y'))">
+			<xsl:if test="response/StatusDesc != 'Issued' or response/FIRM_FREEFORM_01/data/IsAwarenessOfAnyProfLiability = 'Y' or response/FIRM_FREEFORM_01/data/IsAwarenessOfAnyProfLiabilitySuitAgainst = 'Y'">
 	        <fo:block space-after="4mm" space-before="8mm">
             <fo:table margin-top="1mm" border="1pt solid black" background-color="LightGray ">
               <fo:table-column></fo:table-column>
@@ -6261,4 +6262,3 @@
        </xsl:template>
        </xsl:stylesheet>
       
-            

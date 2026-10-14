@@ -1955,9 +1955,8 @@
           </fo:table-body>
        	  </fo:table>
        	  </fo:block>
-       	  <fo:block page-break-before="always" />
-          <fo:block>
-          <fo:block space-after="4mm" font-size="10px" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif;" text-align="justify">
+         <fo:block>
+         <fo:block space-after="4mm" font-size="10px" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif;" text-align="justify">
 			Completion and/or signing of this application does not bind the firm to
 			purchase, nor the <fo:inline font-weight="bold">Insurer</fo:inline> to provide, any insurance policy; however, no
 			policy can be issued unless the application is properly completed,
@@ -3463,7 +3462,7 @@
 	        </fo:block>
 			</xsl:if>
 							
-			<xsl:if test="(response/firm_freeform_01/data/IsAwarenessOfAnyProfLiability != 'N' and (response/StatusDesc != 'Issued' or response/firm_freeform_01/data/IsAwarenessOfAnyProfLiability = 'Y')) or (response/firm_freeform_01/data/IsAwarenessOfAnyProfLiabilitySuitAgainst != 'N' and (response/StatusDesc != 'Issued' or response/firm_freeform_01/data/IsAwarenessOfAnyProfLiabilitySuitAgainst = 'Y'))">
+			<xsl:if test="response/StatusDesc != 'Issued' or response/firm_freeform_01/data/IsAwarenessOfAnyProfLiability = 'Y' or response/firm_freeform_01/data/IsAwarenessOfAnyProfLiabilitySuitAgainst = 'Y'">
 	        <fo:block space-after="4mm" space-before="8mm">
             <fo:table margin-top="1mm" border="1pt solid black" background-color="LightGray ">
               <fo:table-column></fo:table-column>
@@ -4072,4 +4071,3 @@
        </xsl:template>
        </xsl:stylesheet>
       
-            

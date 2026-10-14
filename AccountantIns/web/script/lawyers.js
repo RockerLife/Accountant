@@ -6300,7 +6300,7 @@ function clearSearchData()
 	document.getElementById('ajax_field_PolicyEffectiveMonthYear').value=null;
 	document.getElementById('ajax_field_WorkPhoneSearch').value=null;
 	document.getElementById('ajax_field_MergeStateCode').value="";
-	document.getElementById('ajax_field_AccountNumberSearch').value=null;
+	document.getElementById('ajax_field_AccountNumberSearch_AM').value=null;
 	document.getElementById('errorsDiv').style.display="none";
 	document.getElementById('ajax_field_linkAccounts').checked=false;
 	document.getElementById('ajax_field_deLinkAccounts').checked=false;
@@ -6393,7 +6393,9 @@ function linkDelinkAccounts()
 }
 
 function getSelectedPolicyKeyAccountManagement(){
+	
 	var searchlistSize=Number(document.getElementById('SearchlistSize').value);
+	
 	var accountIds = [];
 	for(var i = 0 ; i < searchlistSize ; i++)
 	{
@@ -6412,6 +6414,7 @@ function selectAllAccountManagement(checked){
 	for(var i = 0 ; i < searchlistSize ; i++)
 	{
 		var account = document.getElementById("AccountID_"+i);
+		
 		if(account == null)
 			break;
 		account.checked = checked;

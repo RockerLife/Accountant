@@ -16962,7 +16962,7 @@ and  pt.StatusKey=6 and  p.PolicyKey = pt.PolicyKey and p.MarketableProductKey =
   	<component name="ManageAccounts" metaobject="ManageAccounts">
 	<action name="view">
 	<actionparam pre="Y" paramid="checkfornullparams" name="checkfornullparams" form="Y" 
-				checkfornullparams="AccountNameSearch,AccountNumberSearch,AccountEmailSearch,PolicyEffectiveMonthYear,WorkPhoneSearch,MergeStateCode" />
+     			checkfornullparams="AccountNameSearch,AccountEmailSearch,PolicyEffectiveMonthYear,WorkPhoneSearch,MergeStateCode" />
 			
 			
 		<workflow name="view" seq="0">
@@ -16978,7 +16978,7 @@ and  pt.StatusKey=6 and  p.PolicyKey = pt.PolicyKey and p.MarketableProductKey =
 				<storedprocedureoperation  id="AccountManagementSearchACC_p" viewid="AccountsSearch_list_01"
 					name="AccountManagementSearchACC_p" dbspname="AccountManagementSearchACC_p" executionsequence="1" metaobject="Policy" operation="5">
 					<parameteroperation property="AccountNameSearch" mode="IN" indexno="1" seq="1"/>		
-					<parameteroperation property="AccountNumberSearch" mode="IN" indexno="2" seq="2"/>		
+					<parameteroperation property="AccountNumberSearch_AM" mode="IN" indexno="2" seq="2"/>		
 					<parameteroperation property="AccountEmailSearch" mode="IN" indexno="3" seq="3"/>		
 					<parameteroperation property="PolicyEffectiveMonthYear" mode="IN" indexno="4" seq="4"/>		
 					<parameteroperation property="WorkPhoneSearch" mode="IN" indexno="5" seq="5"/>		
@@ -16987,7 +16987,7 @@ and  pt.StatusKey=6 and  p.PolicyKey = pt.PolicyKey and p.MarketableProductKey =
 				</storedprocedureoperation>
 			</workflow>
 			<actionparam post="Y" paramid="AccountNameSearch" name="AccountNameSearch" form="Y" session="Y"/>
-			<actionparam post="Y" paramid="AccountNumberSearch" name="AccountNumberSearch" form="Y" session="Y"/>
+			<actionparam post="Y" paramid="AccountIDSearch" name="AccountIDSearch" form="Y" session="Y"/>
 			<actionparam post="Y" paramid="AccountEmailSearch" name="AccountEmailSearch" form="Y" session="Y"/>
 			<actionparam post="Y" paramid="PolicyEffectiveMonthYear" name="PolicyEffectiveMonthYear" form="Y" session="Y"/>
 			<actionparam post="Y" paramid="WorkPhoneSearch" name="WorkPhoneSearch" form="Y" session="Y"/>
@@ -17005,6 +17005,7 @@ and  pt.StatusKey=6 and  p.PolicyKey = pt.PolicyKey and p.MarketableProductKey =
 					  <parameteroperation property="LastUpdateTimeStamp" mode="IN" indexno="51" seq="51"/>
 			    		
 			    	</storedprocedureoperation>
+			   <databaseoperation name="policyLastUpdateTimeStamp" metaobject="Policy" operation="4" executionsequence="500" sqlstmt="update policy set LastUpdateTimeStamp=#LastUpdateTimeStamp# where PolicyKey=#PolicyKey#"></databaseoperation>
 		</workflow>
 		
 		<actionparam post="Y" paramid="accountActivity" name="accountActivity" form="Y" session="Y" remove="Y"/>
@@ -17014,7 +17015,7 @@ and  pt.StatusKey=6 and  p.PolicyKey = pt.PolicyKey and p.MarketableProductKey =
 	<action name="back">
 		<actionparam viewparam="Y" paramid="inet_skip_validation" name="inet_skip_validation" val="Y" form="Y"/>
 		<actionparam pre="Y" name="removeparams" paramid="removeparams" form="Y" session="Y" remove="Y" 
-				removeparams="AccountNameSearch,AccountNumberSearch,AccountEmailSearch,PolicyEffectiveMonthYear,WorkPhoneSearch,MergeStateCode" />
+			   		removeparams="AccountNameSearch,AccountIDSearch,AccountEmailSearch,PolicyEffectiveMonthYear,WorkPhoneSearch,MergeStateCode" />
 	</action>
 	<action name="getAccountNameList">
 	

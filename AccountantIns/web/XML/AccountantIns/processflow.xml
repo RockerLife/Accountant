@@ -5866,7 +5866,7 @@
                <blockfieldset id="0" seq="0">
                     <blockfield id="18" fieldtype="text" seq="18" fieldname="AccountNameSearch" />
                     <blockfield id="19" fieldtype="text" seq="19" fieldname="AccountEmailSearch" />
-                    <blockfield id="20" fieldtype="text" seq="20" fieldname="AccountNumberSearch" />
+                    <blockfield id="20" fieldtype="text" seq="20" fieldname="AccountNumberSearch_AM" />
                     <blockfield id="21" fieldtype="text" seq="21" fieldname="WorkPhoneSearch" />
                     <blockfield id="22" fieldtype="select" seq="22" fieldname="MergeStateCode" />
                     <blockfield id="23" fieldtype="text" seq="23" fieldname="PolicyEffectiveMonthYear" />
@@ -5892,9 +5892,9 @@
           <block id="ManageAccounts_freeform_contextdata_999" blocktype="freeform" seq="4">
                <blockfieldset id="0" seq="0">
                     <blockfield id="4" fieldtype="hidden" seq="4" fieldname="jsessionid" />
-                    <blockfield id="5" fieldtype="hidden" seq="5" fieldname="strPolicyKey" />
-                    <blockfield id="6" fieldtype="hidden" seq="6" fieldname="accountActivity" />
-                    <blockfield id="7" fieldtype="hidden" seq="7" fieldname="SearchlistSize" />
+                    <blockfield id="5" fieldtype="text" seq="5" fieldname="strPolicyKey" />
+                    <blockfield id="6" fieldtype="text" seq="6" fieldname="accountActivity" />
+                    <blockfield id="7" fieldtype="text" seq="7" fieldname="SearchlistSize" />
                </blockfieldset>
           </block>
           <formlink name="ManageAccounts" seq="0" action="save">

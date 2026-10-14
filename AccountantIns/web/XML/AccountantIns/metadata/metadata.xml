@@ -1198,6 +1198,7 @@
     <field type="I" decimallength="0" seq="2773" displayname="FormDocumentKey" dropdown="N" fieldlength="2547" viewlength="0" name="FormDocumentKey" />
     <field type="C" decimallength="0" seq="2774" displayname="hasAnyFirmPersonnelReported" dropdown="N" fieldlength="5" viewlength="0" name="hasAnyFirmPersonnelReported" />
     <field type="V" decimallength="0" seq="2775" displayname="outputList" dropdown="N" fieldlength="5" viewlength="0" name="outputList1" />
+    <field type="V" decimallength="0" seq="1148" displayname="Account Number" dropdown="N" fieldlength="20" viewlength="0" name="AccountNumberSearch_AM" />
 	<!--   Handling Multiple Companies end-->
 	 <metaobject active="Y" seq="0" persistent="Y" name="Deductibles">
           <propertyversion versionname="0" seq="0">
